@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Request a Donation | DIPRA Foundation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="support.html" class="quick-donate">Donate</a>
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="DIPRA Foundation Logo" />
+      <span>DIPRA Foundation</span>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="request.html">Request a Donation</a>
+      <a href="support.html">Support Us</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+  </header>
+  <section class="donation-request">
+    <h1>Request a Donation</h1>
+    <form class="donation-form">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <label for="phone">Phone:</label>
+      <input type="text" id="phone" name="phone" required>
+      <label for="reason">Reason for Donation:</label>
+      <textarea id="reason" name="reason" rows="4" required></textarea>
+      <label for="amount">Required Amount (₹):</label>
+      <input type="number" id="amount" name="amount" required>
+      <label for="category">Category:</label>
+      <select id="category" name="category" required>
+        <option value="Medical">Medical</option>
+        <option value="Education">Education</option>
+        <option value="Other">Other</option>
+      </select>
+      <label for="photo">Upload Photo:</label>
+      <input type="file" id="photo" name="photo" accept="image/*">
+      <button type="submit">Request Donation</button>
+    </form>
+    <div class="request-info">
+      <h2>How it Works</h2>
+      <ol>
+        <li>Fill the donation request form above.</li>
+        <li>Our team will review your request and contact you within 2-3 days.</li>
+        <li>If eligible, your fundraiser will be posted on the website.</li>
+        <li>Donors can directly support you online.</li>
+      </ol>
+    </div>
+  </section>
+  <footer>
+    <div class="social-links">
+      <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+      <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+      <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+      <a href="mailto:contact@diprafoundation.com"><img src="images/email.png" alt="Email"></a>
+    </div>
+    <p>&copy; 2025 DIPRA Foundation. All rights reserved.</p>
+  </footer>
+</body>
+</html>
