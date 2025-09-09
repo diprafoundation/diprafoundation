@@ -7,10 +7,11 @@ body {
 }
 header {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 34px;
+  padding: 14px 10vw;
   background: #fff;
   box-shadow: 0 2px 12px rgba(0,0,0,0.05);
 }
@@ -23,13 +24,14 @@ header {
   color: #2b52a0;
 }
 .logo img {
-  height: 48px;
-  width: 48px;
+  height: 42px;
+  width: 42px;
   object-fit: contain;
 }
 nav {
   display: flex;
-  gap: 30px;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 nav a {
   font-size: 1.08rem;
@@ -47,13 +49,13 @@ nav a:hover, nav .active {
 
 .quick-donate {
   position: fixed;
-  right: 22px;
-  bottom: 24px;
+  right: 16px;
+  bottom: 18px;
   background: #2b52a0;
   color: #fff;
-  padding: 12px 18px;
+  padding: 10px 16px;
   border-radius: 30px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
   box-shadow: 0 2px 16px rgba(43,82,160,0.15);
@@ -66,27 +68,27 @@ nav a:hover, nav .active {
 
 .hero {
   text-align: center;
-  padding: 56px 18px 38px 18px;
+  padding: 48px 6vw 34px 6vw;
   background: linear-gradient(90deg, #eaf3ff 60%, #fff 100%);
 }
 .hero h1 {
-  font-size: 2.2rem;
+  font-size: 2rem;
   color: #194d7d;
   margin-bottom: 14px;
 }
 .hero p {
-  font-size: 1.14rem;
+  font-size: 1.07rem;
   color: #555;
   margin-bottom: 20px;
 }
 .hero-buttons {
-  margin-top: 20px;
+  margin-top: 18px;
 }
 .hero-btn {
   background: #194d7d;
   color: #fff;
-  padding: 12px 28px;
-  margin: 0 8px 0 0;
+  padding: 10px 22px;
+  margin: 0 6px 0 0;
   border: none;
   border-radius: 8px;
   font-size: 1rem;
@@ -94,6 +96,7 @@ nav a:hover, nav .active {
   cursor: pointer;
   text-decoration: none;
   transition: background 0.2s;
+  display: inline-block;
 }
 .hero-btn.secondary {
   background: #2b52a0;
@@ -102,10 +105,10 @@ nav a:hover, nav .active {
   background: #13385a;
 }
 .search-bar {
-  margin: 22px auto 0 auto;
+  margin: 18px auto 0 auto;
   display: flex;
   justify-content: center;
-  max-width: 400px;
+  max-width: 350px;
 }
 .search-bar input {
   padding: 10px 12px;
@@ -130,7 +133,7 @@ nav a:hover, nav .active {
 }
 
 .success-stories {
-  padding: 34px 18px;
+  padding: 28px 4vw;
   background: #fff;
   max-width: 1100px;
   margin: 0 auto;
@@ -143,19 +146,19 @@ nav a:hover, nav .active {
 }
 .stories-slider {
   display: flex;
-  gap: 24px;
+  gap: 16px;
   overflow-x: auto;
   padding-bottom: 12px;
 }
 .story {
-  min-width: 270px;
+  min-width: 220px;
   background: #eaf3ff;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(43,82,160,0.09);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 12px;
+  padding: 10px;
   opacity: 0.85;
   transition: opacity 0.2s;
 }
@@ -163,8 +166,8 @@ nav a:hover, nav .active {
   opacity: 1;
 }
 .story img {
-  width: 90px;
-  height: 90px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 8px;
@@ -174,27 +177,28 @@ nav a:hover, nav .active {
 }
 .story-text p {
   color: #222;
-  font-size: 0.98rem;
+  font-size: 0.97rem;
 }
 
 .fundraisers {
-  padding: 36px 18px;
+  padding: 26px 4vw;
   max-width: 1100px;
   margin: 0 auto;
 }
 .fundraisers h2 {
-  font-size: 1.6rem;
-  margin-bottom: 22px;
+  font-size: 1.25rem;
+  margin-bottom: 18px;
   color: #194d7d;
 }
 .fundraiser-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 32px;
+  gap: 22px;
   justify-content: flex-start;
 }
 .fundraiser-card {
-  width: 350px;
+  width: 98vw;
+  max-width: 350px;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   overflow: hidden;
@@ -206,49 +210,49 @@ nav a:hover, nav .active {
 .card-image {
   position: relative;
   width: 100%;
-  height: 220px;
+  height: 180px;
   overflow: hidden;
 }
 .card-image img {
   width: 100%;
-  height: 220px;
+  height: 180px;
   object-fit: cover;
 }
 .category {
   position: absolute;
-  top: 16px;
-  left: 16px;
+  top: 12px;
+  left: 12px;
   background: #fff0f0;
   color: #a03030;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bold;
-  border-radius: 10px;
-  padding: 4px 14px;
+  border-radius: 8px;
+  padding: 3px 10px;
   box-shadow: 0 2px 10px rgba(160,48,48,0.08);
 }
 .card-content {
-  padding: 18px 20px 18px 20px;
+  padding: 14px 14px 14px 14px;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 .card-content h2 {
-  font-size: 1.18rem;
+  font-size: 1.07rem;
   color: #222;
-  margin: 0 0 12px 0;
+  margin: 0 0 10px 0;
   font-weight: 600;
 }
 .description {
   color: #555;
-  font-size: 1rem;
-  margin-bottom: 12px;
+  font-size: 0.97rem;
+  margin-bottom: 10px;
 }
 .funds-info {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
-  font-size: 1rem;
+  margin-bottom: 8px;
+  font-size: 0.97rem;
 }
 .raised {
   color: #a03030;
@@ -256,14 +260,14 @@ nav a:hover, nav .active {
 }
 .goal {
   color: #888;
-  font-size: 0.96rem;
+  font-size: 0.95rem;
 }
 .progress-bar {
   background: #f3f3f3;
   height: 7px;
   border-radius: 5px;
-  margin-top: 6px;
-  margin-bottom: 8px;
+  margin-top: 5px;
+  margin-bottom: 6px;
   width: 100%;
   position: relative;
 }
@@ -274,8 +278,8 @@ nav a:hover, nav .active {
 }
 .creator {
   color: #666;
-  font-size: 0.95rem;
-  margin-bottom: 8px;
+  font-size: 0.93rem;
+  margin-bottom: 6px;
 }
 .supporters-share {
   display: flex;
@@ -286,17 +290,17 @@ nav a:hover, nav .active {
 .supporters {
   background: #fff5de;
   color: #914c00;
-  padding: 4px 12px;
+  padding: 3px 10px;
   border-radius: 8px;
-  font-size: 0.98rem;
+  font-size: 0.97rem;
   font-weight: 500;
 }
 .share-btn {
   background: #fff;
   border: none;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   cursor: pointer;
-  padding: 6px 10px;
+  padding: 4px 8px;
   border-radius: 50%;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   transition: background 0.2s;
@@ -307,56 +311,56 @@ nav a:hover, nav .active {
 
 .about-section, .donation-request, .support-section {
   max-width: 700px;
-  margin: 42px auto 20px auto;
+  margin: 36px auto 18px auto;
   background: #fff;
-  padding: 32px 28px;
-  border-radius: 18px;
+  padding: 24px 10px;
+  border-radius: 14px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.07);
 }
 .about-section h1, .donation-request h1, .support-section h1 {
   color: #194d7d;
-  font-size: 1.7rem;
-  margin-bottom: 18px;
+  font-size: 1.3rem;
+  margin-bottom: 16px;
 }
 .about-section h2, .support-section h2, .donation-request h2 {
   color: #2b52a0;
-  margin-top: 28px;
-  margin-bottom: 10px;
+  margin-top: 18px;
+  margin-bottom: 8px;
 }
 .about-section ul, .support-section ul {
-  padding-left: 18px;
-  margin-bottom: 18px;
+  padding-left: 14px;
+  margin-bottom: 14px;
 }
 
 .contact-form, .volunteer-form {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-bottom: 30px;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 .contact-form label, .volunteer-form label {
-  font-size: 1rem;
+  font-size: 0.98rem;
   color: #222;
 }
 .contact-form input, .contact-form textarea,
 .volunteer-form input, .volunteer-form textarea, .volunteer-form select,
 .donation-form input, .donation-form textarea, .donation-form select {
-  padding: 8px;
+  padding: 7px;
   border-radius: 7px;
   border: 1px solid #d4d4df;
-  font-size: 1rem;
+  font-size: 0.97rem;
   background: #f6f8fa;
 }
 .contact-form button, .volunteer-form button, .donation-form button {
   background: #194d7d;
   color: #fff;
-  padding: 12px 0;
+  padding: 10px 0;
   border: none;
   border-radius: 8px;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 7px;
   transition: background 0.2s;
 }
 .contact-form button:hover, .volunteer-form button:hover, .donation-form button:hover {
@@ -366,12 +370,12 @@ nav a:hover, nav .active {
 .donate-btn {
   background: #2b52a0;
   color: #fff;
-  padding: 12px 32px;
+  padding: 10px 22px;
   border-radius: 8px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
   display: inline-block;
   transition: background 0.2s;
 }
@@ -380,23 +384,23 @@ nav a:hover, nav .active {
 }
 
 .request-info ol {
-  margin-left: 18px;
-  margin-bottom: 18px;
+  margin-left: 10px;
+  margin-bottom: 14px;
   color: #555;
 }
 
 .volunteer {
-  padding: 34px 18px;
+  padding: 22px 10px;
   background: #eaf3ff;
-  border-radius: 16px;
+  border-radius: 12px;
   max-width: 700px;
-  margin: 32px auto;
+  margin: 22px auto;
   box-shadow: 0 2px 12px rgba(43,82,160,0.07);
   text-align: center;
 }
 .volunteer h2 {
   color: #194d7d;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 .volunteer a {
   color: #2b52a0;
@@ -406,52 +410,53 @@ nav a:hover, nav .active {
 
 .faq {
   background: #fff;
-  padding: 36px 18px;
+  padding: 24px 10px;
   max-width: 700px;
-  margin: 32px auto;
-  border-radius: 16px;
+  margin: 22px auto;
+  border-radius: 12px;
   box-shadow: 0 2px 12px rgba(43,82,160,0.07);
 }
 .faq h2 {
   color: #194d7d;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 .faq-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
 }
 .faq-item h3 {
   color: #2b52a0;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 .faq-item p {
   color: #222;
+  font-size: 0.97rem;
 }
 
 .testimonials {
   background: #eaf3ff;
-  padding: 34px 18px;
+  padding: 22px 10px;
   max-width: 700px;
-  margin: 32px auto;
-  border-radius: 16px;
+  margin: 22px auto;
+  border-radius: 12px;
   box-shadow: 0 2px 12px rgba(43,82,160,0.07);
 }
 .testimonials h2 {
   color: #194d7d;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 .testimonial-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
 }
 .testimonial-item {
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(43,82,160,0.09);
-  padding: 16px;
-  font-size: 1.06rem;
+  padding: 11px;
+  font-size: 0.98rem;
 }
 .testimonial-item span {
   color: #2b52a0;
@@ -462,21 +467,21 @@ footer {
   text-align: center;
   background: #fff;
   color: #888;
-  padding: 18px 0 10px 0;
-  margin-top: 34px;
-  font-size: 1rem;
+  padding: 14px 0 8px 0;
+  margin-top: 24px;
+  font-size: 0.97rem;
   box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
 }
 .social-links {
-  padding: 8px 0;
+  padding: 6px 0;
 }
 .social-links a {
   display: inline-block;
-  margin: 0 7px;
+  margin: 0 5px;
 }
 .social-links img {
-  width: 28px;
-  height: 28px;
+  width: 23px;
+  height: 23px;
   object-fit: contain;
   vertical-align: middle;
   transition: filter 0.2s;
@@ -485,33 +490,57 @@ footer {
   filter: brightness(0.8);
 }
 
+/* Responsive Media Queries */
 @media (max-width: 900px) {
   header {
     flex-direction: column;
-    gap: 12px;
-    padding: 16px 12px;
+    gap: 10px;
+    padding: 12px 4vw;
   }
   nav {
-    gap: 18px;
+    gap: 12px;
+    flex-wrap: wrap;
   }
   .fundraiser-list {
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
     align-items: center;
   }
   .fundraiser-card {
     width: 98vw;
-    max-width: 370px;
+    max-width: 380px;
   }
   .about-section, .donation-request, .support-section,
   .success-stories, .volunteer, .faq, .testimonials {
-    padding: 20px 8px;
-    max-width: 98vw;
+    padding: 12px 4vw;
+    max-width: 99vw;
   }
   .quick-donate {
-    padding: 10px 12px;
-    font-size: 1rem;
-    right: 9px;
-    bottom: 12px;
+    padding: 8px 10px;
+    font-size: 0.97rem;
+    right: 6px;
+    bottom: 8px;
   }
 }
+@media (max-width: 520px) {
+  header {
+    padding: 8px 1vw;
+  }
+  .logo img {
+    height: 32px;
+    width: 32px;
+  }
+  .fundraiser-card {
+    max-width: 98vw;
+    min-width: 90vw;
+  }
+  .card-image {
+    height: 120px;
+  }
+  .card-content h2 {
+    font-size: 0.97rem;
+  }
+  .description, .funds-info, .goal, .creator, .supporters {
+    font-size: 0.92rem;
+  }
+  }
