@@ -5,6 +5,8 @@ body {
   background: #f7f7fb;
   color: #222;
 }
+
+/* ================= HEADER ================= */
 header {
   display: flex;
   flex-wrap: wrap;
@@ -12,49 +14,61 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 14px 10vw;
-  background-color: rgba(255, 255, 255, 0.1)
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-}
-.logo img {
-  height: 70px; /* पहले 50px था → अब बड़ा होगा */
-  width: auto;
-  background-color: #fff; /* सफेद background */
-  padding: 8px; /* logo और background में gap */
-  border-radius: 10px; /* थोड़ा rounded effect */
-  animation: floatLogo 3s ease-in-out infinite; /* हल्का मूवमेंट */
+  background: #0a1a2f; /* Dark Navy */
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
 }
 
-/* Animation keyframes */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo img {
+  height: 70px;
+  width: auto;
+  background-color: #fff; /* सफेद background */
+  padding: 8px;
+  border-radius: 10px;
+  animation: floatLogo 3s ease-in-out infinite;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.logo span {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+/* Logo हल्का move animation */
 @keyframes floatLogo {
   0%   { transform: translateY(0px); }
   50%  { transform: translateY(-5px); }
   100% { transform: translateY(0px); }
 }
-}
-.logo img {
-  height: 42px;
-  width: 42px;
-  object-fit: contain;
-}
+
 nav {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
 }
+
 nav a {
   font-size: 1.08rem;
-  color: #222;
+  color: #fff;
   text-decoration: none;
   font-weight: 500;
   padding: 4px 10px;
   border-radius: 8px;
-  transition: background 0.2s;
-}
-nav a:hover, nav .active {
-  background: #eaf3ff;
-  color: #2b52a0;
+  transition: background 0.2s, color 0.2s;
 }
 
+nav a:hover, nav .active {
+  background: #eaf3ff;
+  color: #0a1a2f;
+}
+
+/* ================= QUICK DONATE BUTTON ================= */
 .quick-donate {
   position: fixed;
   right: 16px;
@@ -74,6 +88,7 @@ nav a:hover, nav .active {
   background: #194d7d;
 }
 
+/* ================= HERO SECTION ================= */
 .hero {
   text-align: center;
   padding: 48px 6vw 34px 6vw;
@@ -140,6 +155,7 @@ nav a:hover, nav .active {
   background: #194d7d;
 }
 
+/* ================= SUCCESS STORIES ================= */
 .success-stories {
   padding: 28px 4vw;
   background: #fff;
@@ -188,6 +204,7 @@ nav a:hover, nav .active {
   font-size: 0.97rem;
 }
 
+/* ================= FUNDRAISERS ================= */
 .fundraisers {
   padding: 26px 4vw;
   max-width: 1100px;
@@ -317,6 +334,7 @@ nav a:hover, nav .active {
   background: #f8f8f8;
 }
 
+/* ================= ABOUT, FORMS, SUPPORT ================= */
 .about-section, .donation-request, .support-section {
   max-width: 700px;
   margin: 36px auto 18px auto;
@@ -361,194 +379,4 @@ nav a:hover, nav .active {
 }
 .contact-form button, .volunteer-form button, .donation-form button {
   background: #194d7d;
-  color: #fff;
-  padding: 10px 0;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 7px;
-  transition: background 0.2s;
-}
-.contact-form button:hover, .volunteer-form button:hover, .donation-form button:hover {
-  background: #13385a;
-}
-
-.donate-btn {
-  background: #2b52a0;
-  color: #fff;
-  padding: 10px 22px;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  margin-bottom: 14px;
-  display: inline-block;
-  transition: background 0.2s;
-}
-.donate-btn:hover {
-  background: #194d7d;
-}
-
-.request-info ol {
-  margin-left: 10px;
-  margin-bottom: 14px;
-  color: #555;
-}
-
-.volunteer {
-  padding: 22px 10px;
-  background: #eaf3ff;
-  border-radius: 12px;
-  max-width: 700px;
-  margin: 22px auto;
-  box-shadow: 0 2px 12px rgba(43,82,160,0.07);
-  text-align: center;
-}
-.volunteer h2 {
-  color: #194d7d;
-  margin-bottom: 12px;
-}
-.volunteer a {
-  color: #2b52a0;
-  text-decoration: underline;
-  font-weight: 600;
-}
-
-.faq {
-  background: #fff;
-  padding: 24px 10px;
-  max-width: 700px;
-  margin: 22px auto;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(43,82,160,0.07);
-}
-.faq h2 {
-  color: #194d7d;
-  margin-bottom: 12px;
-}
-.faq-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.faq-item h3 {
-  color: #2b52a0;
-  margin-bottom: 5px;
-}
-.faq-item p {
-  color: #222;
-  font-size: 0.97rem;
-}
-
-.testimonials {
-  background: #eaf3ff;
-  padding: 22px 10px;
-  max-width: 700px;
-  margin: 22px auto;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(43,82,160,0.07);
-}
-.testimonials h2 {
-  color: #194d7d;
-  margin-bottom: 12px;
-}
-.testimonial-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.testimonial-item {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(43,82,160,0.09);
-  padding: 11px;
-  font-size: 0.98rem;
-}
-.testimonial-item span {
-  color: #2b52a0;
-  font-weight: 500;
-}
-
-footer {
-  text-align: center;
-  background: #fff;
-  color: #888;
-  padding: 14px 0 8px 0;
-  margin-top: 24px;
-  font-size: 0.97rem;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
-}
-.social-links {
-  padding: 6px 0;
-}
-.social-links a {
-  display: inline-block;
-  margin: 0 5px;
-}
-.social-links img {
-  width: 23px;
-  height: 23px;
-  object-fit: contain;
-  vertical-align: middle;
-  transition: filter 0.2s;
-}
-.social-links img:hover {
-  filter: brightness(0.8);
-}
-
-/* Responsive Media Queries */
-@media (max-width: 900px) {
-  header {
-    flex-direction: column;
-    gap: 10px;
-    padding: 12px 4vw;
-  }
-  nav {
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .fundraiser-list {
-    flex-direction: column;
-    gap: 14px;
-    align-items: center;
-  }
-  .fundraiser-card {
-    width: 98vw;
-    max-width: 380px;
-  }
-  .about-section, .donation-request, .support-section,
-  .success-stories, .volunteer, .faq, .testimonials {
-    padding: 12px 4vw;
-    max-width: 99vw;
-  }
-  .quick-donate {
-    padding: 8px 10px;
-    font-size: 0.97rem;
-    right: 6px;
-    bottom: 8px;
-  }
-}
-@media (max-width: 520px) {
-  header {
-    padding: 8px 1vw;
-  }
-  .logo img {
-    height: 32px;
-    width: 32px;
-  }
-  .fundraiser-card {
-    max-width: 98vw;
-    min-width: 90vw;
-  }
-  .card-image {
-    height: 120px;
-  }
-  .card-content h2 {
-    font-size: 0.97rem;
-  }
-  .description, .funds-info, .goal, .creator, .supporters {
-    font-size: 0.92rem;
-  }
-  }
+  color
