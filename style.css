@@ -1,9 +1,19 @@
+/* ================= BASE ================= */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', sans-serif;
   background: #f7f7fb;
   color: #222;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* ================= HEADER ================= */
@@ -27,7 +37,7 @@ header {
 .logo img {
   height: 70px;
   width: auto;
-  background-color: #fff; /* सफेद background */
+  background-color: #fff;
   padding: 8px;
   border-radius: 10px;
   animation: floatLogo 3s ease-in-out infinite;
@@ -40,7 +50,7 @@ header {
   font-weight: 600;
 }
 
-/* Logo हल्का move animation */
+/* Logo हल्का move */
 @keyframes floatLogo {
   0%   { transform: translateY(0px); }
   50%  { transform: translateY(-5px); }
@@ -68,7 +78,7 @@ nav a:hover, nav .active {
   color: #0a1a2f;
 }
 
-/* ================= QUICK DONATE BUTTON ================= */
+/* ================= QUICK DONATE ================= */
 .quick-donate {
   position: fixed;
   right: 16px;
@@ -88,7 +98,7 @@ nav a:hover, nav .active {
   background: #194d7d;
 }
 
-/* ================= HERO SECTION ================= */
+/* ================= HERO ================= */
 .hero {
   text-align: center;
   padding: 48px 6vw 34px 6vw;
@@ -127,6 +137,8 @@ nav a:hover, nav .active {
 .hero-btn:hover {
   background: #13385a;
 }
+
+/* Search bar */
 .search-bar {
   margin: 18px auto 0 auto;
   display: flex;
@@ -155,7 +167,7 @@ nav a:hover, nav .active {
   background: #194d7d;
 }
 
-/* ================= SUCCESS STORIES ================= */
+/* ================= STORIES (slider move) ================= */
 .success-stories {
   padding: 28px 4vw;
   background: #fff;
@@ -168,11 +180,13 @@ nav a:hover, nav .active {
   color: #194d7d;
   margin-bottom: 18px;
 }
+
 .stories-slider {
   display: flex;
   gap: 16px;
   overflow-x: auto;
   padding-bottom: 12px;
+  scroll-behavior: smooth;
 }
 .story {
   min-width: 220px;
@@ -184,10 +198,12 @@ nav a:hover, nav .active {
   align-items: center;
   padding: 10px;
   opacity: 0.85;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s, transform 0.3s;
+  animation: floatCard 4s ease-in-out infinite;
 }
 .story.active {
   opacity: 1;
+  transform: scale(1.02);
 }
 .story img {
   width: 70px;
@@ -202,6 +218,13 @@ nav a:hover, nav .active {
 .story-text p {
   color: #222;
   font-size: 0.97rem;
+}
+
+/* हल्की movement */
+@keyframes floatCard {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
 }
 
 /* ================= FUNDRAISERS ================= */
@@ -231,6 +254,10 @@ nav a:hover, nav .active {
   margin-bottom: 16px;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s;
+}
+.fundraiser-card:hover {
+  transform: translateY(-5px);
 }
 .card-image {
   position: relative;
@@ -256,7 +283,7 @@ nav a:hover, nav .active {
   box-shadow: 0 2px 10px rgba(160,48,48,0.08);
 }
 .card-content {
-  padding: 14px 14px 14px 14px;
+  padding: 14px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -279,14 +306,8 @@ nav a:hover, nav .active {
   margin-bottom: 8px;
   font-size: 0.97rem;
 }
-.raised {
-  color: #a03030;
-  font-weight: bold;
-}
-.goal {
-  color: #888;
-  font-size: 0.95rem;
-}
+.raised { color: #a03030; font-weight: bold; }
+.goal { color: #888; font-size: 0.95rem; }
 .progress-bar {
   background: #f3f3f3;
   height: 7px;
@@ -334,49 +355,73 @@ nav a:hover, nav .active {
   background: #f8f8f8;
 }
 
-/* ================= ABOUT, FORMS, SUPPORT ================= */
-.about-section, .donation-request, .support-section {
-  max-width: 700px;
-  margin: 36px auto 18px auto;
+/* ================= GENERIC SECTION ================= */
+.section {
+  max-width: 800px;
+  margin: 40px auto;
   background: #fff;
-  padding: 24px 10px;
-  border-radius: 14px;
+  padding: 30px 20px;
+  border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  text-align: left;
 }
-.about-section h1, .donation-request h1, .support-section h1 {
+.section h1 {
+  font-size: 1.6rem;
   color: #194d7d;
-  font-size: 1.3rem;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  text-align: center;
 }
-.about-section h2, .support-section h2, .donation-request h2 {
-  color: #2b52a0;
-  margin-top: 18px;
-  margin-bottom: 8px;
-}
-.about-section ul, .support-section ul {
-  padding-left: 14px;
-  margin-bottom: 14px;
+.section p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.contact-form, .volunteer-form {
+/* ================= GENERIC FORM ================= */
+.form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 14px;
 }
-.contact-form label, .volunteer-form label {
-  font-size: 0.98rem;
+.form label {
+  font-size: 0.95rem;
   color: #222;
+  font-weight: 500;
 }
-.contact-form input, .contact-form textarea,
-.volunteer-form input, .volunteer-form textarea, .volunteer-form select,
-.donation-form input, .donation-form textarea, .donation-form select {
-  padding: 7px;
-  border-radius: 7px;
+.form input,
+.form textarea,
+.form select {
+  padding: 10px 12px;
+  border-radius: 8px;
   border: 1px solid #d4d4df;
   font-size: 0.97rem;
   background: #f6f8fa;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
-.contact-form button, .volunteer-form button, .donation-form button {
+.form input:focus,
+.form textarea:focus,
+.form select:focus {
+  border-color: #194d7d;
+  box-shadow: 0 0 6px rgba(25,77,125,0.2);
+  outline: none;
+}
+.form button {
   background: #194d7d;
-  color
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s, transform 0.1s;
+}
+.form button:hover {
+  background: #13385a;
+}
+.form button:active {
+  transform: scale(0.97);
+}
