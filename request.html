@@ -132,23 +132,28 @@
   </footer>
 
   <script>
-    const form = document.getElementById("donationForm");
-    form.addEventListener("submit", async function(event) {
-      event.preventDefault(); // stop normal form submit
+  const form = document.getElementById("donationForm");
+  form.addEventListener("submit", async function(event) {
+    event.preventDefault(); // stop normal form submit
 
-      let formData = new FormData(form);
+    let formData = new FormData(form);
 
+    try {
       let res = await fetch("https://script.google.com/macros/s/AKfycbxjoDCaavp4v38YELGIub_mwd4SH6gCA6tsSonL7Ys/dev", {
         method: "POST",
         body: formData
       });
 
-      if (res.ok) {
-        window.location.href = "thankyou.html"; // redirect on success
+      let text = await res.text();
+      if (text.includes("success")) {
+        window.location.href = "thankyou.html"; // ✅ redirect on success
       } else {
-        alert("Something went wrong. Please try again.");
+        alert("Error: " + text);
       }
-    });
-  </script>
+    } catch (err) {
+      alert("Request failed: " + err.message);
+    }
+  });
+</script>
 </body>
 </html>
