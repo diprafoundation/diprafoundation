@@ -78,10 +78,7 @@
   <section class="donation-request">
     <h1>Request a Donation</h1>
 
-    <form class="donation-form" 
-          action="https://script.google.com/macros/s/AKfycbxjoDCaavp4v38YELGIub_mwd4SH6gCA6tsSonL7Ys/dev" 
-          method="post" 
-          enctype="multipart/form-data">
+    <form id="donationForm" enctype="multipart/form-data">
 
       <label for="name">Your Name:</label>
       <input type="text" id="name" name="name" required>
@@ -103,6 +100,12 @@
              required 
              placeholder="10 digit mobile number">
 
+      <label for="aadhaar">Aadhaar Number:</label>
+      <input type="text" id="aadhaar" name="aadhaar"
+             pattern="[0-9]{12}" maxlength="12"
+             oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+             required placeholder="12 digit Aadhaar number">
+
       <label for="reason">Reason for Donation:</label>
       <textarea id="reason" name="reason" rows="4" required></textarea>
 
@@ -122,15 +125,30 @@
 
       <button type="submit">Request Donation</button>
     </form>
-    let res = await fetch("YOUR_GOOGLE_SCRIPT_WEBAPP_URL", {
-  method: "POST",
-  body: formData
-});
-window.location.href = "thankyou.html"; // redirect
   </section>
 
   <footer>
     <p>&copy; 2025 DIPRA Foundation. All rights reserved.</p>
   </footer>
+
+  <script>
+    const form = document.getElementById("donationForm");
+    form.addEventListener("submit", async function(event) {
+      event.preventDefault(); // stop normal form submit
+
+      let formData = new FormData(form);
+
+      let res = await fetch("https://script.google.com/macros/s/AKfycbxjoDCaavp4v38YELGIub_mwd4SH6gCA6tsSonL7Ys/dev", {
+        method: "POST",
+        body: formData
+      });
+
+      if (res.ok) {
+        window.location.href = "thankyou.html"; // redirect on success
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    });
+  </script>
 </body>
 </html>
