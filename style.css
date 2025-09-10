@@ -638,3 +638,77 @@ footer {
 @media (min-width: 1025px) {
   /* पहले से जो CSS है, वही लागू होगा */
     }
+/* Donation Request Form Styling */
+.donation-request {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.donation-request h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 26px;
+  color: #2c3e50;
+}
+
+form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #333;
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border 0.3s;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+  border-color: #0077cc;
+  outline: none;
+}
+
+form textarea {
+  resize: none;
+}
+
+form button {
+  width: 100%;
+  padding: 12px;
+  background: #0077cc;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+form button:hover {
+  background: #005fa3;
+  transform: translateY(-2px);
+}
+
+form button:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 600px) {
+  .donation-request {
+    margin: 20px;
+    padding: 20px;
+  }
+}
