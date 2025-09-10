@@ -122,6 +122,11 @@
 
       <button type="submit">Request Donation</button>
     </form>
+    let res = await fetch("YOUR_GOOGLE_SCRIPT_WEBAPP_URL", {
+  method: "POST",
+  body: formData
+});
+window.location.href = "thankyou.html"; // redirect
   </section>
 
   <footer>
