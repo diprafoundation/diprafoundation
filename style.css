@@ -381,19 +381,54 @@ nav a:hover, nav .active {
 }
 
 /* ================= GENERIC FORM ================= */
-.form {
+/* Form container wrapper */
+.form-section {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px 25px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  box-sizing: border-box;
+}
+
+/* Form heading */
+.form-section h1,
+.form-section h2,
+.form-section h3 {
+  text-align: center;
+  color: #194d7d;
+  font-weight: 700;
+  margin-bottom: 24px;
+  font-size: 1.8rem;
+}
+
+/* Form element */
+form, .form {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
+
+/* Labels */
+form label,
 .form label {
+  display: block;
+  margin-bottom: 6px;
   font-size: 0.95rem;
   color: #222;
   font-weight: 500;
 }
+
+/* Inputs, textarea, select */
+form input,
+form textarea,
+form select,
 .form input,
 .form textarea,
 .form select {
+  width: 100%;
+  box-sizing: border-box;
   padding: 10px 12px;
   border-radius: 8px;
   border: 1px solid #d4d4df;
@@ -401,6 +436,11 @@ nav a:hover, nav .active {
   background: #f6f8fa;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
+
+/* Focus state */
+form input:focus,
+form textarea:focus,
+form select:focus,
 .form input:focus,
 .form textarea:focus,
 .form select:focus {
@@ -408,20 +448,29 @@ nav a:hover, nav .active {
   box-shadow: 0 0 6px rgba(25,77,125,0.2);
   outline: none;
 }
+
+/* Buttons */
+form button,
 .form button {
+  width: 100%;
   background: #194d7d;
   color: #fff;
-  padding: 10px 16px;
+  padding: 12px 0;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
   border: none;
   transition: background 0.2s, transform 0.1s;
+  margin-top: 10px;
 }
+
+form button:hover,
 .form button:hover {
   background: #13385a;
 }
+
+form button:active,
 .form button:active {
   transform: scale(0.97);
 }
