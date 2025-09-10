@@ -34,15 +34,129 @@
       <li>Education & Health</li>
     </ul>
     <h2>Contact Us</h2>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .contact-container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      font-weight: 600;
+      margin: 8px 0 5px;
+      display: block;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+      transition: border 0.3s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #007BFF;
+    }
+
+    button {
+      width: 100%;
+      background: #007BFF;
+      color: white;
+      font-size: 16px;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .consent {
+      font-size: 13px;
+      margin-bottom: 15px;
+      color: #555;
+    }
+
+    #form-response {
+      text-align: center;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contact-container">
+    <h2>Contact Us</h2>
     <form class="contact-form">
       <label for="contact-name">Name:</label>
       <input type="text" id="contact-name" name="contact-name" required>
+
       <label for="contact-email">Email:</label>
       <input type="email" id="contact-email" name="contact-email" required>
+
+      <label for="contact-phone">Phone:</label>
+      <input type="tel" id="contact-phone" name="contact-phone" pattern="[0-9]{10}" placeholder="Enter 10-digit number">
+
+      <label for="contact-subject">Subject:</label>
+      <select id="contact-subject" name="contact-subject" required>
+        <option value="">--Select--</option>
+        <option value="general">General Query</option>
+        <option value="support">Support</option>
+        <option value="feedback">Feedback</option>
+        <option value="business">Business Inquiry</option>
+      </select>
+
       <label for="contact-message">Message:</label>
       <textarea id="contact-message" name="contact-message" rows="4" required></textarea>
+
+      <label for="contact-file">Attach File:</label>
+      <input type="file" id="contact-file" name="contact-file">
+
+      <div class="consent">
+        <input type="checkbox" name="contact-consent" required>
+        I agree to the terms and privacy policy.
+      </div>
+
       <button type="submit">Send Message</button>
+      <div id="form-response"></div>
     </form>
+  </div>
+
+</body>
+</html>
     <h2 id="volunteer">Become a Volunteer</h2>
     <p>Fill the form below to join us as a volunteer and help us spread hope!</p>
     <form class="volunteer-form">
