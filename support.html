@@ -224,8 +224,23 @@ footer {
     padding: 1rem 5%;  
   }  
     
-  .logo {  
-    margin-bottom: 15px;  
+ /* Common Logo Styling */
+.logo img {
+  height: 70px;       /* logo बड़ा */
+  width: auto;
+  background-color: #fff; /* सफेद background */
+  padding: 8px;       /* अंदर से gap */
+  border-radius: 10px; /* rounded corners */
+  animation: floatLogo 3s ease-in-out infinite; /* हल्की movement */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15); /* हल्का shadow */
+}
+
+/* Animation keyframes */
+@keyframes floatLogo {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}  
   }  
     
   nav {  
