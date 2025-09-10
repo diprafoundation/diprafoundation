@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>DIPRA Foundation | Home</title>
-  <title2>website is on developing mode</title2>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- Sticky Donate Button -->
   <a href="support.html" class="quick-donate">Donate</a>
   
-  <header
+  <header>
     <div class="logo">
       <img src="logo.png" alt="DIPRA Foundation Logo" />
       <span>DIPRA Foundation</span>
@@ -66,7 +65,7 @@
       <!-- Fundraiser Card 1 -->
       <div class="fundraiser-card">
         <div class="card-image">
-          <img src="abhijeet.jpg" alt="Fundraiser Photo">
+          <img src="abhijeet.jpg" alt="Fundraiser Photo" />
           <span class="category">Medical</span>
         </div>
         <div class="card-content">
@@ -93,7 +92,7 @@
       <!-- Fundraiser Card 2 -->
       <div class="fundraiser-card">
         <div class="card-image">
-          <img src="education.jpg" alt="Fundraiser Photo">
+          <img src="education.jpg" alt="Fundraiser Photo" />
           <span class="category">Education</span>
         </div>
         <div class="card-content">
@@ -165,12 +164,33 @@
 
   <footer>
     <div class="social-links">
-      <a href="#" title="Facebook"><img src="images/facebook.png" alt="Facebook"></a>
-      <a href="#" title="Instagram"><img src="images/instagram.png" alt="Instagram"></a>
-      <a href="#" title="Twitter"><img src="images/twitter.png" alt="Twitter"></a>
-      <a href="mailto:contact@diprafoundation.com" title="Email"><img src="images/email.png" alt="Email"></a>
+      <a href="#" title="Facebook"><img src="images/facebook.png" alt="Facebook" /></a>
+      <a href="#" title="Instagram"><img src="images/instagram.png" alt="Instagram" /></a>
+      <a href="#" title="Twitter"><img src="images/twitter.png" alt="Twitter" /></a>
+      <a href="mailto:contact@diprafoundation.com" title="Email"><img src="images/email.png" alt="Email" /></a>
     </div>
     <p>&copy; 2025 DIPRA Foundation. All rights reserved.</p>
   </footer>
+
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-item h3').forEach(item => {
+      item.addEventListener('click', () => {
+        const parent = item.parentElement;
+        parent.classList.toggle('open');
+      });
+    });
+
+    // Animate progress bars on page load
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.progress').forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0';
+        setTimeout(() => {
+          bar.style.width = width;
+        }, 100);
+      });
+    });
+  </script>
 </body>
 </html>
