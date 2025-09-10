@@ -1,149 +1,382 @@
-/* =============================
-   Global Reset & Body
-============================= */
-* {
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f7f7fb;
+  color: #222;
 }
 
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  background: #f9f9f9;
-  color: #444; /* Soft dark gray */
-}
-
-/* =============================
-   Header (Dark Maroon Theme)
-============================= */
+/* ================= HEADER ================= */
 header {
-  background: #800000; /* Dark Maroon */
-  padding: 15px 40px;
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  position: sticky;
-  top: 0;
-  z-index: 999;
+  padding: 14px 10vw;
+  background: #1c4f8c;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
 }
 
 .logo {
   display: flex;
   align-items: center;
+  gap: 8px;
 }
 
 .logo img {
-  height: 50px;
+  height: 70px;
+  width: auto;
+  background-color: #fff; /* सफेद background */
+  padding: 8px;
+  border-radius: 10px;
+  animation: floatLogo 3s ease-in-out infinite;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 .logo span {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #ffffff;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+/* Logo हल्का move animation */
+@keyframes floatLogo {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 nav a {
-  margin-left: 25px;
-  font-weight: 600;
-  font-size: 1rem;
-  color: #f5f5f5;
-  position: relative;
-  text-decoration: none;
-}
-
-nav a::after {
-  content: '';
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  bottom: -5px;
-  left: 0;
-  background-color: #ffd700; /* Gold underline */
-  transition: width 0.3s ease;
-}
-
-nav a:hover {
-  color: #ffd700;
-}
-
-nav a:hover::after {
-  width: 100%;
-}
-
-/* =============================
-   Section Headings
-============================= */
-section h1 {
-  text-align: center;
-  margin: 30px 0;
-  color: #222;
-  font-size: 2rem;
-}
-
-/* =============================
-   Global Form Styling
-============================= */
-form {
-  background: #fff;
-  padding: 25px;
-  max-width: 600px;
-  margin: 20px auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-form label {
-  display: block;
-  margin: 12px 0 6px;
-  font-weight: 600;
-  color: #333;
-}
-
-form input,
-form select,
-form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: border 0.3s ease, box-shadow 0.3s ease;
-}
-
-form input:focus,
-form select:focus,
-form textarea:focus {
-  border: 1px solid #800000;
-  box-shadow: 0 0 5px rgba(128,0,0,0.4);
-  outline: none;
-}
-
-form button {
-  margin-top: 20px;
-  width: 100%;
-  background: #800000;
+  font-size: 1.08rem;
   color: #fff;
-  padding: 12px;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+
+nav a:hover, nav .active {
+  background: #eaf3ff;
+  color: #0a1a2f;
+}
+
+/* ================= QUICK DONATE BUTTON ================= */
+.quick-donate {
+  position: fixed;
+  right: 16px;
+  bottom: 18px;
+  background: #2b52a0;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 30px;
   font-size: 1rem;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 2px 16px rgba(43,82,160,0.15);
+  z-index: 999;
+  transition: background 0.2s;
+}
+.quick-donate:hover {
+  background: #194d7d;
 }
 
-form button:hover {
-  background: #a00000;
-}
-
-/* =============================
-   Footer
-============================= */
-footer {
-  background: #222;
-  color: #eee;
+/* ================= HERO SECTION ================= */
+.hero {
   text-align: center;
-  padding: 15px;
-  margin-top: 40px;
+  padding: 48px 6vw 34px 6vw;
+  background: linear-gradient(90deg, #eaf3ff 60%, #fff 100%);
 }
+.hero h1 {
+  font-size: 2rem;
+  color: #194d7d;
+  margin-bottom: 14px;
+}
+.hero p {
+  font-size: 1.07rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+.hero-buttons {
+  margin-top: 18px;
+}
+.hero-btn {
+  background: #194d7d;
+  color: #fff;
+  padding: 10px 22px;
+  margin: 0 6px 0 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+  display: inline-block;
+}
+.hero-btn.secondary {
+  background: #2b52a0;
+}
+.hero-btn:hover {
+  background: #13385a;
+}
+.search-bar {
+  margin: 18px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  max-width: 350px;
+}
+.search-bar input {
+  padding: 10px 12px;
+  border: 1px solid #bdd0ed;
+  border-radius: 8px 0 0 8px;
+  width: 70%;
+  outline: none;
+  font-size: 1rem;
+}
+.search-bar button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  background: #2b52a0;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+.search-bar button:hover {
+  background: #194d7d;
+}
+
+/* ================= SUCCESS STORIES ================= */
+.success-stories {
+  padding: 28px 4vw;
+  background: #fff;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(43,82,160,0.07);
+}
+.success-stories h2 {
+  color: #194d7d;
+  margin-bottom: 18px;
+}
+.stories-slider {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+.story {
+  min-width: 220px;
+  background: #eaf3ff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(43,82,160,0.09);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.story.active {
+  opacity: 1;
+}
+.story img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+.story-text strong {
+  color: #2b52a0;
+}
+.story-text p {
+  color: #222;
+  font-size: 0.97rem;
+}
+
+/* ================= FUNDRAISERS ================= */
+.fundraisers {
+  padding: 26px 4vw;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.fundraisers h2 {
+  font-size: 1.25rem;
+  margin-bottom: 18px;
+  color: #194d7d;
+}
+.fundraiser-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  justify-content: flex-start;
+}
+.fundraiser-card {
+  width: 98vw;
+  max-width: 350px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  overflow: hidden;
+  background: #fff;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+.card-image {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+.card-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.category {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #fff0f0;
+  color: #a03030;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 3px 10px;
+  box-shadow: 0 2px 10px rgba(160,48,48,0.08);
+}
+.card-content {
+  padding: 14px 14px 14px 14px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.card-content h2 {
+  font-size: 1.07rem;
+  color: #222;
+  margin: 0 0 10px 0;
+  font-weight: 600;
+}
+.description {
+  color: #555;
+  font-size: 0.97rem;
+  margin-bottom: 10px;
+}
+.funds-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.97rem;
+}
+.raised {
+  color: #a03030;
+  font-weight: bold;
+}
+.goal {
+  color: #888;
+  font-size: 0.95rem;
+}
+.progress-bar {
+  background: #f3f3f3;
+  height: 7px;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 6px;
+  width: 100%;
+  position: relative;
+}
+.progress {
+  background: #29d529;
+  height: 100%;
+  border-radius: 5px;
+}
+.creator {
+  color: #666;
+  font-size: 0.93rem;
+  margin-bottom: 6px;
+}
+.supporters-share {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+.supporters {
+  background: #fff5de;
+  color: #914c00;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-size: 0.97rem;
+  font-weight: 500;
+}
+.share-btn {
+  background: #fff;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: background 0.2s;
+}
+.share-btn:hover {
+  background: #f8f8f8;
+}
+
+/* ================= ABOUT, FORMS, SUPPORT ================= */
+.about-section, .donation-request, .support-section {
+  max-width: 700px;
+  margin: 36px auto 18px auto;
+  background: #fff;
+  padding: 24px 10px;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+}
+.about-section h1, .donation-request h1, .support-section h1 {
+  color: #194d7d;
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+}
+.about-section h2, .support-section h2, .donation-request h2 {
+  color: #2b52a0;
+  margin-top: 18px;
+  margin-bottom: 8px;
+}
+.about-section ul, .support-section ul {
+  padding-left: 14px;
+  margin-bottom: 14px;
+}
+
+.contact-form, .volunteer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.contact-form label, .volunteer-form label {
+  font-size: 0.98rem;
+  color: #222;
+}
+.contact-form input, .contact-form textarea,
+.volunteer-form input, .volunteer-form textarea, .volunteer-form select,
+.donation-form input, .donation-form textarea, .donation-form select {
+  padding: 7px;
+  border-radius: 7px;
+  border: 1px solid #d4d4df;
+  font-size: 0.97rem;
+  background: #f6f8fa;
+}
+.contact-form button, .volunteer-form button, .donation-form button {
+  background: #194d7d;
+  color
