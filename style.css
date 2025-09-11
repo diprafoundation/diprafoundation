@@ -430,7 +430,6 @@ footer a:hover {
   color: #2b52a0 !important;   /* lighter blue on hover */
 }
 /* ================= GENERIC FORM ================= */
-/* Form container wrapper */
 .form-section {
   max-width: 600px;
   margin: 40px auto;
@@ -441,18 +440,18 @@ footer a:hover {
   box-sizing: border-box;
 }
 
-/* Form heading */
+/* Form heading (sirf heading center me) */
 .form-section h1,
 .form-section h2,
 .form-section h3 {
-  text-align: left;
+  text-align: center;
   color: #194d7d;
   font-weight: 700;
   margin-bottom: 24px;
   font-size: 1.8rem;
 }
 
-/* Form element */
+/* Form layout */
 form, .form {
   display: flex;
   flex-direction: column;
@@ -467,6 +466,8 @@ form label,
   font-size: 0.95rem;
   color: #222;
   font-weight: 500;
+  text-align: left;   /* ✅ Force left align */
+  margin-left: 2px;   /* ✅ Thoda left se spacing */
 }
 
 /* Inputs, textarea, select */
