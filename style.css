@@ -363,7 +363,7 @@ nav a:hover, nav .active {
   padding: 30px 20px;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.07);
-  text-align: left;
+  text-align: center;
 }
 .section h1 {
   font-size: 1.6rem;
