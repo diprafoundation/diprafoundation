@@ -367,10 +367,21 @@ body {
 }
 
 /* ===== UNIVERSAL SECTION CARD ===== */
+/* ===== BODY BACKGROUND (blue tint) ===== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #eef4fb; /* soft blue tint */
+  color: #222;
+  line-height: 1.6;
+}
+
+/* ===== UNIVERSAL SECTION CARD ===== */
 .section {
   max-width: 800px;
   margin: 40px auto;
-  background: #ffffff; /* white card on blue tint background */
+  background: #ffffff; /* white card */
   padding: 30px 24px;
   border-radius: 18px;
   box-shadow: 0 6px 24px rgba(25,77,125,0.08);
@@ -399,16 +410,24 @@ body {
   margin-bottom: 20px;
 }
 
-/* ===== LINKS ===== */
-.section a {
-  color: #194d7d;
+/* ===== LINKS (Force Blue Tint) ===== */
+.section a,
+.volunteer a,
+.faq a,
+.testimonials a,
+footer a {
+  color: #194d7d !important;   /* brand blue */
   font-weight: 600;
   text-decoration: underline;
   transition: color 0.2s ease;
 }
 
-.section a:hover {
-  color: #2b52a0; /* lighter blue shade on hover */
+.section a:hover,
+.volunteer a:hover,
+.faq a:hover,
+.testimonials a:hover,
+footer a:hover {
+  color: #2b52a0 !important;   /* lighter blue on hover */
 }
 /* ================= GENERIC FORM ================= */
 /* Form container wrapper */
@@ -426,7 +445,7 @@ body {
 .form-section h1,
 .form-section h2,
 .form-section h3 {
-  text-align: center;
+  text-align: left;
   color: #194d7d;
   font-weight: 700;
   margin-bottom: 24px;
