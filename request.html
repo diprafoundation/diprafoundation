@@ -4,24 +4,159 @@
   <meta charset="UTF-8" />
   <title>DIPRA Foundation | Request a Donation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ================= BASE ================= */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: #222;
+      background: linear-gradient(rgba(28,79,140,0.7), rgba(28,79,140,0.7)),
+                  url('donation-bg.jpg') no-repeat center center/cover;
+      background-attachment: fixed;
+    }
+
+    /* ================= HEADER ================= */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 10vw;
+      background: rgba(28,79,140,0.9);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo img {
+      height: 55px;
+      width: auto;
+      border-radius: 8px;
+      background: #fff;
+      padding: 4px;
+    }
+    .logo span {
+      color: #fff;
+      font-weight: 600;
+    }
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      background: #fff;
+      color: #194d7d;
+    }
+
+    /* ================= FORM SECTION ================= */
+    .section {
+      max-width: 700px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 35px 28px;
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      animation: fadeIn 0.8s ease;
+    }
+    .section h1 {
+      text-align: center;
+      color: #194d7d;
+      margin-bottom: 25px;
+      font-size: 1.9rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    label {
+      font-size: 0.96rem;
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 4px;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 11px 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 0.95rem;
+      background: #f9f9fc;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: #194d7d;
+      box-shadow: 0 0 6px rgba(25,77,125,0.3);
+      outline: none;
+      background: #fff;
+    }
+    textarea {
+      resize: vertical;
+    }
+    button {
+      background: #194d7d;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 12px 0;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    button:hover {
+      background: #13385a;
+    }
+    button:active {
+      transform: scale(0.97);
+    }
+
+    /* ================= FOOTER ================= */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #fff;
+      background: rgba(28,79,140,0.95);
+      margin-top: 40px;
+      font-size: 0.95rem;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
   <header>
     <div class="logo">
       <img src="logo.png" alt="DIPRA Foundation Logo">
-      <span style="font-size: 20px; margin-left: 10px;">DIPRA Foundation</span>
+      <span>DIPRA Foundation</span>
     </div>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About Us</a>
-      <a href="request.html">Request a Donation</a>
+      <a href="request.html" class="active">Request a Donation</a>
       <a href="support.html">Support Us</a>
     </nav>
   </header>
-<section class="section donation-request">
+
+  <section class="section donation-request">
     <h1>Request a Donation</h1>
-<form id="donationForm" class="form" enctype="multipart/form-data">
+    <form id="donationForm" enctype="multipart/form-data">
       <label for="name">Your Name:</label>
       <input type="text" id="name" name="name" required>
 
@@ -39,8 +174,7 @@
       <input type="tel" id="phone" name="phone" 
              pattern="[0-9]{10}" maxlength="10" 
              oninput="this.value=this.value.replace(/[^0-9]/g,'');" 
-             required 
-             placeholder="10 digit mobile number">
+             required placeholder="10 digit mobile number">
 
       <label for="aadhaar">Aadhaar Number:</label>
       <input type="text" id="aadhaar" name="aadhaar"
@@ -74,28 +208,28 @@
   </footer>
 
   <script>
-  const form = document.getElementById("donationForm");
-  form.addEventListener("submit", async function(event) {
-    event.preventDefault(); // stop normal form submit
+    const form = document.getElementById("donationForm");
+    form.addEventListener("submit", async function(event) {
+      event.preventDefault(); // stop normal form submit
 
-    let formData = new FormData(form);
+      let formData = new FormData(form);
 
-    try {
-      let res = await fetch("https://script.google.com/macros/s/AKfycbyHeU8gH6aw7gjIBtn04Iw_RJPATQN4RSExuc7wcFPtveGxwURwViFTCwaAM11VvVhd/exec", {
-        method: "POST",
-        body: formData
-      });
+      try {
+        let res = await fetch("https://script.google.com/macros/s/AKfycbyHeU8gH6aw7gjIBtn04Iw_RJPATQN4RSExuc7wcFPtveGxwURwViFTCwaAM11VvVhd/exec", {
+          method: "POST",
+          body: formData
+        });
 
-      let text = await res.text();
-      if (text.includes("success")) {
-        window.location.href = "thankyou.html"; // ✅ redirect on success
-      } else {
-        alert("Error: " + text);
+        let text = await res.text();
+        if (text.includes("success")) {
+          window.location.href = "thankyou.html"; // ✅ redirect on success
+        } else {
+          alert("Error: " + text);
+        }
+      } catch (err) {
+        alert("Request failed: " + err.message);
       }
-    } catch (err) {
-      alert("Request failed: " + err.message);
-    }
-  });
-</script>
+    });
+  </script>
 </body>
 </html>
