@@ -524,3 +524,14 @@ form button:active,
 .form button:active {
   transform: scale(0.97);
 }
+/* ===== Social Media Icons ===== */
+footer .social-links img {
+  width: 28px;     /* size chhota kar diya */
+  height: 28px;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+footer .social-links img:hover {
+  transform: scale(1.15);  /* hover pe halka zoom */
+}
