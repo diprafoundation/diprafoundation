@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dipra Foundation - Empowering Communities</title>
-    <!-- Google Fonts & FontAwesome for Icons -->
+    <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -17,104 +17,147 @@
         }
 
         body {
-            background-color: #f9f9f9;
+            background-color: #f4f7f6;
             color: #333;
             line-height: 1.6;
         }
 
-        /* Header & Navigation */
+        /* Top Bar for Translate */
+        .top-bar {
+            background: #1e293b;
+            color: #fff;
+            padding: 8px 20px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        .translate-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Header & Navbar with Form Buttons */
         header {
             background: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
         .navbar {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
+            padding: 12px 20px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .logo-container img {
-            height: 50px;
+            height: 55px;
             width: auto;
-            border-radius: 5px;
+            border-radius: 6px;
         }
 
         .logo-container h1 {
-            font-size: 22px;
-            color: #2c3e50;
+            font-size: 20px;
+            color: #0f172a;
             font-weight: 700;
+            line-height: 1.2;
         }
 
-        .nav-links {
-            list-style: none;
+        .logo-container span {
+            font-size: 12px;
+            color: #64748b;
+            font-weight: 400;
+            display: block;
+        }
+
+        /* Header Form Quick Buttons */
+        .header-buttons {
             display: flex;
-            gap: 25px;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
         }
 
-        .nav-links a {
+        .btn-nav {
             text-decoration: none;
-            color: #555;
-            font-weight: 500;
-            transition: color 0.3s;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .nav-links a:hover {
-            color: #27ae60;
+        .btn-volunteer {
+            background: #e0f2fe;
+            color: #0284c7;
+        }
+        .btn-volunteer:hover {
+            background: #0284c7;
+            color: #fff;
+        }
+
+        .btn-membership {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        .btn-membership:hover {
+            background: #d97706;
+            color: #fff;
+        }
+
+        .btn-enquiry {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+        .btn-enquiry:hover {
+            background: #16a34a;
+            color: #fff;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
             color: white;
             text-align: center;
-            padding: 100px 20px;
+            padding: 90px 20px;
         }
 
         .hero h2 {
-            font-size: 40px;
-            margin-bottom: 20px;
+            font-size: 38px;
+            margin-bottom: 15px;
             font-weight: 700;
         }
 
         .hero p {
-            font-size: 18px;
+            font-size: 16px;
             max-width: 700px;
-            margin: 0 auto 30px auto;
+            margin: 0 auto;
+            color: #cbd5e1;
         }
 
-        .btn {
-            display: inline-block;
-            background: #27ae60;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-
-        .btn:hover {
-            background: #219653;
-        }
-
-        /* Sections */
+        /* Main Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 50px 20px;
         }
 
         .section-title {
@@ -123,149 +166,289 @@
         }
 
         .section-title h2 {
-            font-size: 32px;
-            color: #2c3e50;
-            margin-bottom: 10px;
+            font-size: 30px;
+            color: #0f172a;
+            margin-bottom: 8px;
         }
 
         .section-title p {
-            color: #777;
+            color: #64748b;
+            font-size: 15px;
         }
 
-        /* Cards / Forms Grid */
-        .grid-3 {
+        /* Info Grid Cards (PDF Details) */
+        .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
         }
 
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            text-align: center;
-            transition: transform 0.3s;
+        .info-card {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            border-top: 4px solid #0284c7;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card i {
-            font-size: 40px;
-            color: #27ae60;
-            margin-bottom: 20px;
-        }
-
-        .card h3 {
-            font-size: 20px;
+        .info-card h3 {
+            font-size: 18px;
+            color: #1e293b;
             margin-bottom: 15px;
-            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .card p {
-            color: #666;
-            margin-bottom: 20px;
+        .info-card h3 i {
+            color: #0284c7;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
             font-size: 14px;
+            margin-bottom: 10px;
+            color: #475569;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .info-list li strong {
+            color: #1e293b;
+        }
+
+        /* Sectors Tags */
+        .sectors-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: #f1f5f9;
+            color: #334155;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .tag.primary {
+            background: #e0f2fe;
+            color: #0369a1;
         }
 
         /* Footer */
         footer {
-            background: #2c3e50;
-            color: white;
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 40px 20px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .footer-col p, .footer-col li {
+            font-size: 13px;
+            margin-bottom: 8px;
+            list-style: none;
+        }
+
+        .footer-bottom {
             text-align: center;
-            padding: 30px 20px;
-            margin-top: 50px;
+            border-top: 1px solid #1e293b;
+            padding-top: 20px;
+            font-size: 13px;
         }
 
-        footer p {
-            font-size: 14px;
-            color: #bbb;
-        }
-
-        @media(max-width: 768px) {
-            .nav-links {
-                display: none; /* Mobile menu can be added if needed */
+        /* Responsive Design */
+        @media(max-width: 992px) {
+            .navbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .header-buttons {
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Section -->
+    <!-- Top Bar with Translate Widget -->
+    <div class="top-bar">
+        <div class="translate-box">
+            <i class="fa-solid fa-language"></i>
+            <span>Language:</span>
+            <!-- Google Translate Widget Integration -->
+            <div id="google_translate_element"></div>
+        </div>
+    </div>
+
+    <!-- Header Section with Form Buttons -->
     <header>
         <nav class="navbar">
             <div class="logo-container">
-                <!-- Aapka Logo URL yahan set hai -->
                 <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="Dipra Foundation Logo">
-                <h1>Dipra Foundation</h1>
+                <div>
+                    <h1>Dipra Foundation</h1>
+                    <span>NPO / Trust (Act 1882)</span>
+                </div>
             </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#join">Join Us</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+
+            <!-- Forms Link Buttons on Header -->
+            <div class="header-buttons">
+                <a href="https://script.google.com/macros/s/AKfycbycLqR_FhXEncv3pl2Eho9kgCJGiWgJELkseatka7ZNTPuzkOcOCBlqgYxQVaLUSTrHFA/exec" target="_blank" class="btn-nav btn-volunteer">
+                    <i class="fa-solid fa-hands-holding-child"></i> Volunteer Register
+                </a>
+                <a href="https://script.google.com/macros/s/AKfycbyc2KVsUBwZLR8sUhRbClnpQxC5Tns9BUpJD0jq36yvOUjmG0N-AJ5wdFj5ucKcs_JNeA/exec" target="_blank" class="btn-nav btn-membership">
+                    <i class="fa-solid fa-id-card"></i> Membership Form
+                </a>
+                <a href="https://script.google.com/u/0/home/projects/1mLSgt9-Vw1sXi3DZLjePCH-SJcz9a1PYUlXoxmIR8bEK0iV0oEhej8vj/edit" target="_blank" class="btn-nav btn-enquiry">
+                    <i class="fa-solid fa-envelope"></i> Enquiry
+                </a>
+            </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <h2>Welcome to Dipra Foundation</h2>
-        <p>Empowering communities, spreading education, and bringing positive change to society together.</p>
-        <a href="#join" class="btn">Get Involved</a>
+    <section class="hero">
+        <h2>Empowering Communities & Transforming Lives</h2>
+        <p>Working relentlessly towards Agriculture, Animal Husbandry, Education, Health, and Social Welfare across Uttar Pradesh.</p>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="container">
+    <!-- Foundation Details Section (From PDF) -->
+    <section class="container">
         <div class="section-title">
-            <h2>About Our Foundation</h2>
-            <p>Know more about what we do and our mission</p>
+            <h2>Foundation Profile & Registration Overview</h2>
+            <p>Official credentials and regulatory information as per NPO Darpan record</p>
         </div>
-        <div style="text-align: center; max-width: 800px; margin: 0 auto; color: #555;">
-            <p>Dipra Foundation ek social welfare organization hai jo samaj ke behtar vikas, zarooratmand logon ki sahayata, aur education ko badhava dene ke liye kaam kar rahi hai. Humare saath judkar aap bhi ismission ka hissa ban sakte hain.</p>
-        </div>
-    </section>
 
-    <!-- Forms & Actions Section -->
-    <section id="join" class="container" style="background: #edf2f7;">
-        <div class="section-title">
-            <h2>Join Our Cause & Enquiries</h2>
-            <p>Aap niche diye gaye links ke madhyam se humse jud sakte hain</p>
-        </div>
-        
-        <div class="grid-3">
-            <!-- Volunteer Registration -->
-            <div class="card">
-                <i class="fas fa-hands-helping"></i>
-                <h3>Volunteer Registration</h3>
-                <p>Ek volunteer ke roop mein humare sath judhein aur samaj seva mein yogdan dein.</p>
-                <a href="https://script.google.com/macros/s/AKfycbycLqR_FhXEncv3pl2Eho9kgCJGiWgJELkseatka7ZNTPuzkOcOCBlqgYxQVaLUSTrHFA/exec" target="_blank" class="btn">Register Now</a>
+        <div class="info-grid">
+            <!-- Registration Card -->
+            <div class="info-card">
+                <h3><i class="fa-solid fa-file-shield"></i> Registration Details</h3>
+                <ul class="info-list">
+                    <li><span>Darpan ID:</span> <strong>UP/2024/0459444</strong></li>
+                    <li><span>Registration No:</span> <strong>300</strong>[cite: 1]</li>
+                    <li><span>Act Name:</span> <strong>TRUST ACT 1882</strong>[cite: 1]</li>
+                    <li><span>Type of NPO:</span> <strong>Trust</strong>[cite: 1]</li>
+                    <li><span>Reg. Date:</span> <strong>08-10-2024</strong>[cite: 1]</li>
+                    <li><span>City / State:</span> <strong>Kanpur Nagar, UP</strong>[cite: 1]</li>
+                </ul>
             </div>
 
-            <!-- Membership / Associate Form -->
-            <div class="card">
-                <i class="fas fa-id-card"></i>
-                <h3>Membership / Associate</h3>
-                <p>Dipra Foundation ki official membership ya associate prapt karne ke liye apply karein.</p>
-                <a href="https://script.google.com/macros/s/AKfycbyc2KVsUBwZLR8sUhRbClnpQxC5Tns9BUpJD0jq36yvOUjmG0N-AJ5wdFj5ucKcs_JNeA/exec" target="_blank" class="btn">Apply Here</a>
+            <!-- Office Bearers Card -->
+            <div class="info-card" style="border-top-color: #16a34a;">
+                <h3><i class="fa-solid fa-users-gear"></i> Office Bearers</h3>
+                <ul class="info-list">
+                    <li><span>Utkarsh Shukla:</span> <strong style="color: #16a34a;">Chairman</strong>[cite: 1]</li>
+                    <li><span>Shyam Bihari:</span> <strong style="color: #16a34a;">Secretary</strong>[cite: 1]</li>
+                    <li><span>Rekha Devi:</span> <strong style="color: #16a34a;">Treasurer</strong>[cite: 1]</li>
+                    <li><span>Registered With:</span> <strong>Sub-Registrar</strong>[cite: 1]</li>
+                    <li><span>Operational Area:</span> <strong>All Districts (UP)</strong>[cite: 1]</li>
+                </ul>
             </div>
 
-            <!-- Enquiry Form -->
-            <div class="card">
-                <i class="fas fa-envelope-open-text"></i>
-                <h3>General Enquiry</h3>
-                <p>Kisi bhi tarah ki jankari ya sawal ke liye aap humse sampark kar sakte hain.</p>
-                <a href="https://script.google.com/u/0/home/projects/1mLSgt9-Vw1sXi3DZLjePCH-SJcz9a1PYUlXoxmIR8bEK0iV0oEhej8vj/edit" target="_blank" class="btn">Enquire Now</a>
+            <!-- Contact Office Card -->
+            <div class="info-card" style="border-top-color: #d97706;">
+                <h3><i class="fa-solid fa-address-book"></i> Official Address</h3>
+                <ul class="info-list" style="display: block;">
+                    <li style="margin-bottom: 12px;"><span>Address:</span> <br><strong>M/S DIPRA FOUNDATION, KHERSA, BIDHNU, KANPUR NAGAR, UTTAR PRADESH - 209214</strong>[cite: 1]</li>
+                    <li><span>Email:</span> <strong>diprafoundation@gmail.com</strong>[cite: 1]</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Working Sectors Section -->
+        <div class="sectors-box">
+            <h3 style="font-size: 20px; color: #1e293b; margin-bottom: 10px;"><i class="fa-solid fa-bullseye" style="color: #0284c7;"></i> Working Sectors & Focus Areas</h3>
+            <p style="font-size: 13px; color: #64748b;">Comprehensive list of primary and secondary sectors handled by the foundation:</p>
+            <div class="tags-container">
+                <span class="tag primary">Agriculture & Animal Husbandry</span>[cite: 1]
+                <span class="tag primary">Art & Culture</span>[cite: 1]
+                <span class="tag primary">Biotechnology</span>[cite: 1]
+                <span class="tag primary">Children & Aged/Elderly</span>[cite: 1]
+                <span class="tag">Civic Issues</span>[cite: 1]
+                <span class="tag">Dalit Upliftment</span>[cite: 1]
+                <span class="tag">Differently Abled</span>[cite: 1]
+                <span class="tag">Disaster Management</span>[cite: 1]
+                <span class="tag">Drinking Water & Sanitation</span>[cite: 1]
+                <span class="tag primary">Education & Literacy</span>[cite: 1]
+                <span class="tag">Environment & Forests</span>[cite: 1]
+                <span class="tag primary">Health & Family Welfare</span>[cite: 1]
+                <span class="tag">HIV/AIDS</span>[cite: 1]
+                <span class="tag">Human Rights</span>[cite: 1]
+                <span class="tag">Legal Awareness & Aid</span>[cite: 1]
+                <span class="tag">Micro Finance (SHGs)</span>[cite: 1]
+                <span class="tag">Rural Development</span>[cite: 1]
+                <span class="tag">Skill Development</span>[cite: 1]
+                <span class="tag">Women Empowerment</span>[cite: 1]
+                <span class="tag">Youth Affairs</span>[cite: 1]
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Dipra Foundation. All Rights Reserved.</p>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Dipra Foundation</h4>
+                <p>A registered Trust dedicated to social welfare, community empowerment, and multi-sector development across Uttar Pradesh[cite: 1].</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <p><a href="https://script.google.com/macros/s/AKfycbycLqR_FhXEncv3pl2Eho9kgCJGiWgJELkseatka7ZNTPuzkOcOCBlqgYxQVaLUSTrHFA/exec" target="_blank" style="color: #94a3b8; text-decoration: none;">Volunteer Form</a></p>
+                <p><a href="https://script.google.com/macros/s/AKfycbyc2KVsUBwZLR8sUhRbClnpQxC5Tns9BUpJD0jq36yvOUjmG0N-AJ5wdFj5ucKcs_JNeA/exec" target="_blank" style="color: #94a3b8; text-decoration: none;">Membership Form</a></p>
+                <p><a href="https://script.google.com/u/0/home/projects/1mLSgt9-Vw1sXi3DZLjePCH-SJcz9a1PYUlXoxmIR8bEK0iV0oEhej8vj/edit" target="_blank" style="color: #94a3b8; text-decoration: none;">Enquiry Form</a></p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <p>Bidhnu, Kanpur Nagar, Uttar Pradesh - 209214[cite: 1]</p>
+                <p>Email: diprafoundation@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Dipra Foundation. All Rights Reserved.</p>
+        </div>
     </footer>
+
+    <!-- Google Translate Script for Multilingual Support (Hindi/English switcher) -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'hi,en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
