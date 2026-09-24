@@ -1,174 +1,271 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-  <meta charset="UTF-8" />
-  <title>DIPRA Foundation | Home</title>
-  <title2>website is on developing mode</title2>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dipra Foundation - Empowering Communities</title>
+    <!-- Google Fonts & FontAwesome for Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-container img {
+            height: 50px;
+            width: auto;
+            border-radius: 5px;
+        }
+
+        .logo-container h1 {
+            font-size: 22px;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #27ae60;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #27ae60;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #219653;
+        }
+
+        /* Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #777;
+        }
+
+        /* Cards / Forms Grid */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card i {
+            font-size: 40px;
+            color: #27ae60;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        @media(max-width: 768px) {
+            .nav-links {
+                display: none; /* Mobile menu can be added if needed */
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="logo.png" alt="DIPRA Foundation Logo" />
-      <span>DIPRA Foundation</span>
-    </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="request.html">Request a Donation</a>
-      <a href="support.html">Support Us</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <h1>Empowering Lives, Spreading Smiles</h1>
-    <p>Join DIPRA Foundation in making a real difference. Support medical, education, and community initiatives across India.</p>
-    <form class="search-bar">
-      <input type="text" placeholder="Search fundraisers..." />
-      <button type="submit">Search</button>
-    </form>
-    <div class="hero-buttons">
-      <a href="request.html" class="hero-btn">Request a Donation</a>
-      <a href="support.html" class="hero-btn secondary">Support Us</a>
-    </div>
-  </section>
-
-  <!-- Success Stories Slider -->
-  <section class="success-stories">
-    <h2>Success Stories</h2>
-    <div class="stories-slider">
-      <div class="story active">
-        <img src="story1.jpg" alt="Success Story 1" />
-        <div class="story-text">
-          <strong>Riya got her school fee funded!</strong>
-          <p>Thanks to 80 supporters, Riya will continue her education this year.</p>
-        </div>
-      </div>
-      <div class="story">
-        <img src="story2.jpg" alt="Success Story 2" />
-        <div class="story-text">
-          <strong>Abhijeet's treatment completed!</strong>
-          <p>With your help, Abhijeet received life-saving care and is recovering.</p>
-        </div>
-      </div>
-      <!-- Add more stories as needed -->
-    </div>
-  </section>
-
-  <section class="fundraisers">
-    <h2>Active Fundraisers</h2>
-    <div class="fundraiser-list">
-      <!-- Fundraiser Card 1 -->
-      <div class="fundraiser-card">
-        <div class="card-image">
-          <img src="abhijeet.jpg" alt="Fundraiser Photo" />
-          <span class="category">Medical</span>
-        </div>
-        <div class="card-content">
-          <h2>Save Abhijeet’s Life – Help a Father Fight Brain Stroke</h2>
-          <p class="description">
-            My name is Shilpi (campaign organizer) and this is a fundraiser on behalf of Abhijeet’s family for his treatment: I am ...
-          </p>
-          <div class="funds-info">
-            <span class="raised">Raised: ₹1,62,63,723</span>
-            <span class="goal">Goal: Rs.2,00,00,000</span>
-            <div class="progress-bar">
-              <div class="progress" style="width: 81%"></div>
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <!-- Aapka Logo URL yahan set hai -->
+                <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="Dipra Foundation Logo">
+                <h1>Dipra Foundation</h1>
             </div>
-          </div>
-          <div class="creator">
-            <span>Created by: Shilpi</span>
-          </div>
-          <div class="supporters-share">
-            <span class="supporters">3172 supporters</span>
-            <button class="share-btn" title="Share">🔗</button>
-          </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#join">Join Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h2>Welcome to Dipra Foundation</h2>
+        <p>Empowering communities, spreading education, and bringing positive change to society together.</p>
+        <a href="#join" class="btn">Get Involved</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <div class="section-title">
+            <h2>About Our Foundation</h2>
+            <p>Know more about what we do and our mission</p>
         </div>
-      </div>
-      <!-- Fundraiser Card 2 -->
-      <div class="fundraiser-card">
-        <div class="card-image">
-          <img src="education.jpg" alt="Fundraiser Photo" />
-          <span class="category">Education</span>
+        <div style="text-align: center; max-width: 800px; margin: 0 auto; color: #555;">
+            <p>Dipra Foundation ek social welfare organization hai jo samaj ke behtar vikas, zarooratmand logon ki sahayata, aur education ko badhava dene ke liye kaam kar rahi hai. Humare saath judkar aap bhi ismission ka hissa ban sakte hain.</p>
         </div>
-        <div class="card-content">
-          <h2>Help Riya Continue School</h2>
-          <p class="description">
-            Riya needs your help for books and tuition fees. Your support can give her a brighter future.
-          </p>
-          <div class="funds-info">
-            <span class="raised">Raised: ₹25,000</span>
-            <span class="goal">Goal: ₹40,000</span>
-            <div class="progress-bar">
-              <div class="progress" style="width: 62%"></div>
+    </section>
+
+    <!-- Forms & Actions Section -->
+    <section id="join" class="container" style="background: #edf2f7;">
+        <div class="section-title">
+            <h2>Join Our Cause & Enquiries</h2>
+            <p>Aap niche diye gaye links ke madhyam se humse jud sakte hain</p>
+        </div>
+        
+        <div class="grid-3">
+            <!-- Volunteer Registration -->
+            <div class="card">
+                <i class="fas fa-hands-helping"></i>
+                <h3>Volunteer Registration</h3>
+                <p>Ek volunteer ke roop mein humare sath judhein aur samaj seva mein yogdan dein.</p>
+                <a href="https://script.google.com/macros/s/AKfycbycLqR_FhXEncv3pl2Eho9kgCJGiWgJELkseatka7ZNTPuzkOcOCBlqgYxQVaLUSTrHFA/exec" target="_blank" class="btn">Register Now</a>
             </div>
-          </div>
-          <div class="creator">
-            <span>Created by: DIPRA Team</span>
-          </div>
-          <div class="supporters-share">
-            <span class="supporters">80 supporters</span>
-            <button class="share-btn" title="Share">🔗</button>
-          </div>
+
+            <!-- Membership / Associate Form -->
+            <div class="card">
+                <i class="fas fa-id-card"></i>
+                <h3>Membership / Associate</h3>
+                <p>Dipra Foundation ki official membership ya associate prapt karne ke liye apply karein.</p>
+                <a href="https://script.google.com/macros/s/AKfycbyc2KVsUBwZLR8sUhRbClnpQxC5Tns9BUpJD0jq36yvOUjmG0N-AJ5wdFj5ucKcs_JNeA/exec" target="_blank" class="btn">Apply Here</a>
+            </div>
+
+            <!-- Enquiry Form -->
+            <div class="card">
+                <i class="fas fa-envelope-open-text"></i>
+                <h3>General Enquiry</h3>
+                <p>Kisi bhi tarah ki jankari ya sawal ke liye aap humse sampark kar sakte hain.</p>
+                <a href="https://script.google.com/u/0/home/projects/1mLSgt9-Vw1sXi3DZLjePCH-SJcz9a1PYUlXoxmIR8bEK0iV0oEhej8vj/edit" target="_blank" class="btn">Enquire Now</a>
+            </div>
         </div>
-      </div>
-      <!-- Add more cards as needed -->
-    </div>
-  </section>
-<!-- Volunteer Join Section -->
-<section class="section volunteer">
-  <h2>Become a Volunteer</h2>
-  <p>Join hands with DIPRA Foundation and help us reach more lives. Fill out the 
-     <a href="about.html#volunteer">volunteer form</a> to get started!</p>
-</section>
+    </section>
 
-<!-- FAQ Section -->
-<section class="section faq" id="faq">
-  <h2>Frequently Asked Questions</h2>
-  <div class="faq-list">
-    <div class="faq-item">
-      <h3>How can I request help?</h3>
-      <p>Go to "Request a Donation" page and fill the form. Our team will contact you soon.</p>
-    </div>
-    <div class="faq-item">
-      <h3>How do I donate?</h3>
-      <p>Visit "Support Us" and click on Donate Now. You can donate via online payment methods.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Is my donation tax-exempt?</h3>
-      <p>Yes, donations made to DIPRA Foundation are eligible for tax exemption under section 80G.</p>
-    </div>
-  </div>
-</section>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Dipra Foundation. All Rights Reserved.</p>
+    </footer>
 
-<!-- Testimonials Section -->
-<section class="section testimonials">
-  <h2>What Our Supporters Say</h2>
-  <div class="testimonial-list">
-    <div class="testimonial-item">
-      <p>"DIPRA Foundation helped my daughter continue her studies. The team is genuine and very supportive!"</p>
-      <span>- Priya Sharma</span>
-    </div>
-    <div class="testimonial-item">
-      <p>"Transparent process and quick response. Happy to contribute every month!"</p>
-      <span>- Amit Verma</span>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  <div class="social-links">
-    <a href="https://www.facebook.com/share/1A52H3NZNF/" target="_blank">
-  <img src="images/facebook.png" alt="Facebook">
-    </a>
-    <a href="#" title="Instagram"><img src="instagram.png" alt="Instagram" /></a>
-    <a href="#" title="X"><img src="x.png" alt="X" /></a>
-    <a href="mailto:contact@diprafoundation.com" title="Email"><img src="email.png" alt="Email" /></a>
-  </div>
-  <p>&copy; 2025 DIPRA Foundation. All rights reserved.</p>
-</footer>
 </body>
 </html>
