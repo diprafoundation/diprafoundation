@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" href="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
+<link rel="icon" href="https://drive.google.com/uc?export=view&id=1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -321,7 +321,7 @@ footer a:hover{color:var(--accent-2)}
   <div class="container nav-wrap">
     <a href="#home" class="brand">
       <div class="brand-logo">
-        <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="DIPRA FOUNDATION" onerror="this.style.display='none';this.parentElement.textContent='DF'">
+        <img src="https://drive.google.com/uc?export=view&id=1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G" alt="DIPRA FOUNDATION" onerror="this.style.display='none';this.parentElement.textContent='DF'">
       </div>
       <div class="brand-text">
         <b>DIPRA FOUNDATION</b>
@@ -383,7 +383,7 @@ footer a:hover{color:var(--accent-2)}
       </div>
 
       <div class="hero-card">
-        <h3><span class="t-hi">महत्वपूर्ण तिथियाँ(UPL-09) — सत्र 2026–27</span><span class="t-en">Key Dates(UPL-09) — Session 2026–27</span></h3>
+        <h3><span class="t-hi">महत्वपूर्ण तिथियाँ — सत्र 2026–27</span><span class="t-en">Key Dates — Session 2026–27</span></h3>
         <ul>
           <li><span class="t-hi">आवेदन प्रारंभ</span><span class="t-en">Applications Open</span> <b>25/09/2026</b></li>
           <li><span class="t-hi">आवेदन अंतिम तिथि</span><span class="t-en">Last Date</span> <b>07/10/2026</b></li>
@@ -493,7 +493,7 @@ footer a:hover{color:var(--accent-2)}
 
     <p class="mt16" style="font-size:.8rem;color:var(--muted);line-height:1.7">
       <span class="t-hi">* उपरोक्त फीस प्रति माह है। एकमुश्त पंजीकरण शुल्क ₹100 (आय ₹50,000 से कम होने पर माफ)। सभी राशियाँ DIPRA FOUNDATION की अंतिम स्वीकृति के अधीन हैं।</span>
-      <span class="t-en">* Above fees are per month. One-time registration fee ₹100 (waived if income is below ₹50,000). All amounts are subject to final approval by DIPRA FOUNDATION.</span>
+      <span class="t-en">* Above fees are per month. One-time registration fee ₹100 (waived if income is below ₹50,000). All amounts are subject to final approval.</span>
     </p>
 
     <div class="form-shell mt24" style="margin-top:30px">
@@ -628,7 +628,7 @@ footer a:hover{color:var(--accent-2)}
             <div class="step-desc"><span class="t-hi">अपना पूरा नाम व संपर्क विवरण ठीक से भरें।</span><span class="t-en">Enter your full name and contact details carefully.</span></div>
             <div class="field">
               <label><span class="t-hi">विद्यार्थी का पूरा नाम</span><span class="t-en">Student's Full Name</span> <span class="req">*</span></label>
-              <input type="text" name="fullName" placeholder="आर्यन शुक्ला">
+              <input type="text" name="fullName" placeholder="राम शर्मा">
               <div class="errmsg"><span class="t-hi">कृपया पूरा नाम भरें</span><span class="t-en">Please enter full name</span></div>
             </div>
             <div class="row">
@@ -1342,6 +1342,18 @@ footer a:hover{color:var(--accent-2)}
             <div class="mini"><small><span class="t-hi">आय आधारित छूट</span><span class="t-en">Concession</span></small><b id="dDisc" style="color:var(--green)">—</b></div>
           </div>
 
+          <!-- Admit Card -->
+          <div id="admitCardBox"></div>
+
+          <!-- Admin Notes -->
+          <div id="adminNotesBox"></div>
+
+          <!-- Fee Status -->
+          <div id="feeStatusBox"></div>
+
+          <!-- Certificate -->
+          <div id="certificateBox"></div>
+
           <div class="note mt24" style="font-size:.82rem">
             <strong>📌 <span class="t-hi">आगे की प्रक्रिया:</span><span class="t-en">Next steps:</span></strong>
             <span class="t-hi"> आपकी Application ID सुरक्षित रखें। दस्तावेज सत्यापन के बाद प्रवेश परीक्षा का एडमिट कार्ड इसी पोर्टल पर उपलब्ध होगा। चयन सूची 11/10/2026 को प्रकाशित की जाएगी।</span>
@@ -1353,57 +1365,17 @@ footer a:hover{color:var(--accent-2)}
   </div>
 </section>
 
-<!-- NOTICES -->
+<!-- NOTICES (dynamic) -->
 <section id="notices">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow"><span class="t-hi">सूचना पट्ट</span><span class="t-en">Notice Board</span></span>
       <h2><span class="t-hi">नई सूचनाएँ एवं अपडेट</span><span class="t-en">Notices &amp; Updates</span></h2>
     </div>
-
-    <div style="max-width:860px;margin-inline:auto">
-      <div class="notice">
-        <div class="notice-date"><b>25</b><span>Sep 2026</span></div>
-        <div class="notice-body">
-          <h4><span class="t-hi">The Uplift कोचिंग योजना का शुभारंभ एवं आवेदन प्रारंभ</span><span class="t-en">Launch of The Uplift Coaching Scheme &amp; applications open</span><span class="notice-tag">NEW</span></h4>
-          <p><span class="t-hi">25 सितंबर 2026 से ऑनलाइन आवेदन प्रारंभ। सभी इच्छुक विद्यार्थी "Apply Online" सेक्शन से आवेदन कर सकते हैं।</span><span class="t-en">Online applications open from 25 September 2026.</span></p>
-        </div>
-      </div>
-      <div class="notice">
-        <div class="notice-date"><b>07</b><span>Oct 2026</span></div>
-        <div class="notice-body">
-          <h4><span class="t-hi">आवेदन की अंतिम तिथि — 07/10/2026</span><span class="t-en">Last date to apply — 07/10/2026</span></h4>
-          <p><span class="t-hi">निर्धारित तिथि के बाद प्राप्त आवेदन स्वीकार नहीं किए जाएँगे।</span><span class="t-en">Applications after the deadline will not be accepted.</span></p>
-        </div>
-      </div>
-      <div class="notice">
-        <div class="notice-date"><b>09</b><span>Oct 2026</span></div>
-        <div class="notice-body">
-          <h4><span class="t-hi">प्रवेश परीक्षा — 09/10/2026</span><span class="t-en">Entrance Exam — 09/10/2026</span></h4>
-          <p><span class="t-hi">एडमिट कार्ड Student Portal से डाउनलोड करें।</span><span class="t-en">Download admit card from the Student Portal.</span></p>
-        </div>
-      </div>
-      <div class="notice">
-        <div class="notice-date"><b>11</b><span>Oct 2026</span></div>
-        <div class="notice-body">
-          <h4><span class="t-hi">चयन सूची एवं प्रतीक्षा सूची का प्रकाशन</span><span class="t-en">Selection List and Waiting List published</span></h4>
-          <p><span class="t-hi">चयनित विद्यार्थियों की सूची वेबसाइट पर प्रकाशित की जाएगी।</span><span class="t-en">The list of selected students will be published on the website.</span></p>
-        </div>
-      </div>
-      <div class="notice">
-        <div class="notice-date"><b>12</b><span>Oct 2026</span></div>
-        <div class="notice-body">
-          <h4><span class="t-hi">कक्षाएँ प्रारंभ — 12/10/2026</span><span class="t-en">Classes begin — 12/10/2026</span></h4>
-          <p><span class="t-hi">बैच आवंटन एवं समय-सारणी Student Portal पर उपलब्ध होगी।</span><span class="t-en">Batch allocation and timetable will be on the Student Portal.</span></p>
-        </div>
-      </div>
-      <div class="notice" style="background:#fdf3e0;border-color:#f0e0b8">
-        <div class="notice-date" style="background:#f0e0b8"><b>📢</b><span class="t-hi">स्वयंसेवक</span><span class="t-en">Volunteer</span></div>
-        <div class="notice-body">
-          <h4><span class="t-hi">स्वयंसेवक शिक्षक एवं संस्थान आवेदन निरंतर स्वीकार किए जा रहे हैं</span><span class="t-en">Volunteer teacher and institution applications are open</span><span class="notice-tag">OPEN</span></h4>
-          <p><span class="t-hi">आप <a href="#volunteer">स्वयंसेवक अनुभाग</a> में जाकर आवेदन कर सकते हैं।</span><span class="t-en">You can apply through the <a href="#volunteer">Volunteer section</a>.</span></p>
-        </div>
-      </div>
+    <div style="max-width:860px;margin-inline:auto" id="noticesList">
+      <p class="center" style="color:var(--muted)">
+        <span class="t-hi">लोड हो रहा है...</span><span class="t-en">Loading...</span>
+      </p>
     </div>
   </div>
 </section>
@@ -1419,35 +1391,35 @@ footer a:hover{color:var(--accent-2)}
     <div style="max-width:860px;margin-inline:auto">
       <div class="faq-item">
         <button class="faq-q" type="button"><span class="t-hi">क्या आवेदन करने के लिए कोई शुल्क देना होगा?</span><span class="t-en">Is there any fee to apply?</span></button>
-        <div class="faq-a"><div><span class="t-hi">नहीं। The Uplift योजना में आवेदन पूर्णतः निःशुल्क है। आपको केवल चयन के बाद फीस जमा करनी होगी।</span><span class="t-en">No. Applying to The Uplift scheme is completely free. You will only need to pay the fee after selection.</span></div></div>
+        <div class="faq-a"><div><span class="t-hi">नहीं। The Uplift योजना में आवेदन पूर्णतः निःशुल्क है। आपको केवल चयन के बाद फीस जमा करनी होगी।</span><span class="t-en">No. Applying to The Uplift scheme is completely free.</span></div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button"><span class="t-hi">क्या The Uplift कोई सरकारी योजना है?</span><span class="t-en">Is The Uplift a government scheme?</span></button>
-        <div class="faq-a"><div><span class="t-hi">नहीं। The Uplift, DIPRA FOUNDATION की अपनी शैक्षणिक पहल है। यह किसी सरकारी योजना के अंतर्गत संचालित नहीं है।</span><span class="t-en">No. The Uplift is DIPRA FOUNDATION's own educational initiative. It does not operate under any government scheme.</span></div></div>
+        <div class="faq-a"><div><span class="t-hi">नहीं। The Uplift, DIPRA FOUNDATION की अपनी शैक्षणिक पहल है।</span><span class="t-en">No. The Uplift is DIPRA FOUNDATION's own educational initiative.</span></div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button"><span class="t-hi">OTP क्यों चाहिए?</span><span class="t-en">Why is OTP required?</span></button>
-        <div class="faq-a"><div><span class="t-hi">OTP से हम यह सुनिश्चित करते हैं कि आपका ईमेल पता सही है, जिससे आवेदन विवरण और भविष्य की सूचनाएँ आपको सही तरीके से पहुँच सकें। यह आपकी सुरक्षा के लिए है।</span><span class="t-en">OTP confirms your email address is correct so that your application details and future notices reach you properly. This is for your security.</span></div></div>
+        <div class="faq-a"><div><span class="t-hi">OTP से हम यह सुनिश्चित करते हैं कि आपका ईमेल पता सही है। यह आपकी सुरक्षा के लिए है।</span><span class="t-en">OTP confirms your email address is correct. This is for your security.</span></div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button"><span class="t-hi">फीस में छूट कैसे मिलेगी?</span><span class="t-en">How is the fee concession decided?</span></button>
-        <div class="faq-a"><div><span class="t-hi">परिवार की वार्षिक आय के आधार पर 30% से 70% तक छूट मिलती है। ₹50,000 तक की आय पर 70% छूट तथा पंजीकरण शुल्क माफ है। अनाथ विद्यार्थियों के लिए पूर्ण छूट (100%)।</span><span class="t-en">Based on annual family income, a concession of 30% to 70% is given. For income up to ₹50,000, the concession is 70% and registration fee is waived. Full scholarship (100%) for orphans.</span></div></div>
+        <div class="faq-a"><div><span class="t-hi">परिवार की वार्षिक आय के आधार पर 30% से 70% तक छूट। अनाथ विद्यार्थियों के लिए पूर्ण छूट (100%)।</span><span class="t-en">Based on annual family income, a concession of 30% to 70%. Full scholarship (100%) for orphans.</span></div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button"><span class="t-hi">चयन किस आधार पर होगा?</span><span class="t-en">On what basis is selection done?</span></button>
-        <div class="faq-a"><div><span class="t-hi">चयन प्रवेश परीक्षा (09/10/2026) में प्राप्त अंकों के आधार पर बनाई गई मेरिट सूची से होगा।</span><span class="t-en">Selection is based on the merit list prepared from entrance exam (09/10/2026) marks.</span></div></div>
+        <div class="faq-a"><div><span class="t-hi">चयन प्रवेश परीक्षा (09/10/2026) के अंकों के आधार पर बनाई गई मेरिट सूची से होगा।</span><span class="t-en">Selection is based on the merit list prepared from entrance exam (09/10/2026) marks.</span></div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button"><span class="t-hi">फीस वापस (Refund) मिलेगी?</span><span class="t-en">Is there a refund?</span></button>
-        <div class="faq-a"><div><span class="t-hi">नहीं। एक बार जमा की गई फीस वापस नहीं होगी। कृपया फीस जमा करने से पहले सभी नियम ध्यान से पढ़ें।</span><span class="t-en">No. Once paid, fees are non-refundable. Please read all rules carefully before paying.</span></div></div>
+        <div class="faq-a"><div><span class="t-hi">नहीं। एक बार जमा की गई फीस वापस नहीं होगी।</span><span class="t-en">No. Once paid, fees are non-refundable.</span></div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" type="button"><span class="t-hi">क्या मैं शिक्षक के रूप में स्वयंसेवा कर सकता हूँ?</span><span class="t-en">Can I volunteer as a teacher?</span></button>
-        <div class="faq-a"><div><span class="t-hi">हाँ, बिल्कुल। आप <a href="#volunteer">स्वयंसेवक अनुभाग</a> में जाकर शिक्षक आवेदन भर सकते हैं। सत्यापन के बाद आपको स्वयंसेवा प्रमाणपत्र भी दिया जाएगा।</span><span class="t-en">Yes, absolutely. Fill the teacher application in the <a href="#volunteer">Volunteer section</a>. A volunteer certificate will also be issued after verification.</span></div></div>
+        <button class="faq-q" type="button"><span class="t-hi">प्रवेश पत्र कैसे मिलेगा?</span><span class="t-en">How will I get my admit card?</span></button>
+        <div class="faq-a"><div><span class="t-hi">चयन के बाद आपके ईमेल पर प्रवेश पत्र PDF भेजा जाएगा। यह Student Portal में भी उपलब्ध होगा।</span><span class="t-en">After selection, your admit card PDF will be emailed to you. It will also be available in the Student Portal.</span></div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button"><span class="t-hi">मेरा डेटा कहाँ जाता है? सुरक्षित है?</span><span class="t-en">Where does my data go? Is it safe?</span></button>
-        <div class="faq-a"><div><span class="t-hi">आपका डेटा DIPRA FOUNDATION के सुरक्षित Google Sheet में सहेजा जाता है। इसे किसी तीसरे पक्ष के साथ साझा नहीं किया जाता। आपका डेटा सुरक्षित है।</span><span class="t-en">Your data is stored securely in DIPRA FOUNDATION's Google Sheet. It is not shared with any third party. Your data is safe with us.</span></div></div>
+        <div class="faq-a"><div><span class="t-hi">आपका डेटा DIPRA FOUNDATION के सुरक्षित Google Sheet में सहेजा जाता है। इसे किसी तीसरे पक्ष के साथ साझा नहीं किया जाता।</span><span class="t-en">Your data is stored securely in DIPRA FOUNDATION's Google Sheet. Not shared with any third party.</span></div></div>
       </div>
     </div>
   </div>
@@ -1679,7 +1651,7 @@ const $  = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 
 /* ✅ नया Apps Script URL */
-const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbz7yRWYf0s7nRcMliZnt-CwPWLfPR-wKj43IPIDXMftLIK4jFLptzN-n5g1UptTdlsf/exec';
+const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbw6kRBbpCrCC_aTcJ85PZgwU66D_iE22YFZZgVimZof1e6CjQD8B5rYlD1aStiz3_Fm/exec';
 
 let toastTimer;
 function toast(msg) {
@@ -1740,7 +1712,7 @@ window.addEventListener('scroll', () => {
   navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
 });
 
-/* 4 COURSES */
+/* COURSES */
 const COURSES = [
   { code:'UPL-06', hi:'कक्षा 6–8 (फाउंडेशन)', en:'Class 6–8 (Foundation)',
     subHi:'गणित, विज्ञान, अंग्रेज़ी, हिंदी, सामाजिक विज्ञान', subEn:'Maths, Science, English, Hindi, SST',
@@ -1850,7 +1822,9 @@ const STATES = {
   });
 })();
 
-/* OTP */
+/* ============================================================
+   OTP
+   ============================================================ */
 const OTP = {
   verifiedEmail: null,
   timerId: null,
@@ -1969,7 +1943,9 @@ $('#otpCode').addEventListener('input', e => {
   e.target.closest('.field').classList.remove('err');
 });
 
-/* APPLY FORM */
+/* ============================================================
+   APPLY FORM
+   ============================================================ */
 let currentStep = 1;
 const TOTAL_STEPS = 6;
 
@@ -2090,7 +2066,20 @@ $('#prevBtn').addEventListener('click', () => {
   if (currentStep > 1) showStep(currentStep - 1);
 });
 
-$('#submitBtn').addEventListener('click', () => {
+/* helper: file → base64 */
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64 = String(reader.result).split(',')[1];
+      resolve({ base64, mime: file.type || 'image/jpeg', name: file.name });
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+$('#submitBtn').addEventListener('click', async () => {
   if (!$('#declCheck').checked) {
     toast(document.body.classList.contains('lang-hi') ? 'कृपया घोषणा पत्र पर सहमति दें।' : 'Please accept the declaration.');
     return;
@@ -2109,6 +2098,17 @@ $('#submitBtn').addEventListener('click', () => {
     const orig = btn.innerHTML;
     btn.disabled = true;
     btn.innerHTML = '⏳ <span class="t-hi">भेजा जा रहा है...</span><span class="t-en">Submitting...</span>';
+
+    /* Photo को base64 में convert करें */
+    let photoData = {};
+    const photoFile = f.querySelector('[name="docPhoto"]').files[0];
+    if (photoFile) {
+      try {
+        const { base64, mime, name } = await fileToBase64(photoFile);
+        photoData = { PhotoBase64: base64, PhotoMime: mime, PhotoName: name };
+      } catch (e) { console.error('Photo read error:', e); }
+    }
+
     const appId = 'DPF-UPL-26-' + String(Math.floor(10000 + Math.random()*89999));
     const payload = {
       action:'submit', type:'application', AppID: appId,
@@ -2121,8 +2121,9 @@ $('#submitBtn').addEventListener('click', () => {
       Income: inc, Category: val('category'),
       Orphan: val('orphan'),
       Concession: d + '%', Payable: payable,
-      Status: 'Submitted', DocsStatus: 'Pending Verification'
+      ...photoData
     };
+
     const r = await apiCall(payload);
     btn.disabled = false;
     btn.innerHTML = orig;
@@ -2152,7 +2153,9 @@ $('#submitBtn').addEventListener('click', () => {
   });
 });
 
-/* VOLUNTEER */
+/* ============================================================
+   VOLUNTEER
+   ============================================================ */
 $$('.tab').forEach(tab => {
   tab.addEventListener('click', () => {
     $$('.tab').forEach(t => t.classList.remove('active'));
@@ -2286,49 +2289,202 @@ $('#volInstForm').addEventListener('submit', e => {
   });
 });
 
-/* PORTAL */
-const TIMELINE_STEPS = [
-  { key: 'Submitted',           hi: 'जमा',        en: 'Submitted' },
-  { key: 'Under Verification',  hi: 'सत्यापन',    en: 'Verification' },
-  { key: 'Verified',            hi: 'सत्यापित',   en: 'Verified' },
-  { key: 'Selected',            hi: 'चयनित',      en: 'Selected' },
-  { key: 'Admission Confirmed', hi: 'प्रवेश',     en: 'Admission' }
-];
-$('#loginBtn').addEventListener('click', () => {
+/* ============================================================
+   STUDENT PORTAL — SERVER BASED
+   ============================================================ */
+const TIMELINE_STEPS = ['Submitted','Under Verification','Verified','Selected','Admission Confirmed'];
+const TIMELINE_LABELS = {
+  'Submitted':           { hi:'जमा',      en:'Submitted' },
+  'Under Verification':  { hi:'सत्यापन',  en:'Verification' },
+  'Verified':            { hi:'सत्यापित', en:'Verified' },
+  'Selected':            { hi:'चयनित',    en:'Selected' },
+  'Admission Confirmed': { hi:'प्रवेश',   en:'Admission' }
+};
+
+$('#loginBtn').addEventListener('click', async () => {
   const id  = $('#loginAppId').value.trim().toUpperCase();
   const mob = $('#loginMobile').value.trim();
+
   if (!id || !/^[6-9]\d{9}$/.test(mob)) {
-    toast(document.body.classList.contains('lang-hi') ? 'कृपया सही Application ID और 10 अंकों का मोबाइल नंबर भरें।' : 'Please enter a valid Application ID and 10-digit mobile number.');
+    toast(document.body.classList.contains('lang-hi')
+      ? 'कृपया सही Application ID और 10 अंकों का मोबाइल नंबर भरें।'
+      : 'Please enter a valid Application ID and 10-digit mobile number.');
     return;
   }
-  let list = [];
-  try { list = JSON.parse(localStorage.getItem('uplift_applications') || '[]'); } catch (e) {}
-  const rec = list.find(r => (r.AppID || r.id || '').toUpperCase() === id && r.Mobile === mob);
-  if (!rec) {
-    toast(document.body.classList.contains('lang-hi') ? 'इस Application ID और मोबाइल नंबर से कोई आवेदन नहीं मिला।' : 'No application found for this Application ID and mobile number.');
+
+  const btn = $('#loginBtn');
+  const orig = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '⏳ <span class="t-hi">जाँच हो रही है...</span><span class="t-en">Checking...</span>';
+
+  const url = SHEET_ENDPOINT + '?action=getStudent&appId=' +
+              encodeURIComponent(id) + '&mobile=' + encodeURIComponent(mob);
+
+  let r;
+  try {
+    const res = await fetch(url);
+    r = await res.json();
+  } catch (err) {
+    btn.disabled = false; btn.innerHTML = orig;
+    toast('Network error. Please try again.'); return;
+  }
+
+  btn.disabled = false; btn.innerHTML = orig;
+
+  if (r.status !== 'success' || !r.data) {
+    toast(document.body.classList.contains('lang-hi')
+      ? 'इस Application ID और मोबाइल नंबर से कोई आवेदन नहीं मिला।'
+      : 'No application found for these details.');
     return;
   }
-  const courseName = rec.Course || rec.course || '';
-  $('#dashName').textContent = rec.Name || rec.name || '—';
-  $('#dashId').textContent   = rec.AppID || rec.id || '—';
-  $('#dCourse').textContent  = courseName || '—';
-  $('#dBatch').textContent   = rec.Batch || rec.batch || '—';
-  $('#dMode').textContent    = rec.Mode || rec.mode || '—';
-  $('#dDocs').textContent    = rec.DocsStatus || 'Pending Verification';
-  $('#dFee').textContent     = '₹' + (rec.Payable || rec.payable || 0).toLocaleString('en-IN');
-  $('#dDisc').textContent    = (rec.Concession || rec.concession || '0%');
-  const idx = 0;
-  $('#timeline').innerHTML = TIMELINE_STEPS.map((s, i) => {
-    const cls = i < idx ? 'done' : (i === idx ? 'current' : '');
-    return `<div class="tl-step ${cls}">
-      <div class="tl-dot">${i < idx ? '✓' : i + 1}</div>
-      <div><span class="t-hi">${s.hi}</span><span class="t-en">${s.en}</span></div>
-    </div>`;
-  }).join('');
+
+  populateDashboard(r.data);
   $('#portalLogin').style.display = 'none';
   $('#portalDash').classList.add('show');
   toast(document.body.classList.contains('lang-hi') ? 'लॉगिन सफल ✓' : 'Login successful ✓');
 });
+
+function populateDashboard(rec) {
+  $('#dashName').textContent = rec.Name || '—';
+  $('#dashId').textContent   = rec.AppID || '—';
+  $('#dCourse').textContent  = rec.Course || '—';
+  $('#dBatch').textContent   = rec.BatchTiming || rec.Batch || '—';
+  $('#dMode').textContent    = rec.Mode || '—';
+  $('#dDocs').textContent    = rec.DocsStatus || 'Pending Verification';
+  $('#dFee').textContent     = '₹' + (rec.Payable || 0).toLocaleString('en-IN');
+  $('#dDisc').textContent    = rec.Concession || '0%';
+
+  /* Timeline */
+  const currentStatus = rec.Status || 'Submitted';
+  const idx = Math.max(0, TIMELINE_STEPS.indexOf(currentStatus));
+  $('#timeline').innerHTML = TIMELINE_STEPS.map((s, i) => {
+    const cls = i < idx ? 'done' : (i === idx ? 'current' : '');
+    const lbl = TIMELINE_LABELS[s];
+    return `<div class="tl-step ${cls}">
+      <div class="tl-dot">${i < idx ? '✓' : i + 1}</div>
+      <div><span class="t-hi">${lbl.hi}</span><span class="t-en">${lbl.en}</span></div>
+    </div>`;
+  }).join('');
+
+  /* Admit Card */
+  const admitBox = $('#admitCardBox');
+  if (admitBox) {
+    if (rec.AdmitCardURL && String(rec.AdmitCardURL).startsWith('http')) {
+      admitBox.innerHTML = `
+        <div style="background:#e6f4ec;border:1px solid #bfe2d2;border-radius:12px;padding:20px;margin-top:20px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+            <div style="width:38px;height:38px;border-radius:50%;background:#0f7a48;color:#fff;display:grid;place-items:center;font-size:1.1rem">🎫</div>
+            <div>
+              <div style="font-size:.95rem;font-weight:700;color:#0f7a48">
+                <span class="t-hi">प्रवेश पत्र उपलब्ध है</span>
+                <span class="t-en">Admit Card Available</span>
+              </div>
+              <div style="font-size:.78rem;color:#5b6b85">
+                <span class="t-hi">डाउनलोड करके परीक्षा में लाएँ</span>
+                <span class="t-en">Download and bring to exam</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:16px">
+            ${rec.RollNumber ? `<div style="background:#fff;padding:10px 12px;border-radius:8px;border:1px solid #d5e0ed">
+              <div style="font-size:.7rem;color:#64748b;text-transform:uppercase">Roll No.</div>
+              <div style="font-family:monospace;font-weight:700;color:#0f2c52">${rec.RollNumber}</div></div>` : ''}
+            ${rec.ExamDate ? `<div style="background:#fff;padding:10px 12px;border-radius:8px;border:1px solid #d5e0ed">
+              <div style="font-size:.7rem;color:#64748b;text-transform:uppercase">Exam Date</div>
+              <div style="font-weight:600;color:#0f2c52">${rec.ExamDate}</div></div>` : ''}
+            ${rec.ExamTime ? `<div style="background:#fff;padding:10px 12px;border-radius:8px;border:1px solid #d5e0ed">
+              <div style="font-size:.7rem;color:#64748b;text-transform:uppercase">Time</div>
+              <div style="font-weight:600;color:#0f2c52">${rec.ExamTime}</div></div>` : ''}
+          </div>
+
+          ${rec.ExamCenter ? `<div style="background:#fff;padding:12px;border-radius:8px;border:1px solid #d5e0ed;margin-bottom:16px">
+            <div style="font-size:.7rem;color:#64748b;text-transform:uppercase;margin-bottom:4px">Exam Center</div>
+            <div style="font-weight:600;color:#0f2c52;font-size:.9rem">${rec.ExamCenter}</div>
+          </div>` : ''}
+
+          <a href="${rec.AdmitCardURL}" target="_blank" rel="noopener"
+             class="btn btn-primary" style="background:#0f7a48;border-color:#0f7a48">
+            📥 <span class="t-hi">प्रवेश पत्र डाउनलोड करें</span><span class="t-en">Download Admit Card</span>
+          </a>
+        </div>`;
+    } else if (rec.Status === 'Selected') {
+      admitBox.innerHTML = `
+        <div style="background:#fff8e8;border:1px solid #f0e0b8;border-radius:12px;padding:18px;margin-top:20px;text-align:center">
+          <div style="font-size:1.8rem;margin-bottom:8px">⏳</div>
+          <div style="font-weight:700;color:#7a5c00">
+            <span class="t-hi">प्रवेश पत्र तैयार हो रहा है</span>
+            <span class="t-en">Admit card is being prepared</span>
+          </div>
+          <div style="font-size:.85rem;color:#a16207;margin-top:6px">
+            <span class="t-hi">आपके ईमेल पर भेज दिया जाएगा।</span>
+            <span class="t-en">It will be emailed to you.</span>
+          </div>
+        </div>`;
+    } else {
+      admitBox.innerHTML = '';
+    }
+  }
+
+  /* Admin Notes */
+  const notesBox = $('#adminNotesBox');
+  if (notesBox) {
+    if (rec.AdminNotes && String(rec.AdminNotes).trim()) {
+      notesBox.innerHTML = `
+        <div style="background:#eef4fb;border:1px solid #d5e0ed;border-radius:12px;padding:16px;margin-top:20px">
+          <div style="font-size:.8rem;color:#1a4a80;font-weight:700;text-transform:uppercase;margin-bottom:8px">
+            📢 <span class="t-hi">प्रशासन की ओर से सूचना</span><span class="t-en">Message from Admin</span>
+          </div>
+          <div style="font-size:.9rem;color:#1a2533;line-height:1.7">${rec.AdminNotes}</div>
+        </div>`;
+    } else notesBox.innerHTML = '';
+  }
+
+  /* Fee Status */
+  const feeBox = $('#feeStatusBox');
+  if (feeBox) {
+    const paid = String(rec.FeePaid || '').toLowerCase() === 'yes';
+    feeBox.innerHTML = `
+      <div style="background:${paid ? '#e6f4ec' : '#fdf3e0'};border:1px solid ${paid ? '#bfe2d2' : '#f0e0b8'};border-radius:12px;padding:16px;margin-top:20px">
+        <div style="font-size:.8rem;font-weight:700;text-transform:uppercase;margin-bottom:6px;color:${paid ? '#0f7a48' : '#a16207'}">
+          💰 <span class="t-hi">फीस स्थिति</span><span class="t-en">Fee Status</span>
+        </div>
+        <div style="font-size:.9rem">
+          ${paid
+            ? `<span class="t-hi">फीस जमा हो चुकी है ✓</span><span class="t-en">Fee paid ✓</span>`
+            : `<span class="t-hi">बाकी राशि:</span><span class="t-en">Due:</span> <b>₹${rec.FeeDue || 0}</b>`}
+        </div>
+      </div>`;
+  }
+
+  /* Certificate */
+  const certBox = $('#certificateBox');
+  if (certBox) {
+    if (rec.CertificateURL && String(rec.CertificateURL).startsWith('http')) {
+      certBox.innerHTML = `
+        <div style="background:#f5eaff;border:1px solid #dcc4f0;border-radius:12px;padding:20px;margin-top:20px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <div style="width:38px;height:38px;border-radius:50%;background:#7a3eb8;color:#fff;display:grid;place-items:center;font-size:1.1rem">🎖️</div>
+            <div>
+              <div style="font-size:.95rem;font-weight:700;color:#7a3eb8">
+                <span class="t-hi">प्रमाणपत्र उपलब्ध है</span>
+                <span class="t-en">Certificate Available</span>
+              </div>
+              <div style="font-size:.78rem;color:#5b6b85">
+                <span class="t-hi">कोर्स पूरा होने पर जारी</span>
+                <span class="t-en">Issued on course completion</span>
+              </div>
+            </div>
+          </div>
+          <a href="${rec.CertificateURL}" target="_blank" rel="noopener"
+             class="btn btn-primary" style="background:#7a3eb8;border-color:#7a3eb8">
+            📥 <span class="t-hi">प्रमाणपत्र डाउनलोड करें</span><span class="t-en">Download Certificate</span>
+          </a>
+        </div>`;
+    } else certBox.innerHTML = '';
+  }
+}
+
 $('#logoutBtn').addEventListener('click', () => {
   $('#portalDash').classList.remove('show');
   $('#portalLogin').style.display = 'block';
@@ -2336,7 +2492,41 @@ $('#logoutBtn').addEventListener('click', () => {
   $('#loginMobile').value = '';
 });
 
-/* GRIEVANCE */
+/* ============================================================
+   NOTICES — Server से
+   ============================================================ */
+async function loadNotices() {
+  const box = $('#noticesList');
+  if (!box) return;
+  try {
+    const res = await fetch(SHEET_ENDPOINT + '?action=getNotices');
+    const r = await res.json();
+    if (r.status !== 'success' || !Array.isArray(r.data) || r.data.length === 0) {
+      box.innerHTML = `<p class="center" style="color:var(--muted)">
+        <span class="t-hi">अभी कोई सूचना नहीं है।</span>
+        <span class="t-en">No notices yet.</span></p>`;
+      return;
+    }
+    box.innerHTML = r.data.map(n => `
+      <div class="notice">
+        <div class="notice-date"><b>📢</b><span>${n.date || ''}</span></div>
+        <div class="notice-body">
+          <h4>${n.title || ''}</h4>
+          <p>${n.message || ''}</p>
+          ${n.link ? `<a href="${n.link}" target="_blank" class="btn btn-outline btn-sm" style="margin-top:10px">${n.linkText || 'View'}</a>` : ''}
+        </div>
+      </div>`).join('');
+  } catch (err) {
+    box.innerHTML = `<p class="center" style="color:var(--muted)">
+      <span class="t-hi">सूचनाएँ लोड नहीं हो सकीं।</span>
+      <span class="t-en">Could not load notices.</span></p>`;
+  }
+}
+loadNotices();
+
+/* ============================================================
+   GRIEVANCE
+   ============================================================ */
 $('#grievanceForm').addEventListener('submit', e => {
   e.preventDefault();
   const form = e.target;
@@ -2362,8 +2552,7 @@ $('#grievanceForm').addEventListener('submit', e => {
     const payload = {
       action:'submit', type:'grievance', ComplaintID: cid,
       Name: g('gName'), AppID: g('gAppId'), Mobile: g('gMobile'),
-      Email: email, Category: g('gCategory'), Details: g('gDetails'),
-      Status: 'Submitted'
+      Email: email, Category: g('gCategory'), Details: g('gDetails')
     };
     const r = await apiCall(payload);
     if (r.status !== 'success') { toast(r.message || 'Failed. Please try again.'); return; }
@@ -2379,7 +2568,9 @@ $('#grievanceForm').addEventListener('submit', e => {
   });
 });
 
-/* FAQ */
+/* ============================================================
+   FAQ
+   ============================================================ */
 $$('.faq-q').forEach(q => {
   q.addEventListener('click', () => {
     const item = q.parentElement;
@@ -2389,7 +2580,9 @@ $$('.faq-q').forEach(q => {
   });
 });
 
-/* COUNTERS */
+/* ============================================================
+   COUNTERS
+   ============================================================ */
 (function counters() {
   const els = $$('[data-count]');
   if (!els.length || !('IntersectionObserver' in window)) return;
@@ -2411,9 +2604,12 @@ $$('.faq-q').forEach(q => {
   els.forEach(el => io.observe(el));
 })();
 
-/* INIT */
+/* ============================================================
+   INIT
+   ============================================================ */
 showStep(1);
 console.log('%cDIPRA FOUNDATION — The Uplift Coaching Scheme', 'color:#0f2c52;font-weight:bold;font-size:14px');
+console.log('Endpoint:', SHEET_ENDPOINT);
 </script>
 </body>
 </html>
