@@ -377,8 +377,8 @@ footer a:hover{color:var(--accent-2)}
         <p class="hero-sub">
           <span class="t-hi">कम शुल्क में गुणवत्तापूर्ण कोचिंग — कक्षा 6 से 12 तक। परिवार की आय के आधार पर फीस में 70% तक विशेष छूट।</span>
           <span class="t-en">Quality coaching at low cost — for Classes 6 to 12. Special fee concession up to 70% based on family income.</span>
-           <span class="t-hi">अपने स्कूल/कॉलेज के समय का बैच न चुनें; वह बैच आवंटित नहीं किया जाएगा।</span>
-          <span class="t-en">Do not select the batch from your school/college days; that batch will not be allocated.</span>
+           <span class="t-hi">ऐसा बैच न चुनें जो आपके स्कूल/कॉलेज की पढ़ाई से टकराता हो; वह बैच आपको अलॉट नहीं किया जाएगा।</span>
+          <span class="t-en">Do not select a batch that conflicts with your school/college studies; that batch will not be allocated.</span>
         </p>
         <div class="hero-badges">
           <span>🎓 <span class="t-hi">कक्षा 6–12</span><span class="t-en">Class 6–12</span></span>
@@ -523,7 +523,6 @@ footer a:hover{color:var(--accent-2)}
           <tr>
             <th><span class="t-hi">कोड</span><span class="t-en">Code</span></th>
             <th><span class="t-hi">कोर्स / कक्षा</span><span class="t-en">Course / Class</span></th>
-            <th><span class="t-hi">विषय</span><span class="t-en">Subjects</span></th>
             <th><span class="t-hi">अवधि</span><span class="t-en">Duration</span></th>
             <th><span class="t-hi">सामान्य फीस</span><span class="t-en">Market Fee</span></th>
             <th><span class="t-hi">Uplift फीस</span><span class="t-en">Uplift Fee</span></th>
@@ -1614,19 +1613,15 @@ document.addEventListener('keydown', e => {
   }
 });
 
-/* ===== COURSES ===== */
+/* ===== COURSES (Subjects removed) ===== */
 const COURSES = [
   { code:'UPL-06', hi:'कक्षा 6–8 (फाउंडेशन)', en:'Class 6–8',
-    subHi:'गणित, विज्ञान, अंग्रेज़ी, हिंदी, सामाजिक विज्ञान', subEn:'Maths, Science, English, Hindi, SST',
     durHi:'12 माह', durEn:'12 months', gen:1500, fee:500, seats:60 },
   { code:'UPL-09', hi:'कक्षा 9–10 (हाई स्कूल)', en:'Class 9–10',
-    subHi:'गणित, विज्ञान, अंग्रेज़ी, हिंदी, सामाजिक विज्ञान', subEn:'Maths, Science, English, Hindi, SST',
     durHi:'12 माह', durEn:'12 months', gen:2200, fee:700, seats:80 },
   { code:'UPL-11', hi:'कक्षा 11–12 (विज्ञान)', en:'Class 11–12 Science',
-    subHi:'भौतिकी, रसायन, गणित / जीव विज्ञान', subEn:'Physics, Chemistry, Maths / Biology',
     durHi:'12 माह', durEn:'12 months', gen:3000, fee:900, seats:60 },
   { code:'UPL-12', hi:'कक्षा 11–12 (वाणिज्य)', en:'Class 11–12 Commerce',
-    subHi:'लेखाशास्त्र, व्यवसाय अध्ययन, अर्थशास्त्र', subEn:'Accountancy, Business Studies, Economics',
     durHi:'12 माह', durEn:'12 months', gen:3000, fee:900, seats:60 }
 ];
 
@@ -1645,9 +1640,8 @@ function concession(income) {
     <tr>
       <td><b style="font-family:monospace;color:var(--navy)">${c.code}</b></td>
       <td><b><span class="t-hi">${c.hi}</span><span class="t-en">${c.en}</span></b></td>
-      <td style="font-size:.82rem;color:var(--muted)"><span class="t-hi">${c.subHi}</span><span class="t-en">${c.subEn}</span></td>
       <td><span class="t-hi">${c.durHi}</span><span class="t-en">${c.durEn}</span></td>
-      <td><span class="fee-old">₹${c.gen.toLocaleString('en-IN')}</span></td>
+      <td><span class="fee-old">₹${c.gen.toLocaleString('en-IN')}</span><span style="font-weight:400;color:var(--muted);font-size:.85em"> <span class="t-hi">/माह</span><span class="t-en">/mo</span></span></td>
       <td class="fee-cut">₹${c.fee.toLocaleString('en-IN')}<span style="font-weight:400;color:var(--muted);font-size:.85em"> <span class="t-hi">/माह</span><span class="t-en">/mo</span></span></td>
       <td>${c.seats}</td>
     </tr>`).join('');
@@ -1725,7 +1719,7 @@ const STATES = {
 })();
 
 /* ============================================================
-   OTP MODULE — Email पर OTP भेजता है, सही OTP auto-accept
+   OTP MODULE
    ============================================================ */
 const OTP = {
   verifiedEmail: null,
@@ -1840,7 +1834,6 @@ const OTP = {
       OTP._pendingSubmit = callback;
       $('#otpEmail').value = email || '';
       OTP.open();
-      // Auto-send OTP immediately
       setTimeout(() => OTP.send(), 200);
     }
   }
@@ -1858,13 +1851,10 @@ $('#otpModal').addEventListener('click', e => {
   if (e.target.id === 'otpModal') OTP.close();
 });
 
-/* OTP input — auto-verify when 6 digits entered */
 $('#otpCode').addEventListener('input', e => {
   e.target.value = e.target.value.replace(/\D/g, '').slice(0, 6);
   $('#otpCodeErr').textContent = '';
   e.target.closest('.field').classList.remove('err');
-  
-  // Auto-verify when 6 digits entered
   clearTimeout(OTP._autoVerifyTimer);
   if (e.target.value.length === 6) {
     OTP._autoVerifyTimer = setTimeout(() => OTP.verify(), 300);
@@ -1896,7 +1886,6 @@ function markError(el, on) {
   if (field) field.classList.toggle('err', on);
 }
 
-/* Only Email, Mobile, Course mandatory */
 function validateStep(n) {
   const step = $(`#applyForm .step[data-step="${n}"]`);
   let ok = true, firstBad = null;
@@ -2022,7 +2011,6 @@ $('#submitBtn').addEventListener('click', async () => {
     btn.disabled = true;
     btn.innerHTML = '⏳ <span class="t-hi">फाइलें भेजी जा रही हैं...</span><span class="t-en">Uploading...</span>';
 
-    /* Files → base64 */
     const fileData = {};
 
     const photoFile = f.querySelector('[name="docPhoto"]').files[0];
@@ -2314,7 +2302,6 @@ function populateDashboard(rec) {
     </div>`;
   }).join('');
 
-  /* Admit Card */
   const admitBox = $('#admitCardBox');
   if (admitBox) {
     if (rec.AdmitCardURL && String(rec.AdmitCardURL).startsWith('http')) {
@@ -2360,7 +2347,6 @@ function populateDashboard(rec) {
     }
   }
 
-  /* Admin Notes */
   const notesBox = $('#adminNotesBox');
   if (notesBox) {
     if (rec.AdminNotes && String(rec.AdminNotes).trim()) {
@@ -2374,7 +2360,6 @@ function populateDashboard(rec) {
     } else notesBox.innerHTML = '';
   }
 
-  /* Fee Status */
   const feeBox = $('#feeStatusBox');
   if (feeBox) {
     const paid = String(rec.FeePaid || '').toLowerCase() === 'yes';
@@ -2391,7 +2376,6 @@ function populateDashboard(rec) {
       </div>`;
   }
 
-  /* Certificate */
   const certBox = $('#certificateBox');
   if (certBox) {
     if (rec.CertificateURL && String(rec.CertificateURL).startsWith('http')) {
