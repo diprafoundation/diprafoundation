@@ -1,53 +1,2473 @@
-<!-- ============================================================
-     OTP MODAL
-     ============================================================ -->
-<div class="modal" id="otpModal">
-  <div class="modal-box" style="max-width:440px">
-    <div class="modal-head">
-      <h3 style="font-size:1rem">🔐 <span class="t-hi">ईमेल सत्यापन</span><span class="t-en">Email Verification</span></h3>
-      <button class="close-x" id="otpClose">×</button>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DIPRA FOUNDATION | The Uplift – Coaching Scheme</title>
+<meta name="description" content="The Uplift Coaching Scheme by DIPRA FOUNDATION – low-cost coaching for Class 6–12 in Kanpur.">
+<meta property="og:title" content="DIPRA FOUNDATION | The Uplift – Coaching Scheme">
+<meta property="og:image" content="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0f2c52; --navy-2:#1a4a80; --navy-3:#0a1f3a;
+  --accent:#b8860b; --accent-2:#d4a017;
+  --green:#0f7a48; --red:#c0392b;
+  --bg:#f7f8fa; --card:#ffffff; --text:#1a2533; --muted:#64748b;
+  --border:#e4e8ee; --border-2:#d0d7e0;
+  --radius:8px; --radius-lg:12px;
+  --shadow:0 1px 3px rgba(15,44,82,.06),0 1px 2px rgba(15,44,82,.04);
+  --shadow-md:0 4px 12px rgba(15,44,82,.08);
+  --shadow-lg:0 10px 30px rgba(15,44,82,.12);
+  --logo-url:url('https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500');
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Inter','Noto Sans Devanagari',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+body.modal-open{overflow:hidden}
+img{max-width:100%;display:block}
+a{color:var(--navy-2);text-decoration:none}
+a:hover{text-decoration:underline}
+ul,ol{list-style:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+input,select,textarea{font-family:inherit;font-size:15px}
+h1,h2,h3,h4{line-height:1.3;font-weight:700;color:var(--navy-3)}
+h1{font-size:clamp(1.7rem,3.6vw,2.5rem);letter-spacing:-.02em}
+h2{font-size:clamp(1.35rem,2.6vw,1.9rem);letter-spacing:-.01em}
+h3{font-size:1.1rem}
+body.lang-hi .t-en{display:none!important}
+body.lang-en .t-hi{display:none!important}
+.container{width:min(1140px,92%);margin-inline:auto}
+section{padding:56px 0}
+.section-head{text-align:center;max-width:720px;margin:0 auto 36px}
+.section-head p{color:var(--muted);margin-top:10px;font-size:.95rem}
+.eyebrow{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 22px;border-radius:var(--radius);font-weight:600;font-size:.9rem;transition:.18s;border:1px solid transparent;text-decoration:none!important;cursor:pointer;white-space:nowrap}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:hover{background:var(--navy-2);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{background:var(--accent-2);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.btn-outline{background:#fff;border-color:var(--border-2);color:var(--navy)}
+.btn-outline:hover{border-color:var(--navy);background:#fafbfc}
+.btn-ghost{background:transparent;border-color:rgba(255,255,255,.35);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.6)}
+.btn-sm{padding:8px 15px;font-size:.83rem}
+.btn-block{width:100%}
+.btn:disabled{opacity:.6;cursor:not-allowed;transform:none!important}
+
+.topbar{background:var(--navy-3);color:#b6c5d6;font-size:.8rem;padding:6px 0}
+.topbar .container{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.topbar a{color:#b6c5d6}
+.topbar-links{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+
+header{position:sticky;top:0;z-index:900;background:#fff;border-bottom:1px solid var(--border)}
+.nav-wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none!important}
+.brand-logo{width:46px;height:46px;border-radius:8px;flex:none;overflow:hidden;background:#ffffff;border:1px solid var(--border);display:grid;place-items:center;padding:4px}
+.brand-logo img{width:100%;height:100%;object-fit:contain}
+.brand-text b{display:block;font-size:1rem;color:var(--navy-3);line-height:1.2}
+.brand-text span{font-size:.73rem;color:var(--muted);letter-spacing:.03em}
+
+nav ul{display:flex;align-items:center;gap:2px}
+nav a{display:block;padding:9px 14px;border-radius:6px;font-size:.88rem;font-weight:500;color:#354258;text-decoration:none!important;transition:.15s;cursor:pointer}
+nav a:hover,nav a.active{background:#eef2f7;color:var(--navy)}
+
+.nav-actions{display:flex;align-items:center;gap:10px}
+.lang-switch{display:flex;border:1px solid var(--border-2);border-radius:6px;overflow:hidden}
+.lang-btn{padding:5px 10px;font-size:.74rem;font-weight:600;color:var(--muted);background:#fff}
+.lang-btn.active{background:var(--navy);color:#fff}
+.burger{display:none;flex-direction:column;gap:4px;padding:9px}
+.burger span{width:22px;height:2px;background:var(--navy-3);border-radius:2px;transition:.25s}
+.burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+.hero{background:linear-gradient(135deg,var(--navy-3) 0%,var(--navy) 60%,var(--navy-2) 100%);color:#fff;padding:72px 0 80px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;opacity:.5;background-image:radial-gradient(circle at 20% 20%,rgba(212,160,23,.15) 0,transparent 40%),radial-gradient(circle at 80% 80%,rgba(26,74,128,.4) 0,transparent 50%)}
+.hero .container{position:relative;z-index:2}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+.hero h1{color:#fff;margin-bottom:16px}
+.hero h1 em{font-style:normal;color:var(--accent-2);font-weight:600}
+.hero-sub{font-size:1rem;color:#c9d6e5;max-width:560px;margin-bottom:24px;line-height:1.75}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.hero-badges span{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:5px 13px;border-radius:999px;font-size:.78rem;font-weight:500}
+.hero-btns{display:flex;flex-wrap:wrap;gap:10px}
+.hero-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-lg);padding:24px;backdrop-filter:blur(8px)}
+.hero-card h3{color:#fff;font-size:1rem;margin-bottom:16px;display:flex;align-items:center;gap:9px}
+.hero-card h3::before{content:"";width:3px;height:18px;background:var(--accent-2);border-radius:2px}
+.hero-card li{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:.85rem;color:#c9d6e5}
+.hero-card li:last-child{border-bottom:none}
+.hero-card li b{color:var(--accent-2);font-weight:600;white-space:nowrap}
+
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;transition:.2s}
+.card:hover{border-color:var(--border-2);box-shadow:var(--shadow-md)}
+.card .ico{width:44px;height:44px;border-radius:8px;display:grid;place-items:center;font-size:1.25rem;margin-bottom:14px;background:#eef2f7;color:var(--navy)}
+.card h3{margin-bottom:8px;font-size:1rem}
+.card p{color:var(--muted);font-size:.88rem;line-height:1.65}
+
+/* Action Cards */
+.action-card{cursor:pointer;text-align:center;padding:36px 24px;background:#fff;border:2px solid var(--border);border-radius:var(--radius-lg);transition:.25s}
+.action-card:hover{border-color:var(--navy-2)!important;transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.action-card .action-ico{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-size:1.8rem;margin:0 auto 16px}
+.action-card h3{font-size:1.15rem;margin-bottom:8px;color:var(--navy-3)}
+.action-card p{color:var(--muted);font-size:.88rem;margin-bottom:16px;line-height:1.6}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.stat{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 14px;text-align:center}
+.stat b{display:block;font-size:1.75rem;color:var(--navy);font-weight:700;line-height:1.1}
+.stat span{font-size:.8rem;color:var(--muted);margin-top:4px;display:block}
+
+.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius-lg);background:#fff}
+table{width:100%;border-collapse:collapse;min-width:760px;font-size:.85rem}
+thead{background:var(--navy);color:#fff}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--border)}
+th{font-weight:600;font-size:.76rem;letter-spacing:.05em;text-transform:uppercase}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#fafbfc}
+.tag{display:inline-block;padding:3px 9px;border-radius:999px;font-size:.7rem;font-weight:600}
+.tag-open{background:#e6f4ec;color:var(--green)}
+.tag-soon{background:#fdf3e0;color:#a16207}
+.fee-cut{color:var(--green);font-weight:700}
+.fee-old{color:var(--muted);text-decoration:line-through;font-size:.85em}
+
+.form-shell{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow)}
+.form-head{background:var(--navy);color:#fff;padding:22px 28px}
+.form-head h3{color:#fff;font-size:1.15rem}
+.form-head p{color:#b6c5d6;font-size:.85rem;margin-top:4px}
+.form-body{padding:28px}
+.field{margin-bottom:16px}
+.field label{display:block;font-weight:600;font-size:.83rem;margin-bottom:6px;color:#2a3547}
+.field label .req{color:var(--red)}
+.field input,.field select,.field textarea{width:100%;padding:10px 13px;border:1px solid var(--border-2);border-radius:var(--radius);background:#fff;transition:.15s;color:var(--text);font-size:.92rem}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--navy-2);box-shadow:0 0 0 3px rgba(26,74,128,.1)}
+.field textarea{min-height:96px;resize:vertical}
+.field small{display:block;color:var(--muted);font-size:.76rem;margin-top:4px}
+.field.err input,.field.err select,.field.err textarea{border-color:var(--red);background:#fef5f5}
+.field .errmsg{color:var(--red);font-size:.76rem;margin-top:4px;display:none}
+.field.err .errmsg{display:block}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.row-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.check-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:9px}
+.check{display:flex;align-items:center;gap:9px;padding:10px 12px;border:1px solid var(--border-2);border-radius:var(--radius);background:#fff;cursor:pointer;font-size:.85rem;transition:.15s}
+.check:hover{border-color:var(--navy-2);background:#fafbfc}
+.check input{width:16px;height:16px;accent-color:var(--navy);flex:none}
+.declaration{display:flex;gap:11px;align-items:flex-start;background:#f7f9fc;border:1px solid var(--border);padding:14px;border-radius:var(--radius);font-size:.83rem;line-height:1.65}
+.declaration input{width:17px;height:17px;margin-top:3px;accent-color:var(--navy);flex:none}
+
+.stepper{display:flex;gap:4px;padding:16px 28px;background:#f7f9fc;border-bottom:1px solid var(--border);overflow-x:auto}
+.step-pill{display:flex;align-items:center;gap:8px;padding:6px 13px;border-radius:999px;font-size:.77rem;font-weight:600;color:var(--muted);background:#fff;border:1px solid var(--border);white-space:nowrap;transition:.15s}
+.step-pill .num{width:19px;height:19px;border-radius:50%;background:#e0e6ed;color:#5a6a7f;display:grid;place-items:center;font-size:.7rem;font-weight:700;flex:none}
+.step-pill.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.step-pill.active .num{background:var(--accent-2);color:#fff}
+.step-pill.done{background:#e6f4ec;color:var(--green);border-color:#c3e2d2}
+.step-pill.done .num{background:var(--green);color:#fff}
+
+.step{display:none;animation:fade .25s ease}
+.step.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.step-title{font-size:1.05rem;font-weight:700;color:var(--navy-3);margin-bottom:4px}
+.step-desc{color:var(--muted);font-size:.85rem;margin-bottom:20px}
+.form-nav{display:flex;justify-content:space-between;gap:12px;margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+
+.review-box{background:#f7f9fc;border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin-bottom:14px}
+.review-box h4{font-size:.9rem;color:var(--navy);margin-bottom:11px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.review-list li{display:flex;justify-content:space-between;gap:16px;padding:6px 0;font-size:.85rem;border-bottom:1px dashed var(--border)}
+.review-list li:last-child{border-bottom:none}
+.review-list li span:first-child{color:var(--muted)}
+.review-list li span:last-child{font-weight:600;text-align:right}
+
+.confirm{display:none;padding:40px 28px;text-align:center}
+.confirm.show{display:block}
+.confirm .tick{width:68px;height:68px;border-radius:50%;background:#e6f4ec;color:var(--green);display:grid;place-items:center;font-size:2rem;margin:0 auto 18px;animation:pop .4s cubic-bezier(.2,1.4,.5,1)}
+@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+.app-id-box{display:inline-block;background:#fdf3e0;border:2px dashed var(--accent);padding:14px 30px;border-radius:var(--radius);margin:16px 0}
+.app-id-box small{display:block;font-size:.72rem;color:#8a6d10;letter-spacing:.08em;text-transform:uppercase}
+.app-id-box b{font-size:1.4rem;color:var(--navy);letter-spacing:.04em;font-family:monospace}
+.confirm-note{background:#fdf3e0;border:1px solid #f0e0b8;color:#7a5c00;padding:12px 16px;border-radius:var(--radius);font-size:.84rem;max-width:640px;margin:16px auto 0;text-align:left;line-height:1.7}
+
+.tabs{display:flex;gap:6px;margin-bottom:22px;flex-wrap:wrap;justify-content:center}
+.tab{padding:10px 22px;border-radius:var(--radius);font-weight:600;font-size:.87rem;background:#fff;border:1px solid var(--border-2);color:var(--muted);transition:.15s}
+.tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+.notice{display:flex;gap:14px;padding:16px;background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:10px;transition:.15s}
+.notice:hover{border-color:var(--border-2);box-shadow:var(--shadow)}
+.notice-date{flex:none;width:58px;text-align:center;background:#eef2f7;border-radius:var(--radius);padding:8px 4px}
+.notice-date b{display:block;font-size:1.2rem;color:var(--navy);line-height:1}
+.notice-date span{font-size:.66rem;color:var(--muted);text-transform:uppercase}
+.notice-body h4{font-size:.94rem;margin-bottom:3px}
+.notice-body p{font-size:.83rem;color:var(--muted)}
+
+.faq-item{background:#fff;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:8px;overflow:hidden}
+.faq-q{width:100%;text-align:left;padding:16px 20px;font-weight:600;font-size:.91rem;display:flex;justify-content:space-between;gap:16px;color:var(--navy-3)}
+.faq-q::after{content:"+";font-size:1.3rem;color:var(--accent);line-height:1;flex:none;font-weight:400}
+.faq-item.open .faq-q::after{content:"−"}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;color:var(--muted);font-size:.87rem;line-height:1.7}
+.faq-item.open .faq-a{max-height:420px}
+.faq-a div{padding:0 20px 16px}
+
+.portal-shell{max-width:880px;margin:0 auto}
+.portal-login{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-md);max-width:460px;margin:0 auto}
+.dash{display:none}
+.dash.show{display:block}
+.dash-head{background:var(--navy);color:#fff;padding:24px 28px;border-radius:var(--radius-lg) var(--radius-lg) 0 0;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.dash-head h3{color:#fff}
+.dash-head p{color:#b6c5d6;font-size:.83rem;margin-top:3px}
+.dash-body{background:#fff;border:1px solid var(--border);border-top:none;border-radius:0 0 var(--radius-lg) var(--radius-lg);padding:26px}
+.timeline{display:flex;overflow-x:auto;padding:8px 0 16px}
+.tl-step{flex:1;min-width:120px;text-align:center;position:relative;font-size:.73rem;color:var(--muted)}
+.tl-step::before{content:"";position:absolute;top:13px;left:0;right:0;height:2px;background:#e4e8ee;z-index:0}
+.tl-step:first-child::before{left:50%}
+.tl-step:last-child::before{right:50%}
+.tl-dot{position:relative;z-index:1;width:26px;height:26px;border-radius:50%;background:#e4e8ee;color:#7a8aa3;display:grid;place-items:center;margin:0 auto 8px;font-size:.72rem;font-weight:700;border:3px solid #fff}
+.tl-step.done .tl-dot{background:var(--green);color:#fff}
+.tl-step.current .tl-dot{background:var(--accent-2);color:#fff;box-shadow:0 0 0 4px rgba(212,160,23,.2)}
+.tl-step.done::before,.tl-step.current::before{background:var(--green)}
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:18px}
+.mini{background:#f7f9fc;border:1px solid var(--border);border-radius:var(--radius);padding:15px}
+.mini small{color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.05em}
+.mini b{display:block;font-size:.98rem;color:var(--navy);margin-top:4px}
+
+.contact-grid{display:grid;grid-template-columns:1fr;gap:30px;align-items:start;max-width:640px;margin-inline:auto}
+.info-item{display:flex;gap:13px;margin-bottom:18px}
+.info-item .ico{width:40px;height:40px;border-radius:8px;background:#eef2f7;display:grid;place-items:center;font-size:1rem;flex:none;color:var(--navy)}
+.info-item h4{font-size:.88rem;margin-bottom:2px}
+.info-item p{font-size:.85rem;color:var(--muted)}
+.info-item a{color:var(--navy-2)}
+
+footer{background:var(--navy-3);color:#9fb3c9;padding:52px 0 0;font-size:.86rem}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:32px;padding-bottom:34px}
+footer h4{color:#fff;font-size:.92rem;margin-bottom:14px}
+footer li{margin-bottom:8px}
+footer a{color:#9fb3c9;text-decoration:none;cursor:pointer}
+footer a:hover{color:var(--accent-2)}
+.foot-brand{display:flex;align-items:center;gap:11px;margin-bottom:13px}
+.foot-brand .brand-logo{background:#fff;padding:4px}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding:18px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.78rem}
+.disclaimer{background:rgba(255,255,255,.04);border-left:3px solid var(--accent-2);padding:13px 16px;border-radius:6px;font-size:.76rem;line-height:1.65;margin-bottom:24px;color:#9fb3c9}
+.social-link{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:8px;font-size:.82rem;color:#fff;margin-top:6px;transition:.2s}
+.social-link:hover{background:rgba(255,255,255,.12);text-decoration:none}
+
+.modal{position:fixed;inset:0;background:rgba(10,20,35,.7);display:none;place-items:center;z-index:1200;padding:20px;backdrop-filter:blur(4px);overflow-y:auto}
+.modal.show{display:grid}
+.modal-box{background:#fff;border-radius:var(--radius-lg);max-width:900px;width:100%;max-height:92vh;overflow:auto;box-shadow:var(--shadow-lg);margin:auto}
+.modal-head{padding:18px 24px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#fff;z-index:2}
+.modal-head h3{font-size:1.05rem;color:var(--navy-3)}
+.modal-body{padding:24px}
+.close-x{font-size:1.5rem;line-height:1;color:var(--muted);padding:4px 10px;border-radius:6px}
+.close-x:hover{background:#f0f3f7;color:var(--red)}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,120%);background:var(--navy-3);color:#fff;padding:13px 24px;border-radius:var(--radius);box-shadow:var(--shadow-lg);z-index:1500;transition:.3s;font-size:.87rem;font-weight:500;max-width:92vw;text-align:center}
+.toast.show{transform:translate(-50%,0)}
+
+.note{background:#fdf3e0;border:1px solid #f0e0b8;color:#7a5c00;padding:13px 16px;border-radius:var(--radius);font-size:.84rem;line-height:1.7}
+.note-blue{background:#eef4fb;border:1px solid #d5e0ed;color:#1a3a5c}
+.center{text-align:center}
+.mt24{margin-top:24px}.mt16{margin-top:16px}
+
+@media(max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .g4{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .hero-card{max-width:560px}
+}
+@media(max-width:860px){
+  .burger{display:flex}
+  nav{position:fixed;inset:0 0 0 auto;width:min(300px,86vw);background:#fff;z-index:1000;transform:translateX(100%);transition:.3s;padding:76px 18px 28px;overflow-y:auto;box-shadow:-6px 0 30px rgba(0,0,0,.14)}
+  nav.open{transform:translateX(0)}
+  nav ul{flex-direction:column;align-items:stretch;gap:2px}
+  nav a{padding:11px 13px;font-size:.92rem}
+  .nav-actions .btn{display:none}
+  .g3,.g2,.stats,.row,.row-3{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  section{padding:44px 0}
+  .form-body,.form-head,.stepper{padding-inline:20px}
+  .hero{padding:52px 0 60px}
+  .topbar-links{gap:12px;font-size:.73rem}
+  .modal{padding:10px}
+  .modal-box{max-height:96vh}
+}
+@media(max-width:520px){
+  .g4{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .btn{padding:10px 18px;font-size:.86rem}
+  .stat b{font-size:1.5rem}
+}
+@media print{
+  body *{visibility:hidden}
+  #confirmCard,#confirmCard *,#teacherConfirm,#teacherConfirm *,#instConfirm,#instConfirm *,#grievanceConfirm,#grievanceConfirm *{visibility:visible}
+  #confirmCard,#teacherConfirm,#instConfirm,#grievanceConfirm{position:absolute;left:0;top:0;width:100%;padding:0}
+  .no-print{display:none!important}
+}
+</style>
+</head>
+
+<body class="lang-hi">
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-links">
+      <span>📞 <a href="tel:+919532328276">+91 95323 28276</a></span>
+      <span>✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></span>
+      <span class="t-hi">📍 खेरसा, बिधनू, कानपुर नगर – 209214</span>
+      <span class="t-en">📍 Khersa, Bidhnu, Kanpur Nagar – 209214</span>
     </div>
-    <div class="modal-body">
-      <div id="otpStepEmail">
-        <p style="color:var(--muted);font-size:.86rem;margin-bottom:16px;line-height:1.65">
-          <span class="t-hi">आपके ईमेल पर 6 अंकों का OTP भेजा जाएगा।</span>
-          <span class="t-en">A 6-digit OTP will be sent to your email.</span>
-        </p>
-        <div class="field">
-          <label><span class="t-hi">ईमेल पता</span><span class="t-en">Email Address</span></label>
-          <input type="email" id="otpEmail" placeholder="name@example.com">
-          <div class="errmsg" id="otpEmailErr"><span class="t-hi">सही ईमेल भरें</span><span class="t-en">Enter a valid email</span></div>
-        </div>
-        <button class="btn btn-primary btn-block" id="otpSendBtn">
-          📩 <span class="t-hi">OTP भेजें</span><span class="t-en">Send OTP</span>
-        </button>
+    <div class="topbar-links">
+      <a href="https://www.diprafoundation.com" target="_blank" rel="noopener">www.diprafoundation.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="container nav-wrap">
+    <a href="#home" class="brand">
+      <div class="brand-logo">
+        <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="DIPRA FOUNDATION">
       </div>
-      <div id="otpStepVerify" style="display:none">
-        <p style="color:var(--muted);font-size:.86rem;margin-bottom:16px">
-          <span class="t-hi">OTP भेजा गया:</span><span class="t-en">OTP sent to:</span>
-          <b id="otpSentTo" style="color:var(--navy)"></b>
+      <div class="brand-text">
+        <b>DIPRA FOUNDATION</b>
+        <span class="t-hi">The Uplift – कोचिंग योजना</span>
+        <span class="t-en">The Uplift – Coaching Scheme</span>
+      </div>
+    </a>
+
+    <nav id="mainNav">
+      <ul>
+        <li><a href="#home" class="active"><span class="t-hi">होम</span><span class="t-en">Home</span></a></li>
+        <li><a href="#about"><span class="t-hi">परिचय</span><span class="t-en">About</span></a></li>
+        <li><a href="#courses"><span class="t-hi">कोर्स व फीस</span><span class="t-en">Courses &amp; Fees</span></a></li>
+        <li><a onclick="openApplyModal()" style="color:var(--accent);font-weight:700"><span class="t-hi">आवेदन करें</span><span class="t-en">Apply</span></a></li>
+        <li><a onclick="openVolunteerModal()"><span class="t-hi">स्वयंसेवक</span><span class="t-en">Volunteer</span></a></li>
+        <li><a href="#portal"><span class="t-hi">स्टूडेंट पोर्टल</span><span class="t-en">Student Portal</span></a></li>
+        <li><a href="#notices"><span class="t-hi">सूचनाएँ</span><span class="t-en">Notices</span></a></li>
+        <li><a href="#contact"><span class="t-hi">संपर्क</span><span class="t-en">Contact</span></a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="hi">हिं</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <button class="btn btn-accent btn-sm" onclick="openApplyModal()"><span class="t-hi">आवेदन करें</span><span class="t-en">Apply Now</span></button>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home" style="padding-top:60px">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow"><span class="t-hi">DIPRA FOUNDATION की शैक्षणिक पहल</span><span class="t-en">An educational initiative of DIPRA FOUNDATION</span></span>
+        <h1>
+          <span class="t-hi">The Uplift – <em>कोचिंग योजना</em></span>
+          <span class="t-en">The Uplift – <em>Coaching Scheme</em></span>
+        </h1>
+        <p class="hero-sub">
+          <span class="t-hi">कम शुल्क में गुणवत्तापूर्ण कोचिंग — कक्षा 6 से 12 तक। परिवार की आय के आधार पर फीस में 70% तक विशेष छूट।</span>
+          <span class="t-en">Quality coaching at low cost — for Classes 6 to 12. Special fee concession up to 70% based on family income.</span>
         </p>
+        <div class="hero-badges">
+          <span>🎓 <span class="t-hi">कक्षा 6–12</span><span class="t-en">Class 6–12</span></span>
+          <span>💰 <span class="t-hi">70% तक छूट</span><span class="t-en">Up to 70% off</span></span>
+          <span>💻 <span class="t-hi">ऑफलाइन + ऑनलाइन</span><span class="t-en">Offline + Online</span></span>
+          <span>📍 <span class="t-hi">कानपुर</span><span class="t-en">Kanpur</span></span>
+        </div>
+        <div class="hero-btns">
+          <button class="btn btn-accent" onclick="openApplyModal()">📝 <span class="t-hi">ऑनलाइन आवेदन करें</span><span class="t-en">Apply Online</span></button>
+          <a href="#courses" class="btn btn-ghost"><span class="t-hi">कोर्स व फीस</span><span class="t-en">Courses &amp; Fees</span></a>
+          <button class="btn btn-ghost" onclick="openVolunteerModal()"><span class="t-hi">स्वयंसेवक बनें</span><span class="t-en">Volunteer</span></button>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3><span class="t-hi">महत्वपूर्ण तिथियाँ — सत्र 2026–27</span><span class="t-en">Key Dates — Session 2026–27</span></h3>
+        <ul>
+          <li><span class="t-hi">आवेदन प्रारंभ</span><span class="t-en">Applications Open</span> <b>25/09/2026</b></li>
+          <li><span class="t-hi">आवेदन अंतिम तिथि</span><span class="t-en">Last Date</span> <b>07/10/2026</b></li>
+          <li><span class="t-hi">प्रवेश परीक्षा</span><span class="t-en">Entrance Exam</span> <b>09/10/2026</b></li>
+          <li><span class="t-hi">चयन सूची</span><span class="t-en">Selection List</span> <b>11/10/2026</b></li>
+          <li><span class="t-hi">कक्षाएँ प्रारंभ</span><span class="t-en">Classes Begin</span> <b>12/10/2026</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTION CARDS -->
+<section id="actions" style="background:#fff">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="t-hi">शुरुआत करें</span><span class="t-en">Get Started</span></span>
+      <h2><span class="t-hi">आप क्या करना चाहेंगे?</span><span class="t-en">What would you like to do?</span></h2>
+      <p><span class="t-hi">नीचे दिए विकल्पों में से चुनें</span><span class="t-en">Choose from the options below</span></p>
+    </div>
+
+    <div class="grid g3" style="max-width:1000px;margin-inline:auto">
+      <div class="action-card" onclick="openApplyModal()">
+        <div class="action-ico" style="background:#eef4fb;color:var(--navy)">📝</div>
+        <h3><span class="t-hi">आवेदन करें</span><span class="t-en">Apply Now</span></h3>
+        <p><span class="t-hi">The Uplift कोचिंग योजना के लिए ऑनलाइन आवेदन भरें</span><span class="t-en">Fill the online application for The Uplift scheme</span></p>
+        <span class="btn btn-primary btn-sm"><span class="t-hi">फॉर्म खोलें →</span><span class="t-en">Open Form →</span></span>
+      </div>
+
+      <div class="action-card" onclick="openVolunteerModal()">
+        <div class="action-ico" style="background:#fdf3e0;color:var(--accent)">🤝</div>
+        <h3><span class="t-hi">स्वयंसेवक बनें</span><span class="t-en">Become a Volunteer</span></h3>
+        <p><span class="t-hi">शिक्षक या संस्थान के रूप में जुड़ें</span><span class="t-en">Join as a teacher or institution</span></p>
+        <span class="btn btn-accent btn-sm"><span class="t-hi">फॉर्म खोलें →</span><span class="t-en">Open Form →</span></span>
+      </div>
+
+      <div class="action-card" onclick="openGrievanceModal()">
+        <div class="action-ico" style="background:#fef0ef;color:var(--red)">📢</div>
+        <h3><span class="t-hi">शिकायत दर्ज करें</span><span class="t-en">File a Grievance</span></h3>
+        <p><span class="t-hi">कोई समस्या या सवाल है? हमें बताएँ</span><span class="t-en">Have an issue or question? Let us know</span></p>
+        <span class="btn btn-outline btn-sm"><span class="t-hi">फॉर्म खोलें →</span><span class="t-en">Open Form →</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="t-hi">योजना की विशेषताएँ</span><span class="t-en">Scheme Highlights</span></span>
+      <h2><span class="t-hi">The Uplift में क्या-क्या मिलेगा?</span><span class="t-en">What does The Uplift offer?</span></h2>
+    </div>
+
+    <div class="grid g3">
+      <div class="card"><div class="ico">💰</div><h3><span class="t-hi">आय आधारित फीस छूट</span><span class="t-en">Income-Based Concession</span></h3><p><span class="t-hi">परिवार की वार्षिक आय के आधार पर फीस में 30% से 70% तक छूट। अनाथ बच्चों के लिए पूर्ण छूट।</span><span class="t-en">30% to 70% concession based on income. Full scholarship for orphans.</span></p></div>
+      <div class="card"><div class="ico">👩‍🏫</div><h3><span class="t-hi">अनुभवी शिक्षक</span><span class="t-en">Experienced Teachers</span></h3><p><span class="t-hi">सत्यापित योग्यता वाले शिक्षक। स्वयंसेवक शिक्षकों का सहयोग।</span><span class="t-en">Teachers with verified qualifications. Support from volunteers.</span></p></div>
+      <div class="card"><div class="ico">💻</div><h3><span class="t-hi">ऑफलाइन + ऑनलाइन</span><span class="t-en">Offline + Online</span></h3><p><span class="t-hi">कानपुर में ऑफलाइन कक्षाएँ तथा अन्य जिलों के लिए ऑनलाइन कक्षाएँ।</span><span class="t-en">Offline classes in Kanpur, online for other districts.</span></p></div>
+      <div class="card"><div class="ico">📊</div><h3><span class="t-hi">नियमित टेस्ट</span><span class="t-en">Regular Tests</span></h3><p><span class="t-hi">साप्ताहिक व मासिक टेस्ट, प्रगति रिपोर्ट तथा व्यक्तिगत मार्गदर्शन।</span><span class="t-en">Weekly and monthly tests, progress reports, personal guidance.</span></p></div>
+      <div class="card"><div class="ico">📚</div><h3><span class="t-hi">अध्ययन सामग्री</span><span class="t-en">Study Materials</span></h3><p><span class="t-hi">विषयवार नोट्स, पिछले वर्षों के प्रश्नपत्र तथा अभ्यास प्रश्न।</span><span class="t-en">Subject-wise notes, previous papers and practice questions.</span></p></div>
+      <div class="card"><div class="ico">🎖️</div><h3><span class="t-hi">डिजिटल प्रमाणपत्र</span><span class="t-en">Digital Certificates</span></h3><p><span class="t-hi">कोर्स पूरा करने पर QR कोड सहित डिजिटल प्रमाणपत्र।</span><span class="t-en">Digital certificate with QR code on course completion.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background:#fff">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="t-hi">परिचय</span><span class="t-en">About</span></span>
+      <h2><span class="t-hi">The Uplift क्या है?</span><span class="t-en">What is The Uplift?</span></h2>
+    </div>
+
+    <div class="grid g2" style="align-items:center;gap:40px">
+      <div>
+        <p style="font-size:1rem;margin-bottom:16px;line-height:1.8">
+          <span class="t-hi"><strong>The Uplift Coaching Scheme, DIPRA FOUNDATION की एक शैक्षणिक पहल है</strong>, जिसका उद्देश्य विद्यार्थियों को कम शुल्क पर कोचिंग तथा प्रतियोगी परीक्षाओं की तैयारी के अवसर उपलब्ध कराना है।</span>
+          <span class="t-en"><strong>The Uplift Coaching Scheme is an educational initiative of DIPRA FOUNDATION</strong>, aimed at providing low-cost coaching and competitive exam preparation.</span>
+        </p>
+        <p style="color:var(--muted);margin-bottom:18px;line-height:1.8">
+          <span class="t-hi">आज बड़ी संख्या में प्रतिभाशाली विद्यार्थी केवल आर्थिक कारणों से उचित कोचिंग नहीं ले पाते। The Uplift इसी अंतर को कम करने के लिए बनाई गई है।</span>
+          <span class="t-en">Today, many talented students miss out on coaching for financial reasons. The Uplift exists to close that gap.</span>
+        </p>
+
+        <div class="review-box" style="background:#f7f9fc">
+          <h4 style="font-size:.88rem;color:var(--navy);margin-bottom:11px;padding-bottom:8px;border-bottom:1px solid var(--border)">📋 <span class="t-hi">संस्था विवरण</span><span class="t-en">Organisation Details</span></h4>
+          <ul class="review-list">
+            <li><span class="t-hi">संस्था का नाम</span><span class="t-en">Organisation</span><span>DIPRA FOUNDATION</span></li>
+            <li><span class="t-hi">प्रकार</span><span class="t-en">Type</span><span>Trust (Trust Act 1882)</span></li>
+            <li><span class="t-hi">रजिस्ट्रेशन नंबर</span><span class="t-en">Reg. No.</span><span>300</span></li>
+            <li><span class="t-hi">पंजीकरण दिनांक</span><span class="t-en">Reg. Date</span><span>08-10-2024</span></li>
+            <li><span class="t-hi">दर्पण आईडी</span><span class="t-en">Darpan ID</span><span>UP/2024/0459444</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <div class="stats" style="grid-template-columns:1fr 1fr">
+          <div class="stat"><b data-count="4">0</b><span class="t-hi">कोर्स</span><span class="t-en">Courses</span></div>
+          <div class="stat"><b data-count="260">0</b><span class="t-hi">कुल सीटें</span><span class="t-en">Total Seats</span></div>
+          <div class="stat"><b data-count="70">0</b><span class="t-hi">% तक छूट</span><span class="t-en">% Max Concession</span></div>
+          <div class="stat"><b data-count="7">0</b><span class="t-hi">कक्षाएँ (6–12)</span><span class="t-en">Classes (6–12)</span></div>
+        </div>
+        <div class="note note-blue mt24">
+          <strong class="t-hi">महत्वपूर्ण सूचना:</strong><strong class="t-en">Important:</strong>
+          <span class="t-hi"> The Uplift, DIPRA FOUNDATION की अपनी पहल है। यह किसी सरकारी योजना के अंतर्गत संचालित नहीं है।</span>
+          <span class="t-en"> The Uplift is DIPRA FOUNDATION's own initiative. Not under any government scheme.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="t-hi">कोर्स व फीस</span><span class="t-en">Courses &amp; Fees</span></span>
+      <h2><span class="t-hi">उपलब्ध कोर्स और शुल्क</span><span class="t-en">Available Courses and Fees</span></h2>
+      <p><span class="t-hi">नीचे दी गई फीस "The Uplift" योजना के अंतर्गत मानक मासिक फीस है। आय के आधार पर 70% तक अतिरिक्त छूट दी जाती है।</span><span class="t-en">Standard monthly fees under "The Uplift" scheme. Up to 70% additional concession based on income.</span></p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th><span class="t-hi">कोड</span><span class="t-en">Code</span></th>
+            <th><span class="t-hi">कोर्स / कक्षा</span><span class="t-en">Course / Class</span></th>
+            <th><span class="t-hi">विषय</span><span class="t-en">Subjects</span></th>
+            <th><span class="t-hi">अवधि</span><span class="t-en">Duration</span></th>
+            <th><span class="t-hi">सामान्य फीस</span><span class="t-en">Market Fee</span></th>
+            <th><span class="t-hi">Uplift फीस</span><span class="t-en">Uplift Fee</span></th>
+            <th><span class="t-hi">सीटें</span><span class="t-en">Seats</span></th>
+          </tr>
+        </thead>
+        <tbody id="courseRows"></tbody>
+      </table>
+    </div>
+
+    <p class="mt16" style="font-size:.8rem;color:var(--muted);line-height:1.7">
+      <span class="t-hi">* उपरोक्त फीस प्रति माह है। एकमुश्त पंजीकरण शुल्क ₹100 (आय ₹50,000 से कम होने पर माफ)। सभी राशियाँ DIPRA FOUNDATION की अंतिम स्वीकृति के अधीन हैं।</span>
+      <span class="t-en">* Fees per month. Registration fee ₹100 (waived if income below ₹50,000). Subject to final approval.</span>
+    </p>
+
+    <div class="form-shell mt24" style="margin-top:30px">
+      <div class="form-head">
+        <h3>🧮 <span class="t-hi">फीस कैलकुलेटर</span><span class="t-en">Fee Calculator</span></h3>
+        <p><span class="t-hi">कोर्स और वार्षिक आय चुनें — देय फीस तुरंत देखें।</span><span class="t-en">Select course and annual income — see payable fee instantly.</span></p>
+      </div>
+      <div class="form-body">
+        <div class="row">
+          <div class="field">
+            <label><span class="t-hi">कोर्स चुनें</span><span class="t-en">Select Course</span></label>
+            <select id="calcCourse"></select>
+          </div>
+          <div class="field">
+            <label><span class="t-hi">परिवार की वार्षिक आय (₹)</span><span class="t-en">Annual Family Income (₹)</span></label>
+            <input type="number" id="calcIncome" placeholder="180000" min="0" step="1000">
+          </div>
+        </div>
+
+        <div id="calcResult" style="display:none">
+          <div class="dash-grid">
+            <div class="mini"><small><span class="t-hi">सामान्य फीस</span><span class="t-en">Market Fee</span></small><b id="rGen">₹0</b></div>
+            <div class="mini"><small><span class="t-hi">Uplift फीस</span><span class="t-en">Uplift Fee</span></small><b id="rBase">₹0</b></div>
+            <div class="mini"><small><span class="t-hi">आय आधारित छूट</span><span class="t-en">Concession</span></small><b id="rDisc" style="color:var(--green)">0%</b></div>
+            <div class="mini" style="background:#fdf3e0;border-color:#f0e0b8"><small><span class="t-hi">देय मासिक फीस</span><span class="t-en">Monthly Fee</span></small><b id="rPay" style="color:var(--accent);font-size:1.25rem">₹0</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-wrap mt24" style="margin-top:24px">
+      <table style="min-width:560px">
+        <thead>
+          <tr>
+            <th><span class="t-hi">परिवार की वार्षिक आय</span><span class="t-en">Annual Family Income</span></th>
+            <th><span class="t-hi">फीस में छूट</span><span class="t-en">Fee Concession</span></th>
+            <th><span class="t-hi">आवश्यक दस्तावेज</span><span class="t-en">Document Required</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>₹50,000 <span class="t-hi">तक</span><span class="t-en">or below</span></td><td class="fee-cut">70% <span class="t-hi">(+ पंजीकरण माफ)</span><span class="t-en">(+ reg. waived)</span></td><td><span class="t-hi">आय प्रमाणपत्र / राशन कार्ड</span><span class="t-en">Income certificate / Ration card</span></td></tr>
+          <tr><td>₹50,001 – ₹1,00,000</td><td class="fee-cut">60%</td><td><span class="t-hi">आय प्रमाणपत्र</span><span class="t-en">Income certificate</span></td></tr>
+          <tr><td>₹1,00,001 – ₹2,00,000</td><td class="fee-cut">50%</td><td><span class="t-hi">आय प्रमाणपत्र</span><span class="t-en">Income certificate</span></td></tr>
+          <tr><td>₹2,00,001 – ₹2,50,000</td><td class="fee-cut">30%</td><td><span class="t-hi">स्वघोषणा पत्र</span><span class="t-en">Self-declaration</span></td></tr>
+          <tr><td>₹2,50,000 <span class="t-hi">से अधिक</span><span class="t-en">above</span></td><td>—</td><td><span class="t-hi">मानक Uplift फीस</span><span class="t-en">Standard fee</span></td></tr>
+          <tr style="background:#fff8e8"><td><b><span class="t-hi">अनाथ विद्यार्थी</span><span class="t-en">Orphan Students</span></b></td><td class="fee-cut"><b>100% <span class="t-hi">छूट</span><span class="t-en">Free</span></b></td><td><span class="t-hi">अभिभावक मृत्यु प्रमाणपत्र</span><span class="t-en">Parent death certificate</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- STUDENT PORTAL -->
+<section id="portal" style="background:#fff">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="t-hi">स्टूडेंट पोर्टल</span><span class="t-en">Student Portal</span></span>
+      <h2><span class="t-hi">अपनी आवेदन स्थिति देखें</span><span class="t-en">Track Your Application</span></h2>
+      <p><span class="t-hi">Application ID और पंजीकृत मोबाइल नंबर डालकर लॉगिन करें।</span><span class="t-en">Log in using your Application ID and registered mobile number.</span></p>
+    </div>
+
+    <div class="portal-shell">
+      <div class="portal-login" id="portalLogin">
+        <div class="center" style="margin-bottom:20px">
+          <div style="width:56px;height:56px;border-radius:50%;background:#eef2f7;display:grid;place-items:center;font-size:1.5rem;margin:0 auto 12px;color:var(--navy)">🔐</div>
+          <h3 style="font-size:1.1rem"><span class="t-hi">विद्यार्थी लॉगिन</span><span class="t-en">Student Login</span></h3>
+        </div>
         <div class="field">
-          <label><span class="t-hi">6 अंकों का OTP</span><span class="t-en">6-digit OTP</span></label>
-          <input type="text" id="otpCode" maxlength="6" inputmode="numeric" style="font-family:monospace;font-size:1.5rem;letter-spacing:8px;text-align:center">
-          <div class="errmsg" id="otpCodeErr"></div>
+          <label>Application ID <span class="req">*</span></label>
+          <input type="text" id="loginAppId" placeholder="DPF-UPL-26-XXXXX">
         </div>
-        <div style="display:flex;gap:10px">
-          <button class="btn btn-outline" id="otpBackBtn" style="flex:1">← <span class="t-hi">पीछे</span><span class="t-en">Back</span></button>
-          <button class="btn btn-primary" id="otpVerifyBtn" style="flex:2">✓ <span class="t-hi">सत्यापित करें</span><span class="t-en">Verify</span></button>
+        <div class="field">
+          <label><span class="t-hi">पंजीकृत मोबाइल नंबर</span><span class="t-en">Registered Mobile</span> <span class="req">*</span></label>
+          <input type="tel" id="loginMobile" maxlength="10">
         </div>
-        <p style="text-align:center;margin-top:14px;font-size:.82rem;color:var(--muted)">
-          <span class="t-hi">OTP नहीं मिला?</span><span class="t-en">Didn't get OTP?</span>
-          <button id="otpResendBtn" style="color:var(--navy-2);font-weight:600;text-decoration:underline;background:none;border:none;cursor:pointer;padding:0">
-            <span class="t-hi">दोबारा भेजें</span><span class="t-en">Resend</span>
-          </button>
-          <span id="otpTimer" style="margin-left:6px"></span>
+        <button class="btn btn-primary btn-block" id="loginBtn"><span class="t-hi">लॉगिन करें</span><span class="t-en">Login</span></button>
+        <p class="center mt16" style="font-size:.8rem;color:var(--muted)">
+          <span class="t-hi">आवेदन नहीं किया? <a onclick="openApplyModal()" style="cursor:pointer">पहले ऑनलाइन आवेदन करें</a></span>
+          <span class="t-en">Haven't applied? <a onclick="openApplyModal()" style="cursor:pointer">Apply online first</a></span>
         </p>
       </div>
-      <div class="note note-blue" style="font-size:.78rem;margin-top:16px">
-        <span class="t-hi">🔒 आपका ईमेल केवल आवेदन एवं सूचना भेजने के लिए उपयोग किया जाएगा।</span>
-        <span class="t-en">🔒 Your email will be used only for application and notices.</span>
+
+      <div class="dash" id="portalDash">
+        <div class="dash-head">
+          <div>
+            <h3 id="dashName">—</h3>
+            <p><span class="t-hi">आवेदन संख्या:</span><span class="t-en">Application ID:</span> <b id="dashId">—</b></p>
+          </div>
+          <button class="btn btn-ghost btn-sm" id="logoutBtn"><span class="t-hi">लॉगआउट</span><span class="t-en">Logout</span></button>
+        </div>
+
+        <div class="dash-body">
+          <h4 style="font-size:.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">
+            <span class="t-hi">आवेदन की स्थिति</span><span class="t-en">Application Status</span>
+          </h4>
+          <div class="timeline" id="timeline"></div>
+
+          <div class="dash-grid">
+            <div class="mini"><small><span class="t-hi">चुना गया कोर्स</span><span class="t-en">Course</span></small><b id="dCourse">—</b></div>
+            <div class="mini"><small><span class="t-hi">बैच समय</span><span class="t-en">Batch</span></small><b id="dBatch">—</b></div>
+            <div class="mini"><small><span class="t-hi">अध्ययन मोड</span><span class="t-en">Mode</span></small><b id="dMode">—</b></div>
+            <div class="mini"><small><span class="t-hi">दस्तावेज स्थिति</span><span class="t-en">Documents</span></small><b id="dDocs" style="color:var(--accent)">—</b></div>
+            <div class="mini"><small><span class="t-hi">मासिक देय फीस</span><span class="t-en">Monthly Fee</span></small><b id="dFee">—</b></div>
+            <div class="mini"><small><span class="t-hi">आय आधारित छूट</span><span class="t-en">Concession</span></small><b id="dDisc" style="color:var(--green)">—</b></div>
+          </div>
+
+          <div id="admitCardBox"></div>
+          <div id="adminNotesBox"></div>
+          <div id="feeStatusBox"></div>
+          <div id="certificateBox"></div>
+
+          <div class="note mt24" style="font-size:.82rem">
+            <strong>📌 <span class="t-hi">आगे की प्रक्रिया:</span><span class="t-en">Next steps:</span></strong>
+            <span class="t-hi"> आपकी Application ID सुरक्षित रखें। दस्तावेज सत्यापन के बाद प्रवेश परीक्षा का एडमिट कार्ड इसी पोर्टल पर उपलब्ध होगा।</span>
+            <span class="t-en"> Keep your Application ID safe. After verification, the admit card will be on this portal.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTICES -->
+<section id="notices">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="t-hi">सूचना पट्ट</span><span class="t-en">Notice Board</span></span>
+      <h2><span class="t-hi">नई सूचनाएँ एवं अपडेट</span><span class="t-en">Notices &amp; Updates</span></h2>
+    </div>
+    <div style="max-width:860px;margin-inline:auto" id="noticesList">
+      <p class="center" style="color:var(--muted)"><span class="t-hi">लोड हो रहा है...</span><span class="t-en">Loading...</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:#fff">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="t-hi">सामान्य प्रश्न</span><span class="t-en">FAQs</span></span>
+      <h2><span class="t-hi">अक्सर पूछे जाने वाले प्रश्न</span><span class="t-en">Frequently Asked Questions</span></h2>
+    </div>
+
+    <div style="max-width:860px;margin-inline:auto">
+      <div class="faq-item">
+        <button class="faq-q" type="button"><span class="t-hi">क्या आवेदन करने के लिए कोई शुल्क देना होगा?</span><span class="t-en">Is there any fee to apply?</span></button>
+        <div class="faq-a"><div><span class="t-hi">नहीं। The Uplift योजना में आवेदन पूर्णतः निःशुल्क है।</span><span class="t-en">No. Applying to The Uplift scheme is completely free.</span></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button"><span class="t-hi">क्या The Uplift कोई सरकारी योजना है?</span><span class="t-en">Is The Uplift a government scheme?</span></button>
+        <div class="faq-a"><div><span class="t-hi">नहीं। The Uplift, DIPRA FOUNDATION की अपनी शैक्षणिक पहल है।</span><span class="t-en">No. The Uplift is DIPRA FOUNDATION's own initiative.</span></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button"><span class="t-hi">फीस में छूट कैसे मिलेगी?</span><span class="t-en">How is concession decided?</span></button>
+        <div class="faq-a"><div><span class="t-hi">आय के आधार पर 30% से 70% तक। अनाथ विद्यार्थियों के लिए पूर्ण छूट (100%)।</span><span class="t-en">Based on income: 30% to 70%. Full scholarship (100%) for orphans.</span></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button"><span class="t-hi">चयन किस आधार पर होगा?</span><span class="t-en">Selection criteria?</span></button>
+        <div class="faq-a"><div><span class="t-hi">प्रवेश परीक्षा (09/10/2026) के अंकों के आधार पर बनाई गई मेरिट सूची से।</span><span class="t-en">Based on merit list from entrance exam (09/10/2026) marks.</span></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button"><span class="t-hi">मेरा डेटा सुरक्षित है?</span><span class="t-en">Is my data safe?</span></button>
+        <div class="faq-a"><div><span class="t-hi">आपका डेटा DIPRA FOUNDATION के सुरक्षित Google Sheet में सहेजा जाता है। किसी तीसरे पक्ष के साथ साझा नहीं।</span><span class="t-en">Your data is stored in DIPRA FOUNDATION's secure Google Sheet. Not shared with third parties.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:#fff">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow"><span class="t-hi">संपर्क</span><span class="t-en">Contact</span></span>
+      <h2><span class="t-hi">हमसे संपर्क करें</span><span class="t-en">Get in Touch</span></h2>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <div class="info-item"><div class="ico">📍</div><div><h4><span class="t-hi">कार्यालय पता</span><span class="t-en">Office Address</span></h4><p>DIPRA FOUNDATION<br><span class="t-hi">खेरसा, बिधनू, कानपुर नगर, उत्तर प्रदेश – 209214</span><span class="t-en">Khersa, Bidhnu, Kanpur Nagar, UP – 209214</span></p></div></div>
+        <div class="info-item"><div class="ico">📞</div><div><h4><span class="t-hi">फोन / व्हाट्सएप</span><span class="t-en">Phone / WhatsApp</span></h4><p><a href="tel:+919532328276">+91 95323 28276</a></p></div></div>
+        <div class="info-item"><div class="ico">✉️</div><div><h4><span class="t-hi">ईमेल</span><span class="t-en">Email</span></h4><p><a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></p></div></div>
+        <div class="info-item"><div class="ico">🕐</div><div><h4><span class="t-hi">कार्यालय समय</span><span class="t-en">Office Hours</span></h4><p><span class="t-hi">सोमवार – शनिवार, प्रातः 10:00 – सायं 6:00</span><span class="t-en">Mon – Sat, 10:00 AM – 6:00 PM</span></p></div></div>
+        <div class="info-item"><div class="ico">🌐</div><div><h4><span class="t-hi">वेबसाइट</span><span class="t-en">Website</span></h4><p><a href="https://www.diprafoundation.com" target="_blank" rel="noopener">www.diprafoundation.com</a></p></div></div>
+        <div class="info-item"><div class="ico">📘</div><div><h4>Facebook</h4><p><a href="https://www.facebook.com/share/1GeVUkUd9G/" target="_blank" rel="noopener">DIPRA FOUNDATION</a></p></div></div>
+
+        <div class="center mt24">
+          <button class="btn btn-primary" onclick="openGrievanceModal()">📢 <span class="t-hi">शिकायत दर्ज करें</span><span class="t-en">File a Grievance</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="disclaimer">
+      <strong>⚠️ <span class="t-hi">अस्वीकरण:</span><span class="t-en">Disclaimer:</span></strong>
+      <span class="t-hi"> The Uplift Coaching Scheme, DIPRA FOUNDATION की एक स्वतंत्र शैक्षणिक पहल है। यह किसी सरकारी योजना से संबद्ध नहीं है। फीस, पात्रता, चयन एवं सभी नियम DIPRA FOUNDATION द्वारा निर्धारित एवं परिवर्तनीय हैं। फीस वापस (Refund) की सुविधा उपलब्ध नहीं है।</span>
+      <span class="t-en"> The Uplift Coaching Scheme is an independent initiative of DIPRA FOUNDATION. Not affiliated with any government scheme. All rules are determined by DIPRA FOUNDATION and subject to change. No refund facility is available.</span>
+    </div>
+
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <div class="brand-logo">
+            <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="DIPRA FOUNDATION">
+          </div>
+          <div class="brand-text">
+            <b style="color:#fff">DIPRA FOUNDATION</b>
+            <span style="color:#8fa9ca">The Uplift – Coaching Scheme</span>
+          </div>
+        </div>
+        <p style="font-size:.83rem;line-height:1.7">
+          <span class="t-hi">DIPRA FOUNDATION एक पंजीकृत ट्रस्ट (Trust Act 1882, Reg. No. 300) है जो वंचित विद्यार्थियों तक गुणवत्तापूर्ण शिक्षा पहुँचाने के लिए कार्यरत है।</span>
+          <span class="t-en">DIPRA FOUNDATION is a registered trust (Trust Act 1882, Reg. No. 300) working for quality education to underprivileged students.</span>
+        </p>
+        <p style="font-size:.76rem;color:#8fa9ca;margin-top:8px;line-height:1.6">
+          <span class="t-hi">Darpan ID: UP/2024/0459444 · पंजीकरण दिनांक: 08-10-2024</span>
+          <span class="t-en">Darpan ID: UP/2024/0459444 · Reg. Date: 08-10-2024</span>
+        </p>
+        <a href="https://www.facebook.com/share/1GeVUkUd9G/" target="_blank" rel="noopener" class="social-link">
+          <span>📘</span> <span class="t-hi">Facebook पर जुड़ें</span><span class="t-en">Follow on Facebook</span>
+        </a>
+      </div>
+
+      <div>
+        <h4><span class="t-hi">महत्वपूर्ण लिंक</span><span class="t-en">Quick Links</span></h4>
+        <ul>
+          <li><a href="#about"><span class="t-hi">योजना का परिचय</span><span class="t-en">About</span></a></li>
+          <li><a href="#courses"><span class="t-hi">कोर्स एवं फीस</span><span class="t-en">Courses &amp; Fees</span></a></li>
+          <li><a onclick="openApplyModal()" style="cursor:pointer"><span class="t-hi">ऑनलाइन आवेदन</span><span class="t-en">Apply Online</span></a></li>
+          <li><a onclick="openVolunteerModal()" style="cursor:pointer"><span class="t-hi">स्वयंसेवक बनें</span><span class="t-en">Volunteer</span></a></li>
+          <li><a href="#portal"><span class="t-hi">स्टूडेंट पोर्टल</span><span class="t-en">Student Portal</span></a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4><span class="t-hi">जानकारी</span><span class="t-en">Information</span></h4>
+        <ul>
+          <li><a href="#notices"><span class="t-hi">सूचनाएँ</span><span class="t-en">Notices</span></a></li>
+          <li><a href="#faq"><span class="t-hi">सामान्य प्रश्न</span><span class="t-en">FAQs</span></a></li>
+          <li><a href="#contact"><span class="t-hi">संपर्क</span><span class="t-en">Contact</span></a></li>
+          <li><a onclick="openGrievanceModal()" style="cursor:pointer"><span class="t-hi">शिकायत</span><span class="t-en">Grievance</span></a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4><span class="t-hi">संपर्क</span><span class="t-en">Contact</span></h4>
+        <ul>
+          <li>📍 <span class="t-hi">खेरसा, बिधनू, कानपुर नगर – 209214</span><span class="t-en">Khersa, Bidhnu, Kanpur Nagar – 209214</span></li>
+          <li>📞 <a href="tel:+919532328276">+91 95323 28276</a></li>
+          <li>✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></li>
+          <li>🌐 <a href="https://www.diprafoundation.com" target="_blank" rel="noopener">www.diprafoundation.com</a></li>
+        </ul>
+        <div class="mt16">
+          <button class="btn btn-accent btn-sm btn-block" onclick="openApplyModal()"><span class="t-hi">अभी आवेदन करें</span><span class="t-en">Apply Now</span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© 2026 DIPRA FOUNDATION. <span class="t-hi">सर्वाधिकार सुरक्षित।</span><span class="t-en">All rights reserved.</span></span>
+      <span><span class="t-hi">पंजीकृत ट्रस्ट · Reg. No. 300 · Trust Act 1882</span><span class="t-en">Registered Trust · Reg. No. 300</span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     APPLY MODAL
+     ============================================================ -->
+<div class="modal" id="applyModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>📝 <span class="t-hi">The Uplift आवेदन फॉर्म</span><span class="t-en">The Uplift Application</span></h3>
+      <button class="close-x" onclick="closeApplyModal()">×</button>
+    </div>
+    <div class="modal-body" style="padding:0">
+      <div class="form-shell" style="border:none;box-shadow:none;border-radius:0">
+        <div class="stepper" id="stepper">
+          <div class="step-pill active" data-step="1"><span class="num">1</span><span class="t-hi">संपर्क</span><span class="t-en">Contact</span></div>
+          <div class="step-pill" data-step="2"><span class="num">2</span><span class="t-hi">शैक्षणिक</span><span class="t-en">Academic</span></div>
+          <div class="step-pill" data-step="3"><span class="num">3</span><span class="t-hi">परिवार</span><span class="t-en">Family</span></div>
+          <div class="step-pill" data-step="4"><span class="num">4</span><span class="t-hi">दस्तावेज</span><span class="t-en">Docs</span></div>
+          <div class="step-pill" data-step="5"><span class="num">5</span><span class="t-hi">समीक्षा</span><span class="t-en">Review</span></div>
+          <div class="step-pill" data-step="6"><span class="num">6</span><span class="t-hi">जमा</span><span class="t-en">Submit</span></div>
+        </div>
+
+        <form id="applyForm" novalidate>
+          <div class="form-body">
+
+            <!-- STEP 1 — संपर्क (mandatory: mobile, email) -->
+            <div class="step active" data-step="1">
+              <div class="step-title"><span class="t-hi">चरण 1 — संपर्क जानकारी (ज़रूरी)</span><span class="t-en">Step 1 — Contact Info (Required)</span></div>
+              <div class="step-desc"><span class="t-hi">केवल ईमेल और मोबाइल नंबर ज़रूरी है। बाकी जानकारी बाद में भर सकते हैं।</span><span class="t-en">Only email and mobile are required. You can fill the rest later.</span></div>
+
+              <div class="field">
+                <label><span class="t-hi">विद्यार्थी का पूरा नाम</span><span class="t-en">Student's Full Name</span></label>
+                <input type="text" name="fullName" placeholder="आर्यन शुक्ला">
+              </div>
+
+              <div class="row">
+                <div class="field">
+                  <label><span class="t-hi">मोबाइल नंबर</span><span class="t-en">Mobile Number</span> <span class="req">*</span></label>
+                  <input type="tel" name="mobile" maxlength="10" placeholder="10 अंकों का नंबर">
+                  <div class="errmsg"><span class="t-hi">10 अंकों का सही नंबर भरें</span><span class="t-en">Enter a valid 10-digit number</span></div>
+                </div>
+                <div class="field">
+                  <label><span class="t-hi">ईमेल पता</span><span class="t-en">Email Address</span> <span class="req">*</span></label>
+                  <input type="email" name="email" placeholder="name@example.com" id="applyEmail">
+                  <small><span class="t-hi">इसी ईमेल पर OTP आएगा और आवेदन विवरण भेजा जाएगा।</span><span class="t-en">OTP and details will be sent to this email.</span></small>
+                  <div class="errmsg"><span class="t-hi">सही ईमेल भरें</span><span class="t-en">Enter a valid email</span></div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="field">
+                  <label><span class="t-hi">जन्मतिथि</span><span class="t-en">Date of Birth</span></label>
+                  <input type="date" name="dob">
+                </div>
+                <div class="field">
+                  <label><span class="t-hi">लिंग</span><span class="t-en">Gender</span></label>
+                  <select name="gender">
+                    <option value="">—</option>
+                    <option>पुरुष / Male</option>
+                    <option>महिला / Female</option>
+                    <option>अन्य / Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="field">
+                  <label><span class="t-hi">राज्य</span><span class="t-en">State</span></label>
+                  <select name="state" id="stateSel"></select>
+                </div>
+                <div class="field">
+                  <label><span class="t-hi">जिला</span><span class="t-en">District</span></label>
+                  <select name="district" id="distSel"><option value="">—</option></select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label><span class="t-hi">पूरा पता</span><span class="t-en">Full Address</span></label>
+                <textarea name="address" placeholder="मकान नंबर, मोहल्ला, गाँव/शहर"></textarea>
+              </div>
+
+              <div class="field" style="max-width:260px">
+                <label><span class="t-hi">पिन कोड</span><span class="t-en">PIN Code</span></label>
+                <input type="text" name="pincode" maxlength="6" placeholder="209214">
+              </div>
+            </div>
+
+            <!-- STEP 2 — शैक्षणिक (mandatory: course) -->
+            <div class="step" data-step="2">
+              <div class="step-title"><span class="t-hi">चरण 2 — शैक्षणिक जानकारी</span><span class="t-en">Step 2 — Academic Information</span></div>
+              <div class="step-desc"><span class="t-hi">कोर्स चुनें (ज़रूरी)। बाकी जानकारी वैकल्पिक है।</span><span class="t-en">Select a course (required). Other fields optional.</span></div>
+
+              <div class="row">
+                <div class="field">
+                  <label><span class="t-hi">वर्तमान कक्षा / स्थिति</span><span class="t-en">Current Class / Status</span></label>
+                  <select name="currentClass">
+                    <option value="">—</option>
+                    <option>कक्षा 6 / Class 6</option>
+                    <option>कक्षा 7 / Class 7</option>
+                    <option>कक्षा 8 / Class 8</option>
+                    <option>कक्षा 9 / Class 9</option>
+                    <option>कक्षा 10 / Class 10</option>
+                    <option>कक्षा 11 / Class 11</option>
+                    <option>कक्षा 12 / Class 12</option>
+                    <option>अन्य / Other</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label><span class="t-hi">विद्यालय / महाविद्यालय</span><span class="t-en">School / College</span></label>
+                  <input type="text" name="school" placeholder="विद्यालय का नाम">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="field">
+                  <label><span class="t-hi">पिछली कक्षा के प्राप्तांक (%)</span><span class="t-en">Previous Class Marks (%)</span></label>
+                  <input type="number" name="lastMarks" min="0" max="100" step="0.01" placeholder="78.5">
+                </div>
+                <div class="field">
+                  <label><span class="t-hi">पसंदीदा शिक्षण माध्यम</span><span class="t-en">Preferred Medium</span></label>
+                  <select name="medium">
+                    <option>हिंदी / Hindi</option>
+                    <option>अंग्रेज़ी / English</option>
+                    <option>दोनों / Both</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="field">
+                  <label><span class="t-hi">चुना गया कोर्स</span><span class="t-en">Selected Course</span> <span class="req">*</span></label>
+                  <select name="course" id="applyCourse"></select>
+                  <div class="errmsg"><span class="t-hi">कृपया कोर्स चुनें</span><span class="t-en">Please select course</span></div>
+                </div>
+                <div class="field">
+                  <label><span class="t-hi">पसंदीदा बैच समय</span><span class="t-en">Preferred Batch</span></label>
+                  <select name="batch">
+                    <option value="">—</option>
+                    <option>प्रातः 7:00 – 9:00</option>
+                    <option>प्रातः 9:00 – 11:00</option>
+                    <option>दोपहर 12:00 – 2:00</option>
+                    <option>सायं 4:00 – 6:00</option>
+                    <option>सायं 6:00 – 8:00</option>
+                    <option>ऑनलाइन (लचीला समय)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label><span class="t-hi">अध्ययन मोड</span><span class="t-en">Study Mode</span></label>
+                <div class="check-grid">
+                  <label class="check"><input type="radio" name="mode" value="Offline (Kanpur)"> <span class="t-hi">ऑफलाइन (कानपुर)</span><span class="t-en">Offline (Kanpur)</span></label>
+                  <label class="check"><input type="radio" name="mode" value="Online"> <span class="t-hi">ऑनलाइन</span><span class="t-en">Online</span></label>
+                  <label class="check"><input type="radio" name="mode" value="Hybrid"> <span class="t-hi">हाइब्रिड</span><span class="t-en">Hybrid</span></label>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 3 — परिवार (सब optional) -->
+            <div class="step" data-step="3">
+              <div class="step-title"><span class="t-hi">चरण 3 — परिवार व पात्रता (वैकल्पिक)</span><span class="t-en">Step 3 — Family &amp; Eligibility (Optional)</span></div>
+              <div class="step-desc"><span class="t-hi">यह जानकारी फीस छूट के लिए उपयोग होगी। भरना ज़रूरी नहीं है।</span><span class="t-en">This info helps with fee concession. Not mandatory.</span></div>
+
+              <div class="row">
+                <div class="field">
+                  <label><span class="t-hi">अभिभावक का नाम</span><span class="t-en">Guardian's Name</span></label>
+                  <input type="text" name="guardianName">
+                </div>
+                <div class="field">
+                  <label><span class="t-hi">अभिभावक का मोबाइल</span><span class="t-en">Guardian's Mobile</span></label>
+                  <input type="tel" name="guardianMobile" maxlength="10">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="field">
+                  <label><span class="t-hi">परिवार की वार्षिक आय (₹)</span><span class="t-en">Annual Family Income (₹)</span></label>
+                  <input type="number" name="income" min="0" step="1000" placeholder="180000">
+                  <small><span class="t-hi">आय के आधार पर 30%–70% तक छूट मिलेगी।</span><span class="t-en">Based on income: 30%–70% concession.</span></small>
+                </div>
+                <div class="field">
+                  <label><span class="t-hi">सामाजिक श्रेणी</span><span class="t-en">Social Category</span></label>
+                  <select name="category">
+                    <option>सामान्य / General</option>
+                    <option>ओबीसी / OBC</option>
+                    <option>एससी / SC</option>
+                    <option>एसटी / ST</option>
+                    <option>ईडब्ल्यूएस / EWS</option>
+                    <option><span class="t-hi">बताना नहीं चाहते</span><span class="t-en">Prefer not to say</span></option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="field">
+                  <label><span class="t-hi">क्या आप अनाथ हैं?</span><span class="t-en">Are you an orphan?</span></label>
+                  <select name="orphan">
+                    <option>नहीं / No</option>
+                    <option>हाँ / Yes</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label><span class="t-hi">विशेष सहायता?</span><span class="t-en">Special assistance?</span></label>
+                  <select name="special">
+                    <option>नहीं / No</option>
+                    <option><span class="t-hi">हाँ — दिव्यांगता</span><span class="t-en">Yes — disability</span></option>
+                    <option><span class="t-hi">हाँ — आर्थिक</span><span class="t-en">Yes — financial</span></option>
+                    <option><span class="t-hi">हाँ — अन्य</span><span class="t-en">Yes — other</span></option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 4 — Documents (सब optional) -->
+            <div class="step" data-step="4">
+              <div class="step-title"><span class="t-hi">चरण 4 — दस्तावेज अपलोड (वैकल्पिक)</span><span class="t-en">Step 4 — Upload Documents (Optional)</span></div>
+              <div class="step-desc"><span class="t-hi">दस्तावेज अपलोड करना वैकल्पिक है। चाहें तो बाद में भेज सकते हैं।</span><span class="t-en">Document upload is optional. You can send them later.</span></div>
+
+              <div class="field">
+                <label><span class="t-hi">पासपोर्ट साइज फोटो</span><span class="t-en">Passport-size Photograph</span></label>
+                <input type="file" name="docPhoto" accept="image/jpeg,image/png">
+                <small><span class="t-hi">JPG या PNG • अधिकतम 200 KB</span><span class="t-en">JPG or PNG • max 200 KB</span></small>
+              </div>
+
+              <div class="field">
+                <label><span class="t-hi">पहचान प्रमाण (आधार/अन्य)</span><span class="t-en">Identity Proof</span></label>
+                <input type="file" name="docId" accept="application/pdf,image/jpeg,image/png">
+                <small><span class="t-hi">PDF, JPG या PNG • अधिकतम 500 KB</span><span class="t-en">PDF, JPG or PNG • max 500 KB</span></small>
+              </div>
+
+              <div class="field">
+                <label><span class="t-hi">पिछली कक्षा की मार्कशीट</span><span class="t-en">Previous Class Marksheet</span></label>
+                <input type="file" name="docMarksheet" accept="application/pdf,image/jpeg,image/png">
+                <small><span class="t-hi">PDF, JPG या PNG • अधिकतम 500 KB</span><span class="t-en">PDF, JPG or PNG • max 500 KB</span></small>
+              </div>
+
+              <div class="field">
+                <label><span class="t-hi">आय प्रमाणपत्र (छूट हेतु)</span><span class="t-en">Income Certificate</span></label>
+                <input type="file" name="docIncome" accept="application/pdf,image/jpeg,image/png">
+                <small><span class="t-hi">फीस छूट चाहते हैं तो आवश्यक</span><span class="t-en">Required only if claiming concession</span></small>
+              </div>
+            </div>
+
+            <!-- STEP 5 — Review -->
+            <div class="step" data-step="5">
+              <div class="step-title"><span class="t-hi">चरण 5 — समीक्षा</span><span class="t-en">Step 5 — Review</span></div>
+              <div class="step-desc"><span class="t-hi">जमा करने से पहले सभी जानकारी देखें।</span><span class="t-en">Check all details before submitting.</span></div>
+              <div id="reviewArea"></div>
+            </div>
+
+            <!-- STEP 6 — Submit -->
+            <div class="step" data-step="6">
+              <div class="step-title"><span class="t-hi">चरण 6 — आवेदन जमा करें</span><span class="t-en">Step 6 — Submit Application</span></div>
+              <div class="step-desc"><span class="t-hi">"आवेदन जमा करें" पर क्लिक करने पर आपके ईमेल पर OTP भेजा जाएगा। OTP डालते ही आवेदन पूरा हो जाएगा।</span><span class="t-en">Clicking "Submit" will send OTP to your email. Enter OTP to complete.</span></div>
+              <div class="note note-blue">
+                <span class="t-hi">📌 सुनिश्चित करें कि आपका ईमेल सही है।</span>
+                <span class="t-en">📌 Make sure your email address is correct.</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="form-body" style="padding-top:0">
+            <div class="form-nav">
+              <button type="button" class="btn btn-outline" id="prevBtn" style="visibility:hidden">← <span class="t-hi">पीछे</span><span class="t-en">Back</span></button>
+              <button type="button" class="btn btn-primary" id="nextBtn"><span class="t-hi">आगे</span><span class="t-en">Next</span> →</button>
+              <button type="button" class="btn btn-accent" id="submitBtn" style="display:none">✓ <span class="t-hi">आवेदन जमा करें</span><span class="t-en">Submit</span></button>
+            </div>
+          </div>
+        </form>
+
+        <div class="confirm" id="confirmCard">
+          <div class="tick">✓</div>
+          <h3 style="font-size:1.25rem"><span class="t-hi">आपका आवेदन सफलतापूर्वक जमा हो गया!</span><span class="t-en">Your application has been submitted successfully!</span></h3>
+          <p style="color:var(--muted);margin-top:6px;font-size:.9rem"><span class="t-hi">कृपया नीचे दी गई Application ID सुरक्षित रखें। आवेदन विवरण आपके ईमेल पर भेज दिया गया है।</span><span class="t-en">Please save your Application ID. Details emailed to you.</span></p>
+          <div class="app-id-box">
+            <small><span class="t-hi">आवेदन संख्या</span><span class="t-en">Application ID</span></small>
+            <b id="genAppId">—</b>
+          </div>
+          <div class="review-box" style="text-align:left;max-width:600px;margin-inline:auto">
+            <ul class="review-list" id="confirmDetails"></ul>
+          </div>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px" class="no-print">
+            <button class="btn btn-primary" onclick="window.print()">🖨️ <span class="t-hi">आवेदन विवरण प्रिंट</span><span class="t-en">Print Details</span></button>
+            <a href="#portal" class="btn btn-outline" onclick="closeApplyModal()"><span class="t-hi">स्टूडेंट पोर्टल</span><span class="t-en">Student Portal</span></a>
+            <button class="btn btn-outline" onclick="closeApplyModal()"><span class="t-hi">बंद करें</span><span class="t-en">Close</span></button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- ============================================================
+     VOLUNTEER MODAL
+     ============================================================ -->
+<div class="modal" id="volunteerModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>🤝 <span class="t-hi">स्वयंसेवक आवेदन</span><span class="t-en">Volunteer Application</span></h3>
+      <button class="close-x" onclick="closeVolunteerModal()">×</button>
+    </div>
+    <div class="modal-body" style="padding:0">
+      <div class="tabs" style="padding:20px 24px 0;margin-bottom:0">
+        <button class="tab active" data-tab="teacher" type="button">👩‍🏫 <span class="t-hi">शिक्षक</span><span class="t-en">Teacher</span></button>
+        <button class="tab" data-tab="institution" type="button">🏫 <span class="t-hi">संस्थान</span><span class="t-en">Institution</span></button>
+      </div>
+
+      <div id="teacherForm" style="padding:24px">
+        <form id="volTeacherForm" novalidate>
+          <h4 style="color:var(--navy);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #eef2f7;font-size:.95rem">1. <span class="t-hi">व्यक्तिगत जानकारी</span><span class="t-en">Personal Info</span></h4>
+          <div class="row">
+            <div class="field">
+              <label><span class="t-hi">पूरा नाम</span><span class="t-en">Full Name</span> <span class="req">*</span></label>
+              <input type="text" name="vName">
+              <div class="errmsg"><span class="t-hi">कृपया नाम भरें</span><span class="t-en">Please enter name</span></div>
+            </div>
+            <div class="field">
+              <label><span class="t-hi">मोबाइल</span><span class="t-en">Mobile</span> <span class="req">*</span></label>
+              <input type="tel" name="vMobile" maxlength="10">
+              <div class="errmsg"><span class="t-hi">10 अंकों का नंबर भरें</span><span class="t-en">Enter 10-digit number</span></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label><span class="t-hi">ईमेल</span><span class="t-en">Email</span> <span class="req">*</span></label>
+              <input type="email" name="vEmail">
+              <small><span class="t-hi">OTP सत्यापन हेतु</span><span class="t-en">For OTP verification</span></small>
+              <div class="errmsg"><span class="t-hi">सही ईमेल भरें</span><span class="t-en">Enter valid email</span></div>
+            </div>
+            <div class="field">
+              <label><span class="t-hi">शहर</span><span class="t-en">City</span> <span class="req">*</span></label>
+              <input type="text" name="vCity">
+              <div class="errmsg"><span class="t-hi">कृपया शहर भरें</span><span class="t-en">Please enter city</span></div>
+            </div>
+          </div>
+
+          <h4 style="color:var(--navy);margin:22px 0 14px;padding-bottom:8px;border-bottom:2px solid #eef2f7;font-size:.95rem">2. <span class="t-hi">योग्यता</span><span class="t-en">Qualification</span></h4>
+          <div class="row">
+            <div class="field">
+              <label><span class="t-hi">उच्चतम योग्यता</span><span class="t-en">Highest Qualification</span> <span class="req">*</span></label>
+              <select name="vQual">
+                <option value="">—</option>
+                <option>स्नातक / Graduation</option>
+                <option>परास्नातक / Post Graduation</option>
+                <option>B.Ed / D.El.Ed</option>
+                <option>B.Tech / B.E.</option>
+                <option>MBBS / BDS</option>
+                <option>CA / CS / MBA</option>
+                <option>M.Phil / Ph.D</option>
+                <option><span class="t-hi">अन्य</span><span class="t-en">Other</span></option>
+              </select>
+              <div class="errmsg"><span class="t-hi">कृपया चुनें</span><span class="t-en">Please select</span></div>
+            </div>
+            <div class="field">
+              <label><span class="t-hi">विषय</span><span class="t-en">Subject</span> <span class="req">*</span></label>
+              <input type="text" name="vSubject">
+              <div class="errmsg"><span class="t-hi">कृपया विषय भरें</span><span class="t-en">Please enter subject</span></div>
+            </div>
+          </div>
+
+          <h4 style="color:var(--navy);margin:22px 0 14px;padding-bottom:8px;border-bottom:2px solid #eef2f7;font-size:.95rem">3. <span class="t-hi">विषय चुनें</span><span class="t-en">Select Subjects</span></h4>
+          <div class="field">
+            <div class="check-grid">
+              <label class="check"><input type="checkbox" name="vSubj" value="गणित / Maths"> <span class="t-hi">गणित</span><span class="t-en">Maths</span></label>
+              <label class="check"><input type="checkbox" name="vSubj" value="विज्ञान / Science"> <span class="t-hi">विज्ञान</span><span class="t-en">Science</span></label>
+              <label class="check"><input type="checkbox" name="vSubj" value="भौतिकी / Physics"> <span class="t-hi">भौतिकी</span><span class="t-en">Physics</span></label>
+              <label class="check"><input type="checkbox" name="vSubj" value="रसायन / Chemistry"> <span class="t-hi">रसायन</span><span class="t-en">Chemistry</span></label>
+              <label class="check"><input type="checkbox" name="vSubj" value="जीव विज्ञान / Biology"> <span class="t-hi">जीव विज्ञान</span><span class="t-en">Biology</span></label>
+              <label class="check"><input type="checkbox" name="vSubj" value="अंग्रेज़ी / English"> <span class="t-hi">अंग्रेज़ी</span><span class="t-en">English</span></label>
+              <label class="check"><input type="checkbox" name="vSubj" value="हिंदी / Hindi"> <span class="t-hi">हिंदी</span><span class="t-en">Hindi</span></label>
+              <label class="check"><input type="checkbox" name="vSubj" value="सामाजिक विज्ञान"> <span class="t-hi">सामाजिक विज्ञान</span><span class="t-en">SST</span></label>
+            </div>
+          </div>
+
+          <h4 style="color:var(--navy);margin:22px 0 14px;padding-bottom:8px;border-bottom:2px solid #eef2f7;font-size:.95rem">4. <span class="t-hi">उपलब्धता</span><span class="t-en">Availability</span></h4>
+          <div class="row">
+            <div class="field">
+              <label><span class="t-hi">शिक्षण मोड</span><span class="t-en">Teaching Mode</span> <span class="req">*</span></label>
+              <select name="vMode">
+                <option value="">—</option>
+                <option>ऑफलाइन (कानपुर)</option>
+                <option>ऑनलाइन</option>
+                <option>दोनों</option>
+              </select>
+              <div class="errmsg"><span class="t-hi">कृपया मोड चुनें</span><span class="t-en">Please select mode</span></div>
+            </div>
+            <div class="field">
+              <label><span class="t-hi">साप्ताहिक समय</span><span class="t-en">Weekly Time</span> <span class="req">*</span></label>
+              <select name="vHours">
+                <option value="">—</option>
+                <option>2 – 4 घंटे</option>
+                <option>5 – 8 घंटे</option>
+                <option>9 – 12 घंटे</option>
+                <option>12+ घंटे</option>
+              </select>
+              <div class="errmsg"><span class="t-hi">कृपया समय चुनें</span><span class="t-en">Please select time</span></div>
+            </div>
+          </div>
+          <div class="field">
+            <label><span class="t-hi">किन कक्षाओं को पढ़ा सकते हैं?</span><span class="t-en">Classes you can teach</span> <span class="req">*</span></label>
+            <div class="check-grid">
+              <label class="check"><input type="checkbox" name="vClass" value="कक्षा 6–8"> <span class="t-hi">कक्षा 6–8</span><span class="t-en">Class 6–8</span></label>
+              <label class="check"><input type="checkbox" name="vClass" value="कक्षा 9–10"> <span class="t-hi">कक्षा 9–10</span><span class="t-en">Class 9–10</span></label>
+              <label class="check"><input type="checkbox" name="vClass" value="कक्षा 11–12"> <span class="t-hi">कक्षा 11–12</span><span class="t-en">Class 11–12</span></label>
+            </div>
+            <div class="errmsg"><span class="t-hi">कृपया कम से कम एक चुनें</span><span class="t-en">Please select at least one</span></div>
+          </div>
+          <div class="field">
+            <label><span class="t-hi">स्वयंसेवा का प्रकार</span><span class="t-en">Type</span> <span class="req">*</span></label>
+            <div class="check-grid">
+              <label class="check"><input type="radio" name="vType" value="पूर्णतः स्वयंसेवा"> <span class="t-hi">निःशुल्क</span><span class="t-en">Free</span></label>
+              <label class="check"><input type="radio" name="vType" value="मानदेय आधारित"> <span class="t-hi">मानदेय</span><span class="t-en">Honorarium</span></label>
+              <label class="check"><input type="radio" name="vType" value="दोनों"> <span class="t-hi">कोई भी</span><span class="t-en">Either</span></label>
+            </div>
+            <div class="errmsg"><span class="t-hi">कृपया एक चुनें</span><span class="t-en">Please select one</span></div>
+          </div>
+          <div class="field">
+            <label><span class="t-hi">आप The Uplift से क्यों जुड़ना चाहते हैं?</span><span class="t-en">Why join?</span></label>
+            <textarea name="vWhy"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block mt24">📩 <span class="t-hi">आवेदन जमा करें</span><span class="t-en">Submit</span></button>
+        </form>
+
+        <div class="confirm" id="teacherConfirm">
+          <div class="tick">✓</div>
+          <h3><span class="t-hi">धन्यवाद! आवेदन प्राप्त हो गया है।</span><span class="t-en">Thank you! Application received.</span></h3>
+          <p style="color:var(--muted);margin-top:6px"><span class="t-hi">हमारी टीम शीघ्र संपर्क करेगी।</span><span class="t-en">Our team will contact you soon.</span></p>
+          <div class="app-id-box">
+            <small><span class="t-hi">स्वयंसेवक आईडी</span><span class="t-en">Volunteer ID</span></small>
+            <b id="genVolId">—</b>
+          </div>
+        </div>
+      </div>
+
+      <div id="institutionForm" style="padding:24px;display:none">
+        <form id="volInstForm" novalidate>
+          <h4 style="color:var(--navy);margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #eef2f7;font-size:.95rem">1. <span class="t-hi">संस्थान की जानकारी</span><span class="t-en">Institution Details</span></h4>
+          <div class="row">
+            <div class="field">
+              <label><span class="t-hi">संस्थान का नाम</span><span class="t-en">Institution Name</span> <span class="req">*</span></label>
+              <input type="text" name="iName">
+              <div class="errmsg"><span class="t-hi">कृपया नाम भरें</span><span class="t-en">Please enter name</span></div>
+            </div>
+            <div class="field">
+              <label><span class="t-hi">प्रकार</span><span class="t-en">Type</span> <span class="req">*</span></label>
+              <select name="iType">
+                <option value="">—</option>
+                <option>विद्यालय / School</option>
+                <option>महाविद्यालय / College</option>
+                <option>कोचिंग / Coaching</option>
+                <option>एनजीओ / NGO</option>
+                <option>पुस्तकालय / Library</option>
+                <option>सामुदायिक भवन</option>
+                <option><span class="t-hi">अन्य</span><span class="t-en">Other</span></option>
+              </select>
+              <div class="errmsg"><span class="t-hi">कृपया चुनें</span><span class="t-en">Please select</span></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label><span class="t-hi">संपर्क व्यक्ति</span><span class="t-en">Contact Person</span> <span class="req">*</span></label>
+              <input type="text" name="iPerson">
+              <div class="errmsg"><span class="t-hi">कृपया नाम भरें</span><span class="t-en">Please enter name</span></div>
+            </div>
+            <div class="field">
+              <label><span class="t-hi">पद</span><span class="t-en">Designation</span></label>
+              <input type="text" name="iDesignation">
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label><span class="t-hi">मोबाइल</span><span class="t-en">Mobile</span> <span class="req">*</span></label>
+              <input type="tel" name="iMobile" maxlength="10">
+              <div class="errmsg"><span class="t-hi">10 अंकों का नंबर भरें</span><span class="t-en">Enter 10-digit</span></div>
+            </div>
+            <div class="field">
+              <label><span class="t-hi">ईमेल</span><span class="t-en">Email</span> <span class="req">*</span></label>
+              <input type="email" name="iEmail">
+              <small><span class="t-hi">OTP सत्यापन हेतु</span><span class="t-en">For OTP</span></small>
+              <div class="errmsg"><span class="t-hi">सही ईमेल भरें</span><span class="t-en">Enter valid email</span></div>
+            </div>
+          </div>
+          <div class="field">
+            <label><span class="t-hi">पूरा पता</span><span class="t-en">Full Address</span> <span class="req">*</span></label>
+            <textarea name="iAddress"></textarea>
+            <div class="errmsg"><span class="t-hi">कृपया पता भरें</span><span class="t-en">Please enter address</span></div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label><span class="t-hi">शहर</span><span class="t-en">City</span> <span class="req">*</span></label>
+              <input type="text" name="iCity">
+              <div class="errmsg"><span class="t-hi">कृपया शहर भरें</span><span class="t-en">Please enter city</span></div>
+            </div>
+            <div class="field">
+              <label><span class="t-hi">पिन कोड</span><span class="t-en">PIN Code</span></label>
+              <input type="text" name="iPin" maxlength="6">
+            </div>
+          </div>
+          <div class="field">
+            <label><span class="t-hi">कौन-सी सुविधाएँ दे सकते हैं?</span><span class="t-en">Facilities</span></label>
+            <div class="check-grid">
+              <label class="check"><input type="checkbox" name="iFac" value="कक्षा-कक्ष"> <span class="t-hi">कक्षा-कक्ष</span><span class="t-en">Classrooms</span></label>
+              <label class="check"><input type="checkbox" name="iFac" value="कंप्यूटर लैब"> <span class="t-hi">कंप्यूटर लैब</span><span class="t-en">Computer Lab</span></label>
+              <label class="check"><input type="checkbox" name="iFac" value="पुस्तकालय"> <span class="t-hi">पुस्तकालय</span><span class="t-en">Library</span></label>
+              <label class="check"><input type="checkbox" name="iFac" value="प्रोजेक्टर"> <span class="t-hi">प्रोजेक्टर</span><span class="t-en">Projector</span></label>
+              <label class="check"><input type="checkbox" name="iFac" value="इंटरनेट"> <span class="t-hi">इंटरनेट</span><span class="t-en">Internet</span></label>
+              <label class="check"><input type="checkbox" name="iFac" value="पीने का पानी"> <span class="t-hi">पीने का पानी</span><span class="t-en">Water</span></label>
+            </div>
+          </div>
+          <div class="row-3">
+            <div class="field">
+              <label><span class="t-hi">कुल कक्षाएँ</span><span class="t-en">Total Classrooms</span></label>
+              <input type="number" name="iRooms" min="0">
+            </div>
+            <div class="field">
+              <label><span class="t-hi">बैठने की क्षमता</span><span class="t-en">Seating</span></label>
+              <input type="number" name="iCapacity" min="0">
+            </div>
+            <div class="field">
+              <label><span class="t-hi">उपलब्ध दिन</span><span class="t-en">Days</span></label>
+              <select name="iDays">
+                <option>सोमवार – शनिवार</option>
+                <option>सोमवार – रविवार</option>
+                <option>केवल सप्ताहांत</option>
+                <option>अन्य</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label><span class="t-hi">उपलब्ध समय</span><span class="t-en">Time</span></label>
+            <input type="text" name="iTime" placeholder="प्रातः 7:00 – 10:00">
+          </div>
+          <div class="field">
+            <label><span class="t-hi">सहयोग का स्वरूप</span><span class="t-en">Contribution</span> <span class="req">*</span></label>
+            <div class="check-grid">
+              <label class="check"><input type="radio" name="iContrib" value="निःशुल्क स्थान"> <span class="t-hi">निःशुल्क स्थान</span><span class="t-en">Free</span></label>
+              <label class="check"><input type="radio" name="iContrib" value="नाममात्र किराया"> <span class="t-hi">नाममात्र किराया</span><span class="t-en">Nominal rent</span></label>
+              <label class="check"><input type="radio" name="iContrib" value="अन्य सहयोग"> <span class="t-hi">अन्य</span><span class="t-en">Other</span></label>
+            </div>
+            <div class="errmsg"><span class="t-hi">कृपया एक चुनें</span><span class="t-en">Please select</span></div>
+          </div>
+          <div class="field">
+            <label><span class="t-hi">अतिरिक्त जानकारी</span><span class="t-en">Additional info</span></label>
+            <textarea name="iNotes"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block mt24">🏫 <span class="t-hi">आवेदन जमा करें</span><span class="t-en">Submit</span></button>
+        </form>
+
+        <div class="confirm" id="instConfirm">
+          <div class="tick">✓</div>
+          <h3><span class="t-hi">धन्यवाद! आवेदन प्राप्त हो गया।</span><span class="t-en">Thank you! Received.</span></h3>
+          <div class="app-id-box">
+            <small><span class="t-hi">संस्थान आईडी</span><span class="t-en">Institution ID</span></small>
+            <b id="genInstId">—</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     GRIEVANCE MODAL
+     ============================================================ -->
+<div class="modal" id="grievanceModal">
+  <div class="modal-box" style="max-width:640px">
+    <div class="modal-head">
+      <h3>📢 <span class="t-hi">शिकायत / सहायता</span><span class="t-en">Grievance / Support</span></h3>
+      <button class="close-x" onclick="closeGrievanceModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <form id="grievanceForm" novalidate>
+        <div class="row">
+          <div class="field">
+            <label><span class="t-hi">आपका नाम</span><span class="t-en">Your Name</span> <span class="req">*</span></label>
+            <input type="text" name="gName">
+            <div class="errmsg"><span class="t-hi">कृपया नाम भरें</span><span class="t-en">Please enter name</span></div>
+          </div>
+          <div class="field">
+            <label>Application ID (<span class="t-hi">यदि हो</span><span class="t-en">if any</span>)</label>
+            <input type="text" name="gAppId" placeholder="DPF-UPL-26-XXXXX">
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label><span class="t-hi">मोबाइल नंबर</span><span class="t-en">Mobile</span> <span class="req">*</span></label>
+            <input type="tel" name="gMobile" maxlength="10">
+            <div class="errmsg"><span class="t-hi">10 अंकों का नंबर भरें</span><span class="t-en">Enter 10-digit</span></div>
+          </div>
+          <div class="field">
+            <label><span class="t-hi">ईमेल</span><span class="t-en">Email</span> <span class="req">*</span></label>
+            <input type="email" name="gEmail">
+            <small><span class="t-hi">OTP सत्यापन हेतु</span><span class="t-en">For OTP</span></small>
+            <div class="errmsg"><span class="t-hi">सही ईमेल भरें</span><span class="t-en">Enter valid email</span></div>
+          </div>
+        </div>
+        <div class="field">
+          <label><span class="t-hi">श्रेणी</span><span class="t-en">Category</span> <span class="req">*</span></label>
+          <select name="gCategory">
+            <option value="">—</option>
+            <option><span class="t-hi">आवेदन संबंधी</span><span class="t-en">Application</span></option>
+            <option><span class="t-hi">दस्तावेज सत्यापन</span><span class="t-en">Documents</span></option>
+            <option><span class="t-hi">फीस या भुगतान</span><span class="t-en">Fee</span></option>
+            <option><span class="t-hi">कक्षा या शिक्षक</span><span class="t-en">Class/Teacher</span></option>
+            <option><span class="t-hi">प्रमाणपत्र</span><span class="t-en">Certificate</span></option>
+            <option><span class="t-hi">अन्य</span><span class="t-en">Other</span></option>
+          </select>
+          <div class="errmsg"><span class="t-hi">कृपया श्रेणी चुनें</span><span class="t-en">Please select</span></div>
+        </div>
+        <div class="field">
+          <label><span class="t-hi">विवरण</span><span class="t-en">Details</span> <span class="req">*</span></label>
+          <textarea name="gDetails" placeholder="अपनी समस्या विस्तार से लिखें..."></textarea>
+          <div class="errmsg"><span class="t-hi">कृपया विवरण भरें</span><span class="t-en">Please enter details</span></div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">📩 <span class="t-hi">शिकायत दर्ज करें</span><span class="t-en">Submit</span></button>
+      </form>
+      <div class="confirm" id="grievanceConfirm">
+        <div class="tick">✓</div>
+        <h3><span class="t-hi">आपकी शिकायत दर्ज हो गई है</span><span class="t-en">Complaint registered</span></h3>
+        <div class="app-id-box">
+          <small><span class="t-hi">शिकायत संख्या</span><span class="t-en">Complaint ID</span></small>
+          <b id="genComplaintId">—</b>
+        </div>
+        <p style="color:var(--muted);font-size:.85rem;max-width:560px;margin-inline:auto">
+          <span class="t-hi">निर्धारित समय-सीमा 7 कार्यदिवस है।</span>
+          <span class="t-en">Resolution time: 7 working days.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   DIPRA FOUNDATION — The Uplift
+   ============================================================ */
+const $  = (s, c = document) => c.querySelector(s);
+const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+
+const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbw6kRBbpCrCC_aTcJ85PZgwU66D_iE22YFZZgVimZof1e6CjQD8B5rYlD1aStiz3_Fm/exec';
+
+let toastTimer;
+function toast(msg) {
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3600);
+}
+
+async function apiCall(payload) {
+  try {
+    const res = await fetch(SHEET_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload),
+      redirect: 'follow'
+    });
+    const text = await res.text();
+    try { return JSON.parse(text); }
+    catch (e) { return { status:'error', message:'Invalid response' }; }
+  } catch (err) {
+    console.error('API error:', err);
+    return { status:'error', message:'Network error. Please try again.' };
+  }
+}
+
+function setLang(lang) {
+  document.body.classList.toggle('lang-hi', lang === 'hi');
+  document.body.classList.toggle('lang-en', lang === 'en');
+  document.documentElement.lang = lang;
+  $$('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  try { localStorage.setItem('uplift_lang', lang); } catch (e) {}
+}
+$$('.lang-btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+try {
+  const saved = localStorage.getItem('uplift_lang');
+  if (saved) setLang(saved);
+} catch (e) {}
+
+const burger = $('#burger'), mainNav = $('#mainNav');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  mainNav.classList.toggle('open');
+});
+$$('#mainNav a').forEach(a => a.addEventListener('click', () => {
+  burger.classList.remove('open');
+  mainNav.classList.remove('open');
+}));
+
+const sections = $$('section[id]');
+const navLinks = $$('#mainNav a[href^="#"]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 140) current = s.id;
+  });
+  navLinks.forEach(a => {
+    const href = a.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      a.classList.toggle('active', href === '#' + current);
+    }
+  });
+});
+
+/* ===== MODAL OPEN/CLOSE ===== */
+function openApplyModal() {
+  $('#applyModal').classList.add('show');
+  document.body.classList.add('modal-open');
+  showStep(1);
+  setTimeout(() => {
+    const emailEl = $('#applyEmail');
+    if (emailEl) emailEl.focus();
+  }, 300);
+}
+function closeApplyModal() {
+  $('#applyModal').classList.remove('show');
+  document.body.classList.remove('modal-open');
+}
+function openVolunteerModal() {
+  $('#volunteerModal').classList.add('show');
+  document.body.classList.add('modal-open');
+}
+function closeVolunteerModal() {
+  $('#volunteerModal').classList.remove('show');
+  document.body.classList.remove('modal-open');
+}
+function openGrievanceModal() {
+  $('#grievanceModal').classList.add('show');
+  document.body.classList.add('modal-open');
+}
+function closeGrievanceModal() {
+  $('#grievanceModal').classList.remove('show');
+  document.body.classList.remove('modal-open');
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeApplyModal();
+    closeVolunteerModal();
+    closeGrievanceModal();
+  }
+});
+
+['applyModal','volunteerModal','grievanceModal'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) {
+    el.addEventListener('click', e => {
+      if (e.target.id === id) {
+        el.classList.remove('show');
+        document.body.classList.remove('modal-open');
+      }
+    });
+  }
+});
+
+/* ===== COURSES ===== */
+const COURSES = [
+  { code:'UPL-06', hi:'कक्षा 6–8 (फाउंडेशन)', en:'Class 6–8',
+    subHi:'गणित, विज्ञान, अंग्रेज़ी, हिंदी, सामाजिक विज्ञान', subEn:'Maths, Science, English, Hindi, SST',
+    durHi:'12 माह', durEn:'12 months', gen:1500, fee:500, seats:60 },
+  { code:'UPL-09', hi:'कक्षा 9–10 (हाई स्कूल)', en:'Class 9–10',
+    subHi:'गणित, विज्ञान, अंग्रेज़ी, हिंदी, सामाजिक विज्ञान', subEn:'Maths, Science, English, Hindi, SST',
+    durHi:'12 माह', durEn:'12 months', gen:2200, fee:700, seats:80 },
+  { code:'UPL-11', hi:'कक्षा 11–12 (विज्ञान)', en:'Class 11–12 Science',
+    subHi:'भौतिकी, रसायन, गणित / जीव विज्ञान', subEn:'Physics, Chemistry, Maths / Biology',
+    durHi:'12 माह', durEn:'12 months', gen:3000, fee:900, seats:60 },
+  { code:'UPL-12', hi:'कक्षा 11–12 (वाणिज्य)', en:'Class 11–12 Commerce',
+    subHi:'लेखाशास्त्र, व्यवसाय अध्ययन, अर्थशास्त्र', subEn:'Accountancy, Business Studies, Economics',
+    durHi:'12 माह', durEn:'12 months', gen:3000, fee:900, seats:60 }
+];
+
+function concession(income) {
+  if (income <= 50000)  return 70;
+  if (income <= 100000) return 60;
+  if (income <= 200000) return 50;
+  if (income <= 250000) return 30;
+  return 0;
+}
+
+(function renderCourses() {
+  const tb = $('#courseRows');
+  if (!tb) return;
+  tb.innerHTML = COURSES.map(c => `
+    <tr>
+      <td><b style="font-family:monospace;color:var(--navy)">${c.code}</b></td>
+      <td><b><span class="t-hi">${c.hi}</span><span class="t-en">${c.en}</span></b></td>
+      <td style="font-size:.82rem;color:var(--muted)"><span class="t-hi">${c.subHi}</span><span class="t-en">${c.subEn}</span></td>
+      <td><span class="t-hi">${c.durHi}</span><span class="t-en">${c.durEn}</span></td>
+      <td><span class="fee-old">₹${c.gen.toLocaleString('en-IN')}</span></td>
+      <td class="fee-cut">₹${c.fee.toLocaleString('en-IN')}<span style="font-weight:400;color:var(--muted);font-size:.85em"> <span class="t-hi">/माह</span><span class="t-en">/mo</span></span></td>
+      <td>${c.seats}</td>
+    </tr>`).join('');
+})();
+
+(function initCalc() {
+  const sel = $('#calcCourse');
+  if (!sel) return;
+  COURSES.forEach(c => {
+    const o = document.createElement('option');
+    o.value = c.code;
+    o.textContent = `${c.code} — ${c.en}`;
+    sel.appendChild(o);
+  });
+  function update() {
+    const c = COURSES.find(x => x.code === sel.value);
+    const inc = parseFloat($('#calcIncome').value) || 0;
+    if (!c || inc <= 0) { $('#calcResult').style.display = 'none'; return; }
+    const d = concession(inc);
+    const payable = Math.round(c.fee * (1 - d / 100) / 10) * 10;
+    $('#rGen').textContent  = '₹' + c.gen.toLocaleString('en-IN');
+    $('#rBase').textContent = '₹' + c.fee.toLocaleString('en-IN');
+    $('#rDisc').textContent = d + '%';
+    $('#rPay').textContent  = '₹' + payable.toLocaleString('en-IN');
+    $('#calcResult').style.display = 'block';
+  }
+  sel.addEventListener('change', update);
+  $('#calcIncome').addEventListener('input', update);
+})();
+
+const STATES = {
+  "उत्तर प्रदेश / Uttar Pradesh": ["Agra","Aligarh","Ambedkar Nagar","Amethi","Amroha","Auraiya","Ayodhya","Azamgarh","Baghpat","Bahraich","Ballia","Balrampur","Banda","Barabanki","Bareilly","Basti","Bhadohi","Bijnor","Budaun","Bulandshahr","Chandauli","Chitrakoot","Deoria","Etah","Etawah","Farrukhabad","Fatehpur","Firozabad","Gautam Buddha Nagar","Ghaziabad","Ghazipur","Gonda","Gorakhpur","Hamirpur","Hapur","Hardoi","Hathras","Jalaun","Jaunpur","Jhansi","Kannauj","Kanpur Dehat","Kanpur Nagar","Kasganj","Kaushambi","Kushinagar","Lakhimpur Kheri","Lalitpur","Lucknow","Maharajganj","Mahoba","Mainpuri","Mathura","Mau","Meerut","Mirzapur","Moradabad","Muzaffarnagar","Pilibhit","Pratapgarh","Prayagraj","Raebareli","Rampur","Saharanpur","Sambhal","Sant Kabir Nagar","Shahjahanpur","Shamli","Shravasti","Siddharthnagar","Sitapur","Sonbhadra","Sultanpur","Unnao","Varanasi"],
+  "मध्य प्रदेश / Madhya Pradesh": ["Bhopal","Indore","Gwalior","Jabalpur","Ujjain","Sagar","Rewa","Satna"],
+  "बिहार / Bihar": ["Patna","Gaya","Muzaffarpur","Bhagalpur","Darbhanga","Purnia"],
+  "दिल्ली / Delhi": ["Central Delhi","East Delhi","New Delhi","North Delhi","South Delhi","West Delhi"],
+  "महाराष्ट्र / Maharashtra": ["Mumbai","Pune","Nagpur","Nashik","Thane"],
+  "राजस्थान / Rajasthan": ["Jaipur","Jodhpur","Udaipur","Kota","Ajmer"],
+  "उत्तराखंड / Uttarakhand": ["Dehradun","Haridwar","Roorkee","Nainital"],
+  "अन्य राज्य / Other State": ["—"]
+};
+
+(function initStateDistrict() {
+  const ss = $('#stateSel'), ds = $('#distSel');
+  if (!ss || !ds) return;
+  ss.innerHTML = '<option value="">—</option>';
+  Object.keys(STATES).forEach(s => {
+    const o = document.createElement('option');
+    o.value = s; o.textContent = s;
+    ss.appendChild(o);
+  });
+  ss.addEventListener('change', () => {
+    ds.innerHTML = '<option value="">—</option>';
+    const list = STATES[ss.value];
+    if (!list) return;
+    list.forEach(d => {
+      const o = document.createElement('option');
+      o.value = d; o.textContent = d;
+      ds.appendChild(o);
+    });
+  });
+  ss.value = "उत्तर प्रदेश / Uttar Pradesh";
+  ss.dispatchEvent(new Event('change'));
+})();
+
+(function initApplyCourse() {
+  const sel = $('#applyCourse');
+  if (!sel) return;
+  sel.innerHTML = '<option value="">—</option>';
+  COURSES.forEach(c => {
+    const o = document.createElement('option');
+    o.value = c.code;
+    o.textContent = `${c.code} — ${c.hi} / ${c.en}`;
+    sel.appendChild(o);
+  });
+})();
+
+/* ============================================================
+   OTP MODULE — Email पर OTP भेजता है, सही OTP auto-accept
+   ============================================================ */
+const OTP = {
+  verifiedEmail: null,
+  timerId: null,
+  _pendingSubmit: null,
+  _autoVerifyTimer: null,
+
+  open() {
+    $('#otpStepEmail').style.display  = 'block';
+    $('#otpStepVerify').style.display = 'none';
+    $('#otpCode').value = '';
+    $('#otpCodeErr').textContent = '';
+    $('#otpModal').classList.add('show');
+  },
+  close() {
+    $('#otpModal').classList.remove('show');
+    clearInterval(this.timerId);
+    clearTimeout(this._autoVerifyTimer);
+  },
+
+  async send() {
+    const email = $('#otpEmail').value.trim();
+    const field = $('#otpEmail').closest('.field');
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    field.classList.toggle('err', !valid);
+    if (!valid) return;
+
+    const btn = $('#otpSendBtn');
+    const orig = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '⏳ <span class="t-hi">भेजा जा रहा है...</span><span class="t-en">Sending...</span>';
+
+    const r = await apiCall({ action:'sendOtp', email });
+
+    btn.disabled = false;
+    btn.innerHTML = orig;
+
+    if (r.status === 'success') {
+      $('#otpSentTo').textContent = email;
+      $('#otpStepEmail').style.display  = 'none';
+      $('#otpStepVerify').style.display = 'block';
+      $('#otpCode').focus();
+      OTP.startTimer(60);
+      toast(r.message || 'OTP भेजा गया ✓');
+    } else {
+      field.classList.add('err');
+      $('#otpEmailErr').textContent = r.message || 'Failed to send OTP';
+      toast(r.message || 'OTP failed');
+    }
+  },
+
+  async verify() {
+    const email = $('#otpEmail').value.trim();
+    const otp   = $('#otpCode').value.trim();
+
+    if (!/^\d{6}$/.test(otp)) {
+      $('#otpCode').closest('.field').classList.add('err');
+      $('#otpCodeErr').textContent = 'कृपया 6 अंकों का OTP दर्ज करें';
+      return;
+    }
+
+    const btn = $('#otpVerifyBtn');
+    const orig = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '⏳ <span class="t-hi">जाँच...</span><span class="t-en">Verifying...</span>';
+
+    const r = await apiCall({ action:'verifyOtp', email, otp });
+
+    btn.disabled = false;
+    btn.innerHTML = orig;
+
+    if (r.status === 'success') {
+      OTP.verifiedEmail = email.toLowerCase();
+      OTP.close();
+      toast(document.body.classList.contains('lang-hi') ? '✓ ईमेल सत्यापित' : '✓ Email verified');
+      if (OTP._pendingSubmit) {
+        const fn = OTP._pendingSubmit;
+        OTP._pendingSubmit = null;
+        fn();
+      }
+    } else {
+      $('#otpCode').closest('.field').classList.add('err');
+      $('#otpCodeErr').textContent = r.message || 'Invalid OTP';
+    }
+  },
+
+  startTimer(seconds) {
+    clearInterval(this.timerId);
+    let s = seconds;
+    const el = $('#otpTimer');
+    const rsBtn = $('#otpResendBtn');
+    rsBtn.disabled = true;
+    rsBtn.style.opacity = '.5';
+    el.textContent = `(${s}s)`;
+    this.timerId = setInterval(() => {
+      s--;
+      el.textContent = `(${s}s)`;
+      if (s <= 0) {
+        clearInterval(this.timerId);
+        el.textContent = '';
+        rsBtn.disabled = false;
+        rsBtn.style.opacity = '1';
+      }
+    }, 1000);
+  },
+
+  require(email, callback) {
+    const clean = (email || '').trim().toLowerCase();
+    if (OTP.verifiedEmail && OTP.verifiedEmail === clean) {
+      callback();
+    } else {
+      OTP._pendingSubmit = callback;
+      $('#otpEmail').value = email || '';
+      OTP.open();
+      // Auto-send OTP immediately
+      setTimeout(() => OTP.send(), 200);
+    }
+  }
+};
+$('#otpClose').addEventListener('click', () => OTP.close());
+$('#otpSendBtn').addEventListener('click', () => OTP.send());
+$('#otpVerifyBtn').addEventListener('click', () => OTP.verify());
+$('#otpResendBtn').addEventListener('click', () => OTP.send());
+$('#otpBackBtn').addEventListener('click', () => {
+  $('#otpStepVerify').style.display = 'none';
+  $('#otpStepEmail').style.display = 'block';
+  clearInterval(OTP.timerId);
+});
+$('#otpModal').addEventListener('click', e => {
+  if (e.target.id === 'otpModal') OTP.close();
+});
+
+/* OTP input — auto-verify when 6 digits entered */
+$('#otpCode').addEventListener('input', e => {
+  e.target.value = e.target.value.replace(/\D/g, '').slice(0, 6);
+  $('#otpCodeErr').textContent = '';
+  e.target.closest('.field').classList.remove('err');
+  
+  // Auto-verify when 6 digits entered
+  clearTimeout(OTP._autoVerifyTimer);
+  if (e.target.value.length === 6) {
+    OTP._autoVerifyTimer = setTimeout(() => OTP.verify(), 300);
+  }
+});
+
+/* ============================================================
+   APPLY FORM
+   ============================================================ */
+let currentStep = 1;
+const TOTAL_STEPS = 6;
+
+function showStep(n) {
+  currentStep = n;
+  $$('#applyForm .step').forEach(s => s.classList.toggle('active', +s.dataset.step === n));
+  $$('#stepper .step-pill').forEach(p => {
+    const ps = +p.dataset.step;
+    p.classList.toggle('active', ps === n);
+    p.classList.toggle('done', ps < n);
+  });
+  $('#prevBtn').style.visibility = n === 1 ? 'hidden' : 'visible';
+  $('#nextBtn').style.display    = n === TOTAL_STEPS ? 'none' : 'inline-flex';
+  $('#submitBtn').style.display  = n === TOTAL_STEPS ? 'inline-flex' : 'none';
+  if (n === 5) buildReview();
+}
+
+function markError(el, on) {
+  const field = el.closest('.field');
+  if (field) field.classList.toggle('err', on);
+}
+
+/* Only Email, Mobile, Course mandatory */
+function validateStep(n) {
+  const step = $(`#applyForm .step[data-step="${n}"]`);
+  let ok = true, firstBad = null;
+
+  if (n === 1) {
+    const mobileEl = step.querySelector('[name="mobile"]');
+    const emailEl  = step.querySelector('[name="email"]');
+
+    if (mobileEl) {
+      const v = mobileEl.value.trim();
+      const good = /^[6-9]\d{9}$/.test(v);
+      markError(mobileEl, !good);
+      if (!good) { ok = false; if (!firstBad) firstBad = mobileEl; }
+    }
+    if (emailEl) {
+      const v = emailEl.value.trim();
+      const good = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+      markError(emailEl, !good);
+      if (!good) { ok = false; if (!firstBad) firstBad = emailEl; }
+    }
+  }
+
+  if (n === 2) {
+    const courseEl = step.querySelector('[name="course"]');
+    if (courseEl && !courseEl.value) {
+      markError(courseEl, true);
+      ok = false;
+      if (!firstBad) firstBad = courseEl;
+    }
+  }
+
+  if (!ok) {
+    toast(document.body.classList.contains('lang-hi')
+      ? 'कृपया ईमेल, मोबाइल और कोर्स भरें।'
+      : 'Please fill Email, Mobile and Course.');
+    if (firstBad) {
+      firstBad.focus();
+      firstBad.scrollIntoView({ behavior:'smooth', block:'center' });
+    }
+  }
+  return ok;
+}
+
+$$('#applyForm input, #applyForm select, #applyForm textarea').forEach(el => {
+  el.addEventListener('input',  () => markError(el, false));
+  el.addEventListener('change', () => markError(el, false));
+});
+
+function buildReview() {
+  const f = $('#applyForm');
+  const val  = n => { const e = f.querySelector(`[name="${n}"]`); return e ? e.value : ''; };
+  const mode = (f.querySelector('input[name="mode"]:checked') || {}).value || '—';
+  const inc  = +val('income') || 0;
+  const d    = concession(inc);
+  const course = COURSES.find(c => c.code === val('course'));
+  const payable = course ? Math.round(course.fee * (1 - d/100) / 10) * 10 : 0;
+
+  const rows = [
+    ['नाम / Name', val('fullName') || '—'],
+    ['मोबाइल / Mobile', val('mobile')],
+    ['ईमेल / Email', val('email')],
+    ['जन्मतिथि / DOB', val('dob') || '—'],
+    ['राज्य / State', val('state') || '—'],
+    ['जिला / District', val('district') || '—'],
+    ['कक्षा / Class', val('currentClass') || '—'],
+    ['विद्यालय / School', val('school') || '—'],
+    ['कोर्स / Course', course ? course.code + ' — ' + course.hi : '—'],
+    ['बैच / Batch', val('batch') || '—'],
+    ['मोड / Mode', mode],
+    ['आय / Income', inc ? '₹' + inc.toLocaleString('en-IN') : '—'],
+    ['छूट / Concession', d + '%'],
+    ['देय मासिक फीस / Payable', '₹' + payable.toLocaleString('en-IN')]
+  ];
+
+  $('#reviewArea').innerHTML = `
+    <div class="review-box">
+      <h4><span class="t-hi">आपके द्वारा भरी गई जानकारी</span><span class="t-en">Information You Provided</span></h4>
+      <ul class="review-list">
+        ${rows.map(([k, v]) => `<li><span>${k}</span><span>${v || '—'}</span></li>`).join('')}
+      </ul>
+    </div>`;
+}
+
+$('#nextBtn').addEventListener('click', () => {
+  if (!validateStep(currentStep)) return;
+  if (currentStep < TOTAL_STEPS) showStep(currentStep + 1);
+});
+$('#prevBtn').addEventListener('click', () => {
+  if (currentStep > 1) showStep(currentStep - 1);
+});
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64 = String(reader.result).split(',')[1];
+      resolve({ base64, mime: file.type || 'image/jpeg', name: file.name });
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+$('#submitBtn').addEventListener('click', async () => {
+  const f = $('#applyForm');
+  const val = n => { const e = f.querySelector(`[name="${n}"]`); return e ? e.value : ''; };
+  const email = val('email').trim();
+  const mode  = (f.querySelector('input[name="mode"]:checked') || {}).value || '';
+  const inc   = parseFloat(val('income')) || 0;
+  const courseCode = val('course');
+  const course = COURSES.find(c => c.code === courseCode);
+  const d = concession(inc);
+  const payable = course ? Math.round(course.fee * (1 - d/100) / 10) * 10 : 0;
+
+  if (!course) {
+    toast(document.body.classList.contains('lang-hi') ? 'कृपया कोर्स चुनें।' : 'Please select course.');
+    return;
+  }
+
+  OTP.require(email, async () => {
+    const btn = $('#submitBtn');
+    const orig = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '⏳ <span class="t-hi">फाइलें भेजी जा रही हैं...</span><span class="t-en">Uploading...</span>';
+
+    /* Files → base64 */
+    const fileData = {};
+
+    const photoFile = f.querySelector('[name="docPhoto"]').files[0];
+    if (photoFile) {
+      try {
+        const { base64, mime, name } = await fileToBase64(photoFile);
+        fileData.PhotoBase64 = base64; fileData.PhotoMime = mime; fileData.PhotoName = name;
+      } catch (e) { console.error('Photo error:', e); }
+    }
+
+    const idFile = f.querySelector('[name="docId"]').files[0];
+    if (idFile) {
+      try {
+        const { base64, mime, name } = await fileToBase64(idFile);
+        fileData.IdDocBase64 = base64; fileData.IdDocMime = mime; fileData.IdDocName = name;
+      } catch (e) { console.error('ID error:', e); }
+    }
+
+    const msFile = f.querySelector('[name="docMarksheet"]').files[0];
+    if (msFile) {
+      try {
+        const { base64, mime, name } = await fileToBase64(msFile);
+        fileData.MarksheetBase64 = base64; fileData.MarksheetMime = mime; fileData.MarksheetName = name;
+      } catch (e) { console.error('Marksheet error:', e); }
+    }
+
+    const incFile = f.querySelector('[name="docIncome"]').files[0];
+    if (incFile) {
+      try {
+        const { base64, mime, name } = await fileToBase64(incFile);
+        fileData.IncomeCertBase64 = base64; fileData.IncomeCertMime = mime; fileData.IncomeCertName = name;
+      } catch (e) { console.error('Income error:', e); }
+    }
+
+    btn.innerHTML = '⏳ <span class="t-hi">भेजा जा रहा है...</span><span class="t-en">Submitting...</span>';
+
+    const appId = 'DPF-UPL-26-' + String(Math.floor(10000 + Math.random()*89999));
+    const payload = {
+      action:'submit', type:'application', AppID: appId,
+      Name: val('fullName') || 'Unknown',
+      DOB: val('dob'),
+      Mobile: val('mobile'),
+      Email: email,
+      State: val('state'),
+      District: val('district'),
+      PIN: val('pincode'),
+      Address: val('address'),
+      Class: val('currentClass'),
+      School: val('school'),
+      Course: course.code + ' — ' + course.hi,
+      CourseCode: course.code,
+      CourseFee: course.fee,
+      Batch: val('batch'),
+      Mode: mode,
+      Guardian: val('guardianName'),
+      GuardianMobile: val('guardianMobile'),
+      Income: inc,
+      Category: val('category'),
+      Orphan: val('orphan'),
+      Concession: d + '%',
+      ConcessionPercent: d,
+      Payable: payable,
+      BaseFee: course.fee,
+      ...fileData
+    };
+
+    const r = await apiCall(payload);
+    btn.disabled = false;
+    btn.innerHTML = orig;
+
+    if (r.status !== 'success') {
+      toast(r.message || 'Submit failed. Please try again.');
+      return;
+    }
+
+    try {
+      const all = JSON.parse(localStorage.getItem('uplift_applications') || '[]');
+      all.push({ ...payload, id: appId, submittedAt: new Date().toISOString() });
+      localStorage.setItem('uplift_applications', JSON.stringify(all));
+    } catch (e) {}
+
+    $('#genAppId').textContent = appId;
+    $('#confirmDetails').innerHTML = [
+      ['नाम / Name', payload.Name],
+      ['कोर्स / Course', payload.Course],
+      ['बैच / Batch', payload.Batch || '—'],
+      ['मोड / Mode', payload.Mode || '—'],
+      ['मोबाइल / Mobile', payload.Mobile],
+      ['छूट / Concession', payload.Concession],
+      ['देय मासिक फीस / Monthly Fee', '₹' + payable.toLocaleString('en-IN')]
+    ].map(([k,v]) => `<li><span>${k}</span><span>${v||'—'}</span></li>`).join('');
+
+    $('#applyForm').style.display = 'none';
+    $('#stepper').style.display = 'none';
+    $('#confirmCard').classList.add('show');
+    toast(document.body.classList.contains('lang-hi') 
+      ? '✓ आवेदन जमा — विवरण ईमेल पर भेज दिया गया है' 
+      : '✓ Application submitted — details emailed');
+  });
+});
+
+/* ============================================================
+   VOLUNTEER
+   ============================================================ */
+$$('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    $$('.tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const target = tab.dataset.tab;
+    $('#teacherForm').style.display     = target === 'teacher' ? 'block' : 'none';
+    $('#institutionForm').style.display = target === 'institution' ? 'block' : 'none';
+  });
+});
+
+function validateVolunteer(form, rules) {
+  let ok = true, firstBad = null;
+  rules.forEach(([name, test, isGroup]) => {
+    if (isGroup) {
+      const checked = $$(`input[name="${name}"]:checked`, form);
+      const field = $(`input[name="${name}"]`, form).closest('.field');
+      const good = test(checked);
+      if (field) field.classList.toggle('err', !good);
+      if (!good) ok = false;
+      return;
+    }
+    const el = form.querySelector(`[name="${name}"]`);
+    if (!el) return;
+    const good = test(el.value);
+    markError(el, !good);
+    if (!good) { ok = false; if (!firstBad) firstBad = el; }
+  });
+  if (!ok) {
+    toast(document.body.classList.contains('lang-hi') ? 'कृपया ज़रूरी फ़ील्ड भरें।' : 'Please fill required fields.');
+    if (firstBad) firstBad.focus();
+  }
+  return ok;
+}
+
+$$('#volTeacherForm input, #volTeacherForm select, #volTeacherForm textarea, #volInstForm input, #volInstForm select, #volInstForm textarea').forEach(el => {
+  el.addEventListener('input',  () => markError(el, false));
+  el.addEventListener('change', () => markError(el, false));
+});
+
+$('#volTeacherForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const form = e.target;
+  const ok = validateVolunteer(form, [
+    ['vName',   v => v.trim().length >= 3],
+    ['vMobile', v => /^[6-9]\d{9}$/.test(v.trim())],
+    ['vEmail',  v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim())],
+    ['vCity',   v => v.trim().length >= 2],
+    ['vQual',   v => !!v],
+    ['vSubject',v => v.trim().length >= 2],
+    ['vMode',   v => !!v],
+    ['vHours',  v => !!v],
+    ['vSubj',   arr => arr.length > 0, true],
+    ['vClass',  arr => arr.length > 0, true],
+    ['vType',   arr => arr.length > 0, true]
+  ]);
+  if (!ok) return;
+  const g = n => { const el = form.querySelector(`[name="${n}"]`); return el ? el.value : ''; };
+  const gAll = n => $$(`input[name="${n}"]:checked`, form).map(x => x.value);
+  const volId = 'DPF-VOL-T-26-' + String(Math.floor(10000 + Math.random() * 89999));
+  const email = g('vEmail').trim();
+  OTP.require(email, async () => {
+    const payload = {
+      action:'submit', type:'volunteer', ID: volId, Type: 'Teacher',
+      Name: g('vName'), Mobile: g('vMobile'), Email: email, City: g('vCity'),
+      Qualification: g('vQual'), Subject: g('vSubject'), Experience: g('vExp'),
+      Subjects: gAll('vSubj').join(', '), Classes: gAll('vClass').join(', '),
+      Days: gAll('vDay').join(', '), Mode: g('vMode'), Hours: g('vHours'),
+      VolType: g('vType'), Facilities: '', Contribution: '', Notes: g('vWhy')
+    };
+    const r = await apiCall(payload);
+    if (r.status !== 'success') { toast(r.message || 'Failed'); return; }
+    $('#genVolId').textContent = volId;
+    $('#volTeacherForm').style.display = 'none';
+    $('#teacherConfirm').classList.add('show');
+    toast(document.body.classList.contains('lang-hi') ? '✓ आवेदन जमा' : '✓ Submitted');
+  });
+});
+
+$('#volInstForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const form = e.target;
+  const ok = validateVolunteer(form, [
+    ['iName',    v => v.trim().length >= 3],
+    ['iType',    v => !!v],
+    ['iPerson',  v => v.trim().length >= 3],
+    ['iMobile',  v => /^[6-9]\d{9}$/.test(v.trim())],
+    ['iEmail',   v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim())],
+    ['iAddress', v => v.trim().length >= 10],
+    ['iCity',    v => v.trim().length >= 2],
+    ['iContrib', arr => arr.length > 0, true]
+  ]);
+  if (!ok) return;
+  const g = n => { const el = form.querySelector(`[name="${n}"]`); return el ? el.value : ''; };
+  const gAll = n => $$(`input[name="${n}"]:checked`, form).map(x => x.value);
+  const instId = 'DPF-VOL-I-26-' + String(Math.floor(10000 + Math.random() * 89999));
+  const email = g('iEmail').trim();
+  OTP.require(email, async () => {
+    const payload = {
+      action:'submit', type:'volunteer', ID: instId, Type: 'Institution',
+      Name: g('iName'), Mobile: g('iMobile'), Email: email, City: g('iCity'),
+      Qualification: g('iType'), Subject: g('iRegNo'), Experience: '', Subjects: '',
+      Classes: gAll('iFor').join(', '), Days: g('iDays'),
+      Mode: (g('iRooms') || '0') + ' rooms, ' + (g('iCapacity') || '0') + ' seats',
+      Hours: g('iTime'), VolType: '',
+      Facilities: gAll('iFac').join(', '),
+      Contribution: gAll('iContrib').join(', '),
+      Notes: g('iNotes')
+    };
+    const r = await apiCall(payload);
+    if (r.status !== 'success') { toast(r.message || 'Failed'); return; }
+    $('#genInstId').textContent = instId;
+    $('#volInstForm').style.display = 'none';
+    $('#instConfirm').classList.add('show');
+    toast(document.body.classList.contains('lang-hi') ? '✓ आवेदन जमा' : '✓ Submitted');
+  });
+});
+
+/* ============================================================
+   STUDENT PORTAL
+   ============================================================ */
+const TIMELINE_STEPS = ['Submitted','Under Verification','Verified','Selected','Admission Confirmed'];
+const TIMELINE_LABELS = {
+  'Submitted':           { hi:'जमा',      en:'Submitted' },
+  'Under Verification':  { hi:'सत्यापन',  en:'Verification' },
+  'Verified':            { hi:'सत्यापित', en:'Verified' },
+  'Selected':            { hi:'चयनित',    en:'Selected' },
+  'Admission Confirmed': { hi:'प्रवेश',   en:'Admission' }
+};
+
+$('#loginBtn').addEventListener('click', async () => {
+  const id  = $('#loginAppId').value.trim().toUpperCase();
+  const mob = $('#loginMobile').value.trim();
+  if (!id || !/^[6-9]\d{9}$/.test(mob)) {
+    toast(document.body.classList.contains('lang-hi') ? 'कृपया सही ID और मोबाइल भरें।' : 'Please enter valid ID and mobile.');
+    return;
+  }
+
+  const btn = $('#loginBtn');
+  const orig = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '⏳ <span class="t-hi">जाँच...</span><span class="t-en">Checking...</span>';
+
+  const url = SHEET_ENDPOINT + '?action=getStudent&appId=' + encodeURIComponent(id) + '&mobile=' + encodeURIComponent(mob);
+
+  let r;
+  try {
+    const res = await fetch(url);
+    r = await res.json();
+  } catch (err) {
+    btn.disabled = false; btn.innerHTML = orig;
+    toast('Network error.'); return;
+  }
+
+  btn.disabled = false; btn.innerHTML = orig;
+
+  if (r.status !== 'success' || !r.data) {
+    toast(document.body.classList.contains('lang-hi') ? 'कोई आवेदन नहीं मिला।' : 'No application found.');
+    return;
+  }
+
+  populateDashboard(r.data);
+  $('#portalLogin').style.display = 'none';
+  $('#portalDash').classList.add('show');
+  toast(document.body.classList.contains('lang-hi') ? 'लॉगिन सफल ✓' : 'Login successful ✓');
+});
+
+function populateDashboard(rec) {
+  $('#dashName').textContent = rec.Name || '—';
+  $('#dashId').textContent   = rec.AppID || '—';
+  $('#dCourse').textContent  = rec.Course || '—';
+  $('#dBatch').textContent   = rec.BatchTiming || rec.Batch || '—';
+  $('#dMode').textContent    = rec.Mode || '—';
+  $('#dDocs').textContent    = rec.DocsStatus || 'Pending Verification';
+  $('#dFee').textContent     = '₹' + (rec.Payable || 0).toLocaleString('en-IN');
+  $('#dDisc').textContent    = rec.Concession || '0%';
+
+  const currentStatus = rec.Status || 'Submitted';
+  const idx = Math.max(0, TIMELINE_STEPS.indexOf(currentStatus));
+  $('#timeline').innerHTML = TIMELINE_STEPS.map((s, i) => {
+    const cls = i < idx ? 'done' : (i === idx ? 'current' : '');
+    const lbl = TIMELINE_LABELS[s];
+    return `<div class="tl-step ${cls}">
+      <div class="tl-dot">${i < idx ? '✓' : i + 1}</div>
+      <div><span class="t-hi">${lbl.hi}</span><span class="t-en">${lbl.en}</span></div>
+    </div>`;
+  }).join('');
+
+  /* Admit Card */
+  const admitBox = $('#admitCardBox');
+  if (admitBox) {
+    if (rec.AdmitCardURL && String(rec.AdmitCardURL).startsWith('http')) {
+      admitBox.innerHTML = `
+        <div style="background:#e6f4ec;border:1px solid #bfe2d2;border-radius:12px;padding:20px;margin-top:20px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+            <div style="width:38px;height:38px;border-radius:50%;background:#0f7a48;color:#fff;display:grid;place-items:center;font-size:1.1rem">🎫</div>
+            <div>
+              <div style="font-size:.95rem;font-weight:700;color:#0f7a48">
+                <span class="t-hi">प्रवेश पत्र उपलब्ध है</span><span class="t-en">Admit Card Available</span>
+              </div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:16px">
+            ${rec.RollNumber ? `<div style="background:#fff;padding:10px 12px;border-radius:8px;border:1px solid #d5e0ed">
+              <div style="font-size:.7rem;color:#64748b;text-transform:uppercase">Roll No.</div>
+              <div style="font-family:monospace;font-weight:700;color:#0f2c52">${rec.RollNumber}</div></div>` : ''}
+            ${rec.ExamDate ? `<div style="background:#fff;padding:10px 12px;border-radius:8px;border:1px solid #d5e0ed">
+              <div style="font-size:.7rem;color:#64748b;text-transform:uppercase">Exam Date</div>
+              <div style="font-weight:600;color:#0f2c52">${rec.ExamDate}</div></div>` : ''}
+            ${rec.ExamTime ? `<div style="background:#fff;padding:10px 12px;border-radius:8px;border:1px solid #d5e0ed">
+              <div style="font-size:.7rem;color:#64748b;text-transform:uppercase">Time</div>
+              <div style="font-weight:600;color:#0f2c52">${rec.ExamTime}</div></div>` : ''}
+          </div>
+          ${rec.ExamCenter ? `<div style="background:#fff;padding:12px;border-radius:8px;border:1px solid #d5e0ed;margin-bottom:16px">
+            <div style="font-size:.7rem;color:#64748b;text-transform:uppercase;margin-bottom:4px">Exam Center</div>
+            <div style="font-weight:600;color:#0f2c52;font-size:.9rem">${rec.ExamCenter}</div>
+          </div>` : ''}
+          <a href="${rec.AdmitCardURL}" target="_blank" rel="noopener" class="btn btn-primary" style="background:#0f7a48;border-color:#0f7a48">
+            📥 <span class="t-hi">प्रवेश पत्र डाउनलोड करें</span><span class="t-en">Download Admit Card</span>
+          </a>
+        </div>`;
+    } else if (rec.Status === 'Selected') {
+      admitBox.innerHTML = `
+        <div style="background:#fff8e8;border:1px solid #f0e0b8;border-radius:12px;padding:18px;margin-top:20px;text-align:center">
+          <div style="font-size:1.8rem;margin-bottom:8px">⏳</div>
+          <div style="font-weight:700;color:#7a5c00">
+            <span class="t-hi">प्रवेश पत्र तैयार हो रहा है</span><span class="t-en">Admit card is being prepared</span>
+          </div>
+        </div>`;
+    } else {
+      admitBox.innerHTML = '';
+    }
+  }
+
+  /* Admin Notes */
+  const notesBox = $('#adminNotesBox');
+  if (notesBox) {
+    if (rec.AdminNotes && String(rec.AdminNotes).trim()) {
+      notesBox.innerHTML = `
+        <div style="background:#eef4fb;border:1px solid #d5e0ed;border-radius:12px;padding:16px;margin-top:20px">
+          <div style="font-size:.8rem;color:#1a4a80;font-weight:700;text-transform:uppercase;margin-bottom:8px">
+            📢 <span class="t-hi">प्रशासन की ओर से सूचना</span><span class="t-en">Message from Admin</span>
+          </div>
+          <div style="font-size:.9rem;color:#1a2533;line-height:1.7">${rec.AdminNotes}</div>
+        </div>`;
+    } else notesBox.innerHTML = '';
+  }
+
+  /* Fee Status */
+  const feeBox = $('#feeStatusBox');
+  if (feeBox) {
+    const paid = String(rec.FeePaid || '').toLowerCase() === 'yes';
+    feeBox.innerHTML = `
+      <div style="background:${paid ? '#e6f4ec' : '#fdf3e0'};border:1px solid ${paid ? '#bfe2d2' : '#f0e0b8'};border-radius:12px;padding:16px;margin-top:20px">
+        <div style="font-size:.8rem;font-weight:700;text-transform:uppercase;margin-bottom:6px;color:${paid ? '#0f7a48' : '#a16207'}">
+          💰 <span class="t-hi">फीस स्थिति</span><span class="t-en">Fee Status</span>
+        </div>
+        <div style="font-size:.9rem">
+          ${paid
+            ? `<span class="t-hi">फीस जमा हो चुकी है ✓</span><span class="t-en">Fee paid ✓</span>`
+            : `<span class="t-hi">बाकी राशि:</span><span class="t-en">Due:</span> <b>₹${rec.FeeDue || 0}</b>`}
+        </div>
+      </div>`;
+  }
+
+  /* Certificate */
+  const certBox = $('#certificateBox');
+  if (certBox) {
+    if (rec.CertificateURL && String(rec.CertificateURL).startsWith('http')) {
+      certBox.innerHTML = `
+        <div style="background:#f5eaff;border:1px solid #dcc4f0;border-radius:12px;padding:20px;margin-top:20px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <div style="width:38px;height:38px;border-radius:50%;background:#7a3eb8;color:#fff;display:grid;place-items:center;font-size:1.1rem">🎖️</div>
+            <div style="font-size:.95rem;font-weight:700;color:#7a3eb8">
+              <span class="t-hi">प्रमाणपत्र उपलब्ध है</span><span class="t-en">Certificate Available</span>
+            </div>
+          </div>
+          <a href="${rec.CertificateURL}" target="_blank" rel="noopener" class="btn btn-primary" style="background:#7a3eb8;border-color:#7a3eb8">
+            📥 <span class="t-hi">प्रमाणपत्र डाउनलोड करें</span><span class="t-en">Download Certificate</span>
+          </a>
+        </div>`;
+    } else certBox.innerHTML = '';
+  }
+}
+
+$('#logoutBtn').addEventListener('click', () => {
+  $('#portalDash').classList.remove('show');
+  $('#portalLogin').style.display = 'block';
+  $('#loginAppId').value = '';
+  $('#loginMobile').value = '';
+});
+
+/* ============================================================
+   NOTICES
+   ============================================================ */
+async function loadNotices() {
+  const box = $('#noticesList');
+  if (!box) return;
+  try {
+    const res = await fetch(SHEET_ENDPOINT + '?action=getNotices');
+    const r = await res.json();
+    if (r.status !== 'success' || !Array.isArray(r.data) || r.data.length === 0) {
+      box.innerHTML = `<p class="center" style="color:var(--muted)">
+        <span class="t-hi">अभी कोई सूचना नहीं है।</span><span class="t-en">No notices yet.</span></p>`;
+      return;
+    }
+    box.innerHTML = r.data.map(n => `
+      <div class="notice">
+        <div class="notice-date"><b>📢</b><span>${n.date || ''}</span></div>
+        <div class="notice-body">
+          <h4>${n.title || ''}</h4>
+          <p>${n.message || ''}</p>
+          ${n.link ? `<a href="${n.link}" target="_blank" class="btn btn-outline btn-sm" style="margin-top:10px">${n.linkText || 'View'}</a>` : ''}
+        </div>
+      </div>`).join('');
+  } catch (err) {
+    box.innerHTML = `<p class="center" style="color:var(--muted)">
+      <span class="t-hi">सूचनाएँ लोड नहीं हो सकीं।</span><span class="t-en">Could not load.</span></p>`;
+  }
+}
+loadNotices();
+
+/* ============================================================
+   GRIEVANCE
+   ============================================================ */
+$('#grievanceForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const form = e.target;
+  const g = n => { const el = form.querySelector(`[name="${n}"]`); return el ? el.value : ''; };
+  let ok = true;
+  [['gName', v => v.trim().length >= 3],
+   ['gMobile', v => /^[6-9]\d{9}$/.test(v.trim())],
+   ['gEmail', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim())],
+   ['gCategory', v => !!v],
+   ['gDetails', v => v.trim().length >= 10]].forEach(([n, test]) => {
+    const el = form.querySelector(`[name="${n}"]`);
+    const good = test(el.value);
+    markError(el, !good);
+    if (!good) ok = false;
+  });
+  if (!ok) {
+    toast(document.body.classList.contains('lang-hi') ? 'कृपया सभी ज़रूरी फ़ील्ड भरें।' : 'Please fill required fields.');
+    return;
+  }
+  const email = g('gEmail').trim();
+  OTP.require(email, async () => {
+    const cid = 'DPF-GRV-26-' + String(Math.floor(1000 + Math.random() * 8999));
+    const payload = {
+      action:'submit', type:'grievance', ComplaintID: cid,
+      Name: g('gName'), AppID: g('gAppId'), Mobile: g('gMobile'),
+      Email: email, Category: g('gCategory'), Details: g('gDetails')
+    };
+    const r = await apiCall(payload);
+    if (r.status !== 'success') { toast(r.message || 'Failed'); return; }
+    $('#genComplaintId').textContent = cid;
+    form.style.display = 'none';
+    $('#grievanceConfirm').classList.add('show');
+    toast(document.body.classList.contains('lang-hi') ? '✓ शिकायत दर्ज' : '✓ Registered');
+  });
+});
+
+/* FAQ */
+$$('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const open = item.classList.contains('open');
+    $$('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!open) item.classList.add('open');
+  });
+});
+
+/* Counters */
+(function counters() {
+  const els = $$('[data-count]');
+  if (!els.length || !('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      const el = en.target;
+      const target = +el.dataset.count;
+      let cur = 0;
+      const step = Math.max(1, Math.ceil(target / 40));
+      const t = setInterval(() => {
+        cur += step;
+        if (cur >= target) { cur = target; clearInterval(t); }
+        el.textContent = cur + (target >= 100 ? '+' : '');
+      }, 28);
+      obs.unobserve(el);
+    });
+  }, { threshold: .4 });
+  els.forEach(el => io.observe(el));
+})();
+
+/* INIT */
+showStep(1);
+console.log('%cDIPRA FOUNDATION — The Uplift', 'color:#0f2c52;font-weight:bold;font-size:14px');
+</script>
+</body>
+</html>
