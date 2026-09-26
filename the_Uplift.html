@@ -1433,7 +1433,59 @@ footer a:hover{color:var(--accent-2)}
     </div>
   </div>
 </div>
-
+<!-- ============================================================
+     OTP MODAL
+     ============================================================ -->
+<div class="modal" id="otpModal">
+  <div class="modal-box" style="max-width:440px">
+    <div class="modal-head">
+      <h3 style="font-size:1rem">🔐 <span class="t-hi">ईमेल सत्यापन</span><span class="t-en">Email Verification</span></h3>
+      <button class="close-x" id="otpClose">×</button>
+    </div>
+    <div class="modal-body">
+      <div id="otpStepEmail">
+        <p style="color:var(--muted);font-size:.86rem;margin-bottom:16px;line-height:1.65">
+          <span class="t-hi">आपके ईमेल पर 6 अंकों का OTP भेजा जाएगा।</span>
+          <span class="t-en">A 6-digit OTP will be sent to your email.</span>
+        </p>
+        <div class="field">
+          <label><span class="t-hi">ईमेल पता</span><span class="t-en">Email Address</span></label>
+          <input type="email" id="otpEmail" placeholder="name@example.com">
+          <div class="errmsg" id="otpEmailErr"><span class="t-hi">सही ईमेल भरें</span><span class="t-en">Enter a valid email</span></div>
+        </div>
+        <button class="btn btn-primary btn-block" id="otpSendBtn">
+          📩 <span class="t-hi">OTP भेजें</span><span class="t-en">Send OTP</span>
+        </button>
+      </div>
+      <div id="otpStepVerify" style="display:none">
+        <p style="color:var(--muted);font-size:.86rem;margin-bottom:16px">
+          <span class="t-hi">OTP भेजा गया:</span><span class="t-en">OTP sent to:</span>
+          <b id="otpSentTo" style="color:var(--navy)"></b>
+        </p>
+        <div class="field">
+          <label><span class="t-hi">6 अंकों का OTP</span><span class="t-en">6-digit OTP</span></label>
+          <input type="text" id="otpCode" maxlength="6" inputmode="numeric" style="font-family:monospace;font-size:1.5rem;letter-spacing:8px;text-align:center">
+          <div class="errmsg" id="otpCodeErr"></div>
+        </div>
+        <div style="display:flex;gap:10px">
+          <button class="btn btn-outline" id="otpBackBtn" style="flex:1">← <span class="t-hi">पीछे</span><span class="t-en">Back</span></button>
+          <button class="btn btn-primary" id="otpVerifyBtn" style="flex:2">✓ <span class="t-hi">सत्यापित करें</span><span class="t-en">Verify</span></button>
+        </div>
+        <p style="text-align:center;margin-top:14px;font-size:.82rem;color:var(--muted)">
+          <span class="t-hi">OTP नहीं मिला?</span><span class="t-en">Didn't get OTP?</span>
+          <button id="otpResendBtn" style="color:var(--navy-2);font-weight:600;text-decoration:underline;background:none;border:none;cursor:pointer;padding:0">
+            <span class="t-hi">दोबारा भेजें</span><span class="t-en">Resend</span>
+          </button>
+          <span id="otpTimer" style="margin-left:6px"></span>
+        </p>
+      </div>
+      <div class="note note-blue" style="font-size:.78rem;margin-top:16px">
+        <span class="t-hi">🔒 आपका ईमेल केवल आवेदन एवं सूचना भेजने के लिए उपयोग किया जाएगा।</span>
+        <span class="t-en">🔒 Your email will be used only for application and notices.</span>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="toast" id="toast"></div>
 
 <script>
