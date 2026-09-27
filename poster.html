@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b3d91">
+  <title>DiPra Foundation | The Uplift Coaching Scheme – Indian National Theme</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ----- reset & base ----- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --saffron: #FF9933;
+      --saffron-dark: #E67E22;
+      --white: #FFFFFF;
+      --green: #138808;
+      --green-dark: #0D6B06;
+      --navy: #000080;
+      --navy-light: #1A3A8F;
+      --gold: #FFD700;
+      --chakra-blue: #06038D;
+      --cream: #FFFDF5;
+    }
+
+    body {
+      background: #f0f4f8;
+      font-family: "Noto Sans Devanagari", Poppins, Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 12px;
+    }
+
+    /* ----- poster container with Indian theme ----- */
+    .poster {
+      width: 100%;
+      max-width: 1100px;
+      background: var(--cream);
+      border-radius: 28px 28px 20px 20px;
+      box-shadow: 0 25px 50px -10px rgba(0, 40, 100, 0.35);
+      overflow: hidden;
+      position: relative;
+      padding: 16px 20px 10px;
+      border: 3px solid transparent;
+      background-clip: padding-box;
+    }
+
+    /* Indian tricolor top border */
+    .poster::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: linear-gradient(90deg,
+        var(--saffron) 0%, var(--saffron) 33%,
+        var(--white) 33%, var(--white) 66%,
+        var(--green) 66%, var(--green) 100%);
+      border-radius: 28px 28px 0 0;
+      z-index: 1;
+    }
+
+    /* Chakra-inspired subtle watermark */
+    .poster::after {
+      content: "☸";
+      position: absolute;
+      bottom: 60px;
+      right: 30px;
+      font-size: 180px;
+      color: rgba(6, 3, 141, 0.04);
+      z-index: 0;
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    /* ----- header with logo and contact (right-side chakra removed) ----- */
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      gap: 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1 1 240px;
+    }
+
+    /* Official logo with Indian flag-inspired ring */
+    .brand-logo {
+      width: 76px;
+      height: 76px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 4px 14px rgba(0, 60, 120, 0.2),
+                  0 0 0 3px var(--saffron),
+                  0 0 0 6px var(--white),
+                  0 0 0 9px var(--green);
+      padding: 4px;
+    }
+
+    .brand-text {
+      line-height: 1.2;
+    }
+
+    .brand-name {
+      font-family: Poppins, sans-serif;
+      font-weight: 900;
+      font-size: 1.7rem;
+      letter-spacing: -1px;
+      color: var(--navy);
+    }
+    .brand-name .di { color: var(--saffron); }
+    .brand-name .pra { color: var(--chakra-blue); }
+
+    .brand-sub {
+      font-family: Poppins, sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      color: var(--green);
+      margin-top: 2px;
+    }
+
+    .motto {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--navy);
+      border-left: 4px solid var(--saffron);
+      padding-left: 10px;
+      margin-left: 6px;
+      line-height: 1.3;
+    }
+
+    /* header right side: contact info only */
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .contact-mini {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--navy);
+      background: linear-gradient(135deg, #fff8e8, #eef8ee);
+      padding: 8px 14px;
+      border-radius: 40px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      border: 1.5px solid var(--saffron);
+      box-shadow: 0 2px 6px rgba(255, 153, 51, 0.15);
+    }
+    .contact-mini span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ----- title & class badge ----- */
+    .title-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin: 8px 0 12px;
+      gap: 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .title-block {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 6px 12px;
+    }
+
+    .title-main {
+      font-family: Poppins, sans-serif;
+      font-weight: 900;
+      font-size: 2.2rem;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--navy);
+    }
+
+    /* Saffron Uplift with subtle glow */
+    .title-main .uplift-highlight {
+      color: var(--saffron-dark);
+      text-shadow: 0 2px 10px rgba(255, 153, 51, 0.35);
+    }
+
+    .title-sub {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      letter-spacing: -0.5px;
+    }
+
+    .class-badge {
+      background: linear-gradient(135deg, var(--gold), #FFC107);
+      color: var(--navy);
+      font-weight: 900;
+      padding: 9px 24px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 16px rgba(255, 193, 7, 0.4),
+                  inset 0 -2px 0 rgba(0,0,0,0.08);
+      white-space: nowrap;
+      border: 1.5px solid #E6A800;
+    }
+
+    /* ----- offers strip (70% + 100%) ----- */
+    .offers-strip {
+      display: flex;
+      align-items: stretch;
+      gap: 12px;
+      margin: 16px 0 12px;
+      background: linear-gradient(90deg, #fff8e8, #eef8ee, #fff8e8);
+      border-radius: 24px;
+      padding: 8px 10px;
+      border: 1.5px solid rgba(255, 153, 51, 0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    .offer-link {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      text-decoration: none;
+      flex: 1;
+      transition: 0.2s;
+      border-radius: 18px;
+      padding: 6px 10px;
+    }
+    .offer-link:hover {
+      background: rgba(255, 153, 51, 0.08);
+      transform: scale(1.01);
+    }
+
+    .offer-box {
+      background: linear-gradient(135deg, var(--saffron), var(--saffron-dark));
+      color: white;
+      padding: 12px 24px;
+      border-radius: 40px;
+      font-weight: 900;
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 18px rgba(255, 153, 51, 0.35);
+      white-space: nowrap;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+    .offer-box small {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #FFF9E0;
+      letter-spacing: 0.3px;
+    }
+
+    .offer-plus {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .offer-green {
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      color: white;
+      padding: 12px 24px;
+      border-radius: 40px;
+      font-weight: 900;
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 18px rgba(19, 136, 8, 0.3);
+      white-space: nowrap;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+    .offer-green small {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #F0FFF0;
+    }
+
+    .offer-text {
+      font-weight: 800;
+      color: var(--navy);
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+    .offer-text strong {
+      color: var(--saffron-dark);
+      font-size: 1.1rem;
+    }
+
+    /* ----- action buttons ----- */
+    .action-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 16px 0 12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .action-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 8px;
+      border-radius: 18px;
+      font-weight: 800;
+      font-size: 1rem;
+      text-decoration: none;
+      text-align: center;
+      transition: 0.2s;
+      box-shadow: 0 8px 18px rgba(0, 40, 100, 0.15);
+      border: none;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Indian tricolor bottom strip on buttons */
+    .action-btn::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg,
+        var(--saffron) 0%, var(--saffron) 33%,
+        #fff 33%, #fff 66%,
+        var(--green) 66%, var(--green) 100%);
+    }
+
+    .action-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 28px rgba(0, 40, 100, 0.25);
+    }
+
+    .action-btn .emoji-big {
+      font-size: 1.8rem;
+    }
+
+    .action-btn .btn-label {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.3;
+    }
+    .action-btn .btn-label small {
+      font-weight: 600;
+      font-size: 0.7rem;
+      opacity: 0.9;
+    }
+
+    .action-btn.apply {
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+    }
+    .action-btn.apply .btn-label small {
+      color: #C0DCFF;
+    }
+
+    .action-btn.volunteer {
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+    }
+    .action-btn.volunteer .btn-label small {
+      color: #D4FFD4;
+    }
+
+    .action-btn.grievance {
+      background: linear-gradient(135deg, var(--saffron), var(--saffron-dark));
+    }
+    .action-btn.grievance .btn-label small {
+      color: #FFF1E0;
+    }
+
+    /* ----- footer ----- */
+    .footer-compact {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      color: white;
+      padding: 14px 22px;
+      border-radius: 30px 30px 16px 16px;
+      margin-top: 16px;
+      gap: 12px;
+      position: relative;
+      z-index: 2;
+      border-top: 4px solid var(--saffron);
+      box-shadow: 0 -4px 0 var(--green);
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .location-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.12);
+      padding: 7px 16px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: white;
+      transition: 0.2s;
+      border: 1px solid rgba(255, 153, 51, 0.4);
+    }
+    .location-badge:hover {
+      background: rgba(255, 153, 51, 0.25);
+      border-color: var(--saffron);
+    }
+
+    .footer-website {
+      font-family: Poppins, sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--gold);
+      text-decoration: none;
+      transition: 0.2s;
+      background: rgba(255, 215, 0, 0.12);
+      padding: 7px 20px;
+      border-radius: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(255, 215, 0, 0.35);
+    }
+    .footer-website:hover {
+      background: rgba(255, 215, 0, 0.28);
+      color: white;
+      border-color: var(--gold);
+    }
+
+    .footer-tagline {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #C0DCFF;
+      text-align: right;
+    }
+
+    .footer-tagline .flag-emoji {
+      font-size: 1rem;
+      vertical-align: middle;
+    }
+
+    /* ----- responsive ----- */
+    @media (max-width: 900px) {
+      .action-grid { grid-template-columns: 1fr 1fr; }
+      .title-main { font-size: 1.8rem; }
+    }
+
+    @media (max-width: 600px) {
+      .poster { padding: 12px 14px; }
+      .header { flex-direction: column; align-items: flex-start; }
+      .header-right { width: 100%; justify-content: space-between; }
+      .action-grid { grid-template-columns: 1fr; }
+      .offers-strip { flex-direction: column; align-items: stretch; }
+      .offer-link { flex-direction: column; align-items: stretch; gap: 8px; }
+      .offer-box, .offer-green { justify-content: center; }
+      .offer-plus { text-align: center; }
+      .title-main { font-size: 1.6rem; }
+      .title-sub { font-size: 1.1rem; }
+      .class-badge { font-size: 0.9rem; padding: 6px 14px; }
+      .footer-compact { flex-direction: column; text-align: center; }
+      .footer-left { justify-content: center; }
+      .footer-tagline { text-align: center; }
+      .brand-logo { width: 60px; height: 60px; }
+    }
+
+    @media (max-width: 380px) {
+      .action-btn { font-size: 0.8rem; padding: 10px 6px; }
+      .action-btn .emoji-big { font-size: 1.4rem; }
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .poster { box-shadow: none; border: 1px solid #ccc; }
+      .action-btn:hover, .offer-link:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="brand">
+        <img class="brand-logo" 
+             src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" 
+             alt="DIPRA FOUNDATION logo">
+        <div class="brand-text">
+          <div class="brand-name"><span class="di">Di</span><span class="pra">Pra</span> Foundation</div>
+          <div class="brand-sub">THE UPLIFT COACHING SCHEME</div>
+          <div class="motto">साथ मिलकर, बेहतर कल</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="contact-mini">
+          <span>📞 +91 95323 28276</span>
+          <span>✉️ diprafoundation@gmail.com</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TITLE + CLASS BADGE -->
+    <div class="title-row">
+      <div class="title-block">
+        <div class="title-main">The <span class="uplift-highlight">Uplift</span></div>
+        <div class="title-sub">Coaching Scheme</div>
+      </div>
+      <div class="class-badge">कक्षा 6वीं – 12वीं</div>
+    </div>
+
+    <!-- OFFERS -->
+    <div class="offers-strip">
+      <a class="offer-link" href="https://www.diprafoundation.com/the_Uplift.html#fees" target="_blank" rel="noopener">
+        <div class="offer-box">
+          <small>अधिकतम</small> 70%
+        </div>
+        <div class="offer-plus">+</div>
+        <div class="offer-green">
+          100% <small>अनाथ बच्चों के लिए</small>
+        </div>
+        <div class="offer-text">
+          <strong>आय आधारित छूट</strong><br>30%–70% तक
+        </div>
+      </a>
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="action-grid">
+      <a class="action-btn apply" href="https://www.diprafoundation.com/the_Uplift.html#apply" target="_blank" rel="noopener">
+        <span class="emoji-big">📝</span>
+        <span class="btn-label">
+          आवेदन करें
+          <small>Apply Now</small>
+        </span>
+      </a>
+      <a class="action-btn volunteer" href="https://www.diprafoundation.com/the_Uplift.html#volunteer" target="_blank" rel="noopener">
+        <span class="emoji-big">🤝</span>
+        <span class="btn-label">
+          स्वयंसेवक बनें
+          <small>Become a Volunteer</small>
+        </span>
+      </a>
+      <a class="action-btn grievance" href="https://www.diprafoundation.com/the_Uplift.html#grievance" target="_blank" rel="noopener">
+        <span class="emoji-big">📢</span>
+        <span class="btn-label">
+          शिकायत दर्ज करें
+          <small>File a Grievance</small>
+        </span>
+      </a>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer-compact">
+      <div class="footer-left">
+        <a class="location-badge" href="https://www.diprafoundation.com/the_Uplift.html#contact" target="_blank" rel="noopener">
+          📍 खेरसा, बिधनू, कानपुर नगर – 209214
+        </a>
+        <a class="location-badge" href="https://www.diprafoundation.com/the_Uplift.html#contact" target="_blank" rel="noopener">
+          📍 Khersa, Bidhnu, Kanpur Nagar – 209214
+        </a>
+      </div>
+      <a class="footer-website" href="https://www.diprafoundation.com/the_Uplift.html" target="_blank" rel="noopener">
+        🌐 www.diprafoundation.com
+      </a>
+      <div class="footer-tagline">
+        <span class="flag-emoji">🇮🇳</span> शिक्षित भारत • समृद्ध भारत
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('.action-btn, .offer-link, .location-badge, .footer-website').forEach(el => {
+          el.style.transition = 'none';
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
