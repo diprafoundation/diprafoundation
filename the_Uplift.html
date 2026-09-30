@@ -576,9 +576,9 @@ footer a:hover{color:var(--accent-2)}
           </tr>
         </thead>
         <tbody>
-          <tr><td>₹50,000 <span class="t-hi">तक</span><span class="t-en">or below</span></td><td class="fee-cut">70% <span class="t-hi">(+ पंजीकरण माफ)</span><span class="t-en">(+ reg. waived)</span></td><td><span class="t-hi">आय प्रमाणपत्र / राशन कार्ड</span><span class="t-en">Income certificate / Ration card</span></td></tr>
-          <tr><td>₹50,001 – ₹1,00,000</td><td class="fee-cut">60%</td><td><span class="t-hi">आय प्रमाणपत्र</span><span class="t-en">Income certificate</span></td></tr>
-          <tr><td>₹1,00,001 – ₹2,00,000</td><td class="fee-cut">50%</td><td><span class="t-hi">आय प्रमाणपत्र</span><span class="t-en">Income certificate</span></td></tr>
+          <tr><td>₹1,00,000 <span class="t-hi">तक</span><span class="t-en">or below</span></td><td class="fee-cut">70% <span class="t-hi">(+ पंजीकरण माफ)</span><span class="t-en">(+ reg. waived)</span></td><td><span class="t-hi">आय प्रमाणपत्र / राशन कार्ड</span><span class="t-en">Income certificate / Ration card</span></td></tr>
+          <tr><td>₹1,00,001 – ₹1,50,000</td><td class="fee-cut">60%</td><td><span class="t-hi">आय प्रमाणपत्र</span><span class="t-en">Income certificate</span></td></tr>
+          <tr><td>₹1,50,001 – ₹2,00,000</td><td class="fee-cut">50%</td><td><span class="t-hi">आय प्रमाणपत्र</span><span class="t-en">Income certificate</span></td></tr>
           <tr><td>₹2,00,001 – ₹2,50,000</td><td class="fee-cut">30%</td><td><span class="t-hi">स्वघोषणा पत्र</span><span class="t-en">Self-declaration</span></td></tr>
           <tr><td>₹2,50,000 <span class="t-hi">से अधिक</span><span class="t-en">above</span></td><td>—</td><td><span class="t-hi">मानक Uplift फीस</span><span class="t-en">Standard fee</span></td></tr>
           <tr style="background:#fff8e8"><td><b><span class="t-hi">अनाथ विद्यार्थी</span><span class="t-en">Orphan Students</span></b></td><td class="fee-cut"><b>100% <span class="t-hi">छूट</span><span class="t-en">Free</span></b></td><td><span class="t-hi">अभिभावक मृत्यु प्रमाणपत्र</span><span class="t-en">Parent death certificate</span></td></tr>
@@ -1626,8 +1626,8 @@ const COURSES = [
 ];
 
 function concession(income) {
-  if (income <= 50000)  return 70;
-  if (income <= 100000) return 60;
+  if (income <= 100000)  return 70;
+  if (income <= 150000) return 60;
   if (income <= 200000) return 50;
   if (income <= 250000) return 30;
   return 0;
