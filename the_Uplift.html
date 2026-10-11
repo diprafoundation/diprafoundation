@@ -874,7 +874,7 @@ function setLang(lang){
     const t = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-hi');
     if(t !== null){
       if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = t;
-      else el.textContent = t;
+       el.innerHTML = t;
     }
   });
   renderCourseTable();
