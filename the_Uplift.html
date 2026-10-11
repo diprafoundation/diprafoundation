@@ -961,8 +961,14 @@ function goToSlide(index){
   dots.forEach((d, i) => d.classList.toggle('active', i === index));
   _currentSlide = index;
 }
-function nextSlide(){ goToSlide(_currentSlide + 1); }
-function prevSlide(){ goToSlide(_currentSlide - 1); }
+function nextSlide(){
+  goToSlide(_currentSlide + 1);
+  if(window.SoundFX) SoundFX.play('slideChange');
+}
+function prevSlide(){
+  goToSlide(_currentSlide - 1);
+  if(window.SoundFX) SoundFX.play('slideChange');
+}
 function startAutoSlide(){ stopAutoSlide(); _autoSlideTimer = setInterval(() => { if(!_isPaused) nextSlide(); }, SLIDE_DURATION); }
 function stopAutoSlide(){ if(_autoSlideTimer){ clearInterval(_autoSlideTimer); _autoSlideTimer = null; } }
 function restartAutoSlide(){ startAutoSlide(); }
@@ -2112,6 +2118,6 @@ function escapeHtml(s){
 
 console.log('%c🪔 दिप्र फ़ाउंडेशन — The Uplift कोचिंग योजना', 'color:#FF7A00;font-weight:bold;font-size:14px');
 </script>
-
+<script src="sound.js" defer></script>
 </body>
 </html>
