@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<title>नि:शुल्क ई-पुस्तकें एवं परीक्षा | दिप्र फ़ाउंडेशन</title>
+<meta name="description" content="नि:शुल्क अंकीय पाठ्यक्रम — ई-पुस्तक पढ़ें, परीक्षा दें, QR-सत्यापनीय प्रमाणपत्र पाएँ।">
+<meta name="theme-color" content="#0D7A3A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+<link rel="icon" href="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
+<link rel="stylesheet" href="style.css">
+<style>
+/* Page-specific for ebook.html */
+.ebook-page-head {
+  background: linear-gradient(135deg,#FFF8F0 0%,var(--saffron-soft) 35%,#FFFBF5 60%,var(--green-soft) 100%);
+  padding: 50px 0 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.ebook-page-head::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .45;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255,122,0,.18) 0, transparent 42%),
+    radial-gradient(circle at 88% 78%, rgba(13,122,58,.14) 0, transparent 45%);
+  z-index: 0;
+}
+.ebook-page-head .container { position: relative; z-index: 2; }
+
+/* Ebook cards grid */
+.ebook-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+  margin-top: 32px;
+}
+.ebook-card {
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  text-align: center;
+  transition: all .25s;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.ebook-card:hover {
+  border-color: var(--saffron);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+.ebook-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--saffron), var(--gold-2), var(--green));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s;
+}
+.ebook-card:hover::before { transform: scaleX(1); }
+.ebook-card .ec-icon {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  margin: 0 auto 16px;
+  background: linear-gradient(135deg, var(--saffron-soft), #fff);
+  border: 2px solid var(--saffron-2);
+}
+.ebook-card h3 {
+  font-size: 1.1rem;
+  color: var(--maroon);
+  margin-bottom: 10px;
+  font-family: 'Tiro Devanagari Hindi', serif;
+  font-weight: 400;
+}
+.ebook-card .ec-desc {
+  font-size: .92rem;
+  color: var(--ink-2);
+  line-height: 1.7;
+  margin-bottom: 16px;
+  flex: 1;
+}
+.ebook-card .ec-meta {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.ebook-card .ec-meta span {
+  font-size: .76rem;
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: var(--cream-2);
+  border: 1px solid var(--border-2);
+  color: var(--ink-2);
+  font-weight: 600;
+}
+.ebook-card .badge-free {
+  position: absolute;
+  top: 14px; right: 14px;
+  background: linear-gradient(135deg, var(--green), var(--green-3));
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 800;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+
+/* Full-screen ebook reader */
+.ebook-reader-full {
+  background: #fff;
+  border: 2px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-top: 30px;
+  box-shadow: var(--shadow-lg);
+}
+.ebook-reader-full .er-head {
+  background: linear-gradient(135deg, var(--maroon), var(--maroon-2));
+  color: #fff;
+  padding: 20px 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.ebook-reader-full .er-head h3 {
+  color: #fff;
+  font-size: 1.15rem;
+  font-family: 'Tiro Devanagari Hindi', serif;
+  font-weight: 400;
+}
+.ebook-reader-full .er-body {
+  padding: 28px;
+  max-height: 60vh;
+  overflow-y: auto;
+  line-height: 1.9;
+  font-size: 1rem;
+  color: var(--ink);
+}
+.ebook-reader-full .er-body h4 {
+  color: var(--maroon);
+  font-size: 1.15rem;
+  margin: 22px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border-2);
+  font-family: 'Tiro Devanagari Hindi', serif;
+  font-weight: 400;
+}
+.ebook-reader-full .er-body h4:first-child { margin-top: 0; }
+.ebook-reader-full .er-body p {
+  margin-bottom: 14px;
+  color: var(--ink-2);
+  text-align: justify;
+}
+.ebook-reader-full .er-foot {
+  padding: 16px 24px;
+  background: var(--cream-2);
+  border-top: 1.5px solid var(--border-2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Quiz section */
+.quiz-section {
+  background: #fff;
+  border: 2px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  margin-top: 30px;
+  box-shadow: var(--shadow-lg);
+}
+.q-item {
+  margin-bottom: 18px;
+  padding: 16px;
+  background: var(--cream-2);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+}
+.q-item .q-text {
+  font-weight: 700;
+  font-size: .98rem;
+  color: var(--maroon);
+  margin-bottom: 12px;
+  line-height: 1.55;
+}
+.q-item .q-opt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border: 1.5px solid var(--border-2);
+  border-radius: 9px;
+  background: #fff;
+  cursor: pointer;
+  font-size: .94rem;
+  margin-bottom: 6px;
+  transition: all .15s;
+  min-height: 44px;
+}
+.q-item .q-opt:hover {
+  border-color: var(--saffron);
+  background: var(--saffron-soft);
+}
+.q-item .q-opt.selected {
+  border-color: var(--saffron);
+  background: var(--saffron-soft);
+  font-weight: 600;
+}
+
+.quiz-header {
+  background: linear-gradient(135deg, var(--saffron), var(--saffron-3));
+  color: #fff;
+  padding: 18px 22px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+.quiz-header h4 { color: #fff; font-size: 1.08rem; margin-bottom: 4px; }
+.quiz-progress-bar {
+  height: 8px;
+  background: rgba(255,255,255,.3);
+  border-radius: 999px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+.quiz-progress-bar > div {
+  height: 100%;
+  background: #fff;
+  border-radius: 999px;
+  transition: width .3s;
+}
+
+/* Certificate */
+.cert-frame {
+  background: linear-gradient(135deg,#FFFBF5 0%,#FFF6E8 50%,#FFFBF5 100%);
+  border: 12px solid var(--green);
+  border-radius: 14px;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(13,122,58,.28);
+}
+.cert-frame::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 3px solid var(--gold);
+  border-radius: 8px;
+  pointer-events: none;
+  z-index: 2;
+}
+.cert-inner { padding: 36px 26px; position: relative; z-index: 3; text-align: center; }
+.cert-logo { width: 76px; height: 76px; margin: 0 auto 12px; border-radius: 50%; background: #fff; border: 3px solid var(--gold); padding: 8px; }
+.cert-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+.cert-org { font-family: 'Tiro Devanagari Hindi', serif; font-size: 1.4rem; color: var(--maroon); margin-bottom: 4px; }
+.cert-subtitle { font-size: .82rem; color: var(--saffron-3); letter-spacing: .18em; text-transform: uppercase; font-weight: 700; margin-bottom: 6px; }
+.cert-regno { font-size: .78rem; color: var(--muted); margin-bottom: 20px; }
+.cert-title { font-size: 2rem; color: var(--green); font-weight: 800; letter-spacing: .22em; margin: 16px 0 6px; }
+.cert-student { font-family: 'Tiro Devanagari Hindi', serif; font-size: 1.9rem; color: var(--maroon); border-bottom: 2px dotted var(--gold-2); display: inline-block; padding: 0 22px 6px; margin: 10px auto; }
+.cert-course { font-size: 1.15rem; color: var(--green); font-weight: 800; margin: 12px 0; }
+.cert-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 560px; margin: 16px auto; }
+.cert-meta > div { background: #fff; padding: 10px; border-radius: 8px; border: 1px solid var(--border-2); }
+.cert-meta small { display: block; font-size: .7rem; color: var(--muted); text-transform: uppercase; font-weight: 700; }
+.cert-meta b { font-size: .95rem; color: var(--green); }
+.cert-bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: 14px; margin-top: 28px; padding-top: 18px; border-top: 2px dashed var(--border-2); flex-wrap: wrap; }
+.cert-sign { text-align: center; font-size: .82rem; color: var(--ink-2); flex: 1; min-width: 140px; }
+.cert-sign .line { border-bottom: 2px solid var(--ink); height: 36px; margin-bottom: 8px; max-width: 160px; margin-inline: auto; }
+.cert-qr { text-align: center; padding: 6px; background: #fff; border-radius: 10px; border: 2px solid var(--green); }
+.cert-qr img { width: 90px; height: 90px; border-radius: 6px; }
+.cert-id-line { font-family: monospace; font-size: .82rem; color: var(--ink-2); margin-top: 16px; padding: 9px; background: #fff; border-radius: 8px; border: 1.5px dashed var(--gold); display: inline-block; }
+
+/* Step indicator */
+.step-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+.step-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: .88rem;
+  font-weight: 700;
+  background: #fff;
+  border: 2px solid var(--border-2);
+  color: var(--muted);
+  transition: all .2s;
+}
+.step-tab.active {
+  background: linear-gradient(135deg, var(--saffron), var(--saffron-3));
+  color: #fff;
+  border-color: var(--saffron);
+}
+.step-tab.done {
+  background: var(--green-soft);
+  color: var(--green-3);
+  border-color: var(--green-2);
+}
+.step-tab .st-num {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.3);
+  display: grid;
+  place-items: center;
+  font-size: .78rem;
+}
+.step-tab.done .st-num { background: var(--green); color: #fff; }
+.step-tab.active .st-num { background: rgba(255,255,255,.3); }
+
+/* Utility */
+.hidden { display: none !important; }
+.center { text-align: center; }
+
+@media (max-width: 640px) {
+  .ebook-reader-full .er-body { padding: 20px; font-size: .96rem; }
+  .ebook-reader-full .er-head { padding: 16px 18px; }
+  .cert-frame { border-width: 8px; }
+  .cert-inner { padding: 24px 16px; }
+  .cert-meta { grid-template-columns: 1fr 1fr; }
+  .step-tab { padding: 8px 12px; font-size: .78rem; }
+}
+</style>
+</head>
+
+<body class="lang-hi">
+
+<div class="tricolor"></div>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-links">
+      <span>📞 <a href="tel:+919532328276">+91 95323 28276</a></span>
+      <span>✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></span>
+    </div>
+    <div class="topbar-links">
+      <a href="index.html">← <span data-hi="गृह पृष्ठ" data-en="Home">गृह पृष्ठ</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-logo">
+        <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="दिप्र फ़ाउंडेशन">
+      </div>
+      <div class="brand-text">
+        <b data-hi="दिप्र फ़ाउंडेशन" data-en="Dipra Foundation">दिप्र फ़ाउंडेशन</b>
+        <span data-hi="नि:शुल्क ई-पुस्तकें एवं परीक्षा" data-en="Free Ebooks & Quiz">नि:शुल्क ई-पुस्तकें एवं परीक्षा</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="hi">हिं</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ STEP INDICATOR ============ -->
+<section style="padding: 20px 0 0;">
+  <div class="container">
+    <div class="step-tabs">
+      <div class="step-tab active" id="step1Tab">
+        <span class="st-num">1</span>
+        <span data-hi="ई-पुस्तक चुनें" data-en="Choose Ebook">ई-पुस्तक चुनें</span>
+      </div>
+      <div class="step-tab" id="step2Tab">
+        <span class="st-num">2</span>
+        <span data-hi="पूरी पुस्तक पढ़ें" data-en="Read Full Book">पूरी पुस्तक पढ़ें</span>
+      </div>
+      <div class="step-tab" id="step3Tab">
+        <span class="st-num">3</span>
+        <span data-hi="परीक्षा दें" data-en="Take Test">परीक्षा दें</span>
+      </div>
+      <div class="step-tab" id="step4Tab">
+        <span class="st-num">4</span>
+        <span data-hi="प्रमाणपत्र पाएँ" data-en="Get Certificate">प्रमाणपत्र पाएँ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STEP 1: EBOOK SELECTION ============ -->
+<section id="step1Section" style="padding: 30px 0 60px;">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-hi="📚 नि:शुल्क अंकीय पाठ्यक्रम" data-en="📚 Free Digital Courses">📚 नि:शुल्क अंकीय पाठ्यक्रम</span>
+      <h2 data-hi="ई-पुस्तक चुनें" data-en="Choose an Ebook">ई-पुस्तक चुनें</h2>
+      <p data-hi="प्रत्येक पाठ्यक्रम हेतु हिन्दी एवं अंग्रेज़ी दोनों में ई-पुस्तक उपलब्ध। पूरी पुस्तक पढ़ने के पश्चात् ही परीक्षा आरंभ होगी।" data-en="Each course has an ebook in Hindi and English. Test opens only after reading the complete ebook.">प्रत्येक पाठ्यक्रम हेतु हिन्दी एवं अंग्रेज़ी दोनों में ई-पुस्तक उपलब्ध। पूरी पुस्तक पढ़ने के पश्चात् ही परीक्षा आरंभ होगी।</p>
+    </div>
+
+    <div class="ebook-grid" id="ebookGrid"></div>
+  </div>
+</section>
+
+<!-- ============ STEP 2: EBOOK READER ============ -->
+<section id="step2Section" class="hidden" style="padding: 30px 0 60px;">
+  <div class="container-narrow">
+    <div class="ebook-reader-full">
+      <div class="er-head">
+        <h3 id="readerTitle">📖 ई-पुस्तक</h3>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <button class="ebook-tab active" data-lang="hi" onclick="switchReaderLang('hi')" data-hi="हिन्दी" data-en="Hindi">हिन्दी</button>
+          <button class="ebook-tab" data-lang="en" onclick="switchReaderLang('en')" data-hi="English" data-en="English">English</button>
+          <button class="btn btn-outline btn-sm" onclick="backToEbookList()">← <span data-hi="पीछे" data-en="Back">पीछे</span></button>
+        </div>
+      </div>
+      <div class="er-body" id="readerBody"></div>
+      <div class="er-foot">
+        <span data-hi="📌 पढ़ने के पश्चात् ही परीक्षा आरंभ होगी" data-en="📌 Test opens after reading">📌 पढ़ने के पश्चात् ही परीक्षा आरंभ होगी</span>
+        <span><span id="readerPct">०</span>% <span data-hi="पढ़ा गया" data-en="read">पढ़ा गया</span></span>
+      </div>
+      <div style="padding: 20px 24px; background: linear-gradient(90deg, var(--saffron-soft), #fff, var(--green-soft)); border-top: 1.5px solid var(--border-2); text-align: right;">
+        <button class="btn btn-green" id="startQuizBtn" disabled onclick="startQuiz()">
+          📝 <span data-hi="परीक्षा आरंभ करें (पहले पूरी पुस्तक पढ़ें)" data-en="Start Test (read full book first)">परीक्षा आरंभ करें (पहले पूरी पुस्तक पढ़ें)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STEP 3: QUIZ ============ -->
+<section id="step3Section" class="hidden" style="padding: 30px 0 60px;">
+  <div class="container-narrow">
+    <div class="quiz-section">
+      <div class="quiz-header" id="quizHeader"></div>
+      <div id="quizBody"></div>
+      <div style="display:flex;gap:10px;margin-top:22px">
+        <button class="btn btn-outline" onclick="backToReader()" style="flex:1">← <span data-hi="पुस्तक पर वापस" data-en="Back to Book">पुस्तक पर वापस</span></button>
+        <button class="btn btn-green" id="submitQuizBtn" style="flex:2" disabled onclick="submitQuiz()">
+          ✓ <span data-hi="जमा करें" data-en="Submit">जमा करें</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STEP 4: CERTIFICATE FORM / RESULT ============ -->
+<section id="step4Section" class="hidden" style="padding: 30px 0 60px;">
+  <div class="container-narrow">
+    <div id="certStep1Wrapper">
+      <div class="quiz-section">
+        <div class="quiz-header" id="certResultHeader"></div>
+        <div class="note note-blue" style="margin-bottom:18px;font-size:.92rem">
+          <span data-hi="📌 समस्त विवरण प्रमाणपत्र पर अंकित होंगे। कृपया सही जानकारी भरें।" data-en="📌 All details will be printed on the certificate. Please fill correct information.">📌 समस्त विवरण प्रमाणपत्र पर अंकित होंगे। कृपया सही जानकारी भरें।</span>
+        </div>
+        <div class="row">
+          <div class="field"><label data-hi="विद्यार्थी का सम्पूर्ण नाम *" data-en="Student's Full Name *">विद्यार्थी का सम्पूर्ण नाम *</label><input type="text" id="certName"><div class="errmsg" data-hi="कम से ३ अक्षर" data-en="Min 3 chars">कम से ३ अक्षर</div></div>
+          <div class="field"><label data-hi="लिंग *" data-en="Gender *">लिंग *</label><select id="certGender"><option value="">—</option><option value="पुरुष" data-hi="पुरुष" data-en="Male">पुरुष</option><option value="महिला" data-hi="महिला" data-en="Female">महिला</option><option value="अन्य" data-hi="अन्य" data-en="Other">अन्य</option></select><div class="errmsg" data-hi="चुनें" data-en="Select">चुनें</div></div>
+        </div>
+        <div class="row">
+          <div class="field"><label data-hi="अभिभावक उपाधि *" data-en="Parent Prefix *">अभिभावक उपाधि *</label><select id="certPrefix"><option value="श्री">श्री (Mr.)</option><option value="श्रीमती">श्रीमती (Mrs.)</option><option value="कु०">कु० (Ms.)</option><option value="स्वर्गीय">स्वर्गीय (Late)</option><option value="डॉ०">डॉ० (Dr.)</option></select></div>
+          <div class="field"><label data-hi="अभिभावक का नाम *" data-en="Parent's Name *">अभिभावक का नाम *</label><input type="text" id="certParent"><div class="errmsg" data-hi="कम से ३ अक्षर" data-en="Min 3 chars">कम से ३ अक्षर</div></div>
+        </div>
+        <div class="row">
+          <div class="field"><label data-hi="आधार संख्या *" data-en="Aadhaar *">आधार संख्या *</label><input type="text" id="certAadhar" maxlength="14" inputmode="numeric" placeholder="XXXX XXXX XXXX"><div class="errmsg" data-hi="१२ अंक" data-en="12 digits">१२ अंक</div></div>
+          <div class="field"><label data-hi="चलभाष *" data-en="Mobile *">चलभाष *</label><input type="tel" id="certMobile" maxlength="10" inputmode="numeric"><div class="errmsg" data-hi="१० अंक" data-en="10 digits">१० अंक</div></div>
+        </div>
+        <div class="field"><label data-hi="सम्पूर्ण पता *" data-en="Full Address *">सम्पूर्ण पता *</label><textarea id="certAddress" rows="3"></textarea><div class="errmsg" data-hi="कम से १५ अक्षर" data-en="Min 15 chars">कम से १५ अक्षर</div></div>
+        <div class="field"><label data-hi="विद्युत्पत्र *" data-en="Email *">विद्युत्पत्र *</label><input type="email" id="certEmail" placeholder="name@example.com"><small data-hi="कूट तथा प्रमाणपत्र इसी पर भेजा जाएगा।" data-en="OTP and certificate will be sent here.">कूट तथा प्रमाणपत्र इसी पर भेजा जाएगा।</small><div class="errmsg" data-hi="सही ईमेल" data-en="Valid email">सही ईमेल</div></div>
+        <button class="btn btn-saffron btn-block" onclick="sendCertOtp()">📩 <span data-hi="कूट भेजें" data-en="Send Code">कूट भेजें</span></button>
+      </div>
+    </div>
+
+    <div id="certStep2Wrapper" class="hidden">
+      <div class="quiz-section">
+        <div class="note note-green" style="margin-bottom:16px">
+          ✅ <span data-hi="कूट भेजा गया:" data-en="Code sent to:">कूट भेजा गया:</span> <b id="certOtpSentTo"></b>
+        </div>
+        <div class="field">
+          <label data-hi="छह अंकों का कूट *" data-en="6-digit Code *">छह अंकों का कूट *</label>
+          <input type="text" id="certOtpCode" maxlength="6" inputmode="numeric" style="font-family:monospace;font-size:1.5rem;letter-spacing:10px;text-align:center;padding:12px">
+          <div class="errmsg" id="certOtpErr"></div>
+        </div>
+        <div style="display:flex;gap:10px">
+          <button class="btn btn-outline" onclick="backToCertForm()" style="flex:1">← <span data-hi="पीछे" data-en="Back">पीछे</span></button>
+          <button class="btn btn-green" id="certVerifyBtn" onclick="verifyCertOtp()" style="flex:2">✓ <span data-hi="प्रमाणपत्र बनाएँ" data-en="Generate">प्रमाणपत्र बनाएँ</span></button>
+        </div>
+        <p style="text-align:center;margin-top:14px;font-size:.9rem;color:var(--muted)">
+          <button onclick="sendCertOtp()" style="color:var(--maroon);font-weight:700;text-decoration:underline;background:none;border:none;cursor:pointer;padding:0" data-hi="पुन: भेजें" data-en="Resend">पुन: भेजें</button>
+          <span id="certOtpTimer" style="margin-left:8px"></span>
+        </p>
+      </div>
+    </div>
+
+    <div id="certFinalWrapper" class="hidden"></div>
+  </div>
+</section>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   EBOOK PAGE — Standalone Script
+   ============================================================ */
+const $ = (s, c=document) => c.querySelector(s);
+const $$ = (s, c=document) => [...c.querySelectorAll(s)];
+const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbynC667snioVb9pnBE8jDRWUJHwKOUi5jTYO31PlfolDG5VjcTrE93zh2k-Ai7zgi0/exec';
+
+/* ---------- Language ---------- */
+function setLang(lang){
+  try {
+    document.body.classList.toggle('lang-hi', lang === 'hi');
+    document.body.classList.toggle('lang-en', lang === 'en');
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    try { localStorage.setItem('ebook_lang', lang); } catch(e){}
+    document.querySelectorAll('[data-hi][data-en]').forEach(el => {
+      const t = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-hi');
+      if(t !== null){
+        if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = t;
+        else el.innerHTML = t;
+      }
+    });
+    renderEbookGrid();
+    if(_currentCourse) renderReader();
+  } catch(e){ console.error('setLang error:', e); }
+}
+document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+try { const s = localStorage.getItem('ebook_lang'); if(s) setLang(s); }catch(e){}
+
+/* ---------- Toast ---------- */
+let _toastTimer;
+function toast(msg){
+  const t = $('#toast'); if(!t) return;
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(_toastTimer);
+  _toastTimer = setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+/* ---------- Language helper ---------- */
+function _lang(){ return document.body.classList.contains('lang-en') ? 'en' : 'hi'; }
+
+/* ============================================================
+   DATA — FREE COURSES
+   ============================================================ */
+const FREE_COURSE_LIST = [
+  { code:'FREE-CYBER', hi:'साइबर सुरक्षा — आधारभूत', en:'Cyber Safety Basics', icon:'🛡️', durHi:'६० मिनट', durEn:'60 min', level:'Beginner', pass:60, descHi:'अंतर्जालीय ठगी, कपट-लिंक, कूटशब्द सुरक्षा — स्वयं की रक्षा करें।', descEn:'Online fraud, phishing, password safety — protect yourself.' },
+  { code:'FREE-PAY', hi:'अंकीय भुगतान सुरक्षा', en:'Digital Payment Safety', icon:'💳', durHi:'५० मिनट', durEn:'50 min', level:'Beginner', pass:60, descHi:'UPI, PhonePe, Paytm — सुरक्षित भुगतान तथा ठगी से बचाव।', descEn:'UPI, PhonePe, Paytm — safe payments and fraud protection.' },
+  { code:'FREE-NET', hi:'अंतर्जाल की मूल बातें', en:'Internet Basics', icon:'🌐', durHi:'६० मिनट', durEn:'60 min', level:'Beginner', pass:60, descHi:'खोज, विद्युत्पत्र, विचरक, क्लाउड — अंकीय जगत में आत्मविश्वास।', descEn:'Search, email, browser, cloud — digital confidence.' },
+  { code:'FREE-SM', hi:'समाज माध्यम जागरूकता', en:'Social Media Awareness', icon:'📱', durHi:'५० मिनट', durEn:'50 min', level:'Beginner', pass:60, descHi:'निजता, मिथ्या समाचार, अंतर्जालीय प्रतिष्ठा — विवेकपूर्ण उपयोग।', descEn:'Privacy, fake news, reputation — smart usage.' },
+  { code:'FREE-FIN', hi:'आधारभूत वित्तीय ज्ञान', en:'Financial Literacy', icon:'💰', durHi:'५५ मिनट', durEn:'55 min', level:'Beginner', pass:60, descHi:'बचत, बैंक-कार्य, ब्याज, बीमा तथा वित्तीय ठगी से बचाव।', descEn:'Savings, banking, interest, insurance, financial fraud.' }
+];
+
+/* ============================================================
+   EBOOKS DATA — 10 chapters each
+   ============================================================ */
+const FREE_EBOOKS = {
+  'FREE-CYBER': {
+    title: { hi:'साइबर सुरक्षा — आधारभूत', en:'Cyber Safety Basics' },
+    chapters: [
+      { hi_h:'१. कूटशब्द की सुरक्षा', en_h:'1. Password Security', hi_p:'सुदृढ़ कूटशब्द वह है जिसमें कम से कम आठ अक्षर हों — बड़े-छोटे अक्षर, अंक तथा विशेष चिह्न (@, #, $) सम्मिलित। अपना नाम, जन्मतिथि अथवा "123456" जैसे सरल कूटशब्द कदापि न रखें। प्रत्येक खाते हेतु भिन्न कूटशब्द रखें।', en_p:'A strong password has at least 8 characters with uppercase, lowercase, digits, and symbols (@, #, $). Never use your name, DOB, or "123456". Use a different password for each account.' },
+      { hi_h:'२. कपट-लिंक तथा फ़िशिंग', en_h:'2. Phishing and Fake Links', hi_p:'फ़िशिंग में ठग नकली विद्युत्पत्र, SMS अथवा संदेश भेजकर आपकी निजी सूचना — बैंक विवरण, OTP अथवा PIN — प्राप्त करते हैं। कभी भी अनजान लिंक पर क्लिक न करें। URL में "https" तथा ताला-चिह्न (🔒) अवश्य जाँचें।', en_p:'In phishing, scammers send fake emails, SMS, or messages to obtain your bank details, OTP, or PIN. Never click unknown links. Always check for "https" and the lock icon (🔒).' },
+      { hi_h:'३. सार्वजनिक WiFi पर सावधानी', en_h:'3. Public WiFi Caution', hi_p:'सार्वजनिक WiFi पर बैंकिंग, UPI अथवा किसी भी खाते में लॉगिन कदापि न करें — संपर्क असुरक्षित होता है। आवश्यक हो तो VPN का प्रयोग करें। सार्वजनिक संगणक पर "कूटशब्द सुरक्षित करें" विकल्प कभी न चुनें।', en_p:'Never login to banking, UPI, or any account on public WiFi — connection is unsecured. If needed, use a VPN. On public computers, never select "save password".' },
+      { hi_h:'४. द्वि-चरणीय प्रमाणीकरण', en_h:'4. Two-Factor Authentication', hi_p:'2FA एक अतिरिक्त सुरक्षा परत है। कूटशब्द के पश्चात् चलभाष पर OTP भेजा जाता है। इसे सदैव सक्रिय रखें — बैंक, Gmail, समाज माध्यम सभी में। OTP कभी किसी के साथ साझा न करें।', en_p:'2FA is an extra security layer. After password, an OTP is sent to your phone. Always keep it enabled — for bank, Gmail, social media. Never share OTP with anyone.' },
+      { hi_h:'५. साइबर अपराध की सूचना', en_h:'5. Reporting Cyber Crime', hi_p:'ठगी होने पर तत्काल 1930 पर अथवा cybercrime.gov.in पर सूचना दें। बैंक को भी शीघ्र सूचित करें तथा खाता अवरुद्ध कराएँ। समय पर सूचना देने से धन वापसी की सम्भावना बढ़ती है।', en_p:'On fraud, immediately report to 1930 or cybercrime.gov.in. Also inform the bank and block the account. Timely reporting increases money recovery chances.' },
+      { hi_h:'६. सामाजिक अभियांत्रिकी', en_h:'6. Social Engineering', hi_p:'अधिकांश साइबर ठगी में तकनीकी हैकिंग नहीं, बल्कि मनोवैज्ञानिक दबाव होता है। ठग भय, लालच अथवा सहानुभूति का उपयोग करते हैं — जैसे "आपका बेटा दुर्घटना में घायल है, तुरंत पैसे भेजें"। घबराएँ नहीं, सत्यापन करें।', en_p:'Most cyber frauds involve psychological pressure, not hacking. Scammers exploit fear, greed, or sympathy — like "Your son is injured, send money". Don\'t panic, verify first.' },
+      { hi_h:'७. मोबाइल ऐप की सुरक्षा', en_h:'7. Mobile App Security', hi_p:'केवल Google Play Store अथवा Apple App Store से ही ऐप डाउनलोड करें। ऐप को केवल आवश्यक अनुमतियाँ दें। "कॉन्टैक्ट", "कैमरा", "स्थान" जैसी अनुमतियाँ अनावश्यक रूप से न दें।', en_p:'Download apps only from Google Play Store or Apple App Store. Grant only necessary permissions. Don\'t allow unnecessary "Contacts", "Camera", or "Location" permissions.' },
+      { hi_h:'८. सुरक्षित ब्राउज़िंग', en_h:'8. Safe Browsing', hi_p:'केवल प्रामाणिक वेबसाइट खोलें — जिनमें https तथा 🔒 हो। लोकप्रिय वेबसाइट के नाम में हेरफेर (g00gle.com) से सावधान। विज्ञापन-अवरोधक चालू रखें। संदिग्ध पॉप-अप को सीधे बंद करें।', en_p:'Open only authentic websites with https and 🔒. Beware of typos in popular sites (g00gle.com). Keep ad-blocker on. Close suspicious pop-ups directly.' },
+      { hi_h:'९. डेटा बैकअप', en_h:'9. Data Backup', hi_p:'महत्वपूर्ण दस्तावेज़, फोटो तथा फ़ाइलें नियमित रूप से क्लाउड (Google Drive) अथवा बाहरी डिस्क पर सुरक्षित रखें। सप्ताह में कम से कम एक बार बैकअप लें।', en_p:'Regularly backup important documents, photos and files to cloud (Google Drive) or external disk. Backup at least once a week.' },
+      { hi_h:'१०. परिवार तथा बच्चों की सुरक्षा', en_h:'10. Family and Child Safety', hi_p:'माता-पिता तथा बच्चों को साइबर सुरक्षा की मूल बातें सिखाएँ। बच्चों के उपकरण पर पेरेंटल कंट्रोल सक्रिय करें। बच्चों को सिखाएँ — अनजान से ऑनलाइन बात न करें।', en_p:'Teach parents and children basic cyber safety. Enable parental control on children\'s devices. Teach children — never chat with strangers online.' }
+    ]
+  },
+  'FREE-PAY': {
+    title: { hi:'अंकीय भुगतान सुरक्षा', en:'Digital Payment Safety' },
+    chapters: [
+      { hi_h:'१. UPI PIN की रक्षा', en_h:'1. Protect UPI PIN', hi_p:'UPI PIN केवल आपके लिए है — किसी को न बताएँ, चाहे दुकानदार हो, बैंक कर्मचारी हो। PIN सदैव अपने UPI ऐप के भीतर डालें — WhatsApp, SMS अथवा अन्य ऐप पर नहीं।', en_p:'UPI PIN is only for you — never share it with anyone, be it shopkeeper or bank staff. Always enter PIN inside your UPI app, not on WhatsApp or SMS.' },
+      { hi_h:'२. कपट QR कोड की पहचान', en_h:'2. Identifying Fake QR Codes', hi_p:'ठग असली QR कोड के ऊपर नकली QR स्टिकर चिपका देते हैं। भुगतान से पूर्व QR ध्यान से देखें — कोई अतिरिक्त स्टिकर तो नहीं। ऐप में दिखने वाला व्यापारी का नाम अवश्य जाँचें।', en_p:'Fraudsters paste a fake QR sticker over the original. Before payment, check QR for extra stickers. Verify the merchant name shown in the app.' },
+      { hi_h:'३. धन वापसी ठगी', en_h:'3. Refund Scams', hi_p:'यदि कोई कहे — "अधिक धन आ गया है, वापस भेजें" अथवा "रिफंड भेज रहे हैं, PIN डालें" — तुरंत कॉल काट दें। बैंक कभी PIN नहीं माँगता।', en_p:'If someone says — "extra money came, return it" or "we are sending a refund, enter PIN" — hang up immediately. Banks never ask PIN.' },
+      { hi_h:'४. सुरक्षित भुगतान के नियम', en_h:'4. Safe Payment Rules', hi_p:'भुगतान केवल प्रमाणित व्यापारी अथवा परिचित व्यक्ति को करें। भुगतान के पश्चात् पर्ची का स्क्रीनशॉट सुरक्षित रखें। सार्वजनिक स्थान पर PIN छिपाकर डालें।', en_p:'Pay only verified merchants or known persons. Save receipt screenshot. Hide PIN when paying in public.' },
+      { hi_h:'५. चलभाष खो जाने पर', en_h:'5. If Phone is Lost', hi_p:'तत्काल — SIM अवरुद्ध कराएँ, बैंक को सूचित करें, सभी UPI ऐप से लॉगआउट कराएँ, बैंक से खाता अस्थायी रूप से अवरुद्ध करने का अनुरोध करें।', en_p:'Immediately: block SIM, inform bank, logout from all UPI apps, request bank to freeze account temporarily.' },
+      { hi_h:'६. UPI दैनिक सीमा', en_h:'6. UPI Daily Limit', hi_p:'अपनी आवश्यकता के अनुसार सीमा कम रखें — जैसे ₹५,०००। बड़ी राशि के लिए अस्थायी रूप से बढ़ाएँ, भुगतान करें, पुन: कम कर दें। इससे चोरी पर नुकसान सीमित रहेगा।', en_p:'Keep UPI limit low per your need — say ₹5,000. For large payments, temporarily increase, pay, then reduce.' },
+      { hi_h:'७. लाभार्थी की जाँच', en_h:'7. Verify Beneficiary', hi_p:'नए व्यक्ति को भुगतान से पूर्व नाम, UPI ID तथा चलभाष तीनों जाँचें। छोटी राशि (₹१) भेजकर पुष्टि करें। व्यापारी से बिल अवश्य माँगें।', en_p:'Before paying a new person, verify name, UPI ID and phone. Send small amount (₹1) to confirm.' },
+      { hi_h:'८. OTP की रक्षा', en_h:'8. OTP Protection', hi_p:'OTP केवल एक बार काम आता है तथा केवल आपके लिए होता है। किसी भी परिस्थिति में किसी को न बताएँ — चाहे कॉल करने वाला स्वयं को बैंक, RBI, पुलिस अथवा अधिकारी बताए।', en_p:'OTP is usable once and meant only for you. Never share — even if caller claims to be bank, RBI, police or official.' },
+      { hi_h:'९. ठगी की तत्काल सूचना', en_h:'9. Immediate Reporting', hi_p:'तुरंत 1930 पर कॉल करें अथवा cybercrime.gov.in पर शिकायत दर्ज करें। २४ घंटे के भीतर सूचना पर धन वापस मिलने की सम्भावना ८०% तक।', en_p:'Call 1930 or file at cybercrime.gov.in. Reporting within 24 hours raises recovery chance up to 80%.' },
+      { hi_h:'१०. बच्चों तथा वृद्धजनों के लिए', en_h:'10. Care for Children and Elderly', hi_p:'बच्चों के चलभाष में UPI ऐप में माता-पिता का PIN रखें। वृद्धजनों की UPI सीमा कम रखें। उन्हें सिखाएँ — कोई कॉल आए तो पहले परिवार से परामर्श करें।', en_p:'Keep parent\'s PIN in children\'s UPI apps. Keep low UPI limit for elderly. Teach them — consult family first on any call.' }
+    ]
+  },
+  'FREE-NET': {
+    title: { hi:'अंतर्जाल की मूल बातें', en:'Internet Basics' },
+    chapters: [
+      { hi_h:'१. अंतर्जाल क्या है?', en_h:'1. What is the Internet?', hi_p:'अंतर्जाल विश्वभर के संगणकों का जाल है, जो परस्पर जुड़े होते हैं। इसके द्वारा सूचना खोज, विद्युत्पत्र, वीडियो, ऑनलाइन अध्ययन तथा विश्व के किसी भी व्यक्ति से संवाद सम्भव है।', en_p:'The Internet is a network of computers worldwide. Through it we can search, email, watch videos, study online, and communicate with anyone.' },
+      { hi_h:'२. विचरक का प्रयोग', en_h:'2. Using a Browser', hi_p:'विचरक वह सॉफ्टवेयर है जिससे अंतर्जाल पर जाते हैं — Chrome, Firefox, Edge, Safari। ऊपर वाले बॉक्स (URL बॉक्स) में वेबसाइट का पता लिखें।', en_p:'A browser is software to access the Internet — Chrome, Firefox, Edge, Safari. Type the website address in the URL box.' },
+      { hi_h:'३. विद्युत्पत्र भेजना', en_h:'3. Sending Email', hi_p:'Gmail खोलें → "Compose" → प्राप्तकर्ता का पता, विषय, संदेश → भेजें। फ़ाइल भेजने हेतु 📎 चिह्न। CC = सभी को दिखेगा, BCC = छिपा रहेगा।', en_p:'Open Gmail → "Compose" → recipient, subject, message → send. Use 📎 for files. CC = visible to all, BCC = hidden.' },
+      { hi_h:'४. सुरक्षित खोज', en_h:'4. Safe Searching', hi_p:'Google, Bing, DuckDuckGo खोज यंत्र। यथावत् वाक्यांश हेतु "उद्धरण चिह्न" प्रयोग करें। किसी भी वेबसाइट को खोलने से पूर्व https तथा 🔒 जाँचें।', en_p:'Google, Bing, DuckDuckGo are search engines. Use quotation marks for exact phrase. Before opening sites, check https and 🔒.' },
+      { hi_h:'५. महत्वपूर्ण शॉर्टकट', en_h:'5. Important Shortcuts', hi_p:'Ctrl+C = प्रतिलिपि, Ctrl+V = चिपकाना, Ctrl+Z = Undo, Ctrl+S = सहेजें, Ctrl+P = मुद्रण, Ctrl+F = खोजें, Ctrl+T = नया टैब, F5 = ताज़ा।', en_p:'Ctrl+C = Copy, Ctrl+V = Paste, Ctrl+Z = Undo, Ctrl+S = Save, Ctrl+P = Print, Ctrl+F = Find, Ctrl+T = New tab, F5 = Refresh.' },
+      { hi_h:'६. अपलोड तथा डाउनलोड', en_h:'6. Upload and Download', hi_p:'डाउनलोड = अंतर्जाल से उपकरण में फ़ाइल लाना। अपलोड = उपकरण से अंतर्जाल पर भेजना। केवल प्रामाणिक वेबसाइट से डाउनलोड करें।', en_p:'Download = bringing file from Internet. Upload = sending file to Internet. Download only from authentic websites.' },
+      { hi_h:'७. क्लाउड भंडारण', en_h:'7. Cloud Storage', hi_p:'क्लाउड में फ़ाइलें अंतर्जाल पर सुरक्षित रहती हैं। Google Drive १५ GB नि:शुल्क। iCloud, OneDrive, Dropbox भी लोकप्रिय।', en_p:'Files on cloud remain safe on Internet. Google Drive gives 15 GB free. iCloud, OneDrive, Dropbox popular.' },
+      { hi_h:'८. वीडियो कॉल', en_h:'8. Video Calls', hi_p:'WhatsApp, Google Meet, Zoom, Teams से वीडियो कॉल। आवश्यक — कैमरा, माइक, इंटरनेट। ऑनलाइन कक्षा में विनम्र रहें।', en_p:'Video call via WhatsApp, Google Meet, Zoom, Teams. Need camera, mic, internet. Be polite in online class.' },
+      { hi_h:'९. साइबर स्वच्छता', en_h:'9. Cyber Hygiene', hi_p:'नियमित रूप से विचरक इतिहास तथा कैश साफ़ करें। अस्थायी फ़ाइलें हटाएँ। विचरक तथा ऑपरेटिंग सिस्टम अद्यतन रखें।', en_p:'Regularly clear browser history and cache. Delete temporary files. Keep browser and OS updated.' },
+      { hi_h:'१०. समय प्रबंधन', en_h:'10. Time Management', hi_p:'अंतर्जाल साधन है, साध्य नहीं। प्रतिदिन सीमित समय हेतु उपयोग करें। रात्रि में १ घंटा पूर्व चलभाष दूर रखें।', en_p:'Internet is a means, not an end. Limit daily use. Keep phone away 1 hour before sleep.' }
+    ]
+  },
+  'FREE-SM': {
+    title: { hi:'समाज माध्यम जागरूकता', en:'Social Media Awareness' },
+    chapters: [
+      { hi_h:'१. निजता की रक्षा', en_h:'1. Privacy Protection', hi_p:'चलभाष संख्या, पता, आधार अथवा बैंक विवरण समाज माध्यम पर कभी प्रकाशित न करें। गोपनीयता सेटिंग नियमित जाँचें। केवल परिचितों को मित्रता स्वीकार करें।', en_p:'Never publish phone number, address, Aadhaar or bank details on social media. Check privacy settings regularly.' },
+      { hi_h:'२. मिथ्या समाचार की पहचान', en_h:'2. Identifying Fake News', hi_p:'साझा करने से पूर्व सत्यता अवश्य जाँचें। केवल विश्वसनीय स्रोतों से समाचार लें। चौंकाने वाले शीर्षक तथा बिना स्रोत के दावों पर विश्वास न करें।', en_p:'Verify before sharing. Take news only from trusted sources. Don\'t trust shocking headlines.' },
+      { hi_h:'३. अंतर्जालीय प्रताड़ना', en_h:'3. Cyber Bullying', hi_p:'कोई धमकाए अथवा अभद्र संदेश भेजे तो ब्लॉक करें तथा रिपोर्ट करें। स्क्रीनशॉट सुरक्षित रखें। माता-पिता अथवा शिक्षक को बताएँ।', en_p:'If threatened or abused, block and report. Save screenshots. Inform parents or teachers.' },
+      { hi_h:'४. अजनबी से मिलने की सावधानी', en_h:'4. Meeting Strangers', hi_p:'अजनबी से अकेले कभी न मिलें। यदि मिलना आवश्यक हो तो माता-पिता अथवा बड़े भाई-बहन के साथ सार्वजनिक स्थान पर दिन में मिलें।', en_p:'Never meet strangers alone. If necessary, meet in public place during daytime with parents.' },
+      { hi_h:'५. विवेकपूर्ण पोस्ट', en_h:'5. Post Wisely', hi_p:'पोस्ट करने से पूर्व विचार करें — क्या यह भविष्य को हानि पहुँचा सकती है? क्रोध अथवा भावनावश में कुछ भी पोस्ट न करें।', en_p:'Think before posting — could it harm your future? Don\'t post in anger or emotion.' },
+      { hi_h:'६. फोटो तथा वीडियो साझा', en_h:'6. Photo and Video Sharing', hi_p:'अपनी निजी फोटो अजनबी को न भेजें। किसी की अनुमति के बिना उसकी फोटो साझा न करें — यह अपराध है। फोटो में से लोकेशन हटाएँ।', en_p:'Never send personal photos to strangers. Don\'t share others\' photos without permission. Remove location from photos.' },
+      { hi_h:'७. फ़ेक प्रोफ़ाइल की पहचान', en_h:'7. Identifying Fake Profiles', hi_p:'संकेत — बहुत कम मित्र, कम पोस्ट, नई प्रोफ़ाइल, विदेशी फोटो, अति आकर्षक तस्वीर। ऐसी प्रोफ़ाइल से दूरी बनाएँ।', en_p:'Signs — few friends, few posts, new profile, foreign photo. Stay away from such profiles.' },
+      { hi_h:'८. मानसिक स्वास्थ्य', en_h:'8. Mental Health', hi_p:'दूसरों की सुखद जीवन देखकर ईर्ष्या न करें — वह चयनित चित्र है। अपनी तुलना किसी से न करें। आवश्यकता हो तो समाज माध्यम से अवकाश लें।', en_p:'Don\'t envy others\' happy lives — it\'s a selective picture. Don\'t compare. Take breaks if needed.' },
+      { hi_h:'९. खाता सुरक्षित रखना', en_h:'9. Account Security', hi_p:'2FA सक्रिय करें। कूटशब्द सुदृढ़ रखें। अनजान लिंक से login न करें। लॉगिन गतिविधि नियमित देखें। खाता हैक हो तो कूटशब्द तुरंत बदलें।', en_p:'Enable 2FA. Keep strong password. Never login via unknown links. Check login activity.' },
+      { hi_h:'१०. सकारात्मक उपयोग', en_h:'10. Positive Use', hi_p:'अध्ययन, कौशल विकास तथा रोज़गार हेतु समाज माध्यम का उपयोग करें। शैक्षणिक चैनल, करियर मार्गदर्शन पेज फ़ॉलो करें।', en_p:'Use social media for study, skills and employment. Follow educational channels and career pages.' }
+    ]
+  },
+  'FREE-FIN': {
+    title: { hi:'आधारभूत वित्तीय ज्ञान', en:'Financial Literacy' },
+    chapters: [
+      { hi_h:'१. बचत का महत्व', en_h:'1. Importance of Saving', hi_p:'प्रत्येक माह आय का कम से कम १०% भाग बचाएँ। "पहले बचाओ, फिर खर्च करो" — यह नियम अपनाएँ। आपातकाल हेतु ३-६ माह के खर्च के बराबर निधि रखें।', en_p:'Save at least 10% of monthly income. Follow "save first, spend later". Keep 3-6 months expenses as emergency fund.' },
+      { hi_h:'२. बैंक खाते के प्रकार', en_h:'2. Types of Bank Accounts', hi_p:'बचत खाता (Savings) — व्यक्तिगत धन, ब्याज मिलता है। चालू खाता (Current) — व्यापार। सावधि जमा (FD) — निश्चित अवधि, अधिक ब्याज। आवर्ती जमा (RD) — मासिक जमा।', en_p:'Savings — personal money with interest. Current — for business. FD — fixed period. RD — monthly deposit.' },
+      { hi_h:'३. साधारण तथा चक्रवृद्धि ब्याज', en_h:'3. Simple and Compound Interest', hi_p:'साधारण ब्याज = मूलधन × दर × समय ÷ १००। चक्रवृद्धि ब्याज में ब्याज पर भी ब्याज — दीर्घकाल में अधिक लाभदायक।', en_p:'Simple Interest = Principal × Rate × Time ÷ 100. Compound interest earns interest on interest.' },
+      { hi_h:'४. बैंक कार्य', en_h:'4. Banking Basics', hi_p:'KYC आवश्यक — आधार, PAN, फोटो। मोबाइल बैंकिंग, नेट बैंकिंग तथा UPI चालू कराएँ। नियमित पासबुक अथवा स्टेटमेंट जाँचें।', en_p:'KYC required — Aadhaar, PAN, photo. Enable mobile banking, net banking, UPI.' },
+      { hi_h:'५. बीमा', en_h:'5. Insurance', hi_p:'जीवन बीमा — परिवार की सुरक्षा। स्वास्थ्य बीमा — चिकित्सा व्यय। PMJJBY में ₹४३६/वर्ष पर ₹२ लाख जीवन बीमा। PMSBY में ₹२०/वर्ष पर ₹२ लाख दुर्घटना बीमा।', en_p:'Life insurance — family protection. Health insurance — medical expenses. PMJJBY gives ₹2 lakh life cover. PMSBY gives ₹2 lakh accident cover.' },
+      { hi_h:'६. वित्तीय ठगी से बचाव', en_h:'6. Avoiding Financial Fraud', hi_p:'"कुछ दिनों में दुगुना धन" अथवा "मासिक २०% लाभ" — यह ठगी है। केवल SEBI अथवा RBI पंजीकृत संस्थाओं में निवेश करें।', en_p:'"Double money in days" or "20% monthly returns" — it\'s fraud. Invest only with SEBI or RBI registered entities.' },
+      { hi_h:'७. आधार तथा PAN', en_h:'7. Aadhaar and PAN', hi_p:'आधार तथा PAN पहचान के प्रमुख दस्तावेज़। किसी अनजान को न दें। आधार में मोबाइल लिंक कराएँ। PAN के बिना बड़े लेन-देन नहीं।', en_p:'Aadhaar and PAN are key identity documents. Never share with strangers. Link mobile with Aadhaar.' },
+      { hi_h:'८. निवेश के सिद्धांत', en_h:'8. Investment Principles', hi_p:'जोखिम तथा लाभ साथ चलते हैं। विविधीकरण आवश्यक — एक जगह सब न लगाएँ। दीर्घकाल में निवेश अधिक लाभदायक।', en_p:'Risk and reward go together. Diversification essential. Long-term investment more profitable.' },
+      { hi_h:'९. कर की मूल बातें', en_h:'9. Basics of Tax', hi_p:'कर देना कर्तव्य है। आयकर आय पर, GST वस्तुओं तथा सेवाओं पर। समय पर रिटर्न दाखिल करें।', en_p:'Paying tax is duty. Income tax on income, GST on goods and services. File returns on time.' },
+      { hi_h:'१०. वित्तीय लक्ष्य', en_h:'10. Financial Goals', hi_p:'तीन प्रकार के लक्ष्य — अल्पकालिक (६ माह - १ वर्ष), मध्यकालिक (१-५ वर्ष), दीर्घकालिक (५+ वर्ष)। लक्ष्य लिखित हों, तिथि सहित।', en_p:'Three goals — short-term (6 mo - 1 yr), medium (1-5 yrs), long-term (5+ yrs). Goals should be written with dates.' }
+    ]
+  }
+};
+
+/* ============================================================
+   QUIZ BANK — 40 प्रश्न प्रति course
+   ============================================================ */
+const FREE_QUIZ_BANK = {
+  'FREE-CYBER': [
+    { q_hi:'सुदृढ़ कूटशब्द में क्या होना आवश्यक है?', q_en:'What should a strong password contain?', options_hi:['केवल अंक','केवल नाम','बड़े-छोटे अक्षर, अंक तथा विशेष चिह्न','जन्मतिथि'], options_en:['Only numbers','Only name','Upper+lower, digits & symbols','Date of birth'], answer:2 },
+    { q_hi:'OTP किसके साथ साझा करना चाहिए?', q_en:'With whom should OTP be shared?', options_hi:['मित्र','बैंक कर्मचारी','कोई नहीं','परिवार'], options_en:['Friend','Bank staff','No one','Family'], answer:2 },
+    { q_hi:'फ़िशिंग क्या है?', q_en:'What is phishing?', options_hi:['मछली पकड़ना','नकली लिंक द्वारा सूचना चोरी','खेल','वेबसाइट बनाना'], options_en:['Catching fish','Stealing info via fake links','A game','Building a website'], answer:1 },
+    { q_hi:'सार्वजनिक WiFi पर क्या नहीं करना चाहिए?', q_en:'What should you avoid on public WiFi?', options_hi:['वीडियो देखना','बैंकिंग लॉगिन','खोज','कुछ नहीं'], options_en:['Watching videos','Banking login','Searching','Nothing'], answer:1 },
+    { q_hi:'HTTPS का अर्थ है?', q_en:'HTTPS means?', options_hi:['असुरक्षित','सुरक्षित एन्क्रिप्टेड','धीमा','विज्ञापन'], options_en:['Unsecured','Secure encrypted','Slow','Advertisement'], answer:1 },
+    { q_hi:'अनजान लिंक पर क्लिक से पूर्व क्या करें?', q_en:'Before clicking an unknown link?', options_hi:['तुरंत क्लिक','लिंक जाँचें','मित्र को भेजें','कुछ नहीं'], options_en:['Click at once','Verify the link','Send to friend','Nothing'], answer:1 },
+    { q_hi:'2FA क्या करता है?', q_en:'What does 2FA do?', options_hi:['धीमा करता','अतिरिक्त सुरक्षा देता','कूटशब्द बदलता','विद्युत्पत्र भेजता'], options_en:['Slows down','Extra security','Changes password','Sends email'], answer:1 },
+    { q_hi:'यदि OTP गलत हाथ लग जाए तो?', q_en:'If OTP falls in wrong hands?', options_hi:['प्रतीक्षा करें','तत्काल बदलें','अनदेखा','मित्र को बताएँ'], options_en:['Wait','Change immediately','Ignore','Tell friend'], answer:1 },
+    { q_hi:'सार्वजनिक संगणक पर क्या न करें?', q_en:'What not to do on public computer?', options_hi:['खोज','लॉगिन सुरक्षित करना','समाचार','PDF'], options_en:['Search','Save login','Read news','Open PDF'], answer:1 },
+    { q_hi:'VPN क्या करता है?', q_en:'What does VPN do?', options_hi:['वीडियो चलाता','संपर्क एन्क्रिप्ट करता','तेज़ करता','डेटा बचाता'], options_en:['Plays video','Encrypts connection','Speeds up','Saves data'], answer:1 },
+    { q_hi:'संदिग्ध अटैचमेंट पर क्या करें?', q_en:'What to do with suspicious attachment?', options_hi:['खोलें','हटाएँ','भेजें','प्रिंट'], options_en:['Open','Delete','Forward','Print'], answer:1 },
+    { q_hi:'सॉफ्टवेयर अद्यतन से क्या होता है?', q_en:'What does software update do?', options_hi:['धीमा','सुरक्षा पैच','डेटा क्षति','कुछ नहीं'], options_en:['Slows','Security patches','Data loss','Nothing'], answer:1 },
+    { q_hi:'एंटीवायरस क्यों आवश्यक है?', q_en:'Why is antivirus needed?', options_hi:['धीमा करने','मैलवेयर से बचाव','डेटा बढ़ाने','चलभाष बदलने'], options_en:['To slow','Protection from malware','To add data','To change phone'], answer:1 },
+    { q_hi:'अनजान कॉल पर बैंक विवरण देना?', q_en:'Sharing bank details on unknown call?', options_hi:['हाँ','कभी नहीं','कभी-कभी','केवल OTP'], options_en:['Yes','Never','Sometimes','Only OTP'], answer:1 },
+    { q_hi:'साइबर अपराध की सूचना कहाँ दें?', q_en:'Where to report cyber crime?', options_hi:['Facebook','cybercrime.gov.in / 1930','Wikipedia','YouTube'], options_en:['Facebook','cybercrime.gov.in / 1930','Wikipedia','YouTube'], answer:1 },
+    { q_hi:'कूटशब्द कितने समय में बदलना चाहिए?', q_en:'How often should password change?', options_hi:['कभी नहीं','नियमित अंतराल पर','वर्ष में एक बार','कभी-कभी'], options_en:['Never','Regularly','Once a year','Sometimes'], answer:1 },
+    { q_hi:'ताला-चिह्न (🔒) का अर्थ?', q_en:'Meaning of lock icon (🔒)?', options_hi:['सुरक्षित','असुरक्षित','धीमा','टूटा'], options_en:['Secure','Unsafe','Slow','Broken'], answer:0 },
+    { q_hi:'फ़िशिंग विद्युत्पत्र की पहचान?', q_en:'Identifying phishing email?', options_hi:['परिचित प्रेषक','वर्तनी दोष युक्त पता','HTTPS','लोगो'], options_en:['Known sender','Misspelled address','HTTPS','Logo'], answer:1 },
+    { q_hi:'सामाजिक अभियांत्रिकी क्या है?', q_en:'What is social engineering?', options_hi:['विज्ञान','मनोवैज्ञानिक ठगी','खेल','शिक्षा'], options_en:['A science','Psychological fraud','A game','Education'], answer:1 },
+    { q_hi:'अपडेट को नजरंदाज करने से?', q_en:'Ignoring updates leads to?', options_hi:['लाभ','सुरक्षा छिद्र','तेज़','कुछ नहीं'], options_en:['Benefit','Security holes','Speed','Nothing'], answer:1 },
+    { q_hi:'ऐप कहाँ से डाउनलोड करें?', q_en:'Where to download apps?', options_hi:['किसी भी वेबसाइट','केवल Google Play / App Store','APK फ़ाइल','WhatsApp लिंक'], options_en:['Any website','Only Google Play / App Store','APK file','WhatsApp link'], answer:1 },
+    { q_hi:'कूटशब्द कहाँ न लिखें?', q_en:'Where not to store password?', options_hi:['सुरक्षित ऐप','डायरी, चलभाष, कागज़','कोई नहीं','Password Manager'], options_en:['Secure app','Diary, phone, paper','Nowhere','Password Manager'], answer:1 },
+    { q_hi:'सार्वजनिक संगणक पर कार्य के पश्चात्?', q_en:'After work on public computer?', options_hi:['सो जाएँ','लॉगआउट अवश्य करें','कुछ नहीं','नोट करें'], options_en:['Sleep','Always logout','Nothing','Note it'], answer:1 },
+    { q_hi:'फोटो में लोकेशन?', q_en:'Location in photos?', options_hi:['रखें','हटा दें','कोई फर्क नहीं','साझा करें'], options_en:['Keep','Remove','No difference','Share'], answer:1 },
+    { q_hi:'अनजान WiFi पर ऑनलाइन खरीद?', q_en:'Online shopping on unknown WiFi?', options_hi:['ठीक','न करें','कभी-कभी','हमेशा'], options_en:['Okay','Avoid','Sometimes','Always'], answer:1 },
+    { q_hi:'कूटशब्द Manager क्या है?', q_en:'What is a Password Manager?', options_hi:['खेल','सुरक्षित रूप से कूटशब्द रखने वाला ऐप','वेबसाइट','फ़ाइल'], options_en:['A game','App to store passwords securely','Website','File'], answer:1 },
+    { q_hi:'साइबर ठगी में समय सीमा?', q_en:'Time limit for cyber fraud report?', options_hi:['कोई नहीं','जल्दी रिपोर्ट करें','देर सही','महीने भर'], options_en:['None','Report quickly','Late is fine','Within a month'], answer:1 },
+    { q_hi:'डेटा बैकअप कहाँ?', q_en:'Where to backup data?', options_hi:['कहीं नहीं','क्लाउड तथा बाहरी डिस्क','कागज़ पर','डायरी में'], options_en:['Nowhere','Cloud and external disk','On paper','In diary'], answer:1 },
+    { q_hi:'पब्लिक चार्जिंग स्टेशन पर?', q_en:'At public charging station?', options_hi:['ठीक','सावधानी','कभी-कभी','हमेशा'], options_en:['Okay','Be cautious','Sometimes','Always'], answer:1 },
+    { q_hi:'द्वि-चरणीय सत्यापन कहाँ करें?', q_en:'Where to enable 2FA?', options_hi:['कभी नहीं','बैंक, Gmail, समाज माध्यम','कभी-कभी','कुछ जगह'], options_en:['Never','Bank, Gmail, social media','Sometimes','Some places'], answer:1 },
+    { q_hi:'नकली वेबसाइट की पहचान?', q_en:'Identifying fake website?', options_hi:['HTTPS','URL में वर्तनी दोष','लोगो','फॉन्ट'], options_en:['HTTPS','Spelling error in URL','Logo','Font'], answer:1 },
+    { q_hi:'साइबर ठगी से बचाव का सर्वोत्तम उपाय?', q_en:'Best protection from cyber fraud?', options_hi:['चुप रहना','सजगता तथा शिक्षा','कुछ नहीं','डरना'], options_en:['Stay silent','Awareness and education','Nothing','Fear'], answer:1 },
+    { q_hi:'बैंक SMS अलर्ट?', q_en:'Bank SMS alerts?', options_hi:['बंद रखें','चालू रखें','कोई फर्क नहीं','मिटाएँ'], options_en:['Keep off','Keep on','No difference','Delete'], answer:1 },
+    { q_hi:'छोटे बच्चों के उपकरण?', q_en:'Devices of small children?', options_hi:['पूर्ण स्वतंत्रता','पेरेंटल कंट्रोल','कुछ नहीं','पासवर्ड नहीं'], options_en:['Full freedom','Parental control','Nothing','No password'], answer:1 },
+    { q_hi:'विद्युत्पत्र में अनजान लिंक?', q_en:'Unknown links in email?', options_hi:['क्लिक करें','तुरंत हटाएँ','भेजें','कुछ नहीं'], options_en:['Click','Delete immediately','Forward','Nothing'], answer:1 },
+    { q_hi:'प्रतिष्ठित वेबसाइट?', q_en:'Reputed website?', options_hi:['किसी भी नाम से','प्रमाणित डोमेन','किसी भी लिंक','चर्चित नाम से'], options_en:['Any name','Verified domain','Any link','Popular name'], answer:1 },
+    { q_hi:'बहुत अच्छी डील ऑफ़र?', q_en:'Too-good-to-be-true offers?', options_hi:['तुरंत लें','संदिग्ध मानें, जाँचें','भुगतान करें','कुछ नहीं'], options_en:['Take now','Treat as suspicious','Pay','Nothing'], answer:1 },
+    { q_hi:'साइबर सुरक्षा का मूल सिद्धांत?', q_en:'Core principle of cyber security?', options_hi:['केवल सरकार','व्यक्तिगत सजगता','केवल कंपनी','कुछ नहीं'], options_en:['Only government','Personal awareness','Only company','Nothing'], answer:1 },
+    { q_hi:'कूटशब्द किसके साथ साझा?', q_en:'Share password with whom?', options_hi:['मित्र','कोई नहीं','परिवार','सहकर्मी'], options_en:['Friend','No one','Family','Colleague'], answer:1 },
+    { q_hi:'अजनबी को OTP?', q_en:'OTP to stranger?', options_hi:['दें','कभी नहीं','भरोसे पर','कभी-कभी'], options_en:['Give','Never','If trusted','Sometimes'], answer:1 }
+  ]
+  /* बाकी 4 courses के questions जोड़ने के लिए यही pattern follow करें */
+};
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let _currentCourse = null;
+let _readerLang = 'hi';
+let _ebookReadFully = false;
+let _currentQuiz = null;
+let _quizAnswers = {};
+let _quizResult = null;
+let _certData = null;
+let _certOtpTimer = null;
+
+/* ============================================================
+   STEP 1: EBOOK GRID
+   ============================================================ */
+function renderEbookGrid(){
+  const grid = $('#ebookGrid'); if(!grid) return;
+  const lang = _lang();
+  grid.innerHTML = FREE_COURSE_LIST.map(c => `
+    <div class="ebook-card">
+      <span class="badge-free" data-hi="नि:शुल्क" data-en="FREE">नि:शुल्क</span>
+      <div class="ec-icon">${c.icon}</div>
+      <h3>${lang === 'en' ? c.en : c.hi}</h3>
+      <div class="ec-meta">
+        <span>⏱ ${lang === 'en' ? c.durEn : c.durHi}</span>
+        <span>📝 २० ${lang === 'en' ? 'Qs' : 'प्रश्न'}</span>
+        <span>📖 १० ${lang === 'en' ? 'Chapters' : 'अध्याय'}</span>
+      </div>
+      <p class="ec-desc">${lang === 'en' ? c.descEn : c.descHi}</p>
+      <button class="btn btn-saffron btn-sm" onclick="openEbook('${c.code}')">
+        📖 ${lang === 'en' ? 'Read Ebook' : 'ई-पुस्तक पढ़ें'}
+      </button>
+    </div>
+  `).join('');
+}
+renderEbookGrid();
+
+/* ============================================================
+   STEP NAVIGATION
+   ============================================================ */
+function setStep(step){
+  [1,2,3,4].forEach(i => {
+    const tab = document.getElementById('step' + i + 'Tab');
+    const sec = document.getElementById('step' + i + 'Section');
+    if(tab) tab.classList.toggle('active', i === step);
+    if(tab) tab.classList.toggle('done', i < step);
+    if(sec) sec.classList.toggle('hidden', i !== step);
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ============================================================
+   STEP 2: OPEN EBOOK
+   ============================================================ */
+function openEbook(code){
+  try {
+    _currentCourse = code;
+    _readerLang = 'hi';
+    _ebookReadFully = false;
+    document.querySelectorAll('.ebook-tab').forEach(t => t.classList.toggle('active', t.dataset.lang === 'hi'));
+    renderReader();
+    setStep(2);
+    const btn = $('#startQuizBtn');
+    if(btn){ btn.disabled = true; btn.textContent = '📝 ' + (_lang() === 'en' ? 'Start Test (read first)' : 'परीक्षा आरंभ करें (पहले पढ़ें)'); }
+    setTimeout(() => {
+      const el = $('#readerBody');
+      if(el){ el.scrollTop = 0; el.removeEventListener('scroll', checkRead); el.addEventListener('scroll', checkRead); checkRead(); }
+    }, 300);
+  } catch(e){
+    console.error('openEbook:', e);
+    toast('ई-पुस्तक खोलने में त्रुटि');
+  }
+}
+
+function renderReader(){
+  const ebook = FREE_EBOOKS[_currentCourse]; if(!ebook) return;
+  const lang = _lang();
+  const titleEl = $('#readerTitle');
+  if(titleEl) titleEl.textContent = '📖 ' + (lang === 'en' ? ebook.title.en : ebook.title.hi);
+  const body = $('#readerBody'); if(!body) return;
+  body.innerHTML = ebook.chapters.map(ch => `
+    <h4>${_readerLang === 'en' ? ch.en_h : ch.hi_h}</h4>
+    <p>${_readerLang === 'en' ? ch.en_p : ch.hi_p}</p>
+  `).join('');
+}
+
+function switchReaderLang(lang){
+  _readerLang = lang;
+  document.querySelectorAll('.ebook-tab').forEach(t => t.classList.toggle('active', t.dataset.lang === lang));
+  renderReader();
+}
+
+function checkRead(){
+  const el = $('#readerBody'); if(!el) return;
+  const pct = Math.round((el.scrollTop + el.clientHeight) / el.scrollHeight * 100);
+  const pctEl = $('#readerPct'); if(pctEl) pctEl.textContent = pct;
+  if(pct >= 95 && !_ebookReadFully){
+    _ebookReadFully = true;
+    const btn = $('#startQuizBtn');
+    if(btn){
+      btn.disabled = false;
+      btn.textContent = '📝 ' + (_lang() === 'en' ? 'Start Test (20 questions)' : 'परीक्षा आरंभ करें (२० प्रश्न)');
+    }
+    toast(_lang() === 'en' ? '✓ Ebook read! Take the test.' : '✓ ई-पुस्तक पढ़ी गई! अब परीक्षा दें।');
+  }
+}
+
+function backToEbookList(){
+  setStep(1);
+}
+
+/* ============================================================
+   STEP 3: QUIZ
+   ============================================================ */
+function startQuiz(){
+  if(!_ebookReadFully){
+    toast(_lang() === 'en' ? 'Please read the complete ebook first.' : 'कृपया पहले पूरी ई-पुस्तक पढ़ें।');
+    return;
+  }
+  const course = FREE_COURSE_LIST.find(c => c.code === _currentCourse);
+  const bank = FREE_QUIZ_BANK[_currentCourse] || [];
+  if(!course || bank.length === 0){
+    toast(_lang() === 'en' ? 'Test not available yet.' : 'परीक्षा अभी उपलब्ध नहीं है।');
+    return;
+  }
+  // Random 20
+  const shuffled = [...bank].sort(() => Math.random() - 0.5).slice(0, 20);
+  const lang = _lang();
+  _currentQuiz = {
+    course,
+    questions: shuffled.map(q => {
+      const opts = lang === 'en' ? q.options_en : q.options_hi;
+      const indexed = opts.map((o, i) => ({ o, orig: i }));
+      const shuffledOpts = indexed.sort(() => Math.random() - 0.5);
+      return {
+        q: lang === 'en' ? q.q_en : q.q_hi,
+        options: shuffledOpts.map(x => x.o),
+        answer: shuffledOpts.findIndex(x => x.orig === q.answer)
+      };
+    })
+  };
+  _quizAnswers = {};
+  renderQuiz();
+  setStep(3);
+}
+
+function renderQuiz(){
+  const { course, questions } = _currentQuiz;
+  const lang = _lang();
+  const answered = Object.keys(_quizAnswers).length;
+  const total = questions.length;
+  const pct = Math.round((answered / total) * 100);
+
+  $('#quizHeader').innerHTML = `
+    <h4>${course.icon} ${lang === 'en' ? course.en : course.hi}</h4>
+    <div style="font-size:.9rem;opacity:.95">${answered} / ${total} ${lang === 'en' ? 'answered' : 'उत्तर दिए'}</div>
+    <div class="quiz-progress-bar"><div style="width:${pct}%"></div></div>
+  `;
+
+  $('#quizBody').innerHTML = questions.map((q, i) => `
+    <div class="q-item">
+      <div class="q-text">${i+1}. ${q.q}</div>
+      ${q.options.map((opt, j) => `
+        <label class="q-opt ${_quizAnswers[i] === j ? 'selected' : ''}" onclick="selectAnswer(${i}, ${j}, this)">
+          <input type="radio" name="q${i}" ${_quizAnswers[i] === j ? 'checked' : ''}>
+          <span>${opt}</span>
+        </label>
+      `).join('')}
+    </div>
+  `).join('');
+
+  updateSubmitBtn();
+}
+
+function selectAnswer(qIdx, optIdx, el){
+  _quizAnswers[qIdx] = optIdx;
+  el.closest('.q-item').querySelectorAll('.q-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  el.querySelector('input').checked = true;
+  // Update progress
+  const { questions } = _currentQuiz;
+  const answered = Object.keys(_quizAnswers).length;
+  const total = questions.length;
+  const pct = Math.round((answered / total) * 100);
+  const lang = _lang();
+  const header = $('#quizHeader');
+  if(header){
+    header.querySelector('div:nth-child(2)').textContent = `${answered} / ${total} ${lang === 'en' ? 'answered' : 'उत्तर दिए'}`;
+    header.querySelector('.quiz-progress-bar > div').style.width = pct + '%';
+  }
+  updateSubmitBtn();
+}
+
+function updateSubmitBtn(){
+  const btn = $('#submitQuizBtn');
+  const total = _currentQuiz?.questions.length || 0;
+  const answered = Object.keys(_quizAnswers).length;
+  if(btn) btn.disabled = answered < total;
+}
+
+function backToReader(){
+  setStep(2);
+}
+
+function submitQuiz(){
+  const { course, questions } = _currentQuiz;
+  let correct = 0;
+  questions.forEach((q, i) => { if(_quizAnswers[i] === q.answer) correct++; });
+  const total = questions.length;
+  const pct = Math.round((correct / total) * 100);
+  const lang = _lang();
+  const passed = pct >= course.pass;
+
+  if(!passed){
+    $('#quizBody').innerHTML = `
+      <div style="text-align:center;padding:30px 20px">
+        <div style="width:120px;height:120px;border-radius:50%;display:grid;place-items:center;margin:0 auto 18px;font-size:2rem;font-weight:800;color:#fff;background:linear-gradient(135deg,#dc2626,#991b1b)">${pct}%</div>
+        <h3 style="color:#991b1b;margin-bottom:10px">😔 ${lang === 'en' ? 'Not Passed' : 'परीक्षा उत्तीर्ण नहीं'}</h3>
+        <p style="margin:12px 0">${correct}/${total} ${lang === 'en' ? 'correct' : 'सही'} · ${course.pass}% ${lang === 'en' ? 'required' : 'आवश्यक'}</p>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px">
+          <button class="btn btn-saffron" onclick="startQuiz()">🔄 ${lang === 'en' ? 'Retry' : 'पुन: प्रयास'}</button>
+          <button class="btn btn-outline" onclick="backToReader()">${lang === 'en' ? 'Back to Book' : 'पुस्तक पर वापस'}</button>
+        </div>
+      </div>`;
+    return;
+  }
+
+  _quizResult = {
+    course: course.code,
+    courseTitle: lang === 'en' ? course.en : course.hi,
+    duration: lang === 'en' ? course.durEn : course.durHi,
+    level: course.level,
+    score: correct,
+    total,
+    pct
+  };
+  setStep(4);
+  showCertForm();
+}
+
+/* ============================================================
+   STEP 4: CERTIFICATE
+   ============================================================ */
+function showCertForm(){
+  $('#certStep1Wrapper').classList.remove('hidden');
+  $('#certStep2Wrapper').classList.add('hidden');
+  $('#certFinalWrapper').classList.add('hidden');
+
+  const r = _quizResult;
+  const lang = _lang();
+  $('#certResultHeader').innerHTML = `
+    <h4>${r.courseTitle}</h4>
+    <div style="font-size:.9rem;opacity:.95">
+      ${lang === 'en' ? 'Score' : 'अंक'}: ${r.score}/${r.total} (${r.pct}%) ·
+      ${lang === 'en' ? 'Passed ✓' : 'उत्तीर्ण ✓'}
+    </div>
+  `;
+}
+
+function backToCertForm(){
+  $('#certStep1Wrapper').classList.remove('hidden');
+  $('#certStep2Wrapper').classList.add('hidden');
+  if(_certOtpTimer) clearInterval(_certOtpTimer);
+}
+
+function validateCertData(){
+  const name = $('#certName')?.value.trim();
+  const gender = $('#certGender')?.value;
+  const prefix = $('#certPrefix')?.value;
+  const parent = $('#certParent')?.value.trim();
+  const aadhar = $('#certAadhar')?.value.replace(/\s/g, '');
+  const mobile = $('#certMobile')?.value.trim();
+  const address = $('#certAddress')?.value.trim();
+  const email = $('#certEmail')?.value.trim();
+  let ok = true;
+  const mark = (id, bad) => { const el = document.getElementById(id); if(el) el.closest('.field')?.classList.toggle('err', bad); if(bad) ok = false; };
+  mark('certName', name.length < 3);
+  mark('certGender', !gender);
+  mark('certParent', parent.length < 3);
+  mark('certAadhar', !/^\d{12}$/.test(aadhar));
+  mark('certMobile', !/^[6-9]\d{9}$/.test(mobile));
+  mark('certAddress', address.length < 15);
+  mark('certEmail', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
+  if(!ok){ toast(_lang() === 'en' ? 'Please fill all fields correctly.' : 'कृपया समस्त सूचना सही भरें।'); return null; }
+  return { name, gender, prefix, parent, aadhar, mobile, address, email };
+}
+
+async function sendCertOtp(){
+  const d = validateCertData(); if(!d) return;
+  _certData = d;
+  const btn = document.querySelector('#certStep1Wrapper .btn-saffron');
+  if(!btn) return;
+  const orig = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '⏳ ' + (_lang() === 'en' ? 'Sending...' : 'भेजा जा रहा है...');
+  const r = await apiCall({ action:'sendOtp', email: d.email });
+  btn.disabled = false;
+  btn.innerHTML = orig;
+  if(r.status === 'success'){
+    $('#certOtpSentTo').textContent = d.email;
+    $('#certStep1Wrapper').classList.add('hidden');
+    $('#certStep2Wrapper').classList.remove('hidden');
+    $('#certOtpCode')?.focus();
+    startCertOtpTimer(60);
+    toast(_lang() === 'en' ? 'Code sent ✓' : 'कूट भेजा गया ✓');
+  } else {
+    toast(r.message || 'त्रुटि');
+  }
+}
+
+function startCertOtpTimer(s){
+  if(_certOtpTimer) clearInterval(_certOtpTimer);
+  const el = $('#certOtpTimer');
+  if(!el) return;
+  el.textContent = `(${s}s)`;
+  _certOtpTimer = setInterval(() => {
+    s--;
+    el.textContent = `(${s}s)`;
+    if(s <= 0){ clearInterval(_certOtpTimer); el.textContent = ''; }
+  }, 1000);
+}
+
+async function verifyCertOtp(){
+  const otp = $('#certOtpCode')?.value.trim();
+  if(!/^\d{6}$/.test(otp)){ toast(_lang() === 'en' ? 'Enter 6-digit code' : 'छह अंकों का कूट'); return; }
+  if(!_certData){ toast('Session expired'); return; }
+  const btn = $('#certVerifyBtn'); if(!btn) return;
+  const orig = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '⏳';
+  const v = await apiCall({ action:'verifyOtp', email: _certData.email, otp });
+  if(v.status !== 'success'){
+    btn.disabled = false;
+    btn.innerHTML = orig;
+    $('#certOtpErr').textContent = v.message || 'अमान्य';
+    return;
+  }
+  btn.innerHTML = '⏳ ' + (_lang() === 'en' ? 'Generating...' : 'बन रहा है...');
+  const r = _quizResult;
+  const fullParent = _certData.prefix + ' ' + _certData.parent;
+  const api = await apiCall({
+    action: 'issueFreeCert',
+    course: r.course,
+    courseTitle: r.courseTitle,
+    duration: r.duration,
+    level: r.level,
+    name: _certData.name,
+    parentName: fullParent,
+    parentPrefix: _certData.prefix,
+    gender: _certData.gender,
+    aadhar: _certData.aadhar,
+    mobile: _certData.mobile,
+    address: _certData.address,
+    email: _certData.email,
+    score: r.score,
+    total: r.total,
+    pct: r.pct
+  });
+  btn.disabled = false;
+  btn.innerHTML = orig;
+  if(api.status !== 'success'){
+    toast(api.message || 'त्रुटि');
+    return;
+  }
+  if(_certOtpTimer) clearInterval(_certOtpTimer);
+  showFinalCertificate(api, _certData);
+}
+
+function showFinalCertificate(data, cd){
+  const verifyUrl = 'https://www.diprafoundation.com/verify.html?cert=' + encodeURIComponent(data.certId);
+  const aadharMasked = 'XXXX XXXX ' + String(data.aadhar || cd.aadhar || '').slice(-4);
+  $('#certStep1Wrapper').classList.add('hidden');
+  $('#certStep2Wrapper').classList.add('hidden');
+  const wrap = $('#certFinalWrapper');
+  wrap.classList.remove('hidden');
+  wrap.innerHTML = `
+    <div class="cert-frame" id="certPrintArea">
+      <div class="cert-inner">
+        <div class="cert-logo"><img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-M-G=w500" alt="दिप्र"></div>
+        <div class="cert-org">दिप्र फ़ाउंडेशन</div>
+        <div class="cert-subtitle">The Uplift — कोचिंग योजना</div>
+        <div class="cert-regno">पंजीकरण संख्या ३०० · Trust Act 1882</div>
+        <div class="cert-title">प्रमाणपत्र</div>
+        <div style="font-size:.85rem;color:var(--saffron-3);letter-spacing:.15em;text-transform:uppercase;font-weight:700;margin-bottom:18px">नि:शुल्क अंकीय पाठ्यक्रम · FREE ONLINE COURSE</div>
+        <div style="font-style:italic;color:var(--ink-2);margin-bottom:6px">This is to certify that</div>
+        <div class="cert-student">${escapeHtml(cd.name)}</div>
+        <div style="color:var(--ink-2);margin:8px 0 16px">${cd.gender === 'महिला' ? 'पुत्री' : (cd.gender === 'पुरुष' ? 'पुत्र' : 'पुत्र/पुत्री')} — ${escapeHtml(cd.prefix + ' ' + cd.parent)}</div>
+        <div style="font-style:italic;color:var(--ink-2);margin-bottom:6px">has successfully completed the online course</div>
+        <div class="cert-course">${escapeHtml(data.courseTitle)}</div>
+        <div class="cert-meta">
+          <div><small>अवधि</small><b>${escapeHtml(data.duration || '')}</b></div>
+          <div><small>स्तर</small><b>${escapeHtml(data.level || 'Beginner')}</b></div>
+          <div><small>कुल प्रश्न</small><b>२०</b></div>
+        </div>
+        <div style="font-size:.95rem;color:var(--ink-2);margin:14px 0">
+          अंक: <b>${data.score}/${data.total}</b> · प्रतिशत: <b>${data.pct}%</b> · श्रेणी: <b>${data.grade || 'A'}</b>
+        </div>
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:16px 0;font-size:.8rem">
+          <span style="padding:5px 11px;background:#fff;border-radius:6px;border:1px solid var(--border-2)"><b>आधार:</b> ${aadharMasked}</span>
+          <span style="padding:5px 11px;background:#fff;border-radius:6px;border:1px solid var(--border-2)"><b>चलभाष:</b> ${escapeHtml(cd.mobile)}</span>
+          <span style="padding:5px 11px;background:#fff;border-radius:6px;border:1px solid var(--border-2)"><b>विद्युत्पत्र:</b> ${escapeHtml(cd.email)}</span>
+        </div>
+        <div style="font-size:.82rem;color:var(--ink-2);margin:8px 0;padding:8px 12px;background:#fff;border-radius:6px;border:1px solid var(--border-2);max-width:580px;margin-inline:auto"><b>पता:</b> ${escapeHtml(cd.address)}</div>
+        <div class="cert-bottom">
+          <div class="cert-sign"><div class="line"></div>जारी दिनांक<br><b>${new Date().toLocaleDateString('en-IN')}</b></div>
+          <div class="cert-qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(verifyUrl)}" alt="QR"><small style="display:block;font-size:.68rem;color:var(--muted);margin-top:5px">सत्यापन हेतु स्कैन करें</small></div>
+          <div class="cert-sign"><div class="line"></div>अधिकृत हस्ताक्षर<br><b>दिप्र फ़ाउंडेशन</b></div>
+        </div>
+        <div class="cert-id-line">प्रमाणपत्र क्रमांक: <b>${escapeHtml(data.certId)}</b></div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin:20px 0">
+      <button class="btn btn-primary" onclick="window.print()" style="flex:1;min-width:140px">🖨️ प्रिंट करें</button>
+      <a href="${verifyUrl}" target="_blank" class="btn btn-outline" style="flex:1;min-width:140px">🔍 सत्यापन पृष्ठ</a>
+      <button class="btn btn-outline" onclick="restartAll()" style="flex:1;min-width:140px">🔄 नई परीक्षा</button>
+    </div>
+    <div class="note note-green" style="margin-top:16px;font-size:.92rem">
+      📧 प्रमाणपत्र <b>${escapeHtml(cd.email)}</b> पर भी भेज दिया गया है।
+    </div>
+  `;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function restartAll(){
+  _currentCourse = null;
+  _ebookReadFully = false;
+  _currentQuiz = null;
+  _quizAnswers = {};
+  _quizResult = null;
+  _certData = null;
+  setStep(1);
+}
+
+/* ---------- API ---------- */
+async function apiCall(payload){
+  try {
+    const res = await fetch(SHEET_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload),
+      redirect: 'follow'
+    });
+    const text = await res.text();
+    try { return JSON.parse(text); }
+    catch(e){ return { status: 'error', message: 'Invalid response' }; }
+  } catch(e){
+    return { status: 'error', message: 'Network error' };
+  }
+}
+
+function escapeHtml(s){
+  return String(s == null ? '' : s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+/* ---------- Init ---------- */
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', () => { setStep(1); });
+} else {
+  setStep(1);
+}
+
+console.log('%c📚 दिप्र फ़ाउंडेशन — Ebook Page loaded', 'color:#FF7A00;font-weight:bold;font-size:14px');
+</script>
+<script src="sound.js" defer></script>
+
+</body>
+</html>
