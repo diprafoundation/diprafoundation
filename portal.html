@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<title>पोर्टल | दिप्र फ़ाउंडेशन — The Uplift</title>
+<meta name="description" content="विद्यार्थी केंद्र, स्वयंसेवक केंद्र तथा प्रशासक केंद्र — दिप्र फ़ाउंडेशन।">
+<meta name="theme-color" content="#0D7A3A">
+<meta property="og:title" content="पोर्टल — दिप्र फ़ाउंडेशन">
+<meta property="og:image" content="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+<link rel="icon" href="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --saffron:#FF7A00;--saffron-2:#FFA940;--saffron-3:#E65F00;--saffron-soft:#FFF1E0;
+  --green:#0D7A3A;--green-2:#16A34A;--green-3:#075A2A;--green-soft:#E7F6EC;
+  --gold:#D4A017;--gold-2:#F0BE3E;--maroon:#8B1538;--maroon-2:#B91C48;
+  --cream:#FFFBF5;--cream-2:#FFF6E8;--ink:#2A1810;--ink-2:#5A4030;--muted:#8B7355;
+  --border:#F0DCBC;--border-2:#E6C89C;
+  --radius:10px;--radius-lg:16px;--radius-xl:24px;
+  --shadow:0 4px 16px rgba(255,122,0,.12);
+  --shadow-lg:0 12px 40px rgba(139,21,56,.18);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Inter','Noto Sans Devanagari',system-ui,sans-serif;
+  background:linear-gradient(180deg,#FFFBF5 0%,#FFF6E8 100%);
+  color:var(--ink);line-height:1.7;font-size:17px;
+  min-height:100vh;display:flex;flex-direction:column;
+  -webkit-font-smoothing:antialiased;
+}
+body.modal-open{overflow:hidden}
+img{max-width:100%;display:block}
+a{color:var(--maroon);text-decoration:none;transition:.15s}
+a:hover{color:var(--saffron-3)}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+input,select,textarea{font-family:inherit}
+h1,h2,h3,h4{line-height:1.28;font-weight:800;color:var(--maroon)}
+body.lang-en .t-hi{display:none!important}
+
+/* Tricolor */
+.tricolor{height:5px;background:linear-gradient(90deg,var(--saffron) 0%,var(--saffron) 33.33%,#fff 33.33%,#fff 66.66%,var(--green) 66.66%,var(--green) 100%)}
+
+/* TOPBAR */
+.topbar{background:linear-gradient(90deg,var(--saffron-soft),#fff,var(--green-soft));padding:10px 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.topbar a{font-weight:600;color:var(--maroon)}
+.topbar-links{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+
+/* HEADER */
+header{background:#fff;border-bottom:2px solid var(--border);box-shadow:0 2px 14px rgba(139,21,56,.06);position:sticky;top:0;z-index:100}
+.header-inner{max-width:1200px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none!important}
+.brand-logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--saffron-soft),var(--green-soft));border:2px solid var(--saffron);display:grid;place-items:center;padding:6px;flex:none;box-shadow:0 4px 12px rgba(255,122,0,.2)}
+.brand-logo img{width:100%;height:100%;object-fit:contain;border-radius:6px}
+.brand-text b{display:block;font-size:1.15rem;font-weight:800;color:var(--maroon);line-height:1.15;font-family:'Tiro Devanagari Hindi','Noto Sans Devanagari',serif}
+.brand-text span{font-size:.78rem;color:var(--muted);font-weight:500}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.nav-links a{padding:9px 14px;border-radius:9px;font-weight:600;font-size:.92rem;color:var(--ink);transition:.15s}
+.nav-links a:hover{background:var(--saffron-soft);color:var(--saffron-3)}
+.nav-links a.active{background:var(--saffron-soft);color:var(--saffron-3)}
+.lang-switch{display:flex;border:1px solid var(--border-2);border-radius:9px;overflow:hidden;background:#fff;margin-left:8px}
+.lang-btn{padding:8px 12px;font-size:.82rem;font-weight:700;color:var(--muted);background:#fff;transition:.15s}
+.lang-btn.active{background:linear-gradient(135deg,var(--maroon),var(--maroon-2));color:#fff}
+
+/* MAIN */
+main{flex:1;padding:40px 0 60px}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* PAGE HEAD */
+.page-head{text-align:center;margin-bottom:32px}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--saffron-3);background:var(--saffron-soft);padding:6px 16px;border-radius:999px;border:1px solid var(--saffron);margin-bottom:14px}
+.page-head h1{font-family:'Tiro Devanagari Hindi',serif;font-size:clamp(1.7rem,4vw,2.4rem);color:var(--maroon);font-weight:400;margin-bottom:10px;line-height:1.2}
+.page-head p{color:var(--ink-2);font-size:1.02rem;max-width:640px;margin:0 auto}
+
+/* PORTAL TABS */
+.portal-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:28px;flex-wrap:wrap}
+.portal-tab{
+  display:flex;align-items:center;gap:10px;
+  padding:14px 24px;border-radius:12px;
+  font-weight:700;font-size:.96rem;
+  background:#fff;border:2px solid var(--border-2);
+  color:var(--muted);transition:.2s;
+  cursor:pointer;font-family:inherit;min-height:56px;
+}
+.portal-tab:hover{border-color:var(--saffron);background:var(--saffron-soft)}
+.portal-tab.active{background:linear-gradient(135deg,var(--saffron),var(--saffron-3));color:#fff;border-color:var(--saffron);box-shadow:0 6px 20px rgba(255,122,0,.3)}
+.portal-tab.active[data-ptab="volunteer"]{background:linear-gradient(135deg,var(--green),var(--green-3));border-color:var(--green);box-shadow:0 6px 20px rgba(13,122,58,.3)}
+.portal-tab.active[data-ptab="admin"]{background:linear-gradient(135deg,var(--maroon),var(--maroon-2));border-color:var(--maroon);box-shadow:0 6px 20px rgba(139,21,56,.3)}
+.portal-tab .pt-ico{font-size:1.3rem}
+
+/* PORTAL PANELS */
+.portal-panel{display:none}
+.portal-panel.active{display:block;animation:fadeIn .3s}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* LOGIN CARD */
+.login-card{background:#fff;border:2px solid var(--border-2);border-radius:var(--radius-lg);padding:36px;box-shadow:0 10px 40px rgba(139,21,56,.08);max-width:560px;margin:0 auto}
+.login-head{text-align:center;margin-bottom:24px}
+.login-head .lh-icon{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;font-size:2rem;margin:0 auto 14px;border:3px solid}
+.login-head.student .lh-icon{background:linear-gradient(135deg,var(--saffron-soft),#fff);border-color:var(--saffron);color:var(--saffron-3)}
+.login-head.volunteer .lh-icon{background:linear-gradient(135deg,var(--green-soft),#fff);border-color:var(--green);color:var(--green-3)}
+.login-head.admin .lh-icon{background:linear-gradient(135deg,#FEF5F5,#fff);border-color:#F0B0B0;color:#991B1B}
+.login-head h2{font-size:1.35rem;margin-bottom:6px}
+.login-head p{color:var(--muted);font-size:.94rem}
+
+/* FIELDS */
+.field{margin-bottom:18px}
+.field label{display:block;font-weight:700;font-size:.96rem;margin-bottom:8px;color:var(--ink)}
+.field input,.field select,.field textarea{width:100%;padding:14px 16px;border:2px solid var(--border-2);border-radius:12px;background:#fff;transition:.15s;color:var(--ink);font-size:16px;min-height:52px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--saffron);box-shadow:0 0 0 4px rgba(255,122,0,.15)}
+.field input[readonly]{background:var(--cream-2);cursor:not-allowed}
+.field small{display:block;color:var(--muted);font-size:.82rem;margin-top:6px;line-height:1.6}
+.field.err input,.field.err select{border-color:#c0392b;background:#fef5f5}
+.field .errmsg{color:#c0392b;font-size:.82rem;margin-top:6px;display:none}
+.field.err .errmsg{display:block}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:12px;font-weight:700;font-size:1rem;transition:.2s;border:1px solid transparent;text-decoration:none!important;cursor:pointer;white-space:nowrap;min-height:52px;line-height:1.2}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.btn-saffron{background:linear-gradient(135deg,var(--saffron),var(--saffron-3));color:#fff;box-shadow:0 6px 20px rgba(255,122,0,.32)}
+.btn-saffron:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 26px rgba(255,122,0,.45);color:#fff}
+.btn-green{background:linear-gradient(135deg,var(--green),var(--green-3));color:#fff;box-shadow:0 6px 20px rgba(13,122,58,.28)}
+.btn-green:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 26px rgba(13,122,58,.4);color:#fff}
+.btn-primary{background:linear-gradient(135deg,var(--maroon),var(--maroon-2));color:#fff;box-shadow:0 6px 20px rgba(139,21,56,.28)}
+.btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 26px rgba(139,21,56,.4);color:#fff}
+.btn-outline{background:#fff;border-color:var(--border-2);color:var(--maroon)}
+.btn-outline:hover:not(:disabled){border-color:var(--saffron);background:var(--saffron-soft);color:var(--saffron-3)}
+.btn-ghost{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.5);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.28);color:#fff;border-color:#fff}
+.btn-sm{padding:10px 18px;font-size:.9rem;min-height:44px}
+.btn-block{width:100%}
+
+/* DASHBOARD */
+.dash{display:none}
+.dash.show{display:block;animation:fadeIn .4s}
+.dash-head{background:linear-gradient(135deg,var(--maroon),var(--maroon-2));color:#fff;padding:26px 30px;border-radius:var(--radius-lg) var(--radius-lg) 0 0;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.dash-head.student{background:linear-gradient(135deg,var(--saffron),var(--saffron-3))}
+.dash-head.volunteer{background:linear-gradient(135deg,var(--green),var(--green-3))}
+.dash-head h3{color:#fff;font-size:1.25rem;margin-bottom:2px}
+.dash-head p{color:rgba(255,255,255,.9);font-size:.9rem}
+.dash-head p b{font-family:monospace;letter-spacing:.05em;color:#fff}
+.dash-body{background:#fff;border:2px solid var(--border-2);border-top:none;border-radius:0 0 var(--radius-lg) var(--radius-lg);padding:28px}
+
+/* Timeline */
+.timeline{display:flex;overflow-x:auto;padding:8px 0 18px;gap:8px}
+.tl-step{flex:1;min-width:110px;text-align:center;position:relative;font-size:.78rem;color:var(--muted);font-weight:600}
+.tl-step::before{content:"";position:absolute;top:15px;left:0;right:0;height:3px;background:#e4e8ee;z-index:0}
+.tl-step:first-child::before{left:50%}
+.tl-step:last-child::before{right:50%}
+.tl-dot{position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:#e4e8ee;color:#7a8aa3;display:grid;place-items:center;margin:0 auto 10px;font-size:.78rem;font-weight:800;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.tl-step.done .tl-dot{background:var(--green);color:#fff}
+.tl-step.current .tl-dot{background:linear-gradient(135deg,var(--saffron),var(--saffron-3));color:#fff;box-shadow:0 0 0 5px rgba(255,122,0,.2)}
+.tl-step.done::before,.tl-step.current::before{background:var(--green)}
+
+/* Mini cards */
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:20px}
+.mini{background:var(--cream-2);border:1.5px solid var(--border);border-radius:12px;padding:16px}
+.mini small{color:var(--muted);font-size:.76rem;text-transform:uppercase;letter-spacing:.05em;font-weight:700}
+.mini b{display:block;font-size:1rem;color:var(--maroon);margin-top:6px;font-weight:800;word-break:break-word}
+
+/* Info boxes */
+.info-box{background:#fff;border:1.5px solid var(--border-2);border-radius:12px;padding:18px 20px;margin-top:20px;font-size:.94rem;line-height:1.75;color:var(--ink-2)}
+.info-box.green{background:var(--green-soft);border-color:var(--green-2);color:var(--green-3)}
+.info-box.blue{background:#EEF4FB;border-color:#D5E0ED;color:#1A3A5C}
+.info-box.saffron{background:var(--saffron-soft);border-color:var(--saffron-2);color:#7A3E00}
+.info-box h4{color:var(--maroon);font-size:1rem;margin-bottom:10px;padding-bottom:8px;border-bottom:1.5px dashed var(--border-2)}
+.info-box.green h4{color:var(--green-3)}
+
+/* Section title inside dash */
+.section-title{font-size:.85rem;color:var(--muted);text-transform:uppercase;font-weight:700;letter-spacing:.06em;margin:24px 0 12px}
+.section-title:first-child{margin-top:0}
+
+/* Action buttons row */
+.actions-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+
+/* DOWNLOAD CARDS */
+.download-card{background:#fff;border:2px solid var(--border-2);border-radius:12px;padding:20px;display:flex;gap:16px;align-items:center;transition:.2s;margin-top:12px}
+.download-card:hover{border-color:var(--saffron);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.download-card .dc-icon{width:56px;height:56px;border-radius:12px;display:grid;place-items:center;font-size:1.6rem;flex:none}
+.download-card.green .dc-icon{background:var(--green-soft);color:var(--green-3);border:2px solid var(--green-2)}
+.download-card.saffron .dc-icon{background:var(--saffron-soft);color:var(--saffron-3);border:2px solid var(--saffron-2)}
+.download-card.purple .dc-icon{background:#F5EAFF;color:#7A3EB8;border:2px solid #DCC4F0}
+.download-card .dc-body{flex:1;min-width:0}
+.download-card h4{font-size:1rem;margin-bottom:2px;color:var(--maroon)}
+.download-card p{font-size:.86rem;color:var(--muted)}
+
+/* ADMIN TABS */
+.admin-tabs{display:flex;gap:4px;margin-bottom:22px;flex-wrap:wrap;border-bottom:2px solid var(--border);overflow-x:auto}
+.admin-tab{padding:12px 18px;font-weight:700;font-size:.9rem;color:var(--muted);background:transparent;border:none;border-bottom:3px solid transparent;margin-bottom:-2px;cursor:pointer;white-space:nowrap;transition:.15s;font-family:inherit}
+.admin-tab:hover{color:var(--maroon);background:var(--saffron-soft)}
+.admin-tab.active{color:var(--maroon);border-bottom-color:var(--saffron)}
+.admin-panel{display:none}
+.admin-panel.active{display:block;animation:fadeIn .25s}
+
+/* ADMIN STATS */
+.admin-stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:22px}
+.admin-stat{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:18px;text-align:center;transition:.2s}
+.admin-stat:hover{border-color:var(--saffron);transform:translateY(-2px);box-shadow:var(--shadow)}
+.admin-stat b{display:block;font-size:1.7rem;font-weight:800;color:var(--maroon);line-height:1.1}
+.admin-stat span{font-size:.78rem;color:var(--muted);text-transform:uppercase;font-weight:700;letter-spacing:.04em;margin-top:6px;display:block}
+
+/* ADMIN TABLE */
+.admin-search{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.admin-search input{flex:1;min-width:200px;padding:12px 14px;border:2px solid var(--border-2);border-radius:10px;font-size:15px}
+.admin-search input:focus{outline:none;border-color:var(--saffron)}
+.admin-table-wrap{overflow-x:auto;border:1.5px solid var(--border-2);border-radius:12px;background:#fff}
+.admin-table{width:100%;font-size:.84rem;border-collapse:collapse;min-width:760px}
+.admin-table th,.admin-table td{padding:12px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+.admin-table th{background:linear-gradient(90deg,var(--maroon),var(--maroon-2));color:#fff;font-weight:700;font-size:.74rem;text-transform:uppercase;letter-spacing:.04em}
+.admin-table tbody tr:hover{background:var(--saffron-soft)}
+.admin-table tbody tr:last-child td{border-bottom:none}
+.admin-table .mono{font-family:monospace;font-size:.78rem}
+
+/* STATUS BADGE */
+.status-badge{display:inline-block;padding:4px 12px;border-radius:999px;font-size:.74rem;font-weight:700;white-space:nowrap}
+.status-submitted{background:var(--saffron-soft);color:var(--saffron-3);border:1px solid var(--saffron-2)}
+.status-verified{background:#EEF4FB;color:#1A4A80;border:1px solid #D5E0ED}
+.status-selected{background:var(--green-soft);color:var(--green-3);border:1px solid var(--green-2)}
+.status-rejected{background:#FEF5F5;color:#991B1B;border:1px solid #F0B0B0}
+.status-open{background:#EEF4FB;color:#1A4A80;border:1px solid #D5E0ED}
+.status-resolved{background:var(--green-soft);color:var(--green-3);border:1px solid var(--green-2)}
+
+/* BUTTONS inside table */
+.tbl-btn{padding:6px 12px;font-size:.76rem;border-radius:7px;font-weight:700;border:1.5px solid;cursor:pointer;margin:2px;font-family:inherit;transition:.15s;background:#fff}
+.tbl-btn.verify{border-color:#1A4A80;color:#1A4A80}
+.tbl-btn.verify:hover{background:#EEF4FB}
+.tbl-btn.select{border-color:var(--green);color:var(--green-3)}
+.tbl-btn.select:hover{background:var(--green-soft)}
+.tbl-btn.reject{border-color:#991B1B;color:#991B1B}
+.tbl-btn.reject:hover{background:#FEF5F5}
+.tbl-btn.download{border-color:var(--saffron);color:var(--saffron-3)}
+.tbl-btn.download:hover{background:var(--saffron-soft)}
+
+/* OTP BOXES */
+.otp-inputs{display:flex;gap:8px;justify-content:center;margin:20px 0}
+.otp-box{width:52px;height:62px;text-align:center;font-family:monospace;font-size:1.5rem;font-weight:800;border:2px solid var(--border-2);border-radius:12px;background:#fff;color:var(--maroon);transition:.15s;padding:0}
+.otp-box:focus{outline:none;border-color:var(--saffron);box-shadow:0 0 0 4px rgba(255,122,0,.15)}
+.otp-box.filled{border-color:var(--saffron);background:var(--saffron-soft)}
+
+/* ALERT BOX */
+.alert-box{padding:16px 20px;border-radius:12px;margin-bottom:16px;font-size:.92rem;line-height:1.65;display:flex;gap:12px;align-items:flex-start}
+.alert-box .ico{font-size:1.3rem;flex:none}
+.alert-box.info{background:#EEF4FB;border:1.5px solid #D5E0ED;color:#1A3A5C}
+.alert-box.success{background:var(--green-soft);border:1.5px solid var(--green-2);color:var(--green-3)}
+.alert-box.warning{background:var(--saffron-soft);border:1.5px solid var(--saffron-2);color:#7A3E00}
+.alert-box.error{background:#FEF5F5;border:1.5px solid #F0B0B0;color:#991B1B}
+
+/* RESULT TABS (Inside student dash) */
+.result-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.result-tab{padding:10px 16px;font-size:.86rem;font-weight:700;border-radius:9px;background:#fff;border:1.5px solid var(--border-2);color:var(--muted);cursor:pointer;font-family:inherit;transition:.15s}
+.result-tab.active{background:linear-gradient(135deg,var(--saffron),var(--saffron-3));color:#fff;border-color:var(--saffron)}
+
+/* FILE UPLOAD BUTTON */
+.upload-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;background:var(--saffron-soft);border:2px solid var(--saffron);border-radius:10px;color:var(--saffron-3);font-weight:700;font-size:.9rem;cursor:pointer;transition:.15s}
+.upload-btn:hover{background:var(--saffron);color:#fff}
+.upload-btn input{display:none}
+
+/* HOURS LOG FORM (Volunteer) */
+.log-form{display:grid;grid-template-columns:100px 1fr auto;gap:10px;align-items:end;margin-bottom:18px}
+.log-form .field{margin-bottom:0}
+
+/* FOOTER */
+footer{background:linear-gradient(180deg,var(--maroon),#5A0F23);color:#F5D9C8;padding:32px 0;text-align:center;font-size:.92rem;position:relative}
+footer::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--saffron),#fff,var(--green))}
+footer a{color:var(--gold-2);font-weight:600}
+footer a:hover{color:#fff}
+.foot-line{margin-bottom:8px}
+.foot-brand{font-family:'Tiro Devanagari Hindi',serif;font-size:1.15rem;color:#fff;margin-bottom:10px}
+
+/* TOAST */
+.toast{position:fixed;bottom:40px;left:50%;transform:translate(-50%,140%);background:linear-gradient(135deg,var(--maroon),var(--maroon-2));color:#fff;padding:16px 26px;border-radius:12px;box-shadow:0 14px 40px rgba(139,21,56,.45);z-index:1500;transition:.35s;font-size:1rem;font-weight:600;max-width:92vw;text-align:center;border:1.5px solid var(--gold-2);line-height:1.5}
+.toast.show{transform:translate(-50%,0)}
+
+/* MODAL */
+.modal{position:fixed;inset:0;background:rgba(90,15,35,.78);display:none;place-items:center;z-index:1200;padding:20px;backdrop-filter:blur(6px);overflow-y:auto}
+.modal.show{display:grid;animation:fadeIn .25s}
+.modal-box{background:#fff;border-radius:var(--radius-lg);max-width:640px;width:100%;max-height:92vh;overflow:auto;box-shadow:0 24px 70px rgba(0,0,0,.5);margin:auto;border:2px solid var(--gold-2)}
+.modal-head{padding:20px 26px;border-bottom:1.5px solid var(--border);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#fff;z-index:2}
+.modal-head h3{font-size:1.1rem;color:var(--maroon)}
+.modal-body{padding:26px}
+.close-x{font-size:1.7rem;line-height:1;color:var(--muted);padding:6px 14px;border-radius:8px;background:none;border:none;cursor:pointer;transition:.15s}
+.close-x:hover{background:var(--saffron-soft);color:var(--maroon)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .header-inner{flex-direction:column;align-items:stretch;gap:10px}
+  .nav-links{justify-content:center}
+}
+@media(max-width:640px){
+  body{font-size:16px}
+  .container{padding:0 16px}
+  main{padding:28px 0 40px}
+  .login-card{padding:24px 20px;border-radius:14px}
+  .page-head h1{font-size:1.6rem}
+  .header-inner{padding:12px 16px}
+  .brand-logo{width:48px;height:48px}
+  .brand-text b{font-size:1rem}
+  .nav-links a{padding:8px 10px;font-size:.86rem}
+  .portal-tab{padding:12px 16px;font-size:.88rem}
+  .dash-head{padding:20px;flex-direction:column;align-items:flex-start}
+  .dash-body{padding:20px}
+  .log-form{grid-template-columns:1fr;gap:12px}
+  .otp-box{width:44px;height:54px;font-size:1.3rem}
+  .row{grid-template-columns:1fr}
+  .admin-tab{padding:10px 12px;font-size:.82rem}
+  .download-card{flex-direction:column;text-align:center;gap:10px}
+  .actions-row .btn{width:100%}
+}
+@media(max-width:400px){
+  .otp-box{width:38px;height:48px;font-size:1.1rem}
+  .admin-stat b{font-size:1.4rem}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Tricolor -->
+<div class="tricolor"></div>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-links">
+      <span>📞 <a href="tel:+919532328276">+91 95323 28276</a></span>
+      <span>✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></span>
+      <span data-hi="📍 खेरसा, बिधनू, कानपुर नगर — २०९२१४" data-en="📍 Khersa, Bidhnu, Kanpur Nagar — 209214">📍 खेरसा, बिधनू, कानपुर नगर — २०९२१४</span>
+    </div>
+    <div class="topbar-links">
+      <a href="https://www.diprafoundation.com" target="_blank" rel="noopener">www.diprafoundation.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-logo">
+        <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="दिप्र फ़ाउंडेशन">
+      </div>
+      <div class="brand-text">
+        <b data-hi="दिप्र फ़ाउंडेशन" data-en="Dipra Foundation">दिप्र फ़ाउंडेशन</b>
+        <span data-hi="पोर्टल — विद्यार्थी · स्वयंसेवक · प्रशासक" data-en="Portal — Student · Volunteer · Admin">पोर्टल — विद्यार्थी · स्वयंसेवक · प्रशासक</span>
+      </div>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" data-hi="गृह" data-en="Home">गृह</a>
+      <a href="index.html#courses" data-hi="पाठ्यक्रम" data-en="Courses">पाठ्यक्रम</a>
+      <a href="verify.html" data-hi="सत्यापन" data-en="Verify">सत्यापन</a>
+      <a href="portal.html" class="active" data-hi="पोर्टल" data-en="Portal">पोर्टल</a>
+      <a href="contact.html" data-hi="संपर्क" data-en="Contact">संपर्क</a>
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="hi">हिं</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Main -->
+<main>
+  <div class="container">
+
+    <div class="page-head">
+      <span class="eyebrow" data-hi="🔐 सुरक्षित पोर्टल" data-en="🔐 Secure Portal">🔐 सुरक्षित पोर्टल</span>
+      <h1 data-hi="पोर्टल" data-en="Portal">पोर्टल</h1>
+      <p data-hi="विद्यार्थी अपनी आवेदन स्थिति देखें, स्वयंसेवक अपनी सेवा देखें, प्रशासक सम्पूर्ण प्रबंधन करें।" data-en="Students track their application, volunteers view their service, admins manage everything.">विद्यार्थी अपनी आवेदन स्थिति देखें, स्वयंसेवक अपनी सेवा देखें, प्रशासक सम्पूर्ण प्रबंधन करें।</p>
+    </div>
+
+    <!-- PORTAL TABS -->
+    <div class="portal-tabs">
+      <button class="portal-tab active" data-ptab="student" onclick="switchPortal('student')">
+        <span class="pt-ico">🎓</span>
+        <span data-hi="विद्यार्थी केंद्र" data-en="Student Portal">विद्यार्थी केंद्र</span>
+      </button>
+      <button class="portal-tab" data-ptab="volunteer" onclick="switchPortal('volunteer')">
+        <span class="pt-ico">🤝</span>
+        <span data-hi="स्वयंसेवक केंद्र" data-en="Volunteer Portal">स्वयंसेवक केंद्र</span>
+      </button>
+      <button class="portal-tab" data-ptab="admin" onclick="switchPortal('admin')">
+        <span class="pt-ico">🛡️</span>
+        <span data-hi="प्रशासक केंद्र" data-en="Admin Portal">प्रशासक केंद्र</span>
+      </button>
+    </div>
+
+    <!-- ============================================================
+         STUDENT PORTAL
+         ============================================================ -->
+    <div class="portal-panel active" id="panel-student">
+      <div class="login-card" id="studentLogin">
+        <div class="login-head student">
+          <div class="lh-icon">🎓</div>
+          <h2 data-hi="विद्यार्थी लॉगिन" data-en="Student Login">विद्यार्थी लॉगिन</h2>
+          <p data-hi="आवेदन संख्या तथा पंजीकृत विद्युत्पत्र द्वारा लॉगिन करें। प्रत्येक बार ईमेल पर कूट भेजा जाएगा।" data-en="Login with Application ID and registered email. Code sent each time.">आवेदन संख्या तथा पंजीकृत विद्युत्पत्र द्वारा लॉगिन करें। प्रत्येक बार ईमेल पर कूट भेजा जाएगा।</p>
+        </div>
+
+        <div id="studStep1">
+          <div class="field">
+            <label data-hi="आवेदन संख्या" data-en="Application ID">आवेदन संख्या</label>
+            <input type="text" id="studAppId" placeholder="DPF-UPL-26-XXXXX" autocomplete="off" style="font-family:monospace;text-transform:uppercase">
+          </div>
+          <div class="field">
+            <label data-hi="पंजीकृत विद्युत्पत्र" data-en="Registered Email">पंजीकृत विद्युत्पत्र</label>
+            <input type="email" id="studEmail" placeholder="name@example.com" autocomplete="off">
+          </div>
+          <button class="btn btn-saffron btn-block" id="studSendOtpBtn">📩 <span data-hi="कूट भेजें" data-en="Send Code">कूट भेजें</span></button>
+        </div>
+
+        <div id="studStep2" style="display:none">
+          <div class="alert-box success">
+            <span class="ico">✉️</span>
+            <div>
+              <b data-hi="कूट भेजा गया" data-en="Code sent">कूट भेजा गया</b><br>
+              <span id="studSentTo" style="font-family:monospace;font-size:.9rem">—</span>
+            </div>
+          </div>
+          <div class="field">
+            <label style="text-align:center;display:block" data-hi="छह अंकों का कूट" data-en="6-digit Code">छह अंकों का कूट</label>
+            <div class="otp-inputs" id="studOtpBoxes">
+              <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+              <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+              <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+              <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+              <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+              <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+            </div>
+            <div class="errmsg" id="studOtpErr" style="text-align:center"></div>
+          </div>
+          <div class="actions-row">
+            <button class="btn btn-outline" id="studBackBtn" style="flex:1">← <span data-hi="पीछे" data-en="Back">पीछे</span></button>
+            <button class="btn btn-green" id="studVerifyBtn" style="flex:2">✓ <span data-hi="लॉगिन करें" data-en="Login">लॉगिन करें</span></button>
+          </div>
+          <p style="text-align:center;margin-top:14px;font-size:.88rem;color:var(--muted)">
+            <span data-hi="कूट नहीं मिला?" data-en="No code?">कूट नहीं मिला?</span>
+            <button id="studResendBtn" style="color:var(--maroon);font-weight:700;text-decoration:underline;background:none;border:none;cursor:pointer;padding:0" data-hi="पुन: भेजें" data-en="Resend">पुन: भेजें</button>
+            <span id="studOtpTimer" style="margin-left:8px"></span>
+          </p>
+        </div>
+      </div>
+
+      <!-- STUDENT DASHBOARD -->
+      <div class="dash" id="studentDash">
+        <div class="dash-head student">
+          <div>
+            <h3 id="studDashName">—</h3>
+            <p><span data-hi="आवेदन संख्या:" data-en="Application ID:">आवेदन संख्या:</span> <b id="studDashId">—</b></p>
+          </div>
+          <button class="btn btn-ghost btn-sm" onclick="studLogout()">🚪 <span data-hi="लॉगआउट" data-en="Logout">लॉगआउट</span></button>
+        </div>
+        <div class="dash-body">
+
+          <h4 class="section-title" data-hi="📊 आवेदन की स्थिति" data-en="📊 Application Status">📊 आवेदन की स्थिति</h4>
+          <div class="timeline" id="studTimeline"></div>
+
+          <h4 class="section-title" data-hi="📋 आवेदन विवरण" data-en="📋 Application Details">📋 आवेदन विवरण</h4>
+          <div class="dash-grid">
+            <div class="mini"><small data-hi="पाठ्यक्रम" data-en="Course">पाठ्यक्रम</small><b id="studCourse">—</b></div>
+            <div class="mini"><small data-hi="बैच" data-en="Batch">बैच</small><b id="studBatch">—</b></div>
+            <div class="mini"><small data-hi="अध्ययन मोड" data-en="Study Mode">अध्ययन मोड</small><b id="studMode">—</b></div>
+            <div class="mini"><small data-hi="दस्तावेज स्थिति" data-en="Documents">दस्तावेज स्थिति</small><b id="studDocs">—</b></div>
+            <div class="mini"><small data-hi="देय शुल्क" data-en="Payable Fee">देय शुल्क</small><b id="studFee">—</b></div>
+            <div class="mini"><small data-hi="छूट" data-en="Concession">छूट</small><b id="studDisc" style="color:var(--green)">—</b></div>
+            <div class="mini"><small data-hi="फीस स्थिति" data-en="Fee Status">फीस स्थिति</small><b id="studFeeStatus">—</b></div>
+            <div class="mini"><small data-hi="अनाथ" data-en="Orphan">अनाथ</small><b id="studOrphan">—</b></div>
+          </div>
+
+          <h4 class="section-title" data-hi="📄 दस्तावेज एवं प्रमाणपत्र" data-en="📄 Documents & Certificates">📄 दस्तावेज एवं प्रमाणपत्र</h4>
+          <div id="studDownloads">
+            <div class="info-box saffron">
+              <strong data-hi="📌 सूचना:" data-en="📌 Notice:">📌 सूचना:</strong>
+              <span data-hi=" एडमिट कार्ड तथा प्रमाणपत्र जारी होने पर यहाँ उपलब्ध होंगे।" data-en=" Admit card and certificate will appear here once issued."> एडमिट कार्ड तथा प्रमाणपत्र जारी होने पर यहाँ उपलब्ध होंगे।</span>
+            </div>
+          </div>
+
+          <h4 class="section-title" data-hi="📢 प्रशासन की ओर से सूचना" data-en="📢 Message from Admin">📢 प्रशासन की ओर से सूचना</h4>
+          <div id="studAdminNotes">
+            <div class="info-box blue">
+              <span data-hi=" कोई सूचना नहीं।" data-en=" No message."> कोई सूचना नहीं।</span>
+            </div>
+          </div>
+
+          <div class="actions-row">
+            <button class="btn btn-outline" onclick="studReload()">🔄 <span data-hi="ताज़ा करें" data-en="Refresh">ताज़ा करें</span></button>
+            <a href="index.html#contact" class="btn btn-outline">📞 <span data-hi="सहायता" data-en="Help">सहायता</span></a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         VOLUNTEER PORTAL
+         ============================================================ -->
+    <div class="portal-panel" id="panel-volunteer">
+      <div class="login-card" id="volLogin">
+        <div class="login-head volunteer">
+          <div class="lh-icon">🤝</div>
+          <h2 data-hi="स्वयंसेवक लॉगिन" data-en="Volunteer Login">स्वयंसेवक लॉगिन</h2>
+          <p data-hi="स्वयंसेवक संख्या तथा पंजीकृत विद्युत्पत्र द्वारा लॉगिन करें।" data-en="Login with Volunteer ID and registered email.">स्वयंसेवक संख्या तथा पंजीकृत विद्युत्पत्र द्वारा लॉगिन करें।</p>
+        </div>
+
+        <div id="volStep1">
+          <div class="field">
+            <label data-hi="स्वयंसेवक संख्या" data-en="Volunteer ID">स्वयंसेवक संख्या</label>
+            <input type="text" id="volId" placeholder="DPF-VOL-T-26-XXXXX" autocomplete="off" style="font-family:monospace;text-transform:uppercase">
+          </div>
+          <div class="field">
+            <label data-hi="पंजीकृत विद्युत्पत्र" data-en="Registered Email">पंजीकृत विद्युत्पत्र</label>
+            <input type="email" id="volEmail" placeholder="name@example.com" autocomplete="off">
+          </div>
+          <button class="btn btn-green btn-block" id="volSendOtpBtn">📩 <span data-hi="कूट भेजें" data-en="Send Code">कूट भेजें</span></button>
+        </div>
+
+        <div id="volStep2" style="display:none">
+          <div class="alert-box success">
+            <span class="ico">✉️</span>
+            <div>
+              <b data-hi="कूट भेजा गया" data-en="Code sent">कूट भेजा गया</b><br>
+              <span id="volSentTo" style="font-family:monospace;font-size:.9rem">—</span>
+            </div>
+          </div>
+          <div class="field">
+            <label style="text-align:center;display:block" data-hi="छह अंकों का कूट" data-en="6-digit Code">छह अंकों का कूट</label>
+            <div class="otp-inputs" id="volOtpBoxes">
+              <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+              <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+              <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+              <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+              <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+              <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+            </div>
+            <div class="errmsg" id="volOtpErr" style="text-align:center"></div>
+          </div>
+          <div class="actions-row">
+            <button class="btn btn-outline" id="volBackBtn" style="flex:1">← <span data-hi="पीछे" data-en="Back">पीछे</span></button>
+            <button class="btn btn-green" id="volVerifyBtn" style="flex:2">✓ <span data-hi="लॉगिन करें" data-en="Login">लॉगिन करें</span></button>
+          </div>
+          <p style="text-align:center;margin-top:14px;font-size:.88rem;color:var(--muted)">
+            <button id="volResendBtn" style="color:var(--green);font-weight:700;text-decoration:underline;background:none;border:none;cursor:pointer;padding:0" data-hi="पुन: भेजें" data-en="Resend">पुन: भेजें</button>
+            <span id="volOtpTimer" style="margin-left:8px"></span>
+          </p>
+        </div>
+      </div>
+
+      <!-- VOLUNTEER DASHBOARD -->
+      <div class="dash" id="volDash">
+        <div class="dash-head volunteer">
+          <div>
+            <h3 id="volDashName">—</h3>
+            <p><span data-hi="संख्या:" data-en="ID:">संख्या:</span> <b id="volDashId">—</b></p>
+          </div>
+          <button class="btn btn-ghost btn-sm" onclick="volLogout()">🚪 <span data-hi="लॉगआउट" data-en="Logout">लॉगआउट</span></button>
+        </div>
+        <div class="dash-body">
+
+          <h4 class="section-title" data-hi="👤 व्यक्तिगत विवरण" data-en="👤 Profile">👤 व्यक्तिगत विवरण</h4>
+          <div class="dash-grid">
+            <div class="mini"><small data-hi="प्रकार" data-en="Type">प्रकार</small><b id="volType">—</b></div>
+            <div class="mini"><small data-hi="चलभाष" data-en="Mobile">चलभाष</small><b id="volMobile">—</b></div>
+            <div class="mini"><small data-hi="विद्युत्पत्र" data-en="Email">विद्युत्पत्र</small><b id="volEmailOut" style="font-size:.88rem">—</b></div>
+            <div class="mini"><small data-hi="नगर" data-en="City">नगर</small><b id="volCity">—</b></div>
+            <div class="mini"><small data-hi="योग्यता" data-en="Qualification">योग्यता</small><b id="volQual">—</b></div>
+            <div class="mini"><small data-hi="विषय" data-en="Subject">विषय</small><b id="volSubject">—</b></div>
+            <div class="mini"><small data-hi="शिक्षण प्रकार" data-en="Teaching Mode">शिक्षण प्रकार</small><b id="volMode">—</b></div>
+            <div class="mini"><small data-hi="साप्ताहिक समय" data-en="Weekly Hours">साप्ताहिक समय</small><b id="volHours">—</b></div>
+          </div>
+
+          <h4 class="section-title" data-hi="🕐 शिक्षण घंटे दर्ज करें" data-en="🕐 Log Teaching Hours">🕐 शिक्षण घंटे दर्ज करें</h4>
+          <form class="log-form" id="volHoursForm" onsubmit="volLogHours(event)">
+            <div class="field">
+              <label data-hi="घंटे" data-en="Hours">घंटे</label>
+              <input type="number" id="volLogHoursInput" min="0.5" max="12" step="0.5" placeholder="2">
+            </div>
+            <div class="field">
+              <label data-hi="विषय अथवा टिप्पणी" data-en="Subject or Notes">विषय अथवा टिप्पणी</label>
+              <input type="text" id="volLogSubject" placeholder="गणित / कक्षा 10">
+            </div>
+            <button type="submit" class="btn btn-green btn-sm">➕ <span data-hi="जोड़ें" data-en="Add">जोड़ें</span></button>
+          </form>
+
+          <h4 class="section-title" data-hi="📋 दर्ज किए गए घंटे" data-en="📋 Logged Hours">📋 दर्ज किए गए घंटे</h4>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th data-hi="दिनांक" data-en="Date">दिनांक</th>
+                  <th data-hi="घंटे" data-en="Hours">घंटे</th>
+                  <th data-hi="विषय / टिप्पणी" data-en="Subject / Notes">विषय / टिप्पणी</th>
+                </tr>
+              </thead>
+              <tbody id="volHoursTable">
+                <tr><td colspan="3" style="text-align:center;color:var(--muted);padding:20px" data-hi="अभी तक कोई घंटा दर्ज नहीं।" data-en="No hours logged yet.">अभी तक कोई घंटा दर्ज नहीं।</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4 class="section-title" data-hi="📜 अनुभव प्रमाणपत्र" data-en="📜 Experience Certificate">📜 अनुभव प्रमाणपत्र</h4>
+          <div id="volCertBox">
+            <div class="info-box saffron">
+              <strong data-hi="📌 सूचना:" data-en="📌 Notice:">📌 सूचना:</strong>
+              <span data-hi=" सेवा-अवधि पूर्ण होने पर अनुभव प्रमाणपत्र जारी किया जाएगा।" data-en=" Experience certificate will be issued on completion of service."> सेवा-अवधि पूर्ण होने पर अनुभव प्रमाणपत्र जारी किया जाएगा।</span>
+            </div>
+          </div>
+
+          <div class="actions-row">
+            <button class="btn btn-outline" onclick="volReload()">🔄 <span data-hi="ताज़ा करें" data-en="Refresh">ताज़ा करें</span></button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         ADMIN PORTAL
+         ============================================================ -->
+    <div class="portal-panel" id="panel-admin">
+      <div class="login-card" id="adminLogin">
+        <div class="login-head admin">
+          <div class="lh-icon">🛡️</div>
+          <h2 data-hi="प्रशासक लॉगिन" data-en="Admin Login">प्रशासक लॉगिन</h2>
+          <p data-hi="तीन-चरणीय सुरक्षा — ईमेल → पासवर्ड → कूट। केवल अधिकृत ईमेल स्वीकार्य है।" data-en="Three-step security — Email → Password → Code. Only authorised email accepted.">तीन-चरणीय सुरक्षा — ईमेल → पासवर्ड → कूट। केवल अधिकृत ईमेल स्वीकार्य है।</p>
+        </div>
+
+        <!-- Step 1: Email -->
+        <div id="adminStep1">
+          <div class="field">
+            <label data-hi="प्रशासक विद्युत्पत्र" data-en="Admin Email">प्रशासक विद्युत्पत्र</label>
+            <input type="email" id="adminEmail" placeholder="diprafoundation@gmail.com" autocomplete="off">
+            <small data-hi="केवल अधिकृत ईमेल स्वीकार्य" data-en="Only authorised email accepted">केवल अधिकृत ईमेल स्वीकार्य</small>
+          </div>
+          <button class="btn btn-primary btn-block" id="adminEmailBtn">→ <span data-hi="आगे बढ़ें" data-en="Continue">आगे बढ़ें</span></button>
+        </div>
+
+        <!-- Step 2: Password -->
+        <div id="adminStep2" style="display:none">
+          <div class="field">
+            <label data-hi="प्रशासक पासवर्ड" data-en="Admin Password">प्रशासक पासवर्ड</label>
+            <input type="password" id="adminPassword" placeholder="••••••••" autocomplete="off">
+            <small data-hi="पाँच गलत प्रयासों पर १५ मिनट अवरोध" data-en="Blocked 15 min after 5 wrong attempts">पाँच गलत प्रयासों पर १५ मिनट अवरोध</small>
+          </div>
+          <div class="actions-row">
+            <button class="btn btn-outline" id="adminBackBtn1" style="flex:1">← <span data-hi="पीछे" data-en="Back">पीछे</span></button>
+            <button class="btn btn-primary" id="adminPasswordBtn" style="flex:2">→ <span data-hi="पासवर्ड जाँचें" data-en="Verify">पासवर्ड जाँचें</span></button>
+          </div>
+        </div>
+
+        <!-- Step 3: OTP -->
+        <div id="adminStep3" style="display:none">
+          <div class="alert-box success">
+            <span class="ico">✉️</span>
+            <div>
+              <b data-hi="कूट भेजा गया" data-en="Code sent">कूट भेजा गया</b><br>
+              <span id="adminSentTo" style="font-family:monospace;font-size:.9rem">—</span>
+            </div>
+          </div>
+          <div class="field">
+            <label style="text-align:center;display:block" data-hi="छह अंकों का कूट" data-en="6-digit Code">छह अंकों का कूट</label>
+            <div class="otp-inputs" id="adminOtpBoxes">
+              <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+              <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+              <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+              <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+              <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+              <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+            </div>
+            <div class="errmsg" id="adminOtpErr" style="text-align:center"></div>
+          </div>
+          <div class="actions-row">
+            <button class="btn btn-outline" id="adminBackBtn2" style="flex:1">← <span data-hi="पीछे" data-en="Back">पीछे</span></button>
+            <button class="btn btn-primary" id="adminVerifyBtn" style="flex:2">✓ <span data-hi="लॉगिन करें" data-en="Login">लॉगिन करें</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADMIN DASHBOARD -->
+      <div class="dash" id="adminDash">
+        <div class="dash-head">
+          <div>
+            <h3>🛡️ <span data-hi="प्रशासक केंद्र" data-en="Admin Dashboard">प्रशासक केंद्र</span></h3>
+            <p id="adminWelcome">—</p>
+          </div>
+          <button class="btn btn-ghost btn-sm" onclick="adminLogout()">🚪 <span data-hi="लॉगआउट" data-en="Logout">लॉगआउट</span></button>
+        </div>
+        <div class="dash-body">
+
+          <div class="admin-tabs">
+            <button class="admin-tab active" data-atab="overview" onclick="switchAdminTab('overview')">📊 <span data-hi="सारांश" data-en="Overview">सारांश</span></button>
+            <button class="admin-tab" data-atab="applications" onclick="switchAdminTab('applications')">📝 <span data-hi="आवेदन" data-en="Applications">आवेदन</span></button>
+            <button class="admin-tab" data-atab="volunteers" onclick="switchAdminTab('volunteers')">🤝 <span data-hi="स्वयंसेवक" data-en="Volunteers">स्वयंसेवक</span></button>
+            <button class="admin-tab" data-atab="freecerts" onclick="switchAdminTab('freecerts')">🎖️ <span data-hi="प्रमाणपत्र" data-en="Certificates">प्रमाणपत्र</span></button>
+            <button class="admin-tab" data-atab="donations" onclick="switchAdminTab('donations')">🙏 <span data-hi="दान" data-en="Donations">दान</span></button>
+            <button class="admin-tab" data-atab="grievances" onclick="switchAdminTab('grievances')">📢 <span data-hi="शिकायतें" data-en="Grievances">शिकायतें</span></button>
+          </div>
+
+          <!-- Overview -->
+          <div class="admin-panel active" id="apanel-overview">
+            <div class="admin-stat-row" id="adminStats">
+              <div class="admin-stat"><b>—</b><span data-hi="लोड हो रहा है" data-en="Loading">लोड हो रहा है</span></div>
+            </div>
+          </div>
+
+          <!-- Applications -->
+          <div class="admin-panel" id="apanel-applications">
+            <div class="admin-search">
+              <input type="text" id="appSearch" placeholder="🔍 आवेदन संख्या / नाम / चलभाष">
+              <button class="btn btn-primary btn-sm" onclick="loadApplications()">🔄 <span data-hi="ताज़ा" data-en="Refresh">ताज़ा</span></button>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th data-hi="आवेदन संख्या" data-en="App ID">आवेदन संख्या</th>
+                    <th data-hi="नाम" data-en="Name">नाम</th>
+                    <th data-hi="पाठ्यक्रम" data-en="Course">पाठ्यक्रम</th>
+                    <th data-hi="शुल्क" data-en="Fee">शुल्क</th>
+                    <th data-hi="स्थिति" data-en="Status">स्थिति</th>
+                    <th data-hi="कार्रवाई" data-en="Actions">कार्रवाई</th>
+                  </tr>
+                </thead>
+                <tbody id="appTable">
+                  <tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px" data-hi="लोड हो रहा है..." data-en="Loading...">लोड हो रहा है...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Volunteers -->
+          <div class="admin-panel" id="apanel-volunteers">
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th data-hi="संख्या" data-en="ID">संख्या</th>
+                    <th data-hi="नाम" data-en="Name">नाम</th>
+                    <th data-hi="प्रकार" data-en="Type">प्रकार</th>
+                    <th data-hi="विषय" data-en="Subject">विषय</th>
+                    <th data-hi="नगर" data-en="City">नगर</th>
+                    <th data-hi="कार्रवाई" data-en="Actions">कार्रवाई</th>
+                  </tr>
+                </thead>
+                <tbody id="volTable">
+                  <tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px" data-hi="लोड हो रहा है..." data-en="Loading...">लोड हो रहा है...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Free Certs -->
+          <div class="admin-panel" id="apanel-freecerts">
+            <div class="admin-search">
+              <input type="text" id="certSearch" placeholder="🔍 क्रमांक / नाम / विद्युत्पत्र">
+              <button class="btn btn-primary btn-sm" onclick="loadFreeCerts()">🔄 <span data-hi="ताज़ा" data-en="Refresh">ताज़ा</span></button>
+            </div>
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th data-hi="प्रमाणपत्र क्रमांक" data-en="Cert ID">प्रमाणपत्र क्रमांक</th>
+                    <th data-hi="नाम" data-en="Name">नाम</th>
+                    <th data-hi="पाठ्यक्रम" data-en="Course">पाठ्यक्रम</th>
+                    <th data-hi="अंक" data-en="Score">अंक</th>
+                    <th data-hi="श्रेणी" data-en="Grade">श्रेणी</th>
+                    <th data-hi="कार्रवाई" data-en="Actions">कार्रवाई</th>
+                  </tr>
+                </thead>
+                <tbody id="certTable">
+                  <tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px" data-hi="लोड हो रहा है..." data-en="Loading...">लोड हो रहा है...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Donations -->
+          <div class="admin-panel" id="apanel-donations">
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th data-hi="दान संख्या" data-en="Donation ID">दान संख्या</th>
+                    <th data-hi="नाम" data-en="Name">नाम</th>
+                    <th data-hi="राशि" data-en="Amount">राशि</th>
+                    <th data-hi="उद्देश्य" data-en="Purpose">उद्देश्य</th>
+                    <th data-hi="विद्युत्पत्र" data-en="Email">विद्युत्पत्र</th>
+                  </tr>
+                </thead>
+                <tbody id="donTable">
+                  <tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px" data-hi="लोड हो रहा है..." data-en="Loading...">लोड हो रहा है...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Grievances -->
+          <div class="admin-panel" id="apanel-grievances">
+            <div class="admin-table-wrap">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th data-hi="शिकायत संख्या" data-en="Complaint ID">शिकायत संख्या</th>
+                    <th data-hi="नाम" data-en="Name">नाम</th>
+                    <th data-hi="श्रेणी" data-en="Category">श्रेणी</th>
+                    <th data-hi="स्थिति" data-en="Status">स्थिति</th>
+                    <th data-hi="विवरण" data-en="Details">विवरण</th>
+                  </tr>
+                </thead>
+                <tbody id="grvTable">
+                  <tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px" data-hi="लोड हो रहा है..." data-en="Loading...">लोड हो रहा है।</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="foot-brand">दिप्र फ़ाउंडेशन</div>
+    <div class="foot-line">📍 खेरसा, बिधनू, कानपुर नगर, उत्तर प्रदेश – २०९२१४</div>
+    <div class="foot-line">📞 <a href="tel:+919532328276">+91 95323 28276</a> · ✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></div>
+    <div class="foot-line">🌐 <a href="https://www.diprafoundation.com">www.diprafoundation.com</a></div>
+    <div style="font-size:.8rem;margin-top:14px;color:#c9a8b9">© २०२६ दिप्र फ़ाउंडेशन · पंजीकृत न्यास · पंजीकरण संख्या ३००</div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   PORTAL — दिप्र फ़ाउंडेशन
+   ============================================================ */
+const $ = (s, c=document) => c.querySelector(s);
+const $$ = (s, c=document) => [...c.querySelectorAll(s)];
+const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbynC667snioVb9pnBE8jDRWUJHwKOUi5jTYO31PlfolDG5VjcTrE93zh2k-Ai7zgi0/exec';
+
+/* ---------- Language ---------- */
+function setLang(lang){
+  document.body.classList.toggle('lang-hi', lang === 'hi');
+  document.body.classList.toggle('lang-en', lang === 'en');
+  document.documentElement.lang = lang;
+  $$('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  try { localStorage.setItem('uplift_lang', lang); } catch(e){}
+  $$('[data-hi][data-en]').forEach(el => {
+    const t = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-hi');
+    if(t !== null){
+      if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = t;
+      else el.textContent = t;
+    }
+  });
+}
+$$('.lang-btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+try { const s = localStorage.getItem('uplift_lang'); if(s) setLang(s); }catch(e){}
+
+/* ---------- Toast ---------- */
+let _toastTimer;
+function toast(msg){
+  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(_toastTimer); _toastTimer = setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+/* ---------- Portal switch ---------- */
+function switchPortal(name){
+  $$('.portal-tab').forEach(t => t.classList.toggle('active', t.dataset.ptab === name));
+  $$('.portal-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + name));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ============================================================
+   OTP INPUT AUTO-FOCUS
+   ============================================================ */
+function setupOtpBoxes(containerId, onComplete){
+  const boxes = $$('#' + containerId + ' .otp-box');
+  boxes.forEach((box, i) => {
+    box.addEventListener('input', e => {
+      let v = e.target.value.replace(/\D/g, '');
+      if(v.length > 1){ v = v.charAt(v.length - 1); }
+      e.target.value = v;
+      e.target.classList.toggle('filled', !!v);
+      if(v && i < boxes.length - 1){ boxes[i + 1].focus(); }
+      if(boxes.every(b => b.value.length === 1) && onComplete){ onComplete(); }
+    });
+    box.addEventListener('keydown', e => {
+      if(e.key === 'Backspace' && !e.target.value && i > 0){
+        boxes[i - 1].focus();
+      }
+      if(e.key === 'ArrowLeft' && i > 0){ boxes[i - 1].focus(); }
+      if(e.key === 'ArrowRight' && i < boxes.length - 1){ boxes[i + 1].focus(); }
+    });
+    box.addEventListener('paste', e => {
+      e.preventDefault();
+      const paste = (e.clipboardData.getData('text') || '').replace(/\D/g, '').slice(0, 6);
+      boxes.forEach((b, j) => { b.value = paste.charAt(j) || ''; b.classList.toggle('filled', !!b.value); });
+      if(paste.length === 6 && onComplete) onComplete();
+    });
+  });
+}
+function getOtpValue(containerId){
+  return $$('#' + containerId + ' .otp-box').map(b => b.value).join('');
+}
+function clearOtp(containerId){
+  $$('#' + containerId + ' .otp-box').forEach(b => { b.value = ''; b.classList.remove('filled'); });
+}
+
+/* ============================================================
+   API
+   ============================================================ */
+async function apiCall(payload){
+  try{
+    const res = await fetch(SHEET_ENDPOINT, {
+      method:'POST',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify(payload),
+      redirect:'follow'
+    });
+    const text = await res.text();
+    try { return JSON.parse(text); }
+    catch(e){ return { status:'error', message:'अमान्य प्रतिक्रिया' }; }
+  }catch(e){
+    return { status:'error', message:'संपर्क विफल। पुन: प्रयास करें।' };
+  }
+}
+
+/* ============================================================
+   TIMER for OTP
+   ============================================================ */
+function startOtpTimer(elId, seconds, onEnd){
+  const el = document.getElementById(elId);
+  if(!el) return;
+  let s = seconds;
+  const t = setInterval(() => {
+    el.textContent = '(' + s + 's)';
+    if(s <= 0){ clearInterval(t); el.textContent = ''; if(onEnd) onEnd(); }
+    s--;
+  }, 1000);
+}
+
+/* ============================================================
+   STUDENT PORTAL
+   ============================================================ */
+let _studSession = null;
+
+$('#studSendOtpBtn').addEventListener('click', async () => {
+  const id = $('#studAppId').value.trim().toUpperCase();
+  const email = $('#studEmail').value.trim().toLowerCase();
+  if(!id){ toast('कृपया आवेदन संख्या अंकित करें'); return; }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ toast('कृपया सही विद्युत्पत्र अंकित करें'); return; }
+
+  const btn = $('#studSendOtpBtn'); const orig = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = '⏳ भेजा जा रहा है...';
+  const r = await apiCall({ action:'sendOtp', email, appId: id });
+  btn.disabled = false; btn.innerHTML = orig;
+
+  if(r.status === 'success'){
+    $('#studSentTo').textContent = email;
+    $('#studStep1').style.display = 'none';
+    $('#studStep2').style.display = 'block';
+    clearOtp('studOtpBoxes');
+    $$('#studOtpBoxes .otp-box')[0].focus();
+    startOtpTimer('studOtpTimer', 60);
+    toast('कूट भेजा गया ✓');
+  } else {
+    toast(r.message || 'कूट भेजने में त्रुटि');
+  }
+});
+
+$('#studBackBtn').addEventListener('click', () => {
+  $('#studStep2').style.display = 'none';
+  $('#studStep1').style.display = 'block';
+});
+
+$('#studResendBtn').addEventListener('click', () => $('#studSendOtpBtn').click());
+
+$('#studVerifyBtn').addEventListener('click', studVerifyOtp);
+
+setupOtpBoxes('studOtpBoxes', () => {
+  setTimeout(() => $('#studVerifyBtn').click(), 200);
+});
+
+async function studVerifyOtp(){
+  const id = $('#studAppId').value.trim().toUpperCase();
+  const email = $('#studEmail').value.trim().toLowerCase();
+  const otp = getOtpValue('studOtpBoxes');
+  if(!/^\d{6}$/.test(otp)){ $('#studOtpErr').textContent = 'छह अंकों का कूट अंकित करें'; return; }
+
+  const btn = $('#studVerifyBtn'); const orig = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = '⏳ जाँच हो रही है...';
+
+  const v = await apiCall({ action:'verifyOtp', email, otp });
+  if(v.status !== 'success'){
+    btn.disabled = false; btn.innerHTML = orig;
+    $('#studOtpErr').textContent = v.message || 'अमान्य कूट';
+    return;
+  }
+
+  const r = await apiCall({ action:'getStudent', appId: id, email });
+  btn.disabled = false; btn.innerHTML = orig;
+
+  if(r.status !== 'success' || !r.data){
+    $('#studOtpErr').textContent = r.message || 'कोई आवेदन नहीं मिला';
+    return;
+  }
+
+  _studSession = { appId: id, email, data: r.data };
+  populateStudentDash(r.data);
+  $('#studentLogin').style.display = 'none';
+  $('#studentDash').classList.add('show');
+  toast('लॉगिन सफल ✓');
+}
+
+function populateStudentDash(rec){
+  $('#studDashName').textContent = rec.Name || '—';
+  $('#studDashId').textContent = rec.AppID || '—';
+  $('#studCourse').textContent = rec.Course || '—';
+  $('#studBatch').textContent = rec.Batch || rec.BatchTiming || '—';
+  $('#studMode').textContent = rec.Mode || '—';
+  $('#studDocs').textContent = rec.DocsStatus || '—';
+  $('#studFee').textContent = '₹' + (rec.Payable || 0).toLocaleString('en-IN');
+  $('#studDisc').textContent = rec.Concession || '0%';
+  $('#studFeeStatus').textContent = String(rec.FeePaid || '').toLowerCase() === 'yes' ? '✓ जमा' : 'बाकी ₹' + (rec.FeeDue || 0);
+  $('#studOrphan').textContent = rec.Orphan || 'No';
+
+  /* Timeline */
+  const STEPS = [
+    { key:'Submitted',          hi:'जमा',        en:'Submitted' },
+    { key:'Under Verification', hi:'सत्यापन',    en:'Verification' },
+    { key:'Verified',           hi:'सत्यापित',   en:'Verified' },
+    { key:'Selected',           hi:'चयनित',      en:'Selected' },
+    { key:'Admission Confirmed',hi:'प्रवेश',     en:'Admitted' }
+  ];
+  const cur = rec.Status || 'Submitted';
+  const idx = Math.max(0, STEPS.findIndex(s => s.key === cur));
+  $('#studTimeline').innerHTML = STEPS.map((s, i) => {
+    const cls = i < idx ? 'done' : (i === idx ? 'current' : '');
+    return '<div class="tl-step ' + cls + '"><div class="tl-dot">' + (i < idx ? '✓' : i + 1) + '</div><div>' + s.hi + ' / ' + s.en + '</div></div>';
+  }).join('');
+
+  /* Downloads */
+  const dl = [];
+  if(rec.AdmitCardURL && String(rec.AdmitCardURL).startsWith('http')){
+    dl.push('<div class="download-card saffron"><div class="dc-icon">🎫</div><div class="dc-body"><h4>प्रवेश पत्र / Admit Card</h4><p>परीक्षा हेतु आवश्यक</p></div><a href="' + rec.AdmitCardURL + '" target="_blank" class="btn btn-saffron btn-sm">⬇️ डाउनलोड</a></div>');
+  }
+  if(rec.CertificateURL && String(rec.CertificateURL).startsWith('http')){
+    dl.push('<div class="download-card purple"><div class="dc-icon">🎖️</div><div class="dc-body"><h4>प्रमाणपत्र / Certificate</h4><p>पाठ्यक्रम पूर्णता प्रमाणपत्र</p></div><a href="' + rec.CertificateURL + '" target="_blank" class="btn btn-primary btn-sm">⬇️ डाउनलोड</a></div>');
+  }
+  $('#studDownloads').innerHTML = dl.length ? dl.join('') :
+    '<div class="info-box saffron"><strong>📌 सूचना:</strong> एडमिट कार्ड तथा प्रमाणपत्र जारी होने पर यहाँ उपलब्ध होंगे।</div>';
+
+  /* Admin notes */
+  $('#studAdminNotes').innerHTML = rec.AdminNotes ?
+    '<div class="info-box blue"><strong>📢 सूचना:</strong> ' + rec.AdminNotes + '</div>' :
+    '<div class="info-box blue"><span>कोई सूचना नहीं।</span></div>';
+}
+
+function studLogout(){
+  _studSession = null;
+  $('#studentLogin').style.display = 'block';
+  $('#studentDash').classList.remove('show');
+  $('#studStep2').style.display = 'none';
+  $('#studStep1').style.display = 'block';
+  clearOtp('studOtpBoxes');
+}
+
+async function studReload(){
+  if(!_studSession){ toast('कृपया पुन: लॉगिन करें'); return; }
+  const r = await apiCall({ action:'getStudent', appId: _studSession.appId, email: _studSession.email });
+  if(r.status === 'success' && r.data){
+    populateStudentDash(r.data);
+    toast('ताज़ा किया गया ✓');
+  } else toast('ताज़ा करने में त्रुटि');
+}
+
+/* ============================================================
+   VOLUNTEER PORTAL
+   ============================================================ */
+let _volSession = null;
+
+$('#volSendOtpBtn').addEventListener('click', async () => {
+  const id = $('#volId').value.trim().toUpperCase();
+  const email = $('#volEmail').value.trim().toLowerCase();
+  if(!id){ toast('कृपया स्वयंसेवक संख्या अंकित करें'); return; }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ toast('कृपया सही विद्युत्पत्र अंकित करें'); return; }
+
+  const btn = $('#volSendOtpBtn'); const orig = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = '⏳ भेजा जा रहा है...';
+  const r = await apiCall({ action:'sendOtp', email, appId: id });
+  btn.disabled = false; btn.innerHTML = orig;
+
+  if(r.status === 'success'){
+    $('#volSentTo').textContent = email;
+    $('#volStep1').style.display = 'none';
+    $('#volStep2').style.display = 'block';
+    clearOtp('volOtpBoxes');
+    $$('#volOtpBoxes .otp-box')[0].focus();
+    startOtpTimer('volOtpTimer', 60);
+    toast('कूट भेजा गया ✓');
+  } else toast(r.message || 'त्रुटि');
+});
+
+$('#volBackBtn').addEventListener('click', () => {
+  $('#volStep2').style.display = 'none';
+  $('#volStep1').style.display = 'block';
+});
+
+$('#volResendBtn').addEventListener('click', () => $('#volSendOtpBtn').click());
+
+setupOtpBoxes('volOtpBoxes', () => {
+  setTimeout(() => $('#volVerifyBtn').click(), 200);
+});
+
+$('#volVerifyBtn').addEventListener('click', async () => {
+  const id = $('#volId').value.trim().toUpperCase();
+  const email = $('#volEmail').value.trim().toLowerCase();
+  const otp = getOtpValue('volOtpBoxes');
+  if(!/^\d{6}$/.test(otp)){ $('#volOtpErr').textContent = 'छह अंकों का कूट अंकित करें'; return; }
+
+  const btn = $('#volVerifyBtn'); const orig = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = '⏳ जाँच हो रही है...';
+
+  const v = await apiCall({ action:'verifyOtp', email, otp });
+  if(v.status !== 'success'){
+    btn.disabled = false; btn.innerHTML = orig;
+    $('#volOtpErr').textContent = v.message || 'अमान्य कूट';
+    return;
+  }
+  const r = await apiCall({ action:'getVolunteer', volId: id, email });
+  btn.disabled = false; btn.innerHTML = orig;
+
+  if(r.status !== 'success' || !r.data){
+    $('#volOtpErr').textContent = r.message || 'स्वयंसेवक नहीं मिला';
+    return;
+  }
+  _volSession = { volId: id, email, data: r.data };
+  populateVolunteerDash(r.data);
+  $('#volLogin').style.display = 'none';
+  $('#volDash').classList.add('show');
+  toast('लॉगिन सफल ✓');
+});
+
+function populateVolunteerDash(v){
+  $('#volDashName').textContent = v.Name || '—';
+  $('#volDashId').textContent = v.ID || '—';
+  $('#volType').textContent = v.Type || '—';
+  $('#volMobile').textContent = v.Mobile || '—';
+  $('#volEmailOut').textContent = v.Email || '—';
+  $('#volCity').textContent = v.City || '—';
+  $('#volQual').textContent = v.Qualification || '—';
+  $('#volSubject').textContent = v.Subject || '—';
+  $('#volMode').textContent = v.Mode || '—';
+  $('#volHours').textContent = v.Hours || '—';
+
+  /* Experience letter */
+  if(v.ExperienceLetterURL && String(v.ExperienceLetterURL).startsWith('http')){
+    $('#volCertBox').innerHTML = '<div class="download-card green"><div class="dc-icon">📜</div><div class="dc-body"><h4>अनुभव प्रमाणपत्र</h4><p>' + (v.ExperienceLetterID || '') + '</p></div><a href="' + v.ExperienceLetterURL + '" target="_blank" class="btn btn-green btn-sm">⬇️ डाउनलोड</a></div>';
+  } else {
+    $('#volCertBox').innerHTML = '<div class="info-box saffron"><strong>📌 सूचना:</strong> सेवा-अवधि पूर्ण होने पर अनुभव प्रमाणपत्र जारी किया जाएगा।</div>';
+  }
+  loadVolHours();
+}
+
+async function loadVolHours(){
+  if(!_volSession) return;
+  const r = await apiCall({ action:'getVolHours', volId: _volSession.volId });
+  const tb = $('#volHoursTable');
+  if(r.status === 'success' && Array.isArray(r.data) && r.data.length){
+    tb.innerHTML = r.data.map(h =>
+      '<tr><td>' + (h.date || '—') + '</td><td>' + (h.hours || 0) + '</td><td>' + (h.class || h.notes || '—') + '</td></tr>'
+    ).join('');
+  } else {
+    tb.innerHTML = '<tr><td colspan="3" style="text-align:center;color:var(--muted);padding:20px">अभी तक कोई घंटा दर्ज नहीं।</td></tr>';
+  }
+}
+
+async function volLogHours(e){
+  e.preventDefault();
+  if(!_volSession){ toast('कृपया पुन: लॉगिन करें'); return; }
+  const hours = parseFloat($('#volLogHoursInput').value) || 0;
+  const subj = $('#volLogSubject').value.trim();
+  if(hours <= 0){ toast('कृपया सही घंटे अंकित करें'); return; }
+
+  const r = await apiCall({ action:'logVolHours', volId: _volSession.volId, hours, class: subj });
+  if(r.status === 'success'){
+    $('#volLogHoursInput').value = '';
+    $('#volLogSubject').value = '';
+    toast('✓ घंटे दर्ज किए गए');
+    loadVolHours();
+  } else toast(r.message || 'त्रुटि');
+}
+
+function volLogout(){
+  _volSession = null;
+  $('#volLogin').style.display = 'block';
+  $('#volDash').classList.remove('show');
+  $('#volStep2').style.display = 'none';
+  $('#volStep1').style.display = 'block';
+  clearOtp('volOtpBoxes');
+}
+
+async function volReload(){
+  if(!_volSession){ toast('कृपया पुन: लॉगिन करें'); return; }
+  const r = await apiCall({ action:'getVolunteer', volId: _volSession.volId, email: _volSession.email });
+  if(r.status === 'success' && r.data){ populateVolunteerDash(r.data); toast('ताज़ा किया गया ✓'); }
+  else toast('त्रुटि');
+}
+
+/* ============================================================
+   ADMIN PORTAL
+   ============================================================ */
+let _adminSession = null;
+
+$('#adminEmailBtn').addEventListener('click', async () => {
+  const email = $('#adminEmail').value.trim().toLowerCase();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ toast('सही विद्युत्पत्र अंकित करें'); return; }
+
+  const btn = $('#adminEmailBtn'); const orig = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = '⏳';
+  const r = await apiCall({ action:'adminCheckEmail', email });
+  btn.disabled = false; btn.innerHTML = orig;
+
+  if(r.status === 'success' && r.allowed){
+    $('#adminStep1').style.display = 'none';
+    $('#adminStep2').style.display = 'block';
+    $('#adminPassword').focus();
+  } else toast(r.message || 'अधिकृत विद्युत्पत्र नहीं');
+});
+
+$('#adminBackBtn1').addEventListener('click', () => {
+  $('#adminStep2').style.display = 'none';
+  $('#adminStep1').style.display = 'block';
+});
+
+$('#adminPasswordBtn').addEventListener('click', async () => {
+  const email = $('#adminEmail').value.trim().toLowerCase();
+  const password = $('#adminPassword').value;
+  if(!password){ toast('पासवर्ड अंकित करें'); return; }
+
+  const btn = $('#adminPasswordBtn'); const orig = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = '⏳';
+  const r = await apiCall({ action:'adminCheckPassword', email, password });
+  btn.disabled = false; btn.innerHTML = orig;
+
+  if(r.status === 'success' && r.allowed){
+    const otp = await apiCall({ action:'sendOtp', email });
+    if(otp.status === 'success'){
+      $('#adminSentTo').textContent = email;
+      $('#adminStep2').style.display = 'none';
+      $('#adminStep3').style.display = 'block';
+      clearOtp('adminOtpBoxes');
+      $$('#adminOtpBoxes .otp-box')[0].focus();
+      toast('कूट भेजा गया ✓');
+    }
+  } else toast(r.message || 'गलत पासवर्ड');
+});
+
+$('#adminBackBtn2').addEventListener('click', () => {
+  $('#adminStep3').style.display = 'none';
+  $('#adminStep2').style.display = 'block';
+});
+
+setupOtpBoxes('adminOtpBoxes', () => {
+  setTimeout(() => $('#adminVerifyBtn').click(), 200);
+});
+
+$('#adminVerifyBtn').addEventListener('click', async () => {
+  const email = $('#adminEmail').value.trim().toLowerCase();
+  const otp = getOtpValue('adminOtpBoxes');
+  if(!/^\d{6}$/.test(otp)){ $('#adminOtpErr').textContent = 'छह अंकों का कूट अंकित करें'; return; }
+
+  const btn = $('#adminVerifyBtn'); const orig = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = '⏳ जाँच हो रही है...';
+
+  const v = await apiCall({ action:'verifyOtp', email, otp });
+  if(v.status !== 'success'){
+    btn.disabled = false; btn.innerHTML = orig;
+    $('#adminOtpErr').textContent = v.message || 'अमान्य कूट';
+    return;
+  }
+  const r = await apiCall({ action:'adminLoginFinal', email });
+  btn.disabled = false; btn.innerHTML = orig;
+
+  if(r.status !== 'success'){ toast(r.message || 'लॉगिन विफल'); return; }
+  _adminSession = { email, token: r.token };
+  $('#adminWelcome').textContent = email;
+  $('#adminLogin').style.display = 'none';
+  $('#adminDash').classList.add('show');
+  toast('प्रशासक लॉगिन सफल ✓');
+  loadAdminOverview();
+  loadApplications();
+  loadVolunteers();
+  loadFreeCerts();
+  loadDonations();
+  loadGrievances();
+});
+
+function adminLogout(){
+  _adminSession = null;
+  $('#adminLogin').style.display = 'block';
+  $('#adminDash').classList.remove('show');
+  $('#adminStep3').style.display = 'none';
+  $('#adminStep2').style.display = 'none';
+  $('#adminStep1').style.display = 'block';
+  clearOtp('adminOtpBoxes');
+}
+
+function switchAdminTab(tab){
+  $$('.admin-tab').forEach(t => t.classList.toggle('active', t.dataset.atab === tab));
+  $$('.admin-panel').forEach(p => p.classList.toggle('active', p.id === 'apanel-' + tab));
+}
+
+/* ---------- Admin: Overview ---------- */
+async function loadAdminOverview(){
+  if(!_adminSession) return;
+  const r = await apiCall({ action:'adminOverview', token: _adminSession.token });
+  if(r.status !== 'success'){ $('#adminStats').innerHTML = '<div class="info-box error">त्रुटि: ' + (r.message || '') + '</div>'; return; }
+  const d = r.data;
+  $('#adminStats').innerHTML = [
+    { n: d.applications || 0, t:'कुल आवेदन / Applications' },
+    { n: d.selected || 0,     t:'चयनित / Selected' },
+    { n: d.volunteers || 0,   t:'स्वयंसेवक / Volunteers' },
+    { n: d.freeCerts || 0,    t:'प्रमाणपत्र / Certificates' },
+    { n: d.donations || 0,    t:'दान / Donations' },
+    { n: d.grievances || 0,   t:'शिकायतें / Grievances' }
+  ].map(s => '<div class="admin-stat"><b>' + s.n + '</b><span>' + s.t + '</span></div>').join('');
+}
+
+/* ---------- Admin: Applications ---------- */
+async function loadApplications(){
+  if(!_adminSession) return;
+  const q = ($('#appSearch') ? $('#appSearch').value.trim() : '');
+  const r = await apiCall({ action:'adminGetApplications', token: _adminSession.token, q });
+  const tb = $('#appTable');
+  if(r.status !== 'success' || !Array.isArray(r.data)){
+    tb.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">त्रुटि: ' + (r.message || '') + '</td></tr>'; return;
+  }
+  if(!r.data.length){ tb.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">कोई आवेदन नहीं।</td></tr>'; return; }
+  tb.innerHTML = r.data.map(a => {
+    const st = String(a.Status || 'Submitted');
+    const stCls = st === 'Selected' ? 'status-selected'
+                : st === 'Verified' ? 'status-verified'
+                : st === 'Rejected' ? 'status-rejected'
+                : 'status-submitted';
+    return '<tr>' +
+      '<td class="mono"><b>' + (a.AppID || '') + '</b></td>' +
+      '<td>' + (a.Name || '') + '</td>' +
+      '<td style="font-size:.78rem">' + (a.Course || '') + '</td>' +
+      '<td>₹' + (a.Payable || 0) + '</td>' +
+      '<td><span class="status-badge ' + stCls + '">' + st + '</span></td>' +
+      '<td>' +
+        '<button class="tbl-btn verify" onclick="setAppStatus(\'' + a.AppID + '\',\'Verified\')">✓ सत्यापित</button>' +
+        '<button class="tbl-btn select" onclick="setAppStatus(\'' + a.AppID + '\',\'Selected\')">⭐ चयनित</button>' +
+        '<button class="tbl-btn reject" onclick="setAppStatus(\'' + a.AppID + '\',\'Rejected\')">✕ अस्वीकार</button>' +
+      '</td>' +
+    '</tr>';
+  }).join('');
+}
+
+async function setAppStatus(appId, status){
+  if(!_adminSession) return;
+  if(!confirm((appId) + ' → ' + status + '?')) return;
+  const r = await apiCall({ action:'adminSetStatus', token: _adminSession.token, appId, status });
+  if(r.status === 'success'){ toast('✓ स्थिति अद्यतन'); loadApplications(); }
+  else toast(r.message || 'त्रुटि');
+}
+
+/* ---------- Admin: Volunteers ---------- */
+async function loadVolunteers(){
+  if(!_adminSession) return;
+  const r = await apiCall({ action:'adminGetVolunteers', token: _adminSession.token });
+  const tb = $('#volTable');
+  if(r.status !== 'success' || !Array.isArray(r.data)){
+    tb.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">त्रुटि</td></tr>'; return;
+  }
+  if(!r.data.length){ tb.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">कोई स्वयंसेवक नहीं।</td></tr>'; return; }
+  tb.innerHTML = r.data.map(v =>
+    '<tr>' +
+      '<td class="mono"><b>' + (v.ID || '') + '</b></td>' +
+      '<td>' + (v.Name || '') + '</td>' +
+      '<td>' + (v.Type || '') + '</td>' +
+      '<td>' + (v.Subject || '—') + '</td>' +
+      '<td>' + (v.City || '—') + '</td>' +
+      '<td><button class="tbl-btn download" onclick="genExpLetter(\'' + v.ID + '\')">📜 अनुभव पत्र</button></td>' +
+    '</tr>'
+  ).join('');
+}
+
+async function genExpLetter(volId){
+  if(!_adminSession) return;
+  if(!confirm('अनुभव प्रमाणपत्र बनाएँ: ' + volId + '?')) return;
+  const r = await apiCall({ action:'adminGenExpLetter', token: _adminSession.token, volId });
+  if(r.status === 'success'){ toast('✓ पत्र बनाया गया'); loadVolunteers(); }
+  else toast(r.message || 'त्रुटि');
+}
+
+/* ---------- Admin: Free Certs ---------- */
+async function loadFreeCerts(){
+  if(!_adminSession) return;
+  const q = ($('#certSearch') ? $('#certSearch').value.trim() : '');
+  const r = await apiCall({ action:'adminGetFreeCerts', token: _adminSession.token, q });
+  const tb = $('#certTable');
+  if(r.status !== 'success' || !Array.isArray(r.data)){
+    tb.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">त्रुटि</td></tr>'; return;
+  }
+  if(!r.data.length){ tb.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">कोई प्रमाणपत्र नहीं।</td></tr>'; return; }
+  tb.innerHTML = r.data.map(c =>
+    '<tr>' +
+      '<td class="mono"><b>' + (c.CertID || '') + '</b></td>' +
+      '<td>' + (c.Name || '') + '</td>' +
+      '<td style="font-size:.78rem">' + (c.CourseTitle || c.Course || '') + '</td>' +
+      '<td>' + (c.Score || 0) + '/' + (c.Total || 0) + ' (' + (c.Percent || 0) + '%)</td>' +
+      '<td><b style="color:var(--green)">' + (c.Grade || '') + '</b></td>' +
+      '<td>' +
+        '<a class="tbl-btn download" href="' + (c.CertURL || '#') + '" target="_blank" style="text-decoration:none">📥 PDF</a>' +
+        '<a class="tbl-btn verify" href="' + (c.VerifyURL || '#') + '" target="_blank" style="text-decoration:none">🔍 सत्यापन</a>' +
+      '</td>' +
+    '</tr>'
+  ).join('');
+}
+
+/* ---------- Admin: Donations ---------- */
+async function loadDonations(){
+  if(!_adminSession) return;
+  const r = await apiCall({ action:'adminGetDonations', token: _adminSession.token });
+  const tb = $('#donTable');
+  if(r.status !== 'success' || !Array.isArray(r.data)){
+    tb.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">त्रुटि</td></tr>'; return;
+  }
+  if(!r.data.length){ tb.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">कोई दान नहीं।</td></tr>'; return; }
+  tb.innerHTML = r.data.map(d =>
+    '<tr>' +
+      '<td class="mono"><b>' + (d.DonationID || '') + '</b></td>' +
+      '<td>' + (d.Name || '') + '</td>' +
+      '<td><b style="color:var(--green)">₹' + (d.Amount || 0) + '</b></td>' +
+      '<td>' + (d.Purpose || '—') + '</td>' +
+      '<td style="font-size:.78rem">' + (d.Email || '') + '</td>' +
+    '</tr>'
+  ).join('');
+}
+
+/* ---------- Admin: Grievances ---------- */
+async function loadGrievances(){
+  if(!_adminSession) return;
+  const r = await apiCall({ action:'adminGetGrievances', token: _adminSession.token });
+  const tb = $('#grvTable');
+  if(r.status !== 'success' || !Array.isArray(r.data)){
+    tb.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">त्रुटि</td></tr>'; return;
+  }
+  if(!r.data.length){ tb.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">कोई शिकायत नहीं।</td></tr>'; return; }
+  tb.innerHTML = r.data.map(g => {
+    const st = String(g.Status || 'Open');
+    const stCls = st === 'Resolved' ? 'status-resolved' : 'status-open';
+    return '<tr>' +
+      '<td class="mono"><b>' + (g.ComplaintID || '') + '</b></td>' +
+      '<td>' + (g.Name || '') + '</td>' +
+      '<td>' + (g.Category || '') + '</td>' +
+      '<td><span class="status-badge ' + stCls + '">' + st + '</span></td>' +
+      '<td style="font-size:.78rem">' + ((g.Details || '').slice(0, 60)) + '...</td>' +
+    '</tr>';
+  }).join('');
+}
+
+/* ---------- Search debounce ---------- */
+function debounce(fn, ms){ let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; }
+if($('#appSearch')) $('#appSearch').addEventListener('input', debounce(loadApplications, 400));
+if($('#certSearch')) $('#certSearch').addEventListener('input', debounce(loadFreeCerts, 400));
+
+console.log('%c🔐 दिप्र फ़ाउंडेशन — पोर्टल', 'color:#0D7A3A;font-weight:bold;font-size:14px');
+</script>
+
+</body>
+</html>
