@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<title>दान करें | दिप्र फ़ाउंडेशन — The Uplift</title>
+<meta name="description" content="ज्ञान के दान से किसी बालक का भविष्य संवारें। दिप्र फ़ाउंडेशन में दान दें — अनाथ विद्यार्थियों की सहायता करें।">
+<meta name="theme-color" content="#D4A017">
+<meta property="og:title" content="दान करें — दिप्र फ़ाउंडेशन">
+<meta property="og:description" content="ज्ञान का दान सर्वश्रेष्ठ दान है — जो न कभी समाप्त होता है, न चोरी हो सकता है।">
+<meta property="og:image" content="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+<link rel="icon" href="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --saffron:#FF7A00;--saffron-2:#FFA940;--saffron-3:#E65F00;--saffron-soft:#FFF1E0;
+  --green:#0D7A3A;--green-2:#16A34A;--green-3:#075A2A;--green-soft:#E7F6EC;
+  --gold:#D4A017;--gold-2:#F0BE3E;--maroon:#8B1538;--maroon-2:#B91C48;
+  --cream:#FFFBF5;--cream-2:#FFF6E8;--ink:#2A1810;--ink-2:#5A4030;--muted:#8B7355;
+  --border:#F0DCBC;--border-2:#E6C89C;
+  --radius:10px;--radius-lg:16px;--radius-xl:24px;
+  --shadow:0 4px 16px rgba(255,122,0,.12);
+  --shadow-lg:0 12px 40px rgba(139,21,56,.18);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Inter','Noto Sans Devanagari',system-ui,sans-serif;
+  background:linear-gradient(180deg,#FFFBF5 0%,#FFF6E8 50%,#FFFBF5 100%);
+  color:var(--ink);line-height:1.7;font-size:17px;
+  min-height:100vh;display:flex;flex-direction:column;
+  -webkit-font-smoothing:antialiased;
+}
+body.modal-open{overflow:hidden}
+img{max-width:100%;display:block}
+a{color:var(--maroon);text-decoration:none;transition:.15s}
+a:hover{color:var(--saffron-3)}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+input,select,textarea{font-family:inherit}
+h1,h2,h3,h4{line-height:1.28;font-weight:800;color:var(--maroon)}
+body.lang-en .t-hi{display:none!important}
+
+/* Tricolor */
+.tricolor{height:5px;background:linear-gradient(90deg,var(--saffron) 0%,var(--saffron) 33.33%,#fff 33.33%,#fff 66.66%,var(--green) 66.66%,var(--green) 100%)}
+
+/* TOPBAR */
+.topbar{background:linear-gradient(90deg,var(--saffron-soft),#fff,var(--green-soft));padding:10px 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.topbar a{font-weight:600;color:var(--maroon)}
+.topbar-links{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+
+/* HEADER */
+header{background:#fff;border-bottom:2px solid var(--border);box-shadow:0 2px 14px rgba(139,21,56,.06);position:sticky;top:0;z-index:100}
+.header-inner{max-width:1200px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none!important}
+.brand-logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--saffron-soft),var(--green-soft));border:2px solid var(--saffron);display:grid;place-items:center;padding:6px;flex:none;box-shadow:0 4px 12px rgba(255,122,0,.2)}
+.brand-logo img{width:100%;height:100%;object-fit:contain;border-radius:6px}
+.brand-text b{display:block;font-size:1.15rem;font-weight:800;color:var(--maroon);line-height:1.15;font-family:'Tiro Devanagari Hindi','Noto Sans Devanagari',serif}
+.brand-text span{font-size:.78rem;color:var(--muted);font-weight:500}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.nav-links a{padding:9px 14px;border-radius:9px;font-weight:600;font-size:.92rem;color:var(--ink);transition:.15s}
+.nav-links a:hover{background:var(--saffron-soft);color:var(--saffron-3)}
+.nav-links a.active{background:var(--saffron-soft);color:var(--saffron-3)}
+.lang-switch{display:flex;border:1px solid var(--border-2);border-radius:9px;overflow:hidden;background:#fff;margin-left:8px}
+.lang-btn{padding:8px 12px;font-size:.82rem;font-weight:700;color:var(--muted);background:#fff;transition:.15s}
+.lang-btn.active{background:linear-gradient(135deg,var(--maroon),var(--maroon-2));color:#fff}
+
+/* MAIN */
+main{flex:1;padding:40px 0 60px}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+.container-narrow{max-width:820px;margin:0 auto;padding:0 20px}
+
+/* HERO */
+.donate-hero{text-align:center;padding:40px 0 20px;position:relative}
+.donate-hero .hero-icon{font-size:4rem;margin-bottom:14px;display:inline-block;animation:flicker 2.5s ease-in-out infinite}
+@keyframes flicker{0%,100%{transform:scale(1);filter:drop-shadow(0 0 15px rgba(255,122,0,.4))}50%{transform:scale(1.06);filter:drop-shadow(0 0 30px rgba(255,122,0,.6))}}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--saffron-3);background:var(--saffron-soft);padding:6px 16px;border-radius:999px;border:1px solid var(--saffron);margin-bottom:16px}
+.donate-hero h1{font-family:'Tiro Devanagari Hindi',serif;font-size:clamp(1.9rem,4.5vw,3rem);color:var(--maroon);font-weight:400;margin-bottom:14px;line-height:1.15}
+.donate-hero p{color:var(--ink-2);font-size:1.08rem;max-width:680px;margin:0 auto;line-height:1.8}
+
+/* WHY DONATE CARD */
+.why-card{background:#fff;border:2px solid var(--gold-2);border-radius:var(--radius-xl);padding:36px;box-shadow:0 12px 40px rgba(139,21,56,.1);margin-top:30px;position:relative;overflow:hidden}
+.why-card::before{content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,169,64,.15),transparent 70%);pointer-events:none}
+.why-card h2{font-family:'Tiro Devanagari Hindi',serif;font-size:1.55rem;color:var(--maroon);font-weight:400;margin-bottom:14px}
+.why-card > p{color:var(--ink-2);line-height:1.85;font-size:1.03rem}
+
+/* IMPACT GRID */
+.impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:32px 0}
+.impact-card{
+  background:linear-gradient(135deg,#fff,#FFFBF5);
+  border:2px solid var(--border-2);border-radius:16px;padding:22px;
+  text-align:center;transition:.25s;cursor:default;
+  position:relative;overflow:hidden;
+}
+.impact-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--saffron),var(--gold-2),var(--green));transform:scaleX(0);transition:.3s;transform-origin:left}
+.impact-card:hover{border-color:var(--saffron);transform:translateY(-6px);box-shadow:0 14px 40px rgba(255,122,0,.2)}
+.impact-card:hover::before{transform:scaleX(1)}
+.impact-card .amt{font-size:2.2rem;font-weight:800;color:var(--green);font-family:'Inter',sans-serif;line-height:1.1;letter-spacing:-.02em}
+.impact-card .lbl{font-size:.94rem;color:var(--maroon);margin-top:8px;font-weight:700;line-height:1.5}
+.impact-card .dsc{font-size:.82rem;color:var(--muted);margin-top:8px;line-height:1.6}
+.impact-card .emoji{font-size:1.6rem;margin-bottom:8px}
+
+/* QUOTES SECTION */
+.quotes-section{margin:48px 0}
+.quotes-title{text-align:center;margin-bottom:32px}
+.quotes-title h2{font-family:'Tiro Devanagari Hindi',serif;font-size:1.55rem;color:var(--maroon);font-weight:400;margin-bottom:8px}
+.quotes-title p{color:var(--muted);font-size:.96rem}
+
+.quote-grid{display:grid;grid-template-columns:1fr;gap:20px}
+.quote-box{
+  background:linear-gradient(135deg,#FFFBF5,#FFF6E8);
+  border-left:5px solid var(--saffron);
+  padding:24px 28px 22px;
+  border-radius:14px;
+  position:relative;
+  transition:.25s;
+  box-shadow:0 2px 10px rgba(255,122,0,.06);
+}
+.quote-box:hover{
+  border-left-color:var(--green);
+  transform:translateX(6px);
+  box-shadow:0 8px 30px rgba(255,122,0,.18);
+}
+.quote-box::before{content:"❝";font-size:3.4rem;color:var(--saffron-2);position:absolute;top:-12px;left:18px;font-family:Georgia,serif;line-height:1;opacity:.35}
+.quote-box.english{border-left-color:var(--green)}
+.quote-box.english::before{color:var(--green-2)}
+.quote-box .quote-text{
+  font-size:1.05rem;
+  font-style:italic;
+  line-height:1.95;
+  color:var(--ink);
+  padding-left:28px;
+  margin-bottom:12px;
+  font-weight:500;
+}
+.quote-box .quote-text b{color:var(--maroon);font-style:normal;font-weight:700}
+.quote-box .quote-cite{
+  display:block;
+  text-align:right;
+  font-size:.9rem;
+  color:var(--maroon);
+  font-weight:700;
+  font-style:normal;
+  padding-right:8px;
+}
+.quote-box .quote-cite::before{content:"— ";margin-right:4px;color:var(--saffron-3)}
+.quote-box .quote-meaning{
+  font-size:.92rem;
+  color:var(--ink-2);
+  line-height:1.8;
+  padding-left:28px;
+  padding-top:12px;
+  margin-top:10px;
+  border-top:1px dashed var(--border-2);
+}
+.quote-box .quote-meaning b{color:var(--maroon);font-weight:700;margin-right:6px}
+
+/* USAGE SECTION */
+.usage-section{margin:48px 0}
+.usage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:32px}
+.usage-card{
+  background:#fff;
+  border:2px solid var(--border);
+  border-radius:16px;
+  padding:24px;
+  text-align:center;
+  transition:.25s;
+  position:relative;
+}
+.usage-card:hover{border-color:var(--saffron);transform:translateY(-4px);box-shadow:0 12px 32px rgba(255,122,0,.15)}
+.usage-card .percent{
+  position:absolute;top:16px;right:16px;
+  background:linear-gradient(135deg,var(--saffron),var(--saffron-3));
+  color:#fff;font-size:.78rem;font-weight:800;padding:5px 12px;border-radius:999px;
+  letter-spacing:.04em;
+}
+.usage-card.green .percent{background:linear-gradient(135deg,var(--green),var(--green-3))}
+.usage-card .u-ico{
+  width:64px;height:64px;border-radius:50%;
+  display:grid;place-items:center;font-size:1.9rem;
+  margin:0 auto 14px;
+  background:linear-gradient(135deg,var(--saffron-soft),#fff);
+  border:2px solid var(--saffron-2);
+}
+.usage-card.green .u-ico{background:linear-gradient(135deg,var(--green-soft),#fff);border-color:var(--green-2)}
+.usage-card h3{font-size:1.05rem;color:var(--maroon);margin-bottom:8px}
+.usage-card p{color:var(--ink-2);font-size:.92rem;line-height:1.7}
+
+/* TRANSPARENCY */
+.transparency-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px}
+.transp-card{
+  background:var(--green-soft);
+  border:2px solid var(--green-2);
+  border-radius:14px;
+  padding:22px 24px;
+  color:var(--green-3);
+}
+.transp-card.warn{
+  background:var(--saffron-soft);
+  border-color:var(--saffron-2);
+  color:#7A3E00;
+}
+.transp-card h4{color:inherit;font-size:1.05rem;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.transp-card p{font-size:.94rem;line-height:1.75}
+
+/* DONATE FORM */
+.donate-form-card{
+  background:#fff;
+  border:2px solid var(--gold-2);
+  border-radius:var(--radius-xl);
+  padding:36px;
+  box-shadow:0 12px 40px rgba(139,21,56,.12);
+  max-width:680px;
+  margin:32px auto 0;
+  position:relative;
+}
+.donate-form-card::before{
+  content:"🪔";
+  position:absolute;top:-24px;left:50%;transform:translateX(-50%);
+  font-size:2.4rem;
+  background:#fff;padding:0 16px;
+}
+.donate-form-card h2{font-family:'Tiro Devanagari Hindi',serif;font-size:1.5rem;color:var(--maroon);font-weight:400;text-align:center;margin-bottom:8px}
+.donate-form-card > p{text-align:center;color:var(--muted);font-size:.96rem;margin-bottom:28px;line-height:1.7}
+
+.field{margin-bottom:18px}
+.field label{display:block;font-weight:700;font-size:.96rem;margin-bottom:8px;color:var(--ink)}
+.field label .req{color:#c0392b}
+.field input,.field select,.field textarea{
+  width:100%;padding:14px 16px;
+  border:2px solid var(--border-2);
+  border-radius:12px;background:#fff;
+  transition:.15s;color:var(--ink);
+  font-size:16px;min-height:52px;
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-color:var(--saffron);
+  box-shadow:0 0 0 4px rgba(255,122,0,.15);
+}
+.field textarea{min-height:100px;resize:vertical;padding:14px 16px}
+.field small{display:block;color:var(--muted);font-size:.82rem;margin-top:6px;line-height:1.6}
+.field.err input,.field.err select,.field.err textarea{border-color:#c0392b;background:#fef5f5}
+.field .errmsg{color:#c0392b;font-size:.82rem;margin-top:6px;display:none}
+.field.err .errmsg{display:block}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* Amount presets */
+.amount-presets{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(110px,1fr));
+  gap:10px;
+  margin-bottom:14px;
+}
+.amount-preset{
+  padding:12px 8px;
+  border:2px solid var(--border-2);
+  border-radius:12px;
+  background:#fff;
+  font-weight:700;
+  font-size:1rem;
+  color:var(--maroon);
+  cursor:pointer;
+  transition:.15s;
+  font-family:inherit;
+  min-height:50px;
+}
+.amount-preset:hover{border-color:var(--saffron);background:var(--saffron-soft);color:var(--saffron-3)}
+.amount-preset.active{background:linear-gradient(135deg,var(--saffron),var(--saffron-3));color:#fff;border-color:var(--saffron);box-shadow:0 6px 16px rgba(255,122,0,.3)}
+
+/* Consent */
+.consent-box{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  background:var(--cream-2);
+  border:2px solid var(--border);
+  padding:16px;
+  border-radius:12px;
+  font-size:.94rem;
+  line-height:1.7;
+  cursor:pointer;
+  transition:.15s;
+}
+.consent-box:hover{border-color:var(--saffron-2);background:var(--saffron-soft)}
+.consent-box input{width:20px;height:20px;margin-top:3px;accent-color:var(--saffron);flex:none;cursor:pointer}
+.consent-box.err{border-color:#c0392b;background:#fef5f5}
+
+/* BTNs */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:16px 28px;border-radius:12px;
+  font-weight:700;font-size:1.02rem;
+  transition:.2s;border:1px solid transparent;
+  text-decoration:none!important;cursor:pointer;
+  white-space:nowrap;min-height:54px;line-height:1.2;
+}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.btn-saffron{background:linear-gradient(135deg,var(--saffron),var(--saffron-3));color:#fff;box-shadow:0 6px 20px rgba(255,122,0,.32)}
+.btn-saffron:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,122,0,.45);color:#fff}
+.btn-green{background:linear-gradient(135deg,var(--green),var(--green-3));color:#fff;box-shadow:0 6px 20px rgba(13,122,58,.3)}
+.btn-green:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 30px rgba(13,122,58,.45);color:#fff}
+.btn-outline{background:#fff;border:2px solid var(--border-2);color:var(--maroon)}
+.btn-outline:hover:not(:disabled){border-color:var(--saffron);background:var(--saffron-soft);color:var(--saffron-3)}
+.btn-block{width:100%}
+
+/* OTP MODAL */
+.modal{position:fixed;inset:0;background:rgba(90,15,35,.78);display:none;place-items:center;z-index:1200;padding:20px;backdrop-filter:blur(6px);overflow-y:auto}
+.modal.show{display:grid;animation:fadeIn .25s}
+.modal-box{background:#fff;border-radius:var(--radius-lg);max-width:520px;width:100%;max-height:92vh;overflow:auto;box-shadow:0 24px 70px rgba(0,0,0,.5);margin:auto;border:2px solid var(--gold-2)}
+.modal-head{padding:20px 26px;border-bottom:1.5px solid var(--border);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#fff;z-index:2;border-radius:var(--radius-lg) var(--radius-lg) 0 0}
+.modal-head h3{font-size:1.1rem;color:var(--maroon)}
+.modal-body{padding:26px}
+.close-x{font-size:1.7rem;line-height:1;color:var(--muted);padding:6px 14px;border-radius:8px;background:none;border:none;cursor:pointer;transition:.15s}
+.close-x:hover{background:var(--saffron-soft);color:var(--maroon)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* OTP INPUTS */
+.otp-inputs{display:flex;gap:8px;justify-content:center;margin:20px 0}
+.otp-box{
+  width:52px;height:62px;text-align:center;
+  font-family:monospace;font-size:1.5rem;font-weight:800;
+  border:2px solid var(--border-2);border-radius:12px;
+  background:#fff;color:var(--maroon);
+  transition:.15s;padding:0;
+}
+.otp-box:focus{outline:none;border-color:var(--saffron);box-shadow:0 0 0 4px rgba(255,122,0,.15)}
+.otp-box.filled{border-color:var(--saffron);background:var(--saffron-soft)}
+
+/* CONFIRMATION */
+.confirm{display:none;text-align:center;padding:30px 20px}
+.confirm.show{display:block;animation:fadeIn .4s}
+.confirm .tick{
+  width:90px;height:90px;border-radius:50%;
+  background:linear-gradient(135deg,var(--green-soft),#fff);
+  color:var(--green);display:grid;place-items:center;
+  font-size:2.6rem;margin:0 auto 20px;
+  border:3px solid var(--green-2);
+  box-shadow:0 12px 32px rgba(13,122,58,.25);
+  animation:pop .5s cubic-bezier(.2,1.4,.5,1);
+}
+@keyframes pop{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
+.confirm h3{font-size:1.3rem;color:var(--green-3);margin-bottom:10px}
+.confirm p{color:var(--ink-2);font-size:.96rem;max-width:520px;margin:0 auto 20px;line-height:1.75}
+.donation-id-box{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--saffron-soft),#fff);
+  border:2.5px dashed var(--saffron);
+  padding:16px 34px;border-radius:12px;
+  margin:16px 0;box-shadow:0 6px 20px rgba(255,122,0,.15);
+}
+.donation-id-box small{display:block;font-size:.78rem;color:var(--saffron-3);letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.donation-id-box b{font-size:1.5rem;color:var(--maroon);font-family:monospace;font-weight:800}
+
+/* CTA BOX */
+.cta-box{
+  text-align:center;
+  background:linear-gradient(135deg,#fff,var(--saffron-soft));
+  border:2px solid var(--gold-2);
+  border-radius:var(--radius-xl);
+  padding:36px 28px;
+  margin:48px 0 20px;
+  box-shadow:0 10px 30px rgba(212,160,23,.15);
+}
+.cta-box h3{font-family:'Tiro Devanagari Hindi',serif;font-size:1.35rem;color:var(--maroon);font-weight:400;margin-bottom:10px}
+.cta-box p{color:var(--ink-2);font-size:1rem;margin-bottom:20px;line-height:1.75}
+
+/* FOOTER */
+footer{background:linear-gradient(180deg,var(--maroon),#5A0F23);color:#F5D9C8;padding:32px 0;text-align:center;font-size:.92rem;position:relative}
+footer::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--saffron),#fff,var(--green))}
+footer a{color:var(--gold-2);font-weight:600}
+footer a:hover{color:#fff}
+.foot-line{margin-bottom:8px}
+.foot-brand{font-family:'Tiro Devanagari Hindi',serif;font-size:1.15rem;color:#fff;margin-bottom:10px}
+
+/* TOAST */
+.toast{
+  position:fixed;bottom:40px;left:50%;transform:translate(-50%,140%);
+  background:linear-gradient(135deg,var(--maroon),var(--maroon-2));
+  color:#fff;padding:16px 26px;border-radius:12px;
+  box-shadow:0 14px 40px rgba(139,21,56,.45);
+  z-index:1500;transition:.35s;font-size:1rem;font-weight:600;
+  max-width:92vw;text-align:center;border:1.5px solid var(--gold-2);line-height:1.5;
+}
+.toast.show{transform:translate(-50%,0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .transparency-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  body{font-size:16px}
+  .container,.container-narrow{padding:0 16px}
+  main{padding:28px 0 40px}
+  .why-card{padding:24px 20px;border-radius:18px}
+  .why-card h2{font-size:1.3rem}
+  .donate-hero h1{font-size:1.75rem}
+  .donate-hero p{font-size:1rem}
+  .impact-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .impact-card{padding:16px 12px;border-radius:12px}
+  .impact-card .amt{font-size:1.6rem}
+  .impact-card .lbl{font-size:.82rem}
+  .impact-card .dsc{font-size:.76rem}
+  .quote-box{padding:20px 18px 18px}
+  .quote-box .quote-text{font-size:.98rem;padding-left:16px;line-height:1.85}
+  .quote-box .quote-meaning{padding-left:16px;font-size:.88rem}
+  .quote-box::before{font-size:2.6rem;left:10px}
+  .donate-form-card{padding:28px 20px}
+  .donate-form-card h2{font-size:1.3rem}
+  .row{grid-template-columns:1fr}
+  .amount-presets{grid-template-columns:1fr 1fr 1fr}
+  .usage-grid{grid-template-columns:1fr}
+  .otp-box{width:42px;height:52px;font-size:1.3rem}
+  .header-inner{padding:12px 16px;flex-direction:column;align-items:stretch;gap:10px}
+  .brand-logo{width:48px;height:48px}
+  .brand-text b{font-size:1rem}
+  .nav-links{justify-content:center}
+  .nav-links a{padding:8px 10px;font-size:.86rem}
+  .cta-box{padding:28px 20px}
+}
+@media(max-width:400px){
+  .impact-grid{grid-template-columns:1fr}
+  .otp-box{width:38px;height:48px;font-size:1.1rem}
+  .amount-presets{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Tricolor -->
+<div class="tricolor"></div>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-links">
+      <span>📞 <a href="tel:+919532328276">+91 95323 28276</a></span>
+      <span>✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></span>
+      <span data-hi="📍 खेरसा, बिधनू, कानपुर नगर — २०९२१४" data-en="📍 Khersa, Bidhnu, Kanpur Nagar — 209214">📍 खेरसा, बिधनू, कानपुर नगर — २०९२१४</span>
+    </div>
+    <div class="topbar-links">
+      <a href="https://www.diprafoundation.com" target="_blank" rel="noopener">www.diprafoundation.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-logo">
+        <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="दिप्र फ़ाउंडेशन">
+      </div>
+      <div class="brand-text">
+        <b data-hi="दिप्र फ़ाउंडेशन" data-en="Dipra Foundation">दिप्र फ़ाउंडेशन</b>
+        <span data-hi="दान — सेवा का सर्वोच्च रूप" data-en="Donation — Highest form of Service">दान — सेवा का सर्वोच्च रूप</span>
+      </div>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html" data-hi="गृह" data-en="Home">गृह</a>
+      <a href="index.html#courses" data-hi="पाठ्यक्रम" data-en="Courses">पाठ्यक्रम</a>
+      <a href="verify.html" data-hi="सत्यापन" data-en="Verify">सत्यापन</a>
+      <a href="portal.html" data-hi="पोर्टल" data-en="Portal">पोर्टल</a>
+      <a href="donate.html" class="active" data-hi="दान" data-en="Donate">दान</a>
+      <a href="contact.html" data-hi="संपर्क" data-en="Contact">संपर्क</a>
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="hi">हिं</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Main -->
+<main>
+  <div class="container">
+
+    <!-- HERO -->
+    <div class="donate-hero">
+      <div class="hero-icon">🪔</div>
+      <div class="eyebrow" data-hi="🙏 दान — सेवा का सर्वोच्च रूप" data-en="🙏 Donation — Highest form of Service">🙏 दान — सेवा का सर्वोच्च रूप</div>
+      <h1 data-hi="आपका एक दान, एक बालक का भविष्य" data-en="Your one donation, a child's future">आपका एक दान, एक बालक का भविष्य</h1>
+      <p data-hi="ज्ञान का दान सर्वश्रेष्ठ दान है — जो न कभी समाप्त होता है, न चोरी हो सकता है। आपकी सहायता से कोई बालक अपने सपनों की ओर पहला कदम बढ़ा सकता है।" data-en="The gift of knowledge is the greatest gift — it never ends, never stolen. With your help, a child can take their first step towards dreams.">ज्ञान का दान सर्वश्रेष्ठ दान है — जो न कभी समाप्त होता है, न चोरी हो सकता है। आपकी सहायता से कोई बालक अपने सपनों की ओर पहला कदम बढ़ा सकता है।</p>
+    </div>
+
+    <!-- WHY DONATE -->
+    <div class="why-card">
+      <h2 data-hi="क्यों दान करें?" data-en="Why Donate?">क्यों दान करें?</h2>
+      <p data-hi="हमारे राष्ट्र में लाखों प्रतिभाशाली बालक केवल इस कारण अध्ययन नहीं कर पाते कि उनके परिवार की आर्थिक स्थिति दुर्बल है। कोई पिता अपनी बेटी को संगणक सीखाना चाहता है, पर पैसे नहीं हैं। कोई माता अपने पुत्र को विज्ञान की शिक्षा देना चाहती है, पर सामर्थ्य नहीं है। आपका एक दान उस बालक की सम्पूर्ण जीवन-यात्रा को परिवर्तित कर सकता है — जो भविष्य में चिकित्सक, अभियन्ता, शिक्षक अथवा समाजसेवी बन सकता है।" data-en="In our nation, lakhs of talented children cannot study simply because their families are economically weak. A father wants his daughter to learn computers but has no money. A mother wants to give her son a science education but lacks means. Your one donation can transform a child's entire life — who might become a doctor, engineer, teacher or social worker.">हमारे राष्ट्र में लाखों प्रतिभाशाली बालक केवल इस कारण अध्ययन नहीं कर पाते कि उनके परिवार की आर्थिक स्थिति दुर्बल है। कोई पिता अपनी बेटी को संगणक सीखाना चाहता है, पर पैसे नहीं हैं। कोई माता अपने पुत्र को विज्ञान की शिक्षा देना चाहती है, पर सामर्थ्य नहीं है। <b style="color:var(--maroon)">आपका एक दान उस बालक की सम्पूर्ण जीवन-यात्रा को परिवर्तित कर सकता है</b> — जो भविष्य में चिकित्सक, अभियन्ता, शिक्षक अथवा समाजसेवी बन सकता है।</p>
+    </div>
+
+    <!-- IMPACT GRID -->
+    <div class="impact-grid">
+      <div class="impact-card">
+        <div class="emoji">💰</div>
+        <div class="amt">₹300</div>
+        <div class="lbl" data-hi="1 विद्यार्थी की 1 माह फीस" data-en="1 student's 1 month fee">1 विद्यार्थी की 1 माह फीस</div>
+        <div class="dsc" data-hi="किसी बालक को 1 माह की कोचिंग" data-en="1 month of coaching for a child">किसी बालक को 1 माह की कोचिंग</div>
+      </div>
+      <div class="impact-card">
+        <div class="emoji">📚</div>
+        <div class="amt">₹1,100</div>
+        <div class="lbl" data-hi="3 विद्यार्थियों की 1 माह फीस" data-en="3 students' 1 month fee">3 विद्यार्थियों की 1 माह फीस</div>
+        <div class="dsc" data-hi="छोटा दान, बड़ा बदलाव" data-en="Small donation, big change">छोटा दान, बड़ा बदलाव</div>
+      </div>
+      <div class="impact-card">
+        <div class="emoji">🎓</div>
+        <div class="amt">₹3,600</div>
+        <div class="lbl" data-hi="1 विद्यार्थी पूरे साल शिक्षित" data-en="1 student educated all year">1 विद्यार्थी पूरे साल शिक्षित</div>
+        <div class="dsc" data-hi="1 वर्ष की पूर्ण कोचिंग सहायता" data-en="Full year coaching support">1 वर्ष की पूर्ण कोचिंग सहायता</div>
+      </div>
+      <div class="impact-card">
+        <div class="emoji">💻</div>
+        <div class="amt">₹10,000</div>
+        <div class="lbl" data-hi="5 संगणक कोर्स + 10 छात्र" data-en="5 computer courses + 10 students">5 संगणक कोर्स + 10 छात्र</div>
+        <div class="dsc" data-hi="अंकीय साक्षरता का समर्थन" data-en="Supporting digital literacy">अंकीय साक्षरता का समर्थन</div>
+      </div>
+      <div class="impact-card">
+        <div class="emoji">🏆</div>
+        <div class="amt">₹25,000</div>
+        <div class="lbl" data-hi="1 अनाथ विद्यार्थी का पूरा साल" data-en="Full year for 1 orphan student">1 अनाथ विद्यार्थी का पूरा साल</div>
+        <div class="dsc" data-hi="पूर्ण छात्रवृत्ति — पुस्तकें, फीस, संगणक" data-en="Full scholarship — books, fees, computer">पूर्ण छात्रवृत्ति — पुस्तकें, फीस, संगणक</div>
+      </div>
+    </div>
+
+    <!-- QUOTES -->
+    <div class="quotes-section">
+      <div class="quotes-title">
+        <span class="eyebrow" data-hi="📖 प्रामाणिक उद्धरण" data-en="📖 Authentic References">📖 प्रामाणिक उद्धरण</span>
+        <h2 data-hi="दान के बारे में हमारे ग्रंथ क्या कहते हैं" data-en="What our scriptures say about donation">दान के बारे में हमारे ग्रंथ क्या कहते हैं</h2>
+        <p data-hi="श्रीमद्भगवद्गीता, महाभारत, विदुर नीति, चाणक्य नीति तथा अन्य प्रामाणिक ग्रंथों से" data-en="From Bhagavad Gita, Mahabharata, Vidura Neeti, Chanakya Neeti and other authentic texts">श्रीमद्भगवद्गीता, महाभारत, विदुर नीति, चाणक्य नीति तथा अन्य प्रामाणिक ग्रंथों से</p>
+      </div>
+
+      <div class="quote-grid">
+
+        <div class="quote-box">
+          <div class="quote-text">"दातव्यमिति यद्दानं दीयतेऽनुपकारिणे।<br>देशे काले च पात्रे च तद्दानं सात्त्विकं स्मृतम्॥"</div>
+          <cite class="quote-cite" data-hi="भगवद्गीता १७.२०" data-en="Bhagavad Gita 17.20">भगवद्गीता १७.२०</cite>
+          <div class="quote-meaning"><b data-hi="अर्थ:" data-en="Meaning:">अर्थ:</b> <span data-hi="जो दान योग्य देश, उचित काल तथा योग्य पात्र को, बिना किसी प्रतिफल की अपेक्षा के दिया जाए — वही सात्त्विक दान कहलाता है।" data-en="Charity given at the right place, right time, to the right person, without expectation of return — that is Sattvik charity.">जो दान योग्य देश, उचित काल तथा योग्य पात्र को, बिना किसी प्रतिफल की अपेक्षा के दिया जाए — वही सात्त्विक दान कहलाता है।</span></div>
+        </div>
+
+        <div class="quote-box">
+          <div class="quote-text">"दानं परमं धर्मः। दानेन सर्वं प्राप्यते।<br>दानेन कीर्तिर्लभ्यते। दानेन पापं नश्यति॥"</div>
+          <cite class="quote-cite" data-hi="महाभारत · अनुशासन पर्व" data-en="Mahabharata · Anushasan Parva">महाभारत · अनुशासन पर्व</cite>
+          <div class="quote-meaning"><b data-hi="अर्थ:" data-en="Meaning:">अर्थ:</b> <span data-hi="दान सर्वोच्च धर्म है। दान से सब कुछ प्राप्त होता है, दान से कीर्ति मिलती है, दान से पाप का नाश होता है।" data-en="Charity is the supreme dharma. Through charity everything is attained, fame gained, and sins destroyed.">दान सर्वोच्च धर्म है। दान से सब कुछ प्राप्त होता है, दान से कीर्ति मिलती है, दान से पाप का नाश होता है।</span></div>
+        </div>
+
+        <div class="quote-box">
+          <div class="quote-text">"विद्या दानं परं दानं, विद्या दानं महाफलम्।<br>विद्यया सदृशं दानं न भूतं न भविष्यति॥"</div>
+          <cite class="quote-cite" data-hi="विदुर नीति · प्राचीन संस्कृत सूक्ति" data-en="Vidura Neeti · Ancient Sanskrit precept">विदुर नीति · प्राचीन संस्कृत सूक्ति</cite>
+          <div class="quote-meaning"><b data-hi="अर्थ:" data-en="Meaning:">अर्थ:</b> <span data-hi="विद्या का दान सर्वश्रेष्ठ दान है, यह महान फल प्रदान करता है। विद्या के दान के समान कोई दान न अतीत में हुआ, न भविष्य में होगा।" data-en="The gift of knowledge is the greatest gift, yielding highest fruit. No gift like knowledge has ever been or will be.">विद्या का दान सर्वश्रेष्ठ दान है, यह महान फल प्रदान करता है। विद्या के दान के समान कोई दान न अतीत में हुआ, न भविष्य में होगा।</span></div>
+        </div>
+
+        <div class="quote-box">
+          <div class="quote-text">"अन्नदानं महादानं विद्यादानमतः परम्।<br>अन्नेन क्षणिका तृप्तिर्विद्यया तु चिरस्थितिः॥"</div>
+          <cite class="quote-cite" data-hi="आचार्य चाणक्य · नीति शतक" data-en="Acharya Chanakya · Neeti Shatak">आचार्य चाणक्य · नीति शतक</cite>
+          <div class="quote-meaning"><b data-hi="अर्थ:" data-en="Meaning:">अर्थ:</b> <span data-hi="अन्न का दान महान है, किन्तु विद्या का दान उससे भी श्रेष्ठ है। अन्न से क्षणिक तृप्ति होती है, विद्या से चिरस्थायी सन्तुष्टि।" data-en="The gift of food is great, but knowledge is superior. Food gives momentary satisfaction, knowledge gives enduring contentment.">अन्न का दान महान है, किन्तु विद्या का दान उससे भी श्रेष्ठ है। अन्न से क्षणिक तृप्ति होती है, विद्या से चिरस्थायी सन्तुष्टि।</span></div>
+        </div>
+
+        <div class="quote-box">
+          <div class="quote-text">"न केवलं दानं परं धर्मः, दानं रक्षति रक्षितम्।<br>यथा नद्यः समुद्रं वै सर्वतः समुपावृताः॥"</div>
+          <cite class="quote-cite" data-hi="ऋग्वेद परम्परा · प्राचीन भारतीय नीति" data-en="Rigvedic tradition · Ancient Indian precept">ऋग्वेद परम्परा · प्राचीन भारतीय नीति</cite>
+          <div class="quote-meaning"><b data-hi="अर्थ:" data-en="Meaning:">अर्थ:</b> <span data-hi="दान सर्वोच्च धर्म है; जो दान की रक्षा करता है, दान उसकी रक्षा करता है — जैसे सभी दिशाओं से नदियाँ समुद्र में मिलती हैं।" data-en="Charity is the highest dharma; whoever protects charity, charity protects them — as rivers from all directions meet the ocean.">दान सर्वोच्च धर्म है; जो दान की रक्षा करता है, दान उसकी रक्षा करता है — जैसे सभी दिशाओं से नदियाँ समुद्र में मिलती हैं।</span></div>
+        </div>
+
+        <div class="quote-box">
+          <div class="quote-text">"परहित सरिस धरम नहिं भाई।<br>पर पीड़ा सम नहिं अधमाई॥"</div>
+          <cite class="quote-cite" data-hi="गोस्वामी तुलसीदास · रामचरितमानस" data-en="Goswami Tulsidas · Ramcharitmanas">गोस्वामी तुलसीदास · रामचरितमानस</cite>
+          <div class="quote-meaning"><b data-hi="अर्थ:" data-en="Meaning:">अर्थ:</b> <span data-hi="हे भाई! परहित के समान कोई धर्म नहीं, और पराई पीड़ा के समान कोई अधर्म नहीं।" data-en="O brother! No dharma like benefitting others, no sin like causing pain to others.">हे भाई! परहित के समान कोई धर्म नहीं, और पराई पीड़ा के समान कोई अधर्म नहीं।</span></div>
+        </div>
+
+        <div class="quote-box">
+          <div class="quote-text">"प्रजासुखे सुखं राज्ञः प्रजानां च हिते हितम्।<br>नात्मप्रियं हितं राज्ञः प्रजानां तु प्रियं हितम्॥"</div>
+          <cite class="quote-cite" data-hi="कौटिल्य अर्थशास्त्र" data-en="Kautilya Arthashastra">कौटिल्य अर्थशास्त्र</cite>
+          <div class="quote-meaning"><b data-hi="अर्थ:" data-en="Meaning:">अर्थ:</b> <span data-hi="प्रजा के सुख में ही शासक का सुख है, प्रजा के हित में ही उसका हित है। राष्ट्र तभी उन्नत होता है जब प्रत्येक नागरिक शिक्षित एवं सन्तुष्ट हो।" data-en="In the happiness of subjects lies the ruler's happiness. A nation prospers when every citizen is educated and content.">प्रजा के सुख में ही शासक का सुख है, प्रजा के हित में ही उसका हित है। राष्ट्र तभी उन्नत होता है जब प्रत्येक नागरिक शिक्षित एवं सन्तुष्ट हो।</span></div>
+        </div>
+
+        <div class="quote-box english">
+          <div class="quote-text">"The best way to find yourself is to lose yourself in the service of others."</div>
+          <cite class="quote-cite">— Mahatma Gandhi</cite>
+          <div class="quote-meaning"><b data-hi="अर्थ:" data-en="Meaning:">अर्थ:</b> <span data-hi="स्वयं को खोजने का सर्वश्रेष्ठ मार्ग है — दूसरों की सेवा में स्वयं को खो देना।" data-en="The best way to find yourself is to lose yourself in the service of others.">स्वयं को खोजने का सर्वश्रेष्ठ मार्ग है — दूसरों की सेवा में स्वयं को खो देना।</span></div>
+        </div>
+
+        <div class="quote-box english">
+          <div class="quote-text">"Education is the most powerful weapon which you can use to change the world."</div>
+          <cite class="quote-cite">— Nelson Mandela</cite>
+          <div class="quote-meaning"><b data-hi="अर्थ:" data-en="Meaning:">अर्थ:</b> <span data-hi="शिक्षा सर्वाधिक शक्तिशाली शस्त्र है जिससे आप विश्व को परिवर्तित कर सकते हैं।" data-en="Education is the most powerful weapon which you can use to change the world.">शिक्षा सर्वाधिक शक्तिशाली शस्त्र है जिससे आप विश्व को परिवर्तित कर सकते हैं।</span></div>
+        </div>
+
+        <div class="quote-box english">
+          <div class="quote-text">"We make a living by what we get, but we make a life by what we give."</div>
+          <cite class="quote-cite">— Winston Churchill</cite>
+          <div class="quote-meaning"><b data-hi="अर्थ:" data-en="Meaning:">अर्थ:</b> <span data-hi="हम जो प्राप्त करते हैं उससे जीविका चलाते हैं, किन्तु जो देते हैं उससे जीवन का निर्माण करते हैं।" data-en="We make a living by what we get, but we make a life by what we give.">हम जो प्राप्त करते हैं उससे जीविका चलाते हैं, किन्तु जो देते हैं उससे जीवन का निर्माण करते हैं।</span></div>
+        </div>
+
+        <div class="quote-box english">
+          <div class="quote-text">"No one has ever become poor by giving."</div>
+          <cite class="quote-cite">— Anne Frank</cite>
+          <div class="quote-meaning"><b data-hi="अर्थ:" data-en="Meaning:">अर्थ:</b> <span data-hi="दान देने से आज तक कोई दरिद्र नहीं हुआ। देने से समृद्धि ही बढ़ती है।" data-en="No one has ever become poor by giving. Giving increases prosperity.">दान देने से आज तक कोई दरिद्र नहीं हुआ। देने से समृद्धि ही बढ़ती है।</span></div>
+        </div>
+
+        <div class="quote-box english">
+          <div class="quote-text">"We rise by lifting others."</div>
+          <cite class="quote-cite">— Robert Ingersoll</cite>
+          <div class="quote-meaning"><b data-hi="अर्थ:" data-en="Meaning:">अर्थ:</b> <span data-hi="हम दूसरों को उठाकर ही स्वयं ऊपर उठते हैं। — The Uplift का यही आदर्श वाक्य है।" data-en="We rise by lifting others. — This is The Uplift's motto.">हम दूसरों को उठाकर ही स्वयं ऊपर उठते हैं। — The Uplift का यही आदर्श वाक्य है।</span></div>
+        </div>
+
+        <div class="quote-box english">
+          <div class="quote-text">"It is every man's obligation to put back into the world at least the equivalent of what he takes out of it."</div>
+          <cite class="quote-cite">— Albert Einstein</cite>
+          <div class="quote-meaning"><b data-hi="अर्थ:" data-en="Meaning:">अर्थ:</b> <span data-hi="प्रत्येक व्यक्ति का कर्तव्य है कि संसार से जितना ग्रहण करता है, उसका कम से कम समान अंश वापस अर्पित करे।" data-en="It is every man's obligation to put back into the world at least the equivalent of what he takes out of it.">प्रत्येक व्यक्ति का कर्तव्य है कि संसार से जितना ग्रहण करता है, उसका कम से कम समान अंश वापस अर्पित करे।</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- USAGE -->
+    <div class="usage-section">
+      <div class="quotes-title">
+        <span class="eyebrow" data-hi="🙏 आपके दान का उपयोग" data-en="🙏 Use of your donation">🙏 आपके दान का उपयोग</span>
+        <h2 data-hi="आपका दान कहाँ पहुँचता है?" data-en="Where does your donation go?">आपका दान कहाँ पहुँचता है?</h2>
+        <p data-hi="प्रत्येक रुपये का पूर्ण पारदर्शिता के साथ उपयोग किया जाता है।" data-en="Every rupee is used with complete transparency.">प्रत्येक रुपये का पूर्ण पारदर्शिता के साथ उपयोग किया जाता है।</p>
+      </div>
+
+      <div class="usage-grid">
+        <div class="usage-card green">
+          <span class="percent">40%</span>
+          <div class="u-ico">🎓</div>
+          <h3 data-hi="अनाथ विद्यार्थी सहायता" data-en="Orphan Student Support">अनाथ विद्यार्थी सहायता</h3>
+          <p data-hi="अनाथ बालकों की पूर्ण शुल्क-सहायता, पुस्तकें तथा संगणक पाठ्यक्रम नि:शुल्क।" data-en="Full fee support, books and computer course free for orphans.">अनाथ बालकों की पूर्ण शुल्क-सहायता, पुस्तकें तथा संगणक पाठ्यक्रम नि:शुल्क।</p>
+        </div>
+        <div class="usage-card">
+          <span class="percent">15%</span>
+          <div class="u-ico">📚</div>
+          <h3 data-hi="पुस्तकें व सामग्री" data-en="Books & Materials">पुस्तकें व सामग्री</h3>
+          <p data-hi="प्रत्येक विद्यार्थी को पाठ्य-सामग्री, अभ्यास-प्रश्नपत्र तथा लेखन-सामग्री नि:शुल्क।" data-en="Study materials, practice papers and stationery free for all students.">प्रत्येक विद्यार्थी को पाठ्य-सामग्री, अभ्यास-प्रश्नपत्र तथा लेखन-सामग्री नि:शुल्क।</p>
+        </div>
+        <div class="usage-card green">
+          <span class="percent">15%</span>
+          <div class="u-ico">💻</div>
+          <h3 data-hi="संगणक सुविधा" data-en="Computer Facility">संगणक सुविधा</h3>
+          <p data-hi="संगणक प्रयोगशाला, अंतर्जाल तथा अंकीय उपकरण — ग्रामीण बालकों हेतु।" data-en="Computer lab, internet and digital devices — for rural children.">संगणक प्रयोगशाला, अंतर्जाल तथा अंकीय उपकरण — ग्रामीण बालकों हेतु।</p>
+        </div>
+        <div class="usage-card">
+          <span class="percent">20%</span>
+          <div class="u-ico">🧑‍🏫</div>
+          <h3 data-hi="शिक्षक मानदेय" data-en="Teacher Honorarium">शिक्षक मानदेय</h3>
+          <p data-hi="अनुभवी शिक्षकों को मानदेय — जिससे शिक्षण की गुणवत्ता उच्च रहे।" data-en="Honorarium for experienced teachers — to maintain high quality.">अनुभवी शिक्षकों को मानदेय — जिससे शिक्षण की गुणवत्ता उच्च रहे।</p>
+        </div>
+        <div class="usage-card green">
+          <span class="percent">5%</span>
+          <div class="u-ico">🏫</div>
+          <h3 data-hi="कक्षा भवन व्यय" data-en="Classroom Expenses">कक्षा भवन व्यय</h3>
+          <p data-hi="कक्षा-भवन, विद्युत, जल तथा अन्य आधारभूत सुविधाएँ।" data-en="Classroom, electricity, water and other basic facilities.">कक्षा-भवन, विद्युत, जल तथा अन्य आधारभूत सुविधाएँ।</p>
+        </div>
+        <div class="usage-card">
+          <span class="percent">5%</span>
+          <div class="u-ico">🌱</div>
+          <h3 data-hi="नई शाखाएँ" data-en="New Branches">नई शाखाएँ</h3>
+          <p data-hi="अन्य ग्रामों तक पहुँचने हेतु नए केंद्रों का विस्तार।" data-en="Opening new centers to reach more villages.">अन्य ग्रामों तक पहुँचने हेतु नए केंद्रों का विस्तार।</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRANSPARENCY -->
+    <div class="transparency-grid">
+      <div class="transp-card">
+        <h4><span>📌</span> <span data-hi="पारदर्शिता" data-en="Transparency">पारदर्शिता</span></h4>
+        <p data-hi="दिप्र फ़ाउंडेशन एक पंजीकृत न्यास है (Trust Act 1882, पंजीकरण संख्या ३००, दर्पण: UP/2024/0459444)। प्रत्येक दान का लेखा-जोखा रखा जाता है तथा माँगने पर प्रतिवेदन उपलब्ध कराया जाता है। आपके दान की रसीद तथा कर-छूट प्रमाणपत्र उपलब्ध कराया जा सकता है।" data-en="Dipra Foundation is a registered trust (Trust Act 1882, Reg. No. 300, Darpan: UP/2024/0459444). Every donation is recorded and reports available on request. Receipts and tax-exemption certificates can be provided.">दिप्र फ़ाउंडेशन एक पंजीकृत न्यास है (Trust Act 1882, पंजीकरण संख्या ३००, दर्पण: UP/2024/0459444)। प्रत्येक दान का लेखा-जोखा रखा जाता है तथा माँगने पर प्रतिवेदन उपलब्ध कराया जाता है। आपके दान की रसीद तथा कर-छूट प्रमाणपत्र उपलब्ध कराया जा सकता है।</p>
+      </div>
+      <div class="transp-card warn">
+        <h4><span>⚠️</span> <span data-hi="सुरक्षा सूचना" data-en="Safety Notice">सुरक्षा सूचना</span></h4>
+        <p data-hi="कृपया किसी भी व्यक्तिगत खाते में सीधे भुगतान न करें। नीचे दिए फॉर्म को भरने के पश्चात् हमारी टीम आधिकारिक भुगतान प्रक्रिया तथा बैंक विवरण कूट-सत्यापन के बाद विद्युत्पत्र अथवा चलभाष द्वारा उपलब्ध कराएगी।" data-en="Do not pay into any personal account. After filling this form, our team will share the official payment process and bank details via email/phone after code verification.">कृपया किसी भी व्यक्तिगत खाते में सीधे भुगतान न करें। नीचे दिए फॉर्म को भरने के पश्चात् हमारी टीम आधिकारिक भुगतान प्रक्रिया तथा बैंक विवरण कूट-सत्यापन के बाद विद्युत्पत्र अथवा चलभाष द्वारा उपलब्ध कराएगी।</p>
+      </div>
+    </div>
+
+    <!-- DONATE FORM -->
+    <div class="donate-form-card" id="donateFormCard">
+      <h2 data-hi="दान फॉर्म" data-en="Donation Form">दान फॉर्म</h2>
+      <p data-hi="कृपया नीचे विवरण भरें। कूट-सत्यापन के पश्चात् हमारी टीम आपसे संपर्क करेगी।" data-en="Please fill the details below. After code verification, our team will contact you.">कृपया नीचे विवरण भरें। कूट-सत्यापन के पश्चात् हमारी टीम आपसे संपर्क करेगी।</p>
+
+      <form id="donateForm" novalidate>
+
+        <div class="row">
+          <div class="field">
+            <label data-hi="आपका नाम" data-en="Your Name">आपका नाम <span class="req">*</span></label>
+            <input type="text" name="dName" placeholder="आर्यन शुक्ला / Aryan Shukla">
+            <div class="errmsg" data-hi="कृपया नाम अंकित करें" data-en="Please enter name">कृपया नाम अंकित करें</div>
+          </div>
+          <div class="field">
+            <label data-hi="चलभाष संख्या" data-en="Mobile">चलभाष संख्या <span class="req">*</span></label>
+            <input type="tel" name="dMobile" maxlength="10" inputmode="numeric">
+            <div class="errmsg" data-hi="दस अंकों की संख्या अंकित करें" data-en="Enter 10-digit number">दस अंकों की संख्या अंकित करें</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label data-hi="विद्युत्पत्र" data-en="Email">विद्युत्पत्र <span class="req">*</span></label>
+          <input type="email" name="dEmail" placeholder="name@example.com">
+          <small data-hi="कूट तथा आधिकारिक भुगतान विवरण इसी पर भेजा जाएगा।" data-en="Code and official payment details sent here.">कूट तथा आधिकारिक भुगतान विवरण इसी पर भेजा जाएगा।</small>
+          <div class="errmsg" data-hi="सही विद्युत्पत्र अंकित करें" data-en="Enter valid email">सही विद्युत्पत्र अंकित करें</div>
+        </div>
+
+        <div class="field">
+          <label data-hi="दान राशि (₹)" data-en="Donation Amount (₹)">दान राशि (₹) <span class="req">*</span></label>
+          <div class="amount-presets" id="amountPresets">
+            <button type="button" class="amount-preset" data-amt="300">₹300</button>
+            <button type="button" class="amount-preset" data-amt="500">₹500</button>
+            <button type="button" class="amount-preset" data-amt="1100">₹1,100</button>
+            <button type="button" class="amount-preset" data-amt="2100">₹2,100</button>
+            <button type="button" class="amount-preset" data-amt="5100">₹5,100</button>
+            <button type="button" class="amount-preset" data-amt="11000">₹11,000</button>
+          </div>
+          <input type="number" name="dAmount" id="dAmountInput" min="100" step="100" placeholder="अथवा अन्य राशि / Or other amount" inputmode="numeric">
+          <div class="errmsg" data-hi="कृपया राशि अंकित करें (कम से ₹100)" data-en="Enter amount (min ₹100)">कृपया राशि अंकित करें (कम से ₹100)</div>
+        </div>
+
+        <div class="field">
+          <label data-hi="दान का उद्देश्य" data-en="Purpose of Donation">दान का उद्देश्य</label>
+          <select name="dPurpose">
+            <option value="सामान्य निधि / General Fund" data-hi="सामान्य निधि / General Fund" data-en="General Fund">सामान्य निधि / General Fund</option>
+            <option value="अनाथ विद्यार्थी सहायता / Orphan Support" data-hi="अनाथ विद्यार्थी सहायता / Orphan Support" data-en="Orphan Support">अनाथ विद्यार्थी सहायता / Orphan Support</option>
+            <option value="पुस्तकें व स्टेशनरी / Books & Stationery" data-hi="पुस्तकें व स्टेशनरी / Books & Stationery" data-en="Books & Stationery">पुस्तकें व स्टेशनरी / Books & Stationery</option>
+            <option value="संगणक सुविधा / Computer Facility" data-hi="संगणक सुविधा / Computer Facility" data-en="Computer Facility">संगणक सुविधा / Computer Facility</option>
+            <option value="शिक्षक मानदेय / Teacher Honorarium" data-hi="शिक्षक मानदेय / Teacher Honorarium" data-en="Teacher Honorarium">शिक्षक मानदेय / Teacher Honorarium</option>
+            <option value="अन्य / Other" data-hi="अन्य / Other" data-en="Other">अन्य / Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label data-hi="संदेश (वैकल्पिक)" data-en="Message (optional)">संदेश (वैकल्पिक)</label>
+          <textarea name="dMessage" placeholder="कोई संदेश अथवा विशेष निर्देश..."></textarea>
+        </div>
+
+        <label class="consent-box" id="consentBox" style="margin-bottom:20px">
+          <input type="checkbox" id="consentCheck">
+          <span data-hi="मैं पुष्टि करता/करती हूँ कि यह दान पूर्णतः स्वेच्छा से दे रहा/रही हूँ, किसी प्रतिफल की अपेक्षा नहीं है। मैं केवल दिप्र फ़ाउंडेशन के आधिकारिक माध्यमों से ही भुगतान करूँगा/करूँगी।" data-en="I confirm this donation is purely voluntary, no return expected. I will pay only through official channels of Dipra Foundation.">मैं पुष्टि करता/करती हूँ कि यह दान पूर्णतः स्वेच्छा से दे रहा/रही हूँ, किसी प्रतिफल की अपेक्षा नहीं है। मैं केवल दिप्र फ़ाउंडेशन के आधिकारिक माध्यमों से ही भुगतान करूँगा/करूँगी।</span>
+        </label>
+
+        <button type="submit" class="btn btn-saffron btn-block">
+          📩 <span data-hi="आगे बढ़ें — कूट सत्यापन" data-en="Continue — Verify Code">आगे बढ़ें — कूट सत्यापन</span>
+        </button>
+
+        <p style="text-align:center;font-size:.84rem;color:var(--muted);margin-top:16px;line-height:1.7" data-hi="📌 यह फॉर्म केवल इच्छा दर्ज करता है। भुगतान की आधिकारिक जानकारी कूट सत्यापन के पश्चात् भेजी जाएगी।" data-en="📌 This form only records intent. Official payment information will be sent after code verification.">📌 यह फॉर्म केवल इच्छा दर्ज करता है। भुगतान की आधिकारिक जानकारी कूट सत्यापन के पश्चात् भेजी जाएगी।</p>
+
+      </form>
+
+      <!-- CONFIRMATION -->
+      <div class="confirm" id="confirmCard">
+        <div class="tick">✓</div>
+        <h3 data-hi="🙏 धन्यवाद! आपकी दान इच्छा दर्ज हो गई" data-en="🙏 Thank you! Your donation intent is recorded">🙏 धन्यवाद! आपकी दान इच्छा दर्ज हो गई</h3>
+        <p data-hi="हमारी टीम शीघ्र ही आपसे संपर्क करके आधिकारिक भुगतान प्रक्रिया तथा बैंक विवरण उपलब्ध कराएगी। कृपया अपनी दान संख्या सुरक्षित रखें।" data-en="Our team will soon contact you with the official payment process and bank details. Please keep your donation ID safe.">हमारी टीम शीघ्र ही आपसे संपर्क करके आधिकारिक भुगतान प्रक्रिया तथा बैंक विवरण उपलब्ध कराएगी। कृपया अपनी दान संख्या सुरक्षित रखें।</p>
+        <div class="donation-id-box">
+          <small data-hi="दान संदर्भ संख्या" data-en="Donation Reference ID">दान संदर्भ संख्या</small>
+          <b id="genDonationId">—</b>
+        </div>
+        <p style="font-size:.86rem;color:var(--maroon);background:var(--saffron-soft);padding:12px 16px;border-radius:10px;border:1.5px solid var(--saffron-2);max-width:540px;margin:20px auto;line-height:1.7">
+          <b>📌 <span data-hi="महत्वपूर्ण:" data-en="Important:">महत्वपूर्ण:</span></b>
+          <span data-hi=" कृपया किसी भी व्यक्तिगत खाते में सीधे भुगतान न करें। आधिकारिक भुगतान प्रक्रिया हमारी टीम द्वारा ही उपलब्ध कराई जाएगी।" data-en=" Do not pay into any personal account. Official process will be shared by our team."> कृपया किसी भी व्यक्तिगत खाते में सीधे भुगतान न करें। आधिकारिक भुगतान प्रक्रिया हमारी टीम द्वारा ही उपलब्ध कराई जाएगी।</span>
+        </p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px">
+          <a href="index.html" class="btn btn-outline">🏠 <span data-hi="गृह पृष्ठ" data-en="Home">गृह पृष्ठ</span></a>
+          <button class="btn btn-outline" onclick="resetDonationForm()">🔄 <span data-hi="नया दान करें" data-en="New Donation">नया दान करें</span></button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+      <h3 data-hi="🪔 ज्ञान का दान सर्वश्रेष्ठ दान है" data-en="🪔 The gift of knowledge is the greatest gift">🪔 ज्ञान का दान सर्वश्रेष्ठ दान है</h3>
+      <p data-hi="आपका एक दान किसी बालक की सम्पूर्ण जीवन-यात्रा को परिवर्तित कर सकता है। आइए, मिलकर इस पुण्य कार्य में सहभागी बनें।" data-en="Your one donation can transform a child's entire life journey. Let us participate together in this noble cause.">आपका एक दान किसी बालक की सम्पूर्ण जीवन-यात्रा को परिवर्तित कर सकता है। आइए, मिलकर इस पुण्य कार्य में सहभागी बनें।</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a href="index.html#courses" class="btn btn-outline">📚 <span data-hi="पाठ्यक्रम देखें" data-en="View Courses">पाठ्यक्रम देखें</span></a>
+        <a href="portal.html" class="btn btn-outline">🔐 <span data-hi="पोर्टल" data-en="Portal">पोर्टल</span></a>
+        <a href="contact.html" class="btn btn-outline">📞 <span data-hi="संपर्क" data-en="Contact">संपर्क</span></a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="foot-brand">दिप्र फ़ाउंडेशन</div>
+    <div class="foot-line">📍 खेरसा, बिधनू, कानपुर नगर, उत्तर प्रदेश – २०९२१४</div>
+    <div class="foot-line">📞 <a href="tel:+919532328276">+91 95323 28276</a> · ✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></div>
+    <div class="foot-line">🌐 <a href="https://www.diprafoundation.com">www.diprafoundation.com</a></div>
+    <div style="font-size:.8rem;margin-top:14px;color:#c9a8b9">© २०२६ दिप्र फ़ाउंडेशन · पंजीकृत न्यास · पंजीकरण संख्या ३०० · दर्पण: UP/2024/0459444</div>
+  </div>
+</footer>
+
+<!-- OTP MODAL -->
+<div class="modal" id="otpModal" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 data-hi="🔐 विद्युत्पत्र सत्यापन" data-en="🔐 Email Verification">🔐 विद्युत्पत्र सत्यापन</h3>
+      <button class="close-x" onclick="closeOtpModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div id="otpStep1">
+        <p style="color:var(--ink-2);font-size:.96rem;margin-bottom:18px;line-height:1.7;text-align:center" data-hi="आपके विद्युत्पत्र पर छह अंकों का कूट भेजा जाएगा। यह सत्यापन दान की सुरक्षा हेतु आवश्यक है।" data-en="A 6-digit code will be sent to your email. This verification is required for donation security.">आपके विद्युत्पत्र पर छह अंकों का कूट भेजा जाएगा। यह सत्यापन दान की सुरक्षा हेतु आवश्यक है।</p>
+        <div class="field">
+          <label data-hi="विद्युत्पत्र" data-en="Email">विद्युत्पत्र</label>
+          <input type="email" id="otpEmail" readonly style="background:var(--cream-2)">
+        </div>
+        <button class="btn btn-saffron btn-block" id="otpSendBtn">
+          📩 <span data-hi="कूट भेजें" data-en="Send Code">कूट भेजें</span>
+        </button>
+      </div>
+
+      <div id="otpStep2" style="display:none">
+        <div style="text-align:center;margin-bottom:14px">
+          <div style="display:inline-block;background:var(--green-soft);color:var(--green-3);padding:8px 18px;border-radius:10px;font-size:.9rem;font-weight:600;border:1.5px solid var(--green-2)">
+            ✉️ <span data-hi="कूट भेजा गया" data-en="Code sent">कूट भेजा गया</span>: <span id="otpSentTo" style="font-family:monospace"></span>
+          </div>
+        </div>
+        <div class="field">
+          <label style="text-align:center;display:block" data-hi="छह अंकों का कूट" data-en="6-digit Code">छह अंकों का कूट</label>
+          <div class="otp-inputs" id="otpBoxes">
+            <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+            <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+            <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+            <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+            <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+            <input type="text" class="otp-box" maxlength="1" inputmode="numeric">
+          </div>
+          <div class="errmsg" id="otpCodeErr" style="text-align:center"></div>
+        </div>
+        <div style="display:flex;gap:10px">
+          <button class="btn btn-outline" id="otpBackBtn" style="flex:1">← <span data-hi="पीछे" data-en="Back">पीछे</span></button>
+          <button class="btn btn-green" id="otpVerifyBtn" style="flex:2">✓ <span data-hi="सत्यापित करें" data-en="Verify">सत्यापित करें</span></button>
+        </div>
+        <p style="text-align:center;margin-top:14px;font-size:.9rem;color:var(--muted)">
+          <span data-hi="कूट नहीं मिला?" data-en="No code?">कूट नहीं मिला?</span>
+          <button id="otpResendBtn" style="color:var(--maroon);font-weight:700;text-decoration:underline;background:none;border:none;cursor:pointer;padding:0" data-hi="पुन: भेजें" data-en="Resend">पुन: भेजें</button>
+          <span id="otpTimer" style="margin-left:8px"></span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   DONATE PAGE — दिप्र फ़ाउंडेशन
+   ============================================================ */
+const $ = (s, c=document) => c.querySelector(s);
+const $$ = (s, c=document) => [...c.querySelectorAll(s)];
+const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbynC667snioVb9pnBE8jDRWUJHwKOUi5jTYO31PlfolDG5VjcTrE93zh2k-Ai7zgi0/exec';
+
+/* ---------- Language ---------- */
+function setLang(lang){
+  document.body.classList.toggle('lang-hi', lang === 'hi');
+  document.body.classList.toggle('lang-en', lang === 'en');
+  document.documentElement.lang = lang;
+  $$('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  try { localStorage.setItem('uplift_lang', lang); } catch(e){}
+  $$('[data-hi][data-en]').forEach(el => {
+    const t = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-hi');
+    if(t !== null){
+      if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = t;
+      else if(el.tagName === 'OPTION') el.textContent = t;
+      else el.textContent = t;
+    }
+  });
+}
+$$('.lang-btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+try { const s = localStorage.getItem('uplift_lang'); if(s) setLang(s); }catch(e){}
+
+/* ---------- Toast ---------- */
+let _toastTimer;
+function toast(msg){
+  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(_toastTimer); _toastTimer = setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+/* ---------- Modals ---------- */
+function openOtpModal(){ $('#otpModal').classList.add('show'); document.body.classList.add('modal-open'); }
+function closeOtpModal(){ $('#otpModal').classList.remove('show'); document.body.classList.remove('modal-open'); }
+$('#otpModal').addEventListener('click', e => { if(e.target.id === 'otpModal') closeOtpModal(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeOtpModal(); });
+
+/* ---------- Amount presets ---------- */
+$$('.amount-preset').forEach(btn => {
+  btn.addEventListener('click', () => {
+    $$('.amount-preset').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    $('#dAmountInput').value = btn.dataset.amt;
+    $('[name="dAmount"]').closest('.field').classList.remove('err');
+  });
+});
+$('#dAmountInput').addEventListener('input', () => {
+  $$('.amount-preset').forEach(b => b.classList.remove('active'));
+  $('[name="dAmount"]').closest('.field').classList.remove('err');
+});
+
+/* ---------- Consent ---------- */
+$('#consentCheck').addEventListener('change', () => {
+  $('#consentBox').classList.toggle('err', !$('#consentCheck').checked);
+});
+
+/* ---------- OTP Input Auto-focus ---------- */
+function getOtpValue(){
+  return $$('#otpBoxes .otp-box').map(b => b.value).join('');
+}
+function clearOtp(){
+  $$('#otpBoxes .otp-box').forEach(b => { b.value = ''; b.classList.remove('filled'); });
+}
+(function setupOtp(){
+  const boxes = $$('#otpBoxes .otp-box');
+  boxes.forEach((box, i) => {
+    box.addEventListener('input', e => {
+      let v = e.target.value.replace(/\D/g, '');
+      if(v.length > 1) v = v.charAt(v.length - 1);
+      e.target.value = v;
+      e.target.classList.toggle('filled', !!v);
+      if(v && i < boxes.length - 1) boxes[i + 1].focus();
+      if(boxes.every(b => b.value.length === 1)) setTimeout(() => $('#otpVerifyBtn').click(), 200);
+    });
+    box.addEventListener('keydown', e => {
+      if(e.key === 'Backspace' && !e.target.value && i > 0) boxes[i - 1].focus();
+      if(e.key === 'ArrowLeft' && i > 0) boxes[i - 1].focus();
+      if(e.key === 'ArrowRight' && i < boxes.length - 1) boxes[i + 1].focus();
+    });
+    box.addEventListener('paste', e => {
+      e.preventDefault();
+      const paste = (e.clipboardData.getData('text') || '').replace(/\D/g, '').slice(0, 6);
+      boxes.forEach((b, j) => { b.value = paste.charAt(j) || ''; b.classList.toggle('filled', !!b.value); });
+      if(paste.length === 6) setTimeout(() => $('#otpVerifyBtn').click(), 200);
+    });
+  });
+})();
+
+/* ---------- API ---------- */
+async function apiCall(payload){
+  try{
+    const res = await fetch(SHEET_ENDPOINT, {
+      method:'POST',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify(payload),
+      redirect:'follow'
+    });
+    const text = await res.text();
+    try { return JSON.parse(text); }
+    catch(e){ return { status:'error', message:'अमान्य प्रतिक्रिया' }; }
+  } catch(e){
+    return { status:'error', message:'संपर्क विफल। पुन: प्रयास करें।' };
+  }
+}
+
+/* ---------- Form Submit ---------- */
+let _donationData = null;
+let _otpTimer = null;
+
+$('#donateForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target;
+  const g = n => { const el = f.querySelector(`[name="${n}"]`); return el ? el.value.trim() : ''; };
+  const name = g('dName');
+  const mobile = g('dMobile');
+  const email = g('dEmail');
+  const amount = parseFloat(g('dAmount')) || 0;
+  const purpose = g('dPurpose');
+  const message = g('dMessage');
+
+  let ok = true;
+  const mark = (n, bad) => {
+    const el = f.querySelector(`[name="${n}"]`);
+    if(el) el.closest('.field').classList.toggle('err', bad);
+    if(bad) ok = false;
+  };
+  mark('dName', name.length < 3);
+  mark('dMobile', !/^[6-9]\d{9}$/.test(mobile));
+  mark('dEmail', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
+  mark('dAmount', amount < 100);
+
+  const consent = $('#consentCheck').checked;
+  $('#consentBox').classList.toggle('err', !consent);
+  if(!consent) ok = false;
+
+  if(!ok){ toast('कृपया समस्त आवश्यक सूचना सही भरें।'); return; }
+
+  _donationData = { name, mobile, email, amount, purpose, message };
+
+  /* Open OTP */
+  $('#otpEmail').value = email;
+  $('#otpStep1').style.display = 'block';
+  $('#otpStep2').style.display = 'none';
+  clearOtp();
+  $('#otpCodeErr').textContent = '';
+  openOtpModal();
+  setTimeout(() => $('#otpSendBtn').click(), 300);
+});
+
+/* ---------- Send OTP ---------- */
+$('#otpSendBtn').addEventListener('click', async () => {
+  const email = $('#otpEmail').value.trim().toLowerCase();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ toast('सही विद्युत्पत्र नहीं'); return; }
+
+  const btn = $('#otpSendBtn'); const orig = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = '⏳ भेजा जा रहा है...';
+  const r = await apiCall({ action:'sendOtp', email });
+  btn.disabled = false; btn.innerHTML = orig;
+
+  if(r.status === 'success'){
+    $('#otpSentTo').textContent = email;
+    $('#otpStep1').style.display = 'none';
+    $('#otpStep2').style.display = 'block';
+    $$('#otpBoxes .otp-box')[0].focus();
+    startOtpTimer(60);
+    toast('कूट भेजा गया ✓');
+  } else toast(r.message || 'कूट भेजने में त्रुटि');
+});
+
+$('#otpResendBtn').addEventListener('click', () => $('#otpSendBtn').click());
+
+$('#otpBackBtn').addEventListener('click', () => {
+  $('#otpStep2').style.display = 'none';
+  $('#otpStep1').style.display = 'block';
+  clearInterval(_otpTimer);
+});
+
+function startOtpTimer(seconds){
+  clearInterval(_otpTimer);
+  const el = $('#otpTimer'), rs = $('#otpResendBtn');
+  rs.disabled = true; rs.style.opacity = '.5';
+  let s = seconds;
+  el.textContent = '(' + s + 's)';
+  _otpTimer = setInterval(() => {
+    s--;
+    el.textContent = '(' + s + 's)';
+    if(s <= 0){ clearInterval(_otpTimer); el.textContent = ''; rs.disabled = false; rs.style.opacity = '1'; }
+  }, 1000);
+}
+
+/* ---------- Verify OTP + Submit Donation ---------- */
+$('#otpVerifyBtn').addEventListener('click', async () => {
+  const otp = getOtpValue();
+  if(!/^\d{6}$/.test(otp)){ $('#otpCodeErr').textContent = 'छह अंकों का कूट अंकित करें'; return; }
+  if(!_donationData){ toast('कृपया पुन: प्रयास करें'); return; }
+
+  const btn = $('#otpVerifyBtn'); const orig = btn.innerHTML;
+  btn.disabled = true; btn.innerHTML = '⏳ जाँच हो रही है...';
+
+  const email = _donationData.email;
+  const v = await apiCall({ action:'verifyOtp', email, otp });
+  if(v.status !== 'success'){
+    btn.disabled = false; btn.innerHTML = orig;
+    $('#otpCodeErr').textContent = v.message || 'अमान्य कूट';
+    return;
+  }
+
+  btn.innerHTML = '⏳ दान दर्ज हो रहा है...';
+
+  const donationId = 'DPF-DNT-26-' + String(Math.floor(10000 + Math.random() * 89999));
+  const payload = {
+    action:'submit',
+    type:'donation',
+    DonationID: donationId,
+    Name: _donationData.name,
+    Mobile: _donationData.mobile,
+    Email: email,
+    Amount: _donationData.amount,
+    Purpose: _donationData.purpose,
+    Message: _donationData.message
+  };
+
+  const r = await apiCall(payload);
+  btn.disabled = false; btn.innerHTML = orig;
+
+  if(r.status !== 'success'){
+    toast(r.message || 'दान दर्ज करने में त्रुटि');
+    return;
+  }
+
+  closeOtpModal();
+  $('#genDonationId').textContent = donationId;
+  $('#donateForm').style.display = 'none';
+  $('#confirmCard').classList.add('show');
+  toast('🙏 धन्यवाद! दान दर्ज हो गया');
+  window.scrollTo({ top: $('#donateFormCard').offsetTop - 40, behavior: 'smooth' });
+});
+
+/* ---------- Reset ---------- */
+function resetDonationForm(){
+  $('#donateForm').reset();
+  $$('.amount-preset').forEach(b => b.classList.remove('active'));
+  $('#consentBox').classList.remove('err');
+  $$('.field').forEach(f => f.classList.remove('err'));
+  _donationData = null;
+  $('#confirmCard').classList.remove('show');
+  $('#donateForm').style.display = 'block';
+  window.scrollTo({ top: $('#donateFormCard').offsetTop - 40, behavior: 'smooth' });
+}
+
+console.log('%c🙏 दिप्र फ़ाउंडेशन — दान पृष्ठ', 'color:#D4A017;font-weight:bold;font-size:14px');
+</script>
+
+</body>
+</html>
