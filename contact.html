@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<title>संपर्क सूत्र | दिप्र फ़ाउंडेशन — द अपलिफ़्ट</title>
+<meta name="description" content="दिप्र फ़ाउंडेशन (द अपलिफ़्ट शिक्षण योजना) से संपर्क करें। कार्यालय का पता, दूरभाष संख्या एवं विद्युत्पत्र विवरण।">
+<meta name="theme-color" content="#0D7A3A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+<link rel="icon" href="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --saffron:#FF7A00;--saffron-2:#FFA940;--saffron-3:#E65F00;--saffron-soft:#FFF1E0;
+  --green:#0D7A3A;--green-2:#16A34A;--green-3:#075A2A;--green-soft:#E7F6EC;
+  --gold:#D4A017;--gold-2:#F0BE3E;--maroon:#8B1538;--maroon-2:#B91C48;
+  --cream:#FFFBF5;--cream-2:#FFF6E8;--ink:#2A1810;--ink-2:#5A4030;--muted:#8B7355;
+  --border:#F0DCBC;--border-2:#E6C89C;
+  --radius:10px;--radius-lg:16px;--radius-xl:24px;
+  --shadow:0 4px 16px rgba(255,122,0,.12);
+  --shadow-lg:0 12px 40px rgba(139,21,56,.18);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Inter','Noto Sans Devanagari',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.7;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.modal-open{overflow:hidden}
+img{max-width:100%;display:block}
+a{color:var(--maroon);text-decoration:none;transition:.15s}
+a:hover{color:var(--saffron-3)}
+ul,ol{list-style:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+input,select,textarea{font-family:inherit}
+h1,h2,h3,h4{line-height:1.28;font-weight:800;color:var(--maroon);letter-spacing:-.005em}
+h1{font-size:clamp(1.85rem,4.2vw,2.9rem);font-family:'Tiro Devanagari Hindi','Noto Sans Devanagari',serif;font-weight:400;line-height:1.2}
+h2{font-size:clamp(1.4rem,3vw,2.1rem)}
+h3{font-size:1.12rem}
+body.lang-hi .t-en{display:none!important}
+body.lang-en .t-hi{display:none!important}
+
+.container{width:min(1180px,92%);margin-inline:auto;position:relative;z-index:2}
+section{padding:70px 0;position:relative;overflow:hidden}
+.section-head{text-align:center;max-width:780px;margin:0 auto 40px}
+.section-head p{color:var(--ink-2);margin-top:12px;font-size:1rem;line-height:1.75}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--saffron-3);margin-bottom:14px;background:var(--saffron-soft);padding:6px 16px;border-radius:999px;border:1px solid var(--saffron-2)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:12px;font-weight:700;font-size:1rem;transition:.2s;border:1px solid transparent;cursor:pointer;white-space:nowrap;min-height:50px;line-height:1.2}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.btn-primary{background:linear-gradient(135deg,var(--maroon),var(--maroon-2));color:#fff;box-shadow:0 6px 20px rgba(139,21,56,.28)}
+.btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 26px rgba(139,21,56,.4);color:#fff}
+.btn-saffron{background:linear-gradient(135deg,var(--saffron),var(--saffron-3));color:#fff;box-shadow:0 6px 20px rgba(255,122,0,.32)}
+.btn-saffron:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 26px rgba(255,122,0,.45);color:#fff}
+.btn-block{width:100%}
+
+/* Topbar & Header */
+.topbar{background:linear-gradient(90deg,var(--saffron-soft),#fff,var(--green-soft));color:var(--ink-2);font-size:.88rem;padding:10px 0;border-bottom:1px solid var(--border)}
+.topbar .container{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.topbar a{color:var(--maroon);font-weight:600}
+.topbar-links{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+
+header{position:sticky;top:0;z-index:900;background:rgba(255,251,245,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none!important}
+.brand-logo{width:56px;height:56px;border-radius:12px;flex:none;overflow:hidden;background:linear-gradient(135deg,var(--saffron-soft),var(--green-soft));border:2px solid var(--saffron-2);display:grid;place-items:center;padding:6px;box-shadow:0 4px 14px rgba(255,122,0,.2)}
+.brand-logo img{width:100%;height:100%;object-fit:contain;border-radius:8px}
+.brand-text b{display:block;font-size:1.15rem;color:var(--maroon);line-height:1.18;font-weight:800;font-family:'Tiro Devanagari Hindi','Noto Sans Devanagari',serif}
+.brand-text span{font-size:.78rem;color:var(--muted);font-weight:500}
+nav ul{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+nav a{display:block;padding:10px 14px;border-radius:9px;font-size:.95rem;font-weight:600;color:var(--ink);text-decoration:none!important;transition:.15s}
+nav a:hover,nav a.active{background:var(--saffron-soft);color:var(--saffron-3)}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.lang-switch{display:flex;border:1px solid var(--border-2);border-radius:9px;overflow:hidden;background:#fff}
+.lang-btn{padding:8px 12px;font-size:.82rem;font-weight:700;color:var(--muted);background:#fff;transition:.15s}
+.lang-btn.active{background:linear-gradient(135deg,var(--maroon),var(--maroon-2));color:#fff}
+.burger{display:none;flex-direction:column;gap:5px;padding:10px;background:none;border:none;cursor:pointer}
+.burger span{width:24px;height:2.5px;background:var(--maroon);border-radius:2px;transition:.25s}
+.burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+
+/* Grid & Cards */
+.grid{display:grid;gap:22px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow)}
+.card h3{margin-bottom:14px;font-size:1.25rem;color:var(--maroon);font-family:'Tiro Devanagari Hindi',serif}
+.card p{color:var(--ink-2);font-size:1rem;line-height:1.8;margin-bottom:12px}
+
+/* Forms */
+.field{margin-bottom:18px}
+.field label{display:block;font-weight:700;font-size:.96rem;margin-bottom:8px;color:var(--ink)}
+.field input,.field select,.field textarea{width:100%;padding:14px 16px;border:1.5px solid var(--border-2);border-radius:12px;background:#fff;color:var(--ink);font-size:16px;min-height:50px}
+.field textarea{min-height:120px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* Footer */
+footer{background:linear-gradient(180deg,var(--maroon),#5A0F23);color:#F5D9C8;padding:60px 0 0;font-size:.94rem;position:relative}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:34px;padding-bottom:38px}
+footer h4{color:#fff;font-size:1rem;margin-bottom:16px;font-family:'Tiro Devanagari Hindi',serif}
+footer li{margin-bottom:11px}
+footer a{color:#F5D9C8;text-decoration:none}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.14);padding:20px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.86rem}
+.disclaimer{background:rgba(255,255,255,.06);border-left:4px solid var(--gold-2);padding:16px 20px;border-radius:8px;font-size:.86rem;line-height:1.75;margin-bottom:30px;color:#F5D9C8}
+.toast{position:fixed;bottom:100px;left:50%;transform:translate(-50%,140%);background:linear-gradient(135deg,var(--maroon),var(--maroon-2));color:#fff;padding:16px 26px;border-radius:12px;z-index:1500;transition:.35s;font-size:1rem;font-weight:600;border:1.5px solid var(--gold-2)}
+.toast.show{transform:translate(-50%,0)}
+
+@media(max-width:860px){
+  .burger{display:flex}
+  nav{position:fixed;inset:0 0 0 auto;width:min(340px,88vw);background:#fff;z-index:1000;transform:translateX(100%);transition:.3s;padding:80px 20px 30px;overflow-y:auto;box-shadow:-8px 0 40px rgba(139,21,56,.2)}
+  nav.open{transform:translateX(0)}
+  nav ul{flex-direction:column;align-items:stretch}
+  .g2,.row{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body class="lang-hi">
+
+<div style="height:5px;background:linear-gradient(90deg,var(--saffron) 0%,var(--saffron) 33.33%,#fff 33.33%,#fff 66.66%,var(--green) 66.66%,var(--green) 100%)"></div>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-links">
+      <span>📞 <a href="tel:+919532328276">+91 95323 28276</a></span>
+      <span>✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></span>
+      <span data-hi="📍 खेरसा, बिधनू, कानपुर नगर — २०९२१४" data-en="📍 Khersa, Bidhnu, Kanpur Nagar — 209214">📍 खेरसा, बिधनू, कानपुर नगर — २०९२१४</span>
+    </div>
+    <div class="topbar-links">
+      <a href="https://www.diprafoundation.com/the_Uplift.html" target="_blank" rel="noopener">www.diprafoundation.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header id="mainHeader">
+  <div class="container nav-wrap">
+    <a href="index.html" class="brand">
+      <div class="brand-logo">
+        <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="दिप्र फ़ाउंडेशन">
+      </div>
+      <div class="brand-text">
+        <b data-hi="दिप्र फ़ाउंडेशन" data-en="Dipra Foundation">दिप्र फ़ाउंडेशन</b>
+        <span data-hi="द अपलिफ़्ट — शिक्षण योजना" data-en="The Uplift — Learning Scheme">द अपलिफ़्ट — शिक्षण योजना</span>
+      </div>
+    </a>
+
+    <nav id="mainNav" aria-label="मुख्य">
+      <ul>
+        <li><a href="index.html" data-hi="गृह" data-en="Home">गृह</a></li>
+        <li><a href="index.html#courses" data-hi="पाठ्यक्रम" data-en="Courses">पाठ्यक्रम</a></li>
+        <li><a href="index.html#free" data-hi="नि:शुल्क पाठ्यक्रम" data-en="Free Courses">नि:शुल्क पाठ्यक्रम</a></li>
+        <li><a href="contact.html" class="active" data-hi="संपर्क" data-en="Contact">संपर्क</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="hi">हिन्दी</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <button class="burger" id="burger" aria-label="सूची"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- Contact Section -->
+<section style="background:linear-gradient(135deg,#FFF8F0,var(--cream))">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-hi="सम्पर्क सूत्र" data-en="Contact Us">सम्पर्क सूत्र</span>
+      <h2 data-hi="हमसे संपर्क स्थापित करें" data-en="Get in Touch with Us">हमसे संपर्क स्थापित करें</h2>
+      <p data-hi="शिक्षण योजना, प्रवेश, दान अथवा स्वयंसेवा से संबंधित किसी भी जिज्ञासा हेतु हमारे मुख्य कार्यालय से संपर्क करें।" data-en="Contact our main office for any queries regarding learning schemes, admissions, donations or volunteering.">शिक्षण योजना, प्रवेश, दान अथवा स्वयंसेवा से संबंधित किसी भी जिज्ञासा हेतु हमारे मुख्य कार्यालय से संपर्क करें।</p>
+    </div>
+
+    <div class="grid g2">
+      <!-- Office Details Card -->
+      <div class="card">
+        <h3 data-hi="📍 मुख्य कार्यालय एवं विवरण" data-en="📍 Main Office & Details">📍 मुख्य कार्यालय एवं विवरण</h3>
+        <p><strong><span data-hi="संस्था:" data-en="Organisation:">संस्था:</span></strong> दिप्र फ़ाउंडेशन (DIPRA FOUNDATION)</p>
+        <p><strong><span data-hi="पता:" data-en="Address:">पता:</span></strong> <span data-hi="ग्राम-खेरसा, पोस्ट-बिधनू, जनपद-कानपुर नगर, उत्तर प्रदेश — २०९२१४" data-en="Village-Khersa, Post-Bidhnu, District-Kanpur Nagar, Uttar Pradesh — 209214">ग्राम-खेरसा, पोस्ट-बिधनू, जनपद-कानपुर नगर, उत्तर प्रदेश — २०९२१४</span></p>
+        <p><strong><span data-hi="चलभाष:" data-en="Mobile:">चलभाष:</span></strong> <a href="tel:+919532328276">+91 95323 28276</a></p>
+        <p><strong><span data-hi="विद्युत्पत्र (Email):" data-en="Email:">विद्युत्पत्र (Email):</span></strong> <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></p>
+        <p><strong><span data-hi="जालस्थल (Website):" data-en="Website:">जालस्थल (Website):</span></strong> <a href="https://www.diprafoundation.com/the_Uplift.html" target="_blank" rel="noopener">www.diprafoundation.com</a></p>
+        
+        <div style="margin-top:24px;padding:16px;background:var(--saffron-soft);border:1.5px solid var(--saffron-2);border-radius:10px">
+          <p style="font-size:0.95rem;color:var(--saffron-3);margin:0"><strong><span data-hi="कार्यालय समय:" data-en="Office Hours:">कार्यालय समय:</span></strong> <span data-hi="सोमवार से शनिवार — प्रातः १०:०० से सायं ५:०० बजे तक" data-en="Monday to Saturday — 10:00 AM to 5:00 PM">सोमवार से शनिवार — प्रातः १०:०० से सायं ५:०० बजे तक</span></p>
+        </div>
+      </div>
+
+      <!-- Quick Message Form -->
+      <div class="card">
+        <h3 data-hi="📝 त्वरित संदेश भेजें" data-en="📝 Send Quick Message">📝 त्वरित संदेश भेजें</h3>
+        <form id="contactForm" novalidate>
+          <div class="field">
+            <label data-hi="आपका नाम *" data-en="Your Name *">आपका नाम *</label>
+            <input type="text" name="cName" placeholder="अपना पूरा नाम लिखें">
+          </div>
+          <div class="row">
+            <div class="field">
+              <label data-hi="चलभाष संख्या *" data-en="Mobile Number *">चलभाष संख्या *</label>
+              <input type="tel" name="cMobile" maxlength="10" inputmode="numeric" placeholder="१० अंकों का नंबर">
+            </div>
+            <div class="field">
+              <label data-hi="विद्युत्पत्र (Email) *" data-en="Email *">विद्युत्पत्र (Email) *</label>
+              <input type="email" name="cEmail" placeholder="name@example.com">
+            </div>
+          </div>
+          <div class="field">
+            <label data-hi="संदेश / जिज्ञासा *" data-en="Message / Query *">संदेश / जिज्ञासा *</label>
+            <textarea name="cMessage" placeholder="अपनी बात यहाँ विस्तार से लिखें..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-saffron btn-block" data-hi="📩 संदेश प्रेषित करें" data-en="📩 Send Message">📩 संदेश प्रेषित करें</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="disclaimer">
+      <strong data-hi="⚠️ अस्वीकरण:" data-en="⚠️ Disclaimer:">⚠️ अस्वीकरण:</strong>
+      <span data-hi=" द अपलिफ़्ट शिक्षण योजना, दिप्र फ़ाउंडेशन का स्वतंत्र शैक्षणिक प्रयास है। यह किसी सरकारी योजना, विभाग अथवा संस्था से संबद्ध नहीं है।" data-en=" The Uplift Learning Scheme is an independent educational initiative of DIPRA FOUNDATION."> द अपलिफ़्ट शिक्षण योजना, दिप्र फ़ाउंडेशन का स्वतंत्र शैक्षणिक प्रयास है। यह किसी सरकारी योजना, विभाग अथवा संस्था से संबद्ध नहीं है।</span>
+    </div>
+    <div class="foot-grid">
+      <div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+          <div style="background:#fff;width:52px;height:52px;border-radius:10px;padding:6px"><img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="Logo"></div>
+          <div><b style="color:#fff;display:block">दिप्र फ़ाउंडेशन</b><span style="color:var(--gold-2);font-size:0.8rem">द अपलिफ़्ट</span></div>
+        </div>
+        <p style="font-size:.92rem;line-height:1.75;color:#F5D9C8" data-hi="पंजीकृत न्यास (Trust Act 1882, पंजीकरण संख्या ३००) — वंचित विद्यार्थियों तक गुणवत्तापूर्ण शिक्षा पहुँचाने हेतु समर्पित।" data-en="Registered Trust (Trust Act 1882, Reg. No. 300) — dedicated to bringing quality education.">पंजीकृत न्यास (Trust Act 1882, पंजीकरण संख्या ३००) — वंचित विद्यार्थियों तक गुणवत्तापूर्ण शिक्षा पहुँचाने हेतु समर्पित।</p>
+      </div>
+      <div>
+        <h4 data-hi="मुख्य कड़ियाँ" data-en="Quick Links">मुख्य कड़ियाँ</h4>
+        <ul>
+          <li><a href="index.html" data-hi="गृह पृष्ठ" data-en="Home">गृह पृष्ठ</a></li>
+          <li><a href="index.html#courses" data-hi="पाठ्यक्रम एवं शुल्क" data-en="Courses & Fees">पाठ्यक्रम एवं शुल्क</a></li>
+          <li><a href="index.html#free" data-hi="नि:शुल्क पाठ्यक्रम" data-en="Free Courses">नि:शुल्क पाठ्यक्रम</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-hi="सेवाएँ" data-en="Services">सेवाएँ</h4>
+        <ul>
+          <li><a href="index.html" data-hi="विद्यार्थी आवेदन" data-en="Student Apply">विद्यार्थी आवेदन</a></li>
+          <li><a href="contact.html" data-hi="सम्पर्क सूत्र" data-en="Contact Us">सम्पर्क सूत्र</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-hi="संपर्क" data-en="Contact">संपर्क</h4>
+        <ul>
+          <li>📍 <span data-hi="खेरसा, बिधनू, कानपुर नगर — २०९२१४" data-en="Khersa, Bidhnu, Kanpur Nagar — 209214">खेरसा, बिधनू, कानपुर नगर — २०९२१४</span></li>
+          <li>📞 <a href="tel:+919532328276">+91 95323 28276</a></li>
+          <li>✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span data-hi="© २०२६ दिप्र फ़ाउंडेशन। सर्वाधिकार सुरक्षित।" data-en="© 2026 DIPRA FOUNDATION. All rights reserved.">© २०२६ दिप्र फ़ाउंडेशन। सर्वाधिकार सुरक्षित।</span>
+      <span data-hi="पंजीकृत न्यास · पंजीकरण संख्या ३००" data-en="Registered Trust · Reg. No. 300">पंजीकृत न्यास · पंजीकरण संख्या ३००</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const $ = (s, c = document) => c.querySelector(s);
+const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+
+/* ---------- Language Switcher ---------- */
+function setLang(lang){
+  document.body.classList.toggle('lang-hi', lang === 'hi');
+  document.body.classList.toggle('lang-en', lang === 'en');
+  document.documentElement.lang = lang;
+  $$('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  try{ localStorage.setItem('uplift_lang', lang); }catch(e){}
+  
+  $$('[data-hi][data-en]').forEach(el => {
+    const t = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-hi');
+    if(t !== null){
+      if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = t;
+      else el.textContent = t;
+    }
+  });
+}
+$$('.lang-btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+try{ const s = localStorage.getItem('uplift_lang'); if(s) setLang(s); }catch(e){}
+
+/* ---------- Mobile Nav ---------- */
+const burger = $('#burger'), mainNav = $('#mainNav');
+burger.addEventListener('click', () => { 
+  burger.classList.toggle('open'); 
+  mainNav.classList.toggle('open'); 
+  document.body.classList.toggle('modal-open', mainNav.classList.contains('open'));
+});
+$$('#mainNav a').forEach(a => a.addEventListener('click', () => { 
+  burger.classList.remove('open'); 
+  mainNav.classList.remove('open'); 
+  document.body.classList.remove('modal-open');
+}));
+
+/* ---------- Toast ---------- */
+let _toastTimer;
+function toast(msg){
+  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(_toastTimer); _toastTimer = setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+/* ---------- Contact Form Handler ---------- */
+$('#contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target;
+  const name = f.querySelector('[name="cName"]').value.trim();
+  const mobile = f.querySelector('[name="cMobile"]').value.trim();
+  const email = f.querySelector('[name="cEmail"]').value.trim();
+  const msg = f.querySelector('[name="cMessage"]').value.trim();
+
+  if(name.length < 3 || !/^[6-9]\d{9}$/.test(mobile) || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || msg.length < 5){
+    toast('कृपया समस्त विवरण सही ढंग से भरें।');
+    return;
+  }
+
+  toast('✓ आपका संदेश सफलतापूर्वक प्राप्त हुआ। शीघ्र संपर्क किया जाएगा।');
+  f.reset();
+});
+</script>
+
+</body>
+</html>
