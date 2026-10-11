@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<title>Certificate Verification — DIPRA FOUNDATION</title>
+<meta name="description" content="Verify DIPRA FOUNDATION certificates instantly with QR or Certificate ID.">
+<meta name="theme-color" content="#0D7A3A">
+<link rel="icon" href="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --saffron:#FF7A00;--saffron-3:#E65F00;--saffron-soft:#FFF1E0;
+  --green:#0D7A3A;--green-2:#16A34A;--green-3:#075A2A;--green-soft:#E7F6EC;
+  --gold:#D4A017;--gold-2:#F0BE3E;--maroon:#8B1538;--maroon-2:#B91C48;
+  --cream:#FFFBF5;--cream-2:#FFF6E8;--ink:#2A1810;--ink-2:#5A4030;--muted:#8B7355;
+  --border:#F0DCBC;--border-2:#E6C89C;
+  --radius:12px;--radius-lg:18px;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Inter','Noto Sans Devanagari',system-ui,sans-serif;
+  background:linear-gradient(180deg,#FFFBF5 0%,#FFF6E8 100%);
+  color:var(--ink);line-height:1.7;font-size:17px;
+  min-height:100vh;display:flex;flex-direction:column;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--maroon);text-decoration:none;transition:.15s}
+a:hover{color:var(--saffron-3)}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+/* Header */
+.topbar{background:linear-gradient(90deg,var(--saffron-soft),#fff,var(--green-soft));padding:8px 0;border-bottom:1px solid var(--border);font-size:.86rem}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.topbar a{font-weight:600;color:var(--maroon)}
+
+header{background:#fff;border-bottom:2px solid var(--border);box-shadow:0 2px 14px rgba(139,21,56,.06);position:sticky;top:0;z-index:100}
+.header-inner{max-width:1200px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none!important}
+.brand-logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--saffron-soft),var(--green-soft));border:2px solid var(--saffron);display:grid;place-items:center;padding:6px;flex:none;box-shadow:0 4px 12px rgba(255,122,0,.2)}
+.brand-logo img{width:100%;height:100%;object-fit:contain;border-radius:6px}
+.brand-text b{display:block;font-size:1.15rem;font-weight:800;color:var(--maroon);line-height:1.15;font-family:'Tiro Devanagari Hindi','Noto Sans Devanagari',serif}
+.brand-text span{font-size:.78rem;color:var(--muted);font-weight:500}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-links a{padding:9px 16px;border-radius:9px;font-weight:600;font-size:.94rem;color:var(--ink);transition:.15s}
+.nav-links a:hover,.nav-links a.active{background:var(--saffron-soft);color:var(--saffron-3)}
+
+/* Main */
+main{flex:1;padding:40px 0 60px}
+.container{max-width:1000px;margin:0 auto;padding:0 20px}
+
+.page-head{text-align:center;margin-bottom:32px}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--saffron-3);background:var(--saffron-soft);padding:6px 16px;border-radius:999px;border:1px solid var(--saffron);margin-bottom:14px}
+.page-head h1{font-family:'Tiro Devanagari Hindi',serif;font-size:clamp(1.7rem,4vw,2.5rem);color:var(--maroon);font-weight:400;margin-bottom:10px;line-height:1.2}
+.page-head p{color:var(--ink-2);font-size:1.05rem;max-width:600px;margin:0 auto}
+
+/* Card */
+.card{background:#fff;border:2px solid var(--border);border-radius:var(--radius-lg);padding:32px;box-shadow:0 10px 40px rgba(139,21,56,.08)}
+
+/* Form */
+.field{margin-bottom:20px}
+.field label{display:block;font-weight:700;font-size:1rem;margin-bottom:8px;color:var(--ink)}
+.field input{width:100%;padding:16px 18px;border:2px solid var(--border-2);border-radius:12px;background:#fff;font-size:1.05rem;transition:.15s;color:var(--ink)}
+.field input:focus{outline:none;border-color:var(--saffron);box-shadow:0 0 0 4px rgba(255,122,0,.15)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 28px;border-radius:12px;font-weight:700;font-size:1.02rem;transition:.2s;border:1px solid transparent;text-decoration:none!important;cursor:pointer;min-height:52px;white-space:nowrap}
+.btn-primary{background:linear-gradient(135deg,var(--green),var(--green-3));color:#fff;box-shadow:0 6px 20px rgba(13,122,58,.3);width:100%}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(13,122,58,.4);color:#fff}
+.btn-saffron{background:linear-gradient(135deg,var(--saffron),var(--saffron-3));color:#fff;box-shadow:0 6px 20px rgba(255,122,0,.3)}
+.btn-saffron:hover{transform:translateY(-2px);color:#fff}
+.btn-outline{background:#fff;border:2px solid var(--border-2);color:var(--maroon)}
+.btn-outline:hover{border-color:var(--saffron);background:var(--saffron-soft)}
+.btn-sm{padding:12px 20px;font-size:.94rem;min-height:auto}
+
+/* Verify result */
+.verify-result{margin-top:24px;padding:20px;border-radius:12px;font-size:1rem;display:none}
+.verify-result.show{display:block;animation:fadeIn .3s}
+.verify-result.ok{background:var(--green-soft);border:2px solid var(--green-2);color:var(--green-3)}
+.verify-result.fail{background:#FEF5F5;border:2px solid #F0B0B0;color:#8B1E1E}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* Certificate frame */
+.cert-wrap{margin-top:32px;display:none}
+.cert-wrap.show{display:block;animation:fadeIn .4s}
+
+.cert-frame{
+  background:linear-gradient(135deg,#FFFBF5 0%,#FFF6E8 50%,#FFFBF5 100%);
+  border:12px solid var(--green);
+  border-radius:14px;
+  padding:0;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(13,122,58,.28);
+}
+.cert-frame::before{
+  content:"";position:absolute;inset:14px;border:3px solid var(--gold);
+  border-radius:8px;pointer-events:none;z-index:2;
+}
+.cert-frame::after{
+  content:"";position:absolute;inset:20px;border:1px dashed var(--gold-2);
+  border-radius:6px;pointer-events:none;z-index:2;
+}
+.cert-inner{
+  padding:44px 32px 32px;
+  position:relative;z-index:3;
+  text-align:center;
+}
+
+/* Corner decorations */
+.corner{position:absolute;width:60px;height:60px;z-index:4;pointer-events:none;opacity:.7}
+.corner.tl{top:22px;left:22px}
+.corner.tr{top:22px;right:22px;transform:scaleX(-1)}
+.corner.bl{bottom:22px;left:22px;transform:scaleY(-1)}
+.corner.br{bottom:22px;right:22px;transform:scale(-1,-1)}
+
+.cert-logo{width:80px;height:80px;margin:0 auto 12px;border-radius:50%;background:#fff;border:3px solid var(--gold);padding:8px;box-shadow:0 6px 20px rgba(212,160,23,.3)}
+.cert-logo img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+
+.cert-org{font-family:'Tiro Devanagari Hindi',serif;font-size:1.5rem;color:var(--maroon);font-weight:400;margin-bottom:4px;letter-spacing:.02em}
+.cert-subtitle{font-size:.82rem;color:var(--saffron-3);letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.cert-regno{font-size:.78rem;color:var(--muted);margin-bottom:20px}
+
+.cert-title{font-size:clamp(1.5rem,4vw,2.2rem);color:var(--green);font-weight:800;letter-spacing:.24em;margin:20px 0 6px;font-family:'Inter',sans-serif}
+.cert-title-hindi{font-size:1rem;color:var(--gold);letter-spacing:.12em;font-weight:700;margin-bottom:22px}
+
+.cert-line{font-size:1rem;color:var(--ink-2);margin:10px 0;font-style:italic}
+.cert-name{
+  font-family:'Tiro Devanagari Hindi',serif;font-size:clamp(1.6rem,5vw,2.4rem);
+  color:var(--maroon);font-weight:400;letter-spacing:.02em;
+  border-bottom:3px dotted var(--gold-2);display:inline-block;
+  padding:0 24px 8px;margin:10px auto;line-height:1.15;
+}
+.cert-parent{font-size:1rem;color:var(--ink-2);margin:8px 0 18px}
+.cert-completed{font-size:.98rem;color:var(--ink-2);margin-bottom:8px}
+.cert-course{font-size:clamp(1.1rem,3vw,1.5rem);color:var(--green);font-weight:800;margin:12px 0 16px;padding:0 14px;line-height:1.35}
+
+.cert-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:560px;margin:18px auto;text-align:center}
+.cert-meta > div{background:#fff;padding:12px 8px;border-radius:10px;border:1.5px solid var(--border-2)}
+.cert-meta small{display:block;font-size:.7rem;color:var(--muted);text-transform:uppercase;font-weight:700;letter-spacing:.06em;margin-bottom:4px}
+.cert-meta b{font-size:1rem;color:var(--green);font-weight:800}
+
+.cert-score{font-size:1rem;color:var(--ink-2);margin:16px 0;padding:12px;background:#fff;border-radius:10px;display:inline-block;border:1.5px solid var(--border-2)}
+.cert-score b{color:var(--maroon)}
+
+.cert-info{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:18px 0 8px;font-size:.8rem}
+.cert-info span{padding:6px 12px;background:#fff;border-radius:6px;border:1px solid var(--border-2);color:var(--ink-2)}
+.cert-info b{color:var(--maroon)}
+.cert-address{font-size:.82rem;color:var(--ink-2);margin:8px 0;padding:8px 12px;background:#fff;border-radius:6px;border:1px solid var(--border-2);max-width:580px;margin-left:auto;margin-right:auto}
+
+.cert-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;margin-top:32px;padding-top:20px;border-top:2px dashed var(--border-2);flex-wrap:wrap}
+.cert-sign{text-align:center;font-size:.85rem;color:var(--ink-2);flex:1;min-width:130px}
+.cert-sign .line{border-bottom:2px solid var(--ink);height:38px;margin-bottom:8px;max-width:160px;margin-left:auto;margin-right:auto}
+.cert-sign b{color:var(--green);font-size:.92rem}
+.cert-qr{text-align:center;padding:8px;background:#fff;border-radius:10px;border:2px solid var(--green);flex:none}
+.cert-qr img{width:90px;height:90px;border-radius:6px}
+.cert-qr small{display:block;font-size:.7rem;color:var(--muted);margin-top:6px;font-weight:600}
+
+.cert-id-line{font-family:monospace;font-size:.85rem;color:var(--ink-2);margin-top:18px;padding:10px;background:#fff;border-radius:8px;border:1.5px dashed var(--gold);display:inline-block}
+.cert-id-line b{color:var(--maroon);letter-spacing:.06em}
+
+.cert-footer-strip{background:linear-gradient(90deg,var(--saffron),#fff,var(--green));height:6px;margin-top:24px;border-radius:3px}
+
+.cert-watermark{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:'Tiro Devanagari Hindi',serif;font-size:clamp(3rem,10vw,7rem);
+  font-weight:400;color:var(--green);opacity:.045;pointer-events:none;
+  white-space:nowrap;letter-spacing:.1em;z-index:1;
+  text-transform:uppercase;line-height:1;
+}
+
+/* Action buttons below certificate */
+.cert-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:24px}
+.cert-actions .btn{flex:1;min-width:150px;max-width:220px}
+
+.share-title{text-align:center;font-size:.85rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin:28px 0 12px}
+.share-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;max-width:700px;margin:0 auto}
+.share-btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 12px;border-radius:10px;font-weight:700;font-size:.9rem;color:#fff;text-decoration:none;transition:.2s;border:none;cursor:pointer}
+.share-btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.18);text-decoration:none;color:#fff}
+.share-btn.wa{background:#25D366}.share-btn.fb{background:#1877F2}
+.share-btn.tw{background:#000}.share-btn.li{background:#0A66C2}
+.share-btn.tg{background:#0088CC}
+.share-btn.copy{background:linear-gradient(135deg,var(--maroon),var(--maroon-2))}
+
+/* Loader */
+.loader{display:none;text-align:center;padding:40px 20px}
+.loader.show{display:block}
+.spinner{width:56px;height:56px;border:5px solid var(--border-2);border-top-color:var(--green);border-radius:50%;margin:0 auto 16px;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loader p{color:var(--ink-2);font-size:1.05rem}
+
+/* Footer */
+footer{background:linear-gradient(180deg,var(--maroon),#5A0F23);color:#F5D9C8;padding:32px 0;text-align:center;font-size:.92rem}
+footer a{color:var(--gold-2);font-weight:600}
+footer .foot-line{margin-bottom:8px}
+footer .foot-brand{font-family:'Tiro Devanagari Hindi',serif;font-size:1.15rem;color:#fff;margin-bottom:10px}
+
+/* Mobile adjustments */
+@media(max-width:640px){
+  body{font-size:16px}
+  .container{padding:0 16px}
+  main{padding:28px 0 40px}
+  .card{padding:22px 18px;border-radius:14px}
+  .page-head h1{font-size:1.7rem}
+  .page-head p{font-size:.98rem}
+  .header-inner{padding:12px 16px;flex-direction:column;align-items:stretch;gap:10px}
+  .brand-logo{width:48px;height:48px}
+  .brand-text b{font-size:1rem}
+  .nav-links{justify-content:center;gap:4px}
+  .nav-links a{padding:8px 12px;font-size:.88rem}
+  .cert-frame{border-width:8px}
+  .cert-frame::before{inset:8px;border-width:2px}
+  .cert-frame::after{inset:14px}
+  .cert-inner{padding:28px 16px 20px}
+  .cert-logo{width:64px;height:64px}
+  .cert-meta{grid-template-columns:1fr 1fr;gap:8px}
+  .cert-meta > div{padding:10px 6px}
+  .cert-meta b{font-size:.92rem}
+  .cert-bottom{flex-direction:column;align-items:center}
+  .cert-sign{width:100%;max-width:220px}
+  .corner{width:40px;height:40px}
+  .corner.tl,.corner.tr{top:14px}
+  .corner.bl,.corner.br{bottom:14px}
+  .corner.tl,.corner.bl{left:14px}
+  .corner.tr,.corner.br{right:14px}
+  .cert-actions .btn{min-width:120px;padding:14px 16px;font-size:.94rem}
+}
+@media(max-width:400px){
+  .cert-meta{grid-template-columns:1fr}
+  .share-grid{grid-template-columns:1fr 1fr}
+}
+
+/* Print */
+@media print{
+  body{background:#fff}
+  body *{visibility:hidden}
+  #certFrame,#certFrame *{visibility:visible}
+  #certFrame{position:absolute;left:0;top:0;width:100%;box-shadow:none;border-width:10px}
+  .no-print{display:none!important}
+  header,footer,main > *:not(#certWrap){display:none!important}
+  #certWrap{display:block!important;margin:0;padding:0}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div>
+      📞 <a href="tel:+919532328276">+91 95323 28276</a> · 
+      ✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a>
+    </div>
+    <div>
+      <a href="https://www.diprafoundation.com">www.diprafoundation.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-logo">
+        <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="DIPRA FOUNDATION">
+      </div>
+      <div class="brand-text">
+        <b>DIPRA FOUNDATION</b>
+        <span>Certificate Verification</span>
+      </div>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#courses">Courses</a>
+      <a href="verify.html" class="active">Verify</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Main -->
+<main>
+  <div class="container">
+
+    <div class="page-head">
+      <span class="eyebrow">🎖️ Certificate Verification</span>
+      <h1>Verify Certificate Authenticity</h1>
+      <p>Scan the QR code on any DIPRA FOUNDATION certificate or enter the Certificate ID below to verify instantly.</p>
+    </div>
+
+    <!-- Manual Input -->
+    <div class="card" id="inputCard">
+      <div class="field">
+        <label>Certificate ID</label>
+        <input type="text" id="certInput" placeholder="DPF-FREE-2026-XXXXX" autocomplete="off" autocapitalize="characters" style="font-family:monospace;letter-spacing:1.5px;text-transform:uppercase">
+      </div>
+      <button class="btn btn-primary" id="verifyBtn">
+        🔍 Verify Certificate
+      </button>
+      <div class="verify-result" id="errorBox"></div>
+    </div>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">
+      <div class="spinner"></div>
+      <p>Verifying certificate...</p>
+    </div>
+
+    <!-- Certificate Display -->
+    <div class="cert-wrap" id="certWrap">
+      
+      <div class="cert-frame" id="certFrame">
+        <div class="cert-watermark">DIPRA FOUNDATION</div>
+        
+        <!-- Corner decorations (SVG flourishes) -->
+        <svg class="corner tl" viewBox="0 0 60 60" fill="none">
+          <path d="M2 30 Q2 2 30 2" stroke="#D4A017" stroke-width="2.5" fill="none"/>
+          <circle cx="30" cy="2" r="3" fill="#0D7A3A"/>
+          <circle cx="2" cy="30" r="3" fill="#0D7A3A"/>
+          <path d="M12 12 Q12 6 18 6 Q24 6 24 12" stroke="#8B1538" stroke-width="1.5" fill="none"/>
+        </svg>
+        <svg class="corner tr" viewBox="0 0 60 60" fill="none">
+          <path d="M2 30 Q2 2 30 2" stroke="#D4A017" stroke-width="2.5" fill="none"/>
+          <circle cx="30" cy="2" r="3" fill="#0D7A3A"/>
+          <circle cx="2" cy="30" r="3" fill="#0D7A3A"/>
+          <path d="M12 12 Q12 6 18 6 Q24 6 24 12" stroke="#8B1538" stroke-width="1.5" fill="none"/>
+        </svg>
+        <svg class="corner bl" viewBox="0 0 60 60" fill="none">
+          <path d="M2 30 Q2 2 30 2" stroke="#D4A017" stroke-width="2.5" fill="none"/>
+          <circle cx="30" cy="2" r="3" fill="#0D7A3A"/>
+          <circle cx="2" cy="30" r="3" fill="#0D7A3A"/>
+        </svg>
+        <svg class="corner br" viewBox="0 0 60 60" fill="none">
+          <path d="M2 30 Q2 2 30 2" stroke="#D4A017" stroke-width="2.5" fill="none"/>
+          <circle cx="30" cy="2" r="3" fill="#0D7A3A"/>
+          <circle cx="2" cy="30" r="3" fill="#0D7A3A"/>
+        </svg>
+
+        <div class="cert-inner">
+
+          <div class="cert-logo">
+            <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="DIPRA FOUNDATION">
+          </div>
+
+          <div class="cert-org">DIPRA FOUNDATION</div>
+          <div class="cert-subtitle">The Uplift Coaching Scheme</div>
+          <div class="cert-regno">Reg. No. 300 · Trust Act 1882 · Darpan ID: UP/2024/0459444</div>
+
+          <div class="cert-title">CERTIFICATE</div>
+          <div class="cert-title-hindi">OF COMPLETION · प्रमाणपत्र</div>
+
+          <div class="cert-line">This is to certify that</div>
+          <div class="cert-name" id="cName">—</div>
+          <div class="cert-parent">Son / Daughter of <b id="cParent">—</b></div>
+
+          <div class="cert-completed">has successfully completed the online course</div>
+          <div class="cert-course" id="cCourse">—</div>
+
+          <div class="cert-meta">
+            <div><small>Duration</small><b id="cDuration">—</b></div>
+            <div><small>Level</small><b id="cLevel">—</b></div>
+            <div><small>Total Questions</small><b id="cQuestions">—</b></div>
+          </div>
+
+          <div class="cert-score">
+            Score: <b id="cScore">—</b> · Percentage: <b id="cPct">—</b> · Grade: <b id="cGrade">—</b>
+          </div>
+
+          <div class="cert-info">
+            <span><b>Aadhaar:</b> <span id="cAadhar">—</span></span>
+            <span><b>Mobile:</b> <span id="cMobile">—</span></span>
+            <span><b>Email:</b> <span id="cEmail">—</span></span>
+          </div>
+          <div class="cert-address"><b>Address:</b> <span id="cAddress">—</span></div>
+
+          <div class="cert-bottom">
+            <div class="cert-sign">
+              <div class="line"></div>
+              Issue Date<br><b id="cIssued">—</b>
+            </div>
+            <div class="cert-qr">
+              <img id="cQR" src="" alt="QR">
+              <small>Scan to verify</small>
+            </div>
+            <div class="cert-sign">
+              <div class="line"></div>
+              Authorised Signatory<br><b>DIPRA FOUNDATION</b>
+            </div>
+          </div>
+
+          <div class="cert-id-line">Certificate ID: <b id="cCertId">—</b></div>
+
+          <div class="cert-footer-strip"></div>
+
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="cert-actions no-print">
+        <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save PDF</button>
+        <button class="btn btn-outline" onclick="copyVerifyLink()">🔗 Copy Link</button>
+        <button class="btn btn-outline" onclick="shareToWhatsApp()">💬 Share</button>
+      </div>
+
+      <!-- Social Share -->
+      <div class="no-print">
+        <div class="share-title">🎉 Share your achievement</div>
+        <div class="share-grid">
+          <a class="share-btn wa" id="shareWA" target="_blank" href="#">💬 WhatsApp</a>
+          <a class="share-btn fb" id="shareFB" target="_blank" href="#">📘 Facebook</a>
+          <a class="share-btn li" id="shareLI" target="_blank" href="#">💼 LinkedIn</a>
+          <a class="share-btn tw" id="shareTW" target="_blank" href="#">🐦 Twitter</a>
+          <a class="share-btn tg" id="shareTG" target="_blank" href="#">✈️ Telegram</a>
+          <button class="share-btn copy" onclick="copyVerifyLink()">🔗 Copy Link</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="foot-brand">DIPRA FOUNDATION</div>
+    <div class="foot-line">
+      📍 Khersa, Bidhnu, Kanpur Nagar, UP – 209214 · 📞 <a href="tel:+919532328276">+91 95323 28276</a>
+    </div>
+    <div class="foot-line">
+      ✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a> · 
+      🌐 <a href="https://www.diprafoundation.com">www.diprafoundation.com</a>
+    </div>
+    <div style="font-size:.8rem;margin-top:14px;color:#c9a8b9">
+      © 2026 DIPRA FOUNDATION · Registered Trust · Reg. No. 300
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   VERIFY PAGE — Standalone Script
+   ============================================================ */
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbynC667snioVb9pnBE8jDRWUJHwKOUi5jTYO31PlfolDG5VjcTrE93zh2k-Ai7zgi0/exec';
+
+const $ = (s) => document.querySelector(s);
+
+/* ---- Manual verify button ---- */
+$('#verifyBtn').addEventListener('click', () => {
+  const id = $('#certInput').value.trim().toUpperCase();
+  if (!id) {
+    showError('Please enter a Certificate ID');
+    return;
+  }
+  verifyCert(id);
+});
+
+/* ---- Enter key ---- */
+$('#certInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') $('#verifyBtn').click();
+});
+
+/* ---- Auto-verify from URL param (?cert=XXX) ---- */
+(function autoVerify() {
+  const params = new URLSearchParams(window.location.search);
+  const cert = params.get('cert') || params.get('certId') || params.get('id');
+  if (cert) {
+    $('#certInput').value = cert.toUpperCase();
+    verifyCert(cert.toUpperCase());
+  }
+})();
+
+/* ---- Main verify function ---- */
+async function verifyCert(certId) {
+  // Hide any previous result
+  $('#errorBox').classList.remove('show');
+  $('#certWrap').classList.remove('show');
+  $('#inputCard').style.display = 'none';
+  $('#loader').classList.add('show');
+
+  try {
+    const res = await fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ action: 'verifyFreeCert', certId })
+    });
+    const data = await res.json();
+
+    $('#loader').classList.remove('show');
+
+    if (data.status === 'success' && data.data) {
+      renderCertificate(data.data);
+    } else {
+      $('#inputCard').style.display = 'block';
+      showError(data.message || 'Certificate not found. Please check the ID and try again.');
+    }
+  } catch (err) {
+    $('#loader').classList.remove('show');
+    $('#inputCard').style.display = 'block';
+    showError('Network error. Please check your connection and try again.');
+    console.error(err);
+  }
+}
+
+/* ---- Render certificate ---- */
+function renderCertificate(d) {
+  $('#cName').textContent = d['Student Name'] || '—';
+  $('#cParent').textContent = d['Parent Name'] || '—';
+  $('#cCourse').textContent = d['Course'] || '—';
+  $('#cDuration').textContent = d['Duration'] || '—';
+  $('#cLevel').textContent = d['Level'] || '—';
+  $('#cQuestions').textContent = d['Total Questions'] || '15';
+
+  const scoreParts = String(d['Score'] || '—').split('/');
+  if (scoreParts.length === 2) {
+    $('#cScore').textContent = d['Score'];
+    $('#cPct').textContent = scoreParts[0] && scoreParts[1]
+      ? Math.round((parseInt(scoreParts[0]) / parseInt(scoreParts[1])) * 100) + '%'
+      : '—';
+  } else {
+    $('#cScore').textContent = d['Score'] || '—';
+    $('#cPct').textContent = '—';
+  }
+  $('#cGrade').textContent = d['Grade'] || '—';
+
+  $('#cAadhar').textContent = d['Aadhaar'] || '—';
+  $('#cMobile').textContent = d['Mobile'] || '—';
+  $('#cEmail').textContent = d['Email'] || '—';
+  $('#cAddress').textContent = d['Address'] || '—';
+  $('#cIssued').textContent = d['Issued On'] || '—';
+  $('#cCertId').textContent = d['Certificate ID'] || '—';
+
+  /* QR — points back to this same verify page */
+  const verifyUrl = window.location.origin + window.location.pathname + '?cert=' + encodeURIComponent(d['Certificate ID']);
+  const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' + encodeURIComponent(verifyUrl);
+  $('#cQR').src = qrUrl;
+
+  /* Social links */
+  const shareText = `🎓 I completed "${d['Course']}" at DIPRA FOUNDATION!\nGrade: ${d['Grade']} · Score: ${d['Score']}\nVerify: ${verifyUrl}`;
+  $('#shareWA').href = 'https://wa.me/?text=' + encodeURIComponent(shareText);
+  $('#shareFB').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(verifyUrl);
+  $('#shareLI').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(verifyUrl);
+  $('#shareTW').href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText) + '&url=' + encodeURIComponent(verifyUrl);
+  $('#shareTG').href = 'https://t.me/share/url?url=' + encodeURIComponent(verifyUrl) + '&text=' + encodeURIComponent(shareText);
+
+  $('#certWrap').classList.add('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ---- Error ---- */
+function showError(msg) {
+  const box = $('#errorBox');
+  box.textContent = '❌ ' + msg;
+  box.className = 'verify-result show fail';
+  $('#certWrap').classList.remove('show');
+}
+
+/* ---- Helpers ---- */
+function copyVerifyLink() {
+  const url = window.location.href;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(() => alert('✅ Link copied!\n\n' + url));
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = url;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    ta.remove();
+    alert('✅ Link copied!');
+  }
+}
+
+function shareToWhatsApp() {
+  const url = window.location.href;
+  window.open('https://wa.me/?text=' + encodeURIComponent('Check my DIPRA FOUNDATION certificate: ' + url), '_blank');
+}
+</script>
+
+</body>
+</html>
