@@ -1,79 +1,474 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-  <meta charset="UTF-8">
-  <title>Support Us | DIPRA Foundation</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<title>सहयोग करें | दिप्र फ़ाउंडेशन — Support Us</title>
+<meta name="description" content="दिप्र फ़ाउंडेशन को सहयोग करें — दान, स्वयंसेवा, वस्तु-सहायता अथवा कॉर्पोरेट साझेदारी द्वारा।">
+<meta name="theme-color" content="#0D7A3A">
+<meta property="og:title" content="सहयोग करें — दिप्र फ़ाउंडेशन">
+<meta property="og:image" content="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
+<link rel="canonical" href="https://www.diprafoundation.com/support.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+<link rel="icon" href="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ====== Page-Specific: support.html ====== */
+.page-hero {
+  background: linear-gradient(135deg, #FFF8F0 0%, var(--saffron-soft) 35%, #FFFBF5 60%, var(--green-soft) 100%);
+  padding: 70px 0 80px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.page-hero::before {
+  content: "";
+  position: absolute; inset: 0; opacity: .45;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255,122,0,.18) 0, transparent 42%),
+    radial-gradient(circle at 88% 78%, rgba(13,122,58,.14) 0, transparent 45%);
+  z-index: 0;
+}
+.page-hero .container { position: relative; z-index: 2; }
+.page-hero h1 { color: var(--maroon); margin-bottom: 16px; line-height: 1.18; }
+.page-hero p {
+  font-size: 1.05rem; color: var(--ink-2);
+  max-width: 720px; margin: 0 auto; line-height: 1.85;
+}
+.page-hero .hero-icon {
+  font-size: 3.4rem; margin-bottom: 14px;
+  display: inline-block;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* Support Options Cards */
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+  margin-top: 32px;
+}
+.support-card {
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 30px 24px;
+  text-align: center;
+  transition: all var(--t-slow);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.support-card::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--saffron), var(--saffron-3));
+  transform: scaleX(0); transform-origin: center;
+  transition: transform .3s;
+}
+.support-card.green::before { background: linear-gradient(90deg, var(--green), var(--green-3)); }
+.support-card.gold::before { background: linear-gradient(90deg, var(--gold), var(--gold-2)); }
+.support-card.purple::before { background: linear-gradient(90deg, var(--maroon), var(--maroon-2)); }
+.support-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--saffron-2); }
+.support-card:hover::before { transform: scaleX(1); }
+.support-card .s-ico {
+  width: 74px; height: 74px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 2.1rem;
+  margin: 0 auto 18px;
+  background: linear-gradient(135deg, var(--saffron-soft), #fff);
+  border: 2px solid var(--saffron-2);
+  box-shadow: 0 6px 20px rgba(255,122,0,.15);
+}
+.support-card.green .s-ico { background: linear-gradient(135deg, var(--green-soft), #fff); border-color: var(--green-2); box-shadow: 0 6px 20px rgba(13,122,58,.15); }
+.support-card.gold .s-ico { background: linear-gradient(135deg, #FFF8E1, #fff); border-color: var(--gold-2); box-shadow: 0 6px 20px rgba(212,160,23,.15); }
+.support-card.purple .s-ico { background: linear-gradient(135deg, #FEF5F5, #fff); border-color: #F0B0B0; box-shadow: 0 6px 20px rgba(139,21,56,.15); }
+.support-card h3 { font-size: 1.15rem; color: var(--maroon); margin-bottom: 10px; font-family: 'Tiro Devanagari Hindi', serif; font-weight: 400; }
+.support-card p { font-size: .95rem; color: var(--ink-2); line-height: 1.75; margin-bottom: 20px; flex: 1; }
+.support-card .btn { align-self: center; }
+
+/* Other Ways List */
+.ways-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+.way-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all var(--t);
+}
+.way-item:hover { border-color: var(--green-2); background: var(--green-soft); transform: translateX(4px); }
+.way-item .w-ico {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--green-soft), #fff);
+  border: 1.5px solid var(--green-2);
+  display: grid; place-items: center;
+  font-size: 1.4rem; flex: none;
+}
+.way-item h4 { color: var(--maroon); font-size: 1rem; margin-bottom: 4px; font-weight: 700; }
+.way-item p { font-size: .9rem; color: var(--ink-2); line-height: 1.65; margin: 0; }
+
+/* Impact Grid */
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+.impact-card {
+  background: linear-gradient(135deg, #fff, var(--cream-2));
+  border: 2px solid var(--border-2);
+  border-radius: 16px;
+  padding: 24px 18px;
+  text-align: center;
+  transition: all var(--t-slow);
+  position: relative;
+  overflow: hidden;
+}
+.impact-card::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--saffron), var(--gold-2), var(--green));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .3s;
+}
+.impact-card:hover { border-color: var(--saffron); transform: translateY(-6px); box-shadow: 0 14px 40px rgba(255,122,0,.2); }
+.impact-card:hover::before { transform: scaleX(1); }
+.impact-card .amt { font-size: 2rem; font-weight: 800; color: var(--green); line-height: 1.1; letter-spacing: -.02em; }
+.impact-card .lbl { font-size: .95rem; color: var(--maroon); margin-top: 8px; font-weight: 700; line-height: 1.5; }
+.impact-card .dsc { font-size: .84rem; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+.impact-card .emoji { font-size: 1.8rem; margin-bottom: 10px; }
+</style>
 </head>
-<body>
-  <a href="support.html" class="quick-donate">Donate</a>
 
-  <header>
-    <div class="logo">
-      <img src="logo.png" alt="DIPRA Foundation Logo" />
-      <span>DIPRA Foundation</span>
+<body class="lang-hi">
+
+<!-- Tricolor -->
+<div class="tricolor"></div>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-links">
+      <span>📞 <a href="tel:+919532328276">+91 95323 28276</a></span>
+      <span>✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></span>
+      <span data-hi="📍 खेरसा, बिधनू, कानपुर नगर — २०९२१४" data-en="📍 Khersa, Bidhnu, Kanpur Nagar — 209214">📍 खेरसा, बिधनू, कानपुर नगर — २०९२१४</span>
     </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="request.html">Request a Donation</a>
-      <a href="support.html" class="active">Support Us</a>
-      <a href="index.html#faq">FAQ</a>
+    <div class="topbar-links">
+      <a href="https://www.diprafoundation.com" target="_blank" rel="noopener">www.diprafoundation.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <div class="brand-logo">
+        <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="दिप्र फ़ाउंडेशन">
+      </div>
+      <div class="brand-text">
+        <b data-hi="दिप्र फ़ाउंडेशन" data-en="Dipra Foundation">दिप्र फ़ाउंडेशन</b>
+        <span data-hi="सहयोग करें" data-en="Support Us">सहयोग करें</span>
+      </div>
+    </a>
+    <nav id="mainNav" aria-label="मुख्य">
+      <ul>
+        <li><a href="index.html" data-hi="गृह" data-en="Home">गृह</a></li>
+        <li><a href="about.html" data-hi="हमारे बारे में" data-en="About">हमारे बारे में</a></li>
+        <li><a href="the_Uplift.html" data-hi="The Uplift" data-en="The Uplift">The Uplift</a></li>
+        <li><a href="districts.html" data-hi="जनपद" data-en="Districts">जनपद</a></li>
+        <li><a href="verify.html" data-hi="सत्यापन" data-en="Verify">सत्यापन</a></li>
+        <li><a href="portal.html" data-hi="पोर्टल" data-en="Portal">पोर्टल</a></li>
+        <li><a href="support.html" class="active" data-hi="सहयोग" data-en="Support">सहयोग</a></li>
+        <li><a href="contact.html" data-hi="संपर्क" data-en="Contact">संपर्क</a></li>
+      </ul>
     </nav>
-  </header>
-
-  <section class="support-section">
-    <h1>Support Us</h1>
-    <p>
-      Your contribution can bring hope and change to someone's life.  
-      DIPRA Foundation uses your donations to provide education, medical aid, and essential resources to those in need.  
-      Together, we can make a difference!
-    </p>
-
-    <div class="support-options">
-      <div class="support-card">
-        <h2>One-Time Donation</h2>
-        <p>Make an immediate impact with a single donation.</p>
-        <a href="donate.html" class="btn">Donate Now</a>
+    <div class="nav-actions">
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="hi">हिं</button>
+        <button class="lang-btn" data-lang="en">EN</button>
       </div>
+      <a href="donate.html" class="btn btn-saffron btn-sm" data-hi="🙏 दान करें" data-en="🙏 Donate">🙏 दान करें</a>
+      <button class="burger" id="burger" aria-label="सूची"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
 
-      <div class="support-card">
-        <h2>Monthly Support</h2>
-        <p>Join as a monthly donor to ensure continuous support for our causes.</p>
-        <a href="donate.html" class="btn">Become a Donor</a>
-      </div>
+<!-- ============ PAGE HERO ============ -->
+<section class="page-hero">
+  <div class="container">
+    <span class="hero-icon">🤝</span>
+    <div class="eyebrow" data-hi="सहयोग" data-en="Support">सहयोग</div>
+    <h1 data-hi="हमारे साथ जुड़ें, बदलाव लाएँ" data-en="Join Us, Bring Change">हमारे साथ जुड़ें, बदलाव लाएँ</h1>
+    <p data-hi="आपका कोई भी सहयोग — चाहे दान हो, समय हो, वस्तु हो अथवा ज्ञान — किसी न किसी का जीवन संवार सकता है। आइए, मिलकर वंचितों के लिए उम्मीद की किरण बनें।" data-en="Any support from you — donation, time, goods or knowledge — can transform someone's life. Let's be a ray of hope for the underprivileged together.">आपका कोई भी सहयोग — चाहे दान हो, समय हो, वस्तु हो अथवा ज्ञान — किसी न किसी का जीवन संवार सकता है। आइए, मिलकर वंचितों के लिए उम्मीद की किरण बनें।</p>
+  </div>
+</section>
 
-      <div class="support-card">
-        <h2>Sponsor a Child</h2>
-        <p>Support education and essentials for underprivileged children.</p>
-        <a href="donate.html" class="btn">Sponsor Now</a>
-      </div>
-
-      <div class="support-card">
-        <h2>Corporate Partnership</h2>
-        <p>Partner with us to create a greater social impact.</p>
-        <a href="contact.html" class="btn">Contact Us</a>
-      </div>
+<!-- ============ IMPACT ============ -->
+<section style="background:#fff">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-hi="💰 आपके सहयोग का प्रभाव" data-en="💰 Impact of your support">💰 आपके सहयोग का प्रभाव</span>
+      <h2 data-hi="छोटी राशि, बड़ा बदलाव" data-en="Small amount, big change">छोटी राशि, बड़ा बदलाव</h2>
+      <p data-hi="नीचे दी गई राशियाँ यह दर्शाती हैं कि आपका सहयोग कहाँ खर्च होता है।" data-en="The amounts below show where your support is spent.">नीचे दी गई राशियाँ यह दर्शाती हैं कि आपका सहयोग कहाँ खर्च होता है।</p>
     </div>
 
-    <h2>Other Ways to Support</h2>
-    <ul class="support-list">
-      <li>Contribute books, clothes, or medical supplies</li>
-      <li>Volunteer your time and skills</li>
-      <li>Organize fundraising events</li>
-      <li>Spread the word about our mission</li>
-    </ul>
-  </section>
-
-  <footer>
-    <div class="social-links">
-      <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
-      <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
-      <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
-      <a href="mailto:contact@diprafoundation.com"><img src="images/email.png" alt="Email"></a>
+    <div class="impact-grid">
+      <div class="impact-card">
+        <div class="emoji">💰</div>
+        <div class="amt">₹300</div>
+        <div class="lbl" data-hi="1 विद्यार्थी की 1 माह फीस" data-en="1 student's 1 month fee">1 विद्यार्थी की 1 माह फीस</div>
+        <div class="dsc" data-hi="किसी बालक को 1 माह की कोचिंग" data-en="1 month coaching for a child">किसी बालक को 1 माह की कोचिंग</div>
+      </div>
+      <div class="impact-card">
+        <div class="emoji">📚</div>
+        <div class="amt">₹1,100</div>
+        <div class="lbl" data-hi="3 विद्यार्थियों की 1 माह फीस" data-en="3 students' 1 month fee">3 विद्यार्थियों की 1 माह फीस</div>
+        <div class="dsc" data-hi="छोटा दान, बड़ा बदलाव" data-en="Small donation, big change">छोटा दान, बड़ा बदलाव</div>
+      </div>
+      <div class="impact-card">
+        <div class="emoji">🎓</div>
+        <div class="amt">₹3,600</div>
+        <div class="lbl" data-hi="1 विद्यार्थी पूरे साल शिक्षित" data-en="1 student educated all year">1 विद्यार्थी पूरे साल शिक्षित</div>
+        <div class="dsc" data-hi="1 वर्ष की पूर्ण कोचिंग" data-en="Full year coaching">1 वर्ष की पूर्ण कोचिंग</div>
+      </div>
+      <div class="impact-card">
+        <div class="emoji">💻</div>
+        <div class="amt">₹10,000</div>
+        <div class="lbl" data-hi="5 संगणक कोर्स + 10 छात्र" data-en="5 computer courses + 10 students">5 संगणक कोर्स + 10 छात्र</div>
+        <div class="dsc" data-hi="अंकीय साक्षरता का समर्थन" data-en="Supporting digital literacy">अंकीय साक्षरता का समर्थन</div>
+      </div>
+      <div class="impact-card">
+        <div class="emoji">🏆</div>
+        <div class="amt">₹25,000</div>
+        <div class="lbl" data-hi="1 अनाथ विद्यार्थी का पूरा साल" data-en="Full year for 1 orphan student">1 अनाथ विद्यार्थी का पूरा साल</div>
+        <div class="dsc" data-hi="पूर्ण छात्रवृत्ति" data-en="Full scholarship">पूर्ण छात्रवृत्ति</div>
+      </div>
     </div>
-    <p>&copy; 2025 DIPRA Foundation. All rights reserved.</p>
-  </footer>
+  </div>
+</section>
+
+<!-- ============ SUPPORT OPTIONS ============ -->
+<section style="background:linear-gradient(180deg,#FFFBF5,#FFF6E8)">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-hi="🙏 सहयोग के तरीके" data-en="🙏 Ways to Support">🙏 सहयोग के तरीके</span>
+      <h2 data-hi="आप कैसे सहयोग कर सकते हैं?" data-en="How can you support?">आप कैसे सहयोग कर सकते हैं?</h2>
+      <p data-hi="अपनी सुविधा के अनुसार कोई भी मार्ग चुनें।" data-en="Choose any path as per your convenience.">अपनी सुविधा के अनुसार कोई भी मार्ग चुनें।</p>
+    </div>
+
+    <div class="support-grid">
+      <div class="support-card">
+        <div class="s-ico">💵</div>
+        <h3 data-hi="एक-बार दान" data-en="One-Time Donation">एक-बार दान</h3>
+        <p data-hi="एक बार का दान भी किसी बालक की पूरी माह की फीस बन सकता है। तत्काल प्रभाव डालें।" data-en="A one-time donation can become a child's entire month fee. Make an immediate impact.">एक बार का दान भी किसी बालक की पूरी माह की फीस बन सकता है। तत्काल प्रभाव डालें।</p>
+        <a href="donate.html" class="btn btn-saffron" data-hi="दान करें" data-en="Donate">दान करें</a>
+      </div>
+
+      <div class="support-card green">
+        <div class="s-ico">📅</div>
+        <h3 data-hi="मासिक सहयोग" data-en="Monthly Support">मासिक सहयोग</h3>
+        <p data-hi="प्रतिमाह एक निश्चित राशि देकर निरंतर सहायता सुनिश्चित करें। बालकों की शिक्षा कभी न रुके।" data-en="Ensure continuous support by giving a fixed amount monthly. Children's education never stops.">प्रतिमाह एक निश्चित राशि देकर निरंतर सहायता सुनिश्चित करें। बालकों की शिक्षा कभी न रुके।</p>
+        <a href="donate.html" class="btn btn-green" data-hi="मासिक दान" data-en="Monthly Donor">मासिक दान</a>
+      </div>
+
+      <div class="support-card gold">
+        <div class="s-ico">🧒</div>
+        <h3 data-hi="बालक को गोद लें" data-en="Sponsor a Child">बालक को गोद लें</h3>
+        <p data-hi="किसी अनाथ अथवा वंचित बालक की पूर्ण शिक्षा का भार उठाएँ। उसकी प्रगति की रिपोर्ट प्राप्त करें।" data-en="Bear the complete education of an orphan or underprivileged child. Receive progress reports.">किसी अनाथ अथवा वंचित बालक की पूर्ण शिक्षा का भार उठाएँ। उसकी प्रगति की रिपोर्ट प्राप्त करें।</p>
+        <a href="contact.html" class="btn btn-primary" data-hi="संपर्क करें" data-en="Contact Us">संपर्क करें</a>
+      </div>
+
+      <div class="support-card purple">
+        <div class="s-ico">🏢</div>
+        <h3 data-hi="कॉर्पोरेट साझेदारी" data-en="Corporate Partnership">कॉर्पोरेट साझेदारी</h3>
+        <p data-hi="अपनी कंपनी के CSR कार्यक्रम के अंतर्गत दिप्र फ़ाउंडेशन के साथ जुड़ें। बड़े स्तर पर बदलाव लाएँ।" data-en="Join Dipra Foundation under your company's CSR program. Bring change at a large scale.">अपनी कंपनी के CSR कार्यक्रम के अंतर्गत दिप्र फ़ाउंडेशन के साथ जुड़ें। बड़े स्तर पर बदलाव लाएँ।</p>
+        <a href="contact.html" class="btn btn-primary" data-hi="संपर्क करें" data-en="Contact Us">संपर्क करें</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OTHER WAYS ============ -->
+<section style="background:#fff">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-hi="💡 अन्य तरीके" data-en="💡 Other Ways">💡 अन्य तरीके</span>
+      <h2 data-hi="दान के अतिरिक्त और भी तरीके" data-en="More ways beyond donation">दान के अतिरिक्त और भी तरीके</h2>
+    </div>
+
+    <div class="ways-grid">
+      <div class="way-item">
+        <div class="w-ico">📚</div>
+        <div>
+          <h4 data-hi="पुस्तकें एवं स्टेशनरी दान करें" data-en="Donate Books & Stationery">पुस्तकें एवं स्टेशनरी दान करें</h4>
+          <p data-hi="अपनी पुरानी पुस्तकें, कॉपी, पेन तथा अन्य शैक्षणिक सामग्री हमें दान करें।" data-en="Donate your old books, notebooks, pens and other educational material to us.">अपनी पुरानी पुस्तकें, कॉपी, पेन तथा अन्य शैक्षणिक सामग्री हमें दान करें।</p>
+        </div>
+      </div>
+      <div class="way-item">
+        <div class="w-ico">👕</div>
+        <div>
+          <h4 data-hi="वस्त्र एवं आवश्यक वस्तुएँ" data-en="Clothes & Essentials">वस्त्र एवं आवश्यक वस्तुएँ</h4>
+          <p data-hi="कंबल, वस्त्र, जूते तथा दैनिक उपयोग की वस्तुएँ ज़रूरतमंदों तक पहुँचाएँ।" data-en="Deliver blankets, clothes, shoes and daily essentials to the needy.">कंबल, वस्त्र, जूते तथा दैनिक उपयोग की वस्तुएँ ज़रूरतमंदों तक पहुँचाएँ।</p>
+        </div>
+      </div>
+      <div class="way-item">
+        <div class="w-ico">🩺</div>
+        <div>
+          <h4 data-hi="चिकित्सा सामग्री" data-en="Medical Supplies">चिकित्सा सामग्री</h4>
+          <p data-hi="दवाइयाँ, प्राथमिक चिकित्सा किट तथा चिकित्सा उपकरण दान करें।" data-en="Donate medicines, first aid kits and medical equipment.">दवाइयाँ, प्राथमिक चिकित्सा किट तथा चिकित्सा उपकरण दान करें।</p>
+        </div>
+      </div>
+      <div class="way-item">
+        <div class="w-ico">⏰</div>
+        <div>
+          <h4 data-hi="समय दान करें" data-en="Donate Your Time">समय दान करें</h4>
+          <p data-hi="स्वयंसेवक बनें — पढ़ाएँ, प्रशासनिक कार्य करें अथवा कार्यक्रम में सहयोग करें।" data-en="Become a volunteer — teach, do administrative work, or help in events.">स्वयंसेवक बनें — पढ़ाएँ, प्रशासनिक कार्य करें अथवा कार्यक्रम में सहयोग करें।</p>
+        </div>
+      </div>
+      <div class="way-item">
+        <div class="w-ico">🎉</div>
+        <div>
+          <h4 data-hi="आयोजन करें" data-en="Organise Events">आयोजन करें</h4>
+          <p data-hi="अपने जन्मदिन, वर्षगाँठ अथवा अन्य अवसर पर दान-अभियान चलाएँ।" data-en="Run donation drives on your birthday, anniversary or other occasions.">अपने जन्मदिन, वर्षगाँठ अथवा अन्य अवसर पर दान-अभियान चलाएँ।</p>
+        </div>
+      </div>
+      <div class="way-item">
+        <div class="w-ico">📢</div>
+        <div>
+          <h4 data-hi="जागरूकता फैलाएँ" data-en="Spread Awareness">जागरूकता फैलाएँ</h4>
+          <p data-hi="हमारे कार्य को अपने मित्रों, परिवार तथा सोशल मीडिया पर साझा करें।" data-en="Share our work with your friends, family and social media.">हमारे कार्य को अपने मित्रों, परिवार तथा सोशल मीडिया पर साझा करें।</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section style="background:linear-gradient(180deg,#FFFBF5,#FFF6E8)">
+  <div class="container-narrow">
+    <div class="highlight">
+      <h3 data-hi="🪔 आइए, मिलकर बदलाव लाएँ" data-en="🪔 Let's bring change together">🪔 आइए, मिलकर बदलाव लाएँ</h3>
+      <p data-hi="आपका कोई भी सहयोग — छोटा अथवा बड़ा — किसी न किसी के जीवन में उम्मीद की किरण बन सकता है। आज ही सहयोग करें।" data-en="Any support from you — small or large — can become a ray of hope in someone's life. Support today.">आपका कोई भी सहयोग — छोटा अथवा बड़ा — किसी न किसी के जीवन में उम्मीद की किरण बन सकता है। आज ही सहयोग करें।</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="donate.html" class="btn btn-saffron" data-hi="🙏 दान करें" data-en="🙏 Donate Now">🙏 दान करें</a>
+        <a href="the_Uplift.html#volunteer-career" class="btn btn-green" data-hi="🤝 स्वयंसेवक बनें" data-en="🤝 Volunteer">🤝 स्वयंसेवक बनें</a>
+        <a href="contact.html" class="btn btn-outline" data-hi="📞 संपर्क करें" data-en="📞 Contact">📞 संपर्क करें</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="disclaimer">
+      <strong data-hi="⚠️ अस्वीकरण:" data-en="⚠️ Disclaimer:">⚠️ अस्वीकरण:</strong>
+      <span data-hi=" दिप्र फ़ाउंडेशन एक पंजीकृत न्यास है (Trust Act 1882, पंजीकरण संख्या ३००, दर्पण: UP/2024/0459444)। प्रत्येक दान का लेखा-जोखा रखा जाता है। दान की रसीद माँगने पर उपलब्ध कराई जाती है।" data-en=" Dipra Foundation is a registered trust (Trust Act 1882, Reg. No. 300, Darpan: UP/2024/0459444). Every donation is recorded. Receipt available on request."> दिप्र फ़ाउंडेशन एक पंजीकृत न्यास है (Trust Act 1882, पंजीकरण संख्या ३००, दर्पण: UP/2024/0459444)। प्रत्येक दान का लेखा-जोखा रखा जाता है। दान की रसीद माँगने पर उपलब्ध कराई जाती है।</span>
+    </div>
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <div class="brand-logo"><img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="Logo"></div>
+          <div class="brand-text"><b style="color:#fff" data-hi="दिप्र फ़ाउंडेशन" data-en="Dipra Foundation">दिप्र फ़ाउंडेशन</b><span style="color:var(--gold-2)">The Uplift</span></div>
+        </div>
+        <p style="font-size:.92rem;line-height:1.75;color:#F5D9C8" data-hi="पंजीकृत न्यास (Trust Act 1882, पंजीकरण संख्या ३००) — शिक्षा, स्वास्थ्य, कृषि तथा सामाजिक कल्याण के क्षेत्र में समर्पित।" data-en="Registered Trust (Trust Act 1882, Reg. No. 300) — dedicated to education, health, agriculture and social welfare.">पंजीकृत न्यास (Trust Act 1882, पंजीकरण संख्या ३००) — शिक्षा, स्वास्थ्य, कृषि तथा सामाजिक कल्याण के क्षेत्र में समर्पित।</p>
+      </div>
+      <div>
+        <h4 data-hi="मुख्य कड़ियाँ" data-en="Quick Links">मुख्य कड़ियाँ</h4>
+        <ul>
+          <li><a href="about.html" data-hi="हमारे बारे में" data-en="About Us">हमारे बारे में</a></li>
+          <li><a href="the_Uplift.html" data-hi="The Uplift योजना" data-en="The Uplift Scheme">The Uplift योजना</a></li>
+          <li><a href="verify.html" data-hi="प्रमाणपत्र सत्यापन" data-en="Verify Certificate">प्रमाणपत्र सत्यापन</a></li>
+          <li><a href="portal.html" data-hi="पोर्टल" data-en="Portal">पोर्टल</a></li>
+          <li><a href="contact.html" data-hi="संपर्क" data-en="Contact">संपर्क</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-hi="सेवाएँ" data-en="Services">सेवाएँ</h4>
+        <ul>
+          <li><a href="the_Uplift.html" data-hi="विद्यार्थी आवेदन" data-en="Student Apply">विद्यार्थी आवेदन</a></li>
+          <li><a href="the_Uplift.html#volunteer-career" data-hi="स्वयंसेवक आवेदन" data-en="Volunteer Apply">स्वयंसेवक आवेदन</a></li>
+          <li><a href="the_Uplift.html#free" data-hi="नि:शुल्क पाठ्यक्रम" data-en="Free Courses">नि:शुल्क पाठ्यक्रम</a></li>
+          <li><a href="donate.html" data-hi="दान करें" data-en="Donate">दान करें</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-hi="संपर्क" data-en="Contact">संपर्क</h4>
+        <ul>
+          <li>📍 <span data-hi="खेरसा, बिधनू, कानपुर नगर — २०९२१४" data-en="Khersa, Bidhnu, Kanpur Nagar — 209214">खेरसा, बिधनू, कानपुर नगर — २०९२१४</span></li>
+          <li>📞 <a href="tel:+919532328276">+91 95323 28276</a></li>
+          <li>✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></li>
+          <li>🌐 <a href="https://www.diprafoundation.com" target="_blank" rel="noopener">www.diprafoundation.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span data-hi="© २०२६ दिप्र फ़ाउंडेशन। सर्वाधिकार सुरक्षित।" data-en="© 2026 Dipra Foundation. All rights reserved.">© २०२६ दिप्र फ़ाउंडेशन। सर्वाधिकार सुरक्षित।</span>
+      <span data-hi="पंजीकृत न्यास · पंजीकरण संख्या ३००" data-en="Registered Trust · Reg. No. 300">पंजीकृत न्यास · पंजीकरण संख्या ३००</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const $ = (s, c=document) => c.querySelector(s);
+const $$ = (s, c=document) => [...c.querySelectorAll(s)];
+
+function setLang(lang){
+  document.body.classList.toggle('lang-hi', lang === 'hi');
+  document.body.classList.toggle('lang-en', lang === 'en');
+  document.documentElement.lang = lang;
+  $$('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  try { localStorage.setItem('uplift_lang', lang); } catch(e){}
+  $$('[data-hi][data-en]').forEach(el => {
+    const t = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-hi');
+    if(t !== null){
+      if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = t;
+      else el.textContent = t;
+    }
+  });
+}
+$$('.lang-btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+try { const s = localStorage.getItem('uplift_lang'); if(s) setLang(s); }catch(e){}
+
+const burger = $('#burger'), mainNav = $('#mainNav');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  mainNav.classList.toggle('open');
+  document.body.classList.toggle('modal-open', mainNav.classList.contains('open'));
+});
+$$('#mainNav a').forEach(a => a.addEventListener('click', () => {
+  burger.classList.remove('open');
+  mainNav.classList.remove('open');
+  document.body.classList.remove('modal-open');
+}));
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape' && mainNav.classList.contains('open')){
+    burger.classList.remove('open');
+    mainNav.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+});
+
+console.log('%c🤝 दिप्र फ़ाउंडेशन — सहयोग करें', 'color:#0D7A3A;font-weight:bold;font-size:14px');
+</script>
+
 </body>
 </html>
