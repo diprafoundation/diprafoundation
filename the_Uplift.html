@@ -14,6 +14,166 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
 <link rel="icon" href="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
 <link rel="stylesheet" href="style.css">
+<style>
+/* ============================================================
+   PAGE-SPECIFIC: the_Uplift.html
+   ============================================================ */
+
+/* --- HERO --- */
+.hero{background:linear-gradient(135deg,#FFF8F0 0%,var(--saffron-soft) 35%,#FFFBF5 60%,var(--green-soft) 100%);padding:80px 0 90px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;opacity:.45;background-image:radial-gradient(circle at 12% 18%,rgba(255,122,0,.18) 0,transparent 42%),radial-gradient(circle at 88% 78%,rgba(13,122,58,.14) 0,transparent 45%);z-index:0}
+.hero-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:52px;align-items:center;position:relative;z-index:2}
+.hero h1{color:var(--maroon);margin-bottom:20px;line-height:1.18}
+.hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--saffron),var(--maroon-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:800;font-family:'Tiro Devanagari Hindi',serif}
+.hero-sub{font-size:1.05rem;color:var(--ink-2);max-width:600px;margin-bottom:26px;line-height:1.85}
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.hero-badges span{background:#fff;border:1.5px solid var(--border-2);padding:8px 16px;border-radius:999px;font-size:.88rem;font-weight:600;color:var(--ink);box-shadow:0 2px 8px rgba(139,21,56,.05)}
+.hero-badges span:nth-child(odd){border-color:var(--saffron-2);color:var(--saffron-3)}
+.hero-badges span:nth-child(even){border-color:var(--green-2);color:var(--green-3)}
+.hero-btns{display:flex;flex-wrap:wrap;gap:12px}
+.hero-card{background:#fff;border:2px solid var(--border-2);border-radius:var(--radius-xl);padding:28px;box-shadow:var(--shadow-lg);position:relative}
+.hero-card::before{content:"";position:absolute;top:0;left:22px;right:22px;height:4px;background:linear-gradient(90deg,var(--saffron),#fff,var(--green));border-radius:0 0 4px 4px}
+.hero-card h3{color:var(--maroon);font-size:1.02rem;margin-bottom:18px;display:flex;align-items:center;gap:10px;font-family:'Tiro Devanagari Hindi',serif;font-weight:400}
+.hero-card li{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px dashed var(--border);font-size:.92rem;color:var(--ink-2)}
+.hero-card li:last-child{border-bottom:none}
+.hero-card li b{color:var(--maroon);white-space:nowrap;font-family:'Inter',monospace;font-weight:700}
+
+/* --- BENEFITS (from poster) --- */
+.benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:32px}
+.benefit-col{border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-lg);border:2px solid var(--border-2);background:#fff;display:flex;flex-direction:column}
+.benefit-col .bc-head{padding:20px 24px;color:#fff;font-size:1.15rem;font-weight:800;text-align:center;font-family:'Tiro Devanagari Hindi',serif;font-weight:400;letter-spacing:.02em}
+.benefit-col.student .bc-head{background:linear-gradient(135deg,#0A7A8C,#0D5A6B)}
+.benefit-col.volunteer .bc-head{background:linear-gradient(135deg,var(--saffron),var(--saffron-3))}
+.benefit-col .bc-body{padding:30px 24px;flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px}
+.benefit-col .bc-icon{font-size:4rem;line-height:1;margin-bottom:6px}
+.benefit-col .bc-text{font-size:1rem;color:var(--ink-2);line-height:1.75}
+.benefit-col .bc-text b{color:var(--maroon);font-weight:800;font-size:1.06rem}
+.benefit-col .bc-sub{font-size:.9rem;color:var(--muted);line-height:1.7}
+.benefit-col .bc-mockup{display:flex;gap:14px;justify-content:center;align-items:center;margin-top:12px;flex-wrap:wrap}
+.benefit-col .bc-mockup .m-ico{font-size:2.4rem;line-height:1}
+.benefit-col .bc-cta{margin-top:auto;padding-top:16px;width:100%}
+.benefit-col .bc-cta .btn{width:100%}
+
+@media(max-width:700px){
+  .benefits-grid{grid-template-columns:1fr}
+}
+
+/* --- THOUGHTS SLIDER --- */
+#thoughts{background:linear-gradient(135deg,#FFF8F0,var(--saffron-soft),#FFFBF5);position:relative;overflow:hidden}
+.thoughts-slider{position:relative;max-width:860px;margin:0 auto;display:flex;align-items:center;gap:16px}
+.slider-track{position:relative;flex:1;min-height:340px;overflow:hidden;border-radius:20px}
+.thought-slide{position:absolute;inset:0;background:linear-gradient(135deg,#FFFBF5,#FFF6E8);border-left:6px solid var(--saffron);border-radius:20px;padding:34px 40px 30px;box-shadow:0 12px 40px rgba(139,21,56,.12);opacity:0;transform:translateX(30px) scale(.98);transition:opacity .55s ease,transform .55s ease;pointer-events:none;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.thought-slide::before{content:"❝";position:absolute;top:8px;left:22px;font-family:Georgia,serif;font-size:4.5rem;color:var(--saffron-2);opacity:.3;line-height:1}
+.thought-slide.active{opacity:1;transform:translateX(0) scale(1);pointer-events:auto}
+.thought-slide.english{border-left-color:var(--green)}
+.thought-slide.english::before{color:var(--green-2)}
+.thought-text{font-size:1.15rem;font-style:italic;line-height:2;color:var(--ink);padding-left:30px;margin-bottom:16px;font-weight:500;font-family:'Tiro Devanagari Hindi','Noto Sans Devanagari',serif}
+.thought-text b{color:var(--maroon);font-style:normal;font-weight:800}
+.thought-cite{display:block;text-align:right;font-size:.95rem;color:var(--maroon);font-weight:700;font-style:normal;padding-right:10px;margin-bottom:12px}
+.thought-cite::before{content:"— ";margin-right:6px;color:var(--saffron-3)}
+.thought-meaning{font-size:.96rem;color:var(--ink-2);line-height:1.85;padding-left:30px;padding-top:14px;margin-top:8px;border-top:1.5px dashed var(--border-2);font-style:normal}
+.thought-meaning b{color:var(--maroon);font-weight:700;margin-right:6px}
+.slider-btn{width:52px;height:52px;border-radius:50%;background:#fff;border:2px solid var(--border-2);color:var(--maroon);font-size:1.8rem;line-height:1;display:grid;place-items:center;flex:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 14px rgba(139,21,56,.08);font-family:Georgia,serif;padding-bottom:4px}
+.slider-btn:hover{background:linear-gradient(135deg,var(--saffron),var(--saffron-3));border-color:var(--saffron);color:#fff;transform:scale(1.08);box-shadow:0 8px 22px rgba(255,122,0,.35)}
+.slider-btn:active{transform:scale(.95)}
+.slider-dots{display:flex;justify-content:center;gap:8px;margin-top:24px;flex-wrap:wrap}
+.slider-dot{width:10px;height:10px;border-radius:50%;background:var(--border-2);border:none;cursor:pointer;transition:all .25s;padding:0}
+.slider-dot:hover{background:var(--saffron-2);transform:scale(1.2)}
+.slider-dot.active{background:linear-gradient(135deg,var(--saffron),var(--saffron-3));width:32px;border-radius:999px;box-shadow:0 4px 12px rgba(255,122,0,.4)}
+.slider-progress{position:absolute;bottom:0;left:0;height:3px;background:linear-gradient(90deg,var(--saffron),var(--gold-2),var(--green));width:0%;border-radius:0 0 0 20px}
+.thought-slide.active .slider-progress{animation:slideProgress 7s linear forwards}
+@keyframes slideProgress{from{width:0%}to{width:100%}}
+
+@media(max-width:860px){
+  .thoughts-slider{gap:8px}
+  .slider-btn{width:42px;height:42px;font-size:1.5rem}
+  .thought-slide{padding:26px 22px 22px}
+  .thought-text{font-size:1rem;padding-left:16px;line-height:1.9}
+  .thought-meaning{padding-left:16px;font-size:.9rem}
+  .thought-cite{font-size:.88rem}
+  .slider-track{min-height:400px}
+}
+@media(max-width:520px){
+  .thoughts-slider{flex-direction:column;gap:12px}
+  .slider-track{order:1;width:100%;min-height:440px}
+  .slider-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:40px;height:40px}
+  .slider-btn.slider-prev{left:6px}
+  .slider-btn.slider-next{right:6px}
+  .thought-slide{padding:22px 18px 18px}
+  .thought-slide::before{font-size:3rem;top:4px;left:14px}
+  .thought-text{font-size:.95rem;padding-left:12px}
+  .thought-meaning{padding-left:12px;font-size:.86rem}
+}
+
+/* --- DONATE / USAGE (cleaned up) --- */
+.donate-wrap{max-width:1050px;margin:0 auto;background:#fff;border:2px solid var(--gold-2);border-radius:var(--radius-xl);padding:36px;box-shadow:0 10px 30px rgba(212,160,23,.15)}
+.donate-intro{text-align:center;margin-bottom:26px}
+.donate-intro .d-emoji{font-size:3rem;margin-bottom:10px;display:inline-block}
+.donate-intro h3{font-size:1.4rem;color:var(--maroon);margin-bottom:12px;font-family:'Tiro Devanagari Hindi',serif;font-weight:400}
+.donate-intro p{color:var(--ink-2);line-height:1.9;max-width:800px;margin-inline:auto;font-size:1.02rem}
+.donate-intro p strong{color:var(--maroon)}
+.usage-section-title{text-align:center;font-size:1.15rem;color:var(--maroon);margin:32px 0 20px;font-family:'Tiro Devanagari Hindi',serif;font-weight:400}
+.usage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.usage-card{background:#fff;border:2px solid var(--border);border-radius:16px;padding:24px;text-align:center;transition:.25s;position:relative}
+.usage-card:hover{border-color:var(--saffron);transform:translateY(-4px);box-shadow:0 12px 32px rgba(255,122,0,.15)}
+.usage-card.green{border-color:var(--green-2)}
+.usage-card.green:hover{border-color:var(--green);box-shadow:0 12px 32px rgba(13,122,58,.15)}
+.usage-card .percent{position:absolute;top:16px;right:16px;background:linear-gradient(135deg,var(--saffron),var(--saffron-3));color:#fff;font-size:.78rem;font-weight:800;padding:5px 12px;border-radius:999px;letter-spacing:.04em}
+.usage-card.green .percent{background:linear-gradient(135deg,var(--green),var(--green-3))}
+.usage-card .u-ico{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-size:1.9rem;margin:0 auto 14px;background:linear-gradient(135deg,var(--saffron-soft),#fff);border:2px solid var(--saffron-2)}
+.usage-card.green .u-ico{background:linear-gradient(135deg,var(--green-soft),#fff);border-color:var(--green-2)}
+.usage-card h4{font-size:1.05rem;color:var(--maroon);margin-bottom:8px;font-family:'Tiro Devanagari Hindi',serif;font-weight:400}
+.usage-card p{color:var(--ink-2);font-size:.92rem;line-height:1.7}
+
+.donate-cta{text-align:center;margin-top:32px}
+.donate-cta .btn{padding:16px 40px;font-size:1.05rem}
+
+@media(max-width:640px){
+  .donate-wrap{padding:24px 18px;border-radius:18px}
+  .donate-intro h3{font-size:1.2rem}
+  .donate-intro p{font-size:.96rem}
+  .usage-grid{grid-template-columns:1fr}
+}
+
+/* --- FREE COURSE CARDS --- */
+.free-card{background:#fff;border:2px solid var(--border);border-radius:var(--radius-lg);padding:24px;text-align:center;transition:.25s;display:flex;flex-direction:column;position:relative}
+.free-card:hover{border-color:var(--saffron);transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.free-card .fc-ico{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-size:1.9rem;margin:0 auto 16px;background:var(--saffron-soft);border:2px solid var(--saffron-2)}
+.free-card h3{font-size:1.05rem;color:var(--maroon);margin-bottom:8px}
+.free-card .fc-meta{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.free-card .fc-meta span{font-size:.78rem;padding:4px 11px;border-radius:999px;background:var(--cream-2);border:1px solid var(--border-2);color:var(--ink-2);font-weight:600}
+.free-card p{font-size:.92rem;color:var(--ink-2);line-height:1.7;margin-bottom:16px;flex:1}
+.badge-free{position:absolute;top:14px;right:14px;background:linear-gradient(135deg,var(--green),var(--green-3));color:#fff;font-size:.72rem;font-weight:800;padding:5px 12px;border-radius:999px}
+
+/* --- QUOTES (for donate section) --- */
+.quote-grid{display:grid;grid-template-columns:1fr;gap:16px;margin:26px 0}
+.quote-box{background:linear-gradient(135deg,#FFFBF5,#FFF6E8);border-left:5px solid var(--saffron);padding:20px 24px;border-radius:12px;position:relative;transition:.2s}
+.quote-box:hover{border-left-color:var(--green);transform:translateX(4px);box-shadow:0 6px 22px rgba(255,122,0,.15)}
+.quote-box::before{content:"❝";font-size:3rem;color:var(--saffron-2);position:absolute;top:-10px;left:14px;font-family:serif;line-height:1;opacity:.35}
+.quote-box p{font-size:1rem;font-style:italic;line-height:1.85;color:var(--ink);padding-left:24px;margin-bottom:6px}
+.quote-box .meaning{font-style:normal;font-size:.9rem;color:var(--ink-2);padding-left:24px;line-height:1.75;margin-top:8px;padding-top:8px;border-top:1px dashed var(--border-2)}
+.quote-box cite{display:block;margin-top:10px;font-size:.88rem;color:var(--maroon);font-weight:700;text-align:right;font-style:normal}
+.quote-box cite::before{content:"— ";margin-right:4px}
+.quote-box.english{border-left-color:var(--green)}
+.quote-box.english::before{color:var(--green-2)}
+
+/* --- RESPONSIVE --- */
+@media(max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .hero-card{max-width:640px}
+}
+@media(max-width:860px){
+  .hero{padding:60px 0 70px}
+  .hero h1{font-size:1.9rem}
+  .hero-sub{font-size:1rem}
+}
+@media(max-width:520px){
+  .hero h1{font-size:1.7rem}
+}
+@media(max-width:400px){
+  .hero h1{font-size:1.55rem}
+}
+</style>
 </head>
 
 <body class="lang-hi">
@@ -51,9 +211,9 @@
       <ul>
         <li><a href="#home" class="active" data-hi="गृह" data-en="Home">गृह</a></li>
         <li><a href="#why-useful" data-hi="क्यों उपयोगी" data-en="Why Useful">क्यों उपयोगी</a></li>
+        <li><a href="#benefits" data-hi="लाभ" data-en="Benefits">लाभ</a></li>
         <li><a href="#courses" data-hi="पाठ्यक्रम" data-en="Courses">पाठ्यक्रम</a></li>
         <li><a href="#free" data-hi="नि:शुल्क पाठ्यक्रम" data-en="Free Courses">नि:शुल्क पाठ्यक्रम</a></li>
-        <li><a href="#volunteer-career" data-hi="स्वयंसेवक" data-en="Volunteer">स्वयंसेवक</a></li>
         <li><a href="#donate" data-hi="दान" data-en="Donate">दान</a></li>
         <li><a href="portal.html" data-hi="विद्यार्थी केंद्र" data-en="Portal">विद्यार्थी केंद्र</a></li>
         <li><a href="verify.html" data-hi="सत्यापन" data-en="Verify">सत्यापन</a></li>
@@ -71,7 +231,7 @@
   </div>
 </header>
 
-<!-- HERO -->
+<!-- ============ HERO ============ -->
 <section class="hero" id="home">
   <div class="container">
     <div class="hero-grid">
@@ -99,7 +259,7 @@
   </div>
 </section>
 
-<!-- WHY USEFUL -->
+<!-- ============ WHY USEFUL ============ -->
 <section id="why-useful" style="background:#fff">
   <div class="container">
     <div class="section-head">
@@ -142,8 +302,61 @@
   </div>
 </section>
 
-<!-- LIVE COURSES -->
-<section id="courses" style="background:linear-gradient(180deg,#FFFBF5,var(--cream-2))">
+<!-- ============ BENEFITS (from poster) ============ -->
+<section id="benefits" style="background:linear-gradient(180deg,#FFFBF5,#FFF6E8)">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-hi="🎁 लाभ एवं अवसर" data-en="🎁 Benefits & Opportunities">🎁 लाभ एवं अवसर</span>
+      <h2 data-hi="विद्यार्थी तथा स्वयंसेवक — दोनों के लिए" data-en="For Students and Volunteers — Both">विद्यार्थी तथा स्वयंसेवक — दोनों के लिए</h2>
+      <p data-hi="The Uplift योजना में विद्यार्थियों को शिक्षा तथा स्वयंसेवकों को अनुभव — दोनों को लाभ।" data-en="In The Uplift scheme, students get education and volunteers get experience — benefits for both.">The Uplift योजना में विद्यार्थियों को शिक्षा तथा स्वयंसेवकों को अनुभव — दोनों को लाभ।</p>
+    </div>
+
+    <div class="benefits-grid">
+      <!-- Student Benefits -->
+      <div class="benefit-col student">
+        <div class="bc-head" data-hi="विद्यार्थी लाभ" data-en="Student Benefits">विद्यार्थी लाभ</div>
+        <div class="bc-body">
+          <div class="bc-icon">🎓</div>
+          <p class="bc-text" data-hi="कोर्स जॉइन करो और पाओ <b>certificate</b> जो <b>CV/Resume</b> improve करे" data-en="Join a course and get a <b>certificate</b> that improves your <b>CV/Resume</b>">कोर्स जॉइन करो और पाओ <b>certificate</b> जो <b>CV/Resume</b> improve करे</p>
+          <div class="bc-mockup">
+            <span class="m-ico">📄</span>
+            <span class="m-ico">📚</span>
+            <span class="m-ico">📈</span>
+          </div>
+          <div class="bc-cta">
+            <button class="btn btn-green btn-sm" onclick="openApplyModal()" data-hi="📝 अभी आवेदन करें" data-en="📝 Apply Now">📝 अभी आवेदन करें</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Volunteer Opportunities -->
+      <div class="benefit-col volunteer">
+        <div class="bc-head" data-hi="स्वयंसेवक अवसर" data-en="Volunteer Opportunities">स्वयंसेवक अवसर</div>
+        <div class="bc-body">
+          <div class="bc-icon">👩‍🏫</div>
+          <p class="bc-text" data-hi="<b>Volunteer Teacher</b> बनो और पाओ <b>NGO Experience Certificate</b>" data-en="Become a <b>Volunteer Teacher</b> and get an <b>NGO Experience Certificate</b>"><b>Volunteer Teacher</b> बनो और पाओ <b>NGO Experience Certificate</b></p>
+          <p class="bc-sub" data-hi="(Govt/Private jobs के लिए useful)" data-en="(Useful for Govt/Private jobs)">(Govt/Private jobs के लिए useful)</p>
+          <div class="bc-mockup">
+            <span class="m-ico">📜</span>
+            <span class="m-ico">📊</span>
+            <span class="m-ico">❓</span>
+          </div>
+          <div class="bc-cta">
+            <button class="btn btn-saffron btn-sm" onclick="openVolunteerModal()" data-hi="🤝 अभी आवेदन करें" data-en="🤝 Apply Now">🤝 अभी आवेदन करें</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="center mt32">
+      <a href="#courses" class="btn btn-outline" data-hi="📚 पाठ्यक्रम देखें" data-en="📚 View Courses">📚 पाठ्यक्रम देखें</a>
+      <a href="#free" class="btn btn-outline" data-hi="📖 नि:शुल्क ई-पुस्तकें" data-en="📖 Free Ebooks">📖 नि:शुल्क ई-पुस्तकें</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIVE COURSES ============ -->
+<section id="courses" style="background:#fff">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow" data-hi="यथार्थ पाठ्यक्रम पट्ट" data-en="Live Courses Sheet">यथार्थ पाठ्यक्रम पट्ट</span>
@@ -217,7 +430,7 @@
   </div>
 </section>
 
-<!-- FREE COURSES -->
+<!-- ============ FREE COURSES ============ -->
 <section id="free" style="background:linear-gradient(180deg,#FFF8F0,var(--saffron-soft))">
   <div class="container">
     <div class="section-head">
@@ -229,7 +442,7 @@
   </div>
 </section>
 
-<!-- VOLUNTEER CAREER -->
+<!-- ============ VOLUNTEER CAREER ============ -->
 <section id="volunteer-career" style="background:#fff">
   <div class="container">
     <div class="section-head">
@@ -274,7 +487,7 @@
   </div>
 </section>
 
-<!-- DONATE -->
+<!-- ============ DONATE — WITH THOUGHTS SLIDER ============ -->
 <section id="donate" style="background:linear-gradient(135deg,#FFF8F0,var(--saffron-soft),#FFFBF5)">
   <div class="container">
     <div class="section-head">
@@ -283,76 +496,68 @@
       <p data-hi="ज्ञान का दान सर्वश्रेष्ठ दान है — जो न कभी समाप्त होता है, न चोरी हो सकता है" data-en="The gift of knowledge is the greatest — it never ends, never stolen">ज्ञान का दान सर्वश्रेष्ठ दान है — जो न कभी समाप्त होता है, न चोरी हो सकता है</p>
     </div>
 
-    <div class="card" style="max-width:1050px;margin-inline:auto;border:2px solid var(--gold-2);border-radius:var(--radius-xl);padding:36px;background:#fff">
-      <div style="text-align:center;margin-bottom:26px">
-        <div style="font-size:3rem;margin-bottom:10px">🙏</div>
-        <h3 style="font-size:1.4rem;color:var(--maroon);margin-bottom:12px" data-hi="क्यों दान करें?" data-en="Why Donate?">क्यों दान करें?</h3>
-        <p style="color:var(--ink-2);line-height:1.9;max-width:800px;margin-inline:auto;font-size:1.02rem" data-hi="हमारे राष्ट्र में लाखों प्रतिभाशाली बालक केवल इस कारण अध्ययन नहीं कर पाते कि उनके परिवार की आर्थिक स्थिति दुर्बल है। आपका एक दान उस बालक की सम्पूर्ण जीवन-यात्रा को परिवर्तित कर सकता है — जो भविष्य में चिकित्सक, अभियन्ता, शिक्षक अथवा समाजसेवी बन सकता है।" data-en="In our nation, lakhs of talented children cannot study because their families are economically weak. Your one donation can transform a child's life — who might become a doctor, engineer, teacher or social worker.">हमारे राष्ट्र में लाखों प्रतिभाशाली बालक केवल इस कारण अध्ययन नहीं कर पाते कि उनके परिवार की आर्थिक स्थिति दुर्बल है। <strong style="color:var(--maroon)">आपका एक दान उस बालक की सम्पूर्ण जीवन-यात्रा को परिवर्तित कर सकता है</strong> — जो भविष्य में चिकित्सक, अभियन्ता, शिक्षक अथवा समाजसेवी बन सकता है।</p>
+    <div class="donate-wrap">
+      <!-- WHY DONATE -->
+      <div class="donate-intro">
+        <div class="d-emoji">🙏</div>
+        <h3 data-hi="क्यों दान करें?" data-en="Why Donate?">क्यों दान करें?</h3>
+        <p data-hi="हमारे राष्ट्र में लाखों प्रतिभाशाली बालक केवल इस कारण अध्ययन नहीं कर पाते कि उनके परिवार की आर्थिक स्थिति दुर्बल है। आपका एक दान उस बालक की सम्पूर्ण जीवन-यात्रा को परिवर्तित कर सकता है — जो भविष्य में चिकित्सक, अभियन्ता, शिक्षक अथवा समाजसेवी बन सकता है।" data-en="In our nation, lakhs of talented children cannot study because their families are economically weak. Your one donation can transform a child's life — who might become a doctor, engineer, teacher or social worker.">हमारे राष्ट्र में लाखों प्रतिभाशाली बालक केवल इस कारण अध्ययन नहीं कर पाते कि उनके परिवार की आर्थिक स्थिति दुर्बल है। <strong>आपका एक दान उस बालक की सम्पूर्ण जीवन-यात्रा को परिवर्तित कर सकता है</strong> — जो भविष्य में चिकित्सक, अभियन्ता, शिक्षक अथवा समाजसेवी बन सकता है।</p>
       </div>
-      <h3 style="text-align:center;font-size:1.15rem;color:var(--maroon);margin:32px 0 20px" data-hi="📖 दान-प्रोत्साहन हेतु प्रामाणिक उद्धरण" data-en="📖 Authentic references for donation inspiration">📖 दान-प्रोत्साहन हेतु प्रामाणिक उद्धरण</h3>
-      <div class="quote-grid">
-        <div class="quote-box">
-          <p>"दातव्यमिति यद्दानं दीयतेऽनुपकारिणे।<br>देशे काले च पात्रे च तद्दानं सात्त्विकं स्मृतम्॥"</p>
-          <cite data-hi="भगवद्गीता १७.२०" data-en="Bhagavad Gita 17.20">भगवद्गीता १७.२०</cite>
-          <div class="meaning"><b data-hi="अर्थ:" data-en="Meaning:">अर्थ:</b> <span data-hi="जो दान योग्य देश, उचित काल तथा योग्य पात्र को, बिना किसी प्रतिफल की अपेक्षा के दिया जाए — वही सात्त्विक दान कहलाता है।" data-en="Charity given at the right place, right time, to the right person, without expectation of return — that is Sattvik charity.">जो दान योग्य देश, उचित काल तथा योग्य पात्र को, बिना किसी प्रतिफल की अपेक्षा के दिया जाए — वही सात्त्विक दान कहलाता है।</span></div>
-        </div>
-        <div class="quote-box">
-          <p>"दानं परमं धर्मः। दानेन सर्वं प्राप्यते।<br>दानेन कीर्तिर्लभ्यते। दानेन पापं नश्यति॥"</p>
-          <cite data-hi="महाभारत · अनुशासन पर्व" data-en="Mahabharata · Anushasan Parva">महाभारत · अनुशासन पर्व</cite>
-          <div class="meaning"><b data-hi="अर्थ:" data-en="Meaning:">अर्थ:</b> <span data-hi="दान सर्वोच्च धर्म है। दान से सब कुछ प्राप्त होता है, दान से कीर्ति मिलती है, दान से पाप का नाश होता है।" data-en="Charity is the supreme dharma. Through charity everything is attained, fame gained, and sins destroyed.">दान सर्वोच्च धर्म है। दान से सब कुछ प्राप्त होता है, दान से कीर्ति मिलती है, दान से पाप का नाश होता है।</span></div>
-        </div>
-        <div class="quote-box">
-          <p>"विद्या दानं परं दानं, विद्या दानं महाफलम्।<br>विद्यया सदृशं दानं न भूतं न भविष्यति॥"</p>
-          <cite data-hi="विदुर नीति · प्राचीन संस्कृत सूक्ति" data-en="Vidura Neeti · Ancient Sanskrit precept">विदुर नीति · प्राचीन संस्कृत सूक्ति</cite>
-          <div class="meaning"><b data-hi="अर्थ:" data-en="Meaning:">अर्थ:</b> <span data-hi="विद्या का दान सर्वश्रेष्ठ दान है, यह महान फल प्रदान करता है। विद्या के दान के समान कोई दान न अतीत में हुआ, न भविष्य में होगा।" data-en="The gift of knowledge is the greatest gift, yielding highest fruit. No gift like knowledge has ever been or will be.">विद्या का दान सर्वश्रेष्ठ दान है, यह महान फल प्रदान करता है। विद्या के दान के समान कोई दान न अतीत में हुआ, न भविष्य में होगा।</span></div>
-        </div>
-        <div class="quote-box">
-          <p>"अन्नदानं महादानं विद्यादानमतः परम्।<br>अन्नेन क्षणिका तृप्तिर्विद्यया तु चिरस्थितिः॥"</p>
-          <cite data-hi="आचार्य चाणक्य · नीति शतक" data-en="Acharya Chanakya · Neeti Shatak">आचार्य चाणक्य · नीति शतक</cite>
-          <div class="meaning"><b data-hi="अर्थ:" data-en="Meaning:">अर्थ:</b> <span data-hi="अन्न का दान महान है, किन्तु विद्या का दान उससे भी श्रेष्ठ है। अन्न से क्षणिक तृप्ति होती है, विद्या से चिरस्थायी सन्तुष्टि।" data-en="The gift of food is great, but knowledge is superior. Food gives momentary satisfaction, knowledge gives enduring contentment.">अन्न का दान महान है, किन्तु विद्या का दान उससे भी श्रेष्ठ है। अन्न से क्षणिक तृप्ति होती है, विद्या से चिरस्थायी सन्तुष्टि।</span></div>
-        </div>
-        <div class="quote-box">
-          <p>"परहित सरिस धरम नहिं भाई। पर पीड़ा सम नहिं अधमाई॥"</p>
-          <cite data-hi="गोस्वामी तुलसीदास · रामचरितमानस" data-en="Goswami Tulsidas · Ramcharitmanas">गोस्वामी तुलसीदास · रामचरितमानस</cite>
-          <div class="meaning"><b data-hi="अर्थ:" data-en="Meaning:">अर्थ:</b> <span data-hi="हे भाई! परहित के समान कोई धर्म नहीं, और पराई पीड़ा के समान कोई अधर्म नहीं।" data-en="O brother! No dharma like benefitting others, no sin like causing pain to others.">हे भाई! परहित के समान कोई धर्म नहीं, और पराई पीड़ा के समान कोई अधर्म नहीं।</span></div>
-        </div>
-        <div class="quote-box english">
-          <p>"The best way to find yourself is to lose yourself in the service of others."</p>
-          <cite>— Mahatma Gandhi</cite>
-          <div class="meaning" data-hi="स्वयं को खोजने का सर्वश्रेष्ठ मार्ग है — दूसरों की सेवा में स्वयं को खो देना।" data-en="The best way to find yourself is to lose yourself in the service of others.">स्वयं को खोजने का सर्वश्रेष्ठ मार्ग है — दूसरों की सेवा में स्वयं को खो देना।</div>
-        </div>
-        <div class="quote-box english">
-          <p>"Education is the most powerful weapon which you can use to change the world."</p>
-          <cite>— Nelson Mandela</cite>
-          <div class="meaning" data-hi="शिक्षा सर्वाधिक शक्तिशाली शस्त्र है जिससे आप विश्व को परिवर्तित कर सकते हैं।" data-en="Education is the most powerful weapon which you can use to change the world.">शिक्षा सर्वाधिक शक्तिशाली शस्त्र है जिससे आप विश्व को परिवर्तित कर सकते हैं।</div>
-        </div>
-        <div class="quote-box english">
-          <p>"We make a living by what we get, but we make a life by what we give."</p>
-          <cite>— Winston Churchill</cite>
-          <div class="meaning" data-hi="हम जो प्राप्त करते हैं उससे जीविका चलाते हैं, किन्तु जो देते हैं उससे जीवन का निर्माण करते हैं।" data-en="We make a living by what we get, but we make a life by what we give.">हम जो प्राप्त करते हैं उससे जीविका चलाते हैं, किन्तु जो देते हैं उससे जीवन का निर्माण करते हैं।</div>
-        </div>
-        <div class="quote-box english">
-          <p>"No one has ever become poor by giving."</p>
-          <cite>— Anne Frank</cite>
-          <div class="meaning" data-hi="दान देने से आज तक कोई दरिद्र नहीं हुआ। देने से समृद्धि ही बढ़ती है।" data-en="No one has ever become poor by giving. Giving increases prosperity.">दान देने से आज तक कोई दरिद्र नहीं हुआ। देने से समृद्धि ही बढ़ती है।</div>
-        </div>
-        <div class="quote-box english">
-          <p>"We rise by lifting others."</p>
-          <cite>— Robert Ingersoll</cite>
-          <div class="meaning" data-hi="हम दूसरों को उठाकर ही स्वयं ऊपर उठते हैं। — The Uplift का यही आदर्श वाक्य है।" data-en="We rise by lifting others. — This is The Uplift's motto.">हम दूसरों को उठाकर ही स्वयं ऊपर उठते हैं। — The Uplift का यही आदर्श वाक्य है।</div>
-        </div>
+
+      <!-- THOUGHTS SLIDER (auto-slide, right after why donate) -->
+      <h3 class="usage-section-title" style="margin-top:40px" data-hi="📖 दान-प्रोत्साहन हेतु प्रामाणिक उद्धरण" data-en="📖 Authentic references for donation inspiration">📖 दान-प्रोत्साहन हेतु प्रामाणिक उद्धरण</h3>
+
+      <div class="thoughts-slider">
+        <button class="slider-btn slider-prev" id="thoughtPrev" aria-label="पिछला"><span>‹</span></button>
+        <div class="slider-track" id="thoughtTrack"></div>
+        <button class="slider-btn slider-next" id="thoughtNext" aria-label="अगला"><span>›</span></button>
       </div>
-      <div class="mt32">
-        <h3 style="text-align:center;font-size:1.15rem;color:var(--maroon);margin-bottom:20px" data-hi="🙏 आपके दान का उपयोग" data-en="🙏 Use of your donation">🙏 आपके दान का उपयोग</h3>
-        <div class="grid g3">
-          <div class="card green"><div class="ico">🎓</div><h3 data-hi="अनाथ विद्यार्थी (४०%)" data-en="Orphan Support (40%)">अनाथ विद्यार्थी (४०%)</h3><p data-hi="अनाथ बालकों की पूर्ण शुल्क-सहायता तथा संगणक पाठ्यक्रम नि:शुल्क।" data-en="Full fee support and free computer course for orphans.">अनाथ बालकों की पूर्ण शुल्क-सहायता तथा संगणक पाठ्यक्रम नि:शुल्क।</p></div>
-          <div class="card"><div class="ico">📚</div><h3 data-hi="पुस्तकें (१५%)" data-en="Books (15%)">पुस्तकें (१५%)</h3><p data-hi="प्रत्येक विद्यार्थी को पाठ्य-सामग्री, लेखन-सामग्री नि:शुल्क।" data-en="Study materials and stationery free for all students.">प्रत्येक विद्यार्थी को पाठ्य-सामग्री, लेखन-सामग्री नि:शुल्क।</p></div>
-          <div class="card green"><div class="ico">💻</div><h3 data-hi="संगणक (१५%)" data-en="Computer (15%)">संगणक (१५%)</h3><p data-hi="संगणक प्रयोगशाला, अंतर्जाल तथा अंकीय उपकरण।" data-en="Computer lab, internet and digital devices.">संगणक प्रयोगशाला, अंतर्जाल तथा अंकीय उपकरण।</p></div>
-          <div class="card"><div class="ico">🧑‍🏫</div><h3 data-hi="शिक्षक मानदेय (२०%)" data-en="Teacher Honorarium (20%)">शिक्षक मानदेय (२०%)</h3><p data-hi="अनुभवी शिक्षकों को मानदेय — शिक्षण की गुणवत्ता हेतु।" data-en="Honorarium for experienced teachers — for teaching quality.">अनुभवी शिक्षकों को मानदेय — शिक्षण की गुणवत्ता हेतु।</p></div>
-          <div class="card green"><div class="ico">🏫</div><h3 data-hi="कक्षा भवन (५%)" data-en="Classroom (5%)">कक्षा भवन (५%)</h3><p data-hi="कक्षा-भवन, विद्युत, जल तथा अन्य सुविधाएँ।" data-en="Classroom, electricity, water and other facilities.">कक्षा-भवन, विद्युत, जल तथा अन्य सुविधाएँ।</p></div>
-          <div class="card"><div class="ico">🌱</div><h3 data-hi="नई शाखाएँ (५%)" data-en="New Branches (5%)">नई शाखाएँ (५%)</h3><p data-hi="अन्य ग्रामों तक पहुँचने हेतु नए केंद्र।" data-en="New centers to reach more villages.">अन्य ग्रामों तक पहुँचने हेतु नए केंद्र।</p></div>
+      <div class="slider-dots" id="thoughtDots"></div>
+
+      <!-- USAGE -->
+      <h3 class="usage-section-title" style="margin-top:48px" data-hi="🙏 आपके दान का उपयोग" data-en="🙏 Use of your donation">🙏 आपके दान का उपयोग</h3>
+      <p style="text-align:center;color:var(--muted);font-size:.92rem;margin-bottom:24px" data-hi="प्रत्येक रुपये का पूर्ण पारदर्शिता के साथ उपयोग किया जाता है।" data-en="Every rupee is used with complete transparency.">प्रत्येक रुपये का पूर्ण पारदर्शिता के साथ उपयोग किया जाता है।</p>
+
+      <div class="usage-grid">
+        <div class="usage-card green">
+          <span class="percent">40%</span>
+          <div class="u-ico">🎓</div>
+          <h4 data-hi="अनाथ विद्यार्थी सहायता" data-en="Orphan Student Support">अनाथ विद्यार्थी सहायता</h4>
+          <p data-hi="अनाथ बालकों की पूर्ण शुल्क-सहायता, पुस्तकें तथा संगणक पाठ्यक्रम नि:शुल्क।" data-en="Full fee support, books and computer course free for orphans.">अनाथ बालकों की पूर्ण शुल्क-सहायता, पुस्तकें तथा संगणक पाठ्यक्रम नि:शुल्क।</p>
+        </div>
+        <div class="usage-card">
+          <span class="percent">15%</span>
+          <div class="u-ico">📚</div>
+          <h4 data-hi="पुस्तकें व सामग्री" data-en="Books & Materials">पुस्तकें व सामग्री</h4>
+          <p data-hi="प्रत्येक विद्यार्थी को पाठ्य-सामग्री, अभ्यास-प्रश्नपत्र तथा लेखन-सामग्री नि:शुल्क।" data-en="Study materials, practice papers and stationery free for all students.">प्रत्येक विद्यार्थी को पाठ्य-सामग्री, अभ्यास-प्रश्नपत्र तथा लेखन-सामग्री नि:शुल्क।</p>
+        </div>
+        <div class="usage-card green">
+          <span class="percent">15%</span>
+          <div class="u-ico">💻</div>
+          <h4 data-hi="संगणक सुविधा" data-en="Computer Facility">संगणक सुविधा</h4>
+          <p data-hi="संगणक प्रयोगशाला, अंतर्जाल तथा अंकीय उपकरण — ग्रामीण बालकों हेतु।" data-en="Computer lab, internet and digital devices — for rural children.">संगणक प्रयोगशाला, अंतर्जाल तथा अंकीय उपकरण — ग्रामीण बालकों हेतु।</p>
+        </div>
+        <div class="usage-card">
+          <span class="percent">20%</span>
+          <div class="u-ico">🧑‍🏫</div>
+          <h4 data-hi="शिक्षक मानदेय" data-en="Teacher Honorarium">शिक्षक मानदेय</h4>
+          <p data-hi="अनुभवी शिक्षकों को मानदेय — जिससे शिक्षण की गुणवत्ता उच्च रहे।" data-en="Honorarium for experienced teachers — to maintain high quality.">अनुभवी शिक्षकों को मानदेय — जिससे शिक्षण की गुणवत्ता उच्च रहे।</p>
+        </div>
+        <div class="usage-card green">
+          <span class="percent">5%</span>
+          <div class="u-ico">🏫</div>
+          <h4 data-hi="कक्षा भवन व्यय" data-en="Classroom Expenses">कक्षा भवन व्यय</h4>
+          <p data-hi="कक्षा-भवन, विद्युत, जल तथा अन्य आधारभूत सुविधाएँ।" data-en="Classroom, electricity, water and other basic facilities.">कक्षा-भवन, विद्युत, जल तथा अन्य आधारभूत सुविधाएँ।</p>
+        </div>
+        <div class="usage-card">
+          <span class="percent">5%</span>
+          <div class="u-ico">🌱</div>
+          <h4 data-hi="नई शाखाएँ" data-en="New Branches">नई शाखाएँ</h4>
+          <p data-hi="अन्य ग्रामों तक पहुँचने हेतु नए केंद्रों का विस्तार।" data-en="Opening new centers to reach more villages.">अन्य ग्रामों तक पहुँचने हेतु नए केंद्रों का विस्तार।</p>
         </div>
       </div>
+
+      <!-- TRANSPARENCY -->
       <div class="grid g2 mt32" style="gap:16px">
         <div class="note note-green" style="font-size:.9rem">
           <b data-hi="📌 पारदर्शिता" data-en="📌 Transparency">📌 पारदर्शिता</b><br>
@@ -363,14 +568,15 @@
           <span data-hi="कृपया किसी भी व्यक्तिगत खाते में सीधे भुगतान न करें। आधिकारिक प्रक्रिया हमारी टीम कूट-सत्यापन के पश्चात् बताएगी।" data-en="Do not pay into any personal account. Official process will be shared after code verification.">कृपया किसी भी व्यक्तिगत खाते में सीधे भुगतान न करें। आधिकारिक प्रक्रिया हमारी टीम कूट-सत्यापन के पश्चात् बताएगी।</span>
         </div>
       </div>
-      <div class="center mt32">
-        <a href="donate.html" class="btn btn-saffron" style="padding:16px 40px;font-size:1.05rem" data-hi="🙏 दान करें" data-en="🙏 Donate Now">🙏 दान करें</a>
+
+      <div class="donate-cta">
+        <a href="donate.html" class="btn btn-saffron" data-hi="🙏 दान करें" data-en="🙏 Donate Now">🙏 दान करें</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ============ ABOUT ============ -->
 <section id="about" style="background:#fff">
   <div class="container">
     <div class="section-head">
@@ -392,7 +598,7 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ============ FOOTER ============ -->
 <footer>
   <div class="container">
     <div class="disclaimer">
@@ -414,7 +620,6 @@
           <li><a href="#free" data-hi="नि:शुल्क पाठ्यक्रम एवं ई-पुस्तकें" data-en="Free Courses & Ebooks">नि:शुल्क पाठ्यक्रम एवं ई-पुस्तकें</a></li>
           <li><a href="portal.html" data-hi="विद्यार्थी केंद्र" data-en="Portal">विद्यार्थी केंद्र</a></li>
           <li><a href="verify.html" data-hi="प्रमाणपत्र सत्यापन" data-en="Verify Certificate">प्रमाणपत्र सत्यापन</a></li>
-          <li><a href="districts.html" data-hi="राज्य एवं जनपद" data-en="States & Districts">राज्य एवं जनपद</a></li>
         </ul>
       </div>
       <div>
@@ -467,6 +672,11 @@
           <div class="field"><label data-hi="राज्य" data-en="State">राज्य</label><select name="state" id="applyState"></select></div>
           <div class="field"><label data-hi="जनपद" data-en="District">जनपद</label><select name="district" id="applyDistrict"><option value="">—</option></select></div>
         </div>
+        <div class="field" style="margin-top:-8px">
+          <a href="districts.html" target="_blank" style="font-size:.88rem;color:var(--saffron-3);font-weight:600;display:inline-flex;align-items:center;gap:6px">
+            🗺️ <span data-hi="समस्त राज्य एवं जनपद देखें" data-en="View all states & districts">समस्त राज्य एवं जनपद देखें</span>
+          </a>
+        </div>
         <div class="field"><label data-hi="सम्पूर्ण पता" data-en="Full Address">सम्पूर्ण पता</label><textarea name="address" placeholder="गृह संख्या, मोहल्ला, ग्राम/नगर, जनपद, राज्य, पिन कोड"></textarea></div>
         <div class="row">
           <div class="field"><label data-hi="वर्तमान कक्षा" data-en="Current Class">वर्तमान कक्षा</label><select name="currentClass"><option value="">—</option><option>६</option><option>७</option><option>८</option><option>९</option><option>१०</option><option>११</option><option>१२</option></select></div>
@@ -487,9 +697,9 @@
         <div style="width:80px;height:80px;border-radius:50%;background:var(--green-soft);color:var(--green);display:grid;place-items:center;font-size:2.2rem;margin:0 auto 18px;border:3px solid var(--green-2)">✓</div>
         <h3 style="color:var(--green-3);margin-bottom:8px" data-hi="🪔 आवेदन सफलतापूर्वक जमा!" data-en="🪔 Application submitted!">🪔 आवेदन सफलतापूर्वक जमा!</h3>
         <p style="color:var(--ink-2);margin-bottom:18px" data-hi="आवेदन संख्या सुरक्षित रखें।" data-en="Keep your Application ID safe.">आवेदन संख्या सुरक्षित रखें।</p>
-        <div style="display:inline-block;background:var(--saffron-soft);border:2.5px dashed var(--saffron);padding:16px 34px;border-radius:12px;margin-bottom:18px">
-          <small style="display:block;font-size:.78rem;color:var(--saffron-3);letter-spacing:.1em;text-transform:uppercase;font-weight:700" data-hi="आवेदन संख्या" data-en="Application ID">आवेदन संख्या</small>
-          <b id="applyAppId" style="font-size:1.4rem;color:var(--maroon);font-family:monospace;font-weight:800">—</b>
+        <div class="id-box">
+          <small data-hi="आवेदन संख्या" data-en="Application ID">आवेदन संख्या</small>
+          <b id="applyAppId">—</b>
         </div>
         <div><button class="btn btn-primary" onclick="closeModal('applyModal')" data-hi="बंद करें" data-en="Close">बंद करें</button></div>
       </div>
@@ -499,7 +709,7 @@
 
 <!-- OTP MODAL -->
 <div class="modal" id="otpModal" role="dialog" aria-modal="true">
-  <div class="modal-box" style="max-width:460px">
+  <div class="modal-box modal-sm">
     <div class="modal-head"><h3 data-hi="🔐 विद्युत्पत्र सत्यापन" data-en="🔐 Email Verification">🔐 विद्युत्पत्र सत्यापन</h3><button class="close-x" onclick="closeModal('otpModal')">×</button></div>
     <div class="modal-body">
       <div id="otpStep1">
@@ -525,7 +735,7 @@
 
 <!-- EBOOK MODAL -->
 <div class="modal" id="ebookModal" role="dialog" aria-modal="true">
-  <div class="modal-box" style="max-width:900px">
+  <div class="modal-box modal-lg">
     <div class="modal-head"><h3 id="ebookTitle" data-hi="📖 ई-पुस्तक" data-en="📖 Ebook">📖 ई-पुस्तक</h3><button class="close-x" onclick="closeModal('ebookModal')">×</button></div>
     <div class="modal-body" style="padding:0">
       <div class="ebook-reader">
@@ -549,7 +759,7 @@
 
 <!-- QUIZ MODAL -->
 <div class="modal" id="quizModal" role="dialog" aria-modal="true">
-  <div class="modal-box" style="max-width:860px">
+  <div class="modal-box modal-lg">
     <div class="modal-head"><h3 id="quizTitle" data-hi="📝 ज्ञान परीक्षा" data-en="📝 Knowledge Test">📝 ज्ञान परीक्षा</h3><button class="close-x" onclick="closeModal('quizModal')">×</button></div>
     <div class="modal-body" id="quizBody"></div>
   </div>
@@ -557,7 +767,7 @@
 
 <!-- FREE CERT MODAL -->
 <div class="modal" id="freeCertModal" role="dialog" aria-modal="true">
-  <div class="modal-box" style="max-width:820px">
+  <div class="modal-box modal-lg">
     <div class="modal-head"><h3 data-hi="🎖️ प्रमाणपत्र विवरण" data-en="🎖️ Certificate Details">🎖️ प्रमाणपत्र विवरण</h3><button class="close-x" onclick="closeModal('freeCertModal')">×</button></div>
     <div class="modal-body" id="freeCertBody"></div>
   </div>
@@ -565,7 +775,7 @@
 
 <!-- VOLUNTEER MODAL -->
 <div class="modal" id="volunteerModal" role="dialog" aria-modal="true">
-  <div class="modal-box" style="max-width:820px">
+  <div class="modal-box modal-lg">
     <div class="modal-head"><h3 data-hi="🤝 स्वयंसेवक आवेदन" data-en="🤝 Volunteer Application">🤝 स्वयंसेवक आवेदन</h3><button class="close-x" onclick="closeModal('volunteerModal')">×</button></div>
     <div class="modal-body">
       <form id="volTeacherForm" novalidate>
@@ -604,9 +814,9 @@
       <div id="volConfirm" style="display:none;text-align:center;padding:24px 0">
         <div style="width:80px;height:80px;border-radius:50%;background:var(--green-soft);color:var(--green);display:grid;place-items:center;font-size:2.2rem;margin:0 auto 18px;border:3px solid var(--green-2)">✓</div>
         <h3 style="color:var(--green-3);margin-bottom:10px" data-hi="🙏 धन्यवाद!" data-en="🙏 Thank you!">🙏 धन्यवाद!</h3>
-        <div style="display:inline-block;background:var(--saffron-soft);border:2.5px dashed var(--saffron);padding:16px 34px;border-radius:12px">
-          <small style="display:block;font-size:.78rem;color:var(--saffron-3);letter-spacing:.1em;text-transform:uppercase;font-weight:700" data-hi="स्वयंसेवक संख्या" data-en="Volunteer ID">स्वयंसेवक संख्या</small>
-          <b id="volIdOut" style="font-size:1.3rem;color:var(--maroon);font-family:monospace;font-weight:800">—</b>
+        <div class="id-box">
+          <small data-hi="स्वयंसेवक संख्या" data-en="Volunteer ID">स्वयंसेवक संख्या</small>
+          <b id="volIdOut">—</b>
         </div>
       </div>
     </div>
@@ -615,7 +825,7 @@
 
 <!-- GRIEVANCE MODAL -->
 <div class="modal" id="grievanceModal" role="dialog" aria-modal="true">
-  <div class="modal-box" style="max-width:640px">
+  <div class="modal-box modal-md">
     <div class="modal-head"><h3 data-hi="📢 शिकायत निवारण" data-en="📢 Grievance">📢 शिकायत निवारण</h3><button class="close-x" onclick="closeModal('grievanceModal')">×</button></div>
     <div class="modal-body">
       <form id="grievanceForm" novalidate>
@@ -634,9 +844,9 @@
       <div id="grievanceConfirm" style="display:none;text-align:center;padding:24px 0">
         <div style="width:80px;height:80px;border-radius:50%;background:var(--green-soft);color:var(--green);display:grid;place-items:center;font-size:2.2rem;margin:0 auto 18px;border:3px solid var(--green-2)">✓</div>
         <h3 style="color:var(--green-3);margin-bottom:10px" data-hi="🙏 शिकायत दर्ज हो गई।" data-en="🙏 Complaint registered.">🙏 शिकायत दर्ज हो गई।</h3>
-        <div style="display:inline-block;background:var(--saffron-soft);border:2.5px dashed var(--saffron);padding:16px 34px;border-radius:12px">
-          <small style="display:block;font-size:.78rem;color:var(--saffron-3);letter-spacing:.1em;text-transform:uppercase;font-weight:700" data-hi="शिकायत संख्या" data-en="Complaint ID">शिकायत संख्या</small>
-          <b id="grievanceIdOut" style="font-size:1.3rem;color:var(--maroon);font-family:monospace;font-weight:800">—</b>
+        <div class="id-box">
+          <small data-hi="शिकायत संख्या" data-en="Complaint ID">शिकायत संख्या</small>
+          <b id="grievanceIdOut">—</b>
         </div>
       </div>
     </div>
@@ -667,15 +877,18 @@ function setLang(lang){
       else el.textContent = t;
     }
   });
-  renderCourseTable(); renderHeroSeats(); renderFreeCourses();
+  renderCourseTable();
+  renderHeroSeats();
+  renderFreeCourses();
+  if(typeof renderThoughts === 'function') renderThoughts();
 }
 $$('.lang-btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
 try{ const s = localStorage.getItem('uplift_lang'); if(s) setLang(s); }catch(e){}
 
 /* ---------- Mobile nav ---------- */
 const burger = $('#burger'), mainNav = $('#mainNav');
-burger.addEventListener('click', () => { burger.classList.toggle('open'); mainNav.classList.toggle('open'); });
-$$('#mainNav a, #mainNav button').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); mainNav.classList.remove('open'); }));
+burger.addEventListener('click', () => { burger.classList.toggle('open'); mainNav.classList.toggle('open'); document.body.classList.toggle('modal-open', mainNav.classList.contains('open')); });
+$$('#mainNav a, #mainNav button').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); mainNav.classList.remove('open'); document.body.classList.remove('modal-open'); }));
 const header = $('#mainHeader');
 window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 20), { passive:true });
 
@@ -695,18 +908,106 @@ document.addEventListener('keydown', e => { if(e.key === 'Escape'){ ['applyModal
   if(el) el.addEventListener('click', e => { if(e.target.id === id){ el.classList.remove('show'); document.body.classList.remove('modal-open'); } });
 });
 
-/* ---------- Courses ---------- */
-const COURSES = [
-  { code:'UPL-06', hi:'कक्षा ६–८ (आधारभूत)',       en:'Class 6–8 (Foundation)',      durHi:'१२ मास', durEn:'12 months', gen:3500, fee:1000, seats:60, cycle:'month' },
-  { code:'UPL-09', hi:'कक्षा ९–१० (उच्च विद्यालय)',  en:'Class 9–10 (High School)',    durHi:'१२ मास', durEn:'12 months', gen:4500, fee:1200, seats:80, cycle:'month' },
-  { code:'UPL-11', hi:'कक्षा ११–१२ (विज्ञान)',        en:'Class 11–12 (Science)',       durHi:'१२ मास', durEn:'12 months', gen:5500, fee:1500, seats:60, cycle:'month' },
-  { code:'UPL-12', hi:'कक्षा ११–१२ (वाणिज्य)',       en:'Class 11–12 (Commerce)',      durHi:'१२ मास', durEn:'12 months', gen:5500, fee:1500, seats:60, cycle:'month' },
-  { code:'UPL-DA', hi:'अंकीय जागरूकता',              en:'Digital Awareness',           durHi:'१५ दिवस', durEn:'15 days', gen:1500, fee:500,  seats:40, cycle:'15days' },
-  { code:'UPL-CC', hi:'संगणक पाठ्यक्रम',              en:'Computer Course',             durHi:'१ मास', durEn:'1 month',  gen:3500, fee:1000, seats:40, cycle:'month' },
-  { code:'UPL-IT', hi:'सूचना प्रौद्योगिकी',           en:'IT & ITES',                   durHi:'१ मास', durEn:'1 month',  gen:4500, fee:1200, seats:40, cycle:'month' },
-  { code:'UPL-DO', hi:'अंकीय कार्यालय',               en:'Digital Office',              durHi:'१५ दिवस', durEn:'15 days', gen:1500, fee:500,  seats:40, cycle:'15days' }
+/* ============================================================
+   THOUGHTS SLIDER (auto-slide)
+   ============================================================ */
+const DONATION_QUOTES = [
+  { text_hi:'"दातव्यमिति यद्दानं दीयते\'नुपकारिणे।<br>देशे काले च पात्रे च तद्दानं सात्त्विकं स्मृतम्॥"', text_en:'"Datavyam iti yad danam diyate\'nupakarine,<br>deshe kale cha patre cha tad danam sattvikam smritam."', cite_hi:'भगवद्गीता १७.२०', cite_en:'Bhagavad Gita 17.20', meaning_hi:'जो दान योग्य देश, उचित काल तथा योग्य पात्र को, बिना किसी प्रतिफल की अपेक्षा के दिया जाए — वही सात्त्विक दान कहलाता है।', meaning_en:'Charity given at the right place, right time, to the right person, without expectation of return — that is Sattvik charity.', type:'sanskrit' },
+  { text_hi:'"दानं परमं धर्मः। दानेन सर्वं प्राप्यते।<br>दानेन कीर्तिर्लभ्यते। दानेन पापं नश्यति॥"', text_en:'"Danam paramam dharmah, danena sarvam prapyate,<br>danena kirtir labhyate, danena papam nashyati."', cite_hi:'महाभारत · अनुशासन पर्व', cite_en:'Mahabharata · Anushasan Parva', meaning_hi:'दान सर्वोच्च धर्म है। दान से सब कुछ प्राप्त होता है, दान से कीर्ति मिलती है, दान से पाप का नाश होता है।', meaning_en:'Charity is the supreme dharma. Through charity everything is attained, fame gained, and sins destroyed.', type:'sanskrit' },
+  { text_hi:'"विद्या दानं परं दानं, विद्या दानं महाफलम्।<br>विद्यया सदृशं दानं न भूतं न भविष्यति॥"', text_en:'"Vidya danam param danam, vidya danam mahaphalam,<br>vidyaya sadrisham danam na bhutam na bhavishyati."', cite_hi:'विदुर नीति · प्राचीन संस्कृत सूक्ति', cite_en:'Vidura Neeti · Ancient Sanskrit precept', meaning_hi:'विद्या का दान सर्वश्रेष्ठ दान है, यह महान फल प्रदान करता है। विद्या के दान के समान कोई दान न अतीत में हुआ, न भविष्य में होगा।', meaning_en:'The gift of knowledge is the greatest gift, yielding highest fruit. No gift like knowledge has ever been or will be.', type:'sanskrit' },
+  { text_hi:'"अन्नदानं महादानं विद्यादानमतः परम्।<br>अन्नेन क्षणिका तृप्तिर्विद्यया तु चिरस्थितिः॥"', text_en:'"Anna danam maha danam, vidya danam atah param,<br>annena kshanika triptir, vidyaya tu chirasthitih."', cite_hi:'आचार्य चाणक्य · नीति शतक', cite_en:'Acharya Chanakya · Neeti Shatak', meaning_hi:'अन्न का दान महान है, किन्तु विद्या का दान उससे भी श्रेष्ठ है। अन्न से क्षणिक तृप्ति होती है, विद्या से चिरस्थायी सन्तुष्टि।', meaning_en:'The gift of food is great, but knowledge is superior. Food gives momentary satisfaction, knowledge gives enduring contentment.', type:'sanskrit' },
+  { text_hi:'"परहित सरिस धरम नहिं भाई।<br>पर पीड़ा सम नहिं अधमाई॥"', text_en:'"Parahit saris dharam nahin bhai,<br>par peeda sam nahin adhamai."', cite_hi:'गोस्वामी तुलसीदास · रामचरितमानस', cite_en:'Goswami Tulsidas · Ramcharitmanas', meaning_hi:'हे भाई! परहित के समान कोई धर्म नहीं, और पराई पीड़ा के समान कोई अधर्म नहीं।', meaning_en:'O brother! No dharma like benefitting others, no sin like causing pain to others.', type:'sanskrit' },
+  { text_hi:'"प्रजासुखे सुखं राज्ञः प्रजानां च हिते हितम्।<br>नात्मप्रियं हितं राज्ञः प्रजानां तु प्रियं हितम्॥"', text_en:'"Praja-sukhe sukham rajnaha, prajanam cha hite hitam,<br>natma-priyam hitam rajnaha, prajanam tu priyam hitam."', cite_hi:'कौटिल्य अर्थशास्त्र', cite_en:'Kautilya Arthashastra', meaning_hi:'प्रजा के सुख में ही शासक का सुख है, प्रजा के हित में ही उसका हित है। राष्ट्र तभी उन्नत होता है जब प्रत्येक नागरिक शिक्षित एवं सन्तुष्ट हो।', meaning_en:'In the happiness of subjects lies the ruler\'s happiness. A nation prospers when every citizen is educated and content.', type:'sanskrit' },
+  { text_hi:'"The best way to find yourself is to lose yourself in the service of others."', text_en:'"The best way to find yourself is to lose yourself in the service of others."', cite_hi:'महात्मा गांधी', cite_en:'Mahatma Gandhi', meaning_hi:'स्वयं को खोजने का सर्वश्रेष्ठ मार्ग है — दूसरों की सेवा में स्वयं को खो देने में।', meaning_en:'The best way to find yourself is to lose yourself in the service of others.', type:'english' },
+  { text_hi:'"Education is the most powerful weapon which you can use to change the world."', text_en:'"Education is the most powerful weapon which you can use to change the world."', cite_hi:'नेल्सन मंडेला', cite_en:'Nelson Mandela', meaning_hi:'शिक्षा सर्वाधिक शक्तिशाली शस्त्र है जिससे आप विश्व को परिवर्तित कर सकते हैं।', meaning_en:'Education is the most powerful weapon which you can use to change the world.', type:'english' },
+  { text_hi:'"We make a living by what we get, but we make a life by what we give."', text_en:'"We make a living by what we get, but we make a life by what we give."', cite_hi:'विंस्टन चर्चिल', cite_en:'Winston Churchill', meaning_hi:'हम जो प्राप्त करते हैं उससे जीविका चलाते हैं, किन्तु जो देते हैं उससे जीवन का निर्माण करते हैं।', meaning_en:'We make a living by what we get, but we make a life by what we give.', type:'english' },
+  { text_hi:'"No one has ever become poor by giving."', text_en:'"No one has ever become poor by giving."', cite_hi:'ऐनी फ्रैंक', cite_en:'Anne Frank', meaning_hi:'दान देने से आज तक कोई दरिद्र नहीं हुआ। देने से समृद्धि ही बढ़ती है।', meaning_en:'No one has ever become poor by giving. Giving increases prosperity.', type:'english' },
+  { text_hi:'"We rise by lifting others."', text_en:'"We rise by lifting others."', cite_hi:'रॉबर्ट इंगरसोल', cite_en:'Robert Ingersoll', meaning_hi:'हम दूसरों को उठाकर ही स्वयं ऊपर उठते हैं। — The Uplift का यही आदर्श वाक्य है।', meaning_en:'We rise by lifting others. — This is The Uplift\'s motto.', type:'english' },
+  { text_hi:'"It is every man\'s obligation to put back into the world at least the equivalent of what he takes out of it."', text_en:'"It is every man\'s obligation to put back into the world at least the equivalent of what he takes out of it."', cite_hi:'अल्बर्ट आइंस्टाइन', cite_en:'Albert Einstein', meaning_hi:'प्रत्येक व्यक्ति का कर्तव्य है कि संसार से जितना ग्रहण करता है, उसका कम से कम समान अंश वापस अर्पित करे।', meaning_en:'It is every man\'s obligation to put back into the world at least the equivalent of what he takes out of it.', type:'english' }
 ];
 
+let _currentSlide = 0;
+let _autoSlideTimer = null;
+let _isPaused = false;
+const SLIDE_DURATION = 7000;
+
+function renderThoughts(){
+  const track = document.getElementById('thoughtTrack');
+  const dots = document.getElementById('thoughtDots');
+  if(!track || !dots) return;
+  const lang = document.body.classList.contains('lang-en') ? 'en' : 'hi';
+  track.innerHTML = DONATION_QUOTES.map((q, i) => {
+    const text = lang === 'en' ? q.text_en : q.text_hi;
+    const cite = lang === 'en' ? q.cite_en : q.cite_hi;
+    const meaning = lang === 'en' ? q.meaning_en : q.meaning_hi;
+    const meaningLabel = lang === 'en' ? 'Meaning:' : 'अर्थ:';
+    const cls = q.type === 'english' ? 'thought-slide english' : 'thought-slide';
+    const activeCls = i === _currentSlide ? ' active' : '';
+    return `<div class="${cls}${activeCls}" data-index="${i}"><div class="thought-text">${text}</div><cite class="thought-cite">${cite}</cite><div class="thought-meaning"><b>${meaningLabel}</b> ${meaning}</div><div class="slider-progress"></div></div>`;
+  }).join('');
+  dots.innerHTML = DONATION_QUOTES.map((_, i) => `<button class="slider-dot${i === _currentSlide ? ' active' : ''}" data-dot="${i}" aria-label="Slide ${i+1}"></button>`).join('');
+  dots.querySelectorAll('.slider-dot').forEach(dot => {
+    dot.addEventListener('click', () => { goToSlide(parseInt(dot.dataset.dot, 10)); restartAutoSlide(); });
+  });
+}
+
+function goToSlide(index){
+  const slides = document.querySelectorAll('.thought-slide');
+  const dots = document.querySelectorAll('.slider-dot');
+  if(!slides.length) return;
+  if(index < 0) index = DONATION_QUOTES.length - 1;
+  if(index >= DONATION_QUOTES.length) index = 0;
+  slides.forEach((s, i) => s.classList.toggle('active', i === index));
+  dots.forEach((d, i) => d.classList.toggle('active', i === index));
+  _currentSlide = index;
+}
+function nextSlide(){ goToSlide(_currentSlide + 1); }
+function prevSlide(){ goToSlide(_currentSlide - 1); }
+function startAutoSlide(){ stopAutoSlide(); _autoSlideTimer = setInterval(() => { if(!_isPaused) nextSlide(); }, SLIDE_DURATION); }
+function stopAutoSlide(){ if(_autoSlideTimer){ clearInterval(_autoSlideTimer); _autoSlideTimer = null; } }
+function restartAutoSlide(){ startAutoSlide(); }
+
+function initThoughts(){
+  const prevBtn = document.getElementById('thoughtPrev');
+  const nextBtn = document.getElementById('thoughtNext');
+  const slider = document.querySelector('.thoughts-slider');
+  if(!prevBtn || !nextBtn) return;
+  renderThoughts();
+  startAutoSlide();
+  prevBtn.addEventListener('click', () => { prevSlide(); restartAutoSlide(); });
+  nextBtn.addEventListener('click', () => { nextSlide(); restartAutoSlide(); });
+  if(slider){
+    slider.addEventListener('mouseenter', () => { _isPaused = true; });
+    slider.addEventListener('mouseleave', () => { _isPaused = false; });
+  }
+  document.addEventListener('visibilitychange', () => { if(document.hidden){ stopAutoSlide(); } else { startAutoSlide(); } });
+  let touchStartX = 0;
+  const track = document.getElementById('thoughtTrack');
+  if(track){
+    track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; _isPaused = true; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const touchEndX = e.changedTouches[0].clientX;
+      const diff = touchStartX - touchEndX;
+      if(Math.abs(diff) > 50){ if(diff > 0) nextSlide(); else prevSlide(); restartAutoSlide(); }
+      _isPaused = false;
+    }, { passive: true });
+  }
+}
+if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', initThoughts); } else { initThoughts(); }
+
+/* ============================================================
+   COURSES
+   ============================================================ */
+const COURSES = [
+  { code:'UPL-06', hi:'कक्षा ६–८ (आधारभूत)', en:'Class 6–8 (Foundation)', durHi:'१२ मास', durEn:'12 months', gen:3500, fee:1000, seats:60, cycle:'month' },
+  { code:'UPL-09', hi:'कक्षा ९–१० (उच्च विद्यालय)', en:'Class 9–10 (High School)', durHi:'१२ मास', durEn:'12 months', gen:4500, fee:1200, seats:80, cycle:'month' },
+  { code:'UPL-11', hi:'कक्षा ११–१२ (विज्ञान)', en:'Class 11–12 (Science)', durHi:'१२ मास', durEn:'12 months', gen:5500, fee:1500, seats:60, cycle:'month' },
+  { code:'UPL-12', hi:'कक्षा ११–१२ (वाणिज्य)', en:'Class 11–12 (Commerce)', durHi:'१२ मास', durEn:'12 months', gen:5500, fee:1500, seats:60, cycle:'month' },
+  { code:'UPL-DA', hi:'अंकीय जागरूकता', en:'Digital Awareness', durHi:'१५ दिवस', durEn:'15 days', gen:1500, fee:500, seats:40, cycle:'15days' },
+  { code:'UPL-CC', hi:'संगणक पाठ्यक्रम', en:'Computer Course', durHi:'१ मास', durEn:'1 month', gen:3500, fee:1000, seats:40, cycle:'month' },
+  { code:'UPL-IT', hi:'सूचना प्रौद्योगिकी', en:'IT & ITES', durHi:'१ मास', durEn:'1 month', gen:4500, fee:1200, seats:40, cycle:'month' },
+  { code:'UPL-DO', hi:'अंकीय कार्यालय', en:'Digital Office', durHi:'१५ दिवस', durEn:'15 days', gen:1500, fee:500, seats:40, cycle:'15days' }
+];
 let LIVE_SEATS = {};
 function _lang(){ return document.body.classList.contains('lang-en') ? 'en' : 'hi'; }
 function concession(income, isOrphan){
@@ -720,10 +1021,7 @@ function concession(income, isOrphan){
 function fmtN(n){ return Number(n || 0).toLocaleString('en-IN'); }
 
 async function loadLiveSeats(){
-  try{
-    const cached = localStorage.getItem('uplift_seats');
-    if(cached){ LIVE_SEATS = JSON.parse(cached); renderCourseTable(); renderHeroSeats(); }
-  }catch(e){}
+  try{ const cached = localStorage.getItem('uplift_seats'); if(cached){ LIVE_SEATS = JSON.parse(cached); renderCourseTable(); renderHeroSeats(); } }catch(e){}
   try{
     const ctl = new AbortController();
     const tmo = setTimeout(() => ctl.abort(), 3500);
@@ -737,7 +1035,6 @@ async function loadLiveSeats(){
     }
   }catch(e){}
 }
-
 function renderCourseTable(){
   const tb = $('#courseRows'); if(!tb) return;
   const lang = _lang();
@@ -752,21 +1049,10 @@ function renderCourseTable(){
     else if((left / c.seats) < 0.25){ cls = 'seat-low'; txt = (lang === 'en' ? 'Only ' : 'केवल ') + left; }
     const badge = `<span class="seat-badge ${cls}">${txt}</span>`;
     const ebook = `<span class="ebook-link" onclick="ebookNotice()">📖 ${lang==='en'?'After registration':'पंजीकरण के बाद'}</span>`;
-    return `<tr>
-      <td><b style="font-family:monospace;color:var(--maroon)">${c.code}</b></td>
-      <td><b>${name}</b></td>
-      <td>${dur}</td>
-      <td><span class="fee-old">₹${fmtN(c.gen)}</span></td>
-      <td style="font-weight:700;color:var(--maroon)">₹${fmtN(c.fee)}<span style="font-weight:400;color:var(--muted);font-size:.82em"> ${suf}</span></td>
-      <td class="fee-cut">₹${fmtN(minFee)}</td>
-      <td>${badge}</td>
-      <td>${ebook}</td>
-    </tr>`;
+    return `<tr><td><b style="font-family:monospace;color:var(--maroon)">${c.code}</b></td><td><b>${name}</b></td><td>${dur}</td><td><span class="fee-old">₹${fmtN(c.gen)}</span></td><td style="font-weight:700;color:var(--maroon)">₹${fmtN(c.fee)}<span style="font-weight:400;color:var(--muted);font-size:.82em"> ${suf}</span></td><td class="fee-cut">₹${fmtN(minFee)}</td><td>${badge}</td><td>${ebook}</td></tr>`;
   }).join('');
 }
-function ebookNotice(){
-  toast(_lang()==='en' ? '📖 Ebook will be provided after registration.' : '📖 ई-पुस्तक पंजीकरण के पश्चात् उपलब्ध कराई जाएगी।');
-}
+function ebookNotice(){ toast(_lang()==='en' ? '📖 Ebook will be provided after registration.' : '📖 ई-पुस्तक पंजीकरण के पश्चात् उपलब्ध कराई जाएगी।'); }
 function renderHeroSeats(){
   const ul = $('#heroSeatList'); if(!ul) return;
   const lang = _lang();
@@ -797,7 +1083,6 @@ setInterval(loadLiveSeats, 60000);
     if(cur) sel.value = cur;
   }
   fill();
-  window.__refillCalc = fill;
   function update(){
     const c = COURSES.find(x => x.code === sel.value);
     const inc = parseFloat($('#calcIncome').value) || 0;
@@ -810,9 +1095,7 @@ setInterval(loadLiveSeats, 60000);
     $('#rDisc').textContent = d + '%';
     $('#rPay').textContent = '₹' + fmtN(payable);
     const lang = _lang();
-    $('#rPayLabel').textContent = c.cycle === '15days'
-      ? (lang === 'en' ? 'Payable (15 days)' : 'देय शुल्क (१५ दिवस)')
-      : (lang === 'en' ? 'Payable/month' : 'देय शुल्क / मास');
+    $('#rPayLabel').textContent = c.cycle === '15days' ? (lang === 'en' ? 'Payable (15 days)' : 'देय शुल्क (१५ दिवस)') : (lang === 'en' ? 'Payable/month' : 'देय शुल्क / मास');
     $('#calcResult').style.display = 'block';
   }
   sel.addEventListener('change', update);
@@ -838,8 +1121,7 @@ const STATES_DISTRICTS = {
   ss.innerHTML = '';
   Object.keys(STATES_DISTRICTS).forEach(k => {
     const o = document.createElement('option');
-    o.value = k;
-    o.textContent = lang === 'en' ? STATES_DISTRICTS[k].en : STATES_DISTRICTS[k].hi;
+    o.value = k; o.textContent = lang === 'en' ? STATES_DISTRICTS[k].en : STATES_DISTRICTS[k].hi;
     ss.appendChild(o);
   });
   ss.value = 'up';
@@ -854,12 +1136,7 @@ const STATES_DISTRICTS = {
 (function initApplyCourse(){
   const sel = $('#applyCourseSelect'); if(!sel) return;
   sel.innerHTML = '<option value="">—</option>';
-  COURSES.forEach(c => {
-    const o = document.createElement('option');
-    o.value = c.code;
-    o.textContent = `${c.code} — ${c.hi}`;
-    sel.appendChild(o);
-  });
+  COURSES.forEach(c => { const o = document.createElement('option'); o.value = c.code; o.textContent = `${c.code} — ${c.hi}`; sel.appendChild(o); });
 })();
 
 /* ---------- API ---------- */
@@ -885,11 +1162,8 @@ const OTP = {
     btn.disabled = false; btn.textContent = orig;
     if(r.status === 'success'){
       $('#otpSentTo').textContent = email;
-      $('#otpStep1').style.display = 'none';
-      $('#otpStep2').style.display = 'block';
-      $('#otpCodeInput').focus();
-      this.startTimer(60);
-      toast('कूट भेजा गया ✓');
+      $('#otpStep1').style.display = 'none'; $('#otpStep2').style.display = 'block';
+      $('#otpCodeInput').focus(); this.startTimer(60); toast('कूट भेजा गया ✓');
     } else { toast(r.message || 'त्रुटि'); }
   },
   async verify(){
@@ -901,9 +1175,7 @@ const OTP = {
     const r = await apiCall({ action:'verifyOtp', email, otp: code });
     btn.disabled = false; btn.textContent = orig;
     if(r.status === 'success'){
-      this.verifiedEmail = email;
-      this.close();
-      toast('✓ विद्युत्पत्र सत्यापित');
+      this.verifiedEmail = email; this.close(); toast('✓ विद्युत्पत्र सत्यापित');
       if(this._pending){ const fn = this._pending; this._pending = null; fn(); }
     } else { $('#otpCodeErr').textContent = r.message || 'अमान्य कूट'; }
   },
@@ -911,10 +1183,7 @@ const OTP = {
     clearInterval(this._timerId);
     const el = $('#otpTimer'), rs = $('#otpResendBtn');
     rs.disabled = true; rs.style.opacity = '.5'; el.textContent = `(${s}s)`;
-    this._timerId = setInterval(() => {
-      s--; el.textContent = `(${s}s)`;
-      if(s <= 0){ clearInterval(this._timerId); el.textContent = ''; rs.disabled = false; rs.style.opacity = '1'; }
-    }, 1000);
+    this._timerId = setInterval(() => { s--; el.textContent = `(${s}s)`; if(s <= 0){ clearInterval(this._timerId); el.textContent = ''; rs.disabled = false; rs.style.opacity = '1'; } }, 1000);
   },
   require(email, cb){
     const clean = (email || '').trim().toLowerCase();
@@ -965,18 +1234,11 @@ $('#applyForm').addEventListener('submit', async e => {
     const btn = f.querySelector('button[type="submit"]'); const orig = btn.textContent; btn.disabled = true; btn.textContent = '⏳';
     const appId = 'DPF-UPL-26-' + String(Math.floor(10000 + Math.random()*89999));
     const payload = {
-      action:'submit', type:'application', AppID: appId,
-      Name: name, Gender: gender, DOB: val('dob'),
-      Mobile: mobile, Email: email,
-      State: val('state'), District: val('district'),
-      Address: val('address'), PIN: val('pincode'),
-      Class: val('currentClass'), School: val('school'),
-      Course: course.code + ' — ' + course.hi,
-      CourseCode: course.code, CourseFee: course.fee, BaseFee: course.fee, Cycle: course.cycle,
-      Batch: val('batch'), Mode: val('mode'),
-      Guardian: val('guardianName'), GuardianMobile: val('guardianMobile'),
-      Income: inc, Category: val('category'), Orphan: val('orphan'),
-      Concession: d + '%', ConcessionPercent: d, Payable: payable
+      action:'submit', type:'application', AppID: appId, Name: name, Gender: gender, DOB: val('dob'),
+      Mobile: mobile, Email: email, State: val('state'), District: val('district'),
+      Address: val('address'), Class: val('currentClass'), Course: course.code + ' — ' + course.hi,
+      CourseCode: course.code, CourseFee: course.fee, Guardian: val('guardianName'),
+      Income: inc, Orphan: val('orphan'), Concession: d + '%', ConcessionPercent: d, Payable: payable
     };
     const r = await apiCall(payload);
     btn.disabled = false; btn.textContent = orig;
@@ -1012,10 +1274,9 @@ $('#volTeacherForm').addEventListener('submit', async e => {
   OTP.require(email, async () => {
     const volId = 'DPF-VOL-T-26-' + String(Math.floor(10000 + Math.random()*89999));
     const payload = {
-      action:'submit', type:'volunteer', ID: volId, Type:'Teacher',
-      Name: g('vName'), Mobile: g('vMobile'), Email: email, City: g('vCity'),
-      Qualification: g('vQual'), Subject: g('vSubject'),
-      Subjects: gAll('vSubj').join(', '), Mode: g('vMode'), Hours: g('vHours')
+      action:'submit', type:'volunteer', ID: volId, Type:'Teacher', Name: g('vName'),
+      Mobile: g('vMobile'), Email: email, City: g('vCity'), Qualification: g('vQual'),
+      Subject: g('vSubject'), Subjects: gAll('vSubj').join(', '), Mode: g('vMode'), Hours: g('vHours')
     };
     const r = await apiCall(payload);
     if(r.status !== 'success'){ toast(r.message || 'त्रुटि'); return; }
@@ -1056,14 +1317,33 @@ $('#grievanceForm').addEventListener('submit', async e => {
    FREE COURSES + EBOOKS
    ============================================================ */
 const FREE_COURSES = [
-  { code:'FREE-CYBER', hi:'साइबर सुरक्षा — आधारभूत', en:'Cyber Safety Basics', icon:'🛡️', durHi:'६० मिनट', durEn:'60 min', levelHi:'प्रारंभिक', level:'Beginner', pass:60, descHi:'अंतर्जालीय ठगी, कपट-लिंक, कूटशब्द सुरक्षा, द्वि-चरणीय प्रमाणीकरण — स्वयं की रक्षा करें।', descEn:'Online fraud, phishing, password safety, 2FA — protect yourself.' },
+  { code:'FREE-CYBER', hi:'साइबर सुरक्षा — आधारभूत', en:'Cyber Safety Basics', icon:'🛡️', durHi:'६० मिनट', durEn:'60 min', levelHi:'प्रारंभिक', level:'Beginner', pass:60, descHi:'अंतर्जालीय ठगी, कपट-लिंक, कूटशब्द सुरक्षा — स्वयं की रक्षा करें।', descEn:'Online fraud, phishing, password safety — protect yourself.' },
   { code:'FREE-PAY', hi:'अंकीय भुगतान सुरक्षा', en:'Digital Payment Safety', icon:'💳', durHi:'५० मिनट', durEn:'50 min', levelHi:'प्रारंभिक', level:'Beginner', pass:60, descHi:'UPI, PhonePe, Paytm — सुरक्षित भुगतान तथा ठगी से बचाव।', descEn:'UPI, PhonePe, Paytm — safe payments and fraud protection.' },
   { code:'FREE-NET', hi:'अंतर्जाल की मूल बातें', en:'Internet Basics', icon:'🌐', durHi:'६० मिनट', durEn:'60 min', levelHi:'प्रारंभिक', level:'Beginner', pass:60, descHi:'खोज, विद्युत्पत्र, विचरक, क्लाउड — अंकीय जगत में आत्मविश्वास।', descEn:'Search, email, browser, cloud — digital confidence.' },
   { code:'FREE-SM', hi:'समाज माध्यम जागरूकता', en:'Social Media Awareness', icon:'📱', durHi:'५० मिनट', durEn:'50 min', levelHi:'प्रारंभिक', level:'Beginner', pass:60, descHi:'निजता, मिथ्या समाचार, अंतर्जालीय प्रतिष्ठा — विवेकपूर्ण उपयोग।', descEn:'Privacy, fake news, reputation — smart usage.' },
   { code:'FREE-FIN', hi:'आधारभूत वित्तीय ज्ञान', en:'Financial Literacy', icon:'💰', durHi:'५५ मिनट', durEn:'55 min', levelHi:'प्रारंभिक', level:'Beginner', pass:60, descHi:'बचत, बैंक-कार्य, ब्याज, बीमा तथा वित्तीय ठगी से बचाव।', descEn:'Savings, banking, interest, insurance, financial fraud.' }
 ];
+function renderFreeCourses(){
+  const grid = $('#freeCoursesGrid'); if(!grid) return;
+  const lang = _lang();
+  grid.innerHTML = FREE_COURSES.map(c => `<div class="free-card">
+    <span class="badge-free" data-hi="नि:शुल्क" data-en="FREE">नि:शुल्क</span>
+    <div class="fc-ico">${c.icon}</div>
+    <h3>${lang === 'en' ? c.en : c.hi}</h3>
+    <div class="fc-meta">
+      <span>⏱ ${lang === 'en' ? c.durEn : c.durHi}</span>
+      <span>📝 २० ${lang === 'en' ? 'Q' : 'प्रश्न'}</span>
+      <span>📖 ${lang === 'en' ? '10 chapters' : '१० अध्याय'}</span>
+    </div>
+    <p>${lang === 'en' ? c.descEn : c.descHi}</p>
+    <button class="btn btn-saffron btn-sm" onclick="openEbook('${c.code}')">📖 ${lang === 'en' ? 'Read Ebook' : 'ई-पुस्तक पढ़ें'}</button>
+  </div>`).join('');
+}
+renderFreeCourses();
 
-/* ---------- EBOOKS (10 अध्याय प्रति पाठ्यक्रम) ---------- */
+/* ============================================================
+   EBOOKS — 10 अध्याय प्रति पाठ्यक्रम
+   ============================================================ */
 const FREE_EBOOKS = {
   'FREE-CYBER': {
     title: { hi:'साइबर सुरक्षा — आधारभूत', en:'Cyber Safety Basics' },
@@ -1242,621 +1522,225 @@ const FREE_EBOOKS = {
   }
 };
 
-/* ---------- FREE QUIZ BANK — ४० प्रश्न प्रति पाठ्यक्रम ---------- */
+/* ============================================================
+   FREE QUIZ BANK — ४० प्रश्न प्रति पाठ्यक्रम
+   ============================================================ */
 const FREE_QUIZ_BANK = {
   'FREE-CYBER': [
-    { q_hi:'सुदृढ़ कूटशब्द में क्या होना आवश्यक है?', q_en:'What should a strong password contain?',
-      options_hi:['केवल अंक','केवल नाम','बड़े-छोटे अक्षर, अंक तथा विशेष चिह्न','जन्मतिथि'],
-      options_en:['Only numbers','Only name','Upper+lower letters, digits & symbols','Date of birth'], answer:2 },
-    { q_hi:'OTP किसके साथ साझा करना चाहिए?', q_en:'With whom should OTP be shared?',
-      options_hi:['मित्र','बैंक कर्मचारी','कोई नहीं','परिवार'],
-      options_en:['Friend','Bank staff','No one','Family'], answer:2 },
-    { q_hi:'फ़िशिंग क्या है?', q_en:'What is phishing?',
-      options_hi:['मछली पकड़ना','नकली लिंक द्वारा सूचना चोरी','खेल','वेबसाइट बनाना'],
-      options_en:['Catching fish','Stealing info via fake links','A game','Building a website'], answer:1 },
-    { q_hi:'सार्वजनिक WiFi पर क्या नहीं करना चाहिए?', q_en:'What should you avoid on public WiFi?',
-      options_hi:['वीडियो देखना','बैंकिंग लॉगिन','खोज','कुछ नहीं'],
-      options_en:['Watching videos','Banking login','Searching','Nothing'], answer:1 },
-    { q_hi:'HTTPS का अर्थ है?', q_en:'HTTPS means?',
-      options_hi:['असुरक्षित','सुरक्षित एन्क्रिप्टेड','धीमा','विज्ञापन'],
-      options_en:['Unsecured','Secure encrypted','Slow','Advertisement'], answer:1 },
-    { q_hi:'अनजान लिंक पर क्लिक से पूर्व क्या करें?', q_en:'Before clicking an unknown link?',
-      options_hi:['तुरंत क्लिक','लिंक जाँचें','मित्र को भेजें','कुछ नहीं'],
-      options_en:['Click at once','Verify the link','Send to friend','Nothing'], answer:1 },
-    { q_hi:'2FA क्या करता है?', q_en:'What does 2FA do?',
-      options_hi:['धीमा करता','अतिरिक्त सुरक्षा देता','कूटशब्द बदलता','विद्युत्पत्र भेजता'],
-      options_en:['Slows down','Extra security','Changes password','Sends email'], answer:1 },
-    { q_hi:'यदि OTP गलत हाथ लग जाए तो?', q_en:'If OTP falls in wrong hands?',
-      options_hi:['प्रतीक्षा करें','तत्काल बदलें','अनदेखा','मित्र को बताएँ'],
-      options_en:['Wait','Change immediately','Ignore','Tell friend'], answer:1 },
-    { q_hi:'सार्वजनिक संगणक पर क्या न करें?', q_en:'What not to do on public computer?',
-      options_hi:['खोज','लॉगिन सुरक्षित करना','समाचार','PDF'],
-      options_en:['Search','Save login','Read news','Open PDF'], answer:1 },
-    { q_hi:'VPN क्या करता है?', q_en:'What does VPN do?',
-      options_hi:['वीडियो चलाता','संपर्क एन्क्रिप्ट करता','तेज़ करता','डेटा बचाता'],
-      options_en:['Plays video','Encrypts connection','Speeds up','Saves data'], answer:1 },
-    { q_hi:'संदिग्ध अटैचमेंट पर क्या करें?', q_en:'What to do with suspicious attachment?',
-      options_hi:['खोलें','हटाएँ','भेजें','प्रिंट'],
-      options_en:['Open','Delete','Forward','Print'], answer:1 },
-    { q_hi:'सॉफ्टवेयर अद्यतन से क्या होता है?', q_en:'What does software update do?',
-      options_hi:['धीमा','सुरक्षा पैच','डेटा क्षति','कुछ नहीं'],
-      options_en:['Slows','Security patches','Data loss','Nothing'], answer:1 },
-    { q_hi:'एंटीवायरस क्यों आवश्यक है?', q_en:'Why is antivirus needed?',
-      options_hi:['धीमा करने','मैलवेयर से बचाव','डेटा बढ़ाने','चलभाष बदलने'],
-      options_en:['To slow','Protection from malware','To add data','To change phone'], answer:1 },
-    { q_hi:'अनजान कॉल पर बैंक विवरण देना?', q_en:'Sharing bank details on unknown call?',
-      options_hi:['हाँ','कभी नहीं','कभी-कभी','केवल OTP'],
-      options_en:['Yes','Never','Sometimes','Only OTP'], answer:1 },
-    { q_hi:'साइबर अपराध की सूचना कहाँ दें?', q_en:'Where to report cyber crime?',
-      options_hi:['Facebook','cybercrime.gov.in / 1930','Wikipedia','YouTube'],
-      options_en:['Facebook','cybercrime.gov.in / 1930','Wikipedia','YouTube'], answer:1 },
-    { q_hi:'कूटशब्द कितने समय में बदलना चाहिए?', q_en:'How often should password change?',
-      options_hi:['कभी नहीं','नियमित अंतराल पर','वर्ष में एक बार','कभी-कभी'],
-      options_en:['Never','Regularly','Once a year','Sometimes'], answer:1 },
-    { q_hi:'ताला-चिह्न (🔒) का अर्थ?', q_en:'Meaning of lock icon (🔒)?',
-      options_hi:['सुरक्षित','असुरक्षित','धीमा','टूटा'],
-      options_en:['Secure','Unsafe','Slow','Broken'], answer:0 },
-    { q_hi:'फ़िशिंग विद्युत्पत्र की पहचान?', q_en:'Identifying phishing email?',
-      options_hi:['परिचित प्रेषक','वर्तनी दोष युक्त पता','HTTPS','लोगो'],
-      options_en:['Known sender','Misspelled address','HTTPS','Logo'], answer:1 },
-    { q_hi:'सामाजिक अभियांत्रिकी क्या है?', q_en:'What is social engineering?',
-      options_hi:['विज्ञान','मनोवैज्ञानिक ठगी','खेल','शिक्षा'],
-      options_en:['A science','Psychological fraud','A game','Education'], answer:1 },
-    { q_hi:'अपडेट को नजरंदाज करने से?', q_en:'Ignoring updates leads to?',
-      options_hi:['लाभ','सुरक्षा छिद्र','तेज़','कुछ नहीं'],
-      options_en:['Benefit','Security holes','Speed','Nothing'], answer:1 },
-    { q_hi:'ऐप कहाँ से डाउनलोड करें?', q_en:'Where to download apps?',
-      options_hi:['किसी भी वेबसाइट','केवल Google Play / App Store','APK फ़ाइल','WhatsApp लिंक'],
-      options_en:['Any website','Only Google Play / App Store','APK file','WhatsApp link'], answer:1 },
-    { q_hi:'कूटशब्द कहाँ न लिखें?', q_en:'Where not to store password?',
-      options_hi:['सुरक्षित ऐप','डायरी, चलभाष, कागज़','कोई नहीं','Password Manager'],
-      options_en:['Secure app','Diary, phone, paper','Nowhere','Password Manager'], answer:1 },
-    { q_hi:'सार्वजनिक संगणक पर कार्य के पश्चात्?', q_en:'After work on public computer?',
-      options_hi:['सो जाएँ','लॉगआउट अवश्य करें','कुछ नहीं','नोट करें'],
-      options_en:['Sleep','Always logout','Nothing','Note it'], answer:1 },
-    { q_hi:'फोटो में लोकेशन?', q_en:'Location in photos?',
-      options_hi:['रखें','हटा दें','कोई फर्क नहीं','साझा करें'],
-      options_en:['Keep','Remove','No difference','Share'], answer:1 },
-    { q_hi:'अनजान WiFi पर ऑनलाइन खरीद?', q_en:'Online shopping on unknown WiFi?',
-      options_hi:['ठीक','न करें','कभी-कभी','हमेशा'],
-      options_en:['Okay','Avoid','Sometimes','Always'], answer:1 },
-    { q_hi:'कूटशब्द Manager क्या है?', q_en:'What is a Password Manager?',
-      options_hi:['खेल','सुरक्षित रूप से कूटशब्द रखने वाला ऐप','वेबसाइट','फ़ाइल'],
-      options_en:['A game','App to store passwords securely','Website','File'], answer:1 },
-    { q_hi:'साइबर ठगी में समय सीमा?', q_en:'Time limit for cyber fraud report?',
-      options_hi:['कोई नहीं','जल्दी रिपोर्ट करें','देर सही','महीने भर'],
-      options_en:['None','Report quickly','Late is fine','Within a month'], answer:1 },
-    { q_hi:'डेटा बैकअप कहाँ?', q_en:'Where to backup data?',
-      options_hi:['कहीं नहीं','क्लाउड तथा बाहरी डिस्क','कागज़ पर','डायरी में'],
-      options_en:['Nowhere','Cloud and external disk','On paper','In diary'], answer:1 },
-    { q_hi:'पब्लिक चार्जिंग स्टेशन पर?', q_en:'At public charging station?',
-      options_hi:['ठीक','सावधानी','कभी-कभी','हमेशा'],
-      options_en:['Okay','Be cautious','Sometimes','Always'], answer:1 },
-    { q_hi:'द्वि-चरणीय सत्यापन कहाँ करें?', q_en:'Where to enable 2FA?',
-      options_hi:['कभी नहीं','बैंक, Gmail, समाज माध्यम','कभी-कभी','कुछ जगह'],
-      options_en:['Never','Bank, Gmail, social media','Sometimes','Some places'], answer:1 },
-    { q_hi:'नकली वेबसाइट की पहचान?', q_en:'Identifying fake website?',
-      options_hi:['HTTPS','URL में वर्तनी दोष','लोगो','फॉन्ट'],
-      options_en:['HTTPS','Spelling error in URL','Logo','Font'], answer:1 },
-    { q_hi:'साइबर ठगी से बचाव का सर्वोत्तम उपाय?', q_en:'Best protection from cyber fraud?',
-      options_hi:['चुप रहना','सजगता तथा शिक्षा','कुछ नहीं','डरना'],
-      options_en:['Stay silent','Awareness and education','Nothing','Fear'], answer:1 },
-    { q_hi:'बैंक SMS अलर्ट?', q_en:'Bank SMS alerts?',
-      options_hi:['बंद रखें','चालू रखें','कोई फर्क नहीं','मिटाएँ'],
-      options_en:['Keep off','Keep on','No difference','Delete'], answer:1 },
-    { q_hi:'छोटे बच्चों के उपकरण?', q_en:'Devices of small children?',
-      options_hi:['पूर्ण स्वतंत्रता','पेरेंटल कंट्रोल','कुछ नहीं','पासवर्ड नहीं'],
-      options_en:['Full freedom','Parental control','Nothing','No password'], answer:1 },
-    { q_hi:'विद्युत्पत्र में अनजान लिंक?', q_en:'Unknown links in email?',
-      options_hi:['क्लिक करें','तुरंत हटाएँ','भेजें','कुछ नहीं'],
-      options_en:['Click','Delete immediately','Forward','Nothing'], answer:1 },
-    { q_hi:'प्रतिष्ठित वेबसाइट?', q_en:'Reputed website?',
-      options_hi:['किसी भी नाम से','प्रमाणित डोमेन','किसी भी लिंक','चर्चित नाम से'],
-      options_en:['Any name','Verified domain','Any link','Popular name'], answer:1 },
-    { q_hi:'बहुत अच्छी डील ऑफ़र?', q_en:'Too-good-to-be-true offers?',
-      options_hi:['तुरंत लें','संदिग्ध मानें, जाँचें','भुगतान करें','कुछ नहीं'],
-      options_en:['Take now','Treat as suspicious','Pay','Nothing'], answer:1 },
-    { q_hi:'साइबर सुरक्षा का मूल सिद्धांत?', q_en:'Core principle of cyber security?',
-      options_hi:['केवल सरकार','व्यक्तिगत सजगता','केवल कंपनी','कुछ नहीं'],
-      options_en:['Only government','Personal awareness','Only company','Nothing'], answer:1 },
-    { q_hi:'कूटशब्द किसके साथ साझा?', q_en:'Share password with whom?',
-      options_hi:['मित्र','कोई नहीं','परिवार','सहकर्मी'],
-      options_en:['Friend','No one','Family','Colleague'], answer:1 },
-    { q_hi:'अजनबी को OTP?', q_en:'OTP to stranger?',
-      options_hi:['दें','कभी नहीं','भरोसे पर','कभी-कभी'],
-      options_en:['Give','Never','If trusted','Sometimes'], answer:1 }
+    { q_hi:'सुदृढ़ कूटशब्द में क्या होना आवश्यक है?', q_en:'What should a strong password contain?', options_hi:['केवल अंक','केवल नाम','बड़े-छोटे अक्षर, अंक तथा विशेष चिह्न','जन्मतिथि'], options_en:['Only numbers','Only name','Upper+lower letters, digits & symbols','Date of birth'], answer:2 },
+    { q_hi:'OTP किसके साथ साझा करना चाहिए?', q_en:'With whom should OTP be shared?', options_hi:['मित्र','बैंक कर्मचारी','कोई नहीं','परिवार'], options_en:['Friend','Bank staff','No one','Family'], answer:2 },
+    { q_hi:'फ़िशिंग क्या है?', q_en:'What is phishing?', options_hi:['मछली पकड़ना','नकली लिंक द्वारा सूचना चोरी','खेल','वेबसाइट बनाना'], options_en:['Catching fish','Stealing info via fake links','A game','Building a website'], answer:1 },
+    { q_hi:'सार्वजनिक WiFi पर क्या नहीं करना चाहिए?', q_en:'What should you avoid on public WiFi?', options_hi:['वीडियो देखना','बैंकिंग लॉगिन','खोज','कुछ नहीं'], options_en:['Watching videos','Banking login','Searching','Nothing'], answer:1 },
+    { q_hi:'HTTPS का अर्थ है?', q_en:'HTTPS means?', options_hi:['असुरक्षित','सुरक्षित एन्क्रिप्टेड','धीमा','विज्ञापन'], options_en:['Unsecured','Secure encrypted','Slow','Advertisement'], answer:1 },
+    { q_hi:'अनजान लिंक पर क्लिक से पूर्व क्या करें?', q_en:'Before clicking an unknown link?', options_hi:['तुरंत क्लिक','लिंक जाँचें','मित्र को भेजें','कुछ नहीं'], options_en:['Click at once','Verify the link','Send to friend','Nothing'], answer:1 },
+    { q_hi:'2FA क्या करता है?', q_en:'What does 2FA do?', options_hi:['धीमा करता','अतिरिक्त सुरक्षा देता','कूटशब्द बदलता','विद्युत्पत्र भेजता'], options_en:['Slows down','Extra security','Changes password','Sends email'], answer:1 },
+    { q_hi:'यदि OTP गलत हाथ लग जाए तो?', q_en:'If OTP falls in wrong hands?', options_hi:['प्रतीक्षा करें','तत्काल बदलें','अनदेखा','मित्र को बताएँ'], options_en:['Wait','Change immediately','Ignore','Tell friend'], answer:1 },
+    { q_hi:'सार्वजनिक संगणक पर क्या न करें?', q_en:'What not to do on public computer?', options_hi:['खोज','लॉगिन सुरक्षित करना','समाचार','PDF'], options_en:['Search','Save login','Read news','Open PDF'], answer:1 },
+    { q_hi:'VPN क्या करता है?', q_en:'What does VPN do?', options_hi:['वीडियो चलाता','संपर्क एन्क्रिप्ट करता','तेज़ करता','डेटा बचाता'], options_en:['Plays video','Encrypts connection','Speeds up','Saves data'], answer:1 },
+    { q_hi:'संदिग्ध अटैचमेंट पर क्या करें?', q_en:'What to do with suspicious attachment?', options_hi:['खोलें','हटाएँ','भेजें','प्रिंट'], options_en:['Open','Delete','Forward','Print'], answer:1 },
+    { q_hi:'सॉफ्टवेयर अद्यतन से क्या होता है?', q_en:'What does software update do?', options_hi:['धीमा','सुरक्षा पैच','डेटा क्षति','कुछ नहीं'], options_en:['Slows','Security patches','Data loss','Nothing'], answer:1 },
+    { q_hi:'एंटीवायरस क्यों आवश्यक है?', q_en:'Why is antivirus needed?', options_hi:['धीमा करने','मैलवेयर से बचाव','डेटा बढ़ाने','चलभाष बदलने'], options_en:['To slow','Protection from malware','To add data','To change phone'], answer:1 },
+    { q_hi:'अनजान कॉल पर बैंक विवरण देना?', q_en:'Sharing bank details on unknown call?', options_hi:['हाँ','कभी नहीं','कभी-कभी','केवल OTP'], options_en:['Yes','Never','Sometimes','Only OTP'], answer:1 },
+    { q_hi:'साइबर अपराध की सूचना कहाँ दें?', q_en:'Where to report cyber crime?', options_hi:['Facebook','cybercrime.gov.in / 1930','Wikipedia','YouTube'], options_en:['Facebook','cybercrime.gov.in / 1930','Wikipedia','YouTube'], answer:1 },
+    { q_hi:'कूटशब्द कितने समय में बदलना चाहिए?', q_en:'How often should password change?', options_hi:['कभी नहीं','नियमित अंतराल पर','वर्ष में एक बार','कभी-कभी'], options_en:['Never','Regularly','Once a year','Sometimes'], answer:1 },
+    { q_hi:'ताला-चिह्न (🔒) का अर्थ?', q_en:'Meaning of lock icon (🔒)?', options_hi:['सुरक्षित','असुरक्षित','धीमा','टूटा'], options_en:['Secure','Unsafe','Slow','Broken'], answer:0 },
+    { q_hi:'फ़िशिंग विद्युत्पत्र की पहचान?', q_en:'Identifying phishing email?', options_hi:['परिचित प्रेषक','वर्तनी दोष युक्त पता','HTTPS','लोगो'], options_en:['Known sender','Misspelled address','HTTPS','Logo'], answer:1 },
+    { q_hi:'सामाजिक अभियांत्रिकी क्या है?', q_en:'What is social engineering?', options_hi:['विज्ञान','मनोवैज्ञानिक ठगी','खेल','शिक्षा'], options_en:['A science','Psychological fraud','A game','Education'], answer:1 },
+    { q_hi:'अपडेट को नजरंदाज करने से?', q_en:'Ignoring updates leads to?', options_hi:['लाभ','सुरक्षा छिद्र','तेज़','कुछ नहीं'], options_en:['Benefit','Security holes','Speed','Nothing'], answer:1 },
+    { q_hi:'ऐप कहाँ से डाउनलोड करें?', q_en:'Where to download apps?', options_hi:['किसी भी वेबसाइट','केवल Google Play / App Store','APK फ़ाइल','WhatsApp लिंक'], options_en:['Any website','Only Google Play / App Store','APK file','WhatsApp link'], answer:1 },
+    { q_hi:'कूटशब्द कहाँ न लिखें?', q_en:'Where not to store password?', options_hi:['सुरक्षित ऐप','डायरी, चलभाष, कागज़','कोई नहीं','Password Manager'], options_en:['Secure app','Diary, phone, paper','Nowhere','Password Manager'], answer:1 },
+    { q_hi:'सार्वजनिक संगणक पर कार्य के पश्चात्?', q_en:'After work on public computer?', options_hi:['सो जाएँ','लॉगआउट अवश्य करें','कुछ नहीं','नोट करें'], options_en:['Sleep','Always logout','Nothing','Note it'], answer:1 },
+    { q_hi:'फोटो में लोकेशन?', q_en:'Location in photos?', options_hi:['रखें','हटा दें','कोई फर्क नहीं','साझा करें'], options_en:['Keep','Remove','No difference','Share'], answer:1 },
+    { q_hi:'अनजान WiFi पर ऑनलाइन खरीद?', q_en:'Online shopping on unknown WiFi?', options_hi:['ठीक','न करें','कभी-कभी','हमेशा'], options_en:['Okay','Avoid','Sometimes','Always'], answer:1 },
+    { q_hi:'कूटशब्द Manager क्या है?', q_en:'What is a Password Manager?', options_hi:['खेल','सुरक्षित रूप से कूटशब्द रखने वाला ऐप','वेबसाइट','फ़ाइल'], options_en:['A game','App to store passwords securely','Website','File'], answer:1 },
+    { q_hi:'साइबर ठगी में समय सीमा?', q_en:'Time limit for cyber fraud report?', options_hi:['कोई नहीं','जल्दी रिपोर्ट करें','देर सही','महीने भर'], options_en:['None','Report quickly','Late is fine','Within a month'], answer:1 },
+    { q_hi:'डेटा बैकअप कहाँ?', q_en:'Where to backup data?', options_hi:['कहीं नहीं','क्लाउड तथा बाहरी डिस्क','कागज़ पर','डायरी में'], options_en:['Nowhere','Cloud and external disk','On paper','In diary'], answer:1 },
+    { q_hi:'पब्लिक चार्जिंग स्टेशन पर?', q_en:'At public charging station?', options_hi:['ठीक','सावधानी','कभी-कभी','हमेशा'], options_en:['Okay','Be cautious','Sometimes','Always'], answer:1 },
+    { q_hi:'द्वि-चरणीय सत्यापन कहाँ करें?', q_en:'Where to enable 2FA?', options_hi:['कभी नहीं','बैंक, Gmail, समाज माध्यम','कभी-कभी','कुछ जगह'], options_en:['Never','Bank, Gmail, social media','Sometimes','Some places'], answer:1 },
+    { q_hi:'नकली वेबसाइट की पहचान?', q_en:'Identifying fake website?', options_hi:['HTTPS','URL में वर्तनी दोष','लोगो','फॉन्ट'], options_en:['HTTPS','Spelling error in URL','Logo','Font'], answer:1 },
+    { q_hi:'साइबर ठगी से बचाव का सर्वोत्तम उपाय?', q_en:'Best protection from cyber fraud?', options_hi:['चुप रहना','सजगता तथा शिक्षा','कुछ नहीं','डरना'], options_en:['Stay silent','Awareness and education','Nothing','Fear'], answer:1 },
+    { q_hi:'बैंक SMS अलर्ट?', q_en:'Bank SMS alerts?', options_hi:['बंद रखें','चालू रखें','कोई फर्क नहीं','मिटाएँ'], options_en:['Keep off','Keep on','No difference','Delete'], answer:1 },
+    { q_hi:'छोटे बच्चों के उपकरण?', q_en:'Devices of small children?', options_hi:['पूर्ण स्वतंत्रता','पेरेंटल कंट्रोल','कुछ नहीं','पासवर्ड नहीं'], options_en:['Full freedom','Parental control','Nothing','No password'], answer:1 },
+    { q_hi:'विद्युत्पत्र में अनजान लिंक?', q_en:'Unknown links in email?', options_hi:['क्लिक करें','तुरंत हटाएँ','भेजें','कुछ नहीं'], options_en:['Click','Delete immediately','Forward','Nothing'], answer:1 },
+    { q_hi:'प्रतिष्ठित वेबसाइट?', q_en:'Reputed website?', options_hi:['किसी भी नाम से','प्रमाणित डोमेन','किसी भी लिंक','चर्चित नाम से'], options_en:['Any name','Verified domain','Any link','Popular name'], answer:1 },
+    { q_hi:'बहुत अच्छी डील ऑफ़र?', q_en:'Too-good-to-be-true offers?', options_hi:['तुरंत लें','संदिग्ध मानें, जाँचें','भुगतान करें','कुछ नहीं'], options_en:['Take now','Treat as suspicious','Pay','Nothing'], answer:1 },
+    { q_hi:'साइबर सुरक्षा का मूल सिद्धांत?', q_en:'Core principle of cyber security?', options_hi:['केवल सरकार','व्यक्तिगत सजगता','केवल कंपनी','कुछ नहीं'], options_en:['Only government','Personal awareness','Only company','Nothing'], answer:1 },
+    { q_hi:'कूटशब्द किसके साथ साझा?', q_en:'Share password with whom?', options_hi:['मित्र','कोई नहीं','परिवार','सहकर्मी'], options_en:['Friend','No one','Family','Colleague'], answer:1 },
+    { q_hi:'अजनबी को OTP?', q_en:'OTP to stranger?', options_hi:['दें','कभी नहीं','भरोसे पर','कभी-कभी'], options_en:['Give','Never','If trusted','Sometimes'], answer:1 }
   ],
   'FREE-PAY': [
-    { q_hi:'UPI PIN किसके साथ साझा करें?', q_en:'Share UPI PIN with whom?',
-      options_hi:['व्यापारी','कोई नहीं','बैंक','परिवार'],
-      options_en:['Merchant','No one','Bank','Family'], answer:1 },
-    { q_hi:'PIN कहाँ डालें?', q_en:'Where to enter PIN?',
-      options_hi:['किसी ऐप में','केवल UPI ऐप में','WhatsApp','SMS'],
-      options_en:['Any app','Only UPI app','WhatsApp','SMS'], answer:1 },
-    { q_hi:'नकली QR कोड की पहचान?', q_en:'Identifying fake QR code?',
-      options_hi:['लोगो','ऊपर स्टिकर','अच्छी छपाई','कुछ नहीं'],
-      options_en:['Logo','Sticker on top','Good print','Nothing'], answer:1 },
-    { q_hi:'चलभाष खो जाने पर?', q_en:'If phone is lost?',
-      options_hi:['चलाते रहें','अवरुद्ध करें','कुछ नहीं','नया नंबर लें'],
-      options_en:['Keep using','Block it','Nothing','Get new number'], answer:1 },
-    { q_hi:'भुगतान के पश्चात् क्या करें?', q_en:'What to do after payment?',
-      options_hi:['चलभाष बंद','पर्ची का स्क्रीनशॉट','नेट बंद','कुछ नहीं'],
-      options_en:['Close phone','Screenshot of receipt','Turn off net','Nothing'], answer:1 },
-    { q_hi:'संदिग्ध रिफंड कॉल पर?', q_en:'On suspicious refund call?',
-      options_hi:['PIN डालें','कॉल काटें, बैंक से संपर्क','UPI ID दें','OTP भेजें'],
-      options_en:['Enter PIN','Hang up, call bank','Give UPI ID','Send OTP'], answer:1 },
-    { q_hi:'प्रामाणिक UPI ऐप कौन?', q_en:'Authentic UPI apps?',
-      options_hi:['अज्ञात APK','BHIM, PhonePe, GPay','कोई वेबसाइट','कोई भी'],
-      options_en:['Unknown APK','BHIM, PhonePe, GPay','Any website','Any app'], answer:1 },
-    { q_hi:'ठगी की सूचना कहाँ?', q_en:'Where to report fraud?',
-      options_hi:['WhatsApp','cybercrime.gov.in / 1930','Facebook','कुछ नहीं'],
-      options_en:['WhatsApp','cybercrime.gov.in / 1930','Facebook','Nothing'], answer:1 },
-    { q_hi:'सार्वजनिक WiFi पर भुगतान?', q_en:'Payment on public WiFi?',
-      options_hi:['ठीक','टालें','कभी-कभी','हमेशा'],
-      options_en:['Okay','Avoid','Sometimes','Always'], answer:1 },
-    { q_hi:'बैंक कब कॉल करता है?', q_en:'When does bank call?',
-      options_hi:['रात ३ बजे','कार्यालय समय','कभी भी','रविवार'],
-      options_en:['3 AM','Business hours','Any time','Sunday'], answer:1 },
-    { q_hi:'अनधिकृत लेन-देन पर?', q_en:'On unauthorized transaction?',
-      options_hi:['प्रतीक्षा','तत्काल बैंक + 1930','कुछ नहीं','मित्र को बताएँ'],
-      options_en:['Wait','Immediately bank + 1930','Nothing','Tell friend'], answer:1 },
-    { q_hi:'सुरक्षित भुगतान कैसे?', q_en:'How to pay safely?',
-      options_hi:['प्रमाणित व्यापारी','अनजान','कोई भी QR','असत्यापित'],
-      options_en:['Verified merchant','Unknown','Any QR','Unverified'], answer:0 },
-    { q_hi:'PIN कहाँ न लिखें?', q_en:'Where not to write PIN?',
-      options_hi:['कहीं नहीं','डायरी','चलभाष','मित्र को'],
-      options_en:['Nowhere','Diary','Phone','To friend'], answer:0 },
-    { q_hi:'दो व्यक्ति एक ही UPI PIN?', q_en:'Two people one UPI PIN?',
-      options_hi:['ठीक','कभी नहीं','कभी-कभी','परिवार में'],
-      options_en:['Okay','Never','Sometimes','In family'], answer:1 },
-    { q_hi:'लिंक भेजकर धन माँगने पर?', q_en:'Money request via link?',
-      options_hi:['ठीक','कभी नहीं','विश्वास हो तो','कभी-कभी'],
-      options_en:['Okay','Never','If trusted','Sometimes'], answer:1 },
-    { q_hi:'UPI PIN की लम्बाई?', q_en:'Length of UPI PIN?',
-      options_hi:['४ अंक','६ अंक','८ अंक','कोई भी'],
-      options_en:['4 digits','6 digits','8 digits','Any'], answer:1 },
-    { q_hi:'PIN गलत होने पर कितनी बार प्रयास?', q_en:'How many wrong PIN attempts?',
-      options_hi:['असीमित','सीमित','५ बार','३ बार'],
-      options_en:['Unlimited','Limited','5 times','3 times'], answer:1 },
-    { q_hi:'धोखाधड़ी का धन वापस मिलने की सम्भावना?', q_en:'Chance of recovering fraud money?',
-      options_hi:['कभी नहीं','शीघ्र सूचना से बढ़ती है','हमेशा','कोई सम्बन्ध नहीं'],
-      options_en:['Never','Increases with quick report','Always','No relation'], answer:1 },
-    { q_hi:'UPI ऐप कहाँ से डाउनलोड करें?', q_en:'Download UPI app from?',
-      options_hi:['अज्ञात वेबसाइट','Google Play / App Store','WhatsApp लिंक','कोई भी'],
-      options_en:['Unknown website','Google Play / App Store','WhatsApp link','Any'], answer:1 },
-    { q_hi:'बैंक किस बात की सूचना देता है?', q_en:'What does bank inform about?',
-      options_hi:['PIN माँगने','खाता गतिविधि','UPI PIN','OTP साझा करने'],
-      options_en:['Asking PIN','Account activity','UPI PIN','Sharing OTP'], answer:1 },
-    { q_hi:'UPI दैनिक सीमा?', q_en:'UPI daily limit?',
-      options_hi:['कोई नहीं','₹१ लाख','₹५ लाख','₹१० लाख'],
-      options_en:['None','₹1 lakh','₹5 lakh','₹10 lakh'], answer:1 },
-    { q_hi:'व्यापारी को भुगतान से पूर्व?', q_en:'Before paying merchant?',
-      options_hi:['नाम जाँचें','तुरंत भेजें','कुछ नहीं','PIN जाँचें'],
-      options_en:['Verify name','Send at once','Nothing','Check PIN'], answer:0 },
-    { q_hi:'UPI से गलत खाते में भुगतान?', q_en:'Wrong UPI transfer?',
-      options_hi:['वापस आ जाएगा','आमतौर पर वापस नहीं','कुछ नहीं','कोई बात नहीं'],
-      options_en:['Will return','Usually not','Nothing','No issue'], answer:1 },
-    { q_hi:'लाभार्थी की जाँच के लिए?', q_en:'To verify beneficiary?',
-      options_hi:['₹१ भेजें','₹१०,००० भेजें','पूरा भेजें','कुछ नहीं'],
-      options_en:['Send ₹1','Send ₹10,000','Send full','Nothing'], answer:0 },
-    { q_hi:'चलभाष चोरी हो जाने पर SIM?', q_en:'If phone stolen, SIM?',
-      options_hi:['कोई नहीं','तत्काल अवरुद्ध','बाद में','कुछ नहीं'],
-      options_en:['Nothing','Block immediately','Later','Nothing'], answer:1 },
-    { q_hi:'भुगतान के पश्चात् UPI ऐप?', q_en:'UPI app after payment?',
-      options_hi:['खुला छोड़ें','बंद करें','कुछ नहीं','कभी नहीं'],
-      options_en:['Keep open','Close it','Nothing','Never'], answer:1 },
-    { q_hi:'स्क्रीन पर PIN?', q_en:'PIN on screen?',
-      options_hi:['दिखाएँ','न दिखाएँ','मित्र को दिखाएँ','कुछ नहीं'],
-      options_en:['Show','Hide','Show to friend','Nothing'], answer:1 },
-    { q_hi:'UPI लेन-देन विफल होने पर?', q_en:'If UPI transaction fails?',
-      options_hi:['तुरंत दोबारा भेजें','पहले जाँचें','चिंता न करें','कोई नहीं'],
-      options_en:['Resend at once','Check first','Don\'t worry','None'], answer:1 },
-    { q_hi:'नकली ऋण ऐप से बचाव?', q_en:'Protection from fake loan apps?',
-      options_hi:['RBI पंजीकृत जाँचें','अनजान','सभी','कुछ नहीं'],
-      options_en:['Verify RBI registered','Unknown','All','Nothing'], answer:0 },
-    { q_hi:'ऑनलाइन शॉपिंग में सुरक्षित भुगतान?', q_en:'Safe payment for online shopping?',
-      options_hi:['COD','सीधा UPI','अनजान लिंक','कोई भी'],
-      options_en:['COD','Direct UPI','Unknown link','Any'], answer:0 },
-    { q_hi:'पुराने UPI PIN को?', q_en:'Old UPI PIN?',
-      options_hi:['रखें','नियमित बदलें','कभी नहीं','कुछ नहीं'],
-      options_en:['Keep','Change regularly','Never','Nothing'], answer:1 },
-    { q_hi:'अनजान लिंक से भुगतान?', q_en:'Payment via unknown link?',
-      options_hi:['ठीक','कभी नहीं','कभी-कभी','विश्वास पर'],
-      options_en:['Okay','Never','Sometimes','If trusted'], answer:1 },
-    { q_hi:'बैंक अधिकारी की पहचान?', q_en:'Identify real bank official?',
-      options_hi:['PIN माँगे','PIN कभी नहीं माँगे','OTP माँगे','UPI ID माँगे'],
-      options_en:['Asks PIN','Never asks PIN','Asks OTP','Asks UPI ID'], answer:1 },
-    { q_hi:'WhatsApp पर UPI?', q_en:'UPI on WhatsApp?',
-      options_hi:['ठीक','सावधानी','हमेशा','कुछ नहीं'],
-      options_en:['Okay','Be cautious','Always','Nothing'], answer:1 },
-    { q_hi:'भुगतान से पूर्व राशि?', q_en:'Amount before payment?',
-      options_hi:['दोगुनी जाँचें','तुरंत भेजें','कुछ नहीं','कभी नहीं'],
-      options_en:['Double check','Send at once','Nothing','Never'], answer:0 },
-    { q_hi:'बच्चों के चलभाष में UPI?', q_en:'UPI on children\'s phones?',
-      options_hi:['खुला','पैरेंटल कंट्रोल','कुछ नहीं','कोई'],
-      options_en:['Open','Parental control','Nothing','None'], answer:1 },
-    { q_hi:'ग्राहक सेवा कॉल?', q_en:'Customer service calls?',
-      options_hi:['PIN माँगे','PIN कभी नहीं','UPI ID माँगे','कुछ नहीं'],
-      options_en:['Asks PIN','Never asks PIN','Asks UPI ID','Nothing'], answer:1 },
-    { q_hi:'Cash on Delivery से बचाव?', q_en:'COD protection?',
-      options_hi:['पार्सल जाँचें','सीधे भुगतान','कुछ नहीं','कोई'],
-      options_en:['Check parcel','Pay directly','Nothing','None'], answer:0 },
-    { q_hi:'फोन पर गलत UPI?', q_en:'Wrong UPI on phone?',
-      options_hi:['चलाते रहें','तत्काल बैंक सूचित','कुछ नहीं','बाद में'],
-      options_en:['Keep using','Inform bank at once','Nothing','Later'], answer:1 },
-    { q_hi:'UPI ऐप का PIN?', q_en:'UPI app PIN storage?',
-      options_hi:['चलभाष में सेव','कहीं नहीं','डायरी में','मित्र को'],
-      options_en:['Save in phone','Nowhere','In diary','To friend'], answer:1 }
+    { q_hi:'UPI PIN किसके साथ साझा करें?', q_en:'Share UPI PIN with whom?', options_hi:['व्यापारी','कोई नहीं','बैंक','परिवार'], options_en:['Merchant','No one','Bank','Family'], answer:1 },
+    { q_hi:'PIN कहाँ डालें?', q_en:'Where to enter PIN?', options_hi:['किसी ऐप में','केवल UPI ऐप में','WhatsApp','SMS'], options_en:['Any app','Only UPI app','WhatsApp','SMS'], answer:1 },
+    { q_hi:'नकली QR कोड की पहचान?', q_en:'Identifying fake QR code?', options_hi:['लोगो','ऊपर स्टिकर','अच्छी छपाई','कुछ नहीं'], options_en:['Logo','Sticker on top','Good print','Nothing'], answer:1 },
+    { q_hi:'चलभाष खो जाने पर?', q_en:'If phone is lost?', options_hi:['चलाते रहें','अवरुद्ध करें','कुछ नहीं','नया नंबर लें'], options_en:['Keep using','Block it','Nothing','Get new number'], answer:1 },
+    { q_hi:'भुगतान के पश्चात् क्या करें?', q_en:'What to do after payment?', options_hi:['चलभाष बंद','पर्ची का स्क्रीनशॉट','नेट बंद','कुछ नहीं'], options_en:['Close phone','Screenshot of receipt','Turn off net','Nothing'], answer:1 },
+    { q_hi:'संदिग्ध रिफंड कॉल पर?', q_en:'On suspicious refund call?', options_hi:['PIN डालें','कॉल काटें, बैंक से संपर्क','UPI ID दें','OTP भेजें'], options_en:['Enter PIN','Hang up, call bank','Give UPI ID','Send OTP'], answer:1 },
+    { q_hi:'प्रामाणिक UPI ऐप कौन?', q_en:'Authentic UPI apps?', options_hi:['अज्ञात APK','BHIM, PhonePe, GPay','कोई वेबसाइट','कोई भी'], options_en:['Unknown APK','BHIM, PhonePe, GPay','Any website','Any app'], answer:1 },
+    { q_hi:'ठगी की सूचना कहाँ?', q_en:'Where to report fraud?', options_hi:['WhatsApp','cybercrime.gov.in / 1930','Facebook','कुछ नहीं'], options_en:['WhatsApp','cybercrime.gov.in / 1930','Facebook','Nothing'], answer:1 },
+    { q_hi:'सार्वजनिक WiFi पर भुगतान?', q_en:'Payment on public WiFi?', options_hi:['ठीक','टालें','कभी-कभी','हमेशा'], options_en:['Okay','Avoid','Sometimes','Always'], answer:1 },
+    { q_hi:'बैंक कब कॉल करता है?', q_en:'When does bank call?', options_hi:['रात ३ बजे','कार्यालय समय','कभी भी','रविवार'], options_en:['3 AM','Business hours','Any time','Sunday'], answer:1 },
+    { q_hi:'अनधिकृत लेन-देन पर?', q_en:'On unauthorized transaction?', options_hi:['प्रतीक्षा','तत्काल बैंक + 1930','कुछ नहीं','मित्र को बताएँ'], options_en:['Wait','Immediately bank + 1930','Nothing','Tell friend'], answer:1 },
+    { q_hi:'सुरक्षित भुगतान कैसे?', q_en:'How to pay safely?', options_hi:['प्रमाणित व्यापारी','अनजान','कोई भी QR','असत्यापित'], options_en:['Verified merchant','Unknown','Any QR','Unverified'], answer:0 },
+    { q_hi:'PIN कहाँ न लिखें?', q_en:'Where not to write PIN?', options_hi:['कहीं नहीं','डायरी','चलभाष','मित्र को'], options_en:['Nowhere','Diary','Phone','To friend'], answer:0 },
+    { q_hi:'दो व्यक्ति एक ही UPI PIN?', q_en:'Two people one UPI PIN?', options_hi:['ठीक','कभी नहीं','कभी-कभी','परिवार में'], options_en:['Okay','Never','Sometimes','In family'], answer:1 },
+    { q_hi:'लिंक भेजकर धन माँगने पर?', q_en:'Money request via link?', options_hi:['ठीक','कभी नहीं','विश्वास हो तो','कभी-कभी'], options_en:['Okay','Never','If trusted','Sometimes'], answer:1 },
+    { q_hi:'UPI PIN की लम्बाई?', q_en:'Length of UPI PIN?', options_hi:['४ अंक','६ अंक','८ अंक','कोई भी'], options_en:['4 digits','6 digits','8 digits','Any'], answer:1 },
+    { q_hi:'PIN गलत होने पर कितनी बार प्रयास?', q_en:'How many wrong PIN attempts?', options_hi:['असीमित','सीमित','५ बार','३ बार'], options_en:['Unlimited','Limited','5 times','3 times'], answer:1 },
+    { q_hi:'धोखाधड़ी का धन वापस मिलने की सम्भावना?', q_en:'Chance of recovering fraud money?', options_hi:['कभी नहीं','शीघ्र सूचना से बढ़ती है','हमेशा','कोई सम्बन्ध नहीं'], options_en:['Never','Increases with quick report','Always','No relation'], answer:1 },
+    { q_hi:'UPI ऐप कहाँ से डाउनलोड करें?', q_en:'Download UPI app from?', options_hi:['अज्ञात वेबसाइट','Google Play / App Store','WhatsApp लिंक','कोई भी'], options_en:['Unknown website','Google Play / App Store','WhatsApp link','Any'], answer:1 },
+    { q_hi:'बैंक किस बात की सूचना देता है?', q_en:'What does bank inform about?', options_hi:['PIN माँगने','खाता गतिविधि','UPI PIN','OTP साझा करने'], options_en:['Asking PIN','Account activity','UPI PIN','Sharing OTP'], answer:1 },
+    { q_hi:'UPI दैनिक सीमा?', q_en:'UPI daily limit?', options_hi:['कोई नहीं','₹१ लाख','₹५ लाख','₹१० लाख'], options_en:['None','₹1 lakh','₹5 lakh','₹10 lakh'], answer:1 },
+    { q_hi:'व्यापारी को भुगतान से पूर्व?', q_en:'Before paying merchant?', options_hi:['नाम जाँचें','तुरंत भेजें','कुछ नहीं','PIN जाँचें'], options_en:['Verify name','Send at once','Nothing','Check PIN'], answer:0 },
+    { q_hi:'UPI से गलत खाते में भुगतान?', q_en:'Wrong UPI transfer?', options_hi:['वापस आ जाएगा','आमतौर पर वापस नहीं','कुछ नहीं','कोई बात नहीं'], options_en:['Will return','Usually not','Nothing','No issue'], answer:1 },
+    { q_hi:'लाभार्थी की जाँच के लिए?', q_en:'To verify beneficiary?', options_hi:['₹१ भेजें','₹१०,००० भेजें','पूरा भेजें','कुछ नहीं'], options_en:['Send ₹1','Send ₹10,000','Send full','Nothing'], answer:0 },
+    { q_hi:'चलभाष चोरी हो जाने पर SIM?', q_en:'If phone stolen, SIM?', options_hi:['कोई नहीं','तत्काल अवरुद्ध','बाद में','कुछ नहीं'], options_en:['Nothing','Block immediately','Later','Nothing'], answer:1 },
+    { q_hi:'भुगतान के पश्चात् UPI ऐप?', q_en:'UPI app after payment?', options_hi:['खुला छोड़ें','बंद करें','कुछ नहीं','कभी नहीं'], options_en:['Keep open','Close it','Nothing','Never'], answer:1 },
+    { q_hi:'स्क्रीन पर PIN?', q_en:'PIN on screen?', options_hi:['दिखाएँ','न दिखाएँ','मित्र को दिखाएँ','कुछ नहीं'], options_en:['Show','Hide','Show to friend','Nothing'], answer:1 },
+    { q_hi:'UPI लेन-देन विफल होने पर?', q_en:'If UPI transaction fails?', options_hi:['तुरंत दोबारा भेजें','पहले जाँचें','चिंता न करें','कोई नहीं'], options_en:['Resend at once','Check first','Don\'t worry','None'], answer:1 },
+    { q_hi:'नकली ऋण ऐप से बचाव?', q_en:'Protection from fake loan apps?', options_hi:['RBI पंजीकृत जाँचें','अनजान','सभी','कुछ नहीं'], options_en:['Verify RBI registered','Unknown','All','Nothing'], answer:0 },
+    { q_hi:'ऑनलाइन शॉपिंग में सुरक्षित भुगतान?', q_en:'Safe payment for online shopping?', options_hi:['COD','सीधा UPI','अनजान लिंक','कोई भी'], options_en:['COD','Direct UPI','Unknown link','Any'], answer:0 },
+    { q_hi:'पुराने UPI PIN को?', q_en:'Old UPI PIN?', options_hi:['रखें','नियमित बदलें','कभी नहीं','कुछ नहीं'], options_en:['Keep','Change regularly','Never','Nothing'], answer:1 },
+    { q_hi:'अनजान लिंक से भुगतान?', q_en:'Payment via unknown link?', options_hi:['ठीक','कभी नहीं','कभी-कभी','विश्वास पर'], options_en:['Okay','Never','Sometimes','If trusted'], answer:1 },
+    { q_hi:'बैंक अधिकारी की पहचान?', q_en:'Identify real bank official?', options_hi:['PIN माँगे','PIN कभी नहीं माँगे','OTP माँगे','UPI ID माँगे'], options_en:['Asks PIN','Never asks PIN','Asks OTP','Asks UPI ID'], answer:1 },
+    { q_hi:'WhatsApp पर UPI?', q_en:'UPI on WhatsApp?', options_hi:['ठीक','सावधानी','हमेशा','कुछ नहीं'], options_en:['Okay','Be cautious','Always','Nothing'], answer:1 },
+    { q_hi:'भुगतान से पूर्व राशि?', q_en:'Amount before payment?', options_hi:['दोगुनी जाँचें','तुरंत भेजें','कुछ नहीं','कभी नहीं'], options_en:['Double check','Send at once','Nothing','Never'], answer:0 },
+    { q_hi:'बच्चों के चलभाष में UPI?', q_en:'UPI on children\'s phones?', options_hi:['खुला','पैरेंटल कंट्रोल','कुछ नहीं','कोई'], options_en:['Open','Parental control','Nothing','None'], answer:1 },
+    { q_hi:'ग्राहक सेवा कॉल?', q_en:'Customer service calls?', options_hi:['PIN माँगे','PIN कभी नहीं','UPI ID माँगे','कुछ नहीं'], options_en:['Asks PIN','Never asks PIN','Asks UPI ID','Nothing'], answer:1 },
+    { q_hi:'Cash on Delivery से बचाव?', q_en:'COD protection?', options_hi:['पार्सल जाँचें','सीधे भुगतान','कुछ नहीं','कोई'], options_en:['Check parcel','Pay directly','Nothing','None'], answer:0 },
+    { q_hi:'फोन पर गलत UPI?', q_en:'Wrong UPI on phone?', options_hi:['चलाते रहें','तत्काल बैंक सूचित','कुछ नहीं','बाद में'], options_en:['Keep using','Inform bank at once','Nothing','Later'], answer:1 },
+    { q_hi:'UPI ऐप का PIN?', q_en:'UPI app PIN storage?', options_hi:['चलभाष में सेव','कहीं नहीं','डायरी में','मित्र को'], options_en:['Save in phone','Nowhere','In diary','To friend'], answer:1 }
   ],
   'FREE-NET': [
-    { q_hi:'URL का अर्थ?', q_en:'Meaning of URL?',
-      options_hi:['वेबसाइट पता','फ़ाइल','वीडियो','विद्युत्पत्र'],
-      options_en:['Website address','File','Video','Email'], answer:0 },
-    { q_hi:'खोज यंत्र कौन?', q_en:'Which is a search engine?',
-      options_hi:['Google','Windows','Excel','Facebook'],
-      options_en:['Google','Windows','Excel','Facebook'], answer:0 },
-    { q_hi:'विद्युत्पत्र सेवा?', q_en:'Email service?',
-      options_hi:['Gmail','Photos','WhatsApp','YouTube'],
-      options_en:['Gmail','Photos','WhatsApp','YouTube'], answer:0 },
-    { q_hi:'क्लाउड भंडारण?', q_en:'Cloud storage?',
-      options_hi:['Google Drive','पुस्तक','कॉपी','कलम'],
-      options_en:['Google Drive','Book','Notebook','Pen'], answer:0 },
-    { q_hi:'विचरक कौन?', q_en:'Which is a browser?',
-      options_hi:['Chrome','Excel','Word','Paint'],
-      options_en:['Chrome','Excel','Word','Paint'], answer:0 },
-    { q_hi:'नया टैब का शॉर्टकट?', q_en:'Shortcut for new tab?',
-      options_hi:['Ctrl+T','Ctrl+C','Ctrl+V','Ctrl+X'],
-      options_en:['Ctrl+T','Ctrl+C','Ctrl+V','Ctrl+X'], answer:0 },
-    { q_hi:'बुकमार्क क्या है?', q_en:'What is a bookmark?',
-      options_hi:['सहेजा लिंक','फ़ाइल','फोटो','ईमेल'],
-      options_en:['Saved link','File','Photo','Email'], answer:0 },
-    { q_hi:'VPN का उपयोग?', q_en:'Use of VPN?',
-      options_hi:['निजता','गति','भंडारण','बैकअप'],
-      options_en:['Privacy','Speed','Storage','Backup'], answer:0 },
-    { q_hi:'गुप्त मोड?', q_en:'Incognito mode?',
-      options_hi:['इतिहास सहेजा नहीं','तेज़','सुरक्षित','नि:शुल्क'],
-      options_en:['No history saved','Faster','Safer','Free'], answer:0 },
-    { q_hi:'कैश क्या है?', q_en:'What is cache?',
-      options_hi:['अस्थायी डेटा','स्थायी फ़ाइल','ईमेल','कूटशब्द'],
-      options_en:['Temporary data','Permanent file','Email','Password'], answer:0 },
-    { q_hi:'डाउनलोड का अर्थ?', q_en:'Meaning of download?',
-      options_hi:['फ़ाइल प्राप्त करना','भेजना','बनाना','कोई नहीं'],
-      options_en:['Receive file','Send','Create','None'], answer:0 },
-    { q_hi:'अपलोड का अर्थ?', q_en:'Meaning of upload?',
-      options_hi:['भेजना','प्राप्त करना','खोलना','कोई नहीं'],
-      options_en:['Send','Receive','Open','None'], answer:0 },
-    { q_hi:'CC का अर्थ?', q_en:'Meaning of CC?',
-      options_hi:['Carbon Copy','Cold Copy','Close Call','Copy Code'],
-      options_en:['Carbon Copy','Cold Copy','Close Call','Copy Code'], answer:0 },
-    { q_hi:'ताला-चिह्न का अर्थ?', q_en:'Meaning of lock icon?',
-      options_hi:['सुरक्षित','असुरक्षित','पुराना','टूटा'],
-      options_en:['Secure','Unsafe','Old','Broken'], answer:0 },
-    { q_hi:'Google Docs क्या है?', q_en:'What is Google Docs?',
-      options_hi:['अंतर्जालीय शब्द संसाधक','विद्युत्पत्र','विचरक','खोज'],
-      options_en:['Online word processor','Email','Browser','Search'], answer:0 },
-    { q_hi:'खोज में उद्धरण चिह्न?', q_en:'Quotes in search?',
-      options_hi:['यथावत् वाक्यांश','ध्वनि','गति','वर्तनी'],
-      options_en:['Exact phrase','Sound','Speed','Spelling'], answer:0 },
-    { q_hi:'सुरक्षित वेबसाइट की पहचान?', q_en:'Safe website sign?',
-      options_hi:['https + ताला','http केवल','विज्ञापन पूर्ण','यादृच्छिक'],
-      options_en:['https + lock','http only','Ad-full','Random'], answer:0 },
-    { q_hi:'BCC का अर्थ?', q_en:'Meaning of BCC?',
-      options_hi:['छिपी प्रतिलिपि','खुली प्रतिलिपि','मुख्य','कोई नहीं'],
-      options_en:['Blind copy','Open copy','Main','None'], answer:0 },
-    { q_hi:'फ़ाइल संलग्न चिह्न?', q_en:'Attach file icon?',
-      options_hi:['📎','📷','🎤','🖼️'],
-      options_en:['📎','📷','🎤','🖼️'], answer:0 },
-    { q_hi:'वेबसाइट पता कहाँ?', q_en:'Where is website address?',
-      options_hi:['URL बॉक्स','विषय पंक्ति','संदेश पंक्ति','प्रेषक पंक्ति'],
-      options_en:['URL box','Subject line','Message line','Sender line'], answer:0 },
-    { q_hi:'Ctrl+Z का कार्य?', q_en:'Function of Ctrl+Z?',
-      options_hi:['Undo','Copy','Paste','Cut'],
-      options_en:['Undo','Copy','Paste','Cut'], answer:0 },
-    { q_hi:'वीडियो कॉल हेतु?', q_en:'For video call you need?',
-      options_hi:['कैमरा + माइक','केवल स्पीकर','केवल कैमरा','कुछ नहीं'],
-      options_en:['Camera + mic','Only speaker','Only camera','Nothing'], answer:0 },
-    { q_hi:'ऑनलाइन कक्षा में?', q_en:'In online class?',
-      options_hi:['बीच में बोलें','विनम्र रहें','कुछ नहीं','कोई नहीं'],
-      options_en:['Interrupt','Be polite','Nothing','None'], answer:1 },
-    { q_hi:'Digital Wellbeing ऐप?', q_en:'Digital Wellbeing app?',
-      options_hi:['समय ट्रैक','खेल','फ़ाइल','कोई नहीं'],
-      options_en:['Track time','Game','File','None'], answer:0 },
-    { q_hi:'फ़ाइल सहेजने का शॉर्टकट?', q_en:'Save file shortcut?',
-      options_hi:['Ctrl+S','Ctrl+A','Ctrl+P','Ctrl+F'],
-      options_en:['Ctrl+S','Ctrl+A','Ctrl+P','Ctrl+F'], answer:0 },
-    { q_hi:'अंतर्जाल का लाभ?', q_en:'Benefit of Internet?',
-      options_hi:['सूचना, संवाद, शिक्षा','केवल वीडियो','केवल खेल','कुछ नहीं'],
-      options_en:['Info, communication, education','Only video','Only games','Nothing'], answer:0 },
-    { q_hi:'ब्राउज़र इतिहास?', q_en:'Browser history?',
-      options_hi:['नियमित साफ़ करें','कभी नहीं','रखें','कुछ नहीं'],
-      options_en:['Clean regularly','Never','Keep','Nothing'], answer:0 },
-    { q_hi:'अस्थायी फ़ाइलें?', q_en:'Temporary files?',
-      options_hi:['हटाते रहें','रखें','कुछ नहीं','बढ़ाएँ'],
-      options_en:['Delete regularly','Keep','Nothing','Increase'], answer:0 },
-    { q_hi:'प्रामाणिक वेबसाइट?', q_en:'Authentic website?',
-      options_hi:['डोमेन जाँचें','नाम से','लिंक से','कोई भी'],
-      options_en:['Check domain','By name','By link','Any'], answer:0 },
-    { q_hi:'WhatsApp Web?', q_en:'WhatsApp Web?',
-      options_hi:['चलभाष से लिंक','कुछ नहीं','कोई नहीं','नहीं'],
-      options_en:['Link from phone','Nothing','None','No'], answer:0 },
-    { q_hi:'फोटो अपलोड हेतु?', q_en:'To upload photos?',
-      options_hi:['क्लाउड','केवल स्थानीय','कुछ नहीं','नहीं'],
-      options_en:['Cloud','Only local','Nothing','No'], answer:0 },
-    { q_hi:'बैकअप कितनी बार?', q_en:'How often to backup?',
-      options_hi:['साप्ताहिक','कभी नहीं','मासिक','वार्षिक'],
-      options_en:['Weekly','Never','Monthly','Yearly'], answer:0 },
-    { q_hi:'Ctrl+F कार्य?', q_en:'Function of Ctrl+F?',
-      options_hi:['खोज','बंद','सहेजें','नया'],
-      options_en:['Find','Close','Save','New'], answer:0 },
-    { q_hi:'वीडियो कॉल में माइक?', q_en:'Mic in video call?',
-      options_hi:['बोलते समय खोलें','हमेशा खुला','बंद रखें','कुछ नहीं'],
-      options_en:['On when speaking','Always on','Keep off','Nothing'], answer:0 },
-    { q_hi:'अंतर्जाल सीमा?', q_en:'Internet limits?',
-      options_hi:['अपने लिए तय करें','असीमित','कोई नहीं','नहीं'],
-      options_en:['Set own limits','Unlimited','None','No'], answer:0 },
-    { q_hi:'स्क्रीनशॉट शॉर्टकट?', q_en:'Screenshot shortcut?',
-      options_hi:['Windows+Shift+S','Ctrl+C','Ctrl+V','Ctrl+X'],
-      options_en:['Windows+Shift+S','Ctrl+C','Ctrl+V','Ctrl+X'], answer:0 },
-    { q_hi:'सुरक्षित विद्युत्पत्र सेवा?', q_en:'Safe email service?',
-      options_hi:['Gmail','किसी भी','अज्ञात','कोई'],
-      options_en:['Gmail','Any','Unknown','None'], answer:0 },
-    { q_hi:'फ़ाइल का नाम?', q_en:'File naming?',
-      options_hi:['वर्णनात्मक रखें','अव्यवस्थित','कुछ नहीं','कोई भी'],
-      options_en:['Descriptive','Messy','Nothing','Any'], answer:0 },
-    { q_hi:'आवश्यक फ़ाइल?', q_en:'Important file?',
-      options_hi:['क्लाउड + स्थानीय','केवल एक','कुछ नहीं','कोई'],
-      options_en:['Cloud + local','Only one','Nothing','None'], answer:0 },
-    { q_hi:'अंतर्जाल पर सूचना?', q_en:'Info on Internet?',
-      options_hi:['सत्यापन करें','तुरंत मानें','कुछ नहीं','कोई भी'],
-      options_en:['Verify','Believe at once','Nothing','Any'], answer:0 }
+    { q_hi:'URL का अर्थ?', q_en:'Meaning of URL?', options_hi:['वेबसाइट पता','फ़ाइल','वीडियो','विद्युत्पत्र'], options_en:['Website address','File','Video','Email'], answer:0 },
+    { q_hi:'खोज यंत्र कौन?', q_en:'Which is a search engine?', options_hi:['Google','Windows','Excel','Facebook'], options_en:['Google','Windows','Excel','Facebook'], answer:0 },
+    { q_hi:'विद्युत्पत्र सेवा?', q_en:'Email service?', options_hi:['Gmail','Photos','WhatsApp','YouTube'], options_en:['Gmail','Photos','WhatsApp','YouTube'], answer:0 },
+    { q_hi:'क्लाउड भंडारण?', q_en:'Cloud storage?', options_hi:['Google Drive','पुस्तक','कॉपी','कलम'], options_en:['Google Drive','Book','Notebook','Pen'], answer:0 },
+    { q_hi:'विचरक कौन?', q_en:'Which is a browser?', options_hi:['Chrome','Excel','Word','Paint'], options_en:['Chrome','Excel','Word','Paint'], answer:0 },
+    { q_hi:'नया टैब का शॉर्टकट?', q_en:'Shortcut for new tab?', options_hi:['Ctrl+T','Ctrl+C','Ctrl+V','Ctrl+X'], options_en:['Ctrl+T','Ctrl+C','Ctrl+V','Ctrl+X'], answer:0 },
+    { q_hi:'बुकमार्क क्या है?', q_en:'What is a bookmark?', options_hi:['सहेजा लिंक','फ़ाइल','फोटो','ईमेल'], options_en:['Saved link','File','Photo','Email'], answer:0 },
+    { q_hi:'VPN का उपयोग?', q_en:'Use of VPN?', options_hi:['निजता','गति','भंडारण','बैकअप'], options_en:['Privacy','Speed','Storage','Backup'], answer:0 },
+    { q_hi:'गुप्त मोड?', q_en:'Incognito mode?', options_hi:['इतिहास सहेजा नहीं','तेज़','सुरक्षित','नि:शुल्क'], options_en:['No history saved','Faster','Safer','Free'], answer:0 },
+    { q_hi:'कैश क्या है?', q_en:'What is cache?', options_hi:['अस्थायी डेटा','स्थायी फ़ाइल','ईमेल','कूटशब्द'], options_en:['Temporary data','Permanent file','Email','Password'], answer:0 },
+    { q_hi:'डाउनलोड का अर्थ?', q_en:'Meaning of download?', options_hi:['फ़ाइल प्राप्त करना','भेजना','बनाना','कोई नहीं'], options_en:['Receive file','Send','Create','None'], answer:0 },
+    { q_hi:'अपलोड का अर्थ?', q_en:'Meaning of upload?', options_hi:['भेजना','प्राप्त करना','खोलना','कोई नहीं'], options_en:['Send','Receive','Open','None'], answer:0 },
+    { q_hi:'CC का अर्थ?', q_en:'Meaning of CC?', options_hi:['Carbon Copy','Cold Copy','Close Call','Copy Code'], options_en:['Carbon Copy','Cold Copy','Close Call','Copy Code'], answer:0 },
+    { q_hi:'ताला-चिह्न का अर्थ?', q_en:'Meaning of lock icon?', options_hi:['सुरक्षित','असुरक्षित','पुराना','टूटा'], options_en:['Secure','Unsafe','Old','Broken'], answer:0 },
+    { q_hi:'Google Docs क्या है?', q_en:'What is Google Docs?', options_hi:['अंतर्जालीय शब्द संसाधक','विद्युत्पत्र','विचरक','खोज'], options_en:['Online word processor','Email','Browser','Search'], answer:0 },
+    { q_hi:'खोज में उद्धरण चिह्न?', q_en:'Quotes in search?', options_hi:['यथावत् वाक्यांश','ध्वनि','गति','वर्तनी'], options_en:['Exact phrase','Sound','Speed','Spelling'], answer:0 },
+    { q_hi:'सुरक्षित वेबसाइट की पहचान?', q_en:'Safe website sign?', options_hi:['https + ताला','http केवल','विज्ञापन पूर्ण','यादृच्छिक'], options_en:['https + lock','http only','Ad-full','Random'], answer:0 },
+    { q_hi:'BCC का अर्थ?', q_en:'Meaning of BCC?', options_hi:['छिपी प्रतिलिपि','खुली प्रतिलिपि','मुख्य','कोई नहीं'], options_en:['Blind copy','Open copy','Main','None'], answer:0 },
+    { q_hi:'फ़ाइल संलग्न चिह्न?', q_en:'Attach file icon?', options_hi:['📎','📷','🎤','🖼️'], options_en:['📎','📷','🎤','🖼️'], answer:0 },
+    { q_hi:'वेबसाइट पता कहाँ?', q_en:'Where is website address?', options_hi:['URL बॉक्स','विषय पंक्ति','संदेश पंक्ति','प्रेषक पंक्ति'], options_en:['URL box','Subject line','Message line','Sender line'], answer:0 },
+    { q_hi:'Ctrl+Z का कार्य?', q_en:'Function of Ctrl+Z?', options_hi:['Undo','Copy','Paste','Cut'], options_en:['Undo','Copy','Paste','Cut'], answer:0 },
+    { q_hi:'वीडियो कॉल हेतु?', q_en:'For video call you need?', options_hi:['कैमरा + माइक','केवल स्पीकर','केवल कैमरा','कुछ नहीं'], options_en:['Camera + mic','Only speaker','Only camera','Nothing'], answer:0 },
+    { q_hi:'ऑनलाइन कक्षा में?', q_en:'In online class?', options_hi:['बीच में बोलें','विनम्र रहें','कुछ नहीं','कोई नहीं'], options_en:['Interrupt','Be polite','Nothing','None'], answer:1 },
+    { q_hi:'Digital Wellbeing ऐप?', q_en:'Digital Wellbeing app?', options_hi:['समय ट्रैक','खेल','फ़ाइल','कोई नहीं'], options_en:['Track time','Game','File','None'], answer:0 },
+    { q_hi:'फ़ाइल सहेजने का शॉर्टकट?', q_en:'Save file shortcut?', options_hi:['Ctrl+S','Ctrl+A','Ctrl+P','Ctrl+F'], options_en:['Ctrl+S','Ctrl+A','Ctrl+P','Ctrl+F'], answer:0 },
+    { q_hi:'अंतर्जाल का लाभ?', q_en:'Benefit of Internet?', options_hi:['सूचना, संवाद, शिक्षा','केवल वीडियो','केवल खेल','कुछ नहीं'], options_en:['Info, communication, education','Only video','Only games','Nothing'], answer:0 },
+    { q_hi:'ब्राउज़र इतिहास?', q_en:'Browser history?', options_hi:['नियमित साफ़ करें','कभी नहीं','रखें','कुछ नहीं'], options_en:['Clean regularly','Never','Keep','Nothing'], answer:0 },
+    { q_hi:'अस्थायी फ़ाइलें?', q_en:'Temporary files?', options_hi:['हटाते रहें','रखें','कुछ नहीं','बढ़ाएँ'], options_en:['Delete regularly','Keep','Nothing','Increase'], answer:0 },
+    { q_hi:'प्रामाणिक वेबसाइट?', q_en:'Authentic website?', options_hi:['डोमेन जाँचें','नाम से','लिंक से','कोई भी'], options_en:['Check domain','By name','By link','Any'], answer:0 },
+    { q_hi:'WhatsApp Web?', q_en:'WhatsApp Web?', options_hi:['चलभाष से लिंक','कुछ नहीं','कोई नहीं','नहीं'], options_en:['Link from phone','Nothing','None','No'], answer:0 },
+    { q_hi:'फोटो अपलोड हेतु?', q_en:'To upload photos?', options_hi:['क्लाउड','केवल स्थानीय','कुछ नहीं','नहीं'], options_en:['Cloud','Only local','Nothing','No'], answer:0 },
+    { q_hi:'बैकअप कितनी बार?', q_en:'How often to backup?', options_hi:['साप्ताहिक','कभी नहीं','मासिक','वार्षिक'], options_en:['Weekly','Never','Monthly','Yearly'], answer:0 },
+    { q_hi:'Ctrl+F कार्य?', q_en:'Function of Ctrl+F?', options_hi:['खोज','बंद','सहेजें','नया'], options_en:['Find','Close','Save','New'], answer:0 },
+    { q_hi:'वीडियो कॉल में माइक?', q_en:'Mic in video call?', options_hi:['बोलते समय खोलें','हमेशा खुला','बंद रखें','कुछ नहीं'], options_en:['On when speaking','Always on','Keep off','Nothing'], answer:0 },
+    { q_hi:'अंतर्जाल सीमा?', q_en:'Internet limits?', options_hi:['अपने लिए तय करें','असीमित','कोई नहीं','नहीं'], options_en:['Set own limits','Unlimited','None','No'], answer:0 },
+    { q_hi:'स्क्रीनशॉट शॉर्टकट?', q_en:'Screenshot shortcut?', options_hi:['Windows+Shift+S','Ctrl+C','Ctrl+V','Ctrl+X'], options_en:['Windows+Shift+S','Ctrl+C','Ctrl+V','Ctrl+X'], answer:0 },
+    { q_hi:'सुरक्षित विद्युत्पत्र सेवा?', q_en:'Safe email service?', options_hi:['Gmail','किसी भी','अज्ञात','कोई'], options_en:['Gmail','Any','Unknown','None'], answer:0 },
+    { q_hi:'फ़ाइल का नाम?', q_en:'File naming?', options_hi:['वर्णनात्मक रखें','अव्यवस्थित','कुछ नहीं','कोई भी'], options_en:['Descriptive','Messy','Nothing','Any'], answer:0 },
+    { q_hi:'आवश्यक फ़ाइल?', q_en:'Important file?', options_hi:['क्लाउड + स्थानीय','केवल एक','कुछ नहीं','कोई'], options_en:['Cloud + local','Only one','Nothing','None'], answer:0 },
+    { q_hi:'अंतर्जाल पर सूचना?', q_en:'Info on Internet?', options_hi:['सत्यापन करें','तुरंत मानें','कुछ नहीं','कोई भी'], options_en:['Verify','Believe at once','Nothing','Any'], answer:0 }
   ],
   'FREE-SM': [
-    { q_hi:'गोपनीयता सेटिंग कब जाँचें?', q_en:'When to check privacy settings?',
-      options_hi:['मासिक','कभी नहीं','मन करे तो','जन्मदिन पर'],
-      options_en:['Monthly','Never','When desired','On birthday'], answer:0 },
-    { q_hi:'अनजान मित्रता अनुरोध?', q_en:'Unknown friend request?',
-      options_hi:['स्वीकार','अस्वीकार','संदेश','सभी'],
-      options_en:['Accept','Reject','Message','All'], answer:1 },
-    { q_hi:'मिथ्या समाचार साझा करने से पूर्व?', q_en:'Before sharing fake news?',
-      options_hi:['सत्यापन','तुरंत साझा','टिप्पणी','कुछ नहीं'],
-      options_en:['Verify','Share immediately','Comment','Nothing'], answer:0 },
-    { q_hi:'सार्वजनिक पोस्ट में क्या न डालें?', q_en:'What not to put in public post?',
-      options_hi:['फोटो','चलभाष/पता','भोजन','स्थान'],
-      options_en:['Photo','Phone/address','Food','Location'], answer:1 },
-    { q_hi:'अंतर्जालीय प्रताड़ना पर?', q_en:'On cyber bullying?',
-      options_hi:['चुप','रिपोर्ट + ब्लॉक','उत्तर','क्षमा माँगें'],
-      options_en:['Silent','Report + block','Reply','Apologize'], answer:1 },
-    { q_hi:'कूटशब्द कैसा हो?', q_en:'Password should be?',
-      options_hi:['जन्मतिथि','सुदृढ़ अद्वितीय','नाम','1234'],
-      options_en:['Date of birth','Strong unique','Name','1234'], answer:1 },
-    { q_hi:'घृणा-भाषण?', q_en:'Hate speech?',
-      options_hi:['गलत','सही','कभी-कभी','कुछ नहीं'],
-      options_en:['Wrong','Right','Sometimes','Nothing'], answer:0 },
-    { q_hi:'अजनबी से भेंट से पूर्व?', q_en:'Before meeting stranger?',
-      options_hi:['अकेले','परिवार को बताएँ','कुछ नहीं','मित्र को भेजें'],
-      options_en:['Alone','Tell family','Nothing','Send friend'], answer:1 },
-    { q_hi:'Story कितने घंटे सक्रिय?', q_en:'Story stays for how many hours?',
-      options_hi:['24','48','12','कभी नहीं'],
-      options_en:['24','48','12','Never'], answer:0 },
-    { q_hi:'2FA क्यों?', q_en:'Why 2FA?',
-      options_hi:['अतिरिक्त सुरक्षा','तेज़','धीमा','नि:शुल्क'],
-      options_en:['Extra security','Faster','Slow','Free'], answer:0 },
-    { q_hi:'फोटो में Metadata?', q_en:'Metadata in photos?',
-      options_hi:['स्थान + उपकरण','कुछ नहीं','चलभाष','ईमेल'],
-      options_en:['Location + device','Nothing','Phone','Email'], answer:0 },
-    { q_hi:'समूह में क्या न भेजें?', q_en:'What not to send in groups?',
-      options_hi:['व्यक्तिगत सूचना','नमस्ते','फोटो','चुटकुला'],
-      options_en:['Personal info','Hi','Photo','Joke'], answer:0 },
-    { q_hi:'खाता हैक हो जाने पर?', q_en:'If account is hacked?',
-      options_hi:['कूटशब्द बदलें + रिपोर्ट','कुछ नहीं','प्रतीक्षा','मित्र को बताएँ'],
-      options_en:['Change password + report','Nothing','Wait','Tell friend'], answer:0 },
-    { q_hi:'WhatsApp OTP किसे दें?', q_en:'Give WhatsApp OTP to?',
-      options_hi:['कोई नहीं','माता','अधिकारी','मित्र'],
-      options_en:['No one','Mother','Official','Friend'], answer:0 },
-    { q_hi:'अभद्र संदेश पर?', q_en:'On abusive message?',
-      options_hi:['रिपोर्ट/ब्लॉक','सहें','उत्तर दें','हँसें'],
-      options_en:['Report/block','Endure','Reply','Laugh'], answer:0 },
-    { q_hi:'सार्वजनिक WiFi पर समाज माध्यम?', q_en:'Social media on public WiFi?',
-      options_hi:['सुरक्षित','असुरक्षित','ठीक','हमेशा'],
-      options_en:['Safe','Unsafe','Okay','Always'], answer:1 },
-    { q_hi:'अपनी फोटो में टैग?', q_en:'Tags in your photos?',
-      options_hi:['सदैव','चयनित रूप से','कभी नहीं','कुछ नहीं'],
-      options_en:['Always','Selectively','Never','Nothing'], answer:1 },
-    { q_hi:'धोखाधड़ी लिंक?', q_en:'Fraud links?',
-      options_hi:['विश्वसनीय','संदिग्ध','सुरक्षित','कोई नहीं'],
-      options_en:['Trusted','Suspicious','Safe','None'], answer:1 },
-    { q_hi:'अपनी आयु सार्वजनिक?', q_en:'Make age public?',
-      options_hi:['हाँ','चयनित रूप से','कभी नहीं','कुछ नहीं'],
-      options_en:['Yes','Selectively','Never','Nothing'], answer:1 },
-    { q_hi:'अपने बच्चों की फोटो?', q_en:'Photos of your children?',
-      options_hi:['सदैव सार्वजनिक','सीमित रूप से','कभी नहीं','कोई नहीं'],
-      options_en:['Always public','Limited','Never','None'], answer:1 },
-    { q_hi:'फ़ेक प्रोफ़ाइल की पहचान?', q_en:'Identify fake profile?',
-      options_hi:['कम मित्र','बहुत मित्र','पुरानी','असली'],
-      options_en:['Few friends','Many friends','Old','Real'], answer:0 },
-    { q_hi:'लोकेशन टैग?', q_en:'Location tag?',
-      options_hi:['हटाएँ','रखें','कुछ नहीं','कोई'],
-      options_en:['Remove','Keep','Nothing','None'], answer:0 },
-    { q_hi:'स्क्रीन टाइम?', q_en:'Screen time?',
-      options_hi:['सीमित करें','बढ़ाएँ','कुछ नहीं','कोई'],
-      options_en:['Limit','Increase','Nothing','None'], answer:0 },
-    { q_hi:'पोस्ट करने से पूर्व?', q_en:'Before posting?',
-      options_hi:['विचार करें','तुरंत','कुछ नहीं','कोई'],
-      options_en:['Think','Immediately','Nothing','None'], answer:0 },
-    { q_hi:'अजनबी को फोटो?', q_en:'Photo to stranger?',
-      options_hi:['कभी नहीं','सदैव','कभी-कभी','भरोसा'],
-      options_en:['Never','Always','Sometimes','If trusted'], answer:0 },
-    { q_hi:'विवेकपूर्ण उपयोग?', q_en:'Wisest use?',
-      options_hi:['शिक्षा हेतु','केवल मनोरंजन','कुछ नहीं','कोई'],
-      options_en:['For education','Only entertainment','Nothing','None'], answer:0 },
-    { q_hi:'अंतर्जालीय संस्कार?', q_en:'Online etiquette?',
-      options_hi:['अपनाएँ','कुछ नहीं','कोई','नहीं'],
-      options_en:['Adopt','Nothing','None','No'], answer:0 },
-    { q_hi:'परिवार के साथ?', q_en:'With family?',
-      options_hi:['साझा करें','नहीं','कुछ नहीं','कोई'],
-      options_en:['Share','No','Nothing','None'], answer:0 },
-    { q_hi:'रिपोर्ट कैसे?', q_en:'How to report?',
-      options_hi:['प्लेटफ़ॉर्म पर','कुछ नहीं','कोई','नहीं'],
-      options_en:['On platform','Nothing','None','No'], answer:0 },
-    { q_hi:'स्क्रीनशॉट?', q_en:'Screenshot?',
-      options_hi:['प्रमाण रखें','नहीं','कुछ नहीं','कोई'],
-      options_en:['Save as evidence','No','Nothing','None'], answer:0 },
-    { q_hi:'समाज माध्यम अवकाश?', q_en:'Social media break?',
-      options_hi:['आवश्यक','नहीं','कुछ नहीं','कोई'],
-      options_en:['Necessary','No','Nothing','None'], answer:0 },
-    { q_hi:'सच्चे मित्र?', q_en:'True friends?',
-      options_hi:['वास्तविक जीवन','केवल ऑनलाइन','कुछ नहीं','कोई'],
-      options_en:['Real life','Only online','Nothing','None'], answer:0 },
-    { q_hi:'हिंसात्मक सामग्री?', q_en:'Violent content?',
-      options_hi:['दूरी','साझा','कुछ नहीं','कोई'],
-      options_en:['Stay away','Share','Nothing','None'], answer:0 },
-    { q_hi:'अश्लील सामग्री?', q_en:'Obscene content?',
-      options_hi:['रिपोर्ट','साझा','कुछ नहीं','कोई'],
-      options_en:['Report','Share','Nothing','None'], answer:0 },
-    { q_hi:'मानसिक स्वास्थ्य?', q_en:'Mental health?',
-      options_hi:['संतुलन','अति','कुछ नहीं','कोई'],
-      options_en:['Balance','Excess','Nothing','None'], answer:0 },
-    { q_hi:'पासवर्ड manager?', q_en:'Password manager?',
-      options_hi:['उपयोग करें','नहीं','कुछ नहीं','कोई'],
-      options_en:['Use it','No','Nothing','None'], answer:0 },
-    { q_hi:'लॉगिन activity?', q_en:'Login activity?',
-      options_hi:['नियमित देखें','नहीं','कुछ नहीं','कोई'],
-      options_en:['Check regularly','No','Nothing','None'], answer:0 },
-    { q_hi:'साइन-इन alerts?', q_en:'Sign-in alerts?',
-      options_hi:['चालू रखें','बंद','कुछ नहीं','कोई'],
-      options_en:['Keep on','Off','Nothing','None'], answer:0 },
-    { q_hi:'सार्वजनिक चार्जिंग?', q_en:'Public charging?',
-      options_hi:['सावधानी','ठीक','कभी','हमेशा'],
-      options_en:['Caution','Okay','Sometimes','Always'], answer:0 },
-    { q_hi:'डिजिटल पदचिह्न?', q_en:'Digital footprint?',
-      options_hi:['सजग रहें','उपेक्षा','कुछ नहीं','कोई'],
-      options_en:['Be aware','Ignore','Nothing','None'], answer:0 }
+    { q_hi:'गोपनीयता सेटिंग कब जाँचें?', q_en:'When to check privacy settings?', options_hi:['मासिक','कभी नहीं','मन करे तो','जन्मदिन पर'], options_en:['Monthly','Never','When desired','On birthday'], answer:0 },
+    { q_hi:'अनजान मित्रता अनुरोध?', q_en:'Unknown friend request?', options_hi:['स्वीकार','अस्वीकार','संदेश','सभी'], options_en:['Accept','Reject','Message','All'], answer:1 },
+    { q_hi:'मिथ्या समाचार साझा करने से पूर्व?', q_en:'Before sharing fake news?', options_hi:['सत्यापन','तुरंत साझा','टिप्पणी','कुछ नहीं'], options_en:['Verify','Share immediately','Comment','Nothing'], answer:0 },
+    { q_hi:'सार्वजनिक पोस्ट में क्या न डालें?', q_en:'What not to put in public post?', options_hi:['फोटो','चलभाष/पता','भोजन','स्थान'], options_en:['Photo','Phone/address','Food','Location'], answer:1 },
+    { q_hi:'अंतर्जालीय प्रताड़ना पर?', q_en:'On cyber bullying?', options_hi:['चुप','रिपोर्ट + ब्लॉक','उत्तर','क्षमा माँगें'], options_en:['Silent','Report + block','Reply','Apologize'], answer:1 },
+    { q_hi:'कूटशब्द कैसा हो?', q_en:'Password should be?', options_hi:['जन्मतिथि','सुदृढ़ अद्वितीय','नाम','1234'], options_en:['Date of birth','Strong unique','Name','1234'], answer:1 },
+    { q_hi:'घृणा-भाषण?', q_en:'Hate speech?', options_hi:['गलत','सही','कभी-कभी','कुछ नहीं'], options_en:['Wrong','Right','Sometimes','Nothing'], answer:0 },
+    { q_hi:'अजनबी से भेंट से पूर्व?', q_en:'Before meeting stranger?', options_hi:['अकेले','परिवार को बताएँ','कुछ नहीं','मित्र को भेजें'], options_en:['Alone','Tell family','Nothing','Send friend'], answer:1 },
+    { q_hi:'Story कितने घंटे सक्रिय?', q_en:'Story stays for how many hours?', options_hi:['24','48','12','कभी नहीं'], options_en:['24','48','12','Never'], answer:0 },
+    { q_hi:'2FA क्यों?', q_en:'Why 2FA?', options_hi:['अतिरिक्त सुरक्षा','तेज़','धीमा','नि:शुल्क'], options_en:['Extra security','Faster','Slow','Free'], answer:0 },
+    { q_hi:'फोटो में Metadata?', q_en:'Metadata in photos?', options_hi:['स्थान + उपकरण','कुछ नहीं','चलभाष','ईमेल'], options_en:['Location + device','Nothing','Phone','Email'], answer:0 },
+    { q_hi:'समूह में क्या न भेजें?', q_en:'What not to send in groups?', options_hi:['व्यक्तिगत सूचना','नमस्ते','फोटो','चुटकुला'], options_en:['Personal info','Hi','Photo','Joke'], answer:0 },
+    { q_hi:'खाता हैक हो जाने पर?', q_en:'If account is hacked?', options_hi:['कूटशब्द बदलें + रिपोर्ट','कुछ नहीं','प्रतीक्षा','मित्र को बताएँ'], options_en:['Change password + report','Nothing','Wait','Tell friend'], answer:0 },
+    { q_hi:'WhatsApp OTP किसे दें?', q_en:'Give WhatsApp OTP to?', options_hi:['कोई नहीं','माता','अधिकारी','मित्र'], options_en:['No one','Mother','Official','Friend'], answer:0 },
+    { q_hi:'अभद्र संदेश पर?', q_en:'On abusive message?', options_hi:['रिपोर्ट/ब्लॉक','सहें','उत्तर दें','हँसें'], options_en:['Report/block','Endure','Reply','Laugh'], answer:0 },
+    { q_hi:'सार्वजनिक WiFi पर समाज माध्यम?', q_en:'Social media on public WiFi?', options_hi:['सुरक्षित','असुरक्षित','ठीक','हमेशा'], options_en:['Safe','Unsafe','Okay','Always'], answer:1 },
+    { q_hi:'अपनी फोटो में टैग?', q_en:'Tags in your photos?', options_hi:['सदैव','चयनित रूप से','कभी नहीं','कुछ नहीं'], options_en:['Always','Selectively','Never','Nothing'], answer:1 },
+    { q_hi:'धोखाधड़ी लिंक?', q_en:'Fraud links?', options_hi:['विश्वसनीय','संदिग्ध','सुरक्षित','कोई नहीं'], options_en:['Trusted','Suspicious','Safe','None'], answer:1 },
+    { q_hi:'अपनी आयु सार्वजनिक?', q_en:'Make age public?', options_hi:['हाँ','चयनित रूप से','कभी नहीं','कुछ नहीं'], options_en:['Yes','Selectively','Never','Nothing'], answer:1 },
+    { q_hi:'अपने बच्चों की फोटो?', q_en:'Photos of your children?', options_hi:['सदैव सार्वजनिक','सीमित रूप से','कभी नहीं','कोई नहीं'], options_en:['Always public','Limited','Never','None'], answer:1 },
+    { q_hi:'फ़ेक प्रोफ़ाइल की पहचान?', q_en:'Identify fake profile?', options_hi:['कम मित्र','बहुत मित्र','पुरानी','असली'], options_en:['Few friends','Many friends','Old','Real'], answer:0 },
+    { q_hi:'लोकेशन टैग?', q_en:'Location tag?', options_hi:['हटाएँ','रखें','कुछ नहीं','कोई'], options_en:['Remove','Keep','Nothing','None'], answer:0 },
+    { q_hi:'स्क्रीन टाइम?', q_en:'Screen time?', options_hi:['सीमित करें','बढ़ाएँ','कुछ नहीं','कोई'], options_en:['Limit','Increase','Nothing','None'], answer:0 },
+    { q_hi:'पोस्ट करने से पूर्व?', q_en:'Before posting?', options_hi:['विचार करें','तुरंत','कुछ नहीं','कोई'], options_en:['Think','Immediately','Nothing','None'], answer:0 },
+    { q_hi:'अजनबी को फोटो?', q_en:'Photo to stranger?', options_hi:['कभी नहीं','सदैव','कभी-कभी','भरोसा'], options_en:['Never','Always','Sometimes','If trusted'], answer:0 },
+    { q_hi:'विवेकपूर्ण उपयोग?', q_en:'Wisest use?', options_hi:['शिक्षा हेतु','केवल मनोरंजन','कुछ नहीं','कोई'], options_en:['For education','Only entertainment','Nothing','None'], answer:0 },
+    { q_hi:'अंतर्जालीय संस्कार?', q_en:'Online etiquette?', options_hi:['अपनाएँ','कुछ नहीं','कोई','नहीं'], options_en:['Adopt','Nothing','None','No'], answer:0 },
+    { q_hi:'परिवार के साथ?', q_en:'With family?', options_hi:['साझा करें','नहीं','कुछ नहीं','कोई'], options_en:['Share','No','Nothing','None'], answer:0 },
+    { q_hi:'रिपोर्ट कैसे?', q_en:'How to report?', options_hi:['प्लेटफ़ॉर्म पर','कुछ नहीं','कोई','नहीं'], options_en:['On platform','Nothing','None','No'], answer:0 },
+    { q_hi:'स्क्रीनशॉट?', q_en:'Screenshot?', options_hi:['प्रमाण रखें','नहीं','कुछ नहीं','कोई'], options_en:['Save as evidence','No','Nothing','None'], answer:0 },
+    { q_hi:'समाज माध्यम अवकाश?', q_en:'Social media break?', options_hi:['आवश्यक','नहीं','कुछ नहीं','कोई'], options_en:['Necessary','No','Nothing','None'], answer:0 },
+    { q_hi:'सच्चे मित्र?', q_en:'True friends?', options_hi:['वास्तविक जीवन','केवल ऑनलाइन','कुछ नहीं','कोई'], options_en:['Real life','Only online','Nothing','None'], answer:0 },
+    { q_hi:'हिंसात्मक सामग्री?', q_en:'Violent content?', options_hi:['दूरी','साझा','कुछ नहीं','कोई'], options_en:['Stay away','Share','Nothing','None'], answer:0 },
+    { q_hi:'अश्लील सामग्री?', q_en:'Obscene content?', options_hi:['रिपोर्ट','साझा','कुछ नहीं','कोई'], options_en:['Report','Share','Nothing','None'], answer:0 },
+    { q_hi:'मानसिक स्वास्थ्य?', q_en:'Mental health?', options_hi:['संतुलन','अति','कुछ नहीं','कोई'], options_en:['Balance','Excess','Nothing','None'], answer:0 },
+    { q_hi:'पासवर्ड manager?', q_en:'Password manager?', options_hi:['उपयोग करें','नहीं','कुछ नहीं','कोई'], options_en:['Use it','No','Nothing','None'], answer:0 },
+    { q_hi:'लॉगिन activity?', q_en:'Login activity?', options_hi:['नियमित देखें','नहीं','कुछ नहीं','कोई'], options_en:['Check regularly','No','Nothing','None'], answer:0 },
+    { q_hi:'साइन-इन alerts?', q_en:'Sign-in alerts?', options_hi:['चालू रखें','बंद','कुछ नहीं','कोई'], options_en:['Keep on','Off','Nothing','None'], answer:0 },
+    { q_hi:'सार्वजनिक चार्जिंग?', q_en:'Public charging?', options_hi:['सावधानी','ठीक','कभी','हमेशा'], options_en:['Caution','Okay','Sometimes','Always'], answer:0 },
+    { q_hi:'डिजिटल पदचिह्न?', q_en:'Digital footprint?', options_hi:['सजग रहें','उपेक्षा','कुछ नहीं','कोई'], options_en:['Be aware','Ignore','Nothing','None'], answer:0 }
   ],
   'FREE-FIN': [
-    { q_hi:'बचत कब आरंभ करें?', q_en:'When to start saving?',
-      options_hi:['बड़े होकर','अभी से','कभी नहीं','विवाह के बाद'],
-      options_en:['When grown','Right now','Never','After marriage'], answer:1 },
-    { q_hi:'आपातकालीन निधि कितनी?', q_en:'How much emergency fund?',
-      options_hi:['१ सप्ताह','३-६ माह','वर्ष','कोई नहीं'],
-      options_en:['1 week','3-6 months','A year','None'], answer:1 },
-    { q_hi:'साधारण ब्याज का सूत्र?', q_en:'Formula of simple interest?',
-      options_hi:['P×R×T/100','P+R','P-R','कुछ नहीं'],
-      options_en:['P×R×T/100','P+R','P-R','None'], answer:0 },
-    { q_hi:'KYC क्या है?', q_en:'What is KYC?',
-      options_hi:['पहचान सत्यापन','धन','ऋण','गारंटी'],
-      options_en:['Identity verification','Money','Loan','Guarantee'], answer:0 },
-    { q_hi:'चक्रवृद्धि ब्याज?', q_en:'Compound interest?',
-      options_hi:['ब्याज पर ब्याज','केवल मूलधन','कम','कुछ नहीं'],
-      options_en:['Interest on interest','Only principal','Less','Nothing'], answer:0 },
-    { q_hi:'बचत खाता?', q_en:'Savings account?',
-      options_hi:['धन जमा','व्यापार','भिन्न नहीं','समान'],
-      options_en:['Money deposit','Business','No diff','Same'], answer:0 },
-    { q_hi:'म्यूचुअल फंड?', q_en:'Mutual fund?',
-      options_hi:['सामूहिक निवेश','बैंक','ऋण','डेबिट'],
-      options_en:['Pooled investment','Bank','Loan','Debit'], answer:0 },
-    { q_hi:'नकली ऋण ऐप से बचाव?', q_en:'Protection from fake loan apps?',
-      options_hi:['RBI पंजीकृत जाँचें','अनजान','सभी','मनोरंजन'],
-      options_en:['Check RBI registered','Unknown','All','Fun'], answer:0 },
-    { q_hi:'FD में?', q_en:'In FD?',
-      options_hi:['स्थिर ब्याज','चल','कोई नहीं','शेयर'],
-      options_en:['Fixed interest','Floating','None','Stock'], answer:0 },
-    { q_hi:'बीमा क्यों?', q_en:'Why insurance?',
-      options_hi:['जोखिम से बचाव','धन देना','नि:शुल्क','मनोरंजन'],
-      options_en:['Risk protection','Give money','Free','Fun'], answer:0 },
-    { q_hi:'कर क्यों?', q_en:'Why tax?',
-      options_hi:['विधि','बाध्यता','कुछ नहीं','ऐच्छिक'],
-      options_en:['Law','Compulsion','Nothing','Optional'], answer:0 },
-    { q_hi:'UPI से?', q_en:'UPI is?',
-      options_hi:['तत्काल','कुछ दिन','वर्ष','कोई नहीं'],
-      options_en:['Instant','Some days','Year','None'], answer:0 },
-    { q_hi:'क्रेडिट कार्ड बिल?', q_en:'Credit card bill?',
-      options_hi:['समय पर भरें','बाद में','कभी','अनदेखा'],
-      options_en:['Pay on time','Later','Never','Ignore'], answer:0 },
-    { q_hi:'निवेश में ठगी?', q_en:'Investment fraud?',
-      options_hi:['अधिक लाभ + शीघ्र','केवल सरकारी','कुछ नहीं','मित्र'],
-      options_en:['High return + quick','Govt only','Nothing','Friend'], answer:0 },
-    { q_hi:'साइबर ठगी पर?', q_en:'On cyber fraud?',
-      options_hi:['1930','प्रतीक्षा','कुछ नहीं','मित्र को बताएँ'],
-      options_en:['1930','Wait','Nothing','Tell friend'], answer:0 },
-    { q_hi:'ब्याज दर किस पर निर्भर?', q_en:'Interest depends on?',
-      options_hi:['मूलधन, दर, समय','मौसम','स्थान','रंग'],
-      options_en:['Principal, rate, time','Weather','Place','Color'], answer:0 },
-    { q_hi:'निवेश से पूर्व?', q_en:'Before investing?',
-      options_hi:['शोध','तुरंत','कुछ नहीं','मित्र की सलाह'],
-      options_en:['Research','Immediately','Nothing','Friend\'s advice'], answer:0 },
-    { q_hi:'बैंक खाते में नाम?', q_en:'Name in bank account?',
-      options_hi:['व्यक्तिगत','मित्र का','कोई नहीं','कुछ भी'],
-      options_en:['Own name','Friend\'s','None','Anything'], answer:0 },
-    { q_hi:'ऋण लेने से पूर्व?', q_en:'Before taking loan?',
-      options_hi:['क्षमता जाँचें','तुरंत','कुछ नहीं','मित्र से'],
-      options_en:['Check capacity','Immediately','Nothing','From friend'], answer:0 },
-    { q_hi:'पासबुक/स्टेटमेंट?', q_en:'Passbook/statement?',
-      options_hi:['नियमित जाँचें','कभी नहीं','कुछ नहीं','मित्र को दें'],
-      options_en:['Check regularly','Never','Nothing','Give to friend'], answer:0 },
-    { q_hi:'PMJJBY में बीमा राशि?', q_en:'PMJJBY cover amount?',
-      options_hi:['₹१ लाख','₹२ लाख','₹५ लाख','₹१० लाख'],
-      options_en:['₹1 lakh','₹2 lakh','₹5 lakh','₹10 lakh'], answer:1 },
-    { q_hi:'PMSBY में प्रीमियम?', q_en:'PMSBY premium?',
-      options_hi:['₹१०','₹२०','₹५०','₹१००'],
-      options_en:['₹10','₹20','₹50','₹100'], answer:1 },
-    { q_hi:'आयकर सीमा?', q_en:'Income tax limit?',
-      options_hi:['₹१ लाख','₹२.५ लाख','₹५ लाख','₹१० लाख'],
-      options_en:['₹1 lakh','₹2.5 lakh','₹5 lakh','₹10 lakh'], answer:1 },
-    { q_hi:'RD का अर्थ?', q_en:'Meaning of RD?',
-      options_hi:['Recurring Deposit','Rapid Deposit','Regular Due','कोई नहीं'],
-      options_en:['Recurring Deposit','Rapid Deposit','Regular Due','None'], answer:0 },
-    { q_hi:'SIP का अर्थ?', q_en:'Meaning of SIP?',
-      options_hi:['Systematic Investment Plan','Simple Interest Plan','Savings in Person','कोई नहीं'],
-      options_en:['Systematic Investment Plan','Simple Interest Plan','Savings in Person','None'], answer:0 },
-    { q_hi:'निवेश का सिद्धांत?', q_en:'Investment principle?',
-      options_hi:['विविधीकरण','एक जगह','कुछ नहीं','कोई'],
-      options_en:['Diversification','One place','Nothing','None'], answer:0 },
-    { q_hi:'ऋण चुकाने का क्रम?', q_en:'Loan repayment order?',
-      options_hi:['उच्च ब्याज पहले','कम पहले','कोई नहीं','कुछ भी'],
-      options_en:['High interest first','Low first','None','Any'], answer:0 },
-    { q_hi:'बीमा का प्रकार?', q_en:'Types of insurance?',
-      options_hi:['जीवन, स्वास्थ्य','केवल जीवन','केवल वाहन','कोई'],
-      options_en:['Life, health','Only life','Only vehicle','None'], answer:0 },
-    { q_hi:'पेंशन योजना?', q_en:'Pension scheme?',
-      options_hi:['NPS','PPF','FD','कोई'],
-      options_en:['NPS','PPF','FD','None'], answer:0 },
-    { q_hi:'बचत का सूत्र?', q_en:'Savings formula?',
-      options_hi:['आय − व्यय','आय + व्यय','व्यय − आय','कोई'],
-      options_en:['Income − Expense','Income + Expense','Expense − Income','None'], answer:0 },
-    { q_hi:'कर बचत हेतु?', q_en:'For tax saving?',
-      options_hi:['PPF, NSC','FD','कोई','कुछ'],
-      options_en:['PPF, NSC','FD','None','Nothing'], answer:0 },
-    { q_hi:'बैंक चुनाव?', q_en:'Choose bank?',
-      options_hi:['RBI मान्य','कोई भी','अज्ञात','कुछ'],
-      options_en:['RBI approved','Any','Unknown','None'], answer:0 },
-    { q_hi:'इंटरनेट बैंकिंग?', q_en:'Internet banking?',
-      options_hi:['सावधानी','कोई','कुछ','नहीं'],
-      options_en:['Be cautious','None','Nothing','No'], answer:0 },
-    { q_hi:'बजट क्यों?', q_en:'Why budget?',
-      options_hi:['व्यय नियंत्रण','कुछ नहीं','कोई','नहीं'],
-      options_en:['Control expenses','Nothing','None','No'], answer:0 },
-    { q_hi:'बच्चों को वित्तीय शिक्षा?', q_en:'Financial education to children?',
-      options_hi:['बचपन से','बाद में','कभी नहीं','कोई'],
-      options_en:['From childhood','Later','Never','None'], answer:0 },
-    { q_hi:'बचत का उद्देश्य?', q_en:'Purpose of savings?',
-      options_hi:['सुरक्षा','दिखावा','कुछ नहीं','कोई'],
-      options_en:['Security','Show off','Nothing','None'], answer:0 },
-    { q_hi:'क्रेडिट स्कोर?', q_en:'Credit score?',
-      options_hi:['८००+ अच्छा','कोई नहीं','कुछ','नहीं'],
-      options_en:['800+ is good','None','Some','No'], answer:0 },
-    { q_hi:'ऋण से बचाव?', q_en:'Avoiding debt?',
-      options_hi:['केवल आवश्यकता पर','अधिक लें','कुछ','कोई'],
-      options_en:['Only when necessary','Borrow more','Nothing','None'], answer:0 },
-    { q_hi:'वित्तीय लक्ष्य?', q_en:'Financial goals?',
-      options_hi:['लिखित','मौखिक','कोई','कुछ'],
-      options_en:['Written','Verbal','None','Some'], answer:0 },
-    { q_hi:'निवेश क्षितिज?', q_en:'Investment horizon?',
-      options_hi:['दीर्घकाल','अल्पकाल','कोई','कुछ'],
-      options_en:['Long term','Short term','None','Some'], answer:0 }
+    { q_hi:'बचत कब आरंभ करें?', q_en:'When to start saving?', options_hi:['बड़े होकर','अभी से','कभी नहीं','विवाह के बाद'], options_en:['When grown','Right now','Never','After marriage'], answer:1 },
+    { q_hi:'आपातकालीन निधि कितनी?', q_en:'How much emergency fund?', options_hi:['१ सप्ताह','३-६ माह','वर्ष','कोई नहीं'], options_en:['1 week','3-6 months','A year','None'], answer:1 },
+    { q_hi:'साधारण ब्याज का सूत्र?', q_en:'Formula of simple interest?', options_hi:['P×R×T/100','P+R','P-R','कुछ नहीं'], options_en:['P×R×T/100','P+R','P-R','None'], answer:0 },
+    { q_hi:'KYC क्या है?', q_en:'What is KYC?', options_hi:['पहचान सत्यापन','धन','ऋण','गारंटी'], options_en:['Identity verification','Money','Loan','Guarantee'], answer:0 },
+    { q_hi:'चक्रवृद्धि ब्याज?', q_en:'Compound interest?', options_hi:['ब्याज पर ब्याज','केवल मूलधन','कम','कुछ नहीं'], options_en:['Interest on interest','Only principal','Less','Nothing'], answer:0 },
+    { q_hi:'बचत खाता?', q_en:'Savings account?', options_hi:['धन जमा','व्यापार','भिन्न नहीं','समान'], options_en:['Money deposit','Business','No diff','Same'], answer:0 },
+    { q_hi:'म्यूचुअल फंड?', q_en:'Mutual fund?', options_hi:['सामूहिक निवेश','बैंक','ऋण','डेबिट'], options_en:['Pooled investment','Bank','Loan','Debit'], answer:0 },
+    { q_hi:'नकली ऋण ऐप से बचाव?', q_en:'Protection from fake loan apps?', options_hi:['RBI पंजीकृत जाँचें','अनजान','सभी','मनोरंजन'], options_en:['Check RBI registered','Unknown','All','Fun'], answer:0 },
+    { q_hi:'FD में?', q_en:'In FD?', options_hi:['स्थिर ब्याज','चल','कोई नहीं','शेयर'], options_en:['Fixed interest','Floating','None','Stock'], answer:0 },
+    { q_hi:'बीमा क्यों?', q_en:'Why insurance?', options_hi:['जोखिम से बचाव','धन देना','नि:शुल्क','मनोरंजन'], options_en:['Risk protection','Give money','Free','Fun'], answer:0 },
+    { q_hi:'कर क्यों?', q_en:'Why tax?', options_hi:['विधि','बाध्यता','कुछ नहीं','ऐच्छिक'], options_en:['Law','Compulsion','Nothing','Optional'], answer:0 },
+    { q_hi:'UPI से?', q_en:'UPI is?', options_hi:['तत्काल','कुछ दिन','वर्ष','कोई नहीं'], options_en:['Instant','Some days','Year','None'], answer:0 },
+    { q_hi:'क्रेडिट कार्ड बिल?', q_en:'Credit card bill?', options_hi:['समय पर भरें','बाद में','कभी','अनदेखा'], options_en:['Pay on time','Later','Never','Ignore'], answer:0 },
+    { q_hi:'निवेश में ठगी?', q_en:'Investment fraud?', options_hi:['अधिक लाभ + शीघ्र','केवल सरकारी','कुछ नहीं','मित्र'], options_en:['High return + quick','Govt only','Nothing','Friend'], answer:0 },
+    { q_hi:'साइबर ठगी पर?', q_en:'On cyber fraud?', options_hi:['1930','प्रतीक्षा','कुछ नहीं','मित्र को बताएँ'], options_en:['1930','Wait','Nothing','Tell friend'], answer:0 },
+    { q_hi:'ब्याज दर किस पर निर्भर?', q_en:'Interest depends on?', options_hi:['मूलधन, दर, समय','मौसम','स्थान','रंग'], options_en:['Principal, rate, time','Weather','Place','Color'], answer:0 },
+    { q_hi:'निवेश से पूर्व?', q_en:'Before investing?', options_hi:['शोध','तुरंत','कुछ नहीं','मित्र की सलाह'], options_en:['Research','Immediately','Nothing','Friend\'s advice'], answer:0 },
+    { q_hi:'बैंक खाते में नाम?', q_en:'Name in bank account?', options_hi:['व्यक्तिगत','मित्र का','कोई नहीं','कुछ भी'], options_en:['Own name','Friend\'s','None','Anything'], answer:0 },
+    { q_hi:'ऋण लेने से पूर्व?', q_en:'Before taking loan?', options_hi:['क्षमता जाँचें','तुरंत','कुछ नहीं','मित्र से'], options_en:['Check capacity','Immediately','Nothing','From friend'], answer:0 },
+    { q_hi:'पासबुक/स्टेटमेंट?', q_en:'Passbook/statement?', options_hi:['नियमित जाँचें','कभी नहीं','कुछ नहीं','मित्र को दें'], options_en:['Check regularly','Never','Nothing','Give to friend'], answer:0 },
+    { q_hi:'PMJJBY में बीमा राशि?', q_en:'PMJJBY cover amount?', options_hi:['₹१ लाख','₹२ लाख','₹५ लाख','₹१० लाख'], options_en:['₹1 lakh','₹2 lakh','₹5 lakh','₹10 lakh'], answer:1 },
+    { q_hi:'PMSBY में प्रीमियम?', q_en:'PMSBY premium?', options_hi:['₹१०','₹२०','₹५०','₹१००'], options_en:['₹10','₹20','₹50','₹100'], answer:1 },
+    { q_hi:'आयकर सीमा?', q_en:'Income tax limit?', options_hi:['₹१ लाख','₹२.५ लाख','₹५ लाख','₹१० लाख'], options_en:['₹1 lakh','₹2.5 lakh','₹5 lakh','₹10 lakh'], answer:1 },
+    { q_hi:'RD का अर्थ?', q_en:'Meaning of RD?', options_hi:['Recurring Deposit','Rapid Deposit','Regular Due','कोई नहीं'], options_en:['Recurring Deposit','Rapid Deposit','Regular Due','None'], answer:0 },
+    { q_hi:'SIP का अर्थ?', q_en:'Meaning of SIP?', options_hi:['Systematic Investment Plan','Simple Interest Plan','Savings in Person','कोई नहीं'], options_en:['Systematic Investment Plan','Simple Interest Plan','Savings in Person','None'], answer:0 },
+    { q_hi:'निवेश का सिद्धांत?', q_en:'Investment principle?', options_hi:['विविधीकरण','एक जगह','कुछ नहीं','कोई'], options_en:['Diversification','One place','Nothing','None'], answer:0 },
+    { q_hi:'ऋण चुकाने का क्रम?', q_en:'Loan repayment order?', options_hi:['उच्च ब्याज पहले','कम पहले','कोई नहीं','कुछ भी'], options_en:['High interest first','Low first','None','Any'], answer:0 },
+    { q_hi:'बीमा का प्रकार?', q_en:'Types of insurance?', options_hi:['जीवन, स्वास्थ्य','केवल जीवन','केवल वाहन','कोई'], options_en:['Life, health','Only life','Only vehicle','None'], answer:0 },
+    { q_hi:'पेंशन योजना?', q_en:'Pension scheme?', options_hi:['NPS','PPF','FD','कोई'], options_en:['NPS','PPF','FD','None'], answer:0 },
+    { q_hi:'बचत का सूत्र?', q_en:'Savings formula?', options_hi:['आय − व्यय','आय + व्यय','व्यय − आय','कोई'], options_en:['Income − Expense','Income + Expense','Expense − Income','None'], answer:0 },
+    { q_hi:'कर बचत हेतु?', q_en:'For tax saving?', options_hi:['PPF, NSC','FD','कोई','कुछ'], options_en:['PPF, NSC','FD','None','Nothing'], answer:0 },
+    { q_hi:'बैंक चुनाव?', q_en:'Choose bank?', options_hi:['RBI मान्य','कोई भी','अज्ञात','कुछ'], options_en:['RBI approved','Any','Unknown','None'], answer:0 },
+    { q_hi:'इंटरनेट बैंकिंग?', q_en:'Internet banking?', options_hi:['सावधानी','कोई','कुछ','नहीं'], options_en:['Be cautious','None','Nothing','No'], answer:0 },
+    { q_hi:'बजट क्यों?', q_en:'Why budget?', options_hi:['व्यय नियंत्रण','कुछ नहीं','कोई','नहीं'], options_en:['Control expenses','Nothing','None','No'], answer:0 },
+    { q_hi:'बच्चों को वित्तीय शिक्षा?', q_en:'Financial education to children?', options_hi:['बचपन से','बाद में','कभी नहीं','कोई'], options_en:['From childhood','Later','Never','None'], answer:0 },
+    { q_hi:'बचत का उद्देश्य?', q_en:'Purpose of savings?', options_hi:['सुरक्षा','दिखावा','कुछ नहीं','कोई'], options_en:['Security','Show off','Nothing','None'], answer:0 },
+    { q_hi:'क्रेडिट स्कोर?', q_en:'Credit score?', options_hi:['८००+ अच्छा','कोई नहीं','कुछ','नहीं'], options_en:['800+ is good','None','Some','No'], answer:0 },
+    { q_hi:'ऋण से बचाव?', q_en:'Avoiding debt?', options_hi:['केवल आवश्यकता पर','अधिक लें','कुछ','कोई'], options_en:['Only when necessary','Borrow more','Nothing','None'], answer:0 },
+    { q_hi:'वित्तीय लक्ष्य?', q_en:'Financial goals?', options_hi:['लिखित','मौखिक','कोई','कुछ'], options_en:['Written','Verbal','None','Some'], answer:0 },
+    { q_hi:'निवेश क्षितिज?', q_en:'Investment horizon?', options_hi:['दीर्घकाल','अल्पकाल','कोई','कुछ'], options_en:['Long term','Short term','None','Some'], answer:0 }
   ]
 };
 
-/* ---------- Randomization ---------- */
+/* ============================================================
+   RANDOMIZATION HELPERS
+   ============================================================ */
 function shuffleArray(arr){
   const a = [...arr];
   for(let i = a.length - 1; i > 0; i--){
@@ -1883,27 +1767,11 @@ function pickRandomQuestions(courseCode, count){
   });
 }
 
-/* ---------- Render Free Courses ---------- */
-function renderFreeCourses(){
-  const grid = $('#freeCoursesGrid'); if(!grid) return;
-  const lang = _lang();
-  grid.innerHTML = FREE_COURSES.map(c => `<div class="free-card">
-    <span class="badge-free" data-hi="नि:शुल्क" data-en="FREE">नि:शुल्क</span>
-    <div class="fc-ico">${c.icon}</div>
-    <h3>${lang === 'en' ? c.en : c.hi}</h3>
-    <div class="fc-meta">
-      <span>⏱ ${lang === 'en' ? c.durEn : c.durHi}</span>
-      <span>📝 २० ${lang === 'en' ? 'Q' : 'प्रश्न'}</span>
-      <span>📖 ${lang === 'en' ? '10 chapters' : '१० अध्याय'}</span>
-    </div>
-    <p>${lang === 'en' ? c.descEn : c.descHi}</p>
-    <button class="btn btn-saffron btn-sm" onclick="openEbook('${c.code}')">📖 ${lang === 'en' ? 'Read Ebook' : 'ई-पुस्तक पढ़ें'}</button>
-  </div>`).join('');
-}
-renderFreeCourses();
-
-/* ---------- Ebook Reader ---------- */
+/* ============================================================
+   EBOOK READER
+   ============================================================ */
 let _ebookCourse = null, _ebookLang = 'hi', _ebookReadFully = false;
+
 function openEbook(code){
   _ebookCourse = code; _ebookLang = 'hi'; _ebookReadFully = false;
   const ebook = FREE_EBOOKS[code]; if(!ebook) return;
@@ -1917,11 +1785,13 @@ function openEbook(code){
     if(el){ el.scrollTop = 0; el.addEventListener('scroll', checkEbookRead); checkEbookRead(); }
   }, 200);
 }
+
 function switchEbookLang(lang){
   _ebookLang = lang;
   $$('.ebook-tab').forEach(t => t.classList.toggle('active', t.dataset.lang === lang));
   renderEbookContent();
 }
+
 function renderEbookContent(){
   const ebook = FREE_EBOOKS[_ebookCourse]; if(!ebook) return;
   $('#ebookContent').innerHTML = ebook.chapters.map(ch => `
@@ -1930,6 +1800,7 @@ function renderEbookContent(){
   `).join('');
   updateEbookProgress();
 }
+
 function checkEbookRead(){
   const el = $('#ebookContent'); if(!el) return;
   const pct = Math.round((el.scrollTop + el.clientHeight) / el.scrollHeight * 100);
@@ -1942,6 +1813,7 @@ function checkEbookRead(){
     toast(_lang() === 'en' ? '✓ Ebook read! Take the test.' : '✓ ई-पुस्तक पढ़ी गई! अब परीक्षा दें।');
   }
 }
+
 function updateEbookProgress(){
   const el = $('#ebookContent'); if(!el) return;
   setTimeout(() => {
@@ -1950,14 +1822,18 @@ function updateEbookProgress(){
     if(pct >= 95){ checkEbookRead(); }
   }, 100);
 }
+
 $('#startQuizBtn').addEventListener('click', () => {
   if(!_ebookReadFully){ toast(_lang() === 'en' ? 'Please read the complete ebook first.' : 'कृपया पहले पूरी ई-पुस्तक पढ़ें।'); return; }
   closeModal('ebookModal');
   startFreeQuiz(_ebookCourse);
 });
 
-/* ---------- Quiz ---------- */
+/* ============================================================
+   QUIZ
+   ============================================================ */
 let _quiz = null, _quizAns = {};
+
 function startFreeQuiz(code){
   const course = FREE_COURSES.find(c => c.code === code);
   const questions = pickRandomQuestions(code, 20);
@@ -1970,6 +1846,7 @@ function startFreeQuiz(code){
   renderQuiz();
   toast(lang==='en' ? '✓ New test — 20 random questions' : '✓ नई परीक्षा — २० यादृच्छिक प्रश्न');
 }
+
 function renderQuiz(){
   const { course, questions } = _quiz;
   const answered = Object.keys(_quizAns).length;
@@ -1996,6 +1873,7 @@ function renderQuiz(){
       <button class="btn btn-green" id="submitQuizBtn" style="flex:2" ${answered < total ? 'disabled' : ''} onclick="submitQuiz()">✓ ${lang==='en'?'Submit':'जमा करें'} (${answered}/${total})</button>
     </div>`;
 }
+
 function selectQuizAns(qIdx, optIdx, el){
   _quizAns[qIdx] = optIdx;
   el.closest('.q-item').querySelectorAll('.q-opt').forEach(o => o.classList.remove('selected'));
@@ -2013,6 +1891,7 @@ function selectQuizAns(qIdx, optIdx, el){
   const btn = document.getElementById('submitQuizBtn');
   if(btn){ btn.textContent = `✓ ${lang==='en'?'Submit':'जमा करें'} (${answered}/${total})`; btn.disabled = answered < total; }
 }
+
 function submitQuiz(){
   const { course, questions } = _quiz;
   let correct = 0;
@@ -2033,16 +1912,21 @@ function submitQuiz(){
     return;
   }
   window._quizResult = {
-    course: course.code, courseTitle: lang==='en'?course.en:course.hi,
-    duration: lang==='en'?course.durEn:course.durHi, level: course.level,
+    course: course.code,
+    courseTitle: lang==='en'?course.en:course.hi,
+    duration: lang==='en'?course.durEn:course.durHi,
+    level: course.level,
     score: correct, total, pct
   };
   closeModal('quizModal');
   setTimeout(() => openFreeCertForm(), 400);
 }
 
-/* ---------- Free Cert Form ---------- */
+/* ============================================================
+   FREE CERT FORM + ISSUE
+   ============================================================ */
 let _certData = null, _certOtpTimer = null;
+
 function openFreeCertForm(){
   const r = window._quizResult; if(!r) return;
   const lang = _lang();
@@ -2065,7 +1949,7 @@ function openFreeCertForm(){
             <option value="श्रीमती">${lang==='en'?'Mrs. (Shrimati)':'श्रीमती (Mrs.)'}</option>
             <option value="कु०">${lang==='en'?'Ms. (Ku.)':'कु० (Ms.)'}</option>
             <option value="स्वर्गीय">${lang==='en'?'Late (Swargiya)':'स्वर्गीय (Late)'}</option>
-            <option value="डॉ०">${lang==='en'?'Dr. (Dr.)':'डॉ० (Dr.)'}</option>
+            <option value="डॉ०">${lang==='en'?'Dr.':'डॉ०'}</option>
           </select>
         </div>
         <div class="field"><label>${lang==='en'?'Parent Name *':'अभिभावक का नाम *'}</label><input type="text" id="certParent" placeholder="${lang==='en'?'Ramesh Shukla':'रमेश शुक्ला'}"><div class="errmsg">${lang==='en'?'Min 3 chars':'कम से ३ अक्षर'}</div></div>
@@ -2074,7 +1958,7 @@ function openFreeCertForm(){
         <div class="field"><label>${lang==='en'?'Aadhaar *':'आधार संख्या *'}</label><input type="text" id="certAadhar" maxlength="14" inputmode="numeric" placeholder="XXXX XXXX XXXX"><small>${lang==='en'?'12 digits':'१२ अंक'}</small><div class="errmsg">${lang==='en'?'12 digits':'१२ अंक'}</div></div>
         <div class="field"><label>${lang==='en'?'Mobile *':'चलभाष *'}</label><input type="tel" id="certMobile" maxlength="10" inputmode="numeric"><div class="errmsg">${lang==='en'?'10 digits':'१० अंक'}</div></div>
       </div>
-      <div class="field"><label>${lang==='en'?'Full Address *':'सम्पूर्ण पता *'}</label><textarea id="certAddress" rows="3" placeholder="${lang==='en'?'House, street, village/city, district, state, PIN':'गृह, मोहल्ला, ग्राम/नगर, जनपद, राज्य, पिन कोड'}"></textarea><div class="errmsg">${lang==='en'?'Min 15 chars':'कम से १५ अक्षर'}</div></div>
+      <div class="field"><label>${lang==='en'?'Full Address *':'सम्पूर्ण पता *'}</label><textarea id="certAddress" rows="3"></textarea><div class="errmsg">${lang==='en'?'Min 15 chars':'कम से १५ अक्षर'}</div></div>
       <div class="field"><label>${lang==='en'?'Email *':'विद्युत्पत्र *'}</label><input type="email" id="certEmail" placeholder="name@example.com"><small>${lang==='en'?'OTP and certificate will be sent here':'कूट तथा प्रमाणपत्र इसी पर भेजा जाएगा'}</small><div class="errmsg">${lang==='en'?'Valid email':'सही ईमेल'}</div></div>
       <button class="btn btn-saffron btn-block mt24" onclick="sendCertOtp()">📩 ${lang==='en'?'Send Code':'कूट भेजें'}</button>
     </div>
@@ -2094,7 +1978,13 @@ function openFreeCertForm(){
   aEl.addEventListener('input', e => { let v = e.target.value.replace(/\D/g,'').slice(0,12); e.target.value = v.replace(/(\d{4})(?=\d)/g, '$1 '); });
   openModal('freeCertModal');
 }
-function backToCertDetails(){ $('#certStep2').style.display = 'none'; $('#certStep1').style.display = 'block'; clearInterval(_certOtpTimer); }
+
+function backToCertDetails(){
+  $('#certStep2').style.display = 'none';
+  $('#certStep1').style.display = 'block';
+  clearInterval(_certOtpTimer);
+}
+
 function validateCertData(){
   const name = $('#certName').value.trim();
   const gender = $('#certGender').value;
@@ -2116,6 +2006,7 @@ function validateCertData(){
   if(!ok){ toast('कृपया समस्त सूचना सही भरें'); return null; }
   return { name, gender, prefix, parent, aadhar, mobile, address, email };
 }
+
 async function sendCertOtp(){
   const d = validateCertData(); if(!d) return;
   _certData = d;
@@ -2131,6 +2022,7 @@ async function sendCertOtp(){
     toast('कूट भेजा गया ✓');
   } else { toast(r.message || 'त्रुटि'); }
 }
+
 function startCertOtpTimer(s){
   clearInterval(_certOtpTimer);
   const el = document.getElementById('certOtpTimer');
@@ -2139,6 +2031,7 @@ function startCertOtpTimer(s){
     _certOtpTimer = setInterval(() => { s--; el.textContent = `(${s}s)`; if(s<=0){ clearInterval(_certOtpTimer); el.textContent=''; } }, 1000);
   }
 }
+
 async function verifyCertOtp(){
   const otp = $('#certOtpCode').value.trim();
   if(!/^\d{6}$/.test(otp)){ toast('छह अंकों का कूट'); return; }
@@ -2154,8 +2047,7 @@ async function verifyCertOtp(){
     course: qr.course, courseTitle: qr.courseTitle,
     duration: qr.duration, level: qr.level,
     name: _certData.name, parentName: fullParentName, parentPrefix: _certData.prefix,
-    gender: _certData.gender,
-    aadhar: _certData.aadhar, mobile: _certData.mobile,
+    gender: _certData.gender, aadhar: _certData.aadhar, mobile: _certData.mobile,
     address: _certData.address, email: _certData.email,
     score: qr.score, total: qr.total, pct: qr.pct
   });
@@ -2164,8 +2056,8 @@ async function verifyCertOtp(){
   clearInterval(_certOtpTimer);
   showFreeCert(r, _certData);
 }
+
 function showFreeCert(data, cd){
-  const lang = _lang();
   const verifyUrl = 'https://www.diprafoundation.com/verify.html?cert=' + encodeURIComponent(data.certId);
   const aadharMasked = 'XXXX XXXX ' + String(data.aadhar||cd.aadhar||'').slice(-4);
   const certId = data.certId;
@@ -2211,27 +2103,12 @@ function showFreeCert(data, cd){
     <div class="note note-green" style="margin-bottom:16px;font-size:.92rem">📧 प्रमाणपत्र <b>${escapeHtml(cd.email)}</b> पर भी भेज दिया गया है।</div>
     <div class="center mt16"><button class="btn btn-primary" onclick="closeModal('freeCertModal')">बंद करें</button></div>`;
 }
-function escapeHtml(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 
-/* ---------- Counters ---------- */
-(function counters(){
-  const els = $$('[data-count]');
-  if(!els.length || !('IntersectionObserver' in window)) return;
-  const io = new IntersectionObserver((entries, obs) => {
-    entries.forEach(en => {
-      if(!en.isIntersecting) return;
-      const el = en.target; const target = +el.dataset.count; let cur = 0;
-      const step = Math.max(1, Math.ceil(target / 40));
-      const t = setInterval(() => {
-        cur += step;
-        if(cur >= target){ cur = target; clearInterval(t); }
-        el.textContent = cur + (target >= 100 ? '+' : '');
-      }, 28);
-      obs.unobserve(el);
-    });
-  }, { threshold: .4 });
-  els.forEach(el => io.observe(el));
-})();
+function escapeHtml(s){
+  return String(s == null ? '' : s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
 
 console.log('%c🪔 दिप्र फ़ाउंडेशन — The Uplift कोचिंग योजना', 'color:#FF7A00;font-weight:bold;font-size:14px');
 </script>
