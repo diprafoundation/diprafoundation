@@ -1069,7 +1069,16 @@ $('#otpSendBtn').addEventListener('click', async () => {
 
   const btn = $('#otpSendBtn'); const orig = btn.innerHTML;
   btn.disabled = true; btn.innerHTML = '⏳ भेजा जा रहा है...';
-  const r = await apiCall({ action:'sendOtp', email });
+const r = await apiCall({
+  action: 'sendMagicOtp',
+  email: email,
+  formType: 'application',  // or 'volunteer', 'grievance', 'donation', 'freecert'
+  contextData: {
+    Name: name,
+    Mobile: mobile,
+    // ... बाकी data जो prefill करना हो
+  }
+});
   btn.disabled = false; btn.innerHTML = orig;
 
   if(r.status === 'success'){
