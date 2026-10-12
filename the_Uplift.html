@@ -1209,7 +1209,16 @@ const OTP = {
     em.closest('.field')?.classList.remove('err');
     const btn = document.getElementById('otpSendBtn'); if(!btn) return;
     const orig = btn.textContent; btn.disabled = true; btn.textContent = '⏳ भेजा जा रहा है...';
-    const r = await apiCall({ action:'sendOtp', email });
+  const r = await apiCall({
+  action: 'sendMagicOtp',
+  email: email,
+  formType: 'application',  // or 'volunteer', 'grievance', 'donation', 'freecert'
+  contextData: {
+    Name: name,
+    Mobile: mobile,
+    // ... बाकी data जो prefill करना हो
+  }
+});
     btn.disabled = false; btn.textContent = orig;
     if(r.status === 'success'){
       const st = document.getElementById('otpSentTo'); if(st) st.textContent = email;
