@@ -1022,14 +1022,29 @@ function renderCertLang(lang){
   setTxt('cName', D.studentName);
 
   // Parent relation
-  const parentEl = document.getElementById('cParentLine');
-  if(parentEl){
-    const relation = D.gender === 'महिला' || D.gender === 'Female' ? T.daughter
-                    : D.gender === 'पुरुष' || D.gender === 'Male' ? T.son
-                    : T.other;
-    const prefix = D.raw['Parent Prefix'] || D.raw.parentPrefix || '';
-    parentEl.textContent = relation + ' — ' + (prefix ? prefix + ' ' : '') + D.parentName;
+const parentEl = document.getElementById('cParentLine');
+if(parentEl){
+  // Determine relation — single value only
+  let relation = '';
+  const g = String(D.gender || '').trim().toLowerCase();
+  
+  if(g === 'महिला' || g === 'female' || g === 'Female' || g === 'f' || g === 'स्त्री' || g === 'लड़की'){
+    relation = T.daughter;  // पुत्री / Daughter of
+  } else if(g === 'पुरुष' || g === 'male' || g === 'Male' || g === 'm' || g === 'लड़का'){
+    relation = T.son;  // पुत्र / Son of
+  } else {
+    // Gender missing — extract from name if possible, else generic
+    relation = T.other;  // पुत्र/पुत्री (only when gender really unknown)
   }
+  
+  // Parent name — check if prefix already included
+  const rawParent = String(D.parentName || '').trim();
+  const prefix = D.raw['Parent Prefix'] || D.raw.parentPrefix || '';
+  const hasPrefix = /^(श्री|श्रीमती|कु०|स्वर्गीय|डॉ०|Mr\.|Mrs\.|Ms\.|Dr\.|Shri|Smt\.)\s/.test(rawParent);
+  
+  const fullParentName = hasPrefix ? rawParent : (prefix ? prefix + ' ' + rawParent : rawParent);
+  parentEl.textContent = relation + ' — ' + fullParentName;
+}
 
   // Course title — switch based on language
   setTxt('cCourse', isEn ? D.courseTitleEn : D.courseTitleHi);
