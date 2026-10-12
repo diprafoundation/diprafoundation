@@ -847,6 +847,70 @@ footer a:hover{color:#fff}
 <div class="toast" id="toast"></div>
 
 <script>
+  /* ============================================================
+   AUTO-FILL FROM MAGIC LINK
+   ============================================================ */
+(function autoFillFromMagicLink(){
+  try {
+    const session = sessionStorage.getItem('uplift_session');
+    if(!session) return;
+    const data = JSON.parse(session);
+    
+    // Only auto-fill if URL has autofill param OR just arrived
+    const params = new URLSearchParams(location.search);
+    if(params.get('autofill') !== '1' && !data.sessionToken) return;
+    
+    console.log('🔐 Auto-fill session found:', data);
+    
+    // Clear session after use
+    setTimeout(() => {
+      try { sessionStorage.removeItem('uplift_session'); } catch(e){}
+    }, 5000);
+    
+    // Wait for DOM ready
+    setTimeout(() => {
+      const ctx = data.contextData || {};
+      const email = data.email || '';
+      const formType = data.formType || '';
+      
+      // Determine which modal to open
+      let modalToOpen = '';
+      if(formType === 'application') modalToOpen = 'applyModal';
+      else if(formType === 'volunteer') modalToOpen = 'volunteerModal';
+      else if(formType === 'grievance') modalToOpen = 'grievanceModal';
+      
+      if(modalToOpen){
+        setTimeout(() => {
+          if(typeof openModal === 'function') openModal(modalToOpen);
+          
+          // Auto-fill email field
+          setTimeout(() => {
+            const emailInput = document.querySelector(`#${modalToOpen} input[type="email"]`);
+            if(emailInput && email) emailInput.value = email;
+            
+            // Fill other fields from context
+            Object.keys(ctx).forEach(key => {
+              const input = document.querySelector(`#${modalToOpen} [name="${key}"]`);
+              if(input && ctx[key]){
+                input.value = ctx[key];
+                if(input.tagName === 'SELECT'){
+                  input.dispatchEvent(new Event('change'));
+                }
+              }
+            });
+            
+            if(window.SoundFX) SoundFX.play('success');
+            if(typeof toast === 'function'){
+              toast('✓ Form auto-filled — verify OTP to continue');
+            }
+          }, 300);
+        }, 500);
+      }
+    }, 800);
+  } catch(e){
+    console.error('Auto-fill error:', e);
+  }
+})();
 /* ============================================================
    DONATE PAGE — दिप्र फ़ाउंडेशन
    ============================================================ */
