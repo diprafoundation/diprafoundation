@@ -1039,11 +1039,40 @@ if(parentEl){
   
   // Parent name — check if prefix already included
   const rawParent = String(D.parentName || '').trim();
-  const prefix = D.raw['Parent Prefix'] || D.raw.parentPrefix || '';
-  const hasPrefix = /^(श्री|श्रीमती|कु०|स्वर्गीय|डॉ०|Mr\.|Mrs\.|Ms\.|Dr\.|Shri|Smt\.)\s/.test(rawParent);
+   const prefixMap = {
+    'श्री':      { hi: 'श्री',      en: 'Mr.' },
+    'श्रीमती':   { hi: 'श्रीमती',   en: 'Mrs.' },
+    'कु०':       { hi: 'कु०',       en: 'Ms.' },
+    'स्वर्गीय':  { hi: 'स्वर्गीय',  en: 'Late' },
+    'डॉ०':       { hi: 'डॉ०',       en: 'Dr.' },
+    'Mr.':      { hi: 'श्री',      en: 'Mr.' },
+    'Mrs.':     { hi: 'श्रीमती',   en: 'Mrs.' },
+    'Ms.':      { hi: 'कु०',       en: 'Ms.' },
+    'Late':     { hi: 'स्वर्गीय',  en: 'Late' },
+    'Dr.':      { hi: 'डॉ०',       en: 'Dr.' }
+  };
+     let detectedPrefix = '';
+  let nameOnly = rawParent;
+  for (const p of Object.keys(prefixMap)) {
+    if (rawParent.startsWith(p + ' ')) {
+      detectedPrefix = p;
+      nameOnly = rawParent.substring(p.length).trim();
+      break;
+    }
+  }
+   if (!detectedPrefix) {
+    detectedPrefix = String(D.raw['Parent Prefix'] || D.raw.parentPrefix || '').trim();
+    nameOnly = rawParent;
+  }
   
-  const fullParentName = hasPrefix ? rawParent : (prefix ? prefix + ' ' + rawParent : rawParent);
-  parentEl.textContent = relation + ' — ' + fullParentName;
+  // Translate prefix based on current language
+  const translatedPrefix = prefixMap[detectedPrefix]
+    ? (lang === 'en' ? prefixMap[detectedPrefix].en : prefixMap[detectedPrefix].hi)
+    : detectedPrefix;
+  
+  // Build final parent line
+  const finalParent = translatedPrefix ? (translatedPrefix + ' ' + nameOnly) : nameOnly;
+  parentEl.textContent = relation + ' — ' + finalParent;
 }
 
   // Course title — switch based on language
