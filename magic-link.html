@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verifying... | दिप्र फ़ाउंडेशन</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#FFF8F0,#FFFBF5);padding:20px}
+.card{background:#fff;border:2px solid var(--border-2);border-radius:20px;padding:40px 30px;max-width:520px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(139,21,56,.15)}
+.spinner{width:60px;height:60px;border:5px solid var(--border-2);border-top-color:var(--green);border-radius:50%;margin:0 auto 20px;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.success-icon{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#E7F6EC,#fff);color:#0D7A3A;display:grid;place-items:center;font-size:2.5rem;margin:0 auto 20px;border:3px solid #16A34A}
+.error-icon{width:80px;height:80px;border-radius:50%;background:#FEF5F5;color:#991B1B;display:grid;place-items:center;font-size:2.5rem;margin:0 auto 20px;border:3px solid #F0B0B0}
+h2{color:var(--maroon);font-family:'Tiro Devanagari Hindi',serif;font-weight:400;margin-bottom:12px}
+p{color:var(--ink-2);line-height:1.7;margin-bottom:20px}
+.btn{display:inline-block;padding:14px 32px;background:linear-gradient(135deg,var(--green),var(--green-3));color:#fff;text-decoration:none;border-radius:12px;font-weight:700;font-size:1rem;box-shadow:0 6px 20px rgba(13,122,58,.3)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(13,122,58,.45);color:#fff}
+</style>
+</head>
+<body>
+<div class="card" id="card">
+  <div class="spinner"></div>
+  <h2 id="title">Verifying your link...</h2>
+  <p id="msg">कृपया प्रतीक्षा करें, आपका लिंक सत्यापित किया जा रहा है।</p>
+</div>
+
+<script>
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbynC667snioVb9pnBE8jDRWUJHwKOUi5jTYO31PlfolDG5VjcTrE93zh2k-Ai7zgi0/exec';
+
+(async function(){
+  const params = new URLSearchParams(location.search);
+  const token = params.get('token');
+  if(!token){
+    showError('Invalid link. Token missing.');
+    return;
+  }
+
+  try {
+    const res = await fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ action: 'verifyMagicLink', token })
+    });
+    const data = await res.json();
+
+    if(data.status === 'success'){
+      /* Save session + context for auto-fill */
+      try {
+        sessionStorage.setItem('uplift_session', JSON.stringify({
+          email: data.email,
+          formType: data.formType,
+          sessionToken: data.sessionToken,
+          contextData: data.contextData || {}
+        }));
+      } catch(e){}
+
+      showSuccess(data);
+    } else {
+      showError(data.message || 'Link invalid or expired.');
+    }
+  } catch(e){
+    showError('Network error. Please try again.');
+  }
+})();
+
+function showSuccess(data){
+  const card = document.getElementById('card');
+  const formNames = {
+    application: 'विद्यार्थी आवेदन',
+    volunteer: 'स्वयंसेवक आवेदन',
+    grievance: 'शिकायत',
+    donation: 'दान',
+    freecert: 'नि:शुल्क प्रमाणपत्र'
+  };
+  const formName = formNames[data.formType] || 'फॉर्म';
+
+  /* Determine redirect URL based on form type */
+  const redirectMap = {
+    application: 'the_Uplift.html?autofill=1#apply',
+    volunteer: 'the_Uplift.html?autofill=1#volunteer',
+    grievance: 'the_Uplift.html?autofill=1#grievance',
+    donation: 'donate.html?autofill=1',
+    freecert: 'ebook.html?autofill=1'
+  };
+  const redirectUrl = redirectMap[data.formType] || 'index.html';
+
+  card.innerHTML = `
+    <div class="success-icon">✓</div>
+    <h2>Verified!</h2>
+    <p>आपका ईमेल सत्यापित हो गया है।<br>
+    <b>${data.email}</b></p>
+    <p style="color:var(--green-3);font-weight:700;font-size:1.05rem">
+      ${formName} का form auto-fill हो रहा है...
+    </p>
+    <a href="${redirectUrl}" class="btn" style="margin-top:10px">
+      🚀 Continue to Form
+    </a>
+    <p style="font-size:.85rem;color:var(--muted);margin-top:15px">
+      Auto-redirect 3 seconds में...
+    </p>
+  `;
+
+  setTimeout(() => { location.href = redirectUrl; }, 3000);
+}
+
+function showError(msg){
+  const card = document.getElementById('card');
+  card.innerHTML = `
+    <div class="error-icon">✕</div>
+    <h2>Link Invalid</h2>
+    <p>${msg}</p>
+    <a href="index.html" class="btn" style="background:linear-gradient(135deg,var(--maroon),var(--maroon-2))">
+      🏠 Go Home
+    </a>
+  `;
+}
+</script>
+</body>
+</html>
