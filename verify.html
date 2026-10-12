@@ -571,8 +571,9 @@
 </div>
 
 <!-- Header -->
-<header>
-  <div class="header-inner">
+<<!-- Header -->
+<header id="mainHeader">
+  <div class="container nav-wrap">
     <a href="index.html" class="brand">
       <div class="brand-logo">
         <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="दिप्र फ़ाउंडेशन">
@@ -582,16 +583,21 @@
         <span data-hi="प्रमाणपत्र सत्यापन" data-en="Certificate Verification">प्रमाणपत्र सत्यापन</span>
       </div>
     </a>
-    <nav class="nav-links">
-      <a href="index.html" data-hi="गृह" data-en="Home">गृह</a>
-      <a href="the_Uplift.html" data-hi="The Uplift" data-en="The Uplift">The Uplift</a>
-      <a href="verify.html" class="active" data-hi="सत्यापन" data-en="Verify">सत्यापन</a>
-      <a href="contact.html" data-hi="संपर्क" data-en="Contact">संपर्क</a>
-      <div class="lang-switch" style="margin-left:10px">
+    <nav id="mainNav" aria-label="मुख्य">
+      <ul>
+        <li><a href="index.html" data-hi="गृह" data-en="Home">गृह</a></li>
+        <li><a href="the_Uplift.html" data-hi="The Uplift" data-en="The Uplift">The Uplift</a></li>
+        <li><a href="verify.html" class="active" data-hi="सत्यापन" data-en="Verify">सत्यापन</a></li>
+        <li><a href="contact.html" data-hi="संपर्क" data-en="Contact">संपर्क</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <div class="lang-switch">
         <button class="lang-btn active" data-lang="hi">हिं</button>
         <button class="lang-btn" data-lang="en">EN</button>
       </div>
-    </nav>
+      <button class="burger" id="burger" aria-label="सूची"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
 
