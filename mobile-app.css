@@ -9,7 +9,7 @@
    
    Features:
    - Native app-style bottom navigation
-   - Slide-in drawer with backdrop blur
+   - Slide-in drawer with backdrop blfur
    - Sticky translucent app-bar (iOS style)
    - Safe-area support for notched phones
    - Bottom-sheet modals
@@ -23,6 +23,34 @@
    ============================================================ */
 
 @media (max-width: 860px) {
+  /* Footer को bottom nav के ऊपर रखने के लिए proper padding */
+  body {
+    padding-bottom: 0 !important; /* पुराना padding हटाएँ */
+  }
+
+  /* Main content का padding-bottom */
+  main {
+    padding-bottom: calc(var(--bottom-nav-total) + 24px) !important;
+  }
+
+  /* Footer के अंदर extra padding */
+  footer {
+    margin-bottom: 0 !important;
+    padding-bottom: calc(var(--bottom-nav-total) + 20px) !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* अगर body > main + footer structure है */
+  body > main + footer {
+    margin-bottom: 0 !important;
+  }
+
+  /* bottom-nav के ऊपर footer content दिखे */
+  .foot-bottom {
+    padding-bottom: calc(var(--bottom-nav-total) - 20px) !important;
+  }
+}
 
   /* ============================================================
      01. ROOT VARIABLES
