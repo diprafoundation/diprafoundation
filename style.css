@@ -2528,40 +2528,6 @@ footer a:hover {
 /* ============================================================
    34. PRINT STYLES
    ============================================================ */
-@media print {
-  body {
-    background: #fff;
-    font-size: 12pt;
-  }
-
-  body * {
-    visibility: hidden;
-  }
-
-  #certPrintArea,
-  #certPrintArea * {
-    visibility: visible;
-  }
-
-  #certPrintArea {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    box-shadow: none;
-  }
-
-  .no-print,
-  header,
-  footer,
-  nav,
-  .topbar,
-  .tricolor,
-  .toast,
-  .modal-head .close-x {
-    display: none !important;
-  }
-}
 
 /* ============================================================
    35. PREFERS REDUCED MOTION
@@ -2575,6 +2541,360 @@ footer a:hover {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+/* --- Step indicator --- */
+.step-tabs { display: flex; justify-content: center; gap: 6px; margin: 30px 0; flex-wrap: wrap; }
+.step-tab {
+  display: flex; align-items: center; gap: 8px; padding: 10px 18px;
+  border-radius: 999px; font-size: .88rem; font-weight: 700;
+  background: #fff; border: 2px solid var(--border-2); color: var(--muted);
+  transition: all .2s;
+}
+.step-tab.active {
+  background: linear-gradient(135deg, var(--saffron), var(--saffron-3));
+  color: #fff; border-color: var(--saffron);
+}
+.step-tab.done {
+  background: var(--green-soft); color: var(--green-3); border-color: var(--green-2);
+}
+.step-tab .st-num {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: rgba(255,255,255,.3);
+  display: grid; place-items: center; font-size: .78rem;
+}
+.step-tab.done .st-num { background: var(--green); color: #fff; }
+
+/* --- Ebook grid --- */
+.ebook-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px; margin-top: 32px;
+}
+.ebook-card {
+  background: #fff; border: 2px solid var(--border);
+  border-radius: var(--radius-lg); padding: 24px;
+  text-align: center; transition: all .25s;
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+}
+.ebook-card:hover {
+  border-color: var(--saffron); transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+.ebook-card::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--saffron), var(--gold-2), var(--green));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .3s;
+}
+.ebook-card:hover::before { transform: scaleX(1); }
+.ebook-card .ec-icon {
+  width: 72px; height: 72px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 2rem;
+  margin: 0 auto 16px;
+  background: linear-gradient(135deg, var(--saffron-soft), #fff);
+  border: 2px solid var(--saffron-2);
+}
+.ebook-card h3 {
+  font-size: 1.1rem; color: var(--maroon); margin-bottom: 10px;
+  font-family: 'Tiro Devanagari Hindi', serif; font-weight: 400;
+}
+.ebook-card .ec-desc {
+  font-size: .92rem; color: var(--ink-2); line-height: 1.7;
+  margin-bottom: 16px; flex: 1;
+}
+.ebook-card .ec-meta {
+  display: flex; gap: 8px; justify-content: center;
+  flex-wrap: wrap; margin-bottom: 16px;
+}
+.ebook-card .ec-meta span {
+  font-size: .76rem; padding: 4px 11px; border-radius: 999px;
+  background: var(--cream-2); border: 1px solid var(--border-2);
+  color: var(--ink-2); font-weight: 600;
+}
+.ebook-card .badge-free {
+  position: absolute; top: 14px; right: 14px;
+  background: linear-gradient(135deg, var(--green), var(--green-3));
+  color: #fff; font-size: .72rem; font-weight: 800;
+  padding: 5px 12px; border-radius: 999px;
+}
+
+/* --- Full-screen ebook reader --- */
+.ebook-reader-full {
+  background: #fff; border: 2px solid var(--border-2);
+  border-radius: var(--radius-lg); overflow: hidden;
+  margin-top: 30px; box-shadow: var(--shadow-lg);
+}
+.ebook-reader-full .er-head {
+  background: linear-gradient(135deg, var(--maroon), var(--maroon-2));
+  color: #fff; padding: 20px 26px;
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 12px;
+}
+.ebook-reader-full .er-head h3 {
+  color: #fff; font-size: 1.15rem;
+  font-family: 'Tiro Devanagari Hindi', serif; font-weight: 400;
+}
+.ebook-reader-full .er-body {
+  padding: 28px; max-height: 60vh; overflow-y: auto;
+  line-height: 1.9; font-size: 1rem; color: var(--ink);
+}
+.ebook-reader-full .er-body h4 {
+  color: var(--maroon); font-size: 1.15rem;
+  margin: 22px 0 12px; padding-bottom: 8px;
+  border-bottom: 2px solid var(--border-2);
+  font-family: 'Tiro Devanagari Hindi', serif; font-weight: 400;
+}
+.ebook-reader-full .er-body h4:first-child { margin-top: 0; }
+.ebook-reader-full .er-body p {
+  margin-bottom: 14px; color: var(--ink-2); text-align: justify;
+}
+.ebook-reader-full .er-foot {
+  padding: 16px 24px; background: var(--cream-2);
+  border-top: 1.5px solid var(--border-2);
+  display: flex; justify-content: space-between;
+  align-items: center; gap: 14px; flex-wrap: wrap;
+}
+
+/* --- Quiz --- */
+.quiz-section {
+  background: #fff; border: 2px solid var(--border-2);
+  border-radius: var(--radius-lg); padding: 26px;
+  margin-top: 30px; box-shadow: var(--shadow-lg);
+}
+.q-item {
+  margin-bottom: 18px; padding: 16px;
+  background: var(--cream-2);
+  border: 1.5px solid var(--border); border-radius: 12px;
+}
+.q-item .q-text {
+  font-weight: 700; font-size: .98rem; color: var(--maroon);
+  margin-bottom: 12px; line-height: 1.55;
+}
+.q-item .q-opt {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 14px;
+  border: 1.5px solid var(--border-2); border-radius: 9px;
+  background: #fff; cursor: pointer; font-size: .94rem;
+  margin-bottom: 6px; transition: all .15s; min-height: 44px;
+}
+.q-item .q-opt:hover { border-color: var(--saffron); background: var(--saffron-soft); }
+.q-item .q-opt.selected { border-color: var(--saffron); background: var(--saffron-soft); font-weight: 600; }
+.quiz-header {
+  background: linear-gradient(135deg, var(--saffron), var(--saffron-3));
+  color: #fff; padding: 18px 22px; border-radius: 12px; margin-bottom: 20px;
+}
+.quiz-header h4 { color: #fff; font-size: 1.08rem; margin-bottom: 4px; }
+.quiz-progress-bar {
+  height: 8px; background: rgba(255,255,255,.3);
+  border-radius: 999px; margin-top: 10px; overflow: hidden;
+}
+.quiz-progress-bar > div {
+  height: 100%; background: #fff;
+  border-radius: 999px; transition: width .3s;
+}
+
+/* --- Certificate --- */
+.cert-frame {
+  background: linear-gradient(135deg, #FFFBF5 0%, #FFF6E8 50%, #FFFBF5 100%);
+  border: 12px solid var(--green);
+  border-radius: 14px; padding: 0;
+  position: relative; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(13,122,58,.28);
+}
+.cert-frame::before {
+  content: ""; position: absolute; inset: 14px;
+  border: 3px solid var(--gold); border-radius: 8px;
+  pointer-events: none; z-index: 2;
+}
+.cert-inner {
+  padding: 36px 26px; position: relative; z-index: 3; text-align: center;
+}
+.cert-logo {
+  width: 84px; height: 84px; margin: 0 auto 12px;
+  border-radius: 50%; background: #fff;
+  border: 3px solid var(--gold); padding: 8px;
+  display: grid; place-items: center;
+  box-shadow: 0 6px 20px rgba(212,160,23,.3);
+}
+.cert-logo img {
+  width: 100%; height: 100%;
+  object-fit: contain; border-radius: 50%;
+}
+.cert-logo-fallback {
+  width: 100%; height: 100%;
+  display: grid; place-items: center;
+  font-family: 'Tiro Devanagari Hindi', serif;
+  font-weight: 800; font-size: 1.6rem;
+  color: var(--green); background: var(--green-soft);
+  border-radius: 50%;
+  letter-spacing: -.02em;
+}
+.cert-org {
+  font-family: 'Tiro Devanagari Hindi', serif;
+  font-size: 1.4rem; color: var(--maroon);
+  margin-bottom: 4px;
+}
+.cert-subtitle {
+  font-size: .82rem; color: var(--saffron-3);
+  letter-spacing: .18em; text-transform: uppercase;
+  font-weight: 700; margin-bottom: 6px;
+}
+.cert-regno { font-size: .78rem; color: var(--muted); margin-bottom: 20px; }
+.cert-title {
+  font-size: 2rem; color: var(--green);
+  font-weight: 800; letter-spacing: .22em;
+  margin: 16px 0 6px;
+}
+.cert-title-sub {
+  font-size: .85rem; color: var(--saffron-3);
+  letter-spacing: .15em; text-transform: uppercase;
+  font-weight: 700; margin-bottom: 18px;
+}
+.cert-pre {
+  font-style: italic; color: var(--ink-2);
+  margin-bottom: 6px;
+}
+.cert-student {
+  font-family: 'Tiro Devanagari Hindi', serif;
+  font-size: 1.9rem; color: var(--maroon);
+  border-bottom: 2px dotted var(--gold-2);
+  display: inline-block; padding: 0 22px 6px;
+  margin: 10px auto;
+}
+.cert-parent { color: var(--ink-2); margin: 8px 0 16px; }
+.cert-course {
+  font-size: 1.15rem; color: var(--green);
+  font-weight: 800; margin: 12px 0;
+}
+.cert-meta {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 10px; max-width: 560px; margin: 16px auto;
+}
+.cert-meta > div {
+  background: #fff; padding: 10px;
+  border-radius: 8px; border: 1px solid var(--border-2);
+}
+.cert-meta small {
+  display: block; font-size: .7rem; color: var(--muted);
+  text-transform: uppercase; font-weight: 700;
+}
+.cert-meta b { font-size: .95rem; color: var(--green); }
+.cert-info {
+  display: flex; gap: 8px; justify-content: center;
+  flex-wrap: wrap; margin: 16px 0; font-size: .8rem;
+}
+.cert-info span {
+  padding: 5px 11px; background: #fff;
+  border-radius: 6px; border: 1px solid var(--border-2);
+  color: var(--ink-2);
+}
+.cert-info b { color: var(--maroon); }
+.cert-address {
+  font-size: .82rem; color: var(--ink-2);
+  margin: 8px 0; padding: 8px 12px;
+  background: #fff; border-radius: 6px;
+  border: 1px solid var(--border-2);
+  max-width: 580px; margin-inline: auto;
+}
+.cert-address b { color: var(--maroon); }
+.cert-bottom {
+  display: flex; justify-content: space-between;
+  align-items: flex-end; gap: 14px;
+  margin-top: 28px; padding-top: 18px;
+  border-top: 2px dashed var(--border-2);
+  flex-wrap: wrap;
+}
+.cert-sign {
+  text-align: center; font-size: .82rem;
+  color: var(--ink-2); flex: 1; min-width: 140px;
+}
+.cert-sign .line {
+  border-bottom: 2px solid var(--ink);
+  height: 36px; margin-bottom: 8px;
+  max-width: 160px; margin-inline: auto;
+}
+.cert-sign b { color: var(--green); }
+.cert-qr {
+  text-align: center; padding: 6px;
+  background: #fff; border-radius: 10px;
+  border: 2px solid var(--green);
+}
+.cert-qr img { width: 90px; height: 90px; border-radius: 6px; }
+.cert-qr small {
+  display: block; font-size: .68rem; color: var(--muted);
+  margin-top: 5px; font-weight: 600;
+}
+.cert-id-line {
+  font-family: monospace; font-size: .82rem;
+  color: var(--ink-2); margin-top: 16px;
+  padding: 9px; background: #fff;
+  border-radius: 8px; border: 1.5px dashed var(--gold);
+  display: inline-block;
+}
+.cert-id-line b { color: var(--maroon); }
+
+/* --- Social Share Buttons --- */
+.share-btn {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 12px 14px; border-radius: 10px;
+  font-weight: 700; font-size: .9rem; color: #fff;
+  text-decoration: none !important; transition: all .2s;
+  border: none; cursor: pointer; min-height: 44px;
+  font-family: inherit;
+}
+.share-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(0,0,0,.2);
+  color: #fff;
+}
+.share-btn.wa { background: #25D366; }
+.share-btn.fb { background: #1877F2; }
+.share-btn.tw { background: #000000; }
+.share-btn.li { background: #0A66C2; }
+.share-btn.tg { background: #0088CC; }
+.share-btn.copy { background: linear-gradient(135deg, var(--maroon), var(--maroon-2)); }
+
+/* --- Certificate Language Toggle --- */
+.cert-lang-btn {
+  padding: 10px 20px; border-radius: 8px;
+  font-weight: 700; border: none; cursor: pointer;
+  font-family: inherit; font-size: .92rem;
+  transition: all .2s;
+}
+
+/* --- Utility --- */
+.hidden { display: none !important; }
+.center { text-align: center; }
+
+/* --- Responsive --- */
+@media (max-width: 860px) {
+  .ebook-reader-full .er-body { padding: 20px; font-size: .96rem; }
+  .ebook-reader-full .er-head { padding: 16px 18px; }
+  .cert-frame { border-width: 8px; }
+  .cert-inner { padding: 24px 16px; }
+  .cert-meta { grid-template-columns: 1fr 1fr; }
+  .step-tab { padding: 8px 12px; font-size: .78rem; }
+  .cert-student { font-size: 1.5rem; }
+  .cert-title { font-size: 1.5rem; letter-spacing: .15em; }
+}
+@media (max-width: 520px) {
+  .cert-meta { grid-template-columns: 1fr; }
+  .cert-bottom { flex-direction: column; align-items: center; }
+  .cert-sign { width: 100%; max-width: 220px; }
+  .cert-student { font-size: 1.3rem; }
+}
+/* --- Print --- */
+@media print {
+  body * { visibility: hidden; }
+  #certPrintArea, #certPrintArea * { visibility: visible; }
+  #certPrintArea {
+    position: absolute; left: 0; top: 0; width: 100%;
+    box-shadow: none;
+  }
+  .no-print { display: none !important; }
+  header, footer, .topbar, .tricolor, .step-tabs { display: none !important; }
+}
 }
 
 /* ============================================================
