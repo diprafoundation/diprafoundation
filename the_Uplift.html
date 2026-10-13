@@ -1691,6 +1691,35 @@ function setLang(lang){
   renderThoughts();
 }
 window.setLang = setLang;
+   /* ============================================================
+   LANGUAGE BUTTON EVENT LISTENERS — FIXED
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const lang = btn.dataset.lang;
+      if(lang === 'hi' || lang === 'en'){
+        setLang(lang);
+        if(window.SoundFX) SoundFX.play('tabSwitch');
+      }
+    });
+  });
+});
+
+/* अगर DOM पहले से loaded है (script bottom पर है) — तो direct attach करें */
+if(document.readyState !== 'loading'){
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const lang = btn.dataset.lang;
+      if(lang === 'hi' || lang === 'en'){
+        setLang(lang);
+        if(window.SoundFX) SoundFX.play('tabSwitch');
+      }
+    });
+  });
+}
 
 /* ============================================================
    MOBILE NAV
