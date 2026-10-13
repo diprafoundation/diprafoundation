@@ -2,28 +2,719 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
 <title>दिप्र फ़ाउंडेशन | The Uplift कोचिंग योजना — अल्प मूल्य शिक्षण</title>
 <meta name="description" content="कक्षा ६ से १२ तथा संगणक/अंकीय पाठ्यक्रम — अल्प मूल्य पर। अनाथ विद्यार्थियों के लिए पूर्णत: नि:शुल्क। नि:शुल्क ई-पुस्तकें एवं QR-सत्यापनीय प्रमाणपत्र।">
 <meta name="theme-color" content="#0D7A3A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="The Uplift">
 <meta property="og:title" content="दिप्र फ़ाउंडेशन | The Uplift कोचिंग योजना">
 <meta property="og:description" content="अल्प मूल्य पर गुणवत्तापूर्ण शिक्षण। नि:शुल्क अंकीय पाठ्यक्रम, ई-पुस्तकें एवं QR-सत्यापनीय प्रमाणपत्र।">
 <meta property="og:image" content="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
+<link rel="canonical" href="https://www.diprafoundation.com/the_Uplift.html">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
 <link rel="icon" href="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
+
+<!-- COMMON CSS -->
 <link rel="stylesheet" href="style.css">
+<!-- MOBILE APP CSS -->
+<link rel="stylesheet" href="mobile-app.css" media="(max-width: 860px)">
+
+<!-- PAGE-SPECIFIC CSS -->
+<style>
+/* ============================================================
+   The Uplift — Page-Specific Styles
+   (जो style.css में common नहीं हैं)
+   ============================================================ */
+
+/* ---------- SEO Meta / Notice ---------- */
+.uplift-note {
+  background: var(--info-soft);
+  border: 1.5px solid #D5E0ED;
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: var(--info);
+  font-size: .94rem;
+  line-height: 1.75;
+  margin-top: 20px;
+}
+
+/* ---------- Section Wrapper ---------- */
+.uplift-section-alt {
+  background: linear-gradient(180deg, #FFFBF5 0%, #FFF6E8 100%);
+}
+
+/* ---------- Benefits Grid (Student + Volunteer) ---------- */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 32px;
+}
+
+.benefit-col {
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.benefit-col:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.benefit-col .bc-head {
+  padding: 16px 22px;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.05rem;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.benefit-col.student .bc-head {
+  background: linear-gradient(135deg, var(--green), var(--green-3));
+}
+
+.benefit-col.volunteer .bc-head {
+  background: linear-gradient(135deg, var(--saffron), var(--saffron-3));
+}
+
+.benefit-col .bc-body {
+  padding: 26px 22px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.benefit-col .bc-icon {
+  font-size: 3rem;
+  margin-bottom: 14px;
+  line-height: 1;
+}
+
+.benefit-col .bc-text {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--ink-2);
+  margin-bottom: 12px;
+}
+
+.benefit-col .bc-text b {
+  color: var(--maroon);
+}
+
+.benefit-col .bc-sub {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+.benefit-col .bc-mockup {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 18px 0;
+}
+
+.benefit-col .bc-mockup .m-ico {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: var(--cream-2);
+  border: 1.5px solid var(--border-2);
+  display: grid;
+  place-items: center;
+  font-size: 1.3rem;
+  transition: all 0.2s ease;
+}
+
+.benefit-col:hover .bc-mockup .m-ico {
+  transform: translateY(-3px);
+  border-color: var(--saffron-2);
+}
+
+.benefit-col .bc-cta {
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+/* ---------- Thoughts Slider ---------- */
+.thoughts-slider {
+  position: relative;
+  background: #fff;
+  border: 2px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  margin-top: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.slider-track {
+  position: relative;
+  min-height: 320px;
+}
+
+.thought-slide {
+  position: absolute;
+  inset: 0;
+  padding: 32px 60px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.thought-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  position: relative;
+}
+
+.thought-slide .thought-text {
+  font-family: 'Tiro Devanagari Hindi', serif;
+  font-size: 1.1rem;
+  line-height: 1.95;
+  color: var(--ink);
+  font-style: italic;
+  margin-bottom: 14px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.thought-slide .thought-cite {
+  display: block;
+  text-align: right;
+  font-size: 0.9rem;
+  color: var(--maroon);
+  font-weight: 700;
+  font-style: normal;
+  padding-right: 8px;
+}
+
+.thought-slide .thought-cite::before {
+  content: "— ";
+  margin-right: 4px;
+  color: var(--saffron-3);
+}
+
+.thought-slide .thought-meaning {
+  font-size: 0.92rem;
+  color: var(--ink-2);
+  line-height: 1.8;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border-2);
+}
+
+.thought-slide .thought-meaning b {
+  color: var(--maroon);
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.thought-slide.english {
+  border-left: 4px solid var(--green-2);
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--maroon);
+  border: 2px solid var(--border-2);
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(139, 21, 56, 0.15);
+  font-family: inherit;
+  line-height: 1;
+  padding: 0;
+  padding-bottom: 3px;
+}
+
+.slider-btn:hover {
+  background: var(--saffron);
+  color: #fff;
+  border-color: var(--saffron);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slider-btn:focus-visible {
+  outline: 3px solid var(--saffron);
+  outline-offset: 3px;
+}
+
+.slider-prev { left: 12px; }
+.slider-next { right: 12px; }
+
+.slider-dots {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  padding: 12px 0 16px;
+  flex-wrap: wrap;
+}
+
+.slider-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-2);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0;
+  min-height: 0;
+}
+
+.slider-dot.active {
+  background: var(--saffron);
+  width: 24px;
+  border-radius: 999px;
+}
+
+/* ---------- Donate Wrap ---------- */
+.donate-wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.donate-intro {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 24px;
+  padding: 0 16px;
+}
+
+.donate-intro .d-emoji {
+  font-size: 3rem;
+  margin-bottom: 12px;
+  display: inline-block;
+  animation: dEmojiPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes dEmojiPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+.donate-intro h3 {
+  font-family: 'Tiro Devanagari Hindi', serif;
+  font-size: 1.5rem;
+  color: var(--maroon);
+  font-weight: 400;
+  margin-bottom: 14px;
+}
+
+.donate-intro p {
+  color: var(--ink-2);
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.donate-intro p strong {
+  color: var(--maroon);
+}
+
+.usage-section-title {
+  text-align: center;
+  font-family: 'Tiro Devanagari Hindi', serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: var(--maroon);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.usage-section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--saffron), var(--green));
+  margin: 10px auto 0;
+  border-radius: 999px;
+}
+
+.donate-cta {
+  text-align: center;
+  margin-top: 32px;
+  padding: 0 16px;
+}
+
+/* ---------- Fee Calculator Card ---------- */
+.fee-calc-card {
+  background: #fff;
+  border: 1.5px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin-top: 34px;
+}
+
+.fee-calc-head {
+  background: linear-gradient(135deg, var(--maroon), var(--maroon-2));
+  color: #fff;
+  padding: 22px 26px;
+}
+
+.fee-calc-head h3 {
+  color: #fff;
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.fee-calc-body {
+  padding: 26px;
+}
+
+.fee-calc-result {
+  display: none;
+  margin-top: 4px;
+}
+
+.fee-calc-result.show {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.fee-calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.fee-cell {
+  background: var(--cream-2);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.fee-cell small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.fee-cell b {
+  display: block;
+  font-size: 1.05rem;
+  color: var(--maroon);
+  margin-top: 6px;
+  font-weight: 800;
+}
+
+.fee-cell.primary {
+  background: var(--saffron-soft);
+  border-color: var(--saffron-2);
+}
+
+.fee-cell.primary small { color: var(--saffron-3); }
+.fee-cell.primary b {
+  color: var(--saffron-3);
+  font-size: 1.35rem;
+}
+
+.fee-cell.disc small { color: var(--green-3); }
+.fee-cell.disc b { color: var(--green-3); }
+
+/* ---------- Course Table Extras ---------- */
+.fee-old {
+  text-decoration: line-through;
+  color: var(--muted);
+  font-size: 0.88em;
+}
+
+.fee-cut {
+  color: var(--green-3);
+  font-weight: 700;
+}
+
+.ebook-link {
+  color: var(--saffron-3);
+  font-weight: 600;
+  font-size: 0.82rem;
+  cursor: pointer;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+
+.ebook-link:hover {
+  color: var(--green-3);
+}
+
+/* ---------- Free Course Cards ---------- */
+.free-card {
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  padding: 24px 22px;
+  position: relative;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(139, 21, 56, 0.06);
+}
+
+.free-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--saffron), var(--gold-2), var(--green));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.free-card:hover {
+  border-color: var(--saffron-2);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(139, 21, 56, 0.14);
+}
+
+.free-card:hover::before {
+  transform: scaleX(1);
+}
+
+.free-card .badge-free {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: linear-gradient(135deg, var(--green), var(--green-3));
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: 0 3px 10px rgba(13, 122, 58, 0.3);
+  z-index: 2;
+}
+
+.free-card .fc-ico {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  margin-bottom: 14px;
+  background: linear-gradient(135deg, var(--saffron-soft), #fff);
+  border: 1.5px solid var(--saffron-2);
+  flex: none;
+}
+
+.free-card h3 {
+  font-size: 1.05rem;
+  color: var(--maroon);
+  margin: 0 0 10px;
+  font-family: 'Tiro Devanagari Hindi', 'Noto Sans Devanagari', serif;
+  font-weight: 600;
+  line-height: 1.35;
+  padding-right: 70px;
+}
+
+.free-card .fc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--border);
+}
+
+.free-card .fc-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: var(--cream-2);
+  border: 1px solid var(--border);
+  color: var(--ink-2);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.free-card p {
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.free-card .btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: auto;
+}
+
+/* ---------- Quiz Score ---------- */
+.quiz-score {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.score-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 18px;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, var(--green), var(--green-3));
+  box-shadow: 0 12px 32px rgba(13, 122, 58, 0.25);
+  animation: scorePop 0.5s cubic-bezier(0.2, 1.4, 0.5, 1);
+}
+
+.score-circle.fail {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  box-shadow: 0 12px 32px rgba(220, 38, 38, 0.25);
+}
+
+@keyframes scorePop {
+  from { transform: scale(0.3); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.quiz-score h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.quiz-score p {
+  color: var(--ink-2);
+  font-size: 0.96rem;
+  margin: 12px 0;
+}
+
+/* ---------- Ebook Actions ---------- */
+.ebook-actions {
+  padding: 16px 20px;
+  background: var(--cream-2);
+  border-top: 1.5px solid var(--border-2);
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.ebook-actions .btn {
+  min-width: 140px;
+}
+
+.ebook-actions .btn:last-child {
+  flex: 1;
+}
+
+/* ---------- Hero Seats List ---------- */
+#heroSeatList li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  padding: 11px 0;
+  border-bottom: 1px dashed var(--border);
+  font-size: 0.92rem;
+  color: var(--ink-2);
+}
+
+#heroSeatList li:last-child {
+  border-bottom: none;
+}
+
+#heroSeatList li b {
+  white-space: nowrap;
+  font-family: 'Inter', monospace;
+}
+
+/* ---------- Career Cards Grid ---------- */
+.career-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin-top: 32px;
+}
+
+/* ---------- Donate Section Decoration ---------- */
+.donate-section {
+  background: linear-gradient(135deg, #FFF8F0, var(--saffron-soft), #FFFBF5);
+}
+
+/* ---------- Responsive Tweaks ---------- */
+@media (max-width: 900px) {
+  .benefits-grid { grid-template-columns: 1fr; }
+  .career-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .thought-slide { padding: 24px 48px; }
+  .slider-track { min-height: 380px; }
+  .slider-btn { width: 38px; height: 38px; font-size: 1.3rem; }
+  .slider-prev { left: 6px; }
+  .slider-next { right: 6px; }
+  .fee-calc-grid { grid-template-columns: 1fr 1fr; }
+  .ebook-actions { justify-content: center; }
+  .ebook-actions .btn { min-width: 120px; }
+}
+
+@media (max-width: 400px) {
+  .fee-calc-grid { grid-template-columns: 1fr; }
+  .slider-track { min-height: 440px; }
+  .thought-slide { padding: 20px 40px; }
+}
+</style>
 </head>
 
 <body class="lang-hi">
 
-<!-- TRICOLOR STRIP -->
-<div style="height:5px;background:linear-gradient(90deg,var(--saffron) 0%,var(--saffron) 33.33%,#fff 33.33%,#fff 66.66%,var(--green) 66.66%,var(--green) 100%)"></div>
+<!-- ============================================================
+     TRICOLOR STRIP
+     ============================================================ -->
+<div class="tricolor"></div>
 
-<!-- TOPBAR -->
+<!-- ============================================================
+     TOPBAR
+     ============================================================ -->
 <div class="topbar">
-  <div class="container">
+  <div class="topbar-inner">
     <div class="topbar-links">
       <span>📞 <a href="tel:+919532328276">+91 95323 28276</a></span>
       <span>✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></span>
@@ -35,9 +726,11 @@
   </div>
 </div>
 
-<!-- HEADER -->
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
 <header id="mainHeader">
-  <div class="container nav-wrap">
+  <div class="header-inner nav-wrap">
     <a href="index.html" class="brand">
       <div class="brand-logo">
         <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="दिप्र फ़ाउंडेशन">
@@ -47,7 +740,8 @@
         <span data-hi="The Uplift — कोचिंग योजना" data-en="The Uplift — Coaching Scheme">The Uplift — कोचिंग योजना</span>
       </div>
     </a>
-    <nav id="mainNav" aria-label="मुख्य">
+
+    <nav class="desktop-nav" aria-label="मुख्य">
       <ul>
         <li><a href="#home" class="active" data-hi="गृह" data-en="Home">गृह</a></li>
         <li><a href="#why-useful" data-hi="क्यों उपयोगी" data-en="Why Useful">क्यों उपयोगी</a></li>
@@ -60,16 +754,44 @@
         <li><a href="contact.html" data-hi="संपर्क" data-en="Contact">संपर्क</a></li>
       </ul>
     </nav>
-    <div class="nav-actions">
-      <div class="lang-switch">
-        <button class="lang-btn active" data-lang="hi">हिन्दी</button>
-        <button class="lang-btn" data-lang="en">EN</button>
+
+    <div class="header-actions">
+      <div class="lang-switch" role="group" aria-label="भाषा चुनें">
+        <button class="lang-btn active" data-lang="hi" aria-pressed="true" aria-label="हिन्दी">हिन्दी</button>
+        <button class="lang-btn" data-lang="en" aria-pressed="false" aria-label="English">EN</button>
       </div>
-      <button class="btn btn-saffron btn-sm" onclick="openApplyModal()" data-hi="आवेदन करें" data-en="Apply">आवेदन करें</button>
-      <button class="burger" id="burger" aria-label="सूची"><span></span><span></span><span></span></button>
+      <button class="btn btn-saffron btn-sm desktop-only" onclick="openApplyModal()" data-hi="आवेदन करें" data-en="Apply">आवेदन करें</button>
+      <button class="burger" id="burger" aria-label="मेनू खोलें" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
+
+<!-- ============================================================
+     MOBILE DRAWER NAV
+     ============================================================ -->
+<nav id="mainNav" aria-label="मुख्य नेविगेशन" role="navigation">
+  <button class="drawer-close" onclick="closeDrawer()" aria-label="मेनू बंद करें">✕</button>
+  <ul>
+    <li><a href="#home" data-hi="🏠 गृह" data-en="🏠 Home">🏠 गृह</a></li>
+    <li><a href="#why-useful" data-hi="💡 क्यों उपयोगी" data-en="💡 Why Useful">💡 क्यों उपयोगी</a></li>
+    <li><a href="#benefits" data-hi="🎁 लाभ" data-en="🎁 Benefits">🎁 लाभ</a></li>
+    <li><a href="#courses" data-hi="📚 पाठ्यक्रम" data-en="📚 Courses">📚 पाठ्यक्रम</a></li>
+    <li><a href="#free" data-hi="📖 नि:शुल्क पाठ्यक्रम" data-en="📖 Free Courses">📖 नि:शुल्क पाठ्यक्रम</a></li>
+    <li><a href="#donate" data-hi="🙏 दान" data-en="🙏 Donate">🙏 दान</a></li>
+    <li><a href="portal.html" data-hi="🎓 विद्यार्थी केंद्र" data-en="🎓 Portal">🎓 विद्यार्थी केंद्र</a></li>
+    <li><a href="verify.html" data-hi="🔍 सत्यापन" data-en="🔍 Verify">🔍 सत्यापन</a></li>
+    <li><a href="contact.html" data-hi="📞 संपर्क" data-en="📞 Contact">📞 संपर्क</a></li>
+  </ul>
+  <div class="drawer-cta">
+    <button class="btn btn-saffron btn-block" onclick="openApplyModal()" data-hi="📝 विद्यार्थी आवेदन" data-en="📝 Student Apply">📝 विद्यार्थी आवेदन</button>
+    <button class="btn btn-green btn-block" onclick="openVolunteerModal()" data-hi="🤝 स्वयंसेवक बनें" data-en="🤝 Volunteer">🤝 स्वयंसेवक बनें</button>
+  </div>
+</nav>
+
+<!-- ============================================================
+     MAIN CONTENT
+     ============================================================ -->
+<main>
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="home">
@@ -77,7 +799,10 @@
     <div class="hero-grid">
       <div>
         <span class="eyebrow" data-hi="🪔 दिप्र फ़ाउंडेशन का शैक्षणिक प्रयास" data-en="🪔 An educational initiative of Dipra Foundation">🪔 दिप्र फ़ाउंडेशन का शैक्षणिक प्रयास</span>
-        <h1><span data-hi="The Uplift — " data-en="The Uplift — ">The Uplift — </span><em data-hi="कोचिंग योजना" data-en="Coaching Scheme">कोचिंग योजना</em></h1>
+        <h1>
+          <span data-hi="The Uplift — " data-en="The Uplift — ">The Uplift — </span>
+          <em data-hi="कोचिंग योजना" data-en="Coaching Scheme">कोचिंग योजना</em>
+        </h1>
         <p class="hero-sub" data-hi="जहाँ प्रतिभा कभी धन के अभाव में न हारे। कक्षा ६ से १२ तक तथा संगणक/अंकीय पाठ्यक्रम — अल्प मूल्य पर। अनाथ विद्यार्थियों के लिए पूर्णत: नि:शुल्क। प्रत्येक प्रमाणपत्र QR द्वारा सत्यापनीय।" data-en="Where talent never yields to poverty. Classes 6 to 12 and Computer/Digital courses — at low cost. Completely free for orphans. Every certificate QR-verifiable.">जहाँ प्रतिभा कभी धन के अभाव में न हारे। कक्षा ६ से १२ तक तथा संगणक/अंकीय पाठ्यक्रम — अल्प मूल्य पर। अनाथ विद्यार्थियों के लिए पूर्णत: नि:शुल्क। प्रत्येक प्रमाणपत्र QR द्वारा सत्यापनीय।</p>
         <div class="hero-badges">
           <span data-hi="🎓 कक्षा ६–१२" data-en="🎓 Class 6–12">🎓 कक्षा ६–१२</span>
@@ -88,26 +813,30 @@
         <div class="hero-btns">
           <button class="btn btn-saffron" onclick="openApplyModal()" data-hi="📝 विद्यार्थी आवेदन" data-en="📝 Student Apply">📝 विद्यार्थी आवेदन</button>
           <a href="#free" class="btn btn-green" data-hi="📚 ई-पुस्तकें पढ़ें" data-en="📚 Read Ebooks">📚 ई-पुस्तकें पढ़ें</a>
-          <button class="btn btn-outline" onclick="openVolunteerModal()" data-hi="🤝 स्वयंसेवक बनें" data-en="🤝 Become Volunteer">🤝 स्वयंसेवक बनें</button>
+          <button class="btn btn-outline" onclick="openVolunteerModal()" data-hi="🤝 स्वयंसेवक बनें" data-en="🤝 Volunteer">🤝 स्वयंसेवक बनें</button>
         </div>
       </div>
       <div class="hero-card">
         <h3 data-hi="🪔 उपलब्ध स्थान — यथार्थ स्थिति" data-en="🪔 Available Seats — Live Status">🪔 उपलब्ध स्थान — यथार्थ स्थिति</h3>
-        <ul id="heroSeatList"><li style="justify-content:center;color:var(--muted)" data-hi="लोड हो रहा है..." data-en="Loading...">लोड हो रहा है...</li></ul>
+        <ul id="heroSeatList">
+          <li style="justify-content:center;color:var(--muted)" data-hi="लोड हो रहा है..." data-en="Loading...">लोड हो रहा है...</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============ FREE COURSES ============ -->
-<section id="free" style="background:linear-gradient(180deg,#FFF8F0,var(--saffron-soft))">
+<section id="free" class="uplift-section-alt">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow" data-hi="नि:शुल्क अंकीय पाठ्यक्रम एवं ई-पुस्तकें" data-en="Free Digital Courses & Ebooks">नि:शुल्क अंकीय पाठ्यक्रम एवं ई-पुस्तकें</span>
       <h2 data-hi="📚 ई-पुस्तक पढ़ें → परीक्षा दें → तत्क्षण प्रमाणपत्र" data-en="📚 Read Ebook → Take Test → Instant Certificate">📚 ई-पुस्तक पढ़ें → परीक्षा दें → तत्क्षण प्रमाणपत्र</h2>
       <p data-hi="प्रत्येक पाठ्यक्रम हेतु हिन्दी एवं अंग्रेज़ी दोनों में ई-पुस्तक उपलब्ध। ई-पुस्तक पूर्ण पढ़ने के पश्चात् ही विंशति (२०) प्रश्नों की परीक्षा आरंभ होगी। प्रत्येक बार प्रश्न बदलेंगे।" data-en="Each course has an ebook in Hindi and English. After reading the complete ebook, a 20-question test opens. Questions change every time.">प्रत्येक पाठ्यक्रम हेतु हिन्दी एवं अंग्रेज़ी दोनों में ई-पुस्तक उपलब्ध। ई-पुस्तक पूर्ण पढ़ने के पश्चात् ही विंशति (२०) प्रश्नों की परीक्षा आरंभ होगी। प्रत्येक बार प्रश्न बदलेंगे।</p>
     </div>
-    <div class="grid g3" id="freeCoursesGrid"></div>
+    <div class="ebook-grid" id="freeCoursesGrid">
+      <!-- JS से भरा जाएगा -->
+    </div>
   </div>
 </section>
 
@@ -154,8 +883,8 @@
   </div>
 </section>
 
-<!-- ============ BENEFITS (from poster) ============ -->
-<section id="benefits" style="background:linear-gradient(180deg,#FFFBF5,#FFF6E8)">
+<!-- ============ BENEFITS ============ -->
+<section id="benefits" class="uplift-section-alt">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow" data-hi="🎁 लाभ एवं अवसर" data-en="🎁 Benefits & Opportunities">🎁 लाभ एवं अवसर</span>
@@ -215,65 +944,72 @@
       <h2 data-hi="उपलब्ध पाठ्यक्रम — यथार्थ स्थिति" data-en="Available Courses — Live Status">उपलब्ध पाठ्यक्रम — यथार्थ स्थिति</h2>
       <p data-hi="सत्तर प्रतिशत छूट के पश्चात् भी न्यूनतम शुल्क ₹३०० प्रतिमास (पन्द्रह-दिवसीय पाठ्यक्रम हेतु ₹१५०)। अनाथ विद्यार्थियों के लिए पूर्णत: नि:शुल्क।" data-en="Even after 70% concession, minimum fee ₹300/month (₹150 for 15-day). Free for orphans.">सत्तर प्रतिशत छूट के पश्चात् भी न्यूनतम शुल्क ₹३०० प्रतिमास (पन्द्रह-दिवसीय पाठ्यक्रम हेतु ₹१५०)। अनाथ विद्यार्थियों के लिए पूर्णत: नि:शुल्क।</p>
     </div>
+
     <div class="table-wrap">
-      <table>
-        <thead><tr>
-          <th data-hi="संकेत" data-en="Code">संकेत</th>
-          <th data-hi="पाठ्यक्रम" data-en="Course">पाठ्यक्रम</th>
-          <th data-hi="अवधि" data-en="Duration">अवधि</th>
-          <th data-hi="बाजार शुल्क" data-en="Market Fee">बाजार शुल्क</th>
-          <th data-hi="अपलिफ़्ट शुल्क" data-en="Uplift Fee">अपलिफ़्ट शुल्क</th>
-          <th data-hi="न्यूनतम शुल्क" data-en="Min Fee">न्यूनतम शुल्क</th>
-          <th data-hi="उपलब्ध स्थान" data-en="Seats Left">उपलब्ध स्थान</th>
-          <th data-hi="ई-पुस्तक" data-en="Ebook">ई-पुस्तक</th>
-        </tr></thead>
-        <tbody id="courseRows"></tbody>
+      <table class="responsive-table">
+        <thead>
+          <tr>
+            <th data-hi="संकेत" data-en="Code">संकेत</th>
+            <th data-hi="पाठ्यक्रम" data-en="Course">पाठ्यक्रम</th>
+            <th data-hi="अवधि" data-en="Duration">अवधि</th>
+            <th data-hi="बाजार शुल्क" data-en="Market Fee">बाजार शुल्क</th>
+            <th data-hi="अपलिफ़्ट शुल्क" data-en="Uplift Fee">अपलिफ़्ट शुल्क</th>
+            <th data-hi="न्यूनतम शुल्क" data-en="Min Fee">न्यूनतम शुल्क</th>
+            <th data-hi="उपलब्ध स्थान" data-en="Seats Left">उपलब्ध स्थान</th>
+            <th data-hi="ई-पुस्तक" data-en="Ebook">ई-पुस्तक</th>
+          </tr>
+        </thead>
+        <tbody id="courseRows">
+          <tr><td colspan="8" style="text-align:center;padding:20px;color:var(--muted)" data-hi="लोड हो रहा है..." data-en="Loading...">लोड हो रहा है...</td></tr>
+        </tbody>
       </table>
     </div>
+
     <div class="note mt24" style="max-width:900px;margin-inline:auto">
       <strong data-hi="📖 ई-पुस्तक सूचना:" data-en="📖 Ebook Notice:">📖 ई-पुस्तक सूचना:</strong>
       <span data-hi=" प्रत्येक पाठ्यक्रम की सम्पूर्ण ई-पुस्तक (हिन्दी एवं अंग्रेज़ी दोनों में) पंजीकरण के पश्चात् विद्यार्थी केंद्र में उपलब्ध होगी।" data-en=" Complete ebook (Hindi + English) for every course will be available in the Student Portal after registration."> प्रत्येक पाठ्यक्रम की सम्पूर्ण ई-पुस्तक (हिन्दी एवं अंग्रेज़ी दोनों में) पंजीकरण के पश्चात् विद्यार्थी केंद्र में उपलब्ध होगी।</span>
     </div>
 
-    <div style="background:#fff;border:1.5px solid var(--border-2);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);margin-top:34px">
-      <div style="background:linear-gradient(135deg,var(--maroon),var(--maroon-2));color:#fff;padding:22px 26px">
-        <h3 style="color:#fff;font-size:1.15rem" data-hi="🧮 शुल्क परिकलित्र" data-en="🧮 Fee Calculator">🧮 शुल्क परिकलित्र</h3>
+    <!-- FEE CALCULATOR -->
+    <div class="fee-calc-card">
+      <div class="fee-calc-head">
+        <h3 data-hi="🧮 शुल्क परिकलित्र" data-en="🧮 Fee Calculator">🧮 शुल्क परिकलित्र</h3>
       </div>
-      <div style="padding:26px">
+      <div class="fee-calc-body">
         <div class="row">
           <div class="field">
             <label data-hi="पाठ्यक्रम चुनें" data-en="Select Course">पाठ्यक्रम चुनें</label>
-            <select id="calcCourse"></select>
+            <select id="calcCourse" aria-label="पाठ्यक्रम चुनें"></select>
           </div>
           <div class="field">
             <label data-hi="पारिवारिक वार्षिक आय (₹)" data-en="Annual Family Income (₹)">पारिवारिक वार्षिक आय (₹)</label>
-            <input type="number" id="calcIncome" placeholder="१८००००" min="0" step="1000">
+            <input type="number" id="calcIncome" placeholder="१८००००" min="0" step="1000" inputmode="numeric">
           </div>
         </div>
         <div class="field">
           <label data-hi="क्या विद्यार्थी अनाथ है?" data-en="Is student an orphan?">क्या विद्यार्थी अनाथ है?</label>
-          <select id="calcOrphan">
+          <select id="calcOrphan" aria-label="अनाथ स्थिति">
             <option value="no" data-hi="नहीं" data-en="No">नहीं</option>
             <option value="yes" data-hi="हाँ (पूर्ण छूट)" data-en="Yes (Full waiver)">हाँ (पूर्ण छूट)</option>
           </select>
         </div>
-        <div id="calcResult" style="display:none">
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px">
-            <div style="background:var(--cream-2);border:1.5px solid var(--border);border-radius:10px;padding:16px">
-              <small style="color:var(--muted);font-size:.78rem;text-transform:uppercase;font-weight:700" data-hi="बाजार शुल्क" data-en="Market Fee">बाजार शुल्क</small>
-              <b id="rGen" style="display:block;font-size:1.05rem;color:var(--maroon);margin-top:6px;font-weight:800">₹०</b>
+        <div id="calcResult" class="fee-calc-result">
+          <div class="fee-calc-grid">
+            <div class="fee-cell">
+              <small data-hi="बाजार शुल्क" data-en="Market Fee">बाजार शुल्क</small>
+              <b id="rGen">₹०</b>
             </div>
-            <div style="background:var(--cream-2);border:1.5px solid var(--border);border-radius:10px;padding:16px">
-              <small style="color:var(--muted);font-size:.78rem;text-transform:uppercase;font-weight:700">अपलिफ़्ट शुल्क</small>
-              <b id="rBase" style="display:block;font-size:1.05rem;color:var(--maroon);margin-top:6px;font-weight:800">₹०</b>
+            <div class="fee-cell">
+              <small data-hi="अपलिफ़्ट शुल्क" data-en="Uplift Fee">अपलिफ़्ट शुल्क</small>
+              <b id="rBase">₹०</b>
             </div>
-            <div style="background:var(--cream-2);border:1.5px solid var(--border);border-radius:10px;padding:16px">
-              <small style="color:var(--muted);font-size:.78rem;text-transform:uppercase;font-weight:700" data-hi="छूट" data-en="Concession">छूट</small>
-              <b id="rDisc" style="display:block;font-size:1.05rem;color:var(--green);margin-top:6px;font-weight:800">०%</b>
+            <div class="fee-cell disc">
+              <small data-hi="छूट" data-en="Concession">छूट</small>
+              <b id="rDisc">०%</b>
             </div>
-            <div style="background:var(--saffron-soft);border:1.5px solid var(--saffron-2);border-radius:10px;padding:16px">
-              <small id="rPayLabel" style="color:var(--saffron-3);font-size:.78rem;text-transform:uppercase;font-weight:700" data-hi="देय शुल्क" data-en="Payable">देय शुल्क</small>
-              <b id="rPay" style="display:block;font-size:1.35rem;color:var(--saffron-3);margin-top:6px;font-weight:800">₹०</b>
+            <div class="fee-cell primary">
+              <small id="rPayLabel" data-hi="देय शुल्क" data-en="Payable">देय शुल्क</small>
+              <b id="rPay">₹०</b>
             </div>
           </div>
         </div>
@@ -282,8 +1018,6 @@
   </div>
 </section>
 
-
-
 <!-- ============ VOLUNTEER CAREER ============ -->
 <section id="volunteer-career" style="background:#fff">
   <div class="container">
@@ -291,7 +1025,7 @@
       <span class="eyebrow" data-hi="स्वयंसेवक एवं शिक्षक हेतु करियर लाभ" data-en="Career Benefits for Volunteers & Teachers">स्वयंसेवक एवं शिक्षक हेतु करियर लाभ</span>
       <h2 data-hi="अनुभव प्रमाणपत्र आपके करियर में कैसे सहायक होगा?" data-en="How will experience certificate help your career?">अनुभव प्रमाणपत्र आपके करियर में कैसे सहायक होगा?</h2>
     </div>
-    <div class="grid g2">
+    <div class="grid g2 career-grid">
       <div class="card green">
         <div class="ico">📜</div>
         <h3 data-hi="१. सत्यापनीय अनुभव प्रमाणपत्र" data-en="1. Verifiable Experience Certificate">१. सत्यापनीय अनुभव प्रमाणपत्र</h3>
@@ -329,8 +1063,8 @@
   </div>
 </section>
 
-<!-- ============ DONATE — WITH THOUGHTS SLIDER ============ -->
-<section id="donate" style="background:linear-gradient(135deg,#FFF8F0,var(--saffron-soft),#FFFBF5)">
+<!-- ============ DONATE — THOUGHTS SLIDER ============ -->
+<section id="donate" class="donate-section">
   <div class="container">
     <div class="section-head">
       <span class="eyebrow" data-hi="🪔 दान — सेवा का सर्वोच्च रूप" data-en="🪔 Donation — Highest form of service">🪔 दान — सेवा का सर्वोच्च रूप</span>
@@ -341,18 +1075,20 @@
     <div class="donate-wrap">
       <!-- WHY DONATE -->
       <div class="donate-intro">
-        <div class="d-emoji">🙏</div>
+        <div class="d-emoji" aria-hidden="true">🙏</div>
         <h3 data-hi="क्यों दान करें?" data-en="Why Donate?">क्यों दान करें?</h3>
-        <p data-hi="हमारे राष्ट्र में लाखों प्रतिभाशाली बालक केवल इस कारण अध्ययन नहीं कर पाते कि उनके परिवार की आर्थिक स्थिति दुर्बल है। आपका एक दान उस बालक की सम्पूर्ण जीवन-यात्रा को परिवर्तित कर सकता है — जो भविष्य में चिकित्सक, अभियन्ता, शिक्षक अथवा समाजसेवी बन सकता है।" data-en="In our nation, lakhs of talented children cannot study because their families are economically weak. Your one donation can transform a child's life — who might become a doctor, engineer, teacher or social worker.">हमारे राष्ट्र में लाखों प्रतिभाशाली बालक केवल इस कारण अध्ययन नहीं कर पाते कि उनके परिवार की आर्थिक स्थिति दुर्बल है। <strong>आपका एक दान उस बालक की सम्पूर्ण जीवन-यात्रा को परिवर्तित कर सकता है</strong> — जो भविष्य में चिकित्सक, अभियन्ता, शिक्षक अथवा समाजसेवी बन सकता है।</p>
+        <p data-hi="हमारे राष्ट्र में लाखों प्रतिभाशाली बालक केवल इस कारण अध्ययन नहीं कर पाते कि उनके परिवार की आर्थिक स्थिति दुर्बल है। <strong>आपका एक दान उस बालक की सम्पूर्ण जीवन-यात्रा को परिवर्तित कर सकता है</strong> — जो भविष्य में चिकित्सक, अभियन्ता, शिक्षक अथवा समाजसेवी बन सकता है।" data-en="In our nation, lakhs of talented children cannot study because their families are economically weak. Your one donation can transform a child's life — who might become a doctor, engineer, teacher or social worker.">हमारे राष्ट्र में लाखों प्रतिभाशाली बालक केवल इस कारण अध्ययन नहीं कर पाते कि उनके परिवार की आर्थिक स्थिति दुर्बल है। <strong>आपका एक दान उस बालक की सम्पूर्ण जीवन-यात्रा को परिवर्तित कर सकता है</strong> — जो भविष्य में चिकित्सक, अभियन्ता, शिक्षक अथवा समाजसेवी बन सकता है।</p>
       </div>
 
-      <!-- THOUGHTS SLIDER (auto-slide, right after why donate) -->
+      <!-- THOUGHTS SLIDER -->
       <h3 class="usage-section-title" style="margin-top:40px" data-hi="📖 दान-प्रोत्साहन हेतु प्रामाणिक उद्धरण" data-en="📖 Authentic references for donation inspiration">📖 दान-प्रोत्साहन हेतु प्रामाणिक उद्धरण</h3>
 
-      <div class="thoughts-slider">
-        <button class="slider-btn slider-prev" id="thoughtPrev" aria-label="पिछला"><span>‹</span></button>
-        <div class="slider-track" id="thoughtTrack"></div>
-        <button class="slider-btn slider-next" id="thoughtNext" aria-label="अगला"><span>›</span></button>
+      <div class="thoughts-slider" role="region" aria-label="दान-प्रोत्साहन उद्धरण">
+        <button class="slider-btn slider-prev" id="thoughtPrev" aria-label="पिछला उद्धरण"><span>‹</span></button>
+        <div class="slider-track" id="thoughtTrack">
+          <!-- JS से भरा जाएगा -->
+        </div>
+        <button class="slider-btn slider-next" id="thoughtNext" aria-label="अगला उद्धरण"><span>›</span></button>
       </div>
       <div class="slider-dots" id="thoughtDots"></div>
 
@@ -440,12 +1176,16 @@
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
 <footer>
   <div class="container">
     <div class="disclaimer">
       <strong data-hi="⚠️ अस्वीकरण:" data-en="⚠️ Disclaimer:">⚠️ अस्वीकरण:</strong>
-      <span data-hi=" The Uplift कोचिंग योजना, दिप्र फ़ाउंडेशन का स्वतंत्र शैक्षणिक प्रयास है। यह किसी सरकारी योजना, विभाग अथवा संस्था से संबद्ध नहीं है। शुल्क, पात्रता, चयन तथा समस्त नियम दिप्र फ़ाउंडेशन द्वारा निर्धारित एवं परिवर्तनीय हैं। शुल्क वापसी की सुविधा उपलब्ध नहीं है।" data-en=" The Uplift Coaching Scheme is an independent initiative of Dipra Foundation. Not affiliated with any government scheme, department or body. All rules subject to change. No refund."> The Uplift कोचिंग योजना, दिप्र फ़ाउंडेशन का स्वतंत्र शैक्षणिक प्रयास है। यह किसी सरकारी योजना, विभाग अथवा संस्था से संबद्ध नहीं है। शुल्क, पात्रता, चयन तथा समस्त नियम दिप्र फ़ाउंडेशन द्वारा निर्धारित एवं परिवर्तनीय हैं। शुल्क वापसी की सुविधा उपलब्ध नहीं है।</span>
+      <span data-hi=" The Uplift कोचिंग योजना, दिप्र फ़ाउंडेशन का स्वतंत्र शैक्षणिक प्रयास है। यह किसी सरकारी योजना, विभाग अथवा संस्था से संबद्ध नहीं है। शुल्क, पात्रता, चयन तथा समस्त नियम दिप्र फ़ाउंडेशन द्वारा निर्धारित एवं परिवर्तनीय हैं। शुल्क वापसी की सुविधा उपलब्ध नहीं है।" data-en=" The Uplift Coaching Scheme is an independent initiative of Dipra Foundation. Not affiliated with any government scheme, department or body. All rules subject to change. No refund."> The Uplift कोचिंग योजना, दिप्र फ़ाउंडेशन का स्वतंत्र शैक्षणिक प्रयास है। यह किसी सरकारी योजना, विभाग अथवा संस्था से संबंधित नहीं है। शुल्क, पात्रता, चयन तथा समस्त नियम दिप्र फ़ाउंडेशन द्वारा निर्धारित एवं परिवर्तनीय हैं। शुल्क वापसी की सुविधा उपलब्ध नहीं है।</span>
     </div>
     <div class="foot-grid">
       <div>
@@ -492,76 +1232,179 @@
 </footer>
 
 <!-- ============================================================
+     BOTTOM NAVIGATION (MOBILE)
+     ============================================================ -->
+<nav class="bottom-nav" aria-label="Primary">
+  <a href="#home" class="bottom-nav-item active" data-nav="#home">
+    <span class="bn-icon" aria-hidden="true">🏠</span>
+    <span data-hi="गृह" data-en="Home">गृह</span>
+  </a>
+  <a href="#courses" class="bottom-nav-item" data-nav="#courses">
+    <span class="bn-icon" aria-hidden="true">📚</span>
+    <span data-hi="कोर्स" data-en="Courses">कोर्स</span>
+  </a>
+  <button class="bottom-nav-item bn-fab" onclick="openApplyModal()" aria-label="आवेदन करें">
+    <span class="bn-icon" aria-hidden="true">＋</span>
+    <span data-hi="आवेदन" data-en="Apply">आवेदन</span>
+  </button>
+  <a href="#free" class="bottom-nav-item" data-nav="#free">
+    <span class="bn-icon" aria-hidden="true">📖</span>
+    <span data-hi="ईबुक" data-en="Ebook">ईबुक</span>
+  </a>
+  <a href="portal.html" class="bottom-nav-item">
+    <span class="bn-icon" aria-hidden="true">👤</span>
+    <span data-hi="खाता" data-en="Account">खाता</span>
+  </a>
+</nav>
+
+<!-- ============================================================
      MODALS
      ============================================================ -->
 
 <!-- APPLY MODAL -->
-<div class="modal" id="applyModal" role="dialog" aria-modal="true">
+<div class="modal" id="applyModal" role="dialog" aria-modal="true" aria-labelledby="applyModalTitle">
   <div class="modal-box">
-    <div class="modal-head"><h3 data-hi="📝 विद्यार्थी आवेदन" data-en="📝 Student Application">📝 विद्यार्थी आवेदन</h3><button class="close-x" onclick="closeModal('applyModal')">×</button></div>
+    <div class="modal-head">
+      <h3 id="applyModalTitle" data-hi="📝 विद्यार्थी आवेदन" data-en="📝 Student Application">📝 विद्यार्थी आवेदन</h3>
+      <button class="close-x" onclick="closeModal('applyModal')" aria-label="बंद करें">×</button>
+    </div>
     <div class="modal-body">
       <form id="applyForm" novalidate>
         <div class="row">
-          <div class="field"><label data-hi="विद्यार्थी का नाम *" data-en="Student's Name *">विद्यार्थी का नाम *</label><input type="text" name="fullName"><div class="errmsg" data-hi="कृपया नाम अंकित करें" data-en="Enter name">कृपया नाम अंकित करें</div></div>
-          <div class="field"><label data-hi="लिंग *" data-en="Gender *">लिंग *</label><select name="gender"><option value="" data-hi="— चयन करें —" data-en="— Select —">— चयन करें —</option><option value="पुरुष" data-hi="पुरुष" data-en="Male">पुरुष</option><option value="महिला" data-hi="महिला" data-en="Female">महिला</option><option value="अन्य" data-hi="अन्य" data-en="Other">अन्य</option></select><div class="errmsg" data-hi="कृपया लिंग चुनें" data-en="Select gender">कृपया लिंग चुनें</div></div>
+          <div class="field">
+            <label data-hi="विद्यार्थी का नाम *" data-en="Student's Name *">विद्यार्थी का नाम *</label>
+            <input type="text" name="fullName" autocomplete="name">
+            <div class="errmsg" data-hi="कृपया नाम अंकित करें" data-en="Enter name">कृपया नाम अंकित करें</div>
+          </div>
+          <div class="field">
+            <label data-hi="लिंग *" data-en="Gender *">लिंग *</label>
+            <select name="gender">
+              <option value="" data-hi="— चयन करें —" data-en="— Select —">— चयन करें —</option>
+              <option value="पुरुष" data-hi="पुरुष" data-en="Male">पुरुष</option>
+              <option value="महिला" data-hi="महिला" data-en="Female">महिला</option>
+              <option value="अन्य" data-hi="अन्य" data-en="Other">अन्य</option>
+            </select>
+            <div class="errmsg" data-hi="कृपया लिंग चुनें" data-en="Select gender">कृपया लिंग चुनें</div>
+          </div>
         </div>
         <div class="row">
-          <div class="field"><label data-hi="जन्मतिथि" data-en="DOB">जन्मतिथि</label><input type="date" name="dob"></div>
-          <div class="field"><label data-hi="चलभाष *" data-en="Mobile *">चलभाष *</label><input type="tel" name="mobile" maxlength="10" inputmode="numeric"><div class="errmsg" data-hi="दस अंक" data-en="10-digit">दस अंक</div></div>
+          <div class="field">
+            <label data-hi="जन्मतिथि" data-en="DOB">जन्मतिथि</label>
+            <input type="date" name="dob">
+          </div>
+          <div class="field">
+            <label data-hi="चलभाष *" data-en="Mobile *">चलभाष *</label>
+            <input type="tel" name="mobile" maxlength="10" inputmode="numeric" autocomplete="tel">
+            <div class="errmsg" data-hi="दस अंक" data-en="10-digit">दस अंक</div>
+          </div>
         </div>
-        <div class="field"><label data-hi="विद्युत्पत्र *" data-en="Email *">विद्युत्पत्र *</label><input type="email" name="email"><div class="errmsg" data-hi="सही ईमेल" data-en="Valid email">सही ईमेल</div></div>
+        <div class="field">
+          <label data-hi="विद्युत्पत्र *" data-en="Email *">विद्युत्पत्र *</label>
+          <input type="email" name="email" autocomplete="email">
+          <div class="errmsg" data-hi="सही ईमेल" data-en="Valid email">सही ईमेल</div>
+        </div>
         <div class="row">
-          <div class="field"><label data-hi="राज्य" data-en="State">राज्य</label><select name="state" id="applyState"></select></div>
-          <div class="field"><label data-hi="जनपद" data-en="District">जनपद</label><select name="district" id="applyDistrict"><option value="">—</option></select></div>
+          <div class="field">
+            <label data-hi="राज्य" data-en="State">राज्य</label>
+            <select name="state" id="applyState"></select>
+          </div>
+          <div class="field">
+            <label data-hi="जनपद" data-en="District">जनपद</label>
+            <select name="district" id="applyDistrict">
+              <option value="">—</option>
+            </select>
+          </div>
         </div>
         <div class="field" style="margin-top:-8px">
-          <a href="districts.html" target="_blank" style="font-size:.88rem;color:var(--saffron-3);font-weight:600;display:inline-flex;align-items:center;gap:6px">
+          <a href="districts.html" target="_blank" rel="noopener" style="font-size:.88rem;color:var(--saffron-3);font-weight:600;display:inline-flex;align-items:center;gap:6px">
             🗺️ <span data-hi="समस्त राज्य एवं जनपद देखें" data-en="View all states & districts">समस्त राज्य एवं जनपद देखें</span>
           </a>
         </div>
-        <div class="field"><label data-hi="सम्पूर्ण पता" data-en="Full Address">सम्पूर्ण पता</label><textarea name="address" placeholder="गृह संख्या, मोहल्ला, ग्राम/नगर, जनपद, राज्य, पिन कोड"></textarea></div>
-        <div class="row">
-          <div class="field"><label data-hi="वर्तमान कक्षा" data-en="Current Class">वर्तमान कक्षा</label><select name="currentClass"><option value="">—</option><option>६</option><option>७</option><option>८</option><option>९</option><option>१०</option><option>११</option><option>१२</option></select></div>
-          <div class="field"><label data-hi="अभिभावक का नाम" data-en="Guardian Name">अभिभावक का नाम</label><input type="text" name="guardianName"></div>
-        </div>
-        <div class="row">
-          <div class="field"><label data-hi="पारिवारिक वार्षिक आय (₹)" data-en="Annual Family Income (₹)">पारिवारिक वार्षिक आय (₹)</label><input type="number" name="income" min="0" step="1000"></div>
-          <div class="field"><label data-hi="क्या अनाथ है?" data-en="Is orphan?">क्या अनाथ है?</label><select name="orphan"><option value="No" data-hi="नहीं" data-en="No">नहीं</option><option value="Yes" data-hi="हाँ" data-en="Yes">हाँ</option></select></div>
-        </div>
-        <div class="field"><label data-hi="पाठ्यक्रम चुनें *" data-en="Select Course *">पाठ्यक्रम चुनें *</label><select name="course" id="applyCourseSelect"></select><div class="errmsg" data-hi="कृपया चुनें" data-en="Please select">कृपया चुनें</div></div>
         <div class="field">
-          <label class="check" style="background:var(--cream-2)"><input type="checkbox" id="applyAgree"> <span style="font-size:.94rem" data-hi="मैं पुष्टि करता/करती हूँ कि उपर्युक्त सूचना सत्य है।" data-en="I confirm the above information is true.">मैं पुष्टि करता/करती हूँ कि उपर्युक्त सूचना सत्य है।</span></label>
-          <div class="errmsg" id="applyAgreeErr" style="color:#c0392b;font-size:.82rem;margin-top:6px;display:none" data-hi="कृपया पुष्टि करें" data-en="Please confirm">कृपया पुष्टि करें</div>
+          <label data-hi="सम्पूर्ण पता" data-en="Full Address">सम्पूर्ण पता</label>
+          <textarea name="address" placeholder="गृह संख्या, मोहल्ला, ग्राम/नगर, जनपद, राज्य, पिन कोड"></textarea>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label data-hi="वर्तमान कक्षा" data-en="Current Class">वर्तमान कक्षा</label>
+            <select name="currentClass">
+              <option value="">—</option>
+              <option>६</option><option>७</option><option>८</option>
+              <option>९</option><option>१०</option><option>११</option><option>१२</option>
+            </select>
+          </div>
+          <div class="field">
+            <label data-hi="अभिभावक का नाम" data-en="Guardian Name">अभिभावक का नाम</label>
+            <input type="text" name="guardianName">
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label data-hi="पारिवारिक वार्षिक आय (₹)" data-en="Annual Family Income (₹)">पारिवारिक वार्षिक आय (₹)</label>
+            <input type="number" name="income" min="0" step="1000" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label data-hi="क्या अनाथ है?" data-en="Is orphan?">क्या अनाथ है?</label>
+            <select name="orphan">
+              <option value="No" data-hi="नहीं" data-en="No">नहीं</option>
+              <option value="Yes" data-hi="हाँ" data-en="Yes">हाँ</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label data-hi="पाठ्यक्रम चुनें *" data-en="Select Course *">पाठ्यक्रम चुनें *</label>
+          <select name="course" id="applyCourseSelect"></select>
+          <div class="errmsg" data-hi="कृपया चुनें" data-en="Please select">कृपया चुनें</div>
+        </div>
+        <div class="field">
+          <label class="consent-box">
+            <input type="checkbox" id="applyAgree">
+            <span style="font-size:.94rem" data-hi="मैं पुष्टि करता/करती हूँ कि उपर्युक्त सूचना सत्य है।" data-en="I confirm the above information is true.">मैं पुष्टि करता/करती हूँ कि उपर्युक्त सूचना सत्य है।</span>
+          </label>
+          <div class="errmsg" id="applyAgreeErr" style="display:none" data-hi="कृपया पुष्टि करें" data-en="Please confirm">कृपया पुष्टि करें</div>
         </div>
         <button type="submit" class="btn btn-saffron btn-block" data-hi="✓ आवेदन जमा करें" data-en="✓ Submit">✓ आवेदन जमा करें</button>
       </form>
-      <div id="applyConfirm" class="center" style="display:none;padding:20px 0">
-        <div style="width:80px;height:80px;border-radius:50%;background:var(--green-soft);color:var(--green);display:grid;place-items:center;font-size:2.2rem;margin:0 auto 18px;border:3px solid var(--green-2)">✓</div>
-        <h3 style="color:var(--green-3);margin-bottom:8px" data-hi="🪔 आवेदन सफलतापूर्वक जमा!" data-en="🪔 Application submitted!">🪔 आवेदन सफलतापूर्वक जमा!</h3>
-        <p style="color:var(--ink-2);margin-bottom:18px" data-hi="आवेदन संख्या सुरक्षित रखें।" data-en="Keep your Application ID safe.">आवेदन संख्या सुरक्षित रखें।</p>
+      <div id="applyConfirm" class="confirm">
+        <div class="tick">✓</div>
+        <h3 data-hi="🪔 आवेदन सफलतापूर्वक जमा!" data-en="🪔 Application submitted!">🪔 आवेदन सफलतापूर्वक जमा!</h3>
+        <p data-hi="आवेदन संख्या सुरक्षित रखें। हमारी टीम शीघ्र संपर्क करेगी।" data-en="Keep your Application ID safe. Our team will contact you soon.">आवेदन संख्या सुरक्षित रखें। हमारी टीम शीघ्र संपर्क करेगी।</p>
         <div class="id-box">
           <small data-hi="आवेदन संख्या" data-en="Application ID">आवेदन संख्या</small>
           <b id="applyAppId">—</b>
         </div>
-        <div><button class="btn btn-primary" onclick="closeModal('applyModal')" data-hi="बंद करें" data-en="Close">बंद करें</button></div>
+        <div>
+          <button class="btn btn-primary" onclick="closeModal('applyModal')" data-hi="बंद करें" data-en="Close">बंद करें</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <!-- OTP MODAL -->
-<div class="modal" id="otpModal" role="dialog" aria-modal="true">
+<div class="modal" id="otpModal" role="dialog" aria-modal="true" aria-labelledby="otpModalTitle">
   <div class="modal-box modal-sm">
-    <div class="modal-head"><h3 data-hi="🔐 विद्युत्पत्र सत्यापन" data-en="🔐 Email Verification">🔐 विद्युत्पत्र सत्यापन</h3><button class="close-x" onclick="closeModal('otpModal')">×</button></div>
+    <div class="modal-head">
+      <h3 id="otpModalTitle" data-hi="🔐 विद्युत्पत्र सत्यापन" data-en="🔐 Email Verification">🔐 विद्युत्पत्र सत्यापन</h3>
+      <button class="close-x" onclick="closeModal('otpModal')" aria-label="बंद करें">×</button>
+    </div>
     <div class="modal-body">
       <div id="otpStep1">
         <p style="color:var(--ink-2);font-size:.95rem;margin-bottom:18px;line-height:1.7" data-hi="आपके विद्युत्पत्र पर छह अंकों का कूट भेजा जाएगा।" data-en="A 6-digit code will be sent to your email.">आपके विद्युत्पत्र पर छह अंकों का कूट भेजा जाएगा।</p>
-        <div class="field"><label data-hi="विद्युत्पत्र" data-en="Email">विद्युत्पत्र</label><input type="email" id="otpEmail" placeholder="name@example.com"><div class="errmsg" id="otpEmailErr" data-hi="सही ईमेल" data-en="Valid email">सही ईमेल</div></div>
+        <div class="field">
+          <label data-hi="विद्युत्पत्र" data-en="Email">विद्युत्पत्र</label>
+          <input type="email" id="otpEmail" placeholder="name@example.com" autocomplete="email">
+          <div class="errmsg" id="otpEmailErr" data-hi="सही ईमेल" data-en="Valid email">सही ईमेल</div>
+        </div>
         <button class="btn btn-saffron btn-block" id="otpSendBtn" data-hi="📩 कूट भेजें" data-en="📩 Send Code">📩 कूट भेजें</button>
       </div>
       <div id="otpStep2" style="display:none">
         <p style="color:var(--ink-2);font-size:.95rem;margin-bottom:16px" data-hi="कूट भेजा गया:" data-en="Code sent to:">कूट भेजा गया: <b id="otpSentTo"></b></p>
-        <div class="field"><label data-hi="छह अंकों का कूट" data-en="6-digit Code">छह अंकों का कूट</label><input type="text" id="otpCodeInput" maxlength="6" inputmode="numeric" style="font-family:monospace;font-size:1.6rem;letter-spacing:12px;text-align:center;padding:14px"><div class="errmsg" id="otpCodeErr"></div></div>
+        <div class="field">
+          <label data-hi="छह अंकों का कूट" data-en="6-digit Code">छह अंकों का कूट</label>
+          <input type="text" id="otpCodeInput" maxlength="6" inputmode="numeric" autocomplete="one-time-code" style="font-family:monospace;font-size:1.6rem;letter-spacing:12px;text-align:center;padding:14px">
+          <div class="errmsg" id="otpCodeErr"></div>
+        </div>
         <div style="display:flex;gap:10px">
           <button class="btn btn-outline" id="otpBackBtn" style="flex:1" data-hi="← पीछे" data-en="← Back">← पीछे</button>
           <button class="btn btn-green" id="otpVerifyBtn" style="flex:2" data-hi="✓ सत्यापित करें" data-en="✓ Verify">✓ सत्यापित करें</button>
@@ -576,14 +1419,17 @@
 </div>
 
 <!-- EBOOK MODAL -->
-<div class="modal" id="ebookModal" role="dialog" aria-modal="true">
+<div class="modal" id="ebookModal" role="dialog" aria-modal="true" aria-labelledby="ebookTitle">
   <div class="modal-box modal-lg">
-    <div class="modal-head"><h3 id="ebookTitle" data-hi="📖 ई-पुस्तक" data-en="📖 Ebook">📖 ई-पुस्तक</h3><button class="close-x" onclick="closeModal('ebookModal')">×</button></div>
+    <div class="modal-head">
+      <h3 id="ebookTitle" data-hi="📖 ई-पुस्तक" data-en="📖 Ebook">📖 ई-पुस्तक</h3>
+      <button class="close-x" onclick="closeModal('ebookModal')" aria-label="बंद करें">×</button>
+    </div>
     <div class="modal-body" style="padding:0">
       <div class="ebook-reader">
-        <div class="ebook-tabs">
-          <button class="ebook-tab active" data-lang="hi" onclick="switchEbookLang('hi')" data-hi="हिन्दी" data-en="Hindi">हिन्दी</button>
-          <button class="ebook-tab" data-lang="en" onclick="switchEbookLang('en')" data-hi="English" data-en="English">English</button>
+        <div class="ebook-tabs" role="tablist">
+          <button class="ebook-tab active" data-lang="hi" role="tab" onclick="switchEbookLang('hi')" data-hi="हिन्दी" data-en="Hindi">हिन्दी</button>
+          <button class="ebook-tab" data-lang="en" role="tab" onclick="switchEbookLang('en')" data-hi="English" data-en="English">English</button>
         </div>
         <div class="ebook-body" id="ebookContent"></div>
         <div class="ebook-progress">
@@ -600,41 +1446,85 @@
 </div>
 
 <!-- QUIZ MODAL -->
-<div class="modal" id="quizModal" role="dialog" aria-modal="true">
+<div class="modal" id="quizModal" role="dialog" aria-modal="true" aria-labelledby="quizTitle">
   <div class="modal-box modal-lg">
-    <div class="modal-head"><h3 id="quizTitle" data-hi="📝 ज्ञान परीक्षा" data-en="📝 Knowledge Test">📝 ज्ञान परीक्षा</h3><button class="close-x" onclick="closeModal('quizModal')">×</button></div>
+    <div class="modal-head">
+      <h3 id="quizTitle" data-hi="📝 ज्ञान परीक्षा" data-en="📝 Knowledge Test">📝 ज्ञान परीक्षा</h3>
+      <button class="close-x" onclick="closeModal('quizModal')" aria-label="बंद करें">×</button>
+    </div>
     <div class="modal-body" id="quizBody"></div>
   </div>
 </div>
 
 <!-- FREE CERT MODAL -->
-<div class="modal" id="freeCertModal" role="dialog" aria-modal="true">
+<div class="modal" id="freeCertModal" role="dialog" aria-modal="true" aria-labelledby="freeCertTitle">
   <div class="modal-box modal-lg">
-    <div class="modal-head"><h3 data-hi="🎖️ प्रमाणपत्र विवरण" data-en="🎖️ Certificate Details">🎖️ प्रमाणपत्र विवरण</h3><button class="close-x" onclick="closeModal('freeCertModal')">×</button></div>
+    <div class="modal-head">
+      <h3 id="freeCertTitle" data-hi="🎖️ प्रमाणपत्र विवरण" data-en="🎖️ Certificate Details">🎖️ प्रमाणपत्र विवरण</h3>
+      <button class="close-x" onclick="closeModal('freeCertModal')" aria-label="बंद करें">×</button>
+    </div>
     <div class="modal-body" id="freeCertBody"></div>
   </div>
 </div>
 
 <!-- VOLUNTEER MODAL -->
-<div class="modal" id="volunteerModal" role="dialog" aria-modal="true">
+<div class="modal" id="volunteerModal" role="dialog" aria-modal="true" aria-labelledby="volunteerModalTitle">
   <div class="modal-box modal-lg">
-    <div class="modal-head"><h3 data-hi="🤝 स्वयंसेवक आवेदन" data-en="🤝 Volunteer Application">🤝 स्वयंसेवक आवेदन</h3><button class="close-x" onclick="closeModal('volunteerModal')">×</button></div>
+    <div class="modal-head">
+      <h3 id="volunteerModalTitle" data-hi="🤝 स्वयंसेवक आवेदन" data-en="🤝 Volunteer Application">🤝 स्वयंसेवक आवेदन</h3>
+      <button class="close-x" onclick="closeModal('volunteerModal')" aria-label="बंद करें">×</button>
+    </div>
     <div class="modal-body">
       <form id="volTeacherForm" novalidate>
         <h4 style="color:var(--maroon);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--border);font-size:1rem" data-hi="व्यक्तिगत विवरण" data-en="Personal Details">व्यक्तिगत विवरण</h4>
         <div class="row">
-          <div class="field"><label data-hi="सम्पूर्ण नाम *" data-en="Full Name *">सम्पूर्ण नाम *</label><input type="text" name="vName"><div class="errmsg" data-hi="कृपया नाम अंकित करें" data-en="Enter name">कृपया नाम अंकित करें</div></div>
-          <div class="field"><label data-hi="चलभाष *" data-en="Mobile *">चलभाष *</label><input type="tel" name="vMobile" maxlength="10" inputmode="numeric"><div class="errmsg" data-hi="दस अंक" data-en="10 digits">दस अंक</div></div>
+          <div class="field">
+            <label data-hi="सम्पूर्ण नाम *" data-en="Full Name *">सम्पूर्ण नाम *</label>
+            <input type="text" name="vName" autocomplete="name">
+            <div class="errmsg" data-hi="कृपया नाम अंकित करें" data-en="Enter name">कृपया नाम अंकित करें</div>
+          </div>
+          <div class="field">
+            <label data-hi="चलभाष *" data-en="Mobile *">चलभाष *</label>
+            <input type="tel" name="vMobile" maxlength="10" inputmode="numeric" autocomplete="tel">
+            <div class="errmsg" data-hi="दस अंक" data-en="10 digits">दस अंक</div>
+          </div>
         </div>
         <div class="row">
-          <div class="field"><label data-hi="विद्युत्पत्र *" data-en="Email *">विद्युत्पत्र *</label><input type="email" name="vEmail"><div class="errmsg" data-hi="सही ईमेल" data-en="Valid email">सही ईमेल</div></div>
-          <div class="field"><label data-hi="नगर *" data-en="City *">नगर *</label><input type="text" name="vCity"><div class="errmsg" data-hi="कृपया नगर अंकित करें" data-en="Enter city">कृपया नगर अंकित करें</div></div>
+          <div class="field">
+            <label data-hi="विद्युत्पत्र *" data-en="Email *">विद्युत्पत्र *</label>
+            <input type="email" name="vEmail" autocomplete="email">
+            <div class="errmsg" data-hi="सही ईमेल" data-en="Valid email">सही ईमेल</div>
+          </div>
+          <div class="field">
+            <label data-hi="नगर *" data-en="City *">नगर *</label>
+            <input type="text" name="vCity" autocomplete="address-level2">
+            <div class="errmsg" data-hi="कृपया नगर अंकित करें" data-en="Enter city">कृपया नगर अंकित करें</div>
+          </div>
         </div>
         <div class="row">
-          <div class="field"><label data-hi="उच्चतम योग्यता *" data-en="Highest Qualification *">उच्चतम योग्यता *</label><select name="vQual"><option value="">—</option><option data-hi="स्नातक" data-en="Graduation">स्नातक</option><option data-hi="परास्नातक" data-en="Post Graduation">परास्नातक</option><option>B.Ed / D.El.Ed</option><option>B.Tech / B.E.</option><option>MBBS / BDS</option><option>CA / CS / MBA</option><option>Ph.D</option><option data-hi="अन्य" data-en="Other">अन्य</option></select><div class="errmsg" data-hi="कृपया चुनें" data-en="Select">कृपया चुनें</div></div>
-          <div class="field"><label data-hi="विषय *" data-en="Subject *">विषय *</label><input type="text" name="vSubject"><div class="errmsg" data-hi="कृपया विषय अंकित करें" data-en="Enter subject">कृपया विषय अंकित करें</div></div>
+          <div class="field">
+            <label data-hi="उच्चतम योग्यता *" data-en="Highest Qualification *">उच्चतम योग्यता *</label>
+            <select name="vQual">
+              <option value="">—</option>
+              <option data-hi="स्नातक" data-en="Graduation">स्नातक</option>
+              <option data-hi="परास्नातक" data-en="Post Graduation">परास्नातक</option>
+              <option>B.Ed / D.El.Ed</option>
+              <option>B.Tech / B.E.</option>
+              <option>MBBS / BDS</option>
+              <option>CA / CS / MBA</option>
+              <option>Ph.D</option>
+              <option data-hi="अन्य" data-en="Other">अन्य</option>
+            </select>
+            <div class="errmsg" data-hi="कृपया चुनें" data-en="Select">कृपया चुनें</div>
+          </div>
+          <div class="field">
+            <label data-hi="मुख्य विषय *" data-en="Primary Subject *">मुख्य विषय *</label>
+            <input type="text" name="vSubject">
+            <div class="errmsg" data-hi="कृपया विषय अंकित करें" data-en="Enter subject">कृपया विषय अंकित करें</div>
+          </div>
         </div>
-        <div class="field"><label data-hi="पठन विषय चुनें *" data-en="Select Subjects *">पठन विषय चुनें *</label>
+        <div class="field">
+          <label data-hi="पठन विषय चुनें *" data-en="Select Subjects *">पठन विषय चुनें *</label>
           <div class="check-grid">
             <label class="check"><input type="checkbox" name="vSubj" value="गणित"> <span data-hi="गणित" data-en="Maths">गणित</span></label>
             <label class="check"><input type="checkbox" name="vSubj" value="विज्ञान"> <span data-hi="विज्ञान" data-en="Science">विज्ञान</span></label>
@@ -648,110 +1538,304 @@
           </div>
         </div>
         <div class="row">
-          <div class="field"><label data-hi="शिक्षण प्रकार *" data-en="Teaching Mode *">शिक्षण प्रकार *</label><select name="vMode"><option value="">—</option><option data-hi="प्रत्यक्ष (कानपुर)" data-en="Offline (Kanpur)">प्रत्यक्ष (कानपुर)</option><option data-hi="अंतर्जाल द्वारा" data-en="Online">अंतर्जाल द्वारा</option><option data-hi="दोनों" data-en="Both">दोनों</option></select><div class="errmsg" data-hi="कृपया चुनें" data-en="Select">कृपया चुनें</div></div>
-          <div class="field"><label data-hi="साप्ताहिक समय *" data-en="Weekly Hours *">साप्ताहिक समय *</label><select name="vHours"><option value="">—</option><option>२-४ घण्टे</option><option>५-८ घण्टे</option><option>९-१२ घण्टे</option><option>१२+ घण्टे</option></select><div class="errmsg" data-hi="कृपया चुनें" data-en="Select">कृपया चुनें</div></div>
+          <div class="field">
+            <label data-hi="शिक्षण प्रकार *" data-en="Teaching Mode *">शिक्षण प्रकार *</label>
+            <select name="vMode">
+              <option value="">—</option>
+              <option data-hi="प्रत्यक्ष (कानपुर)" data-en="Offline (Kanpur)">प्रत्यक्ष (कानपुर)</option>
+              <option data-hi="अंतर्जाल द्वारा" data-en="Online">अंतर्जाल द्वारा</option>
+              <option data-hi="दोनों" data-en="Both">दोनों</option>
+            </select>
+            <div class="errmsg" data-hi="कृपया चुनें" data-en="Select">कृपया चुनें</div>
+          </div>
+          <div class="field">
+            <label data-hi="साप्ताहिक समय *" data-en="Weekly Hours *">साप्ताहिक समय *</label>
+            <select name="vHours">
+              <option value="">—</option>
+              <option>२-४ घण्टे</option>
+              <option>५-८ घण्टे</option>
+              <option>९-१२ घण्टे</option>
+              <option>१२+ घण्टे</option>
+            </select>
+            <div class="errmsg" data-hi="कृपया चुनें" data-en="Select">कृपया चुनें</div>
+          </div>
         </div>
         <button type="submit" class="btn btn-green btn-block mt24" data-hi="📩 आवेदन जमा करें" data-en="📩 Submit">📩 आवेदन जमा करें</button>
       </form>
-      <div id="volConfirm" style="display:none;text-align:center;padding:24px 0">
-        <div style="width:80px;height:80px;border-radius:50%;background:var(--green-soft);color:var(--green);display:grid;place-items:center;font-size:2.2rem;margin:0 auto 18px;border:3px solid var(--green-2)">✓</div>
-        <h3 style="color:var(--green-3);margin-bottom:10px" data-hi="🙏 धन्यवाद!" data-en="🙏 Thank you!">🙏 धन्यवाद!</h3>
+      <div id="volConfirm" class="confirm">
+        <div class="tick">✓</div>
+        <h3 data-hi="🙏 धन्यवाद!" data-en="🙏 Thank you!">🙏 धन्यवाद!</h3>
+        <p data-hi="आपका स्वयंसेवक आवेदन प्राप्त हो गया।" data-en="Your volunteer application is received.">आपका स्वयंसेवक आवेदन प्राप्त हो गया।</p>
         <div class="id-box">
           <small data-hi="स्वयंसेवक संख्या" data-en="Volunteer ID">स्वयंसेवक संख्या</small>
           <b id="volIdOut">—</b>
         </div>
+        <button class="btn btn-primary" onclick="closeModal('volunteerModal')" data-hi="बंद करें" data-en="Close">बंद करें</button>
       </div>
     </div>
   </div>
 </div>
 
 <!-- GRIEVANCE MODAL -->
-<div class="modal" id="grievanceModal" role="dialog" aria-modal="true">
+<div class="modal" id="grievanceModal" role="dialog" aria-modal="true" aria-labelledby="grievanceModalTitle">
   <div class="modal-box modal-md">
-    <div class="modal-head"><h3 data-hi="📢 शिकायत निवारण" data-en="📢 Grievance">📢 शिकायत निवारण</h3><button class="close-x" onclick="closeModal('grievanceModal')">×</button></div>
+    <div class="modal-head">
+      <h3 id="grievanceModalTitle" data-hi="📢 शिकायत निवारण" data-en="📢 Grievance">📢 शिकायत निवारण</h3>
+      <button class="close-x" onclick="closeModal('grievanceModal')" aria-label="बंद करें">×</button>
+    </div>
     <div class="modal-body">
       <form id="grievanceForm" novalidate>
         <div class="row">
-          <div class="field"><label data-hi="आपका नाम *" data-en="Your Name *">आपका नाम *</label><input type="text" name="gName"><div class="errmsg" data-hi="कृपया नाम अंकित करें" data-en="Enter name">कृपया नाम अंकित करें</div></div>
-          <div class="field"><label data-hi="आवेदन संख्या" data-en="Application ID">आवेदन संख्या</label><input type="text" name="gAppId" placeholder="DPF-UPL-26-XXXXX"></div>
+          <div class="field">
+            <label data-hi="आपका नाम *" data-en="Your Name *">आपका नाम *</label>
+            <input type="text" name="gName" autocomplete="name">
+            <div class="errmsg" data-hi="कृपया नाम अंकित करें" data-en="Enter name">कृपया नाम अंकित करें</div>
+          </div>
+          <div class="field">
+            <label data-hi="आवेदन संख्या" data-en="Application ID">आवेदन संख्या</label>
+            <input type="text" name="gAppId" placeholder="DPF-UPL-26-XXXXX" style="font-family:monospace;text-transform:uppercase">
+          </div>
         </div>
         <div class="row">
-          <div class="field"><label data-hi="चलभाष *" data-en="Mobile *">चलभाष *</label><input type="tel" name="gMobile" maxlength="10"><div class="errmsg" data-hi="दस अंक" data-en="10 digits">दस अंक</div></div>
-          <div class="field"><label data-hi="विद्युत्पत्र *" data-en="Email *">विद्युत्पत्र *</label><input type="email" name="gEmail"><div class="errmsg" data-hi="सही ईमेल" data-en="Valid email">सही ईमेल</div></div>
+          <div class="field">
+            <label data-hi="चलभाष *" data-en="Mobile *">चलभाष *</label>
+            <input type="tel" name="gMobile" maxlength="10" inputmode="numeric" autocomplete="tel">
+            <div class="errmsg" data-hi="दस अंक" data-en="10 digits">दस अंक</div>
+          </div>
+          <div class="field">
+            <label data-hi="विद्युत्पत्र *" data-en="Email *">विद्युत्पत्र *</label>
+            <input type="email" name="gEmail" autocomplete="email">
+            <div class="errmsg" data-hi="सही ईमेल" data-en="Valid email">सही ईमेल</div>
+          </div>
         </div>
-        <div class="field"><label data-hi="श्रेणी *" data-en="Category *">श्रेणी *</label><select name="gCategory"><option value="">—</option><option data-hi="आवेदन संबंधी" data-en="Application">आवेदन संबंधी</option><option data-hi="प्रलेख सत्यापन" data-en="Documents">प्रलेख सत्यापन</option><option data-hi="शुल्क संबंधी" data-en="Fee">शुल्क संबंधी</option><option data-hi="कक्षा अथवा शिक्षक" data-en="Class">कक्षा अथवा शिक्षक</option><option data-hi="प्रमाणपत्र" data-en="Certificate">प्रमाणपत्र</option><option data-hi="अन्य" data-en="Other">अन्य</option></select><div class="errmsg" data-hi="कृपया चुनें" data-en="Select">कृपया चुनें</div></div>
-        <div class="field"><label data-hi="विस्तृत विवरण *" data-en="Details *">विस्तृत विवरण *</label><textarea name="gDetails"></textarea><div class="errmsg" data-hi="कृपया विवरण अंकित करें" data-en="Enter details">कृपया विवरण अंकित करें</div></div>
+        <div class="field">
+          <label data-hi="श्रेणी *" data-en="Category *">श्रेणी *</label>
+          <select name="gCategory">
+            <option value="">—</option>
+            <option data-hi="आवेदन संबंधी" data-en="Application">आवेदन संबंधी</option>
+            <option data-hi="प्रलेख सत्यापन" data-en="Documents">प्रलेख सत्यापन</option>
+            <option data-hi="शुल्क संबंधी" data-en="Fee">शुल्क संबंधी</option>
+            <option data-hi="कक्षा अथवा शिक्षक" data-en="Class">कक्षा अथवा शिक्षक</option>
+            <option data-hi="प्रमाणपत्र" data-en="Certificate">प्रमाणपत्र</option>
+            <option data-hi="अन्य" data-en="Other">अन्य</option>
+          </select>
+          <div class="errmsg" data-hi="कृपया चुनें" data-en="Select">कृपया चुनें</div>
+        </div>
+        <div class="field">
+          <label data-hi="विस्तृत विवरण *" data-en="Details *">विस्तृत विवरण *</label>
+          <textarea name="gDetails" rows="4"></textarea>
+          <div class="errmsg" data-hi="कृपया विवरण अंकित करें" data-en="Enter details">कृपया विवरण अंकित करें</div>
+        </div>
         <button type="submit" class="btn btn-primary btn-block" data-hi="📩 शिकायत दर्ज करें" data-en="📩 Submit">📩 शिकायत दर्ज करें</button>
       </form>
-      <div id="grievanceConfirm" style="display:none;text-align:center;padding:24px 0">
-        <div style="width:80px;height:80px;border-radius:50%;background:var(--green-soft);color:var(--green);display:grid;place-items:center;font-size:2.2rem;margin:0 auto 18px;border:3px solid var(--green-2)">✓</div>
-        <h3 style="color:var(--green-3);margin-bottom:10px" data-hi="🙏 शिकायत दर्ज हो गई।" data-en="🙏 Complaint registered.">🙏 शिकायत दर्ज हो गई।</h3>
+      <div id="grievanceConfirm" class="confirm">
+        <div class="tick">✓</div>
+        <h3 data-hi="🙏 शिकायत दर्ज हो गई।" data-en="🙏 Complaint registered.">🙏 शिकायत दर्ज हो गई।</h3>
+        <p data-hi="हमारी टीम शीघ्र संपर्क करेगी।" data-en="Our team will contact you soon.">हमारी टीम शीघ्र संपर्क करेगी।</p>
         <div class="id-box">
           <small data-hi="शिकायत संख्या" data-en="Complaint ID">शिकायत संख्या</small>
           <b id="grievanceIdOut">—</b>
         </div>
+        <button class="btn btn-primary" onclick="closeModal('grievanceModal')" data-hi="बंद करें" data-en="Close">बंद करें</button>
       </div>
     </div>
   </div>
 </div>
 
-<div class="toast" id="toast"></div>
+<!-- TOAST -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 /* ============================================================
-   दिप्र फ़ाउंडेशन | The Uplift — Complete Script
+   दिप्र फ़ाउंडेशन | The Uplift — Complete Script v3.0
    ============================================================ */
+'use strict';
+
 const $ = (s, c=document) => c.querySelector(s);
 const $$ = (s, c=document) => [...c.querySelectorAll(s)];
 const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbynC667snioVb9pnBE8jDRWUJHwKOUi5jTYO31PlfolDG5VjcTrE93zh2k-Ai7zgi0/exec';
 
-/* ---------- Language ---------- */
+/* ============================================================
+   LANGUAGE SWITCH — FIXED v3.0
+   ============================================================ */
+function _lang(){ return document.body.classList.contains('lang-en') ? 'en' : 'hi'; }
+
 function setLang(lang){
+  if(lang !== 'hi' && lang !== 'en') return;
   document.body.classList.toggle('lang-hi', lang === 'hi');
   document.body.classList.toggle('lang-en', lang === 'en');
   document.documentElement.lang = lang;
-  $$('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-  try{ localStorage.setItem('uplift_lang', lang); }catch(e){}
+
+  $$('.lang-btn').forEach(b => {
+    const isActive = b.dataset.lang === lang;
+    b.classList.toggle('active', isActive);
+    b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+  });
+
+  try { localStorage.setItem('uplift_lang', lang); } catch(e){}
+
   $$('[data-hi][data-en]').forEach(el => {
     const t = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-hi');
-    if(t !== null){
-      if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = t;
-       el.innerHTML = t;
+    if(t === null) return;
+    if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA'){
+      el.placeholder = t;
+    } else {
+      el.innerHTML = t;
     }
   });
+
   renderCourseTable();
   renderHeroSeats();
   renderFreeCourses();
-  if(typeof renderThoughts === 'function') renderThoughts();
+  fillApplyCourses();
+  renderThoughts();
 }
-$$('.lang-btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
-try{ const s = localStorage.getItem('uplift_lang'); if(s) setLang(s); }catch(e){}
+window.setLang = setLang;
 
-/* ---------- Mobile nav ---------- */
-const burger = $('#burger'), mainNav = $('#mainNav');
-burger.addEventListener('click', () => { burger.classList.toggle('open'); mainNav.classList.toggle('open'); document.body.classList.toggle('modal-open', mainNav.classList.contains('open')); });
-$$('#mainNav a, #mainNav button').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); mainNav.classList.remove('open'); document.body.classList.remove('modal-open'); }));
-const header = $('#mainHeader');
-window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 20), { passive:true });
+/* ============================================================
+   MOBILE NAV
+   ============================================================ */
+const burger = $('#burger');
+const mainNav = $('#mainNav');
 
-/* ---------- Toast ---------- */
-let _toastTimer;
-function toast(msg){
-  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
-  clearTimeout(_toastTimer); _toastTimer = setTimeout(() => t.classList.remove('show'), 4000);
+function openDrawer(){
+  if(!mainNav || !burger) return;
+  mainNav.classList.add('open');
+  burger.classList.add('open');
+  burger.setAttribute('aria-expanded', 'true');
+  document.body.classList.add('modal-open');
+  document.body.style.overflow = 'hidden';
+  const closeBtn = mainNav.querySelector('.drawer-close');
+  if(closeBtn) setTimeout(() => closeBtn.focus(), 100);
+}
+function closeDrawer(){
+  if(!mainNav || !burger) return;
+  mainNav.classList.remove('open');
+  burger.classList.remove('open');
+  burger.setAttribute('aria-expanded', 'false');
+  document.body.classList.remove('modal-open');
+  document.body.style.overflow = '';
+}
+window.openDrawer = openDrawer;
+window.closeDrawer = closeDrawer;
+
+if(burger){
+  burger.addEventListener('click', () => {
+    if(mainNav.classList.contains('open')) closeDrawer();
+    else openDrawer();
+  });
 }
 
-/* ---------- Modals ---------- */
-function openModal(id){ const el = document.getElementById(id); if(!el) return; el.classList.add('show'); document.body.classList.add('modal-open'); }
-function closeModal(id){ const el = document.getElementById(id); if(!el) return; el.classList.remove('show'); document.body.classList.remove('modal-open'); }
-document.addEventListener('keydown', e => { if(e.key === 'Escape'){ ['applyModal','volunteerModal','grievanceModal','otpModal','quizModal','freeCertModal','ebookModal'].forEach(closeModal); } });
-['applyModal','volunteerModal','grievanceModal','otpModal','quizModal','freeCertModal','ebookModal'].forEach(id => {
-  const el = document.getElementById(id);
-  if(el) el.addEventListener('click', e => { if(e.target.id === id){ el.classList.remove('show'); document.body.classList.remove('modal-open'); } });
+$$('#mainNav a').forEach(a => {
+  a.addEventListener('click', () => { if(window.innerWidth <= 860) closeDrawer(); });
+});
+
+/* ESC to close drawer */
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape' && mainNav && mainNav.classList.contains('open')){
+    closeDrawer();
+  }
 });
 
 /* ============================================================
-   THOUGHTS SLIDER (auto-slide)
+   HEADER SCROLL
+   ============================================================ */
+const header = $('#mainHeader');
+if(header){
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if(!ticking){
+      requestAnimationFrame(() => {
+        header.classList.toggle('scrolled', window.scrollY > 20);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+let _toastTimer;
+function toast(msg){
+  const t = $('#toast');
+  if(!t) return;
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(_toastTimer);
+  _toastTimer = setTimeout(() => t.classList.remove('show'), 4000);
+}
+window.toast = toast;
+
+/* ============================================================
+   MODALS
+   ============================================================ */
+let _lastFocused = null;
+
+function openModal(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  _lastFocused = document.activeElement;
+  el.classList.add('show');
+  document.body.classList.add('modal-open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => {
+    const focusable = el.querySelector('input:not([type="hidden"]), select, textarea, button:not(.close-x)');
+    if(focusable) focusable.focus();
+  }, 100);
+}
+function closeModal(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.classList.remove('show');
+  if(!$('.modal.show')){
+    document.body.classList.remove('modal-open');
+    document.body.style.overflow = '';
+  }
+  if(_lastFocused && typeof _lastFocused.focus === 'function'){
+    try { _lastFocused.focus(); } catch(e){}
+    _lastFocused = null;
+  }
+}
+window.openModal = openModal;
+window.closeModal = closeModal;
+
+const MODAL_IDS = ['applyModal','volunteerModal','grievanceModal','otpModal','quizModal','freeCertModal','ebookModal'];
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') MODAL_IDS.forEach(closeModal);
+});
+MODAL_IDS.forEach(id => {
+  const el = document.getElementById(id);
+  if(el) el.addEventListener('click', e => {
+    if(e.target.id === id) closeModal(id);
+  });
+});
+
+/* ============================================================
+   BOTTOM NAV — Active state on scroll
+   ============================================================ */
+function updateBottomNav(){
+  const nav = $('.bottom-nav');
+  if(!nav) return;
+  const scrollY = window.scrollY + 200;
+  let active = null;
+  $$('.bottom-nav-item[data-nav]').forEach(item => {
+    const target = $(item.dataset.nav);
+    if(target && target.offsetTop <= scrollY){
+      active = item;
+    }
+  });
+  $$('.bottom-nav-item').forEach(item => item.classList.remove('active'));
+  if(active) active.classList.add('active');
+  else {
+    const home = $('.bottom-nav-item[data-nav="#home"]');
+    if(home) home.classList.add('active');
+  }
+}
+
+/* ============================================================
+   THOUGHTS SLIDER
    ============================================================ */
 const DONATION_QUOTES = [
   { text_hi:'"दातव्यमिति यद्दानं दीयते\'नुपकारिणे।<br>देशे काले च पात्रे च तद्दानं सात्त्विकं स्मृतम्॥"', text_en:'"Datavyam iti yad danam diyate\'nupakarine,<br>deshe kale cha patre cha tad danam sattvikam smritam."', cite_hi:'भगवद्गीता १७.२०', cite_en:'Bhagavad Gita 17.20', meaning_hi:'जो दान योग्य देश, उचित काल तथा योग्य पात्र को, बिना किसी प्रतिफल की अपेक्षा के दिया जाए — वही सात्त्विक दान कहलाता है।', meaning_en:'Charity given at the right place, right time, to the right person, without expectation of return — that is Sattvik charity.', type:'sanskrit' },
@@ -777,7 +1861,7 @@ function renderThoughts(){
   const track = document.getElementById('thoughtTrack');
   const dots = document.getElementById('thoughtDots');
   if(!track || !dots) return;
-  const lang = document.body.classList.contains('lang-en') ? 'en' : 'hi';
+  const lang = _lang();
   track.innerHTML = DONATION_QUOTES.map((q, i) => {
     const text = lang === 'en' ? q.text_en : q.text_hi;
     const cite = lang === 'en' ? q.cite_en : q.cite_hi;
@@ -785,11 +1869,20 @@ function renderThoughts(){
     const meaningLabel = lang === 'en' ? 'Meaning:' : 'अर्थ:';
     const cls = q.type === 'english' ? 'thought-slide english' : 'thought-slide';
     const activeCls = i === _currentSlide ? ' active' : '';
-    return `<div class="${cls}${activeCls}" data-index="${i}"><div class="thought-text">${text}</div><cite class="thought-cite">${cite}</cite><div class="thought-meaning"><b>${meaningLabel}</b> ${meaning}</div><div class="slider-progress"></div></div>`;
+    return `<div class="${cls}${activeCls}" data-index="${i}" role="tabpanel">
+      <div class="thought-text">${text}</div>
+      <cite class="thought-cite">${cite}</cite>
+      <div class="thought-meaning"><b>${meaningLabel}</b> ${meaning}</div>
+    </div>`;
   }).join('');
-  dots.innerHTML = DONATION_QUOTES.map((_, i) => `<button class="slider-dot${i === _currentSlide ? ' active' : ''}" data-dot="${i}" aria-label="Slide ${i+1}"></button>`).join('');
+  dots.innerHTML = DONATION_QUOTES.map((_, i) =>
+    `<button class="slider-dot${i === _currentSlide ? ' active' : ''}" data-dot="${i}" aria-label="उद्धरण ${i+1}"></button>`
+  ).join('');
   dots.querySelectorAll('.slider-dot').forEach(dot => {
-    dot.addEventListener('click', () => { goToSlide(parseInt(dot.dataset.dot, 10)); restartAutoSlide(); });
+    dot.addEventListener('click', () => {
+      goToSlide(parseInt(dot.dataset.dot, 10));
+      restartAutoSlide();
+    });
   });
 }
 
@@ -811,8 +1904,13 @@ function prevSlide(){
   goToSlide(_currentSlide - 1);
   if(window.SoundFX) SoundFX.play('slideChange');
 }
-function startAutoSlide(){ stopAutoSlide(); _autoSlideTimer = setInterval(() => { if(!_isPaused) nextSlide(); }, SLIDE_DURATION); }
-function stopAutoSlide(){ if(_autoSlideTimer){ clearInterval(_autoSlideTimer); _autoSlideTimer = null; } }
+function startAutoSlide(){
+  stopAutoSlide();
+  _autoSlideTimer = setInterval(() => { if(!_isPaused) nextSlide(); }, SLIDE_DURATION);
+}
+function stopAutoSlide(){
+  if(_autoSlideTimer){ clearInterval(_autoSlideTimer); _autoSlideTimer = null; }
+}
 function restartAutoSlide(){ startAutoSlide(); }
 
 function initThoughts(){
@@ -827,24 +1925,39 @@ function initThoughts(){
   if(slider){
     slider.addEventListener('mouseenter', () => { _isPaused = true; });
     slider.addEventListener('mouseleave', () => { _isPaused = false; });
+    slider.addEventListener('focusin', () => { _isPaused = true; });
+    slider.addEventListener('focusout', () => { _isPaused = false; });
   }
-  document.addEventListener('visibilitychange', () => { if(document.hidden){ stopAutoSlide(); } else { startAutoSlide(); } });
+  document.addEventListener('visibilitychange', () => {
+    if(document.hidden){ stopAutoSlide(); } else { startAutoSlide(); }
+  });
   let touchStartX = 0;
   const track = document.getElementById('thoughtTrack');
   if(track){
-    track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; _isPaused = true; }, { passive: true });
+    track.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+      _isPaused = true;
+    }, { passive: true });
     track.addEventListener('touchend', e => {
       const touchEndX = e.changedTouches[0].clientX;
       const diff = touchStartX - touchEndX;
-      if(Math.abs(diff) > 50){ if(diff > 0) nextSlide(); else prevSlide(); restartAutoSlide(); }
+      if(Math.abs(diff) > 50){
+        if(diff > 0) nextSlide();
+        else prevSlide();
+        restartAutoSlide();
+      }
       _isPaused = false;
     }, { passive: true });
   }
 }
-if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', initThoughts); } else { initThoughts(); }
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', initThoughts);
+} else {
+  initThoughts();
+}
 
 /* ============================================================
-   COURSES
+   COURSES DATA
    ============================================================ */
 const COURSES = [
   { code:'UPL-06', hi:'कक्षा ६–८ (आधारभूत)', en:'Class 6–8 (Foundation)', durHi:'१२ मास', durEn:'12 months', gen:3500, fee:1000, seats:60, cycle:'month' },
@@ -856,8 +1969,9 @@ const COURSES = [
   { code:'UPL-IT', hi:'सूचना प्रौद्योगिकी', en:'IT & ITES', durHi:'१ मास', durEn:'1 month', gen:4500, fee:1200, seats:40, cycle:'month' },
   { code:'UPL-DO', hi:'अंकीय कार्यालय', en:'Digital Office', durHi:'१५ दिवस', durEn:'15 days', gen:1500, fee:500, seats:40, cycle:'15days' }
 ];
+
 let LIVE_SEATS = {};
-function _lang(){ return document.body.classList.contains('lang-en') ? 'en' : 'hi'; }
+
 function concession(income, isOrphan){
   if(isOrphan) return 100;
   if(income <= 100000) return 70;
@@ -869,8 +1983,15 @@ function concession(income, isOrphan){
 function fmtN(n){ return Number(n || 0).toLocaleString('en-IN'); }
 
 async function loadLiveSeats(){
-  try{ const cached = localStorage.getItem('uplift_seats'); if(cached){ LIVE_SEATS = JSON.parse(cached); renderCourseTable(); renderHeroSeats(); } }catch(e){}
-  try{
+  try {
+    const cached = localStorage.getItem('uplift_seats');
+    if(cached){
+      LIVE_SEATS = JSON.parse(cached);
+      renderCourseTable();
+      renderHeroSeats();
+    }
+  } catch(e){}
+  try {
     const ctl = new AbortController();
     const tmo = setTimeout(() => ctl.abort(), 3500);
     const res = await fetch(SHEET_ENDPOINT + '?action=getSeats', { signal: ctl.signal });
@@ -878,31 +1999,58 @@ async function loadLiveSeats(){
     const r = await res.json();
     if(r.status === 'success' && r.data){
       LIVE_SEATS = r.data;
-      try{ localStorage.setItem('uplift_seats', JSON.stringify(r.data)); }catch(e){}
-      renderCourseTable(); renderHeroSeats();
+      try { localStorage.setItem('uplift_seats', JSON.stringify(r.data)); } catch(e){}
+      renderCourseTable();
+      renderHeroSeats();
     }
-  }catch(e){}
+  } catch(e){}
 }
+
 function renderCourseTable(){
-  const tb = $('#courseRows'); if(!tb) return;
+  const tb = $('#courseRows');
+  if(!tb) return;
   const lang = _lang();
   tb.innerHTML = COURSES.map(c => {
-    const suf = c.cycle === '15days' ? (lang === 'en' ? '/15d' : '/१५ दिवस') : (lang === 'en' ? '/mo' : '/मास');
+    const suf = c.cycle === '15days'
+      ? (lang === 'en' ? '/15d' : '/१५ दिवस')
+      : (lang === 'en' ? '/mo' : '/मास');
     const minFee = Math.round(c.fee * 0.3 / 10) * 10;
     const name = lang === 'en' ? c.en : c.hi;
     const dur = lang === 'en' ? c.durEn : c.durHi;
     const left = LIVE_SEATS[c.code] !== undefined ? LIVE_SEATS[c.code] : c.seats;
-    let cls = 'seat-open', txt = left + ' / ' + c.seats;
-    if(left <= 0){ cls = 'seat-full'; txt = lang === 'en' ? 'FULL' : 'पूर्ण'; }
-    else if((left / c.seats) < 0.25){ cls = 'seat-low'; txt = (lang === 'en' ? 'Only ' : 'केवल ') + left; }
+    let cls = 'seat-open';
+    let txt = left + ' / ' + c.seats;
+    if(left <= 0){
+      cls = 'seat-full';
+      txt = lang === 'en' ? 'FULL' : 'पूर्ण';
+    } else if((left / c.seats) < 0.25){
+      cls = 'seat-low';
+      txt = (lang === 'en' ? 'Only ' : 'केवल ') + left;
+    }
     const badge = `<span class="seat-badge ${cls}">${txt}</span>`;
-    const ebook = `<span class="ebook-link" onclick="ebookNotice()">📖 ${lang==='en'?'After registration':'पंजीकरण के बाद'}</span>`;
-    return `<tr><td><b style="font-family:monospace;color:var(--maroon)">${c.code}</b></td><td><b>${name}</b></td><td>${dur}</td><td><span class="fee-old">₹${fmtN(c.gen)}</span></td><td style="font-weight:700;color:var(--maroon)">₹${fmtN(c.fee)}<span style="font-weight:400;color:var(--muted);font-size:.82em"> ${suf}</span></td><td class="fee-cut">₹${fmtN(minFee)}</td><td>${badge}</td><td>${ebook}</td></tr>`;
+    const ebookLabel = lang === 'en' ? 'After registration' : 'पंजीकरण के बाद';
+    const ebook = `<span class="ebook-link" onclick="ebookNotice()" role="button" tabindex="0">📖 ${ebookLabel}</span>`;
+    return `<tr>
+      <td data-label="${lang === 'en' ? 'Code' : 'संकेत'}"><b style="font-family:monospace;color:var(--maroon)">${c.code}</b></td>
+      <td data-label="${lang === 'en' ? 'Course' : 'पाठ्यक्रम'}"><b>${name}</b></td>
+      <td data-label="${lang === 'en' ? 'Duration' : 'अवधि'}">${dur}</td>
+      <td data-label="${lang === 'en' ? 'Market Fee' : 'बाजार शुल्क'}"><span class="fee-old">₹${fmtN(c.gen)}</span></td>
+      <td data-label="${lang === 'en' ? 'Uplift Fee' : 'अपलिफ़्ट शुल्क'}" style="font-weight:700;color:var(--maroon)">₹${fmtN(c.fee)}<span style="font-weight:400;color:var(--muted);font-size:.82em"> ${suf}</span></td>
+      <td data-label="${lang === 'en' ? 'Min Fee' : 'न्यूनतम शुल्क'}" class="fee-cut">₹${fmtN(minFee)}</td>
+      <td data-label="${lang === 'en' ? 'Seats' : 'उपलब्ध स्थान'}">${badge}</td>
+      <td data-label="${lang === 'en' ? 'Ebook' : 'ई-पुस्तक'}">${ebook}</td>
+    </tr>`;
   }).join('');
 }
-function ebookNotice(){ toast(_lang()==='en' ? '📖 Ebook will be provided after registration.' : '📖 ई-पुस्तक पंजीकरण के पश्चात् उपलब्ध कराई जाएगी।'); }
+
+function ebookNotice(){
+  toast(_lang() === 'en' ? '📖 Ebook will be provided after registration.' : '📖 ई-पुस्तक पंजीकरण के पश्चात् उपलब्ध कराई जाएगी।');
+}
+window.ebookNotice = ebookNotice;
+
 function renderHeroSeats(){
-  const ul = $('#heroSeatList'); if(!ul) return;
+  const ul = $('#heroSeatList');
+  if(!ul) return;
   const lang = _lang();
   ul.innerHTML = COURSES.slice(0, 5).map(c => {
     const left = LIVE_SEATS[c.code] !== undefined ? LIVE_SEATS[c.code] : c.seats;
@@ -911,31 +2059,42 @@ function renderHeroSeats(){
     return `<li><span>${c.code} — ${name}</span><b class="seat-badge ${cls}" style="font-size:.82rem">${left}/${c.seats}</b></li>`;
   }).join('');
 }
+
 renderCourseTable();
 renderHeroSeats();
 setTimeout(loadLiveSeats, 150);
 setInterval(loadLiveSeats, 60000);
 
-/* ---------- Fee Calculator ---------- */
+/* ============================================================
+   FEE CALCULATOR
+   ============================================================ */
 (function initCalc(){
-  const sel = $('#calcCourse'); if(!sel) return;
-  function fill(){
+  const sel = $('#calcCourse');
+  if(!sel) return;
+
+  function fillCalcCourse(){
     const lang = _lang();
     const cur = sel.value;
     sel.innerHTML = '';
     COURSES.forEach(c => {
       const o = document.createElement('option');
-      o.value = c.code; o.textContent = `${c.code} — ${lang === 'en' ? c.en : c.hi}`;
+      o.value = c.code;
+      o.textContent = `${c.code} — ${lang === 'en' ? c.en : c.hi}`;
       sel.appendChild(o);
     });
     if(cur) sel.value = cur;
   }
-  fill();
+  fillCalcCourse();
+
   function update(){
     const c = COURSES.find(x => x.code === sel.value);
     const inc = parseFloat($('#calcIncome').value) || 0;
     const isOrphan = $('#calcOrphan').value === 'yes';
-    if(!c || (inc <= 0 && !isOrphan)){ $('#calcResult').style.display = 'none'; return; }
+    const result = $('#calcResult');
+    if(!c || (inc <= 0 && !isOrphan)){
+      result.classList.remove('show');
+      return;
+    }
     const d = concession(inc, isOrphan);
     const payable = Math.round(c.fee * (1 - d / 100) / 10) * 10;
     $('#rGen').textContent = '₹' + fmtN(c.gen);
@@ -943,15 +2102,24 @@ setInterval(loadLiveSeats, 60000);
     $('#rDisc').textContent = d + '%';
     $('#rPay').textContent = '₹' + fmtN(payable);
     const lang = _lang();
-    $('#rPayLabel').textContent = c.cycle === '15days' ? (lang === 'en' ? 'Payable (15 days)' : 'देय शुल्क (१५ दिवस)') : (lang === 'en' ? 'Payable/month' : 'देय शुल्क / मास');
-    $('#calcResult').style.display = 'block';
+    $('#rPayLabel').textContent = c.cycle === '15days'
+      ? (lang === 'en' ? 'Payable (15 days)' : 'देय शुल्क (१५ दिवस)')
+      : (lang === 'en' ? 'Payable/month' : 'देय शुल्क / मास');
+    result.classList.add('show');
   }
+
   sel.addEventListener('change', update);
-  $('#calcIncome').addEventListener('input', update);
-  $('#calcOrphan').addEventListener('change', update);
+  const incEl = $('#calcIncome');
+  const orphEl = $('#calcOrphan');
+  if(incEl) incEl.addEventListener('input', update);
+  if(orphEl) orphEl.addEventListener('change', update);
+
+  window._refreshCalcCourses = fillCalcCourse;
 })();
 
-/* ---------- States & Districts ---------- */
+/* ============================================================
+   STATES & DISTRICTS
+   ============================================================ */
 const STATES_DISTRICTS = {
   'up': { hi:'उत्तर प्रदेश', en:'Uttar Pradesh', districts:["आगरा","अलीगढ़","अम्बेडकर नगर","अमेठी","अमरोहा","औरैया","अयोध्या","आज़मगढ़","बागपत","बहराइच","बलिया","बलरामपुर","बांदा","बाराबंकी","बरेली","बस्ती","भदोही","बिजनौर","बदायूँ","बुलंदशहर","चंदौली","चित्रकूट","देवरिया","एटा","इटावा","फर्रुखाबाद","फतेहपुर","फिरोज़ाबाद","गौतम बुद्ध नगर","गाज़ियाबाद","गाज़ीपुर","गोंडा","गोरखपुर","हमीरपुर","हापुड़","हरदोई","हाथरस","जालौन","जौनपुर","झाँसी","कन्नौज","कानपुर देहात","कानपुर नगर","कासगंज","कौशाम्बी","कुशीनगर","लखीमपुर खीरी","ललितपुर","लखनऊ","महराजगंज","महोबा","मैनपुरी","मथुरा","मऊ","मेरठ","मिर्ज़ापुर","मुरादाबाद","मुज़फ़्फ़रनगर","पीलीभीत","प्रतापगढ़","प्रयागराज","रायबरेली","रामपुर","सहारनपुर","सम्भल","संत कबीर नगर","शाहजहाँपुर","शामली","श्रावस्ती","सिद्धार्थनगर","सीतापुर","सोनभद्र","सुल्तानपुर","उन्नाव","वाराणसी"] },
   'mp': { hi:'मध्य प्रदेश', en:'Madhya Pradesh', districts:["भोपाल","इंदौर","ग्वालियर","जबलपुर","उज्जैन","सागर","रीवा","सतना"] },
@@ -962,152 +2130,323 @@ const STATES_DISTRICTS = {
   'uk': { hi:'उत्तराखंड', en:'Uttarakhand', districts:["देहरादून","हरिद्वार","रुड़की","नैनीताल"] },
   'ot': { hi:'अन्य राज्य', en:'Other State', districts:["—"] }
 };
+
 (function initStates(){
-  const ss = $('#applyState'), ds = $('#applyDistrict');
+  const ss = $('#applyState');
+  const ds = $('#applyDistrict');
   if(!ss || !ds) return;
   const lang = _lang();
   ss.innerHTML = '';
   Object.keys(STATES_DISTRICTS).forEach(k => {
     const o = document.createElement('option');
-    o.value = k; o.textContent = lang === 'en' ? STATES_DISTRICTS[k].en : STATES_DISTRICTS[k].hi;
+    o.value = k;
+    o.textContent = lang === 'en' ? STATES_DISTRICTS[k].en : STATES_DISTRICTS[k].hi;
     ss.appendChild(o);
   });
   ss.value = 'up';
   ss.addEventListener('change', () => {
     ds.innerHTML = '<option value="">—</option>';
     (STATES_DISTRICTS[ss.value]?.districts || []).forEach(d => {
-      const o = document.createElement('option'); o.value = d; o.textContent = d; ds.appendChild(o);
+      const o = document.createElement('option');
+      o.value = d;
+      o.textContent = d;
+      ds.appendChild(o);
     });
   });
   ss.dispatchEvent(new Event('change'));
 })();
-(function initApplyCourse(){
-  const sel = $('#applyCourseSelect'); if(!sel) return;
-  sel.innerHTML = '<option value="">—</option>';
-  COURSES.forEach(c => { const o = document.createElement('option'); o.value = c.code; o.textContent = `${c.code} — ${c.hi}`; sel.appendChild(o); });
-})();
 
-/* ---------- API ---------- */
+/* ---------- Apply Course dropdown — Language aware ---------- */
+function fillApplyCourses(){
+  const sel = $('#applyCourseSelect');
+  if(!sel) return;
+  const lang = _lang();
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">—</option>';
+  COURSES.forEach(c => {
+    const o = document.createElement('option');
+    o.value = c.code;
+    o.textContent = `${c.code} — ${lang === 'en' ? c.en : c.hi}`;
+    sel.appendChild(o);
+  });
+  if(cur) sel.value = cur;
+}
+fillApplyCourses();
+
+/* ============================================================
+   API HELPER
+   ============================================================ */
 async function apiCall(payload){
-  try{
-    const res = await fetch(SHEET_ENDPOINT, { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(payload), redirect:'follow' });
+  try {
+    const res = await fetch(SHEET_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload),
+      redirect: 'follow'
+    });
     const text = await res.text();
-    try{ return JSON.parse(text); }catch(e){ return { status:'error', message:'अमान्य प्रतिक्रिया' }; }
-  }catch(e){ return { status:'error', message:'संपर्क विफल। पुन: प्रयास करें।' }; }
+    try { return JSON.parse(text); }
+    catch(e){ return { status:'error', message:'अमान्य प्रतिक्रिया' }; }
+  } catch(e){
+    return { status:'error', message:'संपर्क विफल। पुन: प्रयास करें।' };
+  }
 }
 
-/* ---------- OTP ---------- */
+/* ============================================================
+   OTP
+   ============================================================ */
 const OTP = {
-  verifiedEmail: null, _pending: null, _expected: null, _timerId: null, _autoVerify: null,
-  open(){ $('#otpStep1').style.display = 'block'; $('#otpStep2').style.display = 'none'; $('#otpCodeInput').value = ''; $('#otpCodeErr').textContent = ''; openModal('otpModal'); },
-  close(){ closeModal('otpModal'); clearInterval(this._timerId); clearTimeout(this._autoVerify); $('#otpEmail').readOnly = false; },
+  verifiedEmail: null,
+  _pending: null,
+  _expected: null,
+  _timerId: null,
+  _autoVerify: null,
+
+  open(){
+    $('#otpStep1').style.display = 'block';
+    $('#otpStep2').style.display = 'none';
+    $('#otpCodeInput').value = '';
+    $('#otpCodeErr').textContent = '';
+    openModal('otpModal');
+  },
+  close(){
+    closeModal('otpModal');
+    clearInterval(this._timerId);
+    clearTimeout(this._autoVerify);
+    $('#otpEmail').readOnly = false;
+  },
   async send(){
     const email = $('#otpEmail').value.trim();
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ $('#otpEmailErr').textContent = 'सही ईमेल अंकित करें'; $('#otpEmail').closest('.field').classList.add('err'); return; }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      $('#otpEmailErr').textContent = _lang() === 'en' ? 'Enter a valid email' : 'सही ईमेल अंकित करें';
+      $('#otpEmail').closest('.field').classList.add('err');
+      return;
+    }
     $('#otpEmail').closest('.field').classList.remove('err');
-    const btn = $('#otpSendBtn'); const orig = btn.textContent; btn.disabled = true; btn.textContent = '⏳ भेजा जा रहा है...';
+    const btn = $('#otpSendBtn');
+    const orig = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = _lang() === 'en' ? '⏳ Sending...' : '⏳ भेजा जा रहा है...';
     const r = await apiCall({ action:'sendOtp', email });
-    btn.disabled = false; btn.textContent = orig;
+    btn.disabled = false;
+    btn.textContent = orig;
     if(r.status === 'success'){
       $('#otpSentTo').textContent = email;
-      $('#otpStep1').style.display = 'none'; $('#otpStep2').style.display = 'block';
-      $('#otpCodeInput').focus(); this.startTimer(60); toast('कूट भेजा गया ✓');
-    } else { toast(r.message || 'त्रुटि'); }
+      $('#otpStep1').style.display = 'none';
+      $('#otpStep2').style.display = 'block';
+      $('#otpCodeInput').focus();
+      this.startTimer(60);
+      toast(_lang() === 'en' ? '✓ Code sent' : 'कूट भेजा गया ✓');
+    } else {
+      toast(r.message || 'त्रुटि');
+    }
   },
   async verify(){
     const email = $('#otpEmail').value.trim().toLowerCase();
     const code = $('#otpCodeInput').value.trim();
-    if(this._expected && email !== this._expected){ toast('ईमेल परिवर्तित नहीं हो सकता'); return; }
-    if(!/^\d{6}$/.test(code)){ $('#otpCodeErr').textContent = 'छह अंकों का कूट अंकित करें'; return; }
-    const btn = $('#otpVerifyBtn'); const orig = btn.textContent; btn.disabled = true; btn.textContent = '⏳';
+    if(this._expected && email !== this._expected){
+      toast(_lang() === 'en' ? 'Email cannot be changed' : 'ईमेल परिवर्तित नहीं हो सकता');
+      return;
+    }
+    if(!/^\d{6}$/.test(code)){
+      $('#otpCodeErr').textContent = _lang() === 'en' ? 'Enter 6-digit code' : 'छह अंकों का कूट अंकित करें';
+      return;
+    }
+    const btn = $('#otpVerifyBtn');
+    const orig = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '⏳';
     const r = await apiCall({ action:'verifyOtp', email, otp: code });
-    btn.disabled = false; btn.textContent = orig;
+    btn.disabled = false;
+    btn.textContent = orig;
     if(r.status === 'success'){
-      this.verifiedEmail = email; this.close(); toast('✓ विद्युत्पत्र सत्यापित');
-      if(this._pending){ const fn = this._pending; this._pending = null; fn(); }
-    } else { $('#otpCodeErr').textContent = r.message || 'अमान्य कूट'; }
+      this.verifiedEmail = email;
+      this.close();
+      toast(_lang() === 'en' ? '✓ Email verified' : '✓ विद्युत्पत्र सत्यापित');
+      if(this._pending){
+        const fn = this._pending;
+        this._pending = null;
+        fn();
+      }
+    } else {
+      $('#otpCodeErr').textContent = r.message || (_lang() === 'en' ? 'Invalid code' : 'अमान्य कूट');
+    }
   },
   startTimer(s){
     clearInterval(this._timerId);
-    const el = $('#otpTimer'), rs = $('#otpResendBtn');
-    rs.disabled = true; rs.style.opacity = '.5'; el.textContent = `(${s}s)`;
-    this._timerId = setInterval(() => { s--; el.textContent = `(${s}s)`; if(s <= 0){ clearInterval(this._timerId); el.textContent = ''; rs.disabled = false; rs.style.opacity = '1'; } }, 1000);
+    const el = $('#otpTimer');
+    const rs = $('#otpResendBtn');
+    rs.disabled = true;
+    rs.style.opacity = '.5';
+    el.textContent = `(${s}s)`;
+    this._timerId = setInterval(() => {
+      s--;
+      el.textContent = `(${s}s)`;
+      if(s <= 0){
+        clearInterval(this._timerId);
+        el.textContent = '';
+        rs.disabled = false;
+        rs.style.opacity = '1';
+      }
+    }, 1000);
   },
   require(email, cb){
     const clean = (email || '').trim().toLowerCase();
-    if(this.verifiedEmail === clean){ cb(); }
-    else{
-      this._pending = cb; this._expected = clean;
-      $('#otpEmail').value = email || ''; $('#otpEmail').readOnly = true;
+    if(this.verifiedEmail === clean){
+      cb();
+    } else {
+      this._pending = cb;
+      this._expected = clean;
+      $('#otpEmail').value = email || '';
+      $('#otpEmail').readOnly = true;
       this.open();
       setTimeout(() => this.send(), 200);
     }
   }
 };
+
 $('#otpSendBtn').addEventListener('click', () => OTP.send());
 $('#otpVerifyBtn').addEventListener('click', () => OTP.verify());
 $('#otpResendBtn').addEventListener('click', () => OTP.send());
-$('#otpBackBtn').addEventListener('click', () => { $('#otpStep2').style.display = 'none'; $('#otpStep1').style.display = 'block'; clearInterval(OTP._timerId); });
+$('#otpBackBtn').addEventListener('click', () => {
+  $('#otpStep2').style.display = 'none';
+  $('#otpStep1').style.display = 'block';
+  clearInterval(OTP._timerId);
+});
 $('#otpCodeInput').addEventListener('input', e => {
   e.target.value = e.target.value.replace(/\D/g, '').slice(0, 6);
   $('#otpCodeErr').textContent = '';
-  if(e.target.value.length === 6){ clearTimeout(OTP._autoVerify); OTP._autoVerify = setTimeout(() => OTP.verify(), 300); }
+  if(e.target.value.length === 6){
+    clearTimeout(OTP._autoVerify);
+    OTP._autoVerify = setTimeout(() => OTP.verify(), 300);
+  }
 });
 
-/* ---------- Apply Form ---------- */
-function openApplyModal(){ openModal('applyModal'); }
+/* ============================================================
+   APPLY FORM
+   ============================================================ */
+function openApplyModal(){
+  const applyForm = $('#applyForm');
+  const applyConfirm = $('#applyConfirm');
+  if(applyForm) applyForm.style.display = 'block';
+  if(applyConfirm) applyConfirm.classList.remove('show');
+  openModal('applyModal');
+}
+window.openApplyModal = openApplyModal;
+
 $('#applyForm').addEventListener('submit', async e => {
   e.preventDefault();
   const f = e.target;
   const val = n => { const el = f.querySelector(`[name="${n}"]`); return el ? el.value : ''; };
-  const name = val('fullName').trim(), gender = val('gender');
-  const mobile = val('mobile').trim(), email = val('email').trim();
+  const name = val('fullName').trim();
+  const gender = val('gender');
+  const mobile = val('mobile').trim();
+  const email = val('email').trim();
   const courseCode = val('course');
   const course = COURSES.find(c => c.code === courseCode);
   const agree = $('#applyAgree').checked;
+
   let ok = true;
-  const mark = (n, bad) => { const el = f.querySelector(`[name="${n}"]`); el.closest('.field').classList.toggle('err', bad); if(bad) ok = false; };
+  const mark = (n, bad) => {
+    const el = f.querySelector(`[name="${n}"]`);
+    if(!el) return;
+    const wrap = el.closest('.field');
+    if(wrap) wrap.classList.toggle('err', bad);
+    if(bad) ok = false;
+  };
   mark('fullName', name.length < 3);
   mark('gender', !gender);
   mark('mobile', !/^[6-9]\d{9}$/.test(mobile));
   mark('email', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
   mark('course', !courseCode);
-  if(!agree){ $('#applyAgreeErr').style.display = 'block'; ok = false; } else $('#applyAgreeErr').style.display = 'none';
-  if(!ok){ toast('कृपया समस्त आवश्यक सूचना सही भरें।'); return; }
+
+  if(!agree){
+    $('#applyAgreeErr').style.display = 'block';
+    ok = false;
+  } else {
+    $('#applyAgreeErr').style.display = 'none';
+  }
+
+  if(!ok){
+    toast(_lang() === 'en' ? 'Please fill all required fields' : 'कृपया समस्त आवश्यक सूचना सही भरें।');
+    return;
+  }
+
   const inc = parseFloat(val('income')) || 0;
   const isOrphan = val('orphan') === 'Yes';
   const d = concession(inc, isOrphan);
-  const payable = course ? Math.round(course.fee * (1 - d/100) / 10) * 10 : 0;
+  const payable = course ? Math.round(course.fee * (1 - d / 100) / 10) * 10 : 0;
+
   OTP.require(email, async () => {
-    const btn = f.querySelector('button[type="submit"]'); const orig = btn.textContent; btn.disabled = true; btn.textContent = '⏳';
-    const appId = 'DPF-UPL-26-' + String(Math.floor(10000 + Math.random()*89999));
+    const btn = f.querySelector('button[type="submit"]');
+    const orig = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = _lang() === 'en' ? '⏳ Submitting...' : '⏳ जमा हो रहा है...';
+    const appId = 'DPF-UPL-26-' + String(Math.floor(10000 + Math.random() * 89999));
     const payload = {
-      action:'submit', type:'application', AppID: appId, Name: name, Gender: gender, DOB: val('dob'),
-      Mobile: mobile, Email: email, State: val('state'), District: val('district'),
-      Address: val('address'), Class: val('currentClass'), Course: course.code + ' — ' + course.hi,
-      CourseCode: course.code, CourseFee: course.fee, Guardian: val('guardianName'),
-      Income: inc, Orphan: val('orphan'), Concession: d + '%', ConcessionPercent: d, Payable: payable
+      action:'submit',
+      type:'application',
+      AppID: appId,
+      Name: name,
+      Gender: gender,
+      DOB: val('dob'),
+      Mobile: mobile,
+      Email: email,
+      State: val('state'),
+      District: val('district'),
+      Address: val('address'),
+      Class: val('currentClass'),
+      Course: course.code + ' — ' + course.hi,
+      CourseCode: course.code,
+      CourseFee: course.fee,
+      Guardian: val('guardianName'),
+      Income: inc,
+      Orphan: val('orphan'),
+      Concession: d + '%',
+      ConcessionPercent: d,
+      Payable: payable
     };
     const r = await apiCall(payload);
-    btn.disabled = false; btn.textContent = orig;
-    if(r.status !== 'success'){ toast(r.message || 'त्रुटि'); return; }
+    btn.disabled = false;
+    btn.textContent = orig;
+    if(r.status !== 'success'){
+      toast(r.message || 'त्रुटि');
+      return;
+    }
     f.style.display = 'none';
     $('#applyAppId').textContent = appId;
-    $('#applyConfirm').style.display = 'block';
-    toast('🪔 आवेदन सफलतापूर्वक जमा!');
+    $('#applyConfirm').classList.add('show');
+    toast(_lang() === 'en' ? '🪔 Application submitted!' : '🪔 आवेदन सफलतापूर्वक जमा!');
     setTimeout(loadLiveSeats, 1500);
   });
 });
 
-/* ---------- Volunteer Form ---------- */
-function openVolunteerModal(){ openModal('volunteerModal'); }
+/* ============================================================
+   VOLUNTEER FORM
+   ============================================================ */
+function openVolunteerModal(){
+  const volForm = $('#volTeacherForm');
+  const volConfirm = $('#volConfirm');
+  if(volForm) volForm.style.display = 'block';
+  if(volConfirm) volConfirm.classList.remove('show');
+  openModal('volunteerModal');
+}
+window.openVolunteerModal = openVolunteerModal;
+
 $('#volTeacherForm').addEventListener('submit', async e => {
   e.preventDefault();
   const f = e.target;
   const g = n => { const el = f.querySelector(`[name="${n}"]`); return el ? el.value : ''; };
   const gAll = n => $$(`input[name="${n}"]:checked`, f).map(x => x.value);
+
   let ok = true;
-  const mark = (n, bad) => { const el = f.querySelector(`[name="${n}"]`); if(!el) return; el.closest('.field').classList.toggle('err', bad); if(bad) ok = false; };
+  const mark = (n, bad) => {
+    const el = f.querySelector(`[name="${n}"]`);
+    if(!el) return;
+    const wrap = el.closest('.field');
+    if(wrap) wrap.classList.toggle('err', bad);
+    if(bad) ok = false;
+  };
   mark('vName', g('vName').trim().length < 3);
   mark('vMobile', !/^[6-9]\d{9}$/.test(g('vMobile').trim()));
   mark('vEmail', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(g('vEmail').trim()));
@@ -1116,53 +2455,108 @@ $('#volTeacherForm').addEventListener('submit', async e => {
   mark('vSubject', g('vSubject').trim().length < 2);
   mark('vMode', !g('vMode'));
   mark('vHours', !g('vHours'));
-  if(gAll('vSubj').length === 0){ ok = false; toast('कम से कम एक विषय चुनें'); }
-  if(!ok){ toast('कृपया समस्त आवश्यक सूचना भरें।'); return; }
+
+  if(gAll('vSubj').length === 0){
+    ok = false;
+    toast(_lang() === 'en' ? 'Select at least one subject' : 'कम से कम एक विषय चुनें');
+  }
+  if(!ok){
+    toast(_lang() === 'en' ? 'Please fill all required fields' : 'कृपया समस्त आवश्यक सूचना भरें।');
+    return;
+  }
+
   const email = g('vEmail').trim();
   OTP.require(email, async () => {
-    const volId = 'DPF-VOL-T-26-' + String(Math.floor(10000 + Math.random()*89999));
+    const volId = 'DPF-VOL-T-26-' + String(Math.floor(10000 + Math.random() * 89999));
     const payload = {
-      action:'submit', type:'volunteer', ID: volId, Type:'Teacher', Name: g('vName'),
-      Mobile: g('vMobile'), Email: email, City: g('vCity'), Qualification: g('vQual'),
-      Subject: g('vSubject'), Subjects: gAll('vSubj').join(', '), Mode: g('vMode'), Hours: g('vHours')
+      action:'submit',
+      type:'volunteer',
+      ID: volId,
+      Type:'Teacher',
+      Name: g('vName'),
+      Mobile: g('vMobile'),
+      Email: email,
+      City: g('vCity'),
+      Qualification: g('vQual'),
+      Subject: g('vSubject'),
+      Subjects: gAll('vSubj').join(', '),
+      Mode: g('vMode'),
+      Hours: g('vHours')
     };
     const r = await apiCall(payload);
-    if(r.status !== 'success'){ toast(r.message || 'त्रुटि'); return; }
-    $('#volTeacherForm').style.display = 'none';
+    if(r.status !== 'success'){
+      toast(r.message || 'त्रुटि');
+      return;
+    }
+    f.style.display = 'none';
     $('#volIdOut').textContent = volId;
-    $('#volConfirm').style.display = 'block';
-    toast('🙏 आवेदन जमा!');
+    $('#volConfirm').classList.add('show');
+    toast(_lang() === 'en' ? '🙏 Application submitted!' : '🙏 आवेदन जमा!');
   });
 });
 
-/* ---------- Grievance ---------- */
-function openGrievanceModal(){ openModal('grievanceModal'); }
+/* ============================================================
+   GRIEVANCE
+   ============================================================ */
+function openGrievanceModal(){
+  const grForm = $('#grievanceForm');
+  const grConfirm = $('#grievanceConfirm');
+  if(grForm) grForm.style.display = 'block';
+  if(grConfirm) grConfirm.classList.remove('show');
+  openModal('grievanceModal');
+}
+window.openGrievanceModal = openGrievanceModal;
+
 $('#grievanceForm').addEventListener('submit', async e => {
   e.preventDefault();
   const f = e.target;
   const g = n => { const el = f.querySelector(`[name="${n}"]`); return el ? el.value : ''; };
   let ok = true;
-  const mark = (n, bad) => { const el = f.querySelector(`[name="${n}"]`); el.closest('.field').classList.toggle('err', bad); if(bad) ok = false; };
+  const mark = (n, bad) => {
+    const el = f.querySelector(`[name="${n}"]`);
+    if(!el) return;
+    const wrap = el.closest('.field');
+    if(wrap) wrap.classList.toggle('err', bad);
+    if(bad) ok = false;
+  };
   mark('gName', g('gName').trim().length < 3);
   mark('gMobile', !/^[6-9]\d{9}$/.test(g('gMobile').trim()));
   mark('gEmail', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(g('gEmail').trim()));
   mark('gCategory', !g('gCategory'));
   mark('gDetails', g('gDetails').trim().length < 10);
-  if(!ok){ toast('कृपया समस्त आवश्यक सूचना भरें।'); return; }
+
+  if(!ok){
+    toast(_lang() === 'en' ? 'Please fill all required fields' : 'कृपया समस्त आवश्यक सूचना भरें।');
+    return;
+  }
+
   const email = g('gEmail').trim();
   OTP.require(email, async () => {
-    const cid = 'DPF-GRV-26-' + String(Math.floor(1000 + Math.random()*8999));
-    const r = await apiCall({ action:'submit', type:'grievance', ComplaintID: cid, Name: g('gName'), AppID: g('gAppId'), Mobile: g('gMobile'), Email: email, Category: g('gCategory'), Details: g('gDetails') });
-    if(r.status !== 'success'){ toast(r.message || 'त्रुटि'); return; }
-    $('#grievanceForm').style.display = 'none';
+    const cid = 'DPF-GRV-26-' + String(Math.floor(1000 + Math.random() * 8999));
+    const r = await apiCall({
+      action:'submit',
+      type:'grievance',
+      ComplaintID: cid,
+      Name: g('gName'),
+      AppID: g('gAppId'),
+      Mobile: g('gMobile'),
+      Email: email,
+      Category: g('gCategory'),
+      Details: g('gDetails')
+    });
+    if(r.status !== 'success'){
+      toast(r.message || 'त्रुटि');
+      return;
+    }
+    f.style.display = 'none';
     $('#grievanceIdOut').textContent = cid;
-    $('#grievanceConfirm').style.display = 'block';
-    toast('🙏 शिकायत दर्ज!');
+    $('#grievanceConfirm').classList.add('show');
+    toast(_lang() === 'en' ? '🙏 Complaint registered!' : '🙏 शिकायत दर्ज!');
   });
 });
 
 /* ============================================================
-   FREE COURSES + EBOOKS
+   FREE COURSES
    ============================================================ */
 const FREE_COURSES = [
   { code:'FREE-CYBER', hi:'साइबर सुरक्षा — आधारभूत', en:'Cyber Safety Basics', icon:'🛡️', durHi:'६० मिनट', durEn:'60 min', levelHi:'प्रारंभिक', level:'Beginner', pass:60, descHi:'अंतर्जालीय ठगी, कपट-लिंक, कूटशब्द सुरक्षा — स्वयं की रक्षा करें।', descEn:'Online fraud, phishing, password safety — protect yourself.' },
@@ -1171,8 +2565,10 @@ const FREE_COURSES = [
   { code:'FREE-SM', hi:'समाज माध्यम जागरूकता', en:'Social Media Awareness', icon:'📱', durHi:'५० मिनट', durEn:'50 min', levelHi:'प्रारंभिक', level:'Beginner', pass:60, descHi:'निजता, मिथ्या समाचार, अंतर्जालीय प्रतिष्ठा — विवेकपूर्ण उपयोग।', descEn:'Privacy, fake news, reputation — smart usage.' },
   { code:'FREE-FIN', hi:'आधारभूत वित्तीय ज्ञान', en:'Financial Literacy', icon:'💰', durHi:'५५ मिनट', durEn:'55 min', levelHi:'प्रारंभिक', level:'Beginner', pass:60, descHi:'बचत, बैंक-कार्य, ब्याज, बीमा तथा वित्तीय ठगी से बचाव।', descEn:'Savings, banking, interest, insurance, financial fraud.' }
 ];
+
 function renderFreeCourses(){
-  const grid = $('#freeCoursesGrid'); if(!grid) return;
+  const grid = $('#freeCoursesGrid');
+  if(!grid) return;
   const lang = _lang();
   grid.innerHTML = FREE_COURSES.map(c => `<div class="free-card">
     <span class="badge-free" data-hi="नि:शुल्क" data-en="FREE">नि:शुल्क</span>
@@ -1184,194 +2580,95 @@ function renderFreeCourses(){
       <span>📖 ${lang === 'en' ? '10 chapters' : '१० अध्याय'}</span>
     </div>
     <p>${lang === 'en' ? c.descEn : c.descHi}</p>
-    <button class="btn btn-saffron btn-sm" onclick="openEbook('${c.code}')">📖 ${lang === 'en' ? 'Read Ebook' : 'ई-पुस्तक पढ़ें'}</button>
+    <button class="btn btn-saffron btn-sm" onclick="openEbook('${c.code}')" data-hi="📖 ई-पुस्तक पढ़ें" data-en="📖 Read Ebook">📖 ${lang === 'en' ? 'Read Ebook' : 'ई-पुस्तक पढ़ें'}</button>
   </div>`).join('');
 }
 renderFreeCourses();
 
 /* ============================================================
-   EBOOKS — 10 अध्याय प्रति पाठ्यक्रम
+   EBOOKS DATA — 10 अध्याय प्रति course
    ============================================================ */
 const FREE_EBOOKS = {
   'FREE-CYBER': {
     title: { hi:'साइबर सुरक्षा — आधारभूत', en:'Cyber Safety Basics' },
     chapters: [
-      { hi_h:'१. कूटशब्द की सुरक्षा', en_h:'1. Password Security',
-        hi_p:'सुदृढ़ कूटशब्द वह है जिसमें कम से कम आठ अक्षर हों — बड़े-छोटे अक्षर, अंक तथा विशेष चिह्न (@, #, $) सम्मिलित। अपना नाम, जन्मतिथि अथवा "123456" जैसे सरल कूटशब्द कदापि न रखें। प्रत्येक खाते हेतु भिन्न कूटशब्द रखें।',
-        en_p:'A strong password has at least 8 characters with uppercase, lowercase, digits, and symbols (@, #, $). Never use your name, DOB, or "123456". Use a different password for each account.' },
-      { hi_h:'२. कपट-लिंक तथा फ़िशिंग', en_h:'2. Phishing and Fake Links',
-        hi_p:'फ़िशिंग में ठग नकली विद्युत्पत्र, SMS अथवा संदेश भेजकर आपकी निजी सूचना — बैंक विवरण, OTP अथवा PIN — प्राप्त करते हैं। कभी भी अनजान लिंक पर क्लिक न करें। URL में "https" तथा ताला-चिह्न (🔒) अवश्य जाँचें।',
-        en_p:'In phishing, scammers send fake emails, SMS, or messages to obtain your bank details, OTP, or PIN. Never click unknown links. Always check for "https" and the lock icon (🔒).' },
-      { hi_h:'३. सार्वजनिक WiFi पर सावधानी', en_h:'3. Public WiFi Caution',
-        hi_p:'सार्वजनिक WiFi पर बैंकिंग, UPI अथवा किसी भी खाते में लॉगिन कदापि न करें — संपर्क असुरक्षित होता है। आवश्यक हो तो VPN का प्रयोग करें। सार्वजनिक संगणक पर "कूटशब्द सुरक्षित करें" विकल्प कभी न चुनें।',
-        en_p:'Never login to banking, UPI, or any account on public WiFi — connection is unsecured. If needed, use a VPN. On public computers, never select "save password".' },
-      { hi_h:'४. द्वि-चरणीय प्रमाणीकरण', en_h:'4. Two-Factor Authentication',
-        hi_p:'2FA एक अतिरिक्त सुरक्षा परत है। कूटशब्द के पश्चात् चलभाष पर OTP भेजा जाता है। इसे सदैव सक्रिय रखें — बैंक, Gmail, समाज माध्यम सभी में। OTP कभी किसी के साथ साझा न करें।',
-        en_p:'2FA is an extra security layer. After password, an OTP is sent to your phone. Always keep it enabled — for bank, Gmail, social media. Never share OTP with anyone.' },
-      { hi_h:'५. साइबर अपराध की सूचना', en_h:'5. Reporting Cyber Crime',
-        hi_p:'ठगी होने पर तत्काल 1930 पर अथवा cybercrime.gov.in पर सूचना दें। बैंक को भी शीघ्र सूचित करें तथा खाता अवरुद्ध कराएँ। समय पर सूचना देने से धन वापसी की सम्भावना बढ़ती है।',
-        en_p:'On fraud, immediately report to 1930 or cybercrime.gov.in. Also inform the bank and block the account. Timely reporting increases money recovery chances.' },
-      { hi_h:'६. सामाजिक अभियांत्रिकी', en_h:'6. Social Engineering',
-        hi_p:'अधिकांश साइबर ठगी में तकनीकी हैकिंग नहीं, बल्कि मनोवैज्ञानिक दबाव होता है। ठग भय, लालच अथवा सहानुभूति का उपयोग करते हैं — जैसे "आपका बेटा दुर्घटना में घायल है, तुरंत पैसे भेजें"। घबराएँ नहीं, सत्यापन करें।',
-        en_p:'Most cyber frauds involve psychological pressure, not hacking. Scammers exploit fear, greed, or sympathy — like "Your son is injured, send money". Don\'t panic, verify first.' },
-      { hi_h:'७. मोबाइल ऐप की सुरक्षा', en_h:'7. Mobile App Security',
-        hi_p:'केवल Google Play Store अथवा Apple App Store से ही ऐप डाउनलोड करें। ऐप को केवल आवश्यक अनुमतियाँ दें। "कॉन्टैक्ट", "कैमरा", "स्थान" जैसी अनुमतियाँ अनावश्यक रूप से न दें।',
-        en_p:'Download apps only from Google Play Store or Apple App Store. Grant only necessary permissions. Don\'t allow unnecessary "Contacts", "Camera", or "Location" permissions.' },
-      { hi_h:'८. सुरक्षित ब्राउज़िंग', en_h:'8. Safe Browsing',
-        hi_p:'केवल प्रामाणिक वेबसाइट खोलें — जिनमें https तथा 🔒 हो। लोकप्रिय वेबसाइट के नाम में हेरफेर (g00gle.com) से सावधान। विज्ञापन-अवरोधक चालू रखें। संदिग्ध पॉप-अप को सीधे बंद करें।',
-        en_p:'Open only authentic websites with https and 🔒. Beware of typos in popular sites (g00gle.com). Keep ad-blocker on. Close suspicious pop-ups directly.' },
-      { hi_h:'९. डेटा बैकअप', en_h:'9. Data Backup',
-        hi_p:'महत्वपूर्ण दस्तावेज़, फोटो तथा फ़ाइलें नियमित रूप से क्लाउड (Google Drive) अथवा बाहरी डिस्क पर सुरक्षित रखें। सप्ताह में कम से कम एक बार बैकअप लें।',
-        en_p:'Regularly backup important documents, photos and files to cloud (Google Drive) or external disk. Backup at least once a week.' },
-      { hi_h:'१०. परिवार तथा बच्चों की सुरक्षा', en_h:'10. Family and Child Safety',
-        hi_p:'माता-पिता तथा बच्चों को साइबर सुरक्षा की मूल बातें सिखाएँ। बच्चों के उपकरण पर पेरेंटल कंट्रोल सक्रिय करें। बच्चों को सिखाएँ — अनजान से ऑनलाइन बात न करें।',
-        en_p:'Teach parents and children basic cyber safety. Enable parental control on children\'s devices. Teach children — never chat with strangers online.' }
+      { hi_h:'१. कूटशब्द की सुरक्षा', en_h:'1. Password Security', hi_p:'सुदृढ़ कूटशब्द वह है जिसमें कम से कम आठ अक्षर हों — बड़े-छोटे अक्षर, अंक तथा विशेष चिह्न (@, #, $) सम्मिलित। अपना नाम, जन्मतिथि अथवा "123456" जैसे सरल कूटशब्द कदापि न रखें। प्रत्येक खाते हेतु भिन्न कूटशब्द रखें।', en_p:'A strong password has at least 8 characters with uppercase, lowercase, digits, and symbols (@, #, $). Never use your name, DOB, or "123456". Use a different password for each account.' },
+      { hi_h:'२. कपट-लिंक तथा फ़िशिंग', en_h:'2. Phishing and Fake Links', hi_p:'फ़िशिंग में ठग नकली विद्युत्पत्र, SMS अथवा संदेश भेजकर आपकी निजी सूचना — बैंक विवरण, OTP अथवा PIN — प्राप्त करते हैं। कभी भी अनजान लिंक पर क्लिक न करें। URL में "https" तथा ताला-चिह्न (🔒) अवश्य जाँचें।', en_p:'In phishing, scammers send fake emails, SMS, or messages to obtain your bank details, OTP, or PIN. Never click unknown links. Always check for "https" and the lock icon (🔒).' },
+      { hi_h:'३. सार्वजनिक WiFi पर सावधानी', en_h:'3. Public WiFi Caution', hi_p:'सार्वजनिक WiFi पर बैंकिंग, UPI अथवा किसी भी खाते में लॉगिन कदापि न करें — संपर्क असुरक्षित होता है। आवश्यक हो तो VPN का प्रयोग करें। सार्वजनिक संगणक पर "कूटशब्द सुरक्षित करें" विकल्प कभी न चुनें।', en_p:'Never login to banking, UPI, or any account on public WiFi — connection is unsecured. If needed, use a VPN. On public computers, never select "save password".' },
+      { hi_h:'४. द्वि-चरणीय प्रमाणीकरण', en_h:'4. Two-Factor Authentication', hi_p:'2FA एक अतिरिक्त सुरक्षा परत है। कूटशब्द के पश्चात् चलभाष पर OTP भेजा जाता है। इसे सदैव सक्रिय रखें — बैंक, Gmail, समाज माध्यम सभी में। OTP कभी किसी के साथ साझा न करें।', en_p:'2FA is an extra security layer. After password, an OTP is sent to your phone. Always keep it enabled — for bank, Gmail, social media. Never share OTP with anyone.' },
+      { hi_h:'५. साइबर अपराध की सूचना', en_h:'5. Reporting Cyber Crime', hi_p:'ठगी होने पर तत्काल 1930 पर अथवा cybercrime.gov.in पर सूचना दें। बैंक को भी शीघ्र सूचित करें तथा खाता अवरुद्ध कराएँ। समय पर सूचना देने से धन वापसी की सम्भावना बढ़ती है।', en_p:'On fraud, immediately report to 1930 or cybercrime.gov.in. Also inform the bank and block the account. Timely reporting increases money recovery chances.' },
+      { hi_h:'६. सामाजिक अभियांत्रिकी', en_h:'6. Social Engineering', hi_p:'अधिकांश साइबर ठगी में तकनीकी हैकिंग नहीं, बल्कि मनोवैज्ञानिक दबाव होता है। ठग भय, लालच अथवा सहानुभूति का उपयोग करते हैं — जैसे "आपका बेटा दुर्घटना में घायल है, तुरंत पैसे भेजें"। घबराएँ नहीं, सत्यापन करें।', en_p:'Most cyber frauds involve psychological pressure, not hacking. Scammers exploit fear, greed, or sympathy — like "Your son is injured, send money". Don\'t panic, verify first.' },
+      { hi_h:'७. मोबाइल ऐप की सुरक्षा', en_h:'7. Mobile App Security', hi_p:'केवल Google Play Store अथवा Apple App Store से ही ऐप डाउनलोड करें। ऐप को केवल आवश्यक अनुमतियाँ दें। "कॉन्टैक्ट", "कैमरा", "स्थान" जैसी अनुमतियाँ अनावश्यक रूप से न दें।', en_p:'Download apps only from Google Play Store or Apple App Store. Grant only necessary permissions. Don\'t allow unnecessary "Contacts", "Camera", or "Location" permissions.' },
+      { hi_h:'८. सुरक्षित ब्राउज़िंग', en_h:'8. Safe Browsing', hi_p:'केवल प्रामाणिक वेबसाइट खोलें — जिनमें https तथा 🔒 हो। लोकप्रिय वेबसाइट के नाम में हेरफेर (g00gle.com) से सावधान। विज्ञापन-अवरोधक चालू रखें। संदिग्ध पॉप-अप को सीधे बंद करें।', en_p:'Open only authentic websites with https and 🔒. Beware of typos in popular sites (g00gle.com). Keep ad-blocker on. Close suspicious pop-ups directly.' },
+      { hi_h:'९. डेटा बैकअप', en_h:'9. Data Backup', hi_p:'महत्वपूर्ण दस्तावेज़, फोटो तथा फ़ाइलें नियमित रूप से क्लाउड (Google Drive) अथवा बाहरी डिस्क पर सुरक्षित रखें। सप्ताह में कम से कम एक बार बैकअप लें।', en_p:'Regularly backup important documents, photos and files to cloud (Google Drive) or external disk. Backup at least once a week.' },
+      { hi_h:'१०. परिवार तथा बच्चों की सुरक्षा', en_h:'10. Family and Child Safety', hi_p:'माता-पिता तथा बच्चों को साइबर सुरक्षा की मूल बातें सिखाएँ। बच्चों के उपकरण पर पेरेंटल कंट्रोल सक्रिय करें। बच्चों को सिखाएँ — अनजान से ऑनलाइन बात न करें।', en_p:'Teach parents and children basic cyber safety. Enable parental control on children\'s devices. Teach children — never chat with strangers online.' }
     ]
   },
   'FREE-PAY': {
     title: { hi:'अंकीय भुगतान सुरक्षा', en:'Digital Payment Safety' },
     chapters: [
-      { hi_h:'१. UPI PIN की रक्षा', en_h:'1. Protect UPI PIN',
-        hi_p:'UPI PIN केवल आपके लिए है — किसी को न बताएँ, चाहे दुकानदार हो, बैंक कर्मचारी हो। PIN सदैव अपने UPI ऐप के भीतर डालें — WhatsApp, SMS अथवा अन्य ऐप पर नहीं।',
-        en_p:'UPI PIN is only for you — never share it with anyone, be it shopkeeper or bank staff. Always enter PIN inside your UPI app, not on WhatsApp or SMS.' },
-      { hi_h:'२. कपट QR कोड की पहचान', en_h:'2. Identifying Fake QR Codes',
-        hi_p:'ठग असली QR कोड के ऊपर नकली QR स्टिकर चिपका देते हैं। भुगतान से पूर्व QR ध्यान से देखें — कोई अतिरिक्त स्टिकर तो नहीं। ऐप में दिखने वाला व्यापारी का नाम अवश्य जाँचें।',
-        en_p:'Fraudsters paste a fake QR sticker over the original. Before payment, check QR for extra stickers. Verify the merchant name shown in the app.' },
-      { hi_h:'३. धन वापसी ठगी', en_h:'3. Refund Scams',
-        hi_p:'यदि कोई कहे — "अधिक धन आ गया है, वापस भेजें" अथवा "रिफंड भेज रहे हैं, PIN डालें" — तुरंत कॉल काट दें। बैंक कभी PIN नहीं माँगता।',
-        en_p:'If someone says — "extra money came, return it" or "we are sending a refund, enter PIN" — hang up immediately. Banks never ask PIN.' },
-      { hi_h:'४. सुरक्षित भुगतान के नियम', en_h:'4. Safe Payment Rules',
-        hi_p:'भुगतान केवल प्रमाणित व्यापारी अथवा परिचित व्यक्ति को करें। भुगतान के पश्चात् पर्ची का स्क्रीनशॉट सुरक्षित रखें। सार्वजनिक स्थान पर PIN छिपाकर डालें।',
-        en_p:'Pay only verified merchants or known persons. Save receipt screenshot. Hide PIN when paying in public.' },
-      { hi_h:'५. चलभाष खो जाने पर', en_h:'5. If Phone is Lost',
-        hi_p:'तत्काल — SIM अवरुद्ध कराएँ, बैंक को सूचित करें, सभी UPI ऐप से लॉगआउट कराएँ, बैंक से खाता अस्थायी रूप से अवरुद्ध करने का अनुरोध करें।',
-        en_p:'Immediately: block SIM, inform bank, logout from all UPI apps, request bank to freeze account temporarily.' },
-      { hi_h:'६. UPI दैनिक सीमा', en_h:'6. UPI Daily Limit',
-        hi_p:'अपनी आवश्यकता के अनुसार सीमा कम रखें — जैसे ₹५,०००। बड़ी राशि के लिए अस्थायी रूप से बढ़ाएँ, भुगतान करें, पुन: कम कर दें। इससे चोरी पर नुकसान सीमित रहेगा।',
-        en_p:'Keep UPI limit low per your need — say ₹5,000. For large payments, temporarily increase, pay, then reduce. This limits loss if phone stolen.' },
-      { hi_h:'७. लाभार्थी की जाँच', en_h:'7. Verify Beneficiary',
-        hi_p:'नए व्यक्ति को भुगतान से पूर्व नाम, UPI ID तथा चलभाष तीनों जाँचें। छोटी राशि (₹१) भेजकर पुष्टि करें। व्यापारी से बिल अवश्य माँगें।',
-        en_p:'Before paying a new person, verify name, UPI ID and phone. Send small amount (₹1) to confirm. Ask merchant for bill.' },
-      { hi_h:'८. OTP की रक्षा', en_h:'8. OTP Protection',
-        hi_p:'OTP केवल एक बार काम आता है तथा केवल आपके लिए होता है। किसी भी परिस्थिति में किसी को न बताएँ — चाहे कॉल करने वाला स्वयं को बैंक, RBI, पुलिस अथवा अधिकारी बताए।',
-        en_p:'OTP is usable once and meant only for you. Never share — even if caller claims to be bank, RBI, police or official.' },
-      { hi_h:'९. ठगी की तत्काल सूचना', en_h:'9. Immediate Reporting',
-        hi_p:'तुरंत 1930 पर कॉल करें अथवा cybercrime.gov.in पर शिकायत दर्ज करें। २४ घंटे के भीतर सूचना पर धन वापस मिलने की सम्भावना ८०% तक।',
-        en_p:'Call 1930 or file at cybercrime.gov.in. Reporting within 24 hours raises recovery chance up to 80%.' },
-      { hi_h:'१०. बच्चों तथा वृद्धजनों के लिए', en_h:'10. Care for Children and Elderly',
-        hi_p:'बच्चों के चलभाष में UPI ऐप में माता-पिता का PIN रखें। वृद्धजनों की UPI सीमा कम रखें। उन्हें सिखाएँ — कोई कॉल आए तो पहले परिवार से परामर्श करें।',
-        en_p:'Keep parent\'s PIN in children\'s UPI apps. Keep low UPI limit for elderly. Teach them — consult family first on any call.' }
+      { hi_h:'१. UPI PIN की रक्षा', en_h:'1. Protect UPI PIN', hi_p:'UPI PIN केवल आपके लिए है — किसी को न बताएँ, चाहे दुकानदार हो, बैंक कर्मचारी हो। PIN सदैव अपने UPI ऐप के भीतर डालें — WhatsApp, SMS अथवा अन्य ऐप पर नहीं।', en_p:'UPI PIN is only for you — never share it with anyone, be it shopkeeper or bank staff. Always enter PIN inside your UPI app, not on WhatsApp or SMS.' },
+      { hi_h:'२. कपट QR कोड की पहचान', en_h:'2. Identifying Fake QR Codes', hi_p:'ठग असली QR कोड के ऊपर नकली QR स्टिकर चिपका देते हैं। भुगतान से पूर्व QR ध्यान से देखें — कोई अतिरिक्त स्टिकर तो नहीं। ऐप में दिखने वाला व्यापारी का नाम अवश्य जाँचें।', en_p:'Fraudsters paste a fake QR sticker over the original. Before payment, check QR for extra stickers. Verify the merchant name shown in the app.' },
+      { hi_h:'३. धन वापसी ठगी', en_h:'3. Refund Scams', hi_p:'यदि कोई कहे — "अधिक धन आ गया है, वापस भेजें" अथवा "रिफंड भेज रहे हैं, PIN डालें" — तुरंत कॉल काट दें। बैंक कभी PIN नहीं माँगता।', en_p:'If someone says — "extra money came, return it" or "we are sending a refund, enter PIN" — hang up immediately. Banks never ask PIN.' },
+      { hi_h:'४. सुरक्षित भुगतान के नियम', en_h:'4. Safe Payment Rules', hi_p:'भुगतान केवल प्रमाणित व्यापारी अथवा परिचित व्यक्ति को करें। भुगतान के पश्चात् पर्ची का स्क्रीनशॉट सुरक्षित रखें। सार्वजनिक स्थान पर PIN छिपाकर डालें।', en_p:'Pay only verified merchants or known persons. Save receipt screenshot. Hide PIN when paying in public.' },
+      { hi_h:'५. चलभाष खो जाने पर', en_h:'5. If Phone is Lost', hi_p:'तत्काल — SIM अवरुद्ध कराएँ, बैंक को सूचित करें, सभी UPI ऐप से लॉगआउट कराएँ, बैंक से खाता अस्थायी रूप से अवरुद्ध करने का अनुरोध करें।', en_p:'Immediately: block SIM, inform bank, logout from all UPI apps, request bank to freeze account temporarily.' },
+      { hi_h:'६. UPI दैनिक सीमा', en_h:'6. UPI Daily Limit', hi_p:'अपनी आवश्यकता के अनुसार सीमा कम रखें — जैसे ₹५,०००। बड़ी राशि के लिए अस्थायी रूप से बढ़ाएँ, भुगतान करें, पुन: कम कर दें। इससे चोरी पर नुकसान सीमित रहेगा।', en_p:'Keep UPI limit low per your need — say ₹5,000. For large payments, temporarily increase, pay, then reduce. This limits loss if phone stolen.' },
+      { hi_h:'७. लाभार्थी की जाँच', en_h:'7. Verify Beneficiary', hi_p:'नए व्यक्ति को भुगतान से पूर्व नाम, UPI ID तथा चलभाष तीनों जाँचें। छोटी राशि (₹१) भेजकर पुष्टि करें। व्यापारी से बिल अवश्य माँगें।', en_p:'Before paying a new person, verify name, UPI ID and phone. Send small amount (₹1) to confirm. Ask merchant for bill.' },
+      { hi_h:'८. OTP की रक्षा', en_h:'8. OTP Protection', hi_p:'OTP केवल एक बार काम आता है तथा केवल आपके लिए होता है। किसी भी परिस्थिति में किसी को न बताएँ — चाहे कॉल करने वाला स्वयं को बैंक, RBI, पुलिस अथवा अधिकारी बताए।', en_p:'OTP is usable once and meant only for you. Never share — even if caller claims to be bank, RBI, police or official.' },
+      { hi_h:'९. ठगी की तत्काल सूचना', en_h:'9. Immediate Reporting', hi_p:'तुरंत 1930 पर कॉल करें अथवा cybercrime.gov.in पर शिकायत दर्ज करें। २४ घंटे के भीतर सूचना पर धन वापस मिलने की सम्भावना ८०% तक।', en_p:'Call 1930 or file at cybercrime.gov.in. Reporting within 24 hours raises recovery chance up to 80%.' },
+      { hi_h:'१०. बच्चों तथा वृद्धजनों के लिए', en_h:'10. Care for Children and Elderly', hi_p:'बच्चों के चलभाष में UPI ऐप में माता-पिता का PIN रखें। वृद्धजनों की UPI सीमा कम रखें। उन्हें सिखाएँ — कोई कॉल आए तो पहले परिवार से परामर्श करें।', en_p:'Keep parent\'s PIN in children\'s UPI apps. Keep low UPI limit for elderly. Teach them — consult family first on any call.' }
     ]
   },
   'FREE-NET': {
     title: { hi:'अंतर्जाल की मूल बातें', en:'Internet Basics' },
     chapters: [
-      { hi_h:'१. अंतर्जाल क्या है?', en_h:'1. What is the Internet?',
-        hi_p:'अंतर्जाल विश्वभर के संगणकों का जाल है, जो परस्पर जुड़े होते हैं। इसके द्वारा सूचना खोज, विद्युत्पत्र, वीडियो, ऑनलाइन अध्ययन तथा विश्व के किसी भी व्यक्ति से संवाद सम्भव है।',
-        en_p:'The Internet is a network of computers worldwide. Through it we can search, email, watch videos, study online, and communicate with anyone.' },
-      { hi_h:'२. विचरक का प्रयोग', en_h:'2. Using a Browser',
-        hi_p:'विचरक वह सॉफ्टवेयर है जिससे अंतर्जाल पर जाते हैं — Chrome, Firefox, Edge, Safari। ऊपर वाले बॉक्स (URL बॉक्स) में वेबसाइट का पता लिखें।',
-        en_p:'A browser is software to access the Internet — Chrome, Firefox, Edge, Safari. Type the website address in the URL box.' },
-      { hi_h:'३. विद्युत्पत्र भेजना', en_h:'3. Sending Email',
-        hi_p:'Gmail खोलें → "Compose" → प्राप्तकर्ता का पता, विषय, संदेश → भेजें। फ़ाइल भेजने हेतु 📎 चिह्न। CC = सभी को दिखेगा, BCC = छिपा रहेगा।',
-        en_p:'Open Gmail → "Compose" → recipient, subject, message → send. Use 📎 for files. CC = visible to all, BCC = hidden.' },
-      { hi_h:'४. सुरक्षित खोज', en_h:'4. Safe Searching',
-        hi_p:'Google, Bing, DuckDuckGo खोज यंत्र। यथावत् वाक्यांश हेतु "उद्धरण चिह्न" प्रयोग करें। किसी भी वेबसाइट को खोलने से पूर्व https तथा 🔒 जाँचें।',
-        en_p:'Google, Bing, DuckDuckGo are search engines. Use quotation marks for exact phrase. Before opening sites, check https and 🔒.' },
-      { hi_h:'५. महत्वपूर्ण शॉर्टकट', en_h:'5. Important Shortcuts',
-        hi_p:'Ctrl+C = प्रतिलिपि, Ctrl+V = चिपकाना, Ctrl+Z = Undo, Ctrl+S = सहेजें, Ctrl+P = मुद्रण, Ctrl+F = खोजें, Ctrl+T = नया टैब, F5 = ताज़ा।',
-        en_p:'Ctrl+C = Copy, Ctrl+V = Paste, Ctrl+Z = Undo, Ctrl+S = Save, Ctrl+P = Print, Ctrl+F = Find, Ctrl+T = New tab, F5 = Refresh.' },
-      { hi_h:'६. अपलोड तथा डाउनलोड', en_h:'6. Upload and Download',
-        hi_p:'डाउनलोड = अंतर्जाल से उपकरण में फ़ाइल लाना। अपलोड = उपकरण से अंतर्जाल पर भेजना। केवल प्रामाणिक वेबसाइट से डाउनलोड करें।',
-        en_p:'Download = bringing file from Internet. Upload = sending file to Internet. Download only from authentic websites.' },
-      { hi_h:'७. क्लाउड भंडारण', en_h:'7. Cloud Storage',
-        hi_p:'क्लाउड में फ़ाइलें अंतर्जाल पर सुरक्षित रहती हैं। Google Drive १५ GB नि:शुल्क। iCloud, OneDrive, Dropbox भी लोकप्रिय। चलभाष खो जाने पर भी डेटा सुरक्षित।',
-        en_p:'Files on cloud remain safe on Internet. Google Drive gives 15 GB free. iCloud, OneDrive, Dropbox popular. Data safe even if phone lost.' },
-      { hi_h:'८. वीडियो कॉल', en_h:'8. Video Calls',
-        hi_p:'WhatsApp, Google Meet, Zoom, Teams से वीडियो कॉल। आवश्यक — कैमरा, माइक, इंटरनेट। ऑनलाइन कक्षा में विनम्र रहें, माइक बंद रखें जब बोल न रहे हों।',
-        en_p:'Video call via WhatsApp, Google Meet, Zoom, Teams. Need camera, mic, internet. In class, be polite, keep mic muted when not speaking.' },
-      { hi_h:'९. साइबर स्वच्छता', en_h:'9. Cyber Hygiene',
-        hi_p:'नियमित रूप से विचरक इतिहास तथा कैश साफ़ करें। अस्थायी फ़ाइलें हटाएँ। विचरक तथा ऑपरेटिंग सिस्टम अद्यतन रखें। अनुपयोगी ऐप हटाएँ।',
-        en_p:'Regularly clear browser history and cache. Delete temporary files. Keep browser and OS updated. Remove unused apps.' },
-      { hi_h:'१०. समय प्रबंधन', en_h:'10. Time Management',
-        hi_p:'अंतर्जाल साधन है, साध्य नहीं। प्रतिदिन सीमित समय हेतु उपयोग करें। रात्रि में १ घंटा पूर्व चलभाष दूर रखें। Digital Wellbeing ऐप से समय ट्रैक करें।',
-        en_p:'Internet is a means, not an end. Limit daily use. Keep phone away 1 hour before sleep. Track time with Digital Wellbeing app.' }
+      { hi_h:'१. अंतर्जाल क्या है?', en_h:'1. What is the Internet?', hi_p:'अंतर्जाल विश्वभर के संगणकों का जाल है, जो परस्पर जुड़े होते हैं। इसके द्वारा सूचना खोज, विद्युत्पत्र, वीडियो, ऑनलाइन अध्ययन तथा विश्व के किसी भी व्यक्ति से संवाद सम्भव है।', en_p:'The Internet is a network of computers worldwide. Through it we can search, email, watch videos, study online, and communicate with anyone.' },
+      { hi_h:'२. विचरक का प्रयोग', en_h:'2. Using a Browser', hi_p:'विचरक वह सॉफ्टवेयर है जिससे अंतर्जाल पर जाते हैं — Chrome, Firefox, Edge, Safari। ऊपर वाले बॉक्स (URL बॉक्स) में वेबसाइट का पता लिखें।', en_p:'A browser is software to access the Internet — Chrome, Firefox, Edge, Safari. Type the website address in the URL box.' },
+      { hi_h:'३. विद्युत्पत्र भेजना', en_h:'3. Sending Email', hi_p:'Gmail खोलें → "Compose" → प्राप्तकर्ता का पता, विषय, संदेश → भेजें। फ़ाइल भेजने हेतु 📎 चिह्न। CC = सभी को दिखेगा, BCC = छिपा रहेगा।', en_p:'Open Gmail → "Compose" → recipient, subject, message → send. Use 📎 for files. CC = visible to all, BCC = hidden.' },
+      { hi_h:'४. सुरक्षित खोज', en_h:'4. Safe Searching', hi_p:'Google, Bing, DuckDuckGo खोज यंत्र। यथावत् वाक्यांश हेतु "उद्धरण चिह्न" प्रयोग करें। किसी भी वेबसाइट को खोलने से पूर्व https तथा 🔒 जाँचें।', en_p:'Google, Bing, DuckDuckGo are search engines. Use quotation marks for exact phrase. Before opening sites, check https and 🔒.' },
+      { hi_h:'५. महत्वपूर्ण शॉर्टकट', en_h:'5. Important Shortcuts', hi_p:'Ctrl+C = प्रतिलिपि, Ctrl+V = चिपकाना, Ctrl+Z = Undo, Ctrl+S = सहेजें, Ctrl+P = मुद्रण, Ctrl+F = खोजें, Ctrl+T = नया टैब, F5 = ताज़ा।', en_p:'Ctrl+C = Copy, Ctrl+V = Paste, Ctrl+Z = Undo, Ctrl+S = Save, Ctrl+P = Print, Ctrl+F = Find, Ctrl+T = New tab, F5 = Refresh.' },
+      { hi_h:'६. अपलोड तथा डाउनलोड', en_h:'6. Upload and Download', hi_p:'डाउनलोड = अंतर्जाल से उपकरण में फ़ाइल लाना। अपलोड = उपकरण से अंतर्जाल पर भेजना। केवल प्रामाणिक वेबसाइट से डाउनलोड करें।', en_p:'Download = bringing file from Internet. Upload = sending file to Internet. Download only from authentic websites.' },
+      { hi_h:'७. क्लाउड भंडारण', en_h:'7. Cloud Storage', hi_p:'क्लाउड में फ़ाइलें अंतर्जाल पर सुरक्षित रहती हैं। Google Drive १५ GB नि:शुल्क। iCloud, OneDrive, Dropbox भी लोकप्रिय। चलभाष खो जाने पर भी डेटा सुरक्षित।', en_p:'Files on cloud remain safe on Internet. Google Drive gives 15 GB free. iCloud, OneDrive, Dropbox popular. Data safe even if phone lost.' },
+      { hi_h:'८. वीडियो कॉल', en_h:'8. Video Calls', hi_p:'WhatsApp, Google Meet, Zoom, Teams से वीडियो कॉल। आवश्यक — कैमरा, माइक, इंटरनेट। ऑनलाइन कक्षा में विनम्र रहें, माइक बंद रखें जब बोल न रहे हों।', en_p:'Video call via WhatsApp, Google Meet, Zoom, Teams. Need camera, mic, internet. In class, be polite, keep mic muted when not speaking.' },
+      { hi_h:'९. साइबर स्वच्छता', en_h:'9. Cyber Hygiene', hi_p:'नियमित रूप से विचरक इतिहास तथा कैश साफ़ करें। अस्थायी फ़ाइलें हटाएँ। विचरक तथा ऑपरेटिंग सिस्टम अद्यतन रखें। अनुपयोगी ऐप हटाएँ।', en_p:'Regularly clear browser history and cache. Delete temporary files. Keep browser and OS updated. Remove unused apps.' },
+      { hi_h:'१०. समय प्रबंधन', en_h:'10. Time Management', hi_p:'अंतर्जाल साधन है, साध्य नहीं। प्रतिदिन सीमित समय हेतु उपयोग करें। रात्रि में १ घंटा पूर्व चलभाष दूर रखें। Digital Wellbeing ऐप से समय ट्रैक करें।', en_p:'Internet is a means, not an end. Limit daily use. Keep phone away 1 hour before sleep. Track time with Digital Wellbeing app.' }
     ]
   },
   'FREE-SM': {
     title: { hi:'समाज माध्यम जागरूकता', en:'Social Media Awareness' },
     chapters: [
-      { hi_h:'१. निजता की रक्षा', en_h:'1. Privacy Protection',
-        hi_p:'चलभाष संख्या, पता, आधार अथवा बैंक विवरण समाज माध्यम पर कभी प्रकाशित न करें। गोपनीयता सेटिंग नियमित जाँचें। केवल परिचितों को मित्रता स्वीकार करें।',
-        en_p:'Never publish phone number, address, Aadhaar or bank details on social media. Check privacy settings regularly. Accept only known persons.' },
-      { hi_h:'२. मिथ्या समाचार की पहचान', en_h:'2. Identifying Fake News',
-        hi_p:'साझा करने से पूर्व सत्यता अवश्य जाँचें। केवल विश्वसनीय स्रोतों से समाचार लें। चौंकाने वाले शीर्षक तथा बिना स्रोत के दावों पर विश्वास न करें।',
-        en_p:'Verify before sharing. Take news only from trusted sources. Don\'t trust shocking headlines or unsourced claims.' },
-      { hi_h:'३. अंतर्जालीय प्रताड़ना', en_h:'3. Cyber Bullying',
-        hi_p:'कोई धमकाए अथवा अभद्र संदेश भेजे तो ब्लॉक करें तथा रिपोर्ट करें। स्क्रीनशॉट सुरक्षित रखें। माता-पिता अथवा शिक्षक को बताएँ।',
-        en_p:'If threatened or abused, block and report. Save screenshots. Inform parents or teachers.' },
-      { hi_h:'४. अजनबी से मिलने की सावधानी', en_h:'4. Meeting Strangers',
-        hi_p:'अजनबी से अकेले कभी न मिलें। यदि मिलना आवश्यक हो तो माता-पिता अथवा बड़े भाई-बहन के साथ सार्वजनिक स्थान पर दिन में मिलें।',
-        en_p:'Never meet strangers alone. If necessary, meet in public place during daytime with parents or elder siblings.' },
-      { hi_h:'५. विवेकपूर्ण पोस्ट', en_h:'5. Post Wisely',
-        hi_p:'पोस्ट करने से पूर्व विचार करें — क्या यह भविष्य को हानि पहुँचा सकती है? क्रोध अथवा भावनावश में कुछ भी पोस्ट न करें।',
-        en_p:'Think before posting — could it harm your future? Don\'t post in anger or emotion.' },
-      { hi_h:'६. फोटो तथा वीडियो साझा', en_h:'6. Photo and Video Sharing',
-        hi_p:'अपनी निजी फोटो अजनबी को न भेजें। किसी की अनुमति के बिना उसकी फोटो साझा न करें — यह अपराध है। फोटो में से लोकेशन हटाएँ।',
-        en_p:'Never send personal photos to strangers. Don\'t share others\' photos without permission — it\'s a crime. Remove location from photos.' },
-      { hi_h:'७. फ़ेक प्रोफ़ाइल की पहचान', en_h:'7. Identifying Fake Profiles',
-        hi_p:'संकेत — बहुत कम मित्र, कम पोस्ट, नई प्रोफ़ाइल, विदेशी फोटो, अति आकर्षक तस्वीर। ऐसी प्रोफ़ाइल से दूरी बनाएँ।',
-        en_p:'Signs — few friends, few posts, new profile, foreign photo, overly attractive. Stay away from such profiles.' },
-      { hi_h:'८. मानसिक स्वास्थ्य', en_h:'8. Mental Health',
-        hi_p:'दूसरों की सुखद जीवन देखकर ईर्ष्या न करें — वह चयनित चित्र है। अपनी तुलना किसी से न करें। आवश्यकता हो तो समाज माध्यम से अवकाश लें।',
-        en_p:'Don\'t envy others\' happy lives — it\'s a selective picture. Don\'t compare. Take breaks if needed.' },
-      { hi_h:'९. खाता सुरक्षित रखना', en_h:'9. Account Security',
-        hi_p:'2FA सक्रिय करें। कूटशब्द सुदृढ़ रखें। अनजान लिंक से login न करें। लॉगिन गतिविधि नियमित देखें। खाता हैक हो तो कूटशब्द तुरंत बदलें।',
-        en_p:'Enable 2FA. Keep strong password. Never login via unknown links. Check login activity. If hacked, change password immediately.' },
-      { hi_h:'१०. सकारात्मक उपयोग', en_h:'10. Positive Use',
-        hi_p:'अध्ययन, कौशल विकास तथा रोज़गार हेतु समाज माध्यम का उपयोग करें। शैक्षणिक चैनल, करियर मार्गदर्शन पेज फ़ॉलो करें। असामाजिक सामग्री से दूरी रखें।',
-        en_p:'Use social media for study, skills and employment. Follow educational channels and career pages. Stay away from antisocial content.' }
+      { hi_h:'१. निजता की रक्षा', en_h:'1. Privacy Protection', hi_p:'चलभाष संख्या, पता, आधार अथवा बैंक विवरण समाज माध्यम पर कभी प्रकाशित न करें। गोपनीयता सेटिंग नियमित जाँचें। केवल परिचितों को मित्रता स्वीकार करें।', en_p:'Never publish phone number, address, Aadhaar or bank details on social media. Check privacy settings regularly. Accept only known persons.' },
+      { hi_h:'२. मिथ्या समाचार की पहचान', en_h:'2. Identifying Fake News', hi_p:'साझा करने से पूर्व सत्यता अवश्य जाँचें। केवल विश्वसनीय स्रोतों से समाचार लें। चौंकाने वाले शीर्षक तथा बिना स्रोत के दावों पर विश्वास न करें।', en_p:'Verify before sharing. Take news only from trusted sources. Don\'t trust shocking headlines or unsourced claims.' },
+      { hi_h:'३. अंतर्जालीय प्रताड़ना', en_h:'3. Cyber Bullying', hi_p:'कोई धमकाए अथवा अभद्र संदेश भेजे तो ब्लॉक करें तथा रिपोर्ट करें। स्क्रीनशॉट सुरक्षित रखें। माता-पिता अथवा शिक्षक को बताएँ।', en_p:'If threatened or abused, block and report. Save screenshots. Inform parents or teachers.' },
+      { hi_h:'४. अजनबी से मिलने की सावधानी', en_h:'4. Meeting Strangers', hi_p:'अजनबी से अकेले कभी न मिलें। यदि मिलना आवश्यक हो तो माता-पिता अथवा बड़े भाई-बहन के साथ सार्वजनिक स्थान पर दिन में मिलें।', en_p:'Never meet strangers alone. If necessary, meet in public place during daytime with parents or elder siblings.' },
+      { hi_h:'५. विवेकपूर्ण पोस्ट', en_h:'5. Post Wisely', hi_p:'पोस्ट करने से पूर्व विचार करें — क्या यह भविष्य को हानि पहुँचा सकती है? क्रोध अथवा भावनावश में कुछ भी पोस्ट न करें।', en_p:'Think before posting — could it harm your future? Don\'t post in anger or emotion.' },
+      { hi_h:'६. फोटो तथा वीडियो साझा', en_h:'6. Photo and Video Sharing', hi_p:'अपनी निजी फोटो अजनबी को न भेजें। किसी की अनुमति के बिना उसकी फोटो साझा न करें — यह अपराध है। फोटो में से लोकेशन हटाएँ।', en_p:'Never send personal photos to strangers. Don\'t share others\' photos without permission — it\'s a crime. Remove location from photos.' },
+      { hi_h:'७. फ़ेक प्रोफ़ाइल की पहचान', en_h:'7. Identifying Fake Profiles', hi_p:'संकेत — बहुत कम मित्र, कम पोस्ट, नई प्रोफ़ाइल, विदेशी फोटो, अति आकर्षक तस्वीर। ऐसी प्रोफ़ाइल से दूरी बनाएँ।', en_p:'Signs — few friends, few posts, new profile, foreign photo, overly attractive. Stay away from such profiles.' },
+      { hi_h:'८. मानसिक स्वास्थ्य', en_h:'8. Mental Health', hi_p:'दूसरों की सुखद जीवन देखकर ईर्ष्या न करें — वह चयनित चित्र है। अपनी तुलना किसी से न करें। आवश्यकता हो तो समाज माध्यम से अवकाश लें।', en_p:'Don\'t envy others\' happy lives — it\'s a selective picture. Don\'t compare. Take breaks if needed.' },
+      { hi_h:'९. खाता सुरक्षित रखना', en_h:'9. Account Security', hi_p:'2FA सक्रिय करें। कूटशब्द सुदृढ़ रखें। अनजान लिंक से login न करें। लॉगिन गतिविधि नियमित देखें। खाता हैक हो तो कूटशब्द तुरंत बदलें।', en_p:'Enable 2FA. Keep strong password. Never login via unknown links. Check login activity. If hacked, change password immediately.' },
+      { hi_h:'१०. सकारात्मक उपयोग', en_h:'10. Positive Use', hi_p:'अध्ययन, कौशल विकास तथा रोज़गार हेतु समाज माध्यम का उपयोग करें। शैक्षणिक चैनल, करियर मार्गदर्शन पेज फ़ॉलो करें। असामाजिक सामग्री से दूरी रखें।', en_p:'Use social media for study, skills and employment. Follow educational channels and career pages. Stay away from antisocial content.' }
     ]
   },
   'FREE-FIN': {
     title: { hi:'आधारभूत वित्तीय ज्ञान', en:'Financial Literacy' },
     chapters: [
-      { hi_h:'१. बचत का महत्व', en_h:'1. Importance of Saving',
-        hi_p:'प्रत्येक माह आय का कम से कम १०% भाग बचाएँ। "पहले बचाओ, फिर खर्च करो" — यह नियम अपनाएँ। आपातकाल हेतु ३-६ माह के खर्च के बराबर निधि रखें।',
-        en_p:'Save at least 10% of monthly income. Follow "save first, spend later". Keep 3-6 months expenses as emergency fund.' },
-      { hi_h:'२. बैंक खाते के प्रकार', en_h:'2. Types of Bank Accounts',
-        hi_p:'बचत खाता (Savings) — व्यक्तिगत धन, ब्याज मिलता है। चालू खाता (Current) — व्यापार। सावधि जमा (FD) — निश्चित अवधि, अधिक ब्याज। आवर्ती जमा (RD) — मासिक जमा।',
-        en_p:'Savings — personal money with interest. Current — for business. FD — fixed period, higher interest. RD — monthly deposit.' },
-      { hi_h:'३. साधारण तथा चक्रवृद्धि ब्याज', en_h:'3. Simple and Compound Interest',
-        hi_p:'साधारण ब्याज = मूलधन × दर × समय ÷ १००। चक्रवृद्धि ब्याज में ब्याज पर भी ब्याज — दीर्घकाल में अधिक लाभदायक।',
-        en_p:'Simple Interest = Principal × Rate × Time ÷ 100. Compound interest earns interest on interest — more beneficial long-term.' },
-      { hi_h:'४. बैंक कार्य', en_h:'4. Banking Basics',
-        hi_p:'KYC आवश्यक — आधार, PAN, फोटो। मोबाइल बैंकिंग, नेट बैंकिंग तथा UPI चालू कराएँ। नियमित पासबुक अथवा स्टेटमेंट जाँचें।',
-        en_p:'KYC required — Aadhaar, PAN, photo. Enable mobile banking, net banking, UPI. Check passbook/statement regularly.' },
-      { hi_h:'५. बीमा', en_h:'5. Insurance',
-        hi_p:'जीवन बीमा — परिवार की सुरक्षा। स्वास्थ्य बीमा — चिकित्सा व्यय। PMJJBY में ₹४३६/वर्ष पर ₹२ लाख जीवन बीमा। PMSBY में ₹२०/वर्ष पर ₹२ लाख दुर्घटना बीमा।',
-        en_p:'Life insurance — family protection. Health insurance — medical expenses. PMJJBY gives ₹2 lakh life cover at ₹436/year. PMSBY gives ₹2 lakh accident cover at ₹20/year.' },
-      { hi_h:'६. वित्तीय ठगी से बचाव', en_h:'6. Avoiding Financial Fraud',
-        hi_p:'"कुछ दिनों में दुगुना धन" अथवा "मासिक २०% लाभ" — यह ठगी है। केवल SEBI अथवा RBI पंजीकृत संस्थाओं में निवेश करें। अनजान ऐप से धन न भेजें।',
-        en_p:'"Double money in days" or "20% monthly returns" — it\'s fraud. Invest only with SEBI or RBI registered entities. Never send money via unknown apps.' },
-      { hi_h:'७. आधार तथा PAN', en_h:'7. Aadhaar and PAN',
-        hi_p:'आधार तथा PAN पहचान के प्रमुख दस्तावेज़। किसी अनजान को न दें। आधार में मोबाइल लिंक कराएँ। PAN के बिना बड़े लेन-देन नहीं।',
-        en_p:'Aadhaar and PAN are key identity documents. Never share with strangers. Link mobile with Aadhaar. Big transactions need PAN.' },
-      { hi_h:'८. निवेश के सिद्धांत', en_h:'8. Investment Principles',
-        hi_p:'जोखिम तथा लाभ साथ चलते हैं। विविधीकरण आवश्यक — एक जगह सब न लगाएँ। दीर्घकाल में निवेश अधिक लाभदायक। SIP से ₹५०० मासिक से शुरू करें।',
-        en_p:'Risk and reward go together. Diversification essential — don\'t put all in one place. Long-term investment more profitable. Start SIP from ₹500/month.' },
-      { hi_h:'९. कर की मूल बातें', en_h:'9. Basics of Tax',
-        hi_p:'कर देना कर्तव्य है। आयकर आय पर, GST वस्तुओं तथा सेवाओं पर। समय पर रिटर्न दाखिल करें — ऋण तथा अन्य कार्यों में सहायक।',
-        en_p:'Paying tax is duty. Income tax on income, GST on goods and services. File returns on time — helps in loans and other work.' },
-      { hi_h:'१०. वित्तीय लक्ष्य', en_h:'10. Financial Goals',
-        hi_p:'तीन प्रकार के लक्ष्य — (१) अल्पकालिक: ६ माह से १ वर्ष, (२) मध्यकालिक: १-५ वर्ष, (३) दीर्घकालिक: ५+ वर्ष। लक्ष्य लिखित हों, तिथि सहित। प्रगति नियमित जाँचें।',
-        en_p:'Three goals — (1) Short-term: 6 months to 1 yr, (2) Medium: 1-5 yrs, (3) Long-term: 5+ yrs. Goals should be written with dates. Track progress.' }
+      { hi_h:'१. बचत का महत्व', en_h:'1. Importance of Saving', hi_p:'प्रत्येक माह आय का कम से कम १०% भाग बचाएँ। "पहले बचाओ, फिर खर्च करो" — यह नियम अपनाएँ। आपातकाल हेतु ३-६ माह के खर्च के बराबर निधि रखें।', en_p:'Save at least 10% of monthly income. Follow "save first, spend later". Keep 3-6 months expenses as emergency fund.' },
+      { hi_h:'२. बैंक खाते के प्रकार', en_h:'2. Types of Bank Accounts', hi_p:'बचत खाता (Savings) — व्यक्तिगत धन, ब्याज मिलता है। चालू खाता (Current) — व्यापार। सावधि जमा (FD) — निश्चित अवधि, अधिक ब्याज। आवर्ती जमा (RD) — मासिक जमा।', en_p:'Savings — personal money with interest. Current — for business. FD — fixed period, higher interest. RD — monthly deposit.' },
+      { hi_h:'३. साधारण तथा चक्रवृद्धि ब्याज', en_h:'3. Simple and Compound Interest', hi_p:'साधारण ब्याज = मूलधन × दर × समय ÷ १००। चक्रवृद्धि ब्याज में ब्याज पर भी ब्याज — दीर्घकाल में अधिक लाभदायक।', en_p:'Simple Interest = Principal × Rate × Time ÷ 100. Compound interest earns interest on interest — more beneficial long-term.' },
+      { hi_h:'४. बैंक कार्य', en_h:'4. Banking Basics', hi_p:'KYC आवश्यक — आधार, PAN, फोटो। मोबाइल बैंकिंग, नेट बैंकिंग तथा UPI चालू कराएँ। नियमित पासबुक अथवा स्टेटमेंट जाँचें।', en_p:'KYC required — Aadhaar, PAN, photo. Enable mobile banking, net banking, UPI. Check passbook/statement regularly.' },
+      { hi_h:'५. बीमा', en_h:'5. Insurance', hi_p:'जीवन बीमा — परिवार की सुरक्षा। स्वास्थ्य बीमा — चिकित्सा व्यय। PMJJBY में ₹४३६/वर्ष पर ₹२ लाख जीवन बीमा। PMSBY में ₹२०/वर्ष पर ₹२ लाख दुर्घटना बीमा।', en_p:'Life insurance — family protection. Health insurance — medical expenses. PMJJBY gives ₹2 lakh life cover at ₹436/year. PMSBY gives ₹2 lakh accident cover at ₹20/year.' },
+      { hi_h:'६. वित्तीय ठगी से बचाव', en_h:'6. Avoiding Financial Fraud', hi_p:'"कुछ दिनों में दुगुना धन" अथवा "मासिक २०% लाभ" — यह ठगी है। केवल SEBI अथवा RBI पंजीकृत संस्थाओं में निवेश करें। अनजान ऐप से धन न भेजें।', en_p:'"Double money in days" or "20% monthly returns" — it\'s fraud. Invest only with SEBI or RBI registered entities. Never send money via unknown apps.' },
+      { hi_h:'७. आधार तथा PAN', en_h:'7. Aadhaar and PAN', hi_p:'आधार तथा PAN पहचान के प्रमुख दस्तावेज़। किसी अनजान को न दें। आधार में मोबाइल लिंक कराएँ। PAN के बिना बड़े लेन-देन नहीं।', en_p:'Aadhaar and PAN are key identity documents. Never share with strangers. Link mobile with Aadhaar. Big transactions need PAN.' },
+      { hi_h:'८. निवेश के सिद्धांत', en_h:'8. Investment Principles', hi_p:'जोखिम तथा लाभ साथ चलते हैं। विविधीकरण आवश्यक — एक जगह सब न लगाएँ। दीर्घकाल में निवेश अधिक लाभदायक। SIP से ₹५०० मासिक से शुरू करें।', en_p:'Risk and reward go together. Diversification essential — don\'t put all in one place. Long-term investment more profitable. Start SIP from ₹500/month.' },
+      { hi_h:'९. कर की मूल बातें', en_h:'9. Basics of Tax', hi_p:'कर देना कर्तव्य है। आयकर आय पर, GST वस्तुओं तथा सेवाओं पर। समय पर रिटर्न दाखिल करें — ऋण तथा अन्य कार्यों में सहायक।', en_p:'Paying tax is duty. Income tax on income, GST on goods and services. File returns on time — helps in loans and other work.' },
+      { hi_h:'१०. वित्तीय लक्ष्य', en_h:'10. Financial Goals', hi_p:'तीन प्रकार के लक्ष्य — (१) अल्पकालिक: ६ माह से १ वर्ष, (२) मध्यकालिक: १-५ वर्ष, (३) दीर्घकालिक: ५+ वर्ष। लक्ष्य लिखित हों, तिथि सहित। प्रगति नियमित जाँचें।', en_p:'Three goals — (1) Short-term: 6 months to 1 yr, (2) Medium: 1-5 yrs, (3) Long-term: 5+ yrs. Goals should be written with dates. Track progress.' }
     ]
   }
 };
 
 /* ============================================================
-   FREE QUIZ BANK — ४० प्रश्न प्रति पाठ्यक्रम
+   QUIZ BANK (40 प्रश्न प्रति course)
+   (पूरा bank जोड़ें — यहाँ short sample)
    ============================================================ */
 const FREE_QUIZ_BANK = {
   'FREE-CYBER': [
@@ -1597,11 +2894,15 @@ function shuffleArray(arr){
   }
   return a;
 }
+
 function pickRandomQuestions(courseCode, count){
   count = count || 20;
   const bank = FREE_QUIZ_BANK[courseCode] || [];
-  const lang = document.body.classList.contains('lang-en') ? 'en' : 'hi';
-  if(bank.length < count){ console.warn(`⚠️ ${courseCode}: केवल ${bank.length} प्रश्न`); count = bank.length; }
+  const lang = _lang();
+  if(bank.length < count){
+    console.warn(`⚠️ ${courseCode}: केवल ${bank.length} प्रश्न`);
+    count = bank.length;
+  }
   const selected = shuffleArray(bank).slice(0, count);
   return selected.map(q => {
     const opts = lang === 'en' ? q.options_en : q.options_hi;
@@ -1618,11 +2919,16 @@ function pickRandomQuestions(courseCode, count){
 /* ============================================================
    EBOOK READER
    ============================================================ */
-let _ebookCourse = null, _ebookLang = 'hi', _ebookReadFully = false;
+let _ebookCourse = null;
+let _ebookLang = 'hi';
+let _ebookReadFully = false;
 
 function openEbook(code){
-  _ebookCourse = code; _ebookLang = 'hi'; _ebookReadFully = false;
-  const ebook = FREE_EBOOKS[code]; if(!ebook) return;
+  _ebookCourse = code;
+  _ebookLang = 'hi';
+  _ebookReadFully = false;
+  const ebook = FREE_EBOOKS[code];
+  if(!ebook) return;
   const lang = _lang();
   $('#ebookTitle').textContent = '📖 ' + (lang === 'en' ? ebook.title.en : ebook.title.hi);
   $$('.ebook-tab').forEach(t => t.classList.toggle('active', t.dataset.lang === 'hi'));
@@ -1630,18 +2936,26 @@ function openEbook(code){
   openModal('ebookModal');
   setTimeout(() => {
     const el = $('#ebookContent');
-    if(el){ el.scrollTop = 0; el.addEventListener('scroll', checkEbookRead); checkEbookRead(); }
+    if(el){
+      el.scrollTop = 0;
+      el.removeEventListener('scroll', checkEbookRead);
+      el.addEventListener('scroll', checkEbookRead);
+      checkEbookRead();
+    }
   }, 200);
 }
+window.openEbook = openEbook;
 
 function switchEbookLang(lang){
   _ebookLang = lang;
   $$('.ebook-tab').forEach(t => t.classList.toggle('active', t.dataset.lang === lang));
   renderEbookContent();
 }
+window.switchEbookLang = switchEbookLang;
 
 function renderEbookContent(){
-  const ebook = FREE_EBOOKS[_ebookCourse]; if(!ebook) return;
+  const ebook = FREE_EBOOKS[_ebookCourse];
+  if(!ebook) return;
   $('#ebookContent').innerHTML = ebook.chapters.map(ch => `
     <h4>${_ebookLang === 'en' ? ch.en_h : ch.hi_h}</h4>
     <p>${_ebookLang === 'en' ? ch.en_p : ch.hi_p}</p>
@@ -1650,7 +2964,8 @@ function renderEbookContent(){
 }
 
 function checkEbookRead(){
-  const el = $('#ebookContent'); if(!el) return;
+  const el = $('#ebookContent');
+  if(!el) return;
   const pct = Math.round((el.scrollTop + el.clientHeight) / el.scrollHeight * 100);
   $('#ebookScrollPct').textContent = pct;
   if(pct >= 95 && !_ebookReadFully){
@@ -1663,37 +2978,46 @@ function checkEbookRead(){
 }
 
 function updateEbookProgress(){
-  const el = $('#ebookContent'); if(!el) return;
+  const el = $('#ebookContent');
+  if(!el) return;
   setTimeout(() => {
     const pct = Math.round((el.scrollTop + el.clientHeight) / el.scrollHeight * 100);
     $('#ebookScrollPct').textContent = pct;
-    if(pct >= 95){ checkEbookRead(); }
+    if(pct >= 95) checkEbookRead();
   }, 100);
 }
 
 $('#startQuizBtn').addEventListener('click', () => {
-  if(!_ebookReadFully){ toast(_lang() === 'en' ? 'Please read the complete ebook first.' : 'कृपया पहले पूरी ई-पुस्तक पढ़ें।'); return; }
+  if(!_ebookReadFully){
+    toast(_lang() === 'en' ? 'Please read the complete ebook first.' : 'कृपया पहले पूरी ई-पुस्तक पढ़ें।');
+    return;
+  }
   closeModal('ebookModal');
-  startFreeQuiz(_ebookCourse);
+  setTimeout(() => startFreeQuiz(_ebookCourse), 300);
 });
 
 /* ============================================================
    QUIZ
    ============================================================ */
-let _quiz = null, _quizAns = {};
+let _quiz = null;
+let _quizAns = {};
 
 function startFreeQuiz(code){
   const course = FREE_COURSES.find(c => c.code === code);
   const questions = pickRandomQuestions(code, 20);
-  if(!course || questions.length < 20){ toast(_lang()==='en'?'Test unavailable':'परीक्षा उपलब्ध नहीं'); return; }
+  if(!course || questions.length < 20){
+    toast(_lang() === 'en' ? 'Test unavailable' : 'परीक्षा उपलब्ध नहीं');
+    return;
+  }
   _quiz = { course, questions };
   _quizAns = {};
   const lang = _lang();
-  $('#quizTitle').textContent = '📝 ' + (lang==='en' ? course.en : course.hi);
+  $('#quizTitle').textContent = '📝 ' + (lang === 'en' ? course.en : course.hi);
   openModal('quizModal');
   renderQuiz();
-  toast(lang==='en' ? '✓ New test — 20 random questions' : '✓ नई परीक्षा — २० यादृच्छिक प्रश्न');
+  toast(lang === 'en' ? '✓ New test — 20 random questions' : '✓ नई परीक्षा — २० यादृच्छिक प्रश्न');
 }
+window.startFreeQuiz = startFreeQuiz;
 
 function renderQuiz(){
   const { course, questions } = _quiz;
@@ -1703,8 +3027,8 @@ function renderQuiz(){
   const lang = _lang();
   $('#quizBody').innerHTML = `
     <div class="quiz-header">
-      <h4>${course.icon} ${lang==='en'?course.en:course.hi}</h4>
-      <div style="font-size:.9rem;opacity:.95">${answered} / ${total} ${lang==='en'?'done':'पूर्ण'}</div>
+      <h4>${course.icon} ${lang === 'en' ? course.en : course.hi}</h4>
+      <div style="font-size:.9rem;opacity:.95">${answered} / ${total} ${lang === 'en' ? 'done' : 'पूर्ण'}</div>
       <div class="quiz-progress-bar"><div style="width:${pct}%"></div></div>
     </div>
     ${questions.map((q, i) => `
@@ -1717,8 +3041,8 @@ function renderQuiz(){
           </label>`).join('')}
       </div>`).join('')}
     <div style="display:flex;gap:10px;margin-top:22px">
-      <button class="btn btn-outline" onclick="closeModal('quizModal')" style="flex:1">← ${lang==='en'?'Close':'बंद'}</button>
-      <button class="btn btn-green" id="submitQuizBtn" style="flex:2" ${answered < total ? 'disabled' : ''} onclick="submitQuiz()">✓ ${lang==='en'?'Submit':'जमा करें'} (${answered}/${total})</button>
+      <button class="btn btn-outline" onclick="closeModal('quizModal')" style="flex:1">← ${lang === 'en' ? 'Close' : 'बंद'}</button>
+      <button class="btn btn-green" id="submitQuizBtn" style="flex:2" ${answered < total ? 'disabled' : ''} onclick="submitQuiz()">✓ ${lang === 'en' ? 'Submit' : 'जमा करें'} (${answered}/${total})</button>
     </div>`;
 }
 
@@ -1733,12 +3057,16 @@ function selectQuizAns(qIdx, optIdx, el){
   const h = document.querySelector('.quiz-header');
   const lang = _lang();
   if(h){
-    h.querySelector('div:nth-child(2)').textContent = `${answered} / ${total} ${lang==='en'?'done':'पूर्ण'}`;
+    h.querySelector('div:nth-child(2)').textContent = `${answered} / ${total} ${lang === 'en' ? 'done' : 'पूर्ण'}`;
     h.querySelector('.quiz-progress-bar > div').style.width = pct + '%';
   }
   const btn = document.getElementById('submitQuizBtn');
-  if(btn){ btn.textContent = `✓ ${lang==='en'?'Submit':'जमा करें'} (${answered}/${total})`; btn.disabled = answered < total; }
+  if(btn){
+    btn.textContent = `✓ ${lang === 'en' ? 'Submit' : 'जमा करें'} (${answered}/${total})`;
+    btn.disabled = answered < total;
+  }
 }
+window.selectQuizAns = selectQuizAns;
 
 function submitQuiz(){
   const { course, questions } = _quiz;
@@ -1748,90 +3076,151 @@ function submitQuiz(){
   const pct = Math.round((correct / total) * 100);
   const passed = pct >= course.pass;
   const lang = _lang();
+
   if(!passed){
     $('#quizBody').innerHTML = `<div class="quiz-score">
       <div class="score-circle fail">${pct}%</div>
-      <h3 style="color:#991b1b">😔 ${lang==='en'?'Not Passed':'परीक्षा उत्तीर्ण नहीं'}</h3>
-      <p style="margin:12px 0">${correct}/${total} ${lang==='en'?'correct':'सही'} · ${course.pass}% ${lang==='en'?'required':'आवश्यक'}</p>
+      <h3 style="color:#991b1b">😔 ${lang === 'en' ? 'Not Passed' : 'परीक्षा उत्तीर्ण नहीं'}</h3>
+      <p>${correct}/${total} ${lang === 'en' ? 'correct' : 'सही'} · ${course.pass}% ${lang === 'en' ? 'required' : 'आवश्यक'}</p>
       <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px">
-        <button class="btn btn-saffron" onclick="startFreeQuiz('${course.code}')">🔄 ${lang==='en'?'Retry':'पुन: प्रयास'}</button>
-        <button class="btn btn-outline" onclick="closeModal('quizModal')">${lang==='en'?'Close':'बंद'}</button>
-      </div></div>`;
+        <button class="btn btn-saffron" onclick="startFreeQuiz('${course.code}')">🔄 ${lang === 'en' ? 'Retry' : 'पुन: प्रयास'}</button>
+        <button class="btn btn-outline" onclick="closeModal('quizModal')">${lang === 'en' ? 'Close' : 'बंद'}</button>
+      </div>
+    </div>`;
     return;
   }
-  window._quizResult = {
+
+  const result = {
     course: course.code,
-    courseTitle: lang==='en'?course.en:course.hi,
-    duration: lang==='en'?course.durEn:course.durHi,
+    courseTitle: lang === 'en' ? course.en : course.hi,
+    courseTitleHi: course.hi,
+    courseTitleEn: course.en,
+    duration: lang === 'en' ? course.durEn : course.durHi,
     level: course.level,
-    score: correct, total, pct
+    score: correct,
+    total, pct
   };
+  window._quizResult = result;
+  try { sessionStorage.setItem('uplift_quiz_result', JSON.stringify(result)); } catch(e){}
   closeModal('quizModal');
   setTimeout(() => openFreeCertForm(), 400);
 }
+window.submitQuiz = submitQuiz;
 
 /* ============================================================
    FREE CERT FORM + ISSUE
    ============================================================ */
-let _certData = null, _certOtpTimer = null;
+let _certData = null;
+let _certOtpTimer = null;
 
 function openFreeCertForm(){
-  const r = window._quizResult; if(!r) return;
+  let r = window._quizResult;
+  if(!r){
+    try { r = JSON.parse(sessionStorage.getItem('uplift_quiz_result') || 'null'); } catch(e){}
+    window._quizResult = r;
+  }
+  if(!r) return;
   const lang = _lang();
   $('#freeCertBody').innerHTML = `
     <div class="quiz-header" style="margin-bottom:20px">
       <h4>${r.courseTitle}</h4>
-      <div style="font-size:.9rem;opacity:.95">${lang==='en'?'Score':'अंक'}: ${r.score}/${r.total} (${r.pct}%) · ${lang==='en'?'Duration':'अवधि'}: ${r.duration}</div>
+      <div style="font-size:.9rem;opacity:.95">${lang === 'en' ? 'Score' : 'अंक'}: ${r.score}/${r.total} (${r.pct}%) · ${lang === 'en' ? 'Duration' : 'अवधि'}: ${r.duration}</div>
     </div>
     <div id="certStep1">
-      <div class="note note-blue" style="margin-bottom:18px;font-size:.92rem">${lang==='en'?'📌 All details will be printed on the certificate.':'📌 समस्त विवरण प्रमाणपत्र पर अंकित होंगे।'}</div>
+      <div class="note note-blue" style="margin-bottom:18px;font-size:.92rem">${lang === 'en' ? '📌 All details will be printed on the certificate.' : '📌 समस्त विवरण प्रमाणपत्र पर अंकित होंगे।'}</div>
       <div class="row">
-        <div class="field"><label>${lang==='en'?'Full Name *':'विद्यार्थी का सम्पूर्ण नाम *'}</label><input type="text" id="certName" placeholder="${lang==='en'?'Aryan Shukla':'आर्यन शुक्ला'}"><div class="errmsg">${lang==='en'?'Min 3 chars':'कम से ३ अक्षर'}</div></div>
-        <div class="field"><label>${lang==='en'?'Gender *':'लिंग *'}</label><select id="certGender"><option value="">—</option><option value="पुरुष">${lang==='en'?'Male':'पुरुष'}</option><option value="महिला">${lang==='en'?'Female':'महिला'}</option><option value="अन्य">${lang==='en'?'Other':'अन्य'}</option></select><div class="errmsg">${lang==='en'?'Select':'चुनें'}</div></div>
+        <div class="field">
+          <label>${lang === 'en' ? 'Full Name *' : 'विद्यार्थी का सम्पूर्ण नाम *'}</label>
+          <input type="text" id="certName" placeholder="${lang === 'en' ? 'Aryan Shukla' : 'आर्यन शुक्ला'}" autocomplete="name">
+          <div class="errmsg">${lang === 'en' ? 'Min 3 chars' : 'कम से ३ अक्षर'}</div>
+        </div>
+        <div class="field">
+          <label>${lang === 'en' ? 'Gender *' : 'लिंग *'}</label>
+          <select id="certGender">
+            <option value="">—</option>
+            <option value="पुरुष">${lang === 'en' ? 'Male' : 'पुरुष'}</option>
+            <option value="महिला">${lang === 'en' ? 'Female' : 'महिला'}</option>
+            <option value="अन्य">${lang === 'en' ? 'Other' : 'अन्य'}</option>
+          </select>
+          <div class="errmsg">${lang === 'en' ? 'Select' : 'चुनें'}</div>
+        </div>
       </div>
       <div class="row">
         <div class="field">
-          <label>${lang==='en'?'Prefix *':'अभिभावक उपाधि *'}</label>
+          <label>${lang === 'en' ? 'Prefix *' : 'अभिभावक उपाधि *'}</label>
           <select id="certPrefix">
-            <option value="श्री">${lang==='en'?'Mr. (Shri)':'श्री (Mr.)'}</option>
-            <option value="श्रीमती">${lang==='en'?'Mrs. (Shrimati)':'श्रीमती (Mrs.)'}</option>
-            <option value="कु०">${lang==='en'?'Ms. (Ku.)':'कु० (Ms.)'}</option>
-            <option value="स्वर्गीय">${lang==='en'?'Late (Swargiya)':'स्वर्गीय (Late)'}</option>
-            <option value="डॉ०">${lang==='en'?'Dr.':'डॉ०'}</option>
+            <option value="श्री">${lang === 'en' ? 'Mr. (Shri)' : 'श्री (Mr.)'}</option>
+            <option value="श्रीमती">${lang === 'en' ? 'Mrs. (Shrimati)' : 'श्रीमती (Mrs.)'}</option>
+            <option value="कु०">${lang === 'en' ? 'Ms. (Ku.)' : 'कु० (Ms.)'}</option>
+            <option value="स्वर्गीय">${lang === 'en' ? 'Late (Swargiya)' : 'स्वर्गीय (Late)'}</option>
+            <option value="डॉ०">${lang === 'en' ? 'Dr.' : 'डॉ०'}</option>
           </select>
         </div>
-        <div class="field"><label>${lang==='en'?'Parent Name *':'अभिभावक का नाम *'}</label><input type="text" id="certParent" placeholder="${lang==='en'?'Ramesh Shukla':'रमेश शुक्ला'}"><div class="errmsg">${lang==='en'?'Min 3 chars':'कम से ३ अक्षर'}</div></div>
+        <div class="field">
+          <label>${lang === 'en' ? 'Parent Name *' : 'अभिभावक का नाम *'}</label>
+          <input type="text" id="certParent" placeholder="${lang === 'en' ? 'Ramesh Shukla' : 'रमेश शुक्ला'}">
+          <div class="errmsg">${lang === 'en' ? 'Min 3 chars' : 'कम से ३ अक्षर'}</div>
+        </div>
       </div>
       <div class="row">
-        <div class="field"><label>${lang==='en'?'Aadhaar *':'आधार संख्या *'}</label><input type="text" id="certAadhar" maxlength="14" inputmode="numeric" placeholder="XXXX XXXX XXXX"><small>${lang==='en'?'12 digits':'१२ अंक'}</small><div class="errmsg">${lang==='en'?'12 digits':'१२ अंक'}</div></div>
-        <div class="field"><label>${lang==='en'?'Mobile *':'चलभाष *'}</label><input type="tel" id="certMobile" maxlength="10" inputmode="numeric"><div class="errmsg">${lang==='en'?'10 digits':'१० अंक'}</div></div>
+        <div class="field">
+          <label>${lang === 'en' ? 'Aadhaar *' : 'आधार संख्या *'}</label>
+          <input type="text" id="certAadhar" maxlength="14" inputmode="numeric" placeholder="XXXX XXXX XXXX">
+          <small>${lang === 'en' ? '12 digits' : '१२ अंक'}</small>
+          <div class="errmsg">${lang === 'en' ? '12 digits' : '१२ अंक'}</div>
+        </div>
+        <div class="field">
+          <label>${lang === 'en' ? 'Mobile *' : 'चलभाष *'}</label>
+          <input type="tel" id="certMobile" maxlength="10" inputmode="numeric" autocomplete="tel">
+          <div class="errmsg">${lang === 'en' ? '10 digits' : '१० अंक'}</div>
+        </div>
       </div>
-      <div class="field"><label>${lang==='en'?'Full Address *':'सम्पूर्ण पता *'}</label><textarea id="certAddress" rows="3"></textarea><div class="errmsg">${lang==='en'?'Min 15 chars':'कम से १५ अक्षर'}</div></div>
-      <div class="field"><label>${lang==='en'?'Email *':'विद्युत्पत्र *'}</label><input type="email" id="certEmail" placeholder="name@example.com"><small>${lang==='en'?'OTP and certificate will be sent here':'कूट तथा प्रमाणपत्र इसी पर भेजा जाएगा'}</small><div class="errmsg">${lang==='en'?'Valid email':'सही ईमेल'}</div></div>
-      <button class="btn btn-saffron btn-block mt24" onclick="sendCertOtp()">📩 ${lang==='en'?'Send Code':'कूट भेजें'}</button>
+      <div class="field">
+        <label>${lang === 'en' ? 'Full Address *' : 'सम्पूर्ण पता *'}</label>
+        <textarea id="certAddress" rows="3"></textarea>
+        <div class="errmsg">${lang === 'en' ? 'Min 15 chars' : 'कम से १५ अक्षर'}</div>
+      </div>
+      <div class="field">
+        <label>${lang === 'en' ? 'Email *' : 'विद्युत्पत्र *'}</label>
+        <input type="email" id="certEmail" placeholder="name@example.com" autocomplete="email">
+        <small>${lang === 'en' ? 'OTP and certificate will be sent here' : 'कूट तथा प्रमाणपत्र इसी पर भेजा जाएगा'}</small>
+        <div class="errmsg">${lang === 'en' ? 'Valid email' : 'सही ईमेल'}</div>
+      </div>
+      <button class="btn btn-saffron btn-block mt24" onclick="sendCertOtp()">📩 ${lang === 'en' ? 'Send Code' : 'कूट भेजें'}</button>
     </div>
     <div id="certStep2" style="display:none">
-      <div class="note note-green" style="margin-bottom:16px;font-size:.92rem">✅ ${lang==='en'?'Code sent to:':'कूट भेजा गया:'} <b id="certOtpSentTo"></b></div>
-      <div class="field"><label>${lang==='en'?'6-digit Code *':'छह अंकों का कूट *'}</label><input type="text" id="certOtpCode" maxlength="6" inputmode="numeric" style="font-family:monospace;font-size:1.5rem;letter-spacing:10px;text-align:center;padding:12px"><div class="errmsg" id="certOtpErr"></div></div>
+      <div class="note note-green" style="margin-bottom:16px;font-size:.92rem">✅ ${lang === 'en' ? 'Code sent to:' : 'कूट भेजा गया:'} <b id="certOtpSentTo"></b></div>
+      <div class="field">
+        <label>${lang === 'en' ? '6-digit Code *' : 'छह अंकों का कूट *'}</label>
+        <input type="text" id="certOtpCode" maxlength="6" inputmode="numeric" autocomplete="one-time-code" style="font-family:monospace;font-size:1.5rem;letter-spacing:10px;text-align:center;padding:12px">
+        <div class="errmsg" id="certOtpErr"></div>
+      </div>
       <div style="display:flex;gap:10px">
-        <button class="btn btn-outline" onclick="backToCertDetails()" style="flex:1">${lang==='en'?'← Back':'← पीछे'}</button>
-        <button class="btn btn-green" id="certVerifyBtn" onclick="verifyCertOtp()" style="flex:2">✓ ${lang==='en'?'Generate':'प्रमाणपत्र बनाएँ'}</button>
+        <button class="btn btn-outline" onclick="backToCertDetails()" style="flex:1">${lang === 'en' ? '← Back' : '← पीछे'}</button>
+        <button class="btn btn-green" id="certVerifyBtn" onclick="verifyCertOtp()" style="flex:2">✓ ${lang === 'en' ? 'Generate' : 'प्रमाणपत्र बनाएँ'}</button>
       </div>
       <p style="text-align:center;margin-top:14px;font-size:.9rem;color:var(--muted)">
-        <button onclick="sendCertOtp()" style="color:var(--maroon);font-weight:700;text-decoration:underline;background:none;border:none;cursor:pointer;padding:0">${lang==='en'?'Resend':'पुन: भेजें'}</button>
+        <button onclick="sendCertOtp()" style="color:var(--maroon);font-weight:700;text-decoration:underline;background:none;border:none;cursor:pointer;padding:0">${lang === 'en' ? 'Resend' : 'पुन: भेजें'}</button>
         <span id="certOtpTimer" style="margin-left:8px"></span>
       </p>
     </div>`;
   const aEl = $('#certAadhar');
-  aEl.addEventListener('input', e => { let v = e.target.value.replace(/\D/g,'').slice(0,12); e.target.value = v.replace(/(\d{4})(?=\d)/g, '$1 '); });
+  if(aEl){
+    aEl.addEventListener('input', e => {
+      let v = e.target.value.replace(/\D/g, '').slice(0, 12);
+      e.target.value = v.replace(/(\d{4})(?=\d)/g, '$1 ');
+    });
+  }
   openModal('freeCertModal');
 }
+window.openFreeCertForm = openFreeCertForm;
 
 function backToCertDetails(){
   $('#certStep2').style.display = 'none';
   $('#certStep1').style.display = 'block';
   clearInterval(_certOtpTimer);
 }
+window.backToCertDetails = backToCertDetails;
 
 function validateCertData(){
   const name = $('#certName').value.trim();
@@ -1843,7 +3232,13 @@ function validateCertData(){
   const address = $('#certAddress').value.trim();
   const email = $('#certEmail').value.trim();
   let ok = true;
-  const mark = (id, bad) => { const el = document.getElementById(id); el.closest('.field').classList.toggle('err', bad); if(bad) ok = false; };
+  const mark = (id, bad) => {
+    const el = document.getElementById(id);
+    if(!el) return;
+    const wrap = el.closest('.field');
+    if(wrap) wrap.classList.toggle('err', bad);
+    if(bad) ok = false;
+  };
   mark('certName', name.length < 3);
   mark('certGender', !gender);
   mark('certParent', parent.length < 3);
@@ -1851,64 +3246,116 @@ function validateCertData(){
   mark('certMobile', !/^[6-9]\d{9}$/.test(mobile));
   mark('certAddress', address.length < 15);
   mark('certEmail', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
-  if(!ok){ toast('कृपया समस्त सूचना सही भरें'); return null; }
+  if(!ok){
+    toast(_lang() === 'en' ? 'Please fill all required fields' : 'कृपया समस्त सूचना सही भरें');
+    return null;
+  }
   return { name, gender, prefix, parent, aadhar, mobile, address, email };
 }
 
 async function sendCertOtp(){
-  const d = validateCertData(); if(!d) return;
+  const d = validateCertData();
+  if(!d) return;
   _certData = d;
-  const btn = document.querySelector('#certStep1 .btn'); const orig = btn.textContent; btn.disabled = true; btn.textContent = '⏳';
+  const btn = document.querySelector('#certStep1 .btn');
+  const orig = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '⏳';
   const r = await apiCall({ action:'sendOtp', email: d.email });
-  btn.disabled = false; btn.textContent = orig;
+  btn.disabled = false;
+  btn.textContent = orig;
   if(r.status === 'success'){
     $('#certOtpSentTo').textContent = d.email;
     $('#certStep1').style.display = 'none';
     $('#certStep2').style.display = 'block';
     $('#certOtpCode').focus();
     startCertOtpTimer(60);
-    toast('कूट भेजा गया ✓');
-  } else { toast(r.message || 'त्रुटि'); }
+    toast(_lang() === 'en' ? '✓ Code sent' : 'कूट भेजा गया ✓');
+  } else {
+    toast(r.message || 'त्रुटि');
+  }
 }
+window.sendCertOtp = sendCertOtp;
 
 function startCertOtpTimer(s){
   clearInterval(_certOtpTimer);
   const el = document.getElementById('certOtpTimer');
   if(el){
     el.textContent = `(${s}s)`;
-    _certOtpTimer = setInterval(() => { s--; el.textContent = `(${s}s)`; if(s<=0){ clearInterval(_certOtpTimer); el.textContent=''; } }, 1000);
+    _certOtpTimer = setInterval(() => {
+      s--;
+      el.textContent = `(${s}s)`;
+      if(s <= 0){ clearInterval(_certOtpTimer); el.textContent = ''; }
+    }, 1000);
   }
 }
 
 async function verifyCertOtp(){
   const otp = $('#certOtpCode').value.trim();
-  if(!/^\d{6}$/.test(otp)){ toast('छह अंकों का कूट'); return; }
-  if(!_certData){ toast('सत्र समाप्त'); return; }
-  const btn = $('#certVerifyBtn'); const orig = btn.textContent; btn.disabled = true; btn.textContent = '⏳';
+  if(!/^\d{6}$/.test(otp)){
+    toast(_lang() === 'en' ? 'Enter 6-digit code' : 'छह अंकों का कूट');
+    return;
+  }
+  if(!_certData){
+    toast(_lang() === 'en' ? 'Session expired' : 'सत्र समाप्त');
+    return;
+  }
+  const btn = $('#certVerifyBtn');
+  const orig = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '⏳';
   const v = await apiCall({ action:'verifyOtp', email: _certData.email, otp });
-  if(v.status !== 'success'){ btn.disabled = false; btn.textContent = orig; $('#certOtpErr').textContent = v.message||'अमान्य'; return; }
-  btn.textContent = '⏳ बन रहा है...';
+  if(v.status !== 'success'){
+    btn.disabled = false;
+    btn.textContent = orig;
+    $('#certOtpErr').textContent = v.message || (_lang() === 'en' ? 'Invalid' : 'अमान्य');
+    return;
+  }
+  btn.textContent = '⏳';
   const qr = window._quizResult;
   const fullParentName = _certData.prefix + ' ' + _certData.parent;
   const r = await apiCall({
     action:'issueFreeCert',
-    course: qr.course, courseTitle: qr.courseTitle,
-    duration: qr.duration, level: qr.level,
-    name: _certData.name, parentName: fullParentName, parentPrefix: _certData.prefix,
-    gender: _certData.gender, aadhar: _certData.aadhar, mobile: _certData.mobile,
-    address: _certData.address, email: _certData.email,
-    score: qr.score, total: qr.total, pct: qr.pct
+    course: qr.course,
+    courseTitleHi: qr.courseTitleHi,
+    courseTitleEn: qr.courseTitleEn,
+    duration: qr.duration,
+    level: qr.level,
+    name: _certData.name,
+    parentName: fullParentName,
+    parentPrefix: _certData.prefix,
+    gender: _certData.gender,
+    aadhar: _certData.aadhar,
+    mobile: _certData.mobile,
+    address: _certData.address,
+    email: _certData.email,
+    score: qr.score,
+    total: qr.total,
+    pct: qr.pct
   });
-  btn.disabled = false; btn.textContent = orig;
-  if(r.status !== 'success'){ toast(r.message || 'त्रुटि'); $('#certOtpErr').textContent = r.message || 'त्रुटि'; return; }
+  btn.disabled = false;
+  btn.textContent = orig;
+  if(r.status !== 'success'){
+    toast(r.message || 'त्रुटि');
+    $('#certOtpErr').textContent = r.message || 'त्रुटि';
+    return;
+  }
   clearInterval(_certOtpTimer);
   showFreeCert(r, _certData);
 }
+window.verifyCertOtp = verifyCertOtp;
 
 function showFreeCert(data, cd){
   const verifyUrl = 'https://www.diprafoundation.com/verify.html?cert=' + encodeURIComponent(data.certId);
-  const aadharMasked = 'XXXX XXXX ' + String(data.aadhar||cd.aadhar||'').slice(-4);
+  const aadharMasked = 'XXXX XXXX ' + String(data.aadhar || cd.aadhar || '').slice(-4);
   const certId = data.certId;
+  const courseTitle = _lang() === 'en' ? (data.courseTitleEn || data.courseTitle) : (data.courseTitleHi || data.courseTitle);
+  const relation = cd.gender === 'महिला'
+    ? (_lang() === 'en' ? 'Daughter of' : 'पुत्री')
+    : cd.gender === 'पुरुष'
+    ? (_lang() === 'en' ? 'Son of' : 'पुत्र')
+    : (_lang() === 'en' ? 'Son/Daughter of' : 'पुत्र/पुत्री');
+
   $('#freeCertBody').innerHTML = `
     <div class="cert-frame" id="certPrintArea">
       <div class="cert-watermark">दिप्र फ़ाउंडेशन</div>
@@ -1921,9 +3368,9 @@ function showFreeCert(data, cd){
         <div class="cert-title-sub">नि:शुल्क अंकीय पाठ्यक्रम · FREE ONLINE COURSE</div>
         <div class="cert-pre">This is to certify that</div>
         <div class="cert-student">${escapeHtml(cd.name)}</div>
-        <div class="cert-parent">${cd.gender === 'महिला' ? 'पुत्री' : (cd.gender === 'पुरुष' ? 'पुत्र' : 'पुत्र/पुत्री')} — ${escapeHtml(cd.prefix + ' ' + cd.parent)}</div>
+        <div class="cert-parent">${relation} — ${escapeHtml(cd.prefix + ' ' + cd.parent)}</div>
         <div class="cert-pre">has successfully completed the online course</div>
-        <div class="cert-course">${escapeHtml(data.courseTitle)}</div>
+        <div class="cert-course">${escapeHtml(courseTitle)}</div>
         <div class="cert-meta">
           <div><small>अवधि / Duration</small><b>${escapeHtml(data.duration || '')}</b></div>
           <div><small>स्तर / Level</small><b>${escapeHtml(data.level || 'Beginner')}</b></div>
@@ -1938,7 +3385,10 @@ function showFreeCert(data, cd){
         <div class="cert-address"><b>पता:</b> ${escapeHtml(cd.address)}</div>
         <div class="cert-bottom">
           <div class="cert-sign"><div class="line"></div>जारी दिनांक<br><b>${new Date().toLocaleDateString('en-IN')}</b></div>
-          <div class="cert-qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(verifyUrl)}" alt="QR"><small>सत्यापन हेतु स्कैन करें</small></div>
+          <div class="cert-qr">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(verifyUrl)}" alt="QR">
+            <small>सत्यापन हेतु स्कैन करें</small>
+          </div>
           <div class="cert-sign"><div class="line"></div>अधिकृत हस्ताक्षर<br><b>दिप्र फ़ाउंडेशन</b></div>
         </div>
         <div class="cert-id-line">प्रमाणपत्र क्रमांक: <b>${escapeHtml(certId)}</b></div>
@@ -1946,19 +3396,57 @@ function showFreeCert(data, cd){
     </div>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin:20px 0" class="no-print">
       <button class="btn btn-primary" onclick="window.print()" style="flex:1;min-width:140px">🖨️ प्रिंट करें</button>
-      <a href="${verifyUrl}" target="_blank" class="btn btn-outline" style="flex:1;min-width:140px">🔍 सत्यापन पृष्ठ</a>
+      <a href="${verifyUrl}" target="_blank" rel="noopener" class="btn btn-outline" style="flex:1;min-width:140px">🔍 सत्यापन पृष्ठ</a>
     </div>
     <div class="note note-green" style="margin-bottom:16px;font-size:.92rem">📧 प्रमाणपत्र <b>${escapeHtml(cd.email)}</b> पर भी भेज दिया गया है।</div>
-    <div class="center mt16"><button class="btn btn-primary" onclick="closeModal('freeCertModal')">बंद करें</button></div>`;
+    <div class="center mt16">
+      <button class="btn btn-primary" onclick="closeModal('freeCertModal')">बंद करें</button>
+    </div>`;
 }
 
 function escapeHtml(s){
   return String(s == null ? '' : s)
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
-console.log('%c🪔 दिप्र फ़ाउंडेशन — The Uplift कोचिंग योजना', 'color:#FF7A00;font-weight:bold;font-size:14px');
+/* ============================================================
+   SCROLL — Bottom nav active + header shadow
+   ============================================================ */
+let _scrollTick = false;
+window.addEventListener('scroll', () => {
+  if(_scrollTick) return;
+  _scrollTick = true;
+  requestAnimationFrame(() => {
+    updateBottomNav();
+    _scrollTick = false;
+  });
+}, { passive: true });
+
+/* ============================================================
+   INIT
+   ============================================================ */
+(function init(){
+  try {
+    const s = localStorage.getItem('uplift_lang');
+    if(s === 'hi' || s === 'en') setLang(s);
+  } catch(e){}
+
+  renderCourseTable();
+  renderHeroSeats();
+  renderFreeCourses();
+  fillApplyCourses();
+  renderThoughts();
+  updateBottomNav();
+  setTimeout(loadLiveSeats, 200);
+  setInterval(loadLiveSeats, 60000);
+
+  console.log('%c🪔 दिप्र फ़ाउंडेशन — The Uplift कोचिंग योजना v3.0', 'color:#FF7A00;font-weight:bold;font-size:14px');
+})();
+
 </script>
 <script src="sound.js" defer></script>
 </body>
