@@ -2578,22 +2578,30 @@ const FREE_COURSES = [
   { code:'FREE-FIN', hi:'आधारभूत वित्तीय ज्ञान', en:'Financial Literacy', icon:'💰', durHi:'५५ मिनट', durEn:'55 min', levelHi:'प्रारंभिक', level:'Beginner', pass:60, descHi:'बचत, बैंक-कार्य, ब्याज, बीमा तथा वित्तीय ठगी से बचाव।', descEn:'Savings, banking, interest, insurance, financial fraud.' }
 ];
 
-function renderFreeCourses(){
-  const grid = $('#freeCoursesGrid');
-  if(!grid) return;
+function renderFreeCourses() {
+  const grid = document.querySelector('#freeCoursesGrid');
+  if (!grid) return;
+
   const lang = _lang();
-  grid.innerHTML = FREE_COURSES.map(c => `<div class="free-card">
-    <span class="badge-free" data-hi="नि:शुल्क" data-en="FREE">नि:शुल्क</span>
-    <div class="fc-ico">${c.icon}</div>
-    <h3>${lang === 'en' ? c.en : c.hi}</h3>
-    <div class="fc-meta">
-      <span>⏱ ${lang === 'en' ? c.durEn : c.durHi}</span>
-      <span>📝 २० ${lang === 'en' ? 'Q' : 'प्रश्न'}</span>
-      <span>📖 ${lang === 'en' ? '10 chapters' : '१० अध्याय'}</span>
+
+  grid.innerHTML = FREE_COURSES.map(c => `
+    <div class="free-card">
+      <span class="badge-free" data-hi="नि:शुल्क" data-en="FREE">
+        ${lang === 'en' ? 'FREE' : 'नि:शुल्क'}
+      </span>
+      <div class="fc-ico">${c.icon}</div>
+      <h3>${lang === 'en' ? c.en : c.hi}</h3>
+      <div class="fc-meta">
+        <span>⏱ ${lang === 'en' ? c.durEn : c.durHi}</span>
+        <span>📝 २० ${lang === 'en' ? 'Q' : 'प्रश्न'}</span>
+        <span>📖 ${lang === 'en' ? '10 chapters' : '१० अध्याय'}</span>
+      </div>
+      <p>${lang === 'en' ? c.descEn : c.descHi}</p>
+      <button class="btn btn-saffron btn-sm" onclick="openEbook('${c.code}')" data-hi="📖 ई-पुस्तक पढ़ें" data-en="📖 Read Ebook">
+        📖 ${lang === 'en' ? 'Read Ebook' : 'ई-पुस्तक पढ़ें'}
+      </button>
     </div>
-    <p>${lang === 'en' ? c.descEn : c.descHi}</p>
-    <button class="btn btn-saffron btn-sm" onclick="openEbook('${c.code}')" data-hi="📖 ई-पुस्तक पढ़ें" data-en="📖 Read Ebook">📖 ${lang === 'en' ? 'Read Ebook' : 'ई-पुस्तक पढ़ें'}</button>
-  </div>`).join('');
+  `).join('');
 }
 renderFreeCourses();
 
