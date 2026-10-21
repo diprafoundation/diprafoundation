@@ -12,12 +12,12 @@
 <link rel="canonical" href="https://www.diprafoundation.com/verify.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Great+Vibes&family=Montserrat:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
 <link rel="icon" href="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
 <link rel="stylesheet" href="style.css">
 <style>
 /* ============================================================
-   PAGE-SPECIFIC: verify.html
+   PAGE-SPECIFIC: verify.html (Updated Premium Design)
    ============================================================ */
 
 .page-head {
@@ -145,259 +145,222 @@
   font-size: .9rem;
 }
 
-/* Certificate Frame */
+/* ---------- NEW PREMIUM CERTIFICATE DESIGN ---------- */
 .cert-frame {
-  background: linear-gradient(135deg, #FFFBF5 0%, #FFF6E8 50%, #FFFBF5 100%);
-  border: 12px solid var(--green);
-  border-radius: 14px;
-  padding: 0;
+  background: #fff;
+  border: 10px solid #0D7A3A;
+  padding: 6px;
   position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  margin: 15px auto;
+  max-width: 900px;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(13,122,58,.28);
-}
-
-.cert-frame::before {
-  content: "";
-  position: absolute;
-  inset: 14px;
-  border: 3px solid var(--gold);
-  border-radius: 8px;
-  pointer-events: none;
-  z-index: 2;
 }
 
 .cert-inner {
-  padding: 36px 26px;
-  position: relative;
-  z-index: 3;
+  border: 2px solid #FFB703;
+  padding: 30px 40px 25px; /* Adjusted bottom padding for disclaimer */
   text-align: center;
+  position: relative;
+  background: radial-gradient(circle at center, #ffffff 0%, #fcfcfc 100%);
 }
 
-.cert-logo {
-  width: 84px;
-  height: 84px;
-  margin: 0 auto 12px;
-  border-radius: 50%;
-  background: #fff;
-  border: 3px solid var(--gold);
-  padding: 8px;
-  display: grid;
-  place-items: center;
-  box-shadow: 0 6px 20px rgba(212,160,23,.3);
-}
-
-.cert-logo img {
+/* Repeated Logo Watermark */
+.cert-watermark-pattern {
+  position: absolute;
+  top: 0; left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  border-radius: 50%;
+  background-image: url('https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500');
+  background-repeat: repeat;
+  background-size: 100px 100px;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+  filter: grayscale(100%) brightness(50%);
+  transform: rotate(-10deg);
+}
+
+.cert-inner > * { position: relative; z-index: 1; }
+
+.cert-logo img {
+  height: 80px;
+  width: auto;
+  margin-bottom: 10px;
 }
 
 .cert-org {
   font-family: 'Tiro Devanagari Hindi', serif;
-  font-size: 1.4rem;
-  color: var(--maroon);
-  margin-bottom: 4px;
+  font-size: 26px;
+  color: #8B1538;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .cert-subtitle {
-  font-size: .82rem;
-  color: var(--saffron-3);
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  font-weight: 700;
-  margin-bottom: 6px;
+  font-size: 14px;
+  color: #0D7A3A;
+  font-weight: 600;
+  margin-bottom: 4px;
 }
 
 .cert-regno {
-  font-size: .78rem;
-  color: var(--muted);
+  font-size: 11px;
+  color: #777;
   margin-bottom: 20px;
+  font-family: sans-serif;
 }
 
 .cert-title {
-  font-size: 2rem;
-  color: var(--green);
-  font-weight: 800;
-  letter-spacing: .22em;
-  margin: 16px 0 6px;
+  font-family: 'Cinzel', serif;
+  font-size: 42px;
+  color: #0D7A3A;
+  font-weight: bold;
+  margin: 10px 0 5px;
+  letter-spacing: 2px;
 }
 
 .cert-title-sub {
-  font-size: .85rem;
-  color: var(--saffron-3);
-  letter-spacing: .15em;
+  font-size: 14px;
+  color: #555;
   text-transform: uppercase;
-  font-weight: 700;
-  margin-bottom: 18px;
+  letter-spacing: 3px;
+  margin-bottom: 25px;
+  font-family: sans-serif;
 }
 
 .cert-pre {
+  font-size: 16px;
+  color: #444;
   font-style: italic;
-  color: var(--ink-2);
-  margin-bottom: 6px;
+  font-family: Georgia, serif;
 }
 
 .cert-student {
-  font-family: 'Tiro Devanagari Hindi', serif;
-  font-size: 1.9rem;
-  color: var(--maroon);
-  border-bottom: 2px dotted var(--gold-2);
+  font-size: 34px;
+  color: #8B1538;
+  font-weight: bold;
+  margin: 12px 0 5px;
+  border-bottom: 2px dashed #FFB703;
   display: inline-block;
-  padding: 0 22px 6px;
-  margin: 10px auto;
+  padding: 0 20px 5px;
+  font-family: 'Playfair Display', serif;
 }
 
 .cert-parent {
-  color: var(--ink-2);
-  margin: 8px 0 16px;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+  font-family: sans-serif;
 }
 
 .cert-course {
-  font-size: 1.15rem;
-  color: var(--green);
-  font-weight: 800;
+  font-size: 22px;
+  color: #0D7A3A;
+  font-weight: bold;
   margin: 12px 0;
+  font-family: 'Tiro Devanagari Hindi', serif;
 }
 
 .cert-meta {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  max-width: 560px;
-  margin: 16px auto;
-}
-
-.cert-meta > div {
-  background: #fff;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 15px 0;
+  background: #f9f9f9;
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid var(--border-2);
+  border: 1px solid #eee;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.cert-meta small {
-  display: block;
-  font-size: .7rem;
-  color: var(--muted);
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-.cert-meta b {
-  font-size: .95rem;
-  color: var(--green);
-}
+.cert-meta div { text-align: center; }
+.cert-meta small { display: block; font-size: 10px; color: #777; text-transform: uppercase; margin-bottom: 4px;}
+.cert-meta b { font-size: 15px; color: #333; }
 
 .cert-score {
-  font-size: .95rem;
-  color: var(--ink-2);
-  margin: 14px 0;
-}
-
-.cert-info {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 16px 0;
-  font-size: .8rem;
-}
-
-.cert-info span {
-  padding: 5px 11px;
-  background: #fff;
+  font-size: 16px;
+  color: #444;
+  margin: 12px 0;
+  background: #FFF8F0;
+  padding: 8px 15px;
   border-radius: 6px;
-  border: 1px solid var(--border-2);
-  color: var(--ink-2);
+  border: 1px solid #FFB703;
+  display: inline-block;
 }
 
-.cert-info b {
-  color: var(--maroon);
-}
-
-.cert-address {
-  font-size: .82rem;
-  color: var(--ink-2);
-  margin: 8px 0;
-  padding: 8px 12px;
-  background: #fff;
-  border-radius: 6px;
-  border: 1px solid var(--border-2);
-  max-width: 580px;
-  margin-inline: auto;
-}
-
-.cert-address b {
-  color: var(--maroon);
-}
+.cert-score b { color: #0D7A3A; }
 
 .cert-bottom {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  gap: 14px;
-  margin-top: 28px;
-  padding-top: 18px;
-  border-top: 2px dashed var(--border-2);
-  flex-wrap: wrap;
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
 }
 
 .cert-sign {
   text-align: center;
-  font-size: .82rem;
-  color: var(--ink-2);
-  flex: 1;
-  min-width: 140px;
+  width: 180px;
+  font-size: 12px;
+  color: #555;
+  font-family: sans-serif;
 }
 
 .cert-sign .line {
-  border-bottom: 2px solid var(--ink);
-  height: 36px;
-  margin-bottom: 8px;
-  max-width: 160px;
-  margin-inline: auto;
+  border-top: 1px solid #333;
+  margin-bottom: 6px;
+  width: 140px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.cert-sign b {
-  color: var(--green);
-}
-
-.cert-qr {
-  text-align: center;
-  padding: 6px;
-  background: #fff;
-  border-radius: 10px;
-  border: 2px solid var(--green);
-}
-
+.cert-qr { text-align: center; }
 .cert-qr img {
-  width: 90px;
-  height: 90px;
-  border-radius: 6px;
+  width: 85px;
+  height: 85px;
+  border: 2px solid #eee;
+  padding: 4px;
+  border-radius: 8px;
 }
 
 .cert-qr small {
   display: block;
-  font-size: .68rem;
-  color: var(--muted);
-  margin-top: 5px;
-  font-weight: 600;
+  font-size: 10px;
+  color: #777;
+  margin-top: 4px;
+  font-family: sans-serif;
 }
 
-.cert-id-line {
-  font-family: monospace;
-  font-size: .82rem;
-  color: var(--ink-2);
-  margin-top: 16px;
-  padding: 9px;
-  background: #fff;
-  border-radius: 8px;
-  border: 1.5px dashed var(--gold);
+/* Cert ID Box */
+.cert-id-box {
+  background: #FFF8F0;
+  border: 1px solid #FFB703;
+  border-radius: 6px;
+  padding: 4px 15px;
   display: inline-block;
+  font-size: 15px;
+  font-weight: bold;
+  color: #8B1538;
+  font-family: monospace;
+  margin-bottom: 5px;
 }
 
-.cert-id-line b {
-  color: var(--maroon);
+.cert-id-box span { color: #555; font-weight: 600; }
+
+/* NEW: Legal Disclaimer */
+.cert-disclaimer {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px dashed #ccc;
+  font-size: 9px; /* Minimum readable font size */
+  color: #888;
+  line-height: 1.4;
+  text-align: justify;
+  font-family: sans-serif;
 }
 
 /* Share */
@@ -532,22 +495,38 @@
   .cert-sign { width: 100%; max-width: 220px; }
   .share-grid { grid-template-columns: 1fr 1fr; }
   .verified-banner { flex-direction: column; text-align: center; }
+  .cert-disclaimer { font-size: 8px; } /* Even smaller on mobile */
 }
 
-/* Print */
+/* ---------- Print Settings for Certificate (A4 Landscape) ---------- */
 @media print {
-  body { background: #fff; }
+  @page { size: A4 landscape; margin: 0; }
+  body { 
+    background: #fff !important; 
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .no-print { display: none !important; }
+  .modal-head { display: none !important; }
+  .modal-box { box-shadow: none !important; margin: 0 !important; max-width: 100% !important; width: 100% !important; }
+  .modal { position: static !important; background: none !important; padding: 0 !important; overflow: visible !important; }
+  
+  /* Only show certificate */
   body * { visibility: hidden; }
   #certPrintArea, #certPrintArea * { visibility: visible; }
   #certPrintArea {
     position: absolute;
     left: 0; top: 0; width: 100%;
-    box-shadow: none;
-    border-width: 10px;
+    border: 10px solid #0D7A3A !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    -webkit-print-color-adjust: exact; 
+    print-color-adjust: exact; 
   }
-  .no-print { display: none !important; }
-  header, footer, .topbar, main > *:not(#certWrap) { display: none !important; }
-  #certWrap { display: block !important; }
+  .cert-inner, .cert-watermark-pattern { 
+    -webkit-print-color-adjust: exact; 
+    print-color-adjust: exact; 
+  }
 }
 </style>
 </head>
@@ -571,7 +550,6 @@
 </div>
 
 <!-- Header -->
-<<!-- Header -->
 <header id="mainHeader">
   <div class="container nav-wrap">
     <a href="index.html" class="brand">
@@ -605,14 +583,14 @@
 <main>
   <div class="container">
 
-    <div class="page-head">
+    <div class="page-head no-print">
       <span class="eyebrow" data-hi="🎖️ प्रामाणिकता सत्यापन" data-en="🎖️ Authenticity Verification">🎖️ प्रामाणिकता सत्यापन</span>
       <h1 data-hi="प्रमाणपत्र सत्यापन" data-en="Certificate Verification" style="font-family:'Tiro Devanagari Hindi',serif;font-weight:400;color:var(--maroon);font-size:clamp(1.7rem,4vw,2.5rem);margin-bottom:10px;line-height:1.2">प्रमाणपत्र सत्यापन</h1>
       <p data-hi="दिप्र फ़ाउंडेशन के किसी भी प्रमाणपत्र की प्रामाणिकता तत्क्षण सत्यापित करें — QR स्कैन अथवा प्रमाणपत्र क्रमांक द्वारा।" data-en="Instantly verify authenticity of any Dipra Foundation certificate — via QR scan or Certificate ID." style="color:var(--ink-2);font-size:1.05rem;max-width:620px;margin:0 auto">दिप्र फ़ाउंडेशन के किसी भी प्रमाणपत्र की प्रामाणिकता तत्क्षण सत्यापित करें — QR स्कैन अथवा प्रमाणपत्र क्रमांक द्वारा।</p>
     </div>
 
     <!-- Input Card -->
-    <div class="card" id="inputCard">
+    <div class="card no-print" id="inputCard">
       <div class="field">
         <label data-hi="प्रमाणपत्र क्रमांक" data-en="Certificate ID">प्रमाणपत्र क्रमांक</label>
         <input type="text" id="certInput" placeholder="DPF-FREE-2026-XXXXX" autocomplete="off" autocapitalize="characters">
@@ -633,7 +611,7 @@
     </div>
 
     <!-- Loader -->
-    <div class="loader" id="loader">
+    <div class="loader no-print" id="loader">
       <div class="spinner"></div>
       <p data-hi="प्रमाणपत्र सत्यापित किया जा रहा है..." data-en="Verifying certificate...">प्रमाणपत्र सत्यापित किया जा रहा है...</p>
     </div>
@@ -649,19 +627,23 @@
         </div>
       </div>
 
-      <!-- CERTIFICATE FRAME -->
+      <!-- ==========================================
+           NEW PREMIUM CERTIFICATE FRAME
+           ========================================== -->
       <div class="cert-frame" id="certPrintArea">
         <div class="cert-inner">
+          <!-- Repeated Logo Watermark -->
+          <div class="cert-watermark-pattern"></div>
+
           <!-- Logo -->
           <div class="cert-logo">
-            <img id="cLogo" src="https://www.diprafoundation.com/logo.png" alt="दिप्र फ़ाउंडेशन"
-                 onerror="this.onerror=null;this.src='https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500';">
+            <img id="cLogo" src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="दिप्र फ़ाउंडेशन">
           </div>
 
           <!-- Org Header -->
           <div class="cert-org" id="certOrg">दिप्र फ़ाउंडेशन</div>
           <div class="cert-subtitle" id="certSubtitle">The Uplift — कोचिंग योजना</div>
-          <div class="cert-regno" id="certRegno">पंजीकरण संख्या ३०० · Trust Act 1882</div>
+          <div class="cert-regno" id="certRegno">Trust Reg. No. 300 · Darpan ID: UP/2024/0459444 · MSME: UDYAM-UP-43-0209073</div>
 
           <!-- Title -->
           <div class="cert-title" id="certTitle">प्रमाणपत्र</div>
@@ -686,15 +668,15 @@
             अंक: <b id="cScore">—</b> · प्रतिशत: <b id="cPct">—</b> · श्रेणी: <b id="cGrade">—</b>
           </div>
 
-          <!-- Info chips -->
-          <div class="cert-info">
+          <!-- Info chips (Aadhaar, Mobile, Email) -->
+          <div class="cert-info" style="display:flex;justify-content:center;gap:20px;font-size:11px;color:#555;margin-bottom:10px;font-family:monospace;">
             <span><b id="chipLabel1">आधार:</b> <span id="cAadhar">—</span></span>
             <span><b id="chipLabel2">चलभाष:</b> <span id="cMobile">—</span></span>
             <span><b id="chipLabel3">विद्युत्पत्र:</b> <span id="cEmail">—</span></span>
           </div>
 
           <!-- Address -->
-          <div class="cert-address">
+          <div class="cert-address" style="font-size:11px;color:#666;margin-bottom:20px;font-family:sans-serif;">
             <b id="addrLabel">पता:</b> <span id="cAddress">—</span>
           </div>
 
@@ -705,10 +687,16 @@
               <span id="issueLabel">जारी दिनांक</span><br>
               <b id="cIssued">—</b>
             </div>
+            
             <div class="cert-qr">
+              <!-- Certificate ID (Above QR) -->
+              <div class="cert-id-box">
+                <span id="certIdLabel">प्रमाणपत्र क्रमांक:</span> <b id="cCertId">—</b>
+              </div>
               <img id="cQR" src="" alt="QR">
               <small id="qrLabel">सत्यापन हेतु स्कैन करें</small>
             </div>
+            
             <div class="cert-sign">
               <div class="line"></div>
               <span id="signLabel">अधिकृत हस्ताक्षर</span><br>
@@ -716,10 +704,11 @@
             </div>
           </div>
 
-          <!-- Cert ID -->
-          <div class="cert-id-line" id="certIdLine">
-            प्रमाणपत्र क्रमांक: <b id="cCertId">—</b>
+          <!-- NEW: Legal Disclaimer -->
+          <div class="cert-disclaimer" id="certDisclaimer">
+            यह प्रमाणपत्र दिप्र फ़ाउंडेशन (पंजीकृत ट्रस्ट) द्वारा जारी है। यह किसी सरकारी विभाग, MSME मंत्रालय या सरकारी निकाय से संबद्ध, समर्थित या प्रमाणित नहीं है। MSME/Udyam संख्या केवल पंजीकरण संदर्भ हेतु है।
           </div>
+
         </div>
       </div>
 
@@ -803,12 +792,16 @@
 </main>
 
 <!-- Footer -->
-<footer>
+<footer class="no-print">
   <div class="container">
     <div class="foot-brand">दिप्र फ़ाउंडेशन</div>
     <div class="foot-line">📍 खेरसा, बिधनू, कानपुर नगर, उत्तर प्रदेश – २०९२१४</div>
     <div class="foot-line">📞 <a href="tel:+919532328276">+91 95323 28276</a> · ✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></div>
     <div class="foot-line">🌐 <a href="https://www.diprafoundation.com">www.diprafoundation.com</a></div>
+    <!-- NEW: Disclaimer Link -->
+    <div class="foot-line" style="margin-top:10px;">
+      <a href="disclaimer.html" style="color:#ffb703;text-decoration:underline;font-weight:600;font-size:0.9rem;">⚠️ Disclaimer / अस्वीकरण</a>
+    </div>
     <div style="font-size:.8rem;margin-top:14px;color:#c9a8b9">© २०२६ दिप्र फ़ाउंडेशन · पंजीकृत न्यास · पंजीकरण संख्या ३००</div>
   </div>
 </footer>
@@ -817,7 +810,7 @@
 
 <script>
 /* ============================================================
-   VERIFY PAGE — Robust, Bilingual, Shareable
+   VERIFY PAGE — Robust, Bilingual, Shareable (Updated Design)
    ============================================================ */
 const ENDPOINT = 'https://script.google.com/macros/s/AKfycbynC667snioVb9pnBE8jDRWUJHwKOUi5jTYO31PlfolDG5VjcTrE93zh2k-Ai7zgi0/exec';
 const $ = (s) => document.querySelector(s);
@@ -896,20 +889,18 @@ async function verifyCert(certId){
     const data = await res.json();
     $('#loader').classList.remove('show');
 
-    // Robust detection of success
     let cert = null;
     if(data && data.status === 'success'){
       cert = data.data || data.certificate || data;
       if(Array.isArray(cert)) cert = cert[0];
     } else if(data && !data.status && (data['Certificate ID'] || data.certId || data.Name || data['Student Name'])){
-      cert = data; // Direct object
+      cert = data; 
     }
 
     if(cert && typeof cert === 'object'){
       _currentCertData = cert;
       _currentCertLang = 'hi';
       renderCertificate(cert);
-      // Wire share buttons after a delay
       setTimeout(wireShareButtons, 100);
       if(window.SoundFX) SoundFX.play('success');
     } else {
@@ -928,7 +919,6 @@ async function verifyCert(certId){
 
 /* ---------- Render Certificate ---------- */
 function renderCertificate(d){
-  // Helper — get value from multiple possible keys
   const get = (...keys) => {
     for(const k of keys){
       if(d[k] !== undefined && d[k] !== null && d[k] !== '') return d[k];
@@ -936,7 +926,6 @@ function renderCertificate(d){
     return '';
   };
 
-  // Extract all fields with fallback keys
   const studentName = get('Student Name', 'studentName', 'Name', 'name', 'student_name') || '—';
   const parentName = get('Parent Name', 'parentName', 'parent_name', 'Guardian', 'guardian') || '—';
   const gender = get('Gender', 'gender') || '';
@@ -955,7 +944,6 @@ function renderCertificate(d){
   const issuedOn = get('Issued On', 'issuedOn', 'issued_on', 'issuedDate', 'Date') || new Date().toLocaleDateString('en-IN');
   const certId = get('Certificate ID', 'certId', 'certID', 'certificateId', 'certificate_id', 'CertificateID') || '—';
 
-  // Save complete normalized data
   _currentCertData = {
     studentName, parentName, gender,
     courseTitleHi, courseTitleEn,
@@ -964,7 +952,6 @@ function renderCertificate(d){
     raw: d
   };
 
-  // Now render in current language
   renderCertLang(_currentCertLang);
 
   const wrap = $('#certWrap');
@@ -980,13 +967,14 @@ function renderCertLang(lang){
   const isEn = lang === 'en';
 
   const T = {
-    org: isEn ? 'Dipra Foundation' : 'दिप्र फ़ाउंडेशन',
+    org: isEn ? 'DIPRA FOUNDATION' : 'दिप्र फ़ाउंडेशन',
     subtitle: isEn ? 'The Uplift — Coaching Scheme' : 'The Uplift — कोचिंग योजना',
-    regno: isEn ? 'Reg. No. 300 · Trust Act 1882' : 'पंजीकरण संख्या ३०० · Trust Act 1882',
+    regno: isEn ? 'Trust Reg. No. 300 · Darpan ID: UP/2024/0459444 · MSME: UDYAM-UP-43-0209073' : 'पंजीकरण संख्या ३०० · दर्पण: UP/2024/0459444 · MSME: UDYAM-UP-43-0209073',
     title: isEn ? 'CERTIFICATE' : 'प्रमाणपत्र',
-    titleSub: isEn ? 'Free Online Course' : 'नि:शुल्क अंकीय पाठ्यक्रम',
+    titleSub: isEn ? 'OF COMPLETION' : 'पूर्णता का प्रमाण',
     pre: isEn ? 'This is to certify that' : 'यह प्रमाणित किया जाता है कि',
-    completed: isEn ? 'has successfully completed the online course' : 'ने निम्नलिखित पाठ्यक्रम सफलतापूर्वक पूर्ण किया',
+    completed: isEn ? 'has successfully completed the online course' : 'ने ऑनलाइन कोर्स',
+    successfully: isEn ? 'successfully.' : 'सफलतापूर्वक पूर्ण किया है।',
     son: isEn ? 'Son of' : 'पुत्र',
     daughter: isEn ? 'Daughter of' : 'पुत्री',
     other: isEn ? 'Son/Daughter of' : 'पुत्र/पुत्री',
@@ -1003,82 +991,71 @@ function renderCertLang(lang){
     issued: isEn ? 'Issue Date' : 'जारी दिनांक',
     signatory: isEn ? 'Authorised Signatory' : 'अधिकृत हस्ताक्षर',
     qrScan: isEn ? 'Scan to verify' : 'सत्यापन हेतु स्कैन करें',
-    certId: isEn ? 'Certificate ID' : 'प्रमाणपत्र क्रमांक'
+    certId: isEn ? 'Certificate ID:' : 'प्रमाणपत्र क्रमांक:',
+    disclaimer: isEn ? 'This certificate is issued by Dipra Foundation (a registered trust) and is not affiliated with, endorsed by, or certified by any government department, MSME Ministry, or government body. MSME/Udyam number is for registration reference only.' : 'यह प्रमाणपत्र दिप्र फ़ाउंडेशन (पंजीकृत ट्रस्ट) द्वारा जारी है। यह किसी सरकारी विभाग, MSME मंत्रालय या सरकारी निकाय से संबद्ध, समर्थित या प्रमाणित नहीं है। MSME/Udyam संख्या केवल पंजीकरण संदर्भ हेतु है।'
   };
 
   const setTxt = (id, txt) => { const el = document.getElementById(id); if(el) el.textContent = txt; };
   const setHtml = (id, html) => { const el = document.getElementById(id); if(el) el.innerHTML = html; };
 
-  // Headers
   setTxt('certOrg', T.org);
   setTxt('certSubtitle', T.subtitle);
   setTxt('certRegno', T.regno);
   setTxt('certTitle', T.title);
   setTxt('certTitleSub', T.titleSub);
   setTxt('certPre', T.pre);
-  setTxt('certCompleted', T.completed);
-
-  // Student name
+  setTxt('certCompleted', T.completed + ' ' + T.successfully);
   setTxt('cName', D.studentName);
 
-  // Parent relation
-const parentEl = document.getElementById('cParentLine');
-if(parentEl){
-  // Determine relation — single value only
-  let relation = '';
-  const g = String(D.gender || '').trim().toLowerCase();
-  
-  if(g === 'महिला' || g === 'female' || g === 'Female' || g === 'f' || g === 'स्त्री' || g === 'लड़की'){
-    relation = T.daughter;  // पुत्री / Daughter of
-  } else if(g === 'पुरुष' || g === 'male' || g === 'Male' || g === 'm' || g === 'लड़का'){
-    relation = T.son;  // पुत्र / Son of
-  } else {
-    // Gender missing — extract from name if possible, else generic
-    relation = T.other;  // पुत्र/पुत्री (only when gender really unknown)
-  }
-  
-  // Parent name — check if prefix already included
-  const rawParent = String(D.parentName || '').trim();
-   const prefixMap = {
-    'श्री':      { hi: 'श्री',      en: 'Mr.' },
-    'श्रीमती':   { hi: 'श्रीमती',   en: 'Mrs.' },
-    'कु०':       { hi: 'कु०',       en: 'Ms.' },
-    'स्वर्गीय':  { hi: 'स्वर्गीय',  en: 'Late' },
-    'डॉ०':       { hi: 'डॉ०',       en: 'Dr.' },
-    'Mr.':      { hi: 'श्री',      en: 'Mr.' },
-    'Mrs.':     { hi: 'श्रीमती',   en: 'Mrs.' },
-    'Ms.':      { hi: 'कु०',       en: 'Ms.' },
-    'Late':     { hi: 'स्वर्गीय',  en: 'Late' },
-    'Dr.':      { hi: 'डॉ०',       en: 'Dr.' }
-  };
-     let detectedPrefix = '';
-  let nameOnly = rawParent;
-  for (const p of Object.keys(prefixMap)) {
-    if (rawParent.startsWith(p + ' ')) {
-      detectedPrefix = p;
-      nameOnly = rawParent.substring(p.length).trim();
-      break;
+  const parentEl = document.getElementById('cParentLine');
+  if(parentEl){
+    let relation = '';
+    const g = String(D.gender || '').trim().toLowerCase();
+    
+    if(g === 'महिला' || g === 'female' || g === 'f' || g === 'स्त्री' || g === 'लड़की'){
+      relation = T.daughter;
+    } else if(g === 'पुरुष' || g === 'male' || g === 'm' || g === 'लड़का'){
+      relation = T.son;
+    } else {
+      relation = T.other;
     }
+    
+    const rawParent = String(D.parentName || '').trim();
+    const prefixMap = {
+      'श्री':      { hi: 'श्री',      en: 'Mr.' },
+      'श्रीमती':   { hi: 'श्रीमती',   en: 'Mrs.' },
+      'कु०':       { hi: 'कु०',       en: 'Ms.' },
+      'स्वर्गीय':  { hi: 'स्वर्गीय',  en: 'Late' },
+      'डॉ०':       { hi: 'डॉ०',       en: 'Dr.' },
+      'Mr.':      { hi: 'श्री',      en: 'Mr.' },
+      'Mrs.':     { hi: 'श्रीमती',   en: 'Mrs.' },
+      'Ms.':      { hi: 'कु०',       en: 'Ms.' },
+      'Late':     { hi: 'स्वर्गीय',  en: 'Late' },
+      'Dr.':      { hi: 'डॉ०',       en: 'Dr.' }
+    };
+    let detectedPrefix = '';
+    let nameOnly = rawParent;
+    for (const p of Object.keys(prefixMap)) {
+      if (rawParent.startsWith(p + ' ')) {
+        detectedPrefix = p;
+        nameOnly = rawParent.substring(p.length).trim();
+        break;
+      }
+    }
+    if (!detectedPrefix) {
+      detectedPrefix = String(D.raw['Parent Prefix'] || D.raw.parentPrefix || '').trim();
+      nameOnly = rawParent;
+    }
+    
+    const translatedPrefix = prefixMap[detectedPrefix]
+      ? (lang === 'en' ? prefixMap[detectedPrefix].en : prefixMap[detectedPrefix].hi)
+      : detectedPrefix;
+    
+    const finalParent = translatedPrefix ? (translatedPrefix + ' ' + nameOnly) : nameOnly;
+    parentEl.textContent = relation + ' — ' + finalParent;
   }
-   if (!detectedPrefix) {
-    detectedPrefix = String(D.raw['Parent Prefix'] || D.raw.parentPrefix || '').trim();
-    nameOnly = rawParent;
-  }
-  
-  // Translate prefix based on current language
-  const translatedPrefix = prefixMap[detectedPrefix]
-    ? (lang === 'en' ? prefixMap[detectedPrefix].en : prefixMap[detectedPrefix].hi)
-    : detectedPrefix;
-  
-  // Build final parent line
-  const finalParent = translatedPrefix ? (translatedPrefix + ' ' + nameOnly) : nameOnly;
-  parentEl.textContent = relation + ' — ' + finalParent;
-}
 
-  // Course title — switch based on language
-  setTxt('cCourse', isEn ? D.courseTitleEn : D.courseTitleHi);
-
-  // Meta
+  setTxt('cCourse', '"' + (isEn ? D.courseTitleEn : D.courseTitleHi) + '"');
   setTxt('metaLabel1', T.duration);
   setTxt('metaLabel2', T.level);
   setTxt('metaLabel3', T.questions);
@@ -1086,7 +1063,6 @@ if(parentEl){
   setTxt('cLevel', D.level);
   setTxt('cQuestions', D.totalQ);
 
-  // Score — handle "score/total" format
   const scoreStr = String(D.scoreVal);
   const sParts = scoreStr.split('/');
   let scoreDisplay = scoreStr;
@@ -1101,7 +1077,6 @@ if(parentEl){
   setHtml('certScoreLine',
     `${T.score}: <b>${scoreDisplay}</b> · ${T.percent}: <b>${pctDisplay}</b> · ${T.grade}: <b>${D.grade}</b>`);
 
-  // Info chips — masked aadhaar
   const aadharMasked = String(D.aadhar).includes('X') ? D.aadhar : ('XXXX XXXX ' + String(D.aadhar).replace(/\s/g,'').slice(-4));
   setTxt('chipLabel1', T.aadhar + ':');
   setTxt('chipLabel2', T.mobile + ':');
@@ -1110,26 +1085,23 @@ if(parentEl){
   setTxt('cMobile', D.mobile);
   setTxt('cEmail', D.email);
 
-  // Address
   setTxt('addrLabel', T.address + ':');
   setTxt('cAddress', D.address);
-
-  // Bottom
   setTxt('issueLabel', T.issued);
   setTxt('cIssued', D.issuedOn);
   setTxt('signLabel', T.signatory);
   setTxt('qrLabel', T.qrScan);
+  setTxt('certIdLabel', T.certId);
+  setTxt('cCertId', D.certId);
+  
+  // Set disclaimer text
+  setTxt('certDisclaimer', T.disclaimer);
 
-  // Cert ID
-  setHtml('certIdLine', `${T.certId}: <b>${D.certId}</b>`);
-
-  // QR code
   const verifyUrl = window.location.origin + window.location.pathname + '?cert=' + encodeURIComponent(D.certId);
-  const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' + encodeURIComponent(verifyUrl);
+  const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(verifyUrl);
   const qrEl = document.getElementById('cQR');
   if(qrEl) qrEl.src = qrUrl;
 
-  // Update language toggle button states
   const hiBtn = document.getElementById('certLangHi');
   const enBtn = document.getElementById('certLangEn');
   if(hiBtn){
@@ -1208,7 +1180,6 @@ function shareEvent(platform){
   console.log('📤 Shared to:', platform);
 }
 
-/* ---------- Restart ---------- */
 function restartVerify(){
   _currentCertData = null;
   _currentCertLang = 'hi';
@@ -1219,7 +1190,6 @@ function restartVerify(){
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-/* ---------- Error ---------- */
 function showError(msg){
   const box = $('#errorBox');
   box.textContent = '❌ ' + msg;
@@ -1227,7 +1197,7 @@ function showError(msg){
   $('#certWrap').classList.remove('show');
 }
 
-console.log('%c🔍 दिप्र फ़ाउंडेशन — प्रमाणपत्र सत्यापन v2 loaded', 'color:#0D7A3A;font-weight:bold;font-size:14px');
+console.log('%c🔍 दिप्र फ़ाउंडेशन — प्रमाणपत्र सत्यापन v2.2 (Premium + Disclaimer) loaded', 'color:#0D7A3A;font-weight:bold;font-size:14px');
 </script>
 <script src="sound.js" defer></script>
 
