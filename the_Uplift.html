@@ -701,6 +701,188 @@
   .slider-track { min-height: 440px; }
   .thought-slide { padding: 20px 40px; }
 }
+/* ---------- Tiered Courses Grid ---------- */
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.tier-card {
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(139, 21, 56, 0.06);
+}
+
+.tier-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(139, 21, 56, 0.16);
+  border-color: var(--saffron-2);
+}
+
+.tier-head {
+  padding: 22px 20px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.tier-head.basic { background: linear-gradient(135deg, #0D7A3A, #16A34A); }
+.tier-head.plus  { background: linear-gradient(135deg, #D97706, #F59E0B); }
+.tier-head.adv   { background: linear-gradient(135deg, #7C2D12, #B91C1C); }
+
+.tier-head::after {
+  content: "";
+  position: absolute;
+  top: -50%; right: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.tier-emoji {
+  font-size: 2.4rem;
+  line-height: 1;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.tier-head h3 {
+  color: #fff;
+  font-size: 1.15rem;
+  margin: 0 0 6px;
+  font-weight: 800;
+  letter-spacing: .01em;
+}
+
+.tier-head p {
+  color: rgba(255,255,255,.92);
+  font-size: .85rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+.tier-body {
+  padding: 18px 18px 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tier-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1.5px dashed var(--border);
+}
+
+.tier-meta span {
+  font-size: .72rem;
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: var(--cream-2);
+  border: 1px solid var(--border);
+  color: var(--ink-2);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.tier-meta span.fee-tag {
+  background: var(--saffron-soft);
+  border-color: var(--saffron-2);
+  color: var(--saffron-3);
+}
+
+.tier-units {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.tier-unit {
+  background: var(--cream-2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green-2);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: .78rem;
+  line-height: 1.5;
+}
+
+.tier-unit b {
+  display: block;
+  color: var(--maroon);
+  font-size: .82rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.tier-unit .tu-cert {
+  color: var(--green-3);
+  font-weight: 700;
+  font-size: .72rem;
+}
+
+.tier-unit .tu-proj {
+  color: var(--ink-2);
+  font-size: .72rem;
+  display: block;
+  margin-top: 2px;
+}
+
+.tier-unit .tu-proj::before {
+  content: "📋 ";
+  font-size: .7rem;
+}
+
+.tier-unit .tu-dur {
+  float: right;
+  color: var(--muted);
+  font-size: .68rem;
+  font-weight: 600;
+  background: #fff;
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.tier-foot {
+  padding: 12px 18px 18px;
+  margin-top: auto;
+  border-top: 1.5px solid var(--border);
+}
+
+.tier-foot .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.tier-cert-count {
+  text-align: center;
+  font-size: .74rem;
+  color: var(--muted);
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.tier-cert-count b {
+  color: var(--maroon);
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .tier-grid { grid-template-columns: 1fr; gap: 20px; max-width: 520px; margin-inline: auto; }
+}
 </style>
 </head>
 
@@ -749,6 +931,7 @@
         <li><a href="#benefits" data-hi="लाभ" data-en="Benefits">लाभ</a></li>
         <li><a href="#courses" data-hi="पाठ्यक्रम" data-en="Courses">पाठ्यक्रम</a></li>
         <li><a href="#free" data-hi="नि:शुल्क पाठ्यक्रम" data-en="Free Courses">नि:शुल्क पाठ्यक्रम</a></li>
+<li><a href="#tiered-courses" data-hi="संगणक कोर्स" data-en="Computer Courses">संगणक कोर्स</a></li>
         <li><a href="#donate" data-hi="दान" data-en="Donate">दान</a></li>
         <li><a href="portal.html" data-hi="विद्यार्थी केंद्र" data-en="Portal">विद्यार्थी केंद्र</a></li>
         <li><a href="verify.html" data-hi="सत्यापन" data-en="Verify">सत्यापन</a></li>
@@ -997,6 +1180,23 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+<!-- ============ TIERED COMPUTER COURSES ============ -->
+<section id="tiered-courses" class="uplift-section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-hi="💻 संगणक पाठ्यक्रम — तीन स्तर" data-en="💻 Computer Courses — Three Levels">💻 संगणक पाठ्यक्रम — तीन स्तर</span>
+      <h2 data-hi="डिजिटल दीक्षा · प्रगति · उड़ान" data-en="Digital Deeksha · Pragati · Udaan">डिजिटल दीक्षा · प्रगति · उड़ान</h2>
+      <p data-hi="हर महीने प्रमाणपत्र · प्रोजेक्ट-आधारित शिक्षण · रोजगारोन्मुख कौशल — कक्षा ८ से १२ के विद्यार्थियों हेतु" data-en="Monthly certificates · Project-based learning · Employable skills — for classes 8 to 12">हर महीने प्रमाणपत्र · प्रोजेक्ट-आधारित शिक्षण · रोजगारोन्मुख कौशल — कक्षा ८ से १२ के विद्यार्थियों हेतु</p>
+    </div>
+
+    <div class="tier-grid" id="tierGrid"><!-- JS से भरा जाएगा --></div>
+
+    <div class="note note-blue mt24" style="max-width:900px;margin-inline:auto;font-size:.92rem">
+      <strong data-hi="📌 सर्टिफिकेट नियम:" data-en="📌 Certificate Rule:">📌 सर्टिफिकेट नियम:</strong>
+      <span data-hi=" प्रत्येक यूनिट के अंत में ७५% उपस्थिति + प्रोजेक्ट जमा + १० मिनट के प्रैक्टिकल टेस्ट पर प्रमाणपत्र मिलेगा। शुरुआती ७ दिन का 'स्टार्टर सर्टिफिकेट' ओरिएंटेशन हेतु है — फाइनल सर्टिफिकेट पूरे कोर्स के बाद।" data-en=" Each unit certificate requires 75% attendance + project submission + 10-min practical test. The 7-day 'Starter Certificate' is for orientation — final certificate only after full course."> प्रत्येक यूनिट के अंत में ७५% उपस्थिति + प्रोजेक्ट जमा + १० मिनट के प्रैक्टिकल टेस्ट पर प्रमाणपत्र मिलेगा। शुरुआती ७ दिन का 'स्टार्टर सर्टिफिकेट' ओरिएंटेशन हेतु है — फाइनल सर्टिफिकेट पूरे कोर्स के बाद।</span>
     </div>
   </div>
 </section>
@@ -1672,6 +1872,7 @@ function setLang(lang){
   renderFreeCourses();
   fillApplyCourses();
   renderThoughts();
+  renderTieredCourses();
 }
 window.setLang = setLang;
    /* ============================================================
@@ -1972,6 +2173,10 @@ if(document.readyState === 'loading'){
    COURSES DATA
    ============================================================ */
 const COURSES = [
+
+  { code:'UPL-DD', hi:'डिजिटल दीक्षा — बेसिक कंप्यूटर', en:'Digital Deeksha — Basic Computer', durHi:'४ मास + ७ दिवस', durEn:'4 months + 7 days', gen:1500, fee:350, seats:50, cycle:'month', tiered:true, months:4 },
+  { code:'UPL-DP', hi:'डिजिटल प्रगति — बेसिक प्लस', en:'Digital Pragati — Basic Plus', durHi:'५ मास', durEn:'5 months', gen:2000, fee:400, seats:40, cycle:'month', tiered:true, months:5 },
+  { code:'UPL-DU', hi:'डिजिटल उड़ान — एडवांस्ड', en:'Digital Udaan — Advanced', durHi:'६ मास', durEn:'6 months', gen:2500, fee:500, seats:30, cycle:'month', tiered:true, months:6 },
   { code:'UPL-06', hi:'कक्षा ६–८ (आधारभूत)', en:'Class 6–8 (Foundation)', durHi:'१२ मास', durEn:'12 months', gen:3500, fee:1000, seats:60, cycle:'month' },
   { code:'UPL-09', hi:'कक्षा ९–१० (उच्च विद्यालय)', en:'Class 9–10 (High School)', durHi:'१२ मास', durEn:'12 months', gen:4500, fee:1200, seats:80, cycle:'month' },
   { code:'UPL-11', hi:'कक्षा ११–१२ (विज्ञान)', en:'Class 11–12 (Science)', durHi:'१२ मास', durEn:'12 months', gen:5500, fee:1500, seats:60, cycle:'month' },
@@ -2064,7 +2269,7 @@ function renderHeroSeats(){
   const ul = $('#heroSeatList');
   if(!ul) return;
   const lang = _lang();
-  ul.innerHTML = COURSES.slice(0, 5).map(c => {
+  ul.innerHTML = COURSES.filter(c => c.tiered).concat(COURSES.filter(c => !c.tiered)).slice(0, 5).map(c => {
     const left = LIVE_SEATS[c.code] !== undefined ? LIVE_SEATS[c.code] : c.seats;
     const cls = left <= 0 ? 'seat-full' : (left < c.seats * 0.25 ? 'seat-low' : 'seat-open');
     const name = lang === 'en' ? c.en : c.hi;
@@ -3477,6 +3682,116 @@ window.addEventListener('scroll', () => {
     _scrollTick = false;
   });
 }, { passive: true });
+/* ============================================================
+   TIERED COMPUTER COURSES — Detailed Structure
+   ============================================================ */
+const TIERED_DATA = [
+  {
+    code: 'UPL-DD', level: 'basic',
+    nameHi: 'डिजिटल दीक्षा', nameEn: 'Digital Deeksha',
+    subHi: 'बेसिक कंप्यूटर साक्षरता', subEn: 'Basic Computer Literacy',
+    emoji: '🌱',
+    fee: 350, gen: 1500, months: 4, seats: 50,
+    certs: 6,
+    units: [
+      { durHi: '७ दिन', durEn: '7 days', hi: 'यूनिट ०: डिजिटल परिचय', en: 'Unit 0: Digital Intro', certHi: 'डिजिटल स्टार्टर सर्टिफिकेट', certEn: 'Digital Starter Certificate', projHi: 'मेरा कंप्यूटर परिचय कार्ड', projEn: 'My Computer Intro Card' },
+      { durHi: '१ माह', durEn: '1 month', hi: 'यूनिट १: कंप्यूटर और OS', en: 'Unit 1: Computer & OS', certHi: 'कंप्यूटर बेसिक्स — L1', certEn: 'Computer Basics — L1', projHi: 'मेरा फाइल मैनेजर', projEn: 'My File Manager' },
+      { durHi: '१ माह', durEn: '1 month', hi: 'यूनिट २: डॉक्यूमेंट और टाइपिंग', en: 'Unit 2: Document & Typing', certHi: 'डॉक्यूमेंट स्किल्स — L2', certEn: 'Document Skills — L2', projHi: 'मेरा औपचारिक पत्र', projEn: 'My Formal Letter' },
+      { durHi: '१ माह', durEn: '1 month', hi: 'यूनिट ३: इंटरनेट और ईमेल', en: 'Unit 3: Internet & Email', certHi: 'इंटरनेट और ईमेल — L3', certEn: 'Internet & Email — L3', projHi: 'सुरक्षित ईमेल अभ्यास', projEn: 'Safe Email Practice' },
+      { durHi: '१ माह', durEn: '1 month', hi: 'यूनिट ४: स्प्रेडशीट और प्रेजेंटेशन', en: 'Unit 4: Spreadsheet & PPT', certHi: 'बेसिक साक्षरता — फाइनल', certEn: 'Basic Literacy — Final', projHi: 'मार्कशीट + स्लाइड', projEn: 'Marksheet + Slides' }
+    ]
+  },
+  {
+    code: 'UPL-DP', level: 'plus',
+    nameHi: 'डिजिटल प्रगति', nameEn: 'Digital Pragati',
+    subHi: 'बेसिक प्लस कंप्यूटर स्किल्स', subEn: 'Basic Plus Computer Skills',
+    emoji: '🚀',
+    fee: 400, gen: 2000, months: 5, seats: 40,
+    certs: 6,
+    units: [
+      { durHi: '७ दिन', durEn: '7 days', hi: 'ब्रिज: बेसिक रिवीजन', en: 'Bridge: Basic Revision', certHi: 'ब्रिज सर्टिफिकेट', certEn: 'Bridge Certificate', projHi: 'बेसिक टेस्ट', projEn: 'Basic Test' },
+      { durHi: '१ माह', durEn: '1 month', hi: 'BP-1: स्प्रेडशीट बेसिक्स', en: 'BP-1: Spreadsheet Basics', certHi: 'स्प्रेडशीट बेसिक्स — BP1', certEn: 'Spreadsheet Basics — BP1', projHi: 'मासिक खर्च शीट', projEn: 'Monthly Expense Sheet' },
+      { durHi: '१ माह', durEn: '1 month', hi: 'BP-2: डेटा और चार्ट', en: 'BP-2: Data & Charts', certHi: 'डेटा और चार्ट — BP2', certEn: 'Data & Charts — BP2', projHi: 'क्लास रिजल्ट शीट + चार्ट', projEn: 'Class Result Sheet + Chart' },
+      { durHi: '१ माह', durEn: '1 month', hi: 'BP-3: प्रेजेंटेशन और डिजिटल सेवाएं', en: 'BP-3: PPT & Digital Services', certHi: 'प्रेजेंटेशन — BP3', certEn: 'Presentation — BP3', projHi: 'डिजिटल भुगतान सुरक्षा PPT', projEn: 'Digital Payment Safety PPT' },
+      { durHi: '१ माह', durEn: '1 month', hi: 'BP-4: ग्राफिक डिजाइन और साइबर सुरक्षा', en: 'BP-4: Graphic Design & Cyber Safety', certHi: 'ग्राफिक डिजाइन — BP4', certEn: 'Graphic Design — BP4', projHi: 'विजिटिंग कार्ड/पोस्टर', projEn: 'Visiting Card/Poster' },
+      { durHi: '१ माह', durEn: '1 month', hi: 'BP-5: मिनी प्रोजेक्ट', en: 'BP-5: Mini Project', certHi: 'बेसिक प्लस — फाइनल', certEn: 'Basic Plus — Final', projHi: 'स्कूल/मोहल्ला रिपोर्ट', projEn: 'School/Locality Report' }
+    ]
+  },
+  {
+    code: 'UPL-DU', level: 'adv',
+    nameHi: 'डिजिटल उड़ान', nameEn: 'Digital Udaan',
+    subHi: 'एडवांस्ड कंप्यूटर एवं IT स्किल्स', subEn: 'Advanced Computer & IT Skills',
+    emoji: '🛫',
+    fee: 500, gen: 2500, months: 6, seats: 30,
+    certs: 7,
+    units: [
+      { durHi: '७ दिन', durEn: '7 days', hi: 'प्री-एडवांस्ड ब्रिज', en: 'Pre-Advanced Bridge', certHi: 'ब्रिज सर्टिफिकेट', certEn: 'Bridge Certificate', projHi: 'फाइल/टाइपिंग/इंटरनेट रिवीजन', projEn: 'File/Typing/Internet Revision' },
+      { durHi: '१ माह', durEn: '1 month', hi: 'ADV-1: प्रोग्रामिंग लॉजिक और HTML', en: 'ADV-1: Programming Logic & HTML', certHi: 'HTML — ADV1', certEn: 'HTML — ADV1', projHi: 'मेरा पहला वेब पेज', projEn: 'My First Web Page' },
+      { durHi: '१ माह', durEn: '1 month', hi: 'ADV-2: CSS और वेब डिजाइन', en: 'ADV-2: CSS & Web Design', certHi: 'CSS — ADV2', certEn: 'CSS — ADV2', projHi: 'प्रोफाइल पेज', projEn: 'Profile Page' },
+      { durHi: '१ माह', durEn: '1 month', hi: 'ADV-3: JavaScript इंटरैक्शन', en: 'ADV-3: JavaScript Interaction', certHi: 'JavaScript — ADV3', certEn: 'JavaScript — ADV3', projHi: 'इंटरैक्टिव कैलकुलेटर/फॉर्म', projEn: 'Interactive Calculator/Form' },
+      { durHi: '१ माह', durEn: '1 month', hi: 'ADV-4: Python और डेटा बेसिक्स', en: 'ADV-4: Python & Data Basics', certHi: 'Python — ADV4', certEn: 'Python — ADV4', projHi: 'Python डेटा शीट', projEn: 'Python Data Sheet' },
+      { durHi: '१ माह', durEn: '1 month', hi: 'ADV-5: मिनी वेबसाइट/ऐप + साइबर सुरक्षा', en: 'ADV-5: Mini Website/App + Cyber Safety', certHi: 'प्रोजेक्ट — ADV5', certEn: 'Project — ADV5', projHi: '3-पेज वेबसाइट/Python ऐप', projEn: '3-page Website/Python App' },
+      { durHi: '१ माह', durEn: '1 month', hi: 'ADV-6: कैपस्टोन प्रोजेक्ट', en: 'ADV-6: Capstone Project', certHi: 'एडवांस्ड — फाइनल', certEn: 'Advanced — Final', projHi: 'पूरा प्रोजेक्ट + रिपोर्ट + डेमो', projEn: 'Full Project + Report + Demo' }
+    ]
+  }
+];
+
+function renderTieredCourses(){
+  const grid = document.getElementById('tierGrid');
+  if(!grid) return;
+  const lang = _lang();
+
+  grid.innerHTML = TIERED_DATA.map(t => `
+    <div class="tier-card">
+      <div class="tier-head ${t.level}">
+        <span class="tier-emoji">${t.emoji}</span>
+        <h3>${lang === 'en' ? t.nameEn : t.nameHi}</h3>
+        <p>${lang === 'en' ? t.subEn : t.subHi}</p>
+      </div>
+      <div class="tier-body">
+        <div class="tier-meta">
+<span>⏱ ${lang === 'en' ? t.months + ' months' : toHindiNum(t.months) + ' मास'}</span>
+<span>📅 ${lang === 'en' ? t.certs + ' certificates' : toHindiNum(t.certs) + ' सर्टिफिकेट'}</span>
+<span>👥 ${lang === 'en' ? t.seats + ' seats' : toHindiNum(t.seats) + ' सीट'}</span>
+          <span class="fee-tag">₹${fmtN(t.fee)}${lang === 'en' ? '/mo' : '/मास'}</span>
+        </div>
+        <div class="tier-units">
+          ${t.units.map(u => `
+            <div class="tier-unit">
+              <span class="tu-dur">${lang === 'en' ? u.durEn : u.durHi}</span>
+              <b>${lang === 'en' ? u.en : u.hi}</b>
+              <span class="tu-cert">🎖️ ${lang === 'en' ? u.certEn : u.certHi}</span>
+              <span class="tu-proj">${lang === 'en' ? u.projEn : u.projHi}</span>
+            </div>
+          `).join('')}
+        </div>
+        <div class="tier-cert-count">
+          ${lang === 'en'
+            ? `Total certificates: <b>${t.certs}</b> (monthly + final)`
+            : `कुल सर्टिफिकेट: <b>${t.certs}</b> (मासिक + फाइनल)`}
+        </div>
+      </div>
+      <div class="tier-foot">
+        <button class="btn btn-${t.level === 'adv' ? 'saffron' : t.level === 'plus' ? 'green' : 'outline'}" onclick="openApplyModalWithCourse('${t.code}')">
+          📝 ${lang === 'en' ? 'Apply Now' : 'अभी आवेदन करें'}
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* Apply modal को course pre-select के साथ खोलें */
+function openApplyModalWithCourse(code){
+  openApplyModal();
+  setTimeout(() => {
+    const sel = document.getElementById('applyCourseSelect');
+    if(sel){
+      sel.value = code;
+      sel.dispatchEvent(new Event('change'));
+    }
+  }, 250);
+}
+window.openApplyModalWithCourse = openApplyModalWithCourse;
 
 /* ============================================================
    INIT
@@ -3492,6 +3807,7 @@ window.addEventListener('scroll', () => {
   renderFreeCourses();
   fillApplyCourses();
   renderThoughts();
+  renderTieredCourses();
   updateBottomNav();
   setTimeout(loadLiveSeats, 200);
   setInterval(loadLiveSeats, 60000);
