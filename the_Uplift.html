@@ -2266,6 +2266,10 @@ function concession(income, isOrphan){
   return 0;
 }
 function fmtN(n){ return Number(n || 0).toLocaleString('en-IN'); }
+   function toHindiNum(num) {
+  const map = ['०','१','२','३','४','५','६','७','८','९'];
+  return String(num).replace(/\d/g, d => map[d]);
+}
 
 async function loadLiveSeats(){
   try {
