@@ -4986,7 +4986,36 @@ footer a:hover { color: var(--gold-2); }
     display: none !important;
   }
 }
+/* ============================================================
+   🚨 FIX: Remove All Unwanted Red Boxes & Lines Globally
+   ============================================================ */
 
+/* 1. मोबाइल के नीचे बीच वाले लाल बटन (FAB) को पूरी तरह हटाएं */
+.bottom-nav-item.bn-fab {
+  display: none !important;
+}
+
+/* 2. बटन हटने के बाद नीचे के नेविगेशन बार को 5 से 4 कॉलम में बदलें (ताकि डिज़ाइन खराब न हो) */
+.bottom-nav {
+  grid-template-columns: repeat(4, 1fr) !important;
+}
+
+/* 3. नीचे बाईं तरफ वाले लाल गोल बटन (Sound Toggle) को हटाएं */
+#soundToggleBtn {
+  display: none !important;
+}
+
+/* 4. लाल रंग के पॉपअप (Toast) को हरे रंग (Success) में बदलें ताकि गलतफहमी न हो */
+.toast {
+  background: linear-gradient(135deg, var(--green), var(--green-3)) !important;
+  border-color: var(--gold-2) !important;
+  box-shadow: 0 14px 40px rgba(13, 122, 58, 0.45) !important;
+}
+
+/* 5. पेज के बिल्कुल ऊपर जो पतली लाल/नारंगी लाइन आती है (Tricolor) उसे हटाएं */
+.tricolor {
+  display: none !important;
+}
 /* ============================================================
    END OF STYLESHEET
    ============================================================ */
