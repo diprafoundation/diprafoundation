@@ -883,6 +883,59 @@
 @media (max-width: 1000px) {
   .tier-grid { grid-template-columns: 1fr; gap: 20px; max-width: 520px; margin-inline: auto; }
 }
+/* ============================================
+   बिना मतलब की fixed रंगीन लाइन हटाना
+   ============================================ */
+
+/* 1. Tricolor strip (fixed position से हटाएँ) */
+.tricolor { display: none !important; }
+
+/* 2. body के pseudo-element (scroll progress) */
+body::after,
+body::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* 3. Common scroll-bar classes */
+.scroll-progress,
+.scroll-bar,
+#progressBar,
+#scrollProgress {
+  display: none !important;
+}
+
+/* 4. bottom-nav का चमकीला बॉर्डर सादा करें */
+.bottom-nav {
+  border-top: 1px solid var(--border) !important;
+  box-shadow: 0 -2px 8px rgba(0,0,0,.06) !important;
+  background: #fff !important;
+}
+
+/* 5. FAB "+" का glow हटाना */
+.bn-fab {
+  box-shadow: none !important;
+  animation: none !important;
+}
+.bn-fab::before,
+.bn-fab::after {
+  display: none !important;
+}
+/* नीचे बीच वाले लाल FAB बटन को पूरी तरह हटाने के लिए */
+.bn-fab {
+  display: none !important;
+}
+/* नीचे नेविगेशन बार के ऊपर की लाल लाइन/बॉर्डर हटाने के लिए */
+.bottom-nav {
+  border-top: 1px solid #eee !important; /* सिर्फ हल्का ग्रे बॉर्डर रहेगा */
+  box-shadow: none !important; /* कोई लाल शैडो नहीं */
+  background: #fff !important;
+}
+
+/* अगर कोई टोस्ट (Toast) मैसेज लाल रंग में अटका हुआ है, तो उसे छिपाने के लिए */
+.toast {
+  display: none !important;
+}
 </style>
 </head>
 
@@ -970,12 +1023,27 @@
           <em data-hi="कोचिंग योजना" data-en="Coaching Scheme">कोचिंग योजना</em>
         </h1>
         <p class="hero-sub" data-hi="जहाँ प्रतिभा कभी धन के अभाव में न हारे। कक्षा ६ से १२ तक तथा संगणक/अंकीय पाठ्यक्रम — अल्प मूल्य पर। अनाथ विद्यार्थियों के लिए पूर्णत: नि:शुल्क। प्रत्येक प्रमाणपत्र QR द्वारा सत्यापनीय।" data-en="Where talent never yields to poverty. Classes 6 to 12 and Computer/Digital courses — at low cost. Completely free for orphans. Every certificate QR-verifiable.">जहाँ प्रतिभा कभी धन के अभाव में न हारे। कक्षा ६ से १२ तक तथा संगणक/अंकीय पाठ्यक्रम — अल्प मूल्य पर। अनाथ विद्यार्थियों के लिए पूर्णत: नि:शुल्क। प्रत्येक प्रमाणपत्र QR द्वारा सत्यापनीय।</p>
-        <div class="hero-badges">
-          <span data-hi="🎓 कक्षा ६–१२" data-en="🎓 Class 6–12">🎓 कक्षा ६–१२</span>
-          <span data-hi="💻 संगणक पाठ्यक्रम" data-en="💻 Computer Courses">💻 संगणक पाठ्यक्रम</span>
-          <span data-hi="📚 नि:शुल्क ई-पुस्तकें" data-en="📚 Free Ebooks">📚 नि:शुल्क ई-पुस्तकें</span>
-          <span data-hi="🔍 QR द्वारा सत्यापन" data-en="🔍 QR Verification">🔍 QR द्वारा सत्यापन</span>
-        </div>
+       <div class="hero-badges">
+  <span class="hero-badge-link" data-hi="🎓 कक्षा ६–१२" data-en="🎓 Class 6–12"
+        onclick="goto('#courses')" role="button" tabindex="0"
+        aria-label="View class 6–12 courses"
+        onkeydown="if(event.key==='Enter'){goto('#courses')}">🎓 कक्षा ६–१२</span>
+
+  <span class="hero-badge-link" data-hi="💻 संगणक पाठ्यक्रम" data-en="💻 Computer Courses"
+        onclick="goto('#tiered-courses')" role="button" tabindex="0"
+        aria-label="View computer courses"
+        onkeydown="if(event.key==='Enter'){goto('#tiered-courses')}">💻 संगणक पाठ्यक्रम</span>
+
+  <span class="hero-badge-link" data-hi="📚 नि:शुल्क ई-पुस्तकें" data-en="📚 Free Ebooks"
+        onclick="goto('#free')" role="button" tabindex="0"
+        aria-label="Read free ebooks"
+        onkeydown="if(event.key==='Enter'){goto('#free')}">📚 नि:शुल्क ई-पुस्तकें</span>
+
+  <span class="hero-badge-link" data-hi="🔍 QR द्वारा सत्यापन" data-en="🔍 QR Verification"
+        onclick="goto('verify.html')" role="link" tabindex="0"
+        aria-label="Verify certificate"
+        onkeydown="if(event.key==='Enter'){goto('verify.html')}">🔍 QR द्वारा सत्यापन</span>
+</div>
         <div class="hero-btns">
           <button class="btn btn-saffron" onclick="openApplyModal()" data-hi="📝 विद्यार्थी आवेदन" data-en="📝 Student Apply">📝 विद्यार्थी आवेदन</button>
           <a href="#free" class="btn btn-green" data-hi="📚 ई-पुस्तकें पढ़ें" data-en="📚 Read Ebooks">📚 ई-पुस्तकें पढ़ें</a>
@@ -2223,6 +2291,18 @@ async function loadLiveSeats(){
   } catch(e){}
 }
 
+/* Smooth scroll / navigation helper */
+function goto(target){
+  if(!target) return;
+  if(target.startsWith('#')){
+    const el = document.querySelector(target);
+    if(el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+  } else {
+    window.location.href = target;
+  }
+}
+window.goto = goto;
+
 function renderCourseTable(){
   const tb = $('#courseRows');
   if(!tb) return;
@@ -2273,7 +2353,13 @@ function renderHeroSeats(){
     const left = LIVE_SEATS[c.code] !== undefined ? LIVE_SEATS[c.code] : c.seats;
     const cls = left <= 0 ? 'seat-full' : (left < c.seats * 0.25 ? 'seat-low' : 'seat-open');
     const name = lang === 'en' ? c.en : c.hi;
-    return `<li><span>${c.code} — ${name}</span><b class="seat-badge ${cls}" style="font-size:.82rem">${left}/${c.seats}</b></li>`;
+   return `<li onclick="openApplyModalWithCourse('${c.code}')"
+           role="button" tabindex="0"
+           aria-label="Apply for ${name}"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openApplyModalWithCourse('${c.code}');}">
+  <span>${c.code} — ${name}</span>
+  <b class="seat-badge ${cls}" style="font-size:.82rem">${left}/${c.seats}</b>
+</li>`;
   }).join('');
 }
 
