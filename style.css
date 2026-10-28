@@ -5016,6 +5016,17 @@ footer a:hover { color: var(--gold-2); }
 .tricolor {
   display: none !important;
 }
+/* नीचे नेविगेशन बार के ऊपर की लाल लाइन/बॉर्डर हटाने के लिए */
+.bottom-nav {
+  border-top: 1px solid #eee !important; /* सिर्फ हल्का ग्रे बॉर्डर रहेगा */
+  box-shadow: none !important; /* कोई लाल शैडो नहीं */
+  background: #fff !important;
+}
+
+/* अगर कोई टोस्ट (Toast) मैसेज लाल रंग में अटका हुआ है, तो उसे छिपाने के लिए */
+.toast {
+  display: none !important;
+}
 /* ============================================================
    END OF STYLESHEET
    ============================================================ */
