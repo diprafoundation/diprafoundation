@@ -23,6 +23,8 @@
   --radius:10px;--radius-lg:16px;--radius-xl:24px;
   --shadow:0 4px 16px rgba(255,122,0,.12);
   --shadow-lg:0 12px 40px rgba(139,21,56,.18);
+  --danger:#991B1B;
+  --warn:#A16207;
 }
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
@@ -103,7 +105,7 @@ main{flex:1;padding:40px 0 60px}
 .login-head .lh-icon{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;font-size:2rem;margin:0 auto 14px;border:3px solid}
 .login-head.student .lh-icon{background:linear-gradient(135deg,var(--saffron-soft),#fff);border-color:var(--saffron);color:var(--saffron-3)}
 .login-head.volunteer .lh-icon{background:linear-gradient(135deg,var(--green-soft),#fff);border-color:var(--green);color:var(--green-3)}
-.login-head.admin .lh-icon{background:linear-gradient(135deg,#FEF5F5,#fff);border-color:#F0B0B0;color:#991B1B}
+.login-head.admin .lh-icon{background:linear-gradient(135deg,#FEF5F5,#fff);border-color:#F0B0B0;color:var(--danger)}
 .login-head h2{font-size:1.35rem;margin-bottom:6px}
 .login-head p{color:var(--muted);font-size:.94rem}
 
@@ -133,7 +135,10 @@ main{flex:1;padding:40px 0 60px}
 .btn-ghost{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.5);color:#fff}
 .btn-ghost:hover{background:rgba(255,255,255,.28);color:#fff;border-color:#fff}
 .btn-sm{padding:10px 18px;font-size:.9rem;min-height:44px}
+.btn-xs{padding:6px 12px;font-size:.78rem;min-height:34px;border-radius:8px}
 .btn-block{width:100%}
+.btn-danger{background:linear-gradient(135deg,#DC2626,#991B1B);color:#fff;box-shadow:0 6px 20px rgba(220,38,38,.28)}
+.btn-danger:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 10px 26px rgba(220,38,38,.4);color:#fff}
 
 /* DASHBOARD */
 .dash{display:none}
@@ -145,6 +150,11 @@ main{flex:1;padding:40px 0 60px}
 .dash-head p{color:rgba(255,255,255,.9);font-size:.9rem}
 .dash-head p b{font-family:monospace;letter-spacing:.05em;color:#fff}
 .dash-body{background:#fff;border:2px solid var(--border-2);border-top:none;border-radius:0 0 var(--radius-lg) var(--radius-lg);padding:28px}
+
+/* Session info bar */
+.session-bar{background:rgba(255,255,255,.15);border-radius:8px;padding:8px 14px;font-size:.82rem;display:flex;align-items:center;gap:8px}
+.session-bar .dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 
 /* Timeline */
 .timeline{display:flex;overflow-x:auto;padding:8px 0 18px;gap:8px}
@@ -180,7 +190,7 @@ main{flex:1;padding:40px 0 60px}
 
 /* DOWNLOAD CARDS */
 .download-card{background:#fff;border:2px solid var(--border-2);border-radius:12px;padding:20px;display:flex;gap:16px;align-items:center;transition:.2s;margin-top:12px}
-.download-card:hover{border-color:var(--saffron);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.download-card:hover{border-color:var(--saffron);box-shadow:var(--shadow);transform:translateY(-2px)}
 .download-card .dc-icon{width:56px;height:56px;border-radius:12px;display:grid;place-items:center;font-size:1.6rem;flex:none}
 .download-card.green .dc-icon{background:var(--green-soft);color:var(--green-3);border:2px solid var(--green-2)}
 .download-card.saffron .dc-icon{background:var(--saffron-soft);color:var(--saffron-3);border:2px solid var(--saffron-2)}
@@ -199,8 +209,10 @@ main{flex:1;padding:40px 0 60px}
 
 /* ADMIN STATS */
 .admin-stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:22px}
-.admin-stat{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:18px;text-align:center;transition:.2s}
+.admin-stat{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:18px;text-align:center;transition:.2s;cursor:pointer;position:relative;overflow:hidden}
 .admin-stat:hover{border-color:var(--saffron);transform:translateY(-2px);box-shadow:var(--shadow)}
+.admin-stat::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--saffron),var(--green));transform:scaleX(0);transform-origin:left;transition:.3s}
+.admin-stat:hover::before{transform:scaleX(1)}
 .admin-stat b{display:block;font-size:1.7rem;font-weight:800;color:var(--maroon);line-height:1.1}
 .admin-stat span{font-size:.78rem;color:var(--muted);text-transform:uppercase;font-weight:700;letter-spacing:.04em;margin-top:6px;display:block}
 
@@ -214,14 +226,15 @@ main{flex:1;padding:40px 0 60px}
 .admin-table th{background:linear-gradient(90deg,var(--maroon),var(--maroon-2));color:#fff;font-weight:700;font-size:.74rem;text-transform:uppercase;letter-spacing:.04em}
 .admin-table tbody tr:hover{background:var(--saffron-soft)}
 .admin-table tbody tr:last-child td{border-bottom:none}
-.admin-table .mono{font-family:monospace;font-size:.78rem}
+.admin-table .mono{font-family:monospace;font-size:.78rem;cursor:pointer;transition:.15s}
+.admin-table .mono:hover{color:var(--saffron-3);text-decoration:underline}
 
 /* STATUS BADGE */
 .status-badge{display:inline-block;padding:4px 12px;border-radius:999px;font-size:.74rem;font-weight:700;white-space:nowrap}
 .status-submitted{background:var(--saffron-soft);color:var(--saffron-3);border:1px solid var(--saffron-2)}
 .status-verified{background:#EEF4FB;color:#1A4A80;border:1px solid #D5E0ED}
 .status-selected{background:var(--green-soft);color:var(--green-3);border:1px solid var(--green-2)}
-.status-rejected{background:#FEF5F5;color:#991B1B;border:1px solid #F0B0B0}
+.status-rejected{background:#FEF5F5;color:var(--danger);border:1px solid #F0B0B0}
 .status-open{background:#EEF4FB;color:#1A4A80;border:1px solid #D5E0ED}
 .status-resolved{background:var(--green-soft);color:var(--green-3);border:1px solid var(--green-2)}
 
@@ -231,7 +244,7 @@ main{flex:1;padding:40px 0 60px}
 .tbl-btn.verify:hover{background:#EEF4FB}
 .tbl-btn.select{border-color:var(--green);color:var(--green-3)}
 .tbl-btn.select:hover{background:var(--green-soft)}
-.tbl-btn.reject{border-color:#991B1B;color:#991B1B}
+.tbl-btn.reject{border-color:var(--danger);color:var(--danger)}
 .tbl-btn.reject:hover{background:#FEF5F5}
 .tbl-btn.download{border-color:var(--saffron);color:var(--saffron-3)}
 .tbl-btn.download:hover{background:var(--saffron-soft)}
@@ -248,7 +261,7 @@ main{flex:1;padding:40px 0 60px}
 .alert-box.info{background:#EEF4FB;border:1.5px solid #D5E0ED;color:#1A3A5C}
 .alert-box.success{background:var(--green-soft);border:1.5px solid var(--green-2);color:var(--green-3)}
 .alert-box.warning{background:var(--saffron-soft);border:1.5px solid var(--saffron-2);color:#7A3E00}
-.alert-box.error{background:#FEF5F5;border:1.5px solid #F0B0B0;color:#991B1B}
+.alert-box.error{background:#FEF5F5;border:1.5px solid #F0B0B0;color:var(--danger)}
 
 /* RESULT TABS (Inside student dash) */
 .result-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
@@ -264,6 +277,10 @@ main{flex:1;padding:40px 0 60px}
 .log-form{display:grid;grid-template-columns:100px 1fr auto;gap:10px;align-items:end;margin-bottom:18px}
 .log-form .field{margin-bottom:0}
 
+/* LOADING SKELETON */
+.skeleton{background:linear-gradient(90deg,var(--cream-2) 25%,var(--saffron-soft) 50%,var(--cream-2) 75%);background-size:200% 100%;animation:shimmer 1.5s infinite;border-radius:8px;min-height:16px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
 /* FOOTER */
 footer{background:linear-gradient(180deg,var(--maroon),#5A0F23);color:#F5D9C8;padding:32px 0;text-align:center;font-size:.92rem;position:relative}
 footer::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--saffron),#fff,var(--green))}
@@ -275,6 +292,8 @@ footer a:hover{color:#fff}
 /* TOAST */
 .toast{position:fixed;bottom:40px;left:50%;transform:translate(-50%,140%);background:linear-gradient(135deg,var(--maroon),var(--maroon-2));color:#fff;padding:16px 26px;border-radius:12px;box-shadow:0 14px 40px rgba(139,21,56,.45);z-index:1500;transition:.35s;font-size:1rem;font-weight:600;max-width:92vw;text-align:center;border:1.5px solid var(--gold-2);line-height:1.5}
 .toast.show{transform:translate(-50%,0)}
+.toast.success{background:linear-gradient(135deg,var(--green),var(--green-3));border-color:var(--green-2)}
+.toast.error{background:linear-gradient(135deg,#DC2626,#991B1B);border-color:#FCA5A5}
 
 /* MODAL */
 .modal{position:fixed;inset:0;background:rgba(90,15,35,.78);display:none;place-items:center;z-index:1200;padding:20px;backdrop-filter:blur(6px);overflow-y:auto}
@@ -285,6 +304,16 @@ footer a:hover{color:#fff}
 .modal-body{padding:26px}
 .close-x{font-size:1.7rem;line-height:1;color:var(--muted);padding:6px 14px;border-radius:8px;background:none;border:none;cursor:pointer;transition:.15s}
 .close-x:hover{background:var(--saffron-soft);color:var(--maroon)}
+
+/* CONFIRM DIALOG */
+.confirm-dialog{position:fixed;inset:0;background:rgba(90,15,35,.85);display:none;place-items:center;z-index:1600;padding:20px;backdrop-filter:blur(8px)}
+.confirm-dialog.show{display:grid}
+.confirm-content{background:#fff;border-radius:16px;padding:32px;max-width:420px;width:100%;text-align:center;border:2px solid var(--gold-2);animation:pop .25s}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.confirm-content .cf-icon{font-size:3rem;margin-bottom:14px}
+.confirm-content h3{font-size:1.15rem;margin-bottom:10px;color:var(--maroon)}
+.confirm-content p{color:var(--ink-2);font-size:.94rem;line-height:1.65;margin-bottom:22px}
+.confirm-actions{display:flex;gap:10px}
 
 /* RESPONSIVE */
 @media(max-width:900px){
@@ -449,7 +478,7 @@ footer a:hover{color:#fff}
         <div class="dash-head student">
           <div>
             <h3 id="studDashName">—</h3>
-            <p><span data-hi="आवेदन संख्या:" data-en="Application ID:">आवेदन संख्या:</span> <b id="studDashId">—</b></p>
+            <p><span data-hi="आवेदन संख्या:" data-en="Application ID:">आवेदन संख्या:</span> <b id="studDashId" style="cursor:pointer" onclick="copyToClipboard(this.textContent)">—</b></p>
           </div>
           <button class="btn btn-ghost btn-sm" onclick="studLogout()">🚪 <span data-hi="लॉगआउट" data-en="Logout">लॉगआउट</span></button>
         </div>
@@ -553,7 +582,7 @@ footer a:hover{color:#fff}
         <div class="dash-head volunteer">
           <div>
             <h3 id="volDashName">—</h3>
-            <p><span data-hi="संख्या:" data-en="ID:">संख्या:</span> <b id="volDashId">—</b></p>
+            <p><span data-hi="संख्या:" data-en="ID:">संख्या:</span> <b id="volDashId" style="cursor:pointer" onclick="copyToClipboard(this.textContent)">—</b></p>
           </div>
           <button class="btn btn-ghost btn-sm" onclick="volLogout()">🚪 <span data-hi="लॉगआउट" data-en="Logout">लॉगआउट</span></button>
         </div>
@@ -681,11 +710,19 @@ footer a:hover{color:#fff}
       <!-- ADMIN DASHBOARD -->
       <div class="dash" id="adminDash">
         <div class="dash-head">
-          <div>
+          <div style="flex:1;min-width:200px">
             <h3>🛡️ <span data-hi="प्रशासक केंद्र" data-en="Admin Dashboard">प्रशासक केंद्र</span></h3>
-            <p id="adminWelcome">—</p>
+            <p id="adminWelcome" style="font-size:.85rem">—</p>
           </div>
-          <button class="btn btn-ghost btn-sm" onclick="adminLogout()">🚪 <span data-hi="लॉगआउट" data-en="Logout">लॉगआउट</span></button>
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <div class="session-bar" id="sessionBar">
+              <span class="dot"></span>
+              <span data-hi="सत्र:" data-en="Session:">सत्र:</span>
+              <b id="sessionTime">--:--</b>
+            </div>
+            <button class="btn btn-ghost btn-sm" onclick="refreshAllAdminData()" title="Ctrl+R">🔄</button>
+            <button class="btn btn-ghost btn-sm" onclick="adminLogout()">🚪 <span data-hi="लॉगआउट" data-en="Logout">लॉगआउट</span></button>
+          </div>
         </div>
         <div class="dash-body">
 
@@ -702,6 +739,15 @@ footer a:hover{color:#fff}
           <div class="admin-panel active" id="apanel-overview">
             <div class="admin-stat-row" id="adminStats">
               <div class="admin-stat"><b>—</b><span data-hi="लोड हो रहा है" data-en="Loading">लोड हो रहा है</span></div>
+            </div>
+            <div class="info-box blue" style="margin-top:20px">
+              <h4>💡 <span data-hi="त्वरित टिप्स" data-en="Quick Tips">त्वरित टिप्स</span></h4>
+              <ul style="list-style:disc;padding-left:22px;margin-top:8px">
+                <li data-hi="किसी भी सांख्यिकीय कार्ड पर क्लिक करें → उसका tab खुल जाएगा" data-en="Click any stat card → opens the corresponding tab">किसी भी सांख्यिकीय कार्ड पर क्लिक करें → उसका tab खुल जाएगा</li>
+                <li data-hi="Ctrl+R दबाएँ → सभी डेटा ताज़ा हो जाएगा" data-en="Press Ctrl+R → refresh all data">Ctrl+R दबाएँ → सभी डेटा ताज़ा हो जाएगा</li>
+                <li data-hi="Session 6 घंटे बाद expire होगा — फिर login करें" data-en="Session expires after 6 hours — login again">Session 6 घंटे बाद expire होगा — फिर login करें</li>
+                <li data-hi="Application ID पर click → copy हो जाता है" data-en="Click on App ID → copies it">Application ID पर click → copy हो जाता है</li>
+              </ul>
             </div>
           </div>
 
@@ -836,15 +882,30 @@ footer a:hover{color:#fff}
 
 <div class="toast" id="toast"></div>
 
+<!-- CONFIRM DIALOG -->
+<div class="confirm-dialog" id="confirmDialog">
+  <div class="confirm-content">
+    <div class="cf-icon">⚠️</div>
+    <h3 id="confirmTitle">Confirm</h3>
+    <p id="confirmMsg">Are you sure?</p>
+    <div class="confirm-actions">
+      <button class="btn btn-outline btn-block" onclick="closeConfirm()">Cancel</button>
+      <button class="btn btn-primary btn-block" id="confirmOk">Confirm</button>
+    </div>
+  </div>
+</div>
+
 <script>
 /* ============================================================
-   PORTAL — दिप्र फ़ाउंडेशन
+   PORTAL — दिप्र फ़ाउंडेशन (v3.0 - Enhanced)
    ============================================================ */
 const $ = (s, c=document) => c.querySelector(s);
 const $$ = (s, c=document) => [...c.querySelectorAll(s)];
 const SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbynC667snioVb9pnBE8jDRWUJHwKOUi5jTYO31PlfolDG5VjcTrE93zh2k-Ai7zgi0/exec';
 
-/* ---------- Language ---------- */
+/* ============================================================
+   LANGUAGE
+   ============================================================ */
 function setLang(lang){
   document.body.classList.toggle('lang-hi', lang === 'hi');
   document.body.classList.toggle('lang-en', lang === 'en');
@@ -862,14 +923,74 @@ function setLang(lang){
 $$('.lang-btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
 try { const s = localStorage.getItem('uplift_lang'); if(s) setLang(s); }catch(e){}
 
-/* ---------- Toast ---------- */
+/* ============================================================
+   TOAST (Enhanced)
+   ============================================================ */
 let _toastTimer;
-function toast(msg){
-  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
-  clearTimeout(_toastTimer); _toastTimer = setTimeout(() => t.classList.remove('show'), 4000);
+function toast(msg, type = 'default'){
+  const t = $('#toast');
+  if(!t) return;
+  t.textContent = msg;
+  t.className = 'toast show' + (type !== 'default' ? ' ' + type : '');
+  clearTimeout(_toastTimer);
+  _toastTimer = setTimeout(() => t.classList.remove('show'), 4000);
 }
 
-/* ---------- Portal switch ---------- */
+/* ============================================================
+   COPY TO CLIPBOARD
+   ============================================================ */
+function copyToClipboard(text){
+  if(!text || text === '—') return;
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(text)
+      .then(() => toast('📋 Copied: ' + text, 'success'))
+      .catch(() => fallbackCopy(text));
+  } else fallbackCopy(text);
+}
+
+function fallbackCopy(text){
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); toast('📋 Copied', 'success'); }
+  catch(e){ toast('❌ Copy failed', 'error'); }
+  ta.remove();
+}
+
+/* ============================================================
+   CONFIRM DIALOG
+   ============================================================ */
+let _confirmCallback = null;
+
+function showConfirm(title, message, onOk){
+  $('#confirmTitle').textContent = title;
+  $('#confirmMsg').textContent = message;
+  $('#confirmDialog').classList.add('show');
+  _confirmCallback = onOk;
+  document.body.classList.add('modal-open');
+}
+
+function closeConfirm(){
+  $('#confirmDialog').classList.remove('show');
+  document.body.classList.remove('modal-open');
+  _confirmCallback = null;
+}
+
+$('#confirmOk').addEventListener('click', () => {
+  if(_confirmCallback) _confirmCallback();
+  closeConfirm();
+});
+
+$('#confirmDialog').addEventListener('click', (e) => {
+  if(e.target.id === 'confirmDialog') closeConfirm();
+});
+
+/* ============================================================
+   PORTAL SWITCH
+   ============================================================ */
 function switchPortal(name){
   $$('.portal-tab').forEach(t => t.classList.toggle('active', t.dataset.ptab === name));
   $$('.portal-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + name));
@@ -891,9 +1012,7 @@ function setupOtpBoxes(containerId, onComplete){
       if(boxes.every(b => b.value.length === 1) && onComplete){ onComplete(); }
     });
     box.addEventListener('keydown', e => {
-      if(e.key === 'Backspace' && !e.target.value && i > 0){
-        boxes[i - 1].focus();
-      }
+      if(e.key === 'Backspace' && !e.target.value && i > 0){ boxes[i - 1].focus(); }
       if(e.key === 'ArrowLeft' && i > 0){ boxes[i - 1].focus(); }
       if(e.key === 'ArrowRight' && i < boxes.length - 1){ boxes[i + 1].focus(); }
     });
@@ -913,26 +1032,33 @@ function clearOtp(containerId){
 }
 
 /* ============================================================
-   API
+   API (Enhanced with timeout)
    ============================================================ */
 async function apiCall(payload){
   try{
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 20000); // 20s timeout
     const res = await fetch(SHEET_ENDPOINT, {
       method:'POST',
       headers:{'Content-Type':'text/plain;charset=utf-8'},
       body: JSON.stringify(payload),
-      redirect:'follow'
+      redirect:'follow',
+      signal: controller.signal
     });
+    clearTimeout(timeout);
     const text = await res.text();
     try { return JSON.parse(text); }
     catch(e){ return { status:'error', message:'अमान्य प्रतिक्रिया' }; }
   }catch(e){
+    if(e.name === 'AbortError'){
+      return { status:'error', message:'⏱️ Timeout — network slow. Try again.' };
+    }
     return { status:'error', message:'संपर्क विफल। पुन: प्रयास करें।' };
   }
 }
 
 /* ============================================================
-   TIMER for OTP
+   TIMER
    ============================================================ */
 function startOtpTimer(elId, seconds, onEnd){
   const el = document.getElementById(elId);
@@ -953,8 +1079,8 @@ let _studSession = null;
 $('#studSendOtpBtn').addEventListener('click', async () => {
   const id = $('#studAppId').value.trim().toUpperCase();
   const email = $('#studEmail').value.trim().toLowerCase();
-  if(!id){ toast('कृपया आवेदन संख्या अंकित करें'); return; }
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ toast('कृपया सही विद्युत्पत्र अंकित करें'); return; }
+  if(!id){ toast('कृपया आवेदन संख्या अंकित करें', 'error'); return; }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ toast('कृपया सही विद्युत्पत्र अंकित करें', 'error'); return; }
 
   const btn = $('#studSendOtpBtn'); const orig = btn.innerHTML;
   btn.disabled = true; btn.innerHTML = '⏳ भेजा जा रहा है...';
@@ -968,9 +1094,9 @@ $('#studSendOtpBtn').addEventListener('click', async () => {
     clearOtp('studOtpBoxes');
     $$('#studOtpBoxes .otp-box')[0].focus();
     startOtpTimer('studOtpTimer', 60);
-    toast('कूट भेजा गया ✓');
+    toast('कूट भेजा गया ✓', 'success');
   } else {
-    toast(r.message || 'कूट भेजने में त्रुटि');
+    toast(r.message || 'कूट भेजने में त्रुटि', 'error');
   }
 });
 
@@ -981,13 +1107,11 @@ $('#studBackBtn').addEventListener('click', () => {
 
 $('#studResendBtn').addEventListener('click', () => $('#studSendOtpBtn').click());
 
-$('#studVerifyBtn').addEventListener('click', studVerifyOtp);
-
 setupOtpBoxes('studOtpBoxes', () => {
   setTimeout(() => $('#studVerifyBtn').click(), 200);
 });
 
-async function studVerifyOtp(){
+$('#studVerifyBtn').addEventListener('click', async () => {
   const id = $('#studAppId').value.trim().toUpperCase();
   const email = $('#studEmail').value.trim().toLowerCase();
   const otp = getOtpValue('studOtpBoxes');
@@ -1015,8 +1139,8 @@ async function studVerifyOtp(){
   populateStudentDash(r.data);
   $('#studentLogin').style.display = 'none';
   $('#studentDash').classList.add('show');
-  toast('लॉगिन सफल ✓');
-}
+  toast('लॉगिन सफल ✓', 'success');
+});
 
 function populateStudentDash(rec){
   $('#studDashName').textContent = rec.Name || '—';
@@ -1030,7 +1154,6 @@ function populateStudentDash(rec){
   $('#studFeeStatus').textContent = String(rec.FeePaid || '').toLowerCase() === 'yes' ? '✓ जमा' : 'बाकी ₹' + (rec.FeeDue || 0);
   $('#studOrphan').textContent = rec.Orphan || 'No';
 
-  /* Timeline */
   const STEPS = [
     { key:'Submitted',          hi:'जमा',        en:'Submitted' },
     { key:'Under Verification', hi:'सत्यापन',    en:'Verification' },
@@ -1045,18 +1168,16 @@ function populateStudentDash(rec){
     return '<div class="tl-step ' + cls + '"><div class="tl-dot">' + (i < idx ? '✓' : i + 1) + '</div><div>' + s.hi + ' / ' + s.en + '</div></div>';
   }).join('');
 
-  /* Downloads */
   const dl = [];
   if(rec.AdmitCardURL && String(rec.AdmitCardURL).startsWith('http')){
-    dl.push('<div class="download-card saffron"><div class="dc-icon">🎫</div><div class="dc-body"><h4>प्रवेश पत्र / Admit Card</h4><p>परीक्षा हेतु आवश्यक</p></div><a href="' + rec.AdmitCardURL + '" target="_blank" class="btn btn-saffron btn-sm">⬇️ डाउनलोड</a></div>');
+    dl.push('<div class="download-card saffron"><div class="dc-icon">🎫</div><div class="dc-body"><h4>प्रवेश पत्र / Admit Card</h4><p>परीक्षा हेतु आवश्यक</p></div><a href="' + rec.AdmitCardURL + '" target="_blank" rel="noopener" class="btn btn-saffron btn-sm">⬇️ डाउनलोड</a></div>');
   }
   if(rec.CertificateURL && String(rec.CertificateURL).startsWith('http')){
-    dl.push('<div class="download-card purple"><div class="dc-icon">🎖️</div><div class="dc-body"><h4>प्रमाणपत्र / Certificate</h4><p>पाठ्यक्रम पूर्णता प्रमाणपत्र</p></div><a href="' + rec.CertificateURL + '" target="_blank" class="btn btn-primary btn-sm">⬇️ डाउनलोड</a></div>');
+    dl.push('<div class="download-card purple"><div class="dc-icon">🎖️</div><div class="dc-body"><h4>प्रमाणपत्र / Certificate</h4><p>पाठ्यक्रम पूर्णता प्रमाणपत्र</p></div><a href="' + rec.CertificateURL + '" target="_blank" rel="noopener" class="btn btn-primary btn-sm">⬇️ डाउनलोड</a></div>');
   }
   $('#studDownloads').innerHTML = dl.length ? dl.join('') :
     '<div class="info-box saffron"><strong>📌 सूचना:</strong> एडमिट कार्ड तथा प्रमाणपत्र जारी होने पर यहाँ उपलब्ध होंगे।</div>';
 
-  /* Admin notes */
   $('#studAdminNotes').innerHTML = rec.AdminNotes ?
     '<div class="info-box blue"><strong>📢 सूचना:</strong> ' + rec.AdminNotes + '</div>' :
     '<div class="info-box blue"><span>कोई सूचना नहीं।</span></div>';
@@ -1072,12 +1193,13 @@ function studLogout(){
 }
 
 async function studReload(){
-  if(!_studSession){ toast('कृपया पुन: लॉगिन करें'); return; }
+  if(!_studSession){ toast('कृपया पुन: लॉगिन करें', 'error'); return; }
+  toast('🔄 Loading...');
   const r = await apiCall({ action:'getStudent', appId: _studSession.appId, email: _studSession.email });
   if(r.status === 'success' && r.data){
     populateStudentDash(r.data);
-    toast('ताज़ा किया गया ✓');
-  } else toast('ताज़ा करने में त्रुटि');
+    toast('ताज़ा किया गया ✓', 'success');
+  } else toast('ताज़ा करने में त्रुटि', 'error');
 }
 
 /* ============================================================
@@ -1088,8 +1210,8 @@ let _volSession = null;
 $('#volSendOtpBtn').addEventListener('click', async () => {
   const id = $('#volId').value.trim().toUpperCase();
   const email = $('#volEmail').value.trim().toLowerCase();
-  if(!id){ toast('कृपया स्वयंसेवक संख्या अंकित करें'); return; }
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ toast('कृपया सही विद्युत्पत्र अंकित करें'); return; }
+  if(!id){ toast('कृपया स्वयंसेवक संख्या अंकित करें', 'error'); return; }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ toast('कृपया सही विद्युत्पत्र अंकित करें', 'error'); return; }
 
   const btn = $('#volSendOtpBtn'); const orig = btn.innerHTML;
   btn.disabled = true; btn.innerHTML = '⏳ भेजा जा रहा है...';
@@ -1103,8 +1225,8 @@ $('#volSendOtpBtn').addEventListener('click', async () => {
     clearOtp('volOtpBoxes');
     $$('#volOtpBoxes .otp-box')[0].focus();
     startOtpTimer('volOtpTimer', 60);
-    toast('कूट भेजा गया ✓');
-  } else toast(r.message || 'त्रुटि');
+    toast('कूट भेजा गया ✓', 'success');
+  } else toast(r.message || 'त्रुटि', 'error');
 });
 
 $('#volBackBtn').addEventListener('click', () => {
@@ -1144,7 +1266,7 @@ $('#volVerifyBtn').addEventListener('click', async () => {
   populateVolunteerDash(r.data);
   $('#volLogin').style.display = 'none';
   $('#volDash').classList.add('show');
-  toast('लॉगिन सफल ✓');
+  toast('लॉगिन सफल ✓', 'success');
 });
 
 function populateVolunteerDash(v){
@@ -1159,9 +1281,8 @@ function populateVolunteerDash(v){
   $('#volMode').textContent = v.Mode || '—';
   $('#volHours').textContent = v.Hours || '—';
 
-  /* Experience letter */
   if(v.ExperienceLetterURL && String(v.ExperienceLetterURL).startsWith('http')){
-    $('#volCertBox').innerHTML = '<div class="download-card green"><div class="dc-icon">📜</div><div class="dc-body"><h4>अनुभव प्रमाणपत्र</h4><p>' + (v.ExperienceLetterID || '') + '</p></div><a href="' + v.ExperienceLetterURL + '" target="_blank" class="btn btn-green btn-sm">⬇️ डाउनलोड</a></div>';
+    $('#volCertBox').innerHTML = '<div class="download-card green"><div class="dc-icon">📜</div><div class="dc-body"><h4>अनुभव प्रमाणपत्र</h4><p>' + (v.ExperienceLetterID || '') + '</p></div><a href="' + v.ExperienceLetterURL + '" target="_blank" rel="noopener" class="btn btn-green btn-sm">⬇️ डाउनलोड</a></div>';
   } else {
     $('#volCertBox').innerHTML = '<div class="info-box saffron"><strong>📌 सूचना:</strong> सेवा-अवधि पूर्ण होने पर अनुभव प्रमाणपत्र जारी किया जाएगा।</div>';
   }
@@ -1183,18 +1304,18 @@ async function loadVolHours(){
 
 async function volLogHours(e){
   e.preventDefault();
-  if(!_volSession){ toast('कृपया पुन: लॉगिन करें'); return; }
+  if(!_volSession){ toast('कृपया पुन: लॉगिन करें', 'error'); return; }
   const hours = parseFloat($('#volLogHoursInput').value) || 0;
   const subj = $('#volLogSubject').value.trim();
-  if(hours <= 0){ toast('कृपया सही घंटे अंकित करें'); return; }
+  if(hours <= 0){ toast('कृपया सही घंटे अंकित करें', 'error'); return; }
 
   const r = await apiCall({ action:'logVolHours', volId: _volSession.volId, hours, class: subj });
   if(r.status === 'success'){
     $('#volLogHoursInput').value = '';
     $('#volLogSubject').value = '';
-    toast('✓ घंटे दर्ज किए गए');
+    toast('✓ घंटे दर्ज किए गए', 'success');
     loadVolHours();
-  } else toast(r.message || 'त्रुटि');
+  } else toast(r.message || 'त्रुटि', 'error');
 }
 
 function volLogout(){
@@ -1207,46 +1328,109 @@ function volLogout(){
 }
 
 async function volReload(){
-  if(!_volSession){ toast('कृपया पुन: लॉगिन करें'); return; }
+  if(!_volSession){ toast('कृपया पुन: लॉगिन करें', 'error'); return; }
   const r = await apiCall({ action:'getVolunteer', volId: _volSession.volId, email: _volSession.email });
-  if(r.status === 'success' && r.data){ populateVolunteerDash(r.data); toast('ताज़ा किया गया ✓'); }
-  else toast('त्रुटि');
+  if(r.status === 'success' && r.data){ populateVolunteerDash(r.data); toast('ताज़ा किया गया ✓', 'success'); }
+  else toast('त्रुटि', 'error');
 }
 
 /* ============================================================
-   ADMIN PORTAL
+   ADMIN PORTAL (Enhanced)
    ============================================================ */
 let _adminSession = null;
+let _sessionTimer = null;
+let _sessionExpiry = null;
+const ADMIN_SESSION_HOURS = 6;
 
+/* Restore session on page load */
+(function restoreAdminSession(){
+  try {
+    const saved = sessionStorage.getItem('admin_session');
+    if(!saved) return;
+    const s = JSON.parse(saved);
+    if(!s || !s.token || !s.expiresAt) return;
+    if(Date.now() > s.expiresAt){ 
+      sessionStorage.removeItem('admin_session');
+      return;
+    }
+    _adminSession = { email: s.email, token: s.token };
+    _sessionExpiry = s.expiresAt;
+    showAdminDashboard(s.email);
+    startSessionTimer();
+    refreshAllAdminData();
+    toast('✓ Session restored', 'success');
+  } catch(e){}
+})();
+
+function showAdminDashboard(email){
+  $('#adminWelcome').textContent = email;
+  $('#adminLogin').style.display = 'none';
+  $('#adminDash').classList.add('show');
+  $('#adminStep3').style.display = 'none';
+  $('#adminStep2').style.display = 'none';
+  $('#adminStep1').style.display = 'block';
+}
+
+function startSessionTimer(){
+  if(_sessionTimer) clearInterval(_sessionTimer);
+  _sessionTimer = setInterval(() => {
+    if(!_sessionExpiry) return;
+    const remaining = _sessionExpiry - Date.now();
+    if(remaining <= 0){
+      clearInterval(_sessionTimer);
+      toast('⏱️ Session expired — please login again', 'error');
+      adminLogout();
+      return;
+    }
+    const hours = Math.floor(remaining / 3600000);
+    const mins = Math.floor((remaining % 3600000) / 60000);
+    const el = $('#sessionTime');
+    if(el) el.textContent = hours + 'h ' + mins + 'm';
+  }, 30000); // update every 30s
+}
+
+/* ---------- STEP 1: Email ---------- */
 $('#adminEmailBtn').addEventListener('click', async () => {
   const email = $('#adminEmail').value.trim().toLowerCase();
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ toast('सही विद्युत्पत्र अंकित करें'); return; }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    toast('सही विद्युत्पत्र अंकित करें', 'error');
+    return;
+  }
 
   const btn = $('#adminEmailBtn'); const orig = btn.innerHTML;
   btn.disabled = true; btn.innerHTML = '⏳';
+
   const r = await apiCall({ action:'adminCheckEmail', email });
+
   btn.disabled = false; btn.innerHTML = orig;
 
   if(r.status === 'success' && r.allowed){
     $('#adminStep1').style.display = 'none';
     $('#adminStep2').style.display = 'block';
     $('#adminPassword').focus();
-  } else toast(r.message || 'अधिकृत विद्युत्पत्र नहीं');
+    toast('✓ Email verified', 'success');
+  } else {
+    toast(r.message || 'अधिकृत विद्युत्पत्र नहीं', 'error');
+  }
 });
 
+/* ---------- STEP 2: Password ---------- */
 $('#adminBackBtn1').addEventListener('click', () => {
   $('#adminStep2').style.display = 'none';
   $('#adminStep1').style.display = 'block';
+  $('#adminPassword').value = '';
 });
 
 $('#adminPasswordBtn').addEventListener('click', async () => {
   const email = $('#adminEmail').value.trim().toLowerCase();
   const password = $('#adminPassword').value;
-  if(!password){ toast('पासवर्ड अंकित करें'); return; }
+  if(!password){ toast('पासवर्ड अंकित करें', 'error'); return; }
 
   const btn = $('#adminPasswordBtn'); const orig = btn.innerHTML;
   btn.disabled = true; btn.innerHTML = '⏳';
+
   const r = await apiCall({ action:'adminCheckPassword', email, password });
+
   btn.disabled = false; btn.innerHTML = orig;
 
   if(r.status === 'success' && r.allowed){
@@ -1257,11 +1441,16 @@ $('#adminPasswordBtn').addEventListener('click', async () => {
       $('#adminStep3').style.display = 'block';
       clearOtp('adminOtpBoxes');
       $$('#adminOtpBoxes .otp-box')[0].focus();
-      toast('कूट भेजा गया ✓');
+      toast('कूट भेजा गया ✓', 'success');
+    } else {
+      toast(otp.message || 'OTP त्रुटि', 'error');
     }
-  } else toast(r.message || 'गलत पासवर्ड');
+  } else {
+    toast(r.message || 'गलत पासवर्ड', 'error');
+  }
 });
 
+/* ---------- STEP 3: OTP ---------- */
 $('#adminBackBtn2').addEventListener('click', () => {
   $('#adminStep3').style.display = 'none';
   $('#adminStep2').style.display = 'block';
@@ -1274,7 +1463,10 @@ setupOtpBoxes('adminOtpBoxes', () => {
 $('#adminVerifyBtn').addEventListener('click', async () => {
   const email = $('#adminEmail').value.trim().toLowerCase();
   const otp = getOtpValue('adminOtpBoxes');
-  if(!/^\d{6}$/.test(otp)){ $('#adminOtpErr').textContent = 'छह अंकों का कूट अंकित करें'; return; }
+  if(!/^\d{6}$/.test(otp)){
+    $('#adminOtpErr').textContent = 'छह अंकों का कूट अंकित करें';
+    return;
+  }
 
   const btn = $('#adminVerifyBtn'); const orig = btn.innerHTML;
   btn.disabled = true; btn.innerHTML = '⏳ जाँच हो रही है...';
@@ -1285,31 +1477,44 @@ $('#adminVerifyBtn').addEventListener('click', async () => {
     $('#adminOtpErr').textContent = v.message || 'अमान्य कूट';
     return;
   }
+
   const r = await apiCall({ action:'adminLoginFinal', email });
   btn.disabled = false; btn.innerHTML = orig;
 
-  if(r.status !== 'success'){ toast(r.message || 'लॉगिन विफल'); return; }
+  if(r.status !== 'success'){ toast(r.message || 'लॉगिन विफल', 'error'); return; }
+
   _adminSession = { email, token: r.token };
-  $('#adminWelcome').textContent = email;
-  $('#adminLogin').style.display = 'none';
-  $('#adminDash').classList.add('show');
-  toast('प्रशासक लॉगिन सफल ✓');
-  loadAdminOverview();
-  loadApplications();
-  loadVolunteers();
-  loadFreeCerts();
-  loadDonations();
-  loadGrievances();
+  _sessionExpiry = Date.now() + (ADMIN_SESSION_HOURS * 3600000);
+
+  /* Save session */
+  try {
+    sessionStorage.setItem('admin_session', JSON.stringify({
+      email: email,
+      token: r.token,
+      expiresAt: _sessionExpiry
+    }));
+  } catch(e){}
+
+  showAdminDashboard(email);
+  startSessionTimer();
+  toast('प्रशासक लॉगिन सफल ✓', 'success');
+
+  refreshAllAdminData();
 });
 
 function adminLogout(){
   _adminSession = null;
+  _sessionExpiry = null;
+  if(_sessionTimer) clearInterval(_sessionTimer);
+  try { sessionStorage.removeItem('admin_session'); } catch(e){}
   $('#adminLogin').style.display = 'block';
   $('#adminDash').classList.remove('show');
   $('#adminStep3').style.display = 'none';
   $('#adminStep2').style.display = 'none';
   $('#adminStep1').style.display = 'block';
+  $('#adminPassword').value = '';
   clearOtp('adminOtpBoxes');
+  toast('Logged out', 'success');
 }
 
 function switchAdminTab(tab){
@@ -1317,20 +1522,39 @@ function switchAdminTab(tab){
   $$('.admin-panel').forEach(p => p.classList.toggle('active', p.id === 'apanel-' + tab));
 }
 
-/* ---------- Admin: Overview ---------- */
+/* ---------- Refresh all admin data ---------- */
+async function refreshAllAdminData(){
+  if(!_adminSession) return;
+  toast('🔄 Refreshing all data...');
+  await Promise.all([
+    loadAdminOverview(),
+    loadApplications(),
+    loadVolunteers(),
+    loadFreeCerts(),
+    loadDonations(),
+    loadGrievances()
+  ]);
+  toast('✓ All data refreshed', 'success');
+}
+
+/* ---------- Admin: Overview (Enhanced) ---------- */
 async function loadAdminOverview(){
   if(!_adminSession) return;
   const r = await apiCall({ action:'adminOverview', token: _adminSession.token });
-  if(r.status !== 'success'){ $('#adminStats').innerHTML = '<div class="info-box error">त्रुटि: ' + (r.message || '') + '</div>'; return; }
+  if(r.status !== 'success'){ 
+    $('#adminStats').innerHTML = '<div class="info-box error">त्रुटि: ' + (r.message || '') + '</div>'; 
+    return; 
+  }
   const d = r.data;
   $('#adminStats').innerHTML = [
-    { n: d.applications || 0, t:'कुल आवेदन / Applications' },
-    { n: d.selected || 0,     t:'चयनित / Selected' },
-    { n: d.volunteers || 0,   t:'स्वयंसेवक / Volunteers' },
-    { n: d.freeCerts || 0,    t:'प्रमाणपत्र / Certificates' },
-    { n: d.donations || 0,    t:'दान / Donations' },
-    { n: d.grievances || 0,   t:'शिकायतें / Grievances' }
-  ].map(s => '<div class="admin-stat"><b>' + s.n + '</b><span>' + s.t + '</span></div>').join('');
+    { n: d.applications || 0, t:'कुल आवेदन / Applications', tab:'applications', ico:'📝' },
+    { n: d.selected || 0,     t:'चयनित / Selected',         tab:'applications', ico:'⭐' },
+    { n: d.volunteers || 0,   t:'स्वयंसेवक / Volunteers',    tab:'volunteers',   ico:'🤝' },
+    { n: d.freeCerts || 0,    t:'नि:शुल्क प्रमाणपत्र / Free Certs', tab:'freecerts', ico:'🎖️' },
+    { n: d.certificates || 0, t:'कोर्स प्रमाणपत्र / Certificates', tab:'freecerts', ico:'📜' },
+    { n: d.donations || 0,    t:'दान / Donations',          tab:'donations',    ico:'🙏' },
+    { n: d.grievances || 0,   t:'शिकायतें / Grievances',    tab:'grievances',   ico:'📢' }
+  ].map(s => '<div class="admin-stat" onclick="switchAdminTab(\'' + s.tab + '\')"><b>' + s.ico + ' ' + s.n + '</b><span>' + s.t + '</span></div>').join('');
 }
 
 /* ---------- Admin: Applications ---------- */
@@ -1350,7 +1574,7 @@ async function loadApplications(){
                 : st === 'Rejected' ? 'status-rejected'
                 : 'status-submitted';
     return '<tr>' +
-      '<td class="mono"><b>' + (a.AppID || '') + '</b></td>' +
+      '<td class="mono" onclick="copyToClipboard(\'' + (a.AppID || '') + '\')"><b>' + (a.AppID || '') + '</b></td>' +
       '<td>' + (a.Name || '') + '</td>' +
       '<td style="font-size:.78rem">' + (a.Course || '') + '</td>' +
       '<td>₹' + (a.Payable || 0) + '</td>' +
@@ -1366,10 +1590,21 @@ async function loadApplications(){
 
 async function setAppStatus(appId, status){
   if(!_adminSession) return;
-  if(!confirm((appId) + ' → ' + status + '?')) return;
-  const r = await apiCall({ action:'adminSetStatus', token: _adminSession.token, appId, status });
-  if(r.status === 'success'){ toast('✓ स्थिति अद्यतन'); loadApplications(); }
-  else toast(r.message || 'त्रुटि');
+  
+  /* ✅ Show confirm dialog instead of browser confirm */
+  showConfirm(
+    'Change Status',
+    'क्या आप ' + appId + ' की स्थिति को "' + status + '" करना चाहते हैं?',
+    async () => {
+      const r = await apiCall({ action:'adminSetStatus', token: _adminSession.token, appId, status });
+      if(r.status === 'success'){ 
+        toast('✓ स्थिति अद्यतन', 'success'); 
+        loadApplications(); 
+        loadAdminOverview();
+      }
+      else toast(r.message || 'त्रुटि', 'error');
+    }
+  );
 }
 
 /* ---------- Admin: Volunteers ---------- */
@@ -1383,7 +1618,7 @@ async function loadVolunteers(){
   if(!r.data.length){ tb.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">कोई स्वयंसेवक नहीं।</td></tr>'; return; }
   tb.innerHTML = r.data.map(v =>
     '<tr>' +
-      '<td class="mono"><b>' + (v.ID || '') + '</b></td>' +
+      '<td class="mono" onclick="copyToClipboard(\'' + (v.ID || '') + '\')"><b>' + (v.ID || '') + '</b></td>' +
       '<td>' + (v.Name || '') + '</td>' +
       '<td>' + (v.Type || '') + '</td>' +
       '<td>' + (v.Subject || '—') + '</td>' +
@@ -1395,13 +1630,21 @@ async function loadVolunteers(){
 
 async function genExpLetter(volId){
   if(!_adminSession) return;
-  if(!confirm('अनुभव प्रमाणपत्र बनाएँ: ' + volId + '?')) return;
-  const r = await apiCall({ action:'adminGenExpLetter', token: _adminSession.token, volId });
-  if(r.status === 'success'){ toast('✓ पत्र बनाया गया'); loadVolunteers(); }
-  else toast(r.message || 'त्रुटि');
+  showConfirm(
+    'Generate Experience Letter',
+    'क्या आप ' + volId + ' के लिए अनुभव प्रमाणपत्र बनाना चाहते हैं?',
+    async () => {
+      const r = await apiCall({ action:'adminGenExpLetter', token: _adminSession.token, volId });
+      if(r.status === 'success'){ 
+        toast('✓ पत्र बनाया गया', 'success'); 
+        loadVolunteers(); 
+      }
+      else toast(r.message || 'त्रुटि', 'error');
+    }
+  );
 }
 
-/* ---------- Admin: Free Certs ---------- */
+/* ---------- Admin: Free Certs (Enhanced) ---------- */
 async function loadFreeCerts(){
   if(!_adminSession) return;
   const q = ($('#certSearch') ? $('#certSearch').value.trim() : '');
@@ -1411,19 +1654,22 @@ async function loadFreeCerts(){
     tb.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">त्रुटि</td></tr>'; return;
   }
   if(!r.data.length){ tb.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:20px">कोई प्रमाणपत्र नहीं।</td></tr>'; return; }
-  tb.innerHTML = r.data.map(c =>
-    '<tr>' +
-      '<td class="mono"><b>' + (c.CertID || '') + '</b></td>' +
+  tb.innerHTML = r.data.map(c => {
+    const courseName = c.CourseTitle || c.CourseTitleEn || c.Course || '—';
+    const verifyUrl = c.VerifyURL || ('https://www.diprafoundation.com/verify.html?cert=' + encodeURIComponent(c.CertID || ''));
+    const certUrl = c.CertURL || '';
+    return '<tr>' +
+      '<td class="mono" onclick="copyToClipboard(\'' + (c.CertID || '') + '\')"><b>' + (c.CertID || '') + '</b></td>' +
       '<td>' + (c.Name || '') + '</td>' +
-      '<td style="font-size:.78rem">' + (c.CourseTitle || c.Course || '') + '</td>' +
+      '<td style="font-size:.78rem">' + courseName + '</td>' +
       '<td>' + (c.Score || 0) + '/' + (c.Total || 0) + ' (' + (c.Percent || 0) + '%)</td>' +
       '<td><b style="color:var(--green)">' + (c.Grade || '') + '</b></td>' +
       '<td>' +
-        '<a class="tbl-btn download" href="' + (c.CertURL || '#') + '" target="_blank" style="text-decoration:none">📥 PDF</a>' +
-        '<a class="tbl-btn verify" href="' + (c.VerifyURL || '#') + '" target="_blank" style="text-decoration:none">🔍 सत्यापन</a>' +
+        (certUrl ? '<a class="tbl-btn download" href="' + certUrl + '" target="_blank" rel="noopener" style="text-decoration:none">📥 PDF</a>' : '') +
+        '<a class="tbl-btn verify" href="' + verifyUrl + '" target="_blank" rel="noopener" style="text-decoration:none">🔍 सत्यापन</a>' +
       '</td>' +
-    '</tr>'
-  ).join('');
+    '</tr>';
+  }).join('');
 }
 
 /* ---------- Admin: Donations ---------- */
@@ -1437,7 +1683,7 @@ async function loadDonations(){
   if(!r.data.length){ tb.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">कोई दान नहीं।</td></tr>'; return; }
   tb.innerHTML = r.data.map(d =>
     '<tr>' +
-      '<td class="mono"><b>' + (d.DonationID || '') + '</b></td>' +
+      '<td class="mono" onclick="copyToClipboard(\'' + (d.DonationID || '') + '\')"><b>' + (d.DonationID || '') + '</b></td>' +
       '<td>' + (d.Name || '') + '</td>' +
       '<td><b style="color:var(--green)">₹' + (d.Amount || 0) + '</b></td>' +
       '<td>' + (d.Purpose || '—') + '</td>' +
@@ -1459,11 +1705,11 @@ async function loadGrievances(){
     const st = String(g.Status || 'Open');
     const stCls = st === 'Resolved' ? 'status-resolved' : 'status-open';
     return '<tr>' +
-      '<td class="mono"><b>' + (g.ComplaintID || '') + '</b></td>' +
+      '<td class="mono" onclick="copyToClipboard(\'' + (g.ComplaintID || '') + '\')"><b>' + (g.ComplaintID || '') + '</b></td>' +
       '<td>' + (g.Name || '') + '</td>' +
       '<td>' + (g.Category || '') + '</td>' +
       '<td><span class="status-badge ' + stCls + '">' + st + '</span></td>' +
-      '<td style="font-size:.78rem">' + ((g.Details || '').slice(0, 60)) + '...</td>' +
+      '<td style="font-size:.78rem">' + ((g.Details || '').slice(0, 60)) + ((g.Details || '').length > 60 ? '...' : '') + '</td>' +
     '</tr>';
   }).join('');
 }
@@ -1473,7 +1719,37 @@ function debounce(fn, ms){ let t; return (...a) => { clearTimeout(t); t = setTim
 if($('#appSearch')) $('#appSearch').addEventListener('input', debounce(loadApplications, 400));
 if($('#certSearch')) $('#certSearch').addEventListener('input', debounce(loadFreeCerts, 400));
 
-console.log('%c🔐 दिप्र फ़ाउंडेशन — पोर्टल', 'color:#0D7A3A;font-weight:bold;font-size:14px');
+/* ============================================================
+   KEYBOARD SHORTCUTS
+   ============================================================ */
+document.addEventListener('keydown', (e) => {
+  /* Escape closes confirm */
+  if(e.key === 'Escape'){
+    if($('#confirmDialog').classList.contains('show')){
+      closeConfirm();
+      return;
+    }
+  }
+  
+  /* Ctrl+R = Refresh admin data (only when admin dash is open) */
+  if((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'r'){
+    if(_adminSession && $('#adminDash').classList.contains('show')){
+      e.preventDefault();
+      refreshAllAdminData();
+    }
+  }
+  
+  /* Ctrl+L = Logout admin */
+  if((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'l'){
+    if(_adminSession && $('#adminDash').classList.contains('show')){
+      e.preventDefault();
+      adminLogout();
+    }
+  }
+});
+
+console.log('%c🔐 दिप्र फ़ाउंडेशन — पोर्टल v3.0 (Enhanced)', 'color:#0D7A3A;font-weight:bold;font-size:14px');
+console.log('%c✓ Secure 3-step admin login | Session restore | Auto-refresh | Keyboard shortcuts', 'color:#5A4030;font-size:11px');
 </script>
 <script src="sound.js" defer></script>
 </body>
