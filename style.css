@@ -4581,6 +4581,915 @@ footer a:hover { color: var(--gold-2); }
   .toast {
     display: none !important;
   }
+   /* ============================================================
+   The Uplift — Page-Specific Styles
+   (जो style.css में common नहीं हैं)
+   ============================================================ */
+
+/* ---------- SEO Meta / Notice ---------- */
+.uplift-note {
+  background: var(--info-soft);
+  border: 1.5px solid #D5E0ED;
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: var(--info);
+  font-size: .94rem;
+  line-height: 1.75;
+  margin-top: 20px;
+}
+
+/* ---------- Section Wrapper ---------- */
+.uplift-section-alt {
+  background: linear-gradient(180deg, #FFFBF5 0%, #FFF6E8 100%);
+}
+
+/* ---------- Benefits Grid (Student + Volunteer) ---------- */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 32px;
+}
+
+.benefit-col {
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.benefit-col:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.benefit-col .bc-head {
+  padding: 16px 22px;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.05rem;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+.benefit-col.student .bc-head {
+  background: linear-gradient(135deg, var(--green), var(--green-3));
+}
+
+.benefit-col.volunteer .bc-head {
+  background: linear-gradient(135deg, var(--saffron), var(--saffron-3));
+}
+
+.benefit-col .bc-body {
+  padding: 26px 22px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.benefit-col .bc-icon {
+  font-size: 3rem;
+  margin-bottom: 14px;
+  line-height: 1;
+}
+
+.benefit-col .bc-text {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--ink-2);
+  margin-bottom: 12px;
+}
+
+.benefit-col .bc-text b {
+  color: var(--maroon);
+}
+
+.benefit-col .bc-sub {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+.benefit-col .bc-mockup {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 18px 0;
+}
+
+.benefit-col .bc-mockup .m-ico {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: var(--cream-2);
+  border: 1.5px solid var(--border-2);
+  display: grid;
+  place-items: center;
+  font-size: 1.3rem;
+  transition: all 0.2s ease;
+}
+
+.benefit-col:hover .bc-mockup .m-ico {
+  transform: translateY(-3px);
+  border-color: var(--saffron-2);
+}
+
+.benefit-col .bc-cta {
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+/* ---------- Thoughts Slider ---------- */
+.thoughts-slider {
+  position: relative;
+  background: #fff;
+  border: 2px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  margin-top: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.slider-track {
+  position: relative;
+  min-height: 320px;
+}
+
+.thought-slide {
+  position: absolute;
+  inset: 0;
+  padding: 32px 60px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.thought-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  position: relative;
+}
+
+.thought-slide .thought-text {
+  font-family: 'Tiro Devanagari Hindi', serif;
+  font-size: 1.1rem;
+  line-height: 1.95;
+  color: var(--ink);
+  font-style: italic;
+  margin-bottom: 14px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.thought-slide .thought-cite {
+  display: block;
+  text-align: right;
+  font-size: 0.9rem;
+  color: var(--maroon);
+  font-weight: 700;
+  font-style: normal;
+  padding-right: 8px;
+}
+
+.thought-slide .thought-cite::before {
+  content: "— ";
+  margin-right: 4px;
+  color: var(--saffron-3);
+}
+
+.thought-slide .thought-meaning {
+  font-size: 0.92rem;
+  color: var(--ink-2);
+  line-height: 1.8;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border-2);
+}
+
+.thought-slide .thought-meaning b {
+  color: var(--maroon);
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.thought-slide.english {
+  border-left: 4px solid var(--green-2);
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--maroon);
+  border: 2px solid var(--border-2);
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(139, 21, 56, 0.15);
+  font-family: inherit;
+  line-height: 1;
+  padding: 0;
+  padding-bottom: 3px;
+}
+
+.slider-btn:hover {
+  background: var(--saffron);
+  color: #fff;
+  border-color: var(--saffron);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slider-btn:focus-visible {
+  outline: 3px solid var(--saffron);
+  outline-offset: 3px;
+}
+
+.slider-prev { left: 12px; }
+.slider-next { right: 12px; }
+
+.slider-dots {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  padding: 12px 0 16px;
+  flex-wrap: wrap;
+}
+
+.slider-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-2);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0;
+  min-height: 0;
+}
+
+.slider-dot.active {
+  background: var(--saffron);
+  width: 24px;
+  border-radius: 999px;
+}
+
+/* ---------- Donate Wrap ---------- */
+.donate-wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.donate-intro {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 24px;
+  padding: 0 16px;
+}
+
+.donate-intro .d-emoji {
+  font-size: 3rem;
+  margin-bottom: 12px;
+  display: inline-block;
+  animation: dEmojiPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes dEmojiPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+.donate-intro h3 {
+  font-family: 'Tiro Devanagari Hindi', serif;
+  font-size: 1.5rem;
+  color: var(--maroon);
+  font-weight: 400;
+  margin-bottom: 14px;
+}
+
+.donate-intro p {
+  color: var(--ink-2);
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.donate-intro p strong {
+  color: var(--maroon);
+}
+
+.usage-section-title {
+  text-align: center;
+  font-family: 'Tiro Devanagari Hindi', serif;
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: var(--maroon);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.usage-section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--saffron), var(--green));
+  margin: 10px auto 0;
+  border-radius: 999px;
+}
+
+.donate-cta {
+  text-align: center;
+  margin-top: 32px;
+  padding: 0 16px;
+}
+
+/* ---------- Fee Calculator Card ---------- */
+.fee-calc-card {
+  background: #fff;
+  border: 1.5px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin-top: 34px;
+}
+
+.fee-calc-head {
+  background: linear-gradient(135deg, var(--maroon), var(--maroon-2));
+  color: #fff;
+  padding: 22px 26px;
+}
+
+.fee-calc-head h3 {
+  color: #fff;
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.fee-calc-body {
+  padding: 26px;
+}
+
+.fee-calc-result {
+  display: none;
+  margin-top: 4px;
+}
+
+.fee-calc-result.show {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.fee-calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.fee-cell {
+  background: var(--cream-2);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.fee-cell small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.fee-cell b {
+  display: block;
+  font-size: 1.05rem;
+  color: var(--maroon);
+  margin-top: 6px;
+  font-weight: 800;
+}
+
+.fee-cell.primary {
+  background: var(--saffron-soft);
+  border-color: var(--saffron-2);
+}
+
+.fee-cell.primary small { color: var(--saffron-3); }
+.fee-cell.primary b {
+  color: var(--saffron-3);
+  font-size: 1.35rem;
+}
+
+.fee-cell.disc small { color: var(--green-3); }
+.fee-cell.disc b { color: var(--green-3); }
+
+/* ---------- Course Table Extras ---------- */
+.fee-old {
+  text-decoration: line-through;
+  color: var(--muted);
+  font-size: 0.88em;
+}
+
+.fee-cut {
+  color: var(--green-3);
+  font-weight: 700;
+}
+
+.ebook-link {
+  color: var(--saffron-3);
+  font-weight: 600;
+  font-size: 0.82rem;
+  cursor: pointer;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+
+.ebook-link:hover {
+  color: var(--green-3);
+}
+
+/* ---------- Free Course Cards ---------- */
+.free-card {
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  padding: 24px 22px;
+  position: relative;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(139, 21, 56, 0.06);
+}
+
+.free-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--saffron), var(--gold-2), var(--green));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.free-card:hover {
+  border-color: var(--saffron-2);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(139, 21, 56, 0.14);
+}
+
+.free-card:hover::before {
+  transform: scaleX(1);
+}
+
+.free-card .badge-free {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: linear-gradient(135deg, var(--green), var(--green-3));
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: 0 3px 10px rgba(13, 122, 58, 0.3);
+  z-index: 2;
+}
+
+.free-card .fc-ico {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  margin-bottom: 14px;
+  background: linear-gradient(135deg, var(--saffron-soft), #fff);
+  border: 1.5px solid var(--saffron-2);
+  flex: none;
+}
+
+.free-card h3 {
+  font-size: 1.05rem;
+  color: var(--maroon);
+  margin: 0 0 10px;
+  font-family: 'Tiro Devanagari Hindi', 'Noto Sans Devanagari', serif;
+  font-weight: 600;
+  line-height: 1.35;
+  padding-right: 70px;
+}
+
+.free-card .fc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--border);
+}
+
+.free-card .fc-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: var(--cream-2);
+  border: 1px solid var(--border);
+  color: var(--ink-2);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.free-card p {
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.free-card .btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: auto;
+}
+
+/* ---------- Quiz Score ---------- */
+.quiz-score {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.score-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 18px;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, var(--green), var(--green-3));
+  box-shadow: 0 12px 32px rgba(13, 122, 58, 0.25);
+  animation: scorePop 0.5s cubic-bezier(0.2, 1.4, 0.5, 1);
+}
+
+.score-circle.fail {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  box-shadow: 0 12px 32px rgba(220, 38, 38, 0.25);
+}
+
+@keyframes scorePop {
+  from { transform: scale(0.3); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.quiz-score h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.quiz-score p {
+  color: var(--ink-2);
+  font-size: 0.96rem;
+  margin: 12px 0;
+}
+
+/* ---------- Ebook Actions ---------- */
+.ebook-actions {
+  padding: 16px 20px;
+  background: var(--cream-2);
+  border-top: 1.5px solid var(--border-2);
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.ebook-actions .btn {
+  min-width: 140px;
+}
+
+.ebook-actions .btn:last-child {
+  flex: 1;
+}
+
+/* ---------- Hero Seats List ---------- */
+#heroSeatList li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  padding: 11px 0;
+  border-bottom: 1px dashed var(--border);
+  font-size: 0.92rem;
+  color: var(--ink-2);
+}
+
+#heroSeatList li:last-child {
+  border-bottom: none;
+}
+
+#heroSeatList li b {
+  white-space: nowrap;
+  font-family: 'Inter', monospace;
+}
+
+/* ---------- Career Cards Grid ---------- */
+.career-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+  margin-top: 32px;
+}
+
+/* ---------- Donate Section Decoration ---------- */
+.donate-section {
+  background: linear-gradient(135deg, #FFF8F0, var(--saffron-soft), #FFFBF5);
+}
+
+/* ---------- Responsive Tweaks ---------- */
+@media (max-width: 900px) {
+  .benefits-grid { grid-template-columns: 1fr; }
+  .career-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .thought-slide { padding: 24px 48px; }
+  .slider-track { min-height: 380px; }
+  .slider-btn { width: 38px; height: 38px; font-size: 1.3rem; }
+  .slider-prev { left: 6px; }
+  .slider-next { right: 6px; }
+  .fee-calc-grid { grid-template-columns: 1fr 1fr; }
+  .ebook-actions { justify-content: center; }
+  .ebook-actions .btn { min-width: 120px; }
+}
+
+@media (max-width: 400px) {
+  .fee-calc-grid { grid-template-columns: 1fr; }
+  .slider-track { min-height: 440px; }
+  .thought-slide { padding: 20px 40px; }
+}
+/* ---------- Tiered Courses Grid ---------- */
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.tier-card {
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(139, 21, 56, 0.06);
+}
+
+.tier-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(139, 21, 56, 0.16);
+  border-color: var(--saffron-2);
+}
+
+.tier-head {
+  padding: 22px 20px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.tier-head.basic { background: linear-gradient(135deg, #0D7A3A, #16A34A); }
+.tier-head.plus  { background: linear-gradient(135deg, #D97706, #F59E0B); }
+.tier-head.adv   { background: linear-gradient(135deg, #7C2D12, #B91C1C); }
+
+.tier-head::after {
+  content: "";
+  position: absolute;
+  top: -50%; right: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.tier-emoji {
+  font-size: 2.4rem;
+  line-height: 1;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.tier-head h3 {
+  color: #fff;
+  font-size: 1.15rem;
+  margin: 0 0 6px;
+  font-weight: 800;
+  letter-spacing: .01em;
+}
+
+.tier-head p {
+  color: rgba(255,255,255,.92);
+  font-size: .85rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+.tier-body {
+  padding: 18px 18px 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tier-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1.5px dashed var(--border);
+}
+
+.tier-meta span {
+  font-size: .72rem;
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: var(--cream-2);
+  border: 1px solid var(--border);
+  color: var(--ink-2);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.tier-meta span.fee-tag {
+  background: var(--saffron-soft);
+  border-color: var(--saffron-2);
+  color: var(--saffron-3);
+}
+
+.tier-units {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.tier-unit {
+  background: var(--cream-2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green-2);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: .78rem;
+  line-height: 1.5;
+}
+
+.tier-unit b {
+  display: block;
+  color: var(--maroon);
+  font-size: .82rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.tier-unit .tu-cert {
+  color: var(--green-3);
+  font-weight: 700;
+  font-size: .72rem;
+}
+
+.tier-unit .tu-proj {
+  color: var(--ink-2);
+  font-size: .72rem;
+  display: block;
+  margin-top: 2px;
+}
+
+.tier-unit .tu-proj::before {
+  content: "📋 ";
+  font-size: .7rem;
+}
+
+.tier-unit .tu-dur {
+  float: right;
+  color: var(--muted);
+  font-size: .68rem;
+  font-weight: 600;
+  background: #fff;
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.tier-foot {
+  padding: 12px 18px 18px;
+  margin-top: auto;
+  border-top: 1.5px solid var(--border);
+}
+
+.tier-foot .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.tier-cert-count {
+  text-align: center;
+  font-size: .74rem;
+  color: var(--muted);
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.tier-cert-count b {
+  color: var(--maroon);
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .tier-grid { grid-template-columns: 1fr; gap: 20px; max-width: 520px; margin-inline: auto; }
+}
+/* ============================================
+   बिना मतलब की fixed रंगीन लाइन हटाना
+   ============================================ */
+
+/* 1. Tricolor strip (fixed position से हटाएँ) */
+.tricolor { display: none !important; }
+
+/* 2. body के pseudo-element (scroll progress) */
+body::after,
+body::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* 3. Common scroll-bar classes */
+.scroll-progress,
+.scroll-bar,
+#progressBar,
+#scrollProgress {
+  display: none !important;
+}
+
+/* 4. bottom-nav का चमकीला बॉर्डर सादा करें */
+.bottom-nav {
+  border-top: 1px solid var(--border) !important;
+  box-shadow: 0 -2px 8px rgba(0,0,0,.06) !important;
+  background: #fff !important;
+}
+
+/* 5. FAB "+" का glow हटाना */
+.bn-fab {
+  box-shadow: none !important;
+  animation: none !important;
+}
+.bn-fab::before,
+.bn-fab::after {
+  display: none !important;
+}
+/* नीचे बीच वाले लाल FAB बटन को पूरी तरह हटाने के लिए */
+.bn-fab {
+  display: none !important;
+}
+/* नीचे नेविगेशन बार के ऊपर की लाल लाइन/बॉर्डर हटाने के लिए */
+.bottom-nav {
+  border-top: 1px solid #eee !important; /* सिर्फ हल्का ग्रे बॉर्डर रहेगा */
+  box-shadow: none !important; /* कोई लाल शैडो नहीं */
+  background: #fff !important;
+}
+
+/* अगर कोई टोस्ट (Toast) मैसेज लाल रंग में अटका हुआ है, तो उसे छिपाने के लिए */
+.toast {
+  display: none !important;
+}
 }
 
 /* ============================================================
