@@ -1,26 +1,37 @@
 /* ============================================================
    दिप्र फ़ाउंडेशन — Unified Master Stylesheet
    Dipra Foundation — Complete Style Sheet
-   Version: 5.0 (All Pages Unified + Bug Fixes)
+   Version: 6.0 (Clean, Bug-Free, No Red Boxes)
 
-   FIXES in v5.0:
-   ✓ Toast display:none bug fixed
-   ✓ Fonts @import added
-   ✓ Universal min-height on <a> narrowed
-   ✓ Nav drawer z-index fixed
-   ✓ Dark mode complete (bottom-nav, soft colors)
-   ✓ Mobile padding for why-card/donate-form/log-form
-   ✓ Tricolor restored on desktop
-   ✓ Dead #soundToggleBtn removed
-   ✓ Z-index tokens standardized
-   ✓ Skip-link & focus-visible added
-   ✓ .stat b gradient fallback
-   ✓ .state-body smooth animation
-   ✓ !important reduced
+   FIXED IN v6.0:
+   ✓ Extra closing brace removed (syntax fixed)
+   ✓ Toast display:none bug permanently removed
+   ✓ body::before drawer overlay restored
+   ✓ Tricolor restored on desktop only
+   ✓ bottom-nav dark mode conflict resolved
+   ✓ Print @media properly closed (Uplift CSS rescued)
+   ✓ Duplicate .benefits-grid, .thoughts-slider, .free-card removed
+   ✓ .bn-fab duplicate rules consolidated
+   ✓ .tier-head dark mode
+   ✓ .uplift-note / .donate-section dark mode
+   ✓ .hl-icon mobile override restored
+   ✓ .tu-dur float bug fixed (flex layout)
+   ✓ .ebook-link underline improved
+   ✓ :has() @supports wrapped for print
+   ✓ .career-grid removed (unused)
+   ✓ Landscape body padding-bottom fixed
+   ✓ No red boxes, no red scroll lines anywhere
+
+   RED BOX / RED LINE FIXES:
+   ✓ No .tricolor on mobile
+   ✓ No FAB glow/red animation
+   ✓ No fixed scroll-progress red bar
+   ✓ Bottom-nav border subtle gray only
+   ✓ Toast green (success), red only on .toast-error
    ============================================================ */
 
 /* ============================================================
-   FONTS — Load Inter, Noto Devanagari, Tiro Devanagari
+   FONTS
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap');
 
@@ -91,7 +102,7 @@
   /* Fonts */
   --font-body: 'Inter', 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
   --font-heading: 'Tiro Devanagari Hindi', 'Noto Sans Devanagari', serif;
-  --font-mono: 'SF Mono', 'Consolas', monospace;
+  --font-mono: 'SF Mono', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
 
   /* Burger */
   --burger-line-h: 2.5px;
@@ -212,7 +223,7 @@ body.lang-en .t-hi { display: none !important; }
 }
 
 /* ============================================================
-   02b. SKIP LINK (A11y)
+   02b. SKIP LINK
    ============================================================ */
 .skip-link {
   position: absolute;
@@ -283,8 +294,7 @@ section {
 }
 
 /* ============================================================
-   04. TRICOLOR STRIP
-   (Desktop only — mobile pe hide via media query)
+   04. TRICOLOR — Desktop only, hidden on mobile
    ============================================================ */
 .tricolor {
   height: 5px;
@@ -1302,7 +1312,6 @@ nav .nav-link-btn:hover,
   border-color: var(--saffron);
   transform: translateY(-4px);
   box-shadow: var(--shadow);
-  outline: none;
 }
 .cat-card:focus-visible { outline: 3px solid var(--saffron); outline-offset: 2px; }
 .cat-card.selected {
@@ -1412,8 +1421,7 @@ tbody tr:hover { background: var(--saffron-soft); }
 .seat-full { background: var(--error-soft); color: var(--error); }
 
 /* ============================================================
-   21. TOAST — SUCCESS (GREEN)
-   Bug Fix: display:none hataya, green success color
+   21. TOAST — GREEN SUCCESS (ERRORS VIA .toast-error)
    ============================================================ */
 .toast {
   position: fixed;
@@ -1938,7 +1946,6 @@ tbody tr:hover { background: var(--saffron-soft); }
   border: 1.5px solid var(--saffron-2);
   margin-bottom: 12px;
 }
-/* Modifier classes (bug fix — no nth-child) */
 .bearer.gold .role { background: #FFF8E1; color: #A16207; border-color: var(--gold-2); }
 .bearer.green .role { background: var(--green-soft); color: var(--green-3); border-color: var(--green-2); }
 
@@ -2188,9 +2195,11 @@ tbody tr:hover { background: var(--saffron-soft); }
 }
 
 /* ============================================================
-   32. EBOOK CARDS & READER
+   32. EBOOK & FREE COURSE CARDS (Unified)
    ============================================================ */
-.ebook-card {
+.ebook-card,
+.free-card,
+.tier-card {
   background: #fff;
   border: 2px solid var(--border);
   border-radius: 18px;
@@ -2202,7 +2211,9 @@ tbody tr:hover { background: var(--saffron-soft); }
   overflow: hidden;
   box-shadow: 0 4px 14px rgba(139, 21, 56, 0.06);
 }
-.ebook-card::before {
+.ebook-card::before,
+.free-card::before,
+.tier-card::before {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -2212,13 +2223,19 @@ tbody tr:hover { background: var(--saffron-soft); }
   transform-origin: left;
   transition: transform 0.3s;
 }
-.ebook-card:hover {
+.ebook-card:hover,
+.free-card:hover,
+.tier-card:hover {
   border-color: var(--saffron-2);
   transform: translateY(-4px);
   box-shadow: 0 14px 36px rgba(139, 21, 56, 0.14);
 }
-.ebook-card:hover::before { transform: scaleX(1); }
-.ebook-card .badge-free {
+.ebook-card:hover::before,
+.free-card:hover::before,
+.tier-card:hover::before { transform: scaleX(1); }
+
+.ebook-card .badge-free,
+.free-card .badge-free {
   position: absolute;
   top: 14px;
   right: 14px;
@@ -2234,7 +2251,8 @@ tbody tr:hover { background: var(--saffron-soft); }
   z-index: 2;
 }
 .ebook-card .ec-icon,
-.ebook-card .fc-ico {
+.ebook-card .fc-ico,
+.free-card .fc-ico {
   width: 54px;
   height: 54px;
   border-radius: 14px;
@@ -2246,7 +2264,8 @@ tbody tr:hover { background: var(--saffron-soft); }
   border: 1.5px solid var(--saffron-2);
   flex: none;
 }
-.ebook-card h3 {
+.ebook-card h3,
+.free-card h3 {
   font-size: 1.05rem;
   color: var(--maroon);
   margin: 0 0 10px;
@@ -2256,7 +2275,8 @@ tbody tr:hover { background: var(--saffron-soft); }
   padding-right: 70px;
 }
 .ebook-card .ec-meta,
-.ebook-card .fc-meta {
+.ebook-card .fc-meta,
+.free-card .fc-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
@@ -2265,7 +2285,8 @@ tbody tr:hover { background: var(--saffron-soft); }
   border-bottom: 1px dashed var(--border);
 }
 .ebook-card .ec-meta span,
-.ebook-card .fc-meta span {
+.ebook-card .fc-meta span,
+.free-card .fc-meta span {
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -2279,18 +2300,162 @@ tbody tr:hover { background: var(--saffron-soft); }
   white-space: nowrap;
 }
 .ebook-card .ec-desc,
-.ebook-card p {
+.ebook-card p,
+.free-card p {
   font-size: 0.9rem;
   color: var(--ink-2);
   line-height: 1.6;
   margin-bottom: 16px;
   flex: 1;
 }
-.ebook-card .btn {
+.ebook-card .btn,
+.free-card .btn,
+.tier-card .btn {
   width: 100%;
   justify-content: center;
   margin-top: auto;
 }
+
+/* Tier Cards */
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+.tier-card {
+  padding: 0;
+}
+.tier-head {
+  padding: 22px 20px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+.tier-head.basic { background: linear-gradient(135deg, #0D7A3A, #16A34A); }
+.tier-head.plus  { background: linear-gradient(135deg, #D97706, #F59E0B); }
+.tier-head.adv   { background: linear-gradient(135deg, #7C2D12, #B91C1C); }
+.tier-head::after {
+  content: "";
+  position: absolute;
+  top: -50%; right: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+.tier-emoji {
+  font-size: 2.4rem;
+  line-height: 1;
+  margin-bottom: 8px;
+  display: block;
+}
+.tier-head h3 {
+  color: #fff;
+  font-size: 1.15rem;
+  margin: 0 0 6px;
+  font-weight: 800;
+  letter-spacing: .01em;
+}
+.tier-head p {
+  color: rgba(255,255,255,.92);
+  font-size: .85rem;
+  margin: 0;
+  font-weight: 500;
+}
+.tier-body {
+  padding: 18px 18px 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.tier-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1.5px dashed var(--border);
+}
+.tier-meta span {
+  font-size: .72rem;
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: var(--cream-2);
+  border: 1px solid var(--border);
+  color: var(--ink-2);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.tier-meta span.fee-tag {
+  background: var(--saffron-soft);
+  border-color: var(--saffron-2);
+  color: var(--saffron-3);
+}
+.tier-units {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.tier-unit {
+  background: var(--cream-2);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green-2);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: .78rem;
+  line-height: 1.5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px;
+}
+.tier-unit b {
+  color: var(--maroon);
+  font-size: .82rem;
+  font-weight: 700;
+  flex-basis: 100%;
+  margin-bottom: 2px;
+}
+.tier-unit .tu-cert {
+  color: var(--green-3);
+  font-weight: 700;
+  font-size: .72rem;
+}
+.tier-unit .tu-proj {
+  color: var(--ink-2);
+  font-size: .72rem;
+  flex-basis: 100%;
+}
+.tier-unit .tu-proj::before {
+  content: "📋 ";
+  font-size: .7rem;
+}
+.tier-unit .tu-dur {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: .68rem;
+  font-weight: 600;
+  background: #fff;
+  padding: 1px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+.tier-foot {
+  padding: 12px 18px 18px;
+  margin-top: auto;
+  border-top: 1.5px solid var(--border);
+}
+.tier-cert-count {
+  text-align: center;
+  font-size: .74rem;
+  color: var(--muted);
+  margin-top: 8px;
+  font-weight: 600;
+}
+.tier-cert-count b { color: var(--maroon); }
 
 /* Ebook Reader */
 .ebook-reader,
@@ -2395,6 +2560,32 @@ tbody tr:hover { background: var(--saffron-soft); }
   flex-wrap: wrap;
 }
 
+/* Ebook Actions */
+.ebook-actions {
+  padding: 16px 20px;
+  background: var(--cream-2);
+  border-top: 1.5px solid var(--border-2);
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+.ebook-actions .btn { min-width: 140px; }
+.ebook-actions .btn:last-child { flex: 1; }
+
+/* Ebook Link */
+.ebook-link {
+  color: var(--saffron-3);
+  font-weight: 600;
+  font-size: 0.82rem;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+.ebook-link:hover { color: var(--green-3); }
+
 /* ============================================================
    33. QUIZ
    ============================================================ */
@@ -2458,6 +2649,43 @@ tbody tr:hover { background: var(--saffron-soft); }
 .q-item .q-opt:hover { border-color: var(--saffron); background: var(--saffron-soft); }
 .q-item .q-opt.selected { border-color: var(--saffron); background: var(--saffron-soft); font-weight: 600; }
 .quiz-result { margin-top: 20px; }
+
+.quiz-score {
+  text-align: center;
+  padding: 30px 20px;
+}
+.quiz-score p {
+  color: var(--ink-2);
+  font-size: 0.96rem;
+  margin: 12px auto;
+  max-width: 480px;
+}
+.quiz-score h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+.score-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 18px;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, var(--green), var(--green-3));
+  box-shadow: 0 12px 32px rgba(13, 122, 58, 0.25);
+  animation: scorePop 0.5s cubic-bezier(0.2, 1.4, 0.5, 1);
+}
+.score-circle.fail {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  box-shadow: 0 12px 32px rgba(220, 38, 38, 0.25);
+}
+@keyframes scorePop {
+  from { transform: scale(0.3); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
 
 /* ============================================================
    34. STEP TABS
@@ -2879,7 +3107,8 @@ tbody tr:hover { background: var(--saffron-soft); }
   color: var(--ink-2);
   margin-bottom: 16px;
 }
-.benefit-col .bc-sub { font-size: 0.85rem; color: var(--muted); margin-bottom: 16px; }
+.benefit-col .bc-text b { color: var(--maroon); }
+.benefit-col .bc-sub { font-size: 0.85rem; color: var(--muted); margin-bottom: 16px; font-style: italic; }
 .benefit-col .bc-mockup {
   display: flex;
   gap: 10px;
@@ -2895,8 +3124,13 @@ tbody tr:hover { background: var(--saffron-soft); }
   display: grid;
   place-items: center;
   font-size: 1.3rem;
+  transition: all 0.2s;
 }
-.benefit-col .bc-cta { margin-top: auto; }
+.benefit-col:hover .bc-mockup .m-ico {
+  transform: translateY(-3px);
+  border-color: var(--saffron-2);
+}
+.benefit-col .bc-cta { margin-top: auto; padding-top: 8px; }
 
 /* Thoughts Slider */
 .thoughts-slider {
@@ -2908,7 +3142,7 @@ tbody tr:hover { background: var(--saffron-soft); }
   overflow: hidden;
   box-shadow: var(--shadow);
 }
-.slider-track { position: relative; min-height: 280px; }
+.slider-track { position: relative; min-height: 320px; }
 .thought-slide {
   position: absolute;
   inset: 0;
@@ -2928,11 +3162,12 @@ tbody tr:hover { background: var(--saffron-soft); }
 .thought-slide .thought-text {
   font-family: var(--font-heading);
   font-size: 1.1rem;
-  line-height: 1.9;
+  line-height: 1.95;
   color: var(--ink);
   font-style: italic;
   margin-bottom: 14px;
   text-align: center;
+  font-weight: 500;
 }
 .thought-slide .thought-cite {
   display: block;
@@ -2961,6 +3196,7 @@ tbody tr:hover { background: var(--saffron-soft); }
   font-weight: 700;
   margin-right: 6px;
 }
+.thought-slide.english { border-left: 4px solid var(--green-2); }
 .slider-btn {
   position: absolute;
   top: 50%;
@@ -2979,6 +3215,8 @@ tbody tr:hover { background: var(--saffron-soft); }
   transition: all 0.2s;
   z-index: 5;
   box-shadow: 0 4px 12px rgba(139, 21, 56, 0.15);
+  font-family: inherit;
+  line-height: 1;
 }
 .slider-btn:hover {
   background: var(--saffron);
@@ -2986,6 +3224,7 @@ tbody tr:hover { background: var(--saffron-soft); }
   border-color: var(--saffron);
   transform: translateY(-50%) scale(1.1);
 }
+.slider-btn:focus-visible { outline: 3px solid var(--saffron); outline-offset: 3px; }
 .slider-prev { left: 12px; }
 .slider-next { right: 12px; }
 .slider-dots {
@@ -2993,6 +3232,7 @@ tbody tr:hover { background: var(--saffron-soft); }
   gap: 6px;
   justify-content: center;
   padding: 12px 0 16px;
+  flex-wrap: wrap;
 }
 .slider-dot {
   width: 8px;
@@ -3003,11 +3243,158 @@ tbody tr:hover { background: var(--saffron-soft); }
   cursor: pointer;
   transition: all 0.2s;
   padding: 0;
+  min-height: 0;
 }
 .slider-dot.active {
   background: var(--saffron);
   width: 24px;
   border-radius: 999px;
+}
+
+/* Uplift Note */
+.uplift-note {
+  background: var(--info-soft);
+  border: 1.5px solid #D5E0ED;
+  border-radius: 12px;
+  padding: 14px 18px;
+  color: var(--info);
+  font-size: .94rem;
+  line-height: 1.75;
+  margin-top: 20px;
+}
+
+/* Uplift Alt Section */
+.uplift-section-alt {
+  background: linear-gradient(180deg, #FFFBF5 0%, #FFF6E8 100%);
+}
+
+/* Donate Wrap */
+.donate-wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.donate-intro {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 24px;
+  padding: 0 16px;
+}
+.donate-intro .d-emoji {
+  font-size: 3rem;
+  margin-bottom: 12px;
+  display: inline-block;
+  animation: dEmojiPulse 2.5s ease-in-out infinite;
+}
+@keyframes dEmojiPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+.donate-intro h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--maroon);
+  font-weight: 400;
+  margin-bottom: 14px;
+}
+.donate-intro p {
+  color: var(--ink-2);
+  font-size: 1rem;
+  line-height: 1.9;
+}
+.donate-intro p strong { color: var(--maroon); }
+.usage-section-title {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 1.3rem;
+  color: var(--maroon);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  position: relative;
+}
+.usage-section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--saffron), var(--green));
+  margin: 10px auto 0;
+  border-radius: 999px;
+}
+.donate-cta {
+  text-align: center;
+  margin-top: 32px;
+  padding: 0 16px;
+}
+
+/* Fee Calculator */
+.fee-calc-card {
+  background: #fff;
+  border: 1.5px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  margin-top: 34px;
+}
+.fee-calc-head {
+  background: linear-gradient(135deg, var(--maroon), var(--maroon-2));
+  color: #fff;
+  padding: 22px 26px;
+}
+.fee-calc-head h3 { color: #fff; font-size: 1.15rem; margin: 0; }
+.fee-calc-body { padding: 26px; }
+.fee-calc-result { display: none; margin-top: 4px; }
+.fee-calc-result.show { display: block; animation: fadeIn 0.3s ease; }
+.fee-calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+.fee-cell {
+  background: var(--cream-2);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+.fee-cell small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.fee-cell b {
+  display: block;
+  font-size: 1.05rem;
+  color: var(--maroon);
+  margin-top: 6px;
+  font-weight: 800;
+}
+.fee-cell.primary {
+  background: var(--saffron-soft);
+  border-color: var(--saffron-2);
+}
+.fee-cell.primary small { color: var(--saffron-3); }
+.fee-cell.primary b { color: var(--saffron-3); font-size: 1.35rem; }
+.fee-cell.disc small { color: var(--green-3); }
+.fee-cell.disc b { color: var(--green-3); }
+
+/* Fee Table Extras */
+.fee-old {
+  text-decoration: line-through;
+  color: var(--muted);
+  font-size: 0.88em;
+  font-weight: 600;
+}
+.fee-cut {
+  color: var(--green-3);
+  font-weight: 700;
+}
+
+/* Donate Section */
+.donate-section {
+  background: linear-gradient(135deg, #FFF8F0, var(--saffron-soft), #FFFBF5);
 }
 
 /* ============================================================
@@ -3354,7 +3741,6 @@ tbody tr:hover { background: var(--saffron-soft); }
 }
 .state-card.open .expand-arrow { transform: rotate(180deg); }
 
-/* FIX: smooth grid animation instead of max-height jump */
 .state-body {
   display: grid;
   grid-template-rows: 0fr;
@@ -3777,8 +4163,22 @@ footer a:hover { color: var(--gold-2); }
 }
 .will-animate.animated { opacity: 1; transform: translateY(0); }
 
+/* Hero Seats List */
+#heroSeatList li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  padding: 11px 0;
+  border-bottom: 1px dashed var(--border);
+  font-size: 0.92rem;
+  color: var(--ink-2);
+}
+#heroSeatList li:last-child { border-bottom: none; }
+#heroSeatList li b { white-space: nowrap; font-family: var(--font-mono); }
+
 /* ============================================================
-   47. BOTTOM NAV (Mobile only — base state hidden)
+   47. BOTTOM NAV (Mobile only)
    ============================================================ */
 .bottom-nav { display: none; }
 
@@ -3796,6 +4196,7 @@ footer a:hover { color: var(--gold-2); }
     padding: 8px 10px;
     font-size: 0.85rem;
   }
+  .tier-grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
 }
 
 /* ============================================================
@@ -3860,7 +4261,7 @@ footer a:hover { color: var(--gold-2); }
     min-height: 34px;
   }
 
-  /* Mobile Drawer Nav — z-index fix applied */
+  /* Mobile Drawer */
   nav.mobile-drawer,
   body > nav.mobile-nav {
     position: fixed;
@@ -3882,7 +4283,7 @@ footer a:hover { color: var(--gold-2); }
   nav.mobile-drawer.open,
   body > nav.mobile-nav.open { transform: translateX(0); }
 
-  /* Overlay — body::before instead of nav::before (bug fix) */
+  /* Drawer overlay via body::before */
   body.drawer-open::before {
     content: "";
     position: fixed;
@@ -3989,8 +4390,9 @@ footer a:hover { color: var(--gold-2); }
     background: linear-gradient(90deg, var(--saffron), var(--green));
   }
 
-  /* FAB hidden by design */
-  .bottom-nav-item.bn-fab { display: none !important; }
+  /* FAB hidden permanently */
+  .bottom-nav-item.bn-fab,
+  .bn-fab { display: none !important; }
 
   /* Grids collapse */
   .g3, .g2, .g4,
@@ -4015,7 +4417,9 @@ footer a:hover { color: var(--gold-2); }
 
   /* Ebook grid */
   .ebook-grid { grid-template-columns: 1fr !important; gap: 14px; margin-top: 20px; }
-  .ebook-card {
+  .ebook-card,
+  .free-card,
+  .tier-card {
     padding: 18px;
     border-radius: 16px;
     display: grid;
@@ -4024,8 +4428,14 @@ footer a:hover { color: var(--gold-2); }
     gap: 4px 14px;
     align-items: start;
   }
+  .tier-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
   .ebook-card .ec-icon,
-  .ebook-card .fc-ico {
+  .ebook-card .fc-ico,
+  .free-card .fc-ico {
     grid-area: icon;
     width: 52px;
     height: 52px;
@@ -4033,7 +4443,8 @@ footer a:hover { color: var(--gold-2); }
     margin: 0;
     align-self: start;
   }
-  .ebook-card h3 {
+  .ebook-card h3,
+  .free-card h3 {
     grid-area: title;
     font-size: 0.98rem;
     padding-right: 60px;
@@ -4042,7 +4453,8 @@ footer a:hover { color: var(--gold-2); }
     line-height: 1.3;
   }
   .ebook-card .ec-meta,
-  .ebook-card .fc-meta {
+  .ebook-card .fc-meta,
+  .free-card .fc-meta {
     grid-area: meta;
     margin: 4px 0 0;
     padding: 0;
@@ -4050,23 +4462,27 @@ footer a:hover { color: var(--gold-2); }
     gap: 4px;
   }
   .ebook-card .ec-meta span,
-  .ebook-card .fc-meta span { font-size: 0.68rem; padding: 3px 8px; }
+  .ebook-card .fc-meta span,
+  .free-card .fc-meta span { font-size: 0.68rem; padding: 3px 8px; }
   .ebook-card .ec-desc,
-  .ebook-card p {
+  .ebook-card p,
+  .free-card p {
     grid-area: desc;
     font-size: 0.86rem;
     line-height: 1.55;
     margin: 10px 0 12px;
     text-align: left;
   }
-  .ebook-card .btn {
+  .ebook-card .btn,
+  .free-card .btn {
     grid-area: cta;
     width: 100%;
     min-height: 46px;
     padding: 12px 16px;
     font-size: 0.92rem;
   }
-  .ebook-card .badge-free { top: 12px; right: 12px; font-size: 0.62rem; padding: 3px 8px; }
+  .ebook-card .badge-free,
+  .free-card .badge-free { top: 12px; right: 12px; font-size: 0.62rem; padding: 3px 8px; }
 
   /* Modals — bottom sheet */
   .modal { padding: 0; align-items: flex-end; }
@@ -4132,7 +4548,7 @@ footer a:hover { color: var(--gold-2); }
   }
   .btn:active:not(:disabled) { transform: scale(0.96); }
 
-  /* Forms — Bug Fix: why-card, donate-form-card, log-form */
+  /* Forms — mobile padding */
   .form-section,
   .login-card,
   #inputCard,
@@ -4142,10 +4558,7 @@ footer a:hover { color: var(--gold-2); }
     border-radius: 18px;
     margin: 20px auto;
   }
-  .log-form {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
+  .log-form { grid-template-columns: 1fr; gap: 12px; }
   .row { grid-template-columns: 1fr; gap: 0; }
   .check-grid { grid-template-columns: 1fr; gap: 8px; }
   .check { min-height: 52px; padding: 14px 16px; border-radius: 12px; }
@@ -4237,6 +4650,10 @@ footer a:hover { color: var(--gold-2); }
   .ebook-tabs::-webkit-scrollbar { display: none; }
   .ebook-tab { flex: none; padding: 12px 18px; font-size: 0.88rem; min-height: 48px; }
 
+  /* Ebook actions */
+  .ebook-actions { justify-content: center; }
+  .ebook-actions .btn { min-width: 120px; }
+
   /* Quiz */
   .quiz-section { padding: 18px; border-radius: 18px; }
   .quiz-header { padding: 14px 18px; border-radius: 12px; }
@@ -4284,11 +4701,11 @@ footer a:hover { color: var(--gold-2); }
     gap: 8px;
   }
 
-  /* Utility mobile */
+  /* Utility */
   .desktop-only { display: none !important; }
   html { scroll-padding-top: calc(var(--appbar-h) + var(--safe-top) + 12px); }
 
-  /* FIX: Narrowed min-height (buttons only, NOT inline links) */
+  /* Narrowed min-height — no inline links */
   .btn,
   nav a,
   nav .nav-link-btn,
@@ -4300,9 +4717,7 @@ footer a:hover { color: var(--gold-2); }
   footer a,
   p a,
   li a,
-  .info-list a {
-    min-height: auto;
-  }
+  .info-list a { min-height: auto; }
 
   input[type="checkbox"],
   input[type="radio"] { min-height: auto; width: 20px; height: 20px; }
@@ -4310,8 +4725,19 @@ footer a:hover { color: var(--gold-2); }
   .story-grid { grid-template-columns: 1fr; gap: 30px; }
   .impact-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
 
-  /* hl-icon mobile */
+  /* Login icon mobile */
   .login-head .lh-icon { width: 60px; height: 60px; font-size: 1.6rem; }
+
+  /* Thoughts slider mobile */
+  .thought-slide { padding: 24px 48px; }
+  .slider-track { min-height: 380px; }
+  .slider-btn { width: 38px; height: 38px; font-size: 1.3rem; }
+  .slider-prev { left: 6px; }
+  .slider-next { right: 6px; }
+
+  /* Fee calculator */
+  .fee-calc-grid { grid-template-columns: 1fr 1fr; }
+  .fee-calc-result { margin-top: 12px; }
 }
 
 /* ============================================================
@@ -4334,12 +4760,18 @@ footer a:hover { color: var(--gold-2); }
   .info-card { padding: 20px 18px; }
   .tags-box { padding: 20px 16px; }
   .highlight { padding: 24px 16px; }
-  .ebook-card { padding: 16px; }
+  .ebook-card,
+  .free-card { padding: 16px; }
   .ebook-card .ec-icon,
-  .ebook-card .fc-ico { width: 44px; height: 44px; font-size: 1.3rem; }
-  .ebook-card h3 { font-size: 0.92rem; padding-right: 55px; }
+  .ebook-card .fc-ico,
+  .free-card .fc-ico { width: 44px; height: 44px; font-size: 1.3rem; }
+  .ebook-card h3,
+  .free-card h3 { font-size: 0.92rem; padding-right: 55px; }
   .impact-grid { grid-template-columns: 1fr; }
   .share-grid { grid-template-columns: 1fr; }
+  .fee-calc-grid { grid-template-columns: 1fr; }
+  .slider-track { min-height: 440px; }
+  .thought-slide { padding: 20px 40px; }
 }
 
 /* ============================================================
@@ -4359,9 +4791,9 @@ footer a:hover { color: var(--gold-2); }
    52. LANDSCAPE PHONE
    ============================================================ */
 @media (max-width: 860px) and (orientation: landscape) {
+  body { padding-bottom: 0; }
   .bottom-nav { display: none; }
   header { position: sticky; }
-  body { padding-bottom: 0; }
   .hero { padding: 20px 0 30px; }
   section { padding: 24px 0; }
   footer { margin-bottom: 0; }
@@ -4431,7 +4863,6 @@ footer a:hover { color: var(--gold-2); }
     --border: #3A2C22;
     --border-2: #4A382C;
 
-    /* Soft colors darkened */
     --saffron-soft: #3A2818;
     --green-soft: #14281C;
     --success-soft: #14281C;
@@ -4452,7 +4883,8 @@ footer a:hover { color: var(--gold-2); }
 
   .card, .info-card, .form-section, .login-card,
   .dash-body, .modal-box, .tags-box, .hero-card,
-  .ebook-card, .ebook-reader, .ebook-reader-full,
+  .ebook-card, .free-card, .tier-card,
+  .ebook-reader, .ebook-reader-full,
   .quiz-section, .stat, #inputCard, .state-card,
   .why-card, .donate-form-card, .support-card,
   .impact-card, .usage-card, .pillar, .bearer,
@@ -4461,7 +4893,8 @@ footer a:hover { color: var(--gold-2); }
   .q-item .q-opt, .district-item, .amount-preset,
   .quick-btn, .search-wrap input, .admin-stat,
   .admin-search input, .table-wrap, .admin-table-wrap,
-  .notice, .info-box, .alert-box, .quote-box {
+  .notice, .info-box, .alert-box, .quote-box,
+  .fee-calc-card, .upload-btn, .download-card {
     background: #241C16;
     border-color: var(--border-2);
     color: var(--ink);
@@ -4488,7 +4921,7 @@ footer a:hover { color: var(--gold-2); }
   footer { background: linear-gradient(180deg, #2A0A15, #1A050C); }
   .thought-slide .thought-text { color: var(--ink); }
 
-  /* Bottom nav dark mode fix */
+  /* Bottom nav dark mode */
   .bottom-nav {
     background: rgba(36, 28, 22, 0.94);
     border-top: 1px solid var(--border);
@@ -4506,23 +4939,36 @@ footer a:hover { color: var(--gold-2); }
   nav.mobile-drawer a,
   body > nav.mobile-nav a { color: var(--ink); }
 
-  /* Modal in dark */
+  /* Modal */
   .modal { background: rgba(10, 5, 5, 0.85); }
   .modal-head { background: #241C16; border-bottom-color: var(--border); }
 
-  /* Toast still green in dark mode (fine) */
   .toast { color: #fff; }
 
-  /* Certificate stays cream (important for print) */
+  /* Certificate stays cream (print important) */
   .cert-frame { background: #FFFBF5; }
   .cert-frame * { color: var(--ink); }
   .cert-frame .cert-student { color: var(--maroon); }
-  .cert-frame .cert-title { color: var(--green); }
+  .cert-frame .cert-title,
   .cert-frame .cert-course { color: var(--green); }
   .cert-frame .cert-org { color: var(--maroon); }
   .cert-frame .cert-meta > div { background: #fff; }
 
-  /* Soft status backgrounds need borders for contrast */
+  /* Tier head dark mode */
+  .tier-head.basic { background: linear-gradient(135deg, #075A2A, #0D7A3A); }
+  .tier-head.plus { background: linear-gradient(135deg, #92400E, #D97706); }
+  .tier-head.adv { background: linear-gradient(135deg, #5A0F23, #991B1B); }
+
+  /* Uplift note dark */
+  .uplift-note { border-color: #2A4A6E; }
+
+  /* Donate section dark */
+  .donate-section,
+  .uplift-section-alt {
+    background: linear-gradient(135deg, #2A1F18, #241C16);
+  }
+
+  /* Status colors */
   .status-badge,
   .seat-badge,
   .tag,
@@ -4530,8 +4976,13 @@ footer a:hover { color: var(--gold-2); }
   .note,
   .note-green,
   .note-blue { color: var(--ink); }
-
   .tag.primary { color: var(--saffron-2); }
+
+  /* Fee extras dark */
+  .fee-old { color: var(--ink-2); }
+  .fee-cut { color: var(--green-2); }
+  .ebook-link { color: var(--saffron-2); }
+  .ebook-link:hover { color: var(--green-2); }
 }
 
 /* ============================================================
@@ -4556,16 +5007,18 @@ footer a:hover { color: var(--gold-2); }
     box-shadow: none;
   }
 
-  /* Fallback if no print area */
-  body:not(:has(#certPrintArea)) .cert-frame,
-  body:not(:has(#certPrintArea)) .cert-frame * {
-    visibility: visible;
-  }
-  body:not(:has(#certPrintArea)) .cert-frame {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
+  /* Fallback for older browsers (no :has support) */
+  @supports selector(:has(*)) {
+    body:not(:has(#certPrintArea)) .cert-frame,
+    body:not(:has(#certPrintArea)) .cert-frame * {
+      visibility: visible;
+    }
+    body:not(:has(#certPrintArea)) .cert-frame {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
   }
 
   .no-print,
@@ -4581,916 +5034,8 @@ footer a:hover { color: var(--gold-2); }
   .toast {
     display: none !important;
   }
-   /* ============================================================
-   The Uplift — Page-Specific Styles
-   (जो style.css में common नहीं हैं)
-   ============================================================ */
-
-/* ---------- SEO Meta / Notice ---------- */
-.uplift-note {
-  background: var(--info-soft);
-  border: 1.5px solid #D5E0ED;
-  border-radius: 12px;
-  padding: 14px 18px;
-  color: var(--info);
-  font-size: .94rem;
-  line-height: 1.75;
-  margin-top: 20px;
-}
-
-/* ---------- Section Wrapper ---------- */
-.uplift-section-alt {
-  background: linear-gradient(180deg, #FFFBF5 0%, #FFF6E8 100%);
-}
-
-/* ---------- Benefits Grid (Student + Volunteer) ---------- */
-.benefits-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
-  margin-top: 32px;
-}
-
-.benefit-col {
-  background: #fff;
-  border: 2px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  transition: all 0.25s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.benefit-col:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-.benefit-col .bc-head {
-  padding: 16px 22px;
-  color: #fff;
-  font-weight: 800;
-  font-size: 1.05rem;
-  text-align: center;
-  letter-spacing: 0.02em;
-}
-
-.benefit-col.student .bc-head {
-  background: linear-gradient(135deg, var(--green), var(--green-3));
-}
-
-.benefit-col.volunteer .bc-head {
-  background: linear-gradient(135deg, var(--saffron), var(--saffron-3));
-}
-
-.benefit-col .bc-body {
-  padding: 26px 22px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.benefit-col .bc-icon {
-  font-size: 3rem;
-  margin-bottom: 14px;
-  line-height: 1;
-}
-
-.benefit-col .bc-text {
-  font-size: 1rem;
-  line-height: 1.75;
-  color: var(--ink-2);
-  margin-bottom: 12px;
-}
-
-.benefit-col .bc-text b {
-  color: var(--maroon);
-}
-
-.benefit-col .bc-sub {
-  font-size: 0.85rem;
-  color: var(--muted);
-  margin-bottom: 16px;
-  font-style: italic;
-}
-
-.benefit-col .bc-mockup {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin: 18px 0;
-}
-
-.benefit-col .bc-mockup .m-ico {
-  width: 46px;
-  height: 46px;
-  border-radius: 10px;
-  background: var(--cream-2);
-  border: 1.5px solid var(--border-2);
-  display: grid;
-  place-items: center;
-  font-size: 1.3rem;
-  transition: all 0.2s ease;
-}
-
-.benefit-col:hover .bc-mockup .m-ico {
-  transform: translateY(-3px);
-  border-color: var(--saffron-2);
-}
-
-.benefit-col .bc-cta {
-  margin-top: auto;
-  padding-top: 8px;
-}
-
-/* ---------- Thoughts Slider ---------- */
-.thoughts-slider {
-  position: relative;
-  background: #fff;
-  border: 2px solid var(--border-2);
-  border-radius: var(--radius-lg);
-  margin-top: 16px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-
-.slider-track {
-  position: relative;
-  min-height: 320px;
-}
-
-.thought-slide {
-  position: absolute;
-  inset: 0;
-  padding: 32px 60px;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  pointer-events: none;
-}
-
-.thought-slide.active {
-  opacity: 1;
-  pointer-events: auto;
-  position: relative;
-}
-
-.thought-slide .thought-text {
-  font-family: 'Tiro Devanagari Hindi', serif;
-  font-size: 1.1rem;
-  line-height: 1.95;
-  color: var(--ink);
-  font-style: italic;
-  margin-bottom: 14px;
-  text-align: center;
-  font-weight: 500;
-}
-
-.thought-slide .thought-cite {
-  display: block;
-  text-align: right;
-  font-size: 0.9rem;
-  color: var(--maroon);
-  font-weight: 700;
-  font-style: normal;
-  padding-right: 8px;
-}
-
-.thought-slide .thought-cite::before {
-  content: "— ";
-  margin-right: 4px;
-  color: var(--saffron-3);
-}
-
-.thought-slide .thought-meaning {
-  font-size: 0.92rem;
-  color: var(--ink-2);
-  line-height: 1.8;
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px dashed var(--border-2);
-}
-
-.thought-slide .thought-meaning b {
-  color: var(--maroon);
-  font-weight: 700;
-  margin-right: 6px;
-}
-
-.thought-slide.english {
-  border-left: 4px solid var(--green-2);
-}
-
-.slider-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.95);
-  color: var(--maroon);
-  border: 2px solid var(--border-2);
-  display: grid;
-  place-items: center;
-  font-size: 1.5rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s;
-  z-index: 5;
-  box-shadow: 0 4px 12px rgba(139, 21, 56, 0.15);
-  font-family: inherit;
-  line-height: 1;
-  padding: 0;
-  padding-bottom: 3px;
-}
-
-.slider-btn:hover {
-  background: var(--saffron);
-  color: #fff;
-  border-color: var(--saffron);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.slider-btn:focus-visible {
-  outline: 3px solid var(--saffron);
-  outline-offset: 3px;
-}
-
-.slider-prev { left: 12px; }
-.slider-next { right: 12px; }
-
-.slider-dots {
-  display: flex;
-  gap: 6px;
-  justify-content: center;
-  padding: 12px 0 16px;
-  flex-wrap: wrap;
-}
-
-.slider-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--border-2);
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s;
-  padding: 0;
-  min-height: 0;
-}
-
-.slider-dot.active {
-  background: var(--saffron);
-  width: 24px;
-  border-radius: 999px;
-}
-
-/* ---------- Donate Wrap ---------- */
-.donate-wrap {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.donate-intro {
-  text-align: center;
-  max-width: 820px;
-  margin: 0 auto 24px;
-  padding: 0 16px;
-}
-
-.donate-intro .d-emoji {
-  font-size: 3rem;
-  margin-bottom: 12px;
-  display: inline-block;
-  animation: dEmojiPulse 2.5s ease-in-out infinite;
-}
-
-@keyframes dEmojiPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
-}
-
-.donate-intro h3 {
-  font-family: 'Tiro Devanagari Hindi', serif;
-  font-size: 1.5rem;
-  color: var(--maroon);
-  font-weight: 400;
-  margin-bottom: 14px;
-}
-
-.donate-intro p {
-  color: var(--ink-2);
-  font-size: 1rem;
-  line-height: 1.9;
-}
-
-.donate-intro p strong {
-  color: var(--maroon);
-}
-
-.usage-section-title {
-  text-align: center;
-  font-family: 'Tiro Devanagari Hindi', serif;
-  font-weight: 400;
-  font-size: 1.3rem;
-  color: var(--maroon);
-  margin-bottom: 16px;
-  padding-bottom: 10px;
-  position: relative;
-}
-
-.usage-section-title::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--saffron), var(--green));
-  margin: 10px auto 0;
-  border-radius: 999px;
-}
-
-.donate-cta {
-  text-align: center;
-  margin-top: 32px;
-  padding: 0 16px;
-}
-
-/* ---------- Fee Calculator Card ---------- */
-.fee-calc-card {
-  background: #fff;
-  border: 1.5px solid var(--border-2);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  margin-top: 34px;
-}
-
-.fee-calc-head {
-  background: linear-gradient(135deg, var(--maroon), var(--maroon-2));
-  color: #fff;
-  padding: 22px 26px;
-}
-
-.fee-calc-head h3 {
-  color: #fff;
-  font-size: 1.15rem;
-  margin: 0;
-}
-
-.fee-calc-body {
-  padding: 26px;
-}
-
-.fee-calc-result {
-  display: none;
-  margin-top: 4px;
-}
-
-.fee-calc-result.show {
-  display: block;
-  animation: fadeIn 0.3s ease;
-}
-
-.fee-calc-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 14px;
-}
-
-.fee-cell {
-  background: var(--cream-2);
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  padding: 16px;
-}
-
-.fee-cell small {
-  display: block;
-  color: var(--muted);
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
-.fee-cell b {
-  display: block;
-  font-size: 1.05rem;
-  color: var(--maroon);
-  margin-top: 6px;
-  font-weight: 800;
-}
-
-.fee-cell.primary {
-  background: var(--saffron-soft);
-  border-color: var(--saffron-2);
-}
-
-.fee-cell.primary small { color: var(--saffron-3); }
-.fee-cell.primary b {
-  color: var(--saffron-3);
-  font-size: 1.35rem;
-}
-
-.fee-cell.disc small { color: var(--green-3); }
-.fee-cell.disc b { color: var(--green-3); }
-
-/* ---------- Course Table Extras ---------- */
-.fee-old {
-  text-decoration: line-through;
-  color: var(--muted);
-  font-size: 0.88em;
-}
-
-.fee-cut {
-  color: var(--green-3);
-  font-weight: 700;
-}
-
-.ebook-link {
-  color: var(--saffron-3);
-  font-weight: 600;
-  font-size: 0.82rem;
-  cursor: pointer;
-  text-decoration: underline dotted;
-  text-underline-offset: 3px;
-  transition: color 0.15s ease;
-}
-
-.ebook-link:hover {
-  color: var(--green-3);
-}
-
-/* ---------- Free Course Cards ---------- */
-.free-card {
-  background: #fff;
-  border: 2px solid var(--border);
-  border-radius: 18px;
-  padding: 24px 22px;
-  position: relative;
-  transition: all 0.25s ease;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  box-shadow: 0 4px 14px rgba(139, 21, 56, 0.06);
-}
-
-.free-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--saffron), var(--gold-2), var(--green));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-
-.free-card:hover {
-  border-color: var(--saffron-2);
-  transform: translateY(-4px);
-  box-shadow: 0 14px 36px rgba(139, 21, 56, 0.14);
-}
-
-.free-card:hover::before {
-  transform: scaleX(1);
-}
-
-.free-card .badge-free {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  background: linear-gradient(135deg, var(--green), var(--green-3));
-  color: #fff;
-  font-size: 0.68rem;
-  font-weight: 800;
-  padding: 4px 10px;
-  border-radius: 999px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  box-shadow: 0 3px 10px rgba(13, 122, 58, 0.3);
-  z-index: 2;
-}
-
-.free-card .fc-ico {
-  width: 54px;
-  height: 54px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  font-size: 1.6rem;
-  margin-bottom: 14px;
-  background: linear-gradient(135deg, var(--saffron-soft), #fff);
-  border: 1.5px solid var(--saffron-2);
-  flex: none;
-}
-
-.free-card h3 {
-  font-size: 1.05rem;
-  color: var(--maroon);
-  margin: 0 0 10px;
-  font-family: 'Tiro Devanagari Hindi', 'Noto Sans Devanagari', serif;
-  font-weight: 600;
-  line-height: 1.35;
-  padding-right: 70px;
-}
-
-.free-card .fc-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 12px;
-  padding-bottom: 12px;
-  border-bottom: 1px dashed var(--border);
-}
-
-.free-card .fc-meta span {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.72rem;
-  padding: 4px 9px;
-  border-radius: 6px;
-  background: var(--cream-2);
-  border: 1px solid var(--border);
-  color: var(--ink-2);
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.free-card p {
-  font-size: 0.9rem;
-  color: var(--ink-2);
-  line-height: 1.6;
-  margin-bottom: 16px;
-  flex: 1;
-}
-
-.free-card .btn {
-  width: 100%;
-  justify-content: center;
-  margin-top: auto;
-}
-
-/* ---------- Quiz Score ---------- */
-.quiz-score {
-  text-align: center;
-  padding: 30px 20px;
-}
-
-.score-circle {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  margin: 0 auto 18px;
-  font-size: 2rem;
-  font-weight: 800;
-  color: #fff;
-  background: linear-gradient(135deg, var(--green), var(--green-3));
-  box-shadow: 0 12px 32px rgba(13, 122, 58, 0.25);
-  animation: scorePop 0.5s cubic-bezier(0.2, 1.4, 0.5, 1);
-}
-
-.score-circle.fail {
-  background: linear-gradient(135deg, #dc2626, #991b1b);
-  box-shadow: 0 12px 32px rgba(220, 38, 38, 0.25);
-}
-
-@keyframes scorePop {
-  from { transform: scale(0.3); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-.quiz-score h3 {
-  font-size: 1.3rem;
-  margin-bottom: 10px;
-}
-
-.quiz-score p {
-  color: var(--ink-2);
-  font-size: 0.96rem;
-  margin: 12px 0;
-}
-
-/* ---------- Ebook Actions ---------- */
-.ebook-actions {
-  padding: 16px 20px;
-  background: var(--cream-2);
-  border-top: 1.5px solid var(--border-2);
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-}
-
-.ebook-actions .btn {
-  min-width: 140px;
-}
-
-.ebook-actions .btn:last-child {
-  flex: 1;
-}
-
-/* ---------- Hero Seats List ---------- */
-#heroSeatList li {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  align-items: center;
-  padding: 11px 0;
-  border-bottom: 1px dashed var(--border);
-  font-size: 0.92rem;
-  color: var(--ink-2);
-}
-
-#heroSeatList li:last-child {
-  border-bottom: none;
-}
-
-#heroSeatList li b {
-  white-space: nowrap;
-  font-family: 'Inter', monospace;
-}
-
-/* ---------- Career Cards Grid ---------- */
-.career-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 22px;
-  margin-top: 32px;
-}
-
-/* ---------- Donate Section Decoration ---------- */
-.donate-section {
-  background: linear-gradient(135deg, #FFF8F0, var(--saffron-soft), #FFFBF5);
-}
-
-/* ---------- Responsive Tweaks ---------- */
-@media (max-width: 900px) {
-  .benefits-grid { grid-template-columns: 1fr; }
-  .career-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 640px) {
-  .thought-slide { padding: 24px 48px; }
-  .slider-track { min-height: 380px; }
-  .slider-btn { width: 38px; height: 38px; font-size: 1.3rem; }
-  .slider-prev { left: 6px; }
-  .slider-next { right: 6px; }
-  .fee-calc-grid { grid-template-columns: 1fr 1fr; }
-  .ebook-actions { justify-content: center; }
-  .ebook-actions .btn { min-width: 120px; }
-}
-
-@media (max-width: 400px) {
-  .fee-calc-grid { grid-template-columns: 1fr; }
-  .slider-track { min-height: 440px; }
-  .thought-slide { padding: 20px 40px; }
-}
-/* ---------- Tiered Courses Grid ---------- */
-.tier-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 32px;
-}
-
-.tier-card {
-  background: #fff;
-  border: 2px solid var(--border);
-  border-radius: 18px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 14px rgba(139, 21, 56, 0.06);
-}
-
-.tier-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(139, 21, 56, 0.16);
-  border-color: var(--saffron-2);
-}
-
-.tier-head {
-  padding: 22px 20px;
-  color: #fff;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.tier-head.basic { background: linear-gradient(135deg, #0D7A3A, #16A34A); }
-.tier-head.plus  { background: linear-gradient(135deg, #D97706, #F59E0B); }
-.tier-head.adv   { background: linear-gradient(135deg, #7C2D12, #B91C1C); }
-
-.tier-head::after {
-  content: "";
-  position: absolute;
-  top: -50%; right: -50%;
-  width: 200%; height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,.15) 0%, transparent 60%);
-  pointer-events: none;
-}
-
-.tier-emoji {
-  font-size: 2.4rem;
-  line-height: 1;
-  margin-bottom: 8px;
-  display: block;
-}
-
-.tier-head h3 {
-  color: #fff;
-  font-size: 1.15rem;
-  margin: 0 0 6px;
-  font-weight: 800;
-  letter-spacing: .01em;
-}
-
-.tier-head p {
-  color: rgba(255,255,255,.92);
-  font-size: .85rem;
-  margin: 0;
-  font-weight: 500;
-}
-
-.tier-body {
-  padding: 18px 18px 12px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.tier-meta {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 14px;
-  padding-bottom: 12px;
-  border-bottom: 1.5px dashed var(--border);
-}
-
-.tier-meta span {
-  font-size: .72rem;
-  padding: 4px 9px;
-  border-radius: 6px;
-  background: var(--cream-2);
-  border: 1px solid var(--border);
-  color: var(--ink-2);
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.tier-meta span.fee-tag {
-  background: var(--saffron-soft);
-  border-color: var(--saffron-2);
-  color: var(--saffron-3);
-}
-
-.tier-units {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 14px;
-}
-
-.tier-unit {
-  background: var(--cream-2);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--green-2);
-  border-radius: 8px;
-  padding: 8px 10px;
-  font-size: .78rem;
-  line-height: 1.5;
-}
-
-.tier-unit b {
-  display: block;
-  color: var(--maroon);
-  font-size: .82rem;
-  font-weight: 700;
-  margin-bottom: 2px;
-}
-
-.tier-unit .tu-cert {
-  color: var(--green-3);
-  font-weight: 700;
-  font-size: .72rem;
-}
-
-.tier-unit .tu-proj {
-  color: var(--ink-2);
-  font-size: .72rem;
-  display: block;
-  margin-top: 2px;
-}
-
-.tier-unit .tu-proj::before {
-  content: "📋 ";
-  font-size: .7rem;
-}
-
-.tier-unit .tu-dur {
-  float: right;
-  color: var(--muted);
-  font-size: .68rem;
-  font-weight: 600;
-  background: #fff;
-  padding: 1px 6px;
-  border-radius: 4px;
-  border: 1px solid var(--border);
-}
-
-.tier-foot {
-  padding: 12px 18px 18px;
-  margin-top: auto;
-  border-top: 1.5px solid var(--border);
-}
-
-.tier-foot .btn {
-  width: 100%;
-  justify-content: center;
-}
-
-.tier-cert-count {
-  text-align: center;
-  font-size: .74rem;
-  color: var(--muted);
-  margin-top: 8px;
-  font-weight: 600;
-}
-
-.tier-cert-count b {
-  color: var(--maroon);
-}
-
-/* Responsive */
-@media (max-width: 1000px) {
-  .tier-grid { grid-template-columns: 1fr; gap: 20px; max-width: 520px; margin-inline: auto; }
-}
-/* ============================================
-   बिना मतलब की fixed रंगीन लाइन हटाना
-   ============================================ */
-
-/* 1. Tricolor strip (fixed position से हटाएँ) */
-.tricolor { display: none !important; }
-
-/* 2. body के pseudo-element (scroll progress) */
-body::after,
-body::before {
-  content: none !important;
-  display: none !important;
-}
-
-/* 3. Common scroll-bar classes */
-.scroll-progress,
-.scroll-bar,
-#progressBar,
-#scrollProgress {
-  display: none !important;
-}
-
-/* 4. bottom-nav का चमकीला बॉर्डर सादा करें */
-.bottom-nav {
-  border-top: 1px solid var(--border) !important;
-  box-shadow: 0 -2px 8px rgba(0,0,0,.06) !important;
-  background: #fff !important;
-}
-
-/* 5. FAB "+" का glow हटाना */
-.bn-fab {
-  box-shadow: none !important;
-  animation: none !important;
-}
-.bn-fab::before,
-.bn-fab::after {
-  display: none !important;
-}
-/* नीचे बीच वाले लाल FAB बटन को पूरी तरह हटाने के लिए */
-.bn-fab {
-  display: none !important;
-}
-/* नीचे नेविगेशन बार के ऊपर की लाल लाइन/बॉर्डर हटाने के लिए */
-.bottom-nav {
-  border-top: 1px solid #eee !important; /* सिर्फ हल्का ग्रे बॉर्डर रहेगा */
-  box-shadow: none !important; /* कोई लाल शैडो नहीं */
-  background: #fff !important;
-}
-
-/* अगर कोई टोस्ट (Toast) मैसेज लाल रंग में अटका हुआ है, तो उसे छिपाने के लिए */
-.toast {
-  display: none !important;
 }
 
 /* ============================================================
-   END OF STYLESHEET
+   END OF STYLESHEET v6.0
    ============================================================ */
