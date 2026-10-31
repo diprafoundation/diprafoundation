@@ -1,7 +1,7 @@
 /* ============================================================
    दिप्र फ़ाउंडेशन — Mobile Web App Experience
    Dipra Foundation — Native App-like Mobile UI
-   Version: 2.0 (All Pages Unified)
+   Version: 2.1 (App Shell, Safe Areas, Fixed)
    
    Usage (हर page के <head> में):
    <link rel="stylesheet" href="style.css">
@@ -1305,3 +1305,60 @@
 
   .cert-title {
     font-size:
+ clamp(1.2rem,5vw,1.75rem); }
+  .cert-name { font-size:1.25rem; }
+  .cert-course { font-size:.92rem; }
+  .cert-meta { grid-template-columns:1fr; gap:8px; }
+  .cert-signatures { gap:12px; }
+  .cert-signatures>div { font-size:.68rem; }
+}
+
+
+/* App shell refinements */
+@media (max-width:860px) {
+  :root { --appbar-h:58px; --bottom-nav-h:66px; --bottom-nav-total:calc(var(--bottom-nav-h) + var(--safe-bottom)); }
+  html { width:100%; overflow-x:clip; scroll-padding-top:calc(var(--appbar-h) + var(--safe-top) + 12px); scroll-padding-bottom:calc(var(--bottom-nav-total) + 12px); }
+  body { width:100%; min-height:100dvh; padding:0 0 var(--bottom-nav-total) !important; overflow-x:clip; overscroll-behavior-y:none; }
+  header { padding-left:var(--safe-left); padding-right:var(--safe-right); background:rgba(255,251,245,.94); border-bottom-color:rgba(75,56,40,.12); }
+  main,.main-content { padding-top:calc(var(--appbar-h) + var(--safe-top) + 12px) !important; padding-bottom:20px !important; }
+  .container,.container-narrow,.container-wide { width:calc(100% - 32px); margin-inline:auto; }
+  footer { margin-bottom:0 !important; padding-bottom:calc(14px + var(--safe-bottom)) !important; }
+  .foot-bottom { padding-bottom:10px !important; }
+  .bottom-nav {
+    position:fixed !important; inset:auto 0 0; height:var(--bottom-nav-total) !important;
+    padding:5px var(--safe-right) calc(5px + var(--safe-bottom)) var(--safe-left) !important;
+    display:grid !important; grid-template-columns:repeat(auto-fit,minmax(0,1fr)); align-items:stretch;
+    background:rgba(255,251,245,.95); -webkit-backdrop-filter:saturate(180%) blur(18px);
+    backdrop-filter:saturate(180%) blur(18px); border-top:1px solid rgba(75,56,40,.14);
+    box-shadow:0 -6px 24px rgba(42,24,16,.08); z-index:900;
+  }
+  .bottom-nav.hidden { transform:translateY(110%); }
+  .bottom-nav-item { min-width:44px; min-height:48px; gap:4px; padding:6px 3px; border-radius:12px; font-size:clamp(.62rem,2.7vw,.72rem); line-height:1.1; }
+  .bottom-nav-item.active { color:var(--green-3); background:rgba(13,122,58,.08); }
+  .bottom-nav-item.active::before { display:none; }
+  .bottom-nav-item .bn-icon { font-size:1.25rem; }
+  nav.mobile-drawer,body>nav.mobile-nav { padding-top:calc(var(--safe-top) + 24px); padding-bottom:calc(var(--safe-bottom) + 20px); border-radius:22px 0 0 22px; }
+  .toast { bottom:calc(var(--bottom-nav-total) + 12px); }
+  .modal-box { padding-bottom:var(--safe-bottom); max-height:calc(92dvh - var(--safe-top)); }
+  .btn,.lang-btn,.burger,.close-x,.portal-tab,.admin-tab,.step-tab,.ebook-tab,.share-btn,.quick-btn,.amount-preset,.state-header { min-height:44px; }
+  .card,.info-card,.ebook-card,.support-card,.impact-card,.usage-card,.download-card { border-radius:18px; }
+  .table-wrap,.admin-table-wrap { max-width:100%; }
+  .table-wrap table,.admin-table-wrap table { min-width:640px; display:table; }
+}
+@media (max-width:380px) {
+  .container,.container-narrow,.container-wide { width:calc(100% - 24px); }
+  .header-inner,.nav-wrap { padding-inline:10px; }
+  .bottom-nav-item { font-size:.6rem; }
+  .bottom-nav-item .bn-icon { font-size:1.15rem; }
+}
+@media (prefers-color-scheme:dark) and (max-width:860px) {
+  header { background:rgba(36,28,22,.95); border-bottom-color:var(--border); }
+  .bottom-nav { background:rgba(36,28,22,.96); border-top-color:var(--border); box-shadow:0 -6px 24px rgba(0,0,0,.3); }
+  .bottom-nav-item { color:var(--ink-2); }
+  .bottom-nav-item.active { color:#91D9A9; background:rgba(22,163,74,.15); }
+  nav.mobile-drawer,body>nav.mobile-nav { background:#241C16; }
+}
+@media (prefers-reduced-motion:reduce) {
+  *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+  .bottom-nav-item:active,.card:active,.info-card:active { transform:none !important; }
+}
