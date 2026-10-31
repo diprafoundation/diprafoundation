@@ -1,7 +1,7 @@
 /* ============================================================
    दिप्र फ़ाउंडेशन — Unified Master Stylesheet
    Dipra Foundation — Complete Style Sheet
-   Version: 6.0 (Clean, Bug-Free, No Red Boxes)
+   Version: 7.0 (Responsive, Accessible, App-Ready)
 
    FIXED IN v6.0:
    ✓ Extra closing brace removed (syntax fixed)
@@ -5037,115 +5037,33 @@ footer a:hover { color: var(--gold-2); }
 }
 
 /* ============================================================
-   END OF STYLESHEET v6.0
+   END OF STYLESHEET v7.0
    ============================================================ */
 
-/* ============================================================
-   60. FINAL RESPONSIVE, DARK MODE, AND FIXED BOTTOM BAR PATCH
-   ============================================================ */
 
-/* Long values (addresses, email addresses, and URLs) must wrap on narrow screens. */
-.info-list li,
-.info-list li strong,
-.field small,
-.notice,
-.info-box,
-.alert-box {
-  min-width: 0;
-  overflow-wrap: anywhere;
-  word-break: normal;
+/* Responsive safeguards and dark surfaces */
+:where(img,video,iframe,svg) { max-width:100%; }
+html,body { max-width:100%; }
+.info-list li,.info-list li strong,.field small,.notice,.info-box,.alert-box {
+  min-width:0; overflow-wrap:anywhere;
 }
-
-/* Keep page content from creating horizontal scrolling on mobile. */
-html,
-body {
-  max-width: 100%;
+button,input,select,textarea { touch-action:manipulation; }
+@media (max-width:860px) {
+  html { scroll-padding-top:calc(var(--appbar-h) + var(--safe-top) + 12px); }
+  body { font-size:16px; }
+  .container,.container-narrow,.container-wide { width:calc(100% - 32px); }
+  .row { grid-template-columns:minmax(0,1fr); }
+  .field input,.field select,.field textarea { font-size:16px; }
 }
-
-img,
-video,
-iframe,
-svg,
-table {
-  max-width: 100%;
+@media (max-width:520px) {
+  .info-list li:not(.address) { flex-direction:column; align-items:flex-start; gap:3px; }
+  .info-list li strong { max-width:100%; text-align:left; }
 }
-
-table {
-  display: block;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-@media (max-width: 860px) {
-  /* The persistent mobile bottom bar was the line/box visible while scrolling. */
-  .bottom-nav,
-  body > .bottom-nav {
-    display: none !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
+@media (prefers-color-scheme:dark) {
+  .cat-card,.district-card,.district-item,.quick-btn,.amount-preset,
+  .search-wrap input,.admin-search input,.state-body,.fee-cell,
+  .timeline-item,.value-item,.way-item,.benefit-col {
+    background-color:#241C16; border-color:var(--border-2); color:var(--ink);
   }
-
-  body {
-    padding-bottom: var(--safe-bottom) !important;
-    font-size: 16px;
-  }
-
-  footer {
-    margin-bottom: 0 !important;
-  }
-
-  .info-list li:not(.address) {
-    align-items: flex-start;
-  }
-
-  .info-list li strong {
-    text-align: right;
-    max-width: 60%;
-  }
-}
-
-@media (max-width: 520px) {
-  .info-list li:not(.address) {
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .info-list li strong {
-    max-width: 100%;
-    text-align: left;
-  }
-}
-
-/* Preserve readable text and surfaces when the OS is in dark mode. */
-@media (prefers-color-scheme: dark) {
-  .cat-card,
-  .district-card,
-  .district-item,
-  .quick-btn,
-  .amount-preset,
-  .search-wrap input,
-  .admin-search input,
-  .state-body,
-  .fee-cell,
-  .portal-tab,
-  .step-tab,
-  .timeline-item,
-  .value-item,
-  .way-item,
-  .impact-card,
-  .benefit-col,
-  .download-card {
-    background-color: #241C16;
-    border-color: var(--border-2);
-    color: var(--ink);
-  }
-
-  .cat-card p,
-  .district-item,
-  .fee-cell small,
-  .state-body,
-  .value-item p,
-  .way-item p {
-    color: var(--ink-2);
-  }
+  .cat-card p,.fee-cell small,.state-body,.value-item p,.way-item p { color:var(--ink-2); }
 }
