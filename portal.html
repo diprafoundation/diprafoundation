@@ -1,374 +1,106 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
-<title>दिप्र फ़ाउंडेशन | The Uplift — लॉगिन पोर्टल</title>
-<meta name="description" content="दिप्र फ़ाउंडेशन - The Uplift कोचिंग योजना लॉगिन पैनल। विद्यार्थी, स्वयंसेवक शिक्षक एवं प्रशासक लॉगिन।">
-<meta name="theme-color" content="#0D7A3A">
-<meta property="og:title" content="दिप्र फ़ाउंडेशन | The Uplift — लॉगिन पोर्टल">
-<meta property="og:description" content="The Uplift कोचिंग योजना सुरक्षित लॉगिन केंद्र।">
-<link rel="canonical" href="https://www.diprafoundation.com/login.html">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
-<link rel="icon" href="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
-
-<!-- COMMON CSS -->
-<link rel="stylesheet" href="style.css">
-<!-- MOBILE APP CSS -->
-<link rel="stylesheet" href="mobile-app.css" media="(max-width: 860px)">
-
-<style>
-/* ============================================================
-   Login Page Specific Styles
-   ============================================================ */
-.login-section {
-  padding: 40px 0 60px;
-  background: linear-gradient(180deg, #FFFBF5 0%, #FFF6E8 100%);
-  min-height: 80vh;
-}
-.login-container {
-  max-width: 650px;
-  margin: 0 auto;
-  background: #fff;
-  border: 2px solid var(--border-2, #e5e7eb);
-  border-radius: var(--radius-lg, 16px);
-  box-shadow: var(--shadow-lg, 0 10px 25px rgba(0,0,0,0.05));
-  overflow: hidden;
-}
-.login-tabs {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  background: var(--cream-2, #f9fafb);
-  border-bottom: 2px solid var(--border, #eee);
-}
-.login-tab {
-  padding: 14px 8px;
-  text-align: center;
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--muted, #666);
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border-bottom: 3px solid transparent;
-}
-.login-tab.active {
-  color: var(--maroon, #8b1538);
-  background: #fff;
-  border-bottom-color: var(--saffron, #ff7a00);
-}
-.login-body {
-  padding: 30px;
-}
-.login-panel {
-  display: none;
-}
-.login-panel.active {
-  display: block;
-  animation: fadeIn 0.3s ease;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.tricolor { display: none !important; }
-@media (max-width: 768px) {
-  .login-tabs { grid-template-columns: repeat(2, 1fr); }
-  .login-container { margin: 0 12px; }
-  .login-body { padding: 20px 16px; }
-}
-</style>
-</head>
-
-<body class="lang-hi">
-
-<!-- TOPBAR -->
-<div class="topbar">
-  <div class="topbar-inner">
-    <div class="topbar-links">
-      <span>📞 <a href="tel:+919532328276">+91 95323 28276</a></span>
-      <span>✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></span>
-      <span data-hi="📍 खेरसा, बिधनू, कानपुर नगर — २०९२१४" data-en="📍 Khersa, Bidhnu, Kanpur Nagar — 209214">📍 खेरसा, बिधनू, कानपुर नगर — २०९२१४</span>
-    </div>
-    <div class="topbar-links">
-      <a href="https://www.diprafoundation.com" target="_blank" rel="noopener">www.diprafoundation.com</a>
-    </div>
-  </div>
-</div>
-
-<!-- HEADER -->
-<header id="mainHeader">
-  <div class="header-inner nav-wrap">
-    <a href="https://www.diprafoundation.com" class="brand" title="Dipra Foundation Home">
-      <div class="brand-logo">
-        <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="दिप्र फ़ाउंडेशन">
-      </div>
-      <div class="brand-text">
-        <b data-hi="दिप्र फ़ाउंडेशन" data-en="Dipra Foundation">दिप्र फ़ाउंडेशन</b>
-        <span onclick="event.preventDefault(); window.location.href='https://www.diprafoundation.com/the_Uplift.html';" style="cursor:pointer;" data-hi="The Uplift — लॉगिन पोर्टल" data-en="The Uplift — Login Portal">The Uplift — लॉगिन पोर्टल</span>
-      </div>
-    </a>
-
-    <nav class="desktop-nav" aria-label="मुख्य">
-      <ul>
-        <li><a href="the_Uplift.html#home" data-hi="गृह" data-en="Home">गृह</a></li>
-        <li><a href="the_Uplift.html#why-useful" data-hi="क्यों उपयोगी" data-en="Why Useful">क्यों उपयोगी</a></li>
-        <li><a href="the_Uplift.html#benefits" data-hi="लाभ" data-en="Benefits">लाभ</a></li>
-        <li><a href="the_Uplift.html#courses" data-hi="पाठ्यक्रम" data-en="Courses">पाठ्यक्रम</a></li>
-        <li><a href="the_Uplift.html#free" data-hi="नि:शुल्क पाठ्यक्रम" data-en="Free Courses">नि:शुल्क पाठ्यक्रम</a></li>
-        <li><a href="the_Uplift.html#tiered-courses" data-hi="संगणक कोर्स" data-en="Computer Courses">संगणक कोर्स</a></li>
-        <li><a href="the_Uplift.html#donate" data-hi="दान" data-en="Donate">दान</a></li>
-        <li><a href="portal.html" data-hi="विद्यार्थी केंद्र" data-en="Portal">विद्यार्थी केंद्र</a></li>
-        <li><a href="verify.html" data-hi="सत्यापन" data-en="Verify">सत्यापन</a></li>
-        <li><a href="contact.html" data-hi="संपर्क" data-en="Contact">संपर्क</a></li>
-      </ul>
-    </nav>
-
-    <div class="header-actions">
-      <div class="lang-switch" role="group" aria-label="भाषा चुनें">
-        <button class="lang-btn active" data-lang="hi" aria-pressed="true" aria-label="हिन्दी">हिन्दी</button>
-        <button class="lang-btn" data-lang="en" aria-pressed="false" aria-label="English">EN</button>
-      </div>
-      <button class="btn btn-saffron btn-sm desktop-only" onclick="window.location.href='the_Uplift.html#courses'" data-hi="आवेदन करें" data-en="Apply">आवेदन करें</button>
-    </div>
-  </div>
-</header>
-
-<!-- MAIN CONTENT -->
-<main>
-  <section class="login-section">
-    <div class="container">
-      <div class="section-head" style="margin-bottom: 24px;">
-        <span class="eyebrow" data-hi="🔐 सुरक्षित अभिगम द्वार" data-en="🔐 Secure Access Portal">🔐 सुरक्षित अभिगम द्वार</span>
-        <h2 data-hi="The Uplift — एकीकृत लॉगिन पैनल" data-en="The Uplift — Unified Login Panel">The Uplift — एकीकृत लॉगिन पैनल</h2>
-        <p data-hi="अपनी भूमिका के अनुसार उचित पैनल चुनें — विद्यार्थी, स्वयंसेवक, कर्मचारी अथवा प्रशासक।" data-en="Select the appropriate panel according to your role — Student, Volunteer, Staff, or Admin.">अपनी भूमिका के अनुसार उचित पैनल चुनें — विद्यार्थी, स्वयंसेवक, कर्मचारी अथवा प्रशासक।</p>
-      </div>
-
-      <div class="login-container">
-        <!-- ROLE TABS -->
-        <div class="login-tabs" role="tablist">
-          <button class="login-tab active" onclick="switchLoginTab('student')" role="tab" aria-selected="true" data-hi="विद्यार्थी" data-en="Student">विद्यार्थी</button>
-          <button class="login-tab" onclick="switchLoginTab('volunteer')" role="tab" aria-selected="false" data-hi="स्वयंसेवक" data-en="Volunteer">स्वयंसेवक</button>
-          <button class="login-tab" onclick="switchLoginTab('staff')" role="tab" aria-selected="false" data-hi="कर्मचारी" data-en="Staff">कर्मचारी</button>
-          <button class="login-tab" onclick="switchLoginTab('admin')" role="tab" aria-selected="false" data-hi="प्रशासक" data-en="Admin">प्रशासक</button>
-        </div>
-
-        <div class="login-body">
-          <!-- STUDENT LOGIN PANEL -->
-          <div id="panel-student" class="login-panel active" role="tabpanel">
-            <h3 style="color: var(--maroon); margin-bottom: 14px; font-size: 1.15rem;" data-hi="🎓 विद्यार्थी केंद्र लॉगिन" data-en="🎓 Student Portal Login">🎓 विद्यार्थी केंद्र लॉगिन</h3>
-            <p style="color: var(--ink-2); font-size: 0.92rem; margin-bottom: 20px;" data-hi="अपने आवेदन संख्या (Application ID) अथवा पंजीकृत चलभाष नंबर से प्रवेश करें।" data-en="Sign in using your Application ID or registered mobile number.">अपने आवेदन संख्या (Application ID) अथवा पंजीकृत चलभाष नंबर से प्रवेश करें।</p>
-            
-            <form onsubmit="handleLogin(event, 'student')">
-              <div class="field">
-                <label data-hi="आवेदन संख्या / चलभाष *" data-en="Application ID / Mobile *">आवेदन संख्या / चलभाष *</label>
-                <input type="text" id="studentLoginId" placeholder="DPF-UPL-26-XXXXX या 9839XXXXXX" required autocomplete="username">
-              </div>
-              <div class="field">
-                <label data-hi="पंजीकृत विद्युत्पत्र (Email) *" data-en="Registered Email *">पंजीकृत विद्युत्पत्र (Email) *</label>
-                <input type="email" id="studentEmail" placeholder="student@example.com" required autocomplete="email">
-              </div>
-              <button type="submit" class="btn btn-saffron btn-block" data-hi="🔐 विद्यार्थी लॉगिन करें" data-en="🔐 Student Login">🔐 विद्यार्थी लॉगिन करें</button>
-            </form>
-          </div>
-
-          <!-- VOLUNTEER LOGIN PANEL -->
-          <div id="panel-volunteer" class="login-panel" role="tabpanel">
-            <h3 style="color: var(--maroon); margin-bottom: 14px; font-size: 1.15rem;" data-hi="👩‍🏫 स्वयंसेवक शिक्षक लॉगिन" data-en="👩‍🏫 Volunteer Teacher Login">👩‍🏫 स्वयंसेवक शिक्षक लॉगिन</h3>
-            <p style="color: var(--ink-2); font-size: 0.92rem; margin-bottom: 20px;" data-hi="अपने स्वयंसेवक आईडी (Volunteer ID) के माध्यम से अभिगम प्राप्त करें।" data-en="Access using your assigned Volunteer ID.">अपने स्वयंसेवक आईडी (Volunteer ID) के माध्यम से अभिगम प्राप्त करें।</p>
-            
-            <form onsubmit="handleLogin(event, 'volunteer')">
-              <div class="field">
-                <label data-hi="स्वयंसेवक संख्या (Volunteer ID) *" data-en="Volunteer ID *">स्वयंसेवक संख्या (Volunteer ID) *</label>
-                <input type="text" id="volLoginId" placeholder="DPF-VOL-T-26-XXXXX" required>
-              </div>
-              <div class="field">
-                <label data-hi="पंजीकृत विद्युत्पत्र *" data-en="Registered Email *">पंजीकृत विद्युत्पत्र *</label>
-                <input type="email" id="volEmail" placeholder="volunteer@example.com" required>
-              </div>
-              <button type="submit" class="btn btn-green btn-block" data-hi="🔐 स्वयंसेवक लॉगिन करें" data-en="🔐 Volunteer Login">🔐 स्वयंसेवक लॉगिन करें</button>
-            </form>
-          </div>
-
-          <!-- STAFF LOGIN PANEL -->
-          <div id="panel-staff" class="login-panel" role="tabpanel">
-            <h3 style="color: var(--maroon); margin-bottom: 14px; font-size: 1.15rem;" data-hi="💼 समन्वयक / स्टाफ लॉगिन" data-en="💼 Staff / Coordinator Login">💼 समन्वयक / स्टाफ लॉगिन</h3>
-            <p style="color: var(--ink-2); font-size: 0.92rem; margin-bottom: 20px;" data-hi="दिप्र फ़ाउंडेशन केंद्र प्रबंधन और उपस्थिति हेतु अधिकृत कर्मचारियों के लिए।" data-en="For authorized staff managing center operations and attendance.">दिप्र फ़ाउंडेशन केंद्र प्रबंधन और उपस्थिति हेतु अधिकृत कर्मचारियों के लिए।</p>
-            
-            <form onsubmit="handleLogin(event, 'staff')">
-              <div class="field">
-                <label data-hi="स्टाफ कोड *" data-en="Staff Code *">स्टाफ कोड *</label>
-                <input type="text" id="staffCode" placeholder="DPF-STF-XXX" required>
-              </div>
-              <div class="field">
-                <label data-hi="कूटशब्द (Password) *" data-en="Password *">कूटशब्द (Password) *</label>
-                <input type="password" id="staffPass" placeholder="••••••••" required>
-              </div>
-              <button type="submit" class="btn btn-primary btn-block" data-hi="🔐 स्टाफ लॉगिन करें" data-en="🔐 Staff Login">🔐 स्टाफ लॉगिन करें</button>
-            </form>
-          </div>
-
-          <!-- ADMIN LOGIN PANEL -->
-          <div id="panel-admin" class="login-panel" role="tabpanel">
-            <h3 style="color: var(--maroon); margin-bottom: 14px; font-size: 1.15rem;" data-hi="🛡️ न्यासी / प्रशासक लॉगिन" data-en="🛡️ Trustee / Admin Login">🛡️ न्यासी / प्रशासक लॉगिन</h3>
-            <p style="color: var(--ink-2); font-size: 0.92rem; margin-bottom: 20px;" data-hi="ट्रस्ट संचालन, डेटा शीट तथा अनुमोदन नियंत्रण हेतु सुरक्षित क्षेत्र।" data-en="Secure zone for trust management, data sheets, and approval controls.">ट्रस्ट संचालन, डेटा शीट तथा अनुमोदन नियंत्रण हेतु सुरक्षित क्षेत्र।</p>
-            
-            <form onsubmit="handleLogin(event, 'admin')">
-              <div class="field">
-                <label data-hi="प्रशासक विद्युत्पत्र *" data-en="Admin Email *">प्रशासक विद्युत्पत्र *</label>
-                <input type="email" id="adminEmail" value="diprafoundation@gmail.com" required>
-              </div>
-              <div class="field">
-                <label data-hi="सुरक्षा कूट (Security Key) *" data-en="Security Key *">सुरक्षा कूट (Security Key) *</label>
-                <input type="password" id="adminKey" placeholder="••••••••••••" required>
-              </div>
-              <button type="submit" class="btn btn-saffron btn-block" data-hi="🛡️ सुरक्षित प्रवेश" data-en="🛡️ Secure Access">🛡️ सुरक्षित प्रवेश</button>
-            </form>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="note note-blue mt24" style="max-width: 650px; margin-inline: auto; font-size: 0.9rem;">
-        <strong data-hi="📌 सहायता सूचना:" data-en="📌 Help Notice:">📌 सहायता सूचना:</strong>
-        <span data-hi=" यदि आपको लॉगिन करने में असुविधा हो रही है, तो कृपया मुख्य पृष्ठ के 'संपर्क' माध्यम से टीम को सूचित करें अथवा शिकायत निवारण पोर्टल का उपयोग करें।" data-en=" If you face any trouble logging in, please contact the team via the main page or use the grievance portal."> यदि आपको लॉगिन करने में असुविधा हो रही है, तो कृपया मुख्य पृष्ठ के 'संपर्क' माध्यम से टीम को सूचित करें अथवा शिकायत निवारण पोर्टल का उपयोग करें।</span>
-      </div>
-
-    </div>
-  </section>
-</main>
-
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="disclaimer">
-      <strong data-hi="⚠️ अस्वीकरण:" data-en="⚠️ Disclaimer:">⚠️ अस्वीकरण:</strong>
-      <span data-hi=" The Uplift कोचिंग योजना, दिप्र फ़ाउंडेशन का स्वतंत्र शैक्षणिक प्रयास है। यह किसी सरकारी योजना, विभाग अथवा संस्था से संबंधित नहीं है। समस्त अधिकार सुरक्षित।" data-en=" The Uplift Coaching Scheme is an independent initiative of Dipra Foundation. All rights reserved."> The Uplift कोचिंग योजना, दिप्र फ़ाउंडेशन का स्वतंत्र शैक्षणिक प्रयास है। यह किसी सरकारी योजना, विभाग अथवा संस्था से संबंधित नहीं है। समस्त अधिकार सुरक्षित।</span>
-    </div>
-    <div class="foot-grid">
-      <div>
-        <div class="foot-brand">
-          <div class="brand-logo"><img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="Logo"></div>
-          <div class="brand-text"><b style="color:#fff" data-hi="दिप्र फ़ाउंडेशन" data-en="Dipra Foundation">दिप्र फ़ाउंडेशन</b><span style="color:var(--gold-2)">The Uplift</span></div>
-        </div>
-        <p style="font-size:.92rem;line-height:1.75;color:#F5D9C8" data-hi="पंजीकृत न्यास (Trust Act 1882, पंजीकरण संख्या ३००) — वंचित विद्यार्थियों तक गुणवत्तापूर्ण शिक्षा पहुँचाने हेतु समर्पित।" data-en="Registered Trust (Trust Act 1882, Reg. No. 300) — dedicated to quality education for underprivileged students.">पंजीकृत न्यास (Trust Act 1882, पंजीकरण संख्या ३००) — वंचित विद्यार्थियों तक गुणवत्तापूर्ण शिक्षा पहुँचाने हेतु समर्पित।</p>
-      </div>
-      <div>
-        <h4 data-hi="मुख्य कड़ियाँ" data-en="Quick Links">मुख्य कड़ियाँ</h4>
-        <ul>
-          <li><a href="the_Uplift.html#courses" data-hi="पाठ्यक्रम एवं शुल्क" data-en="Courses & Fees">पाठ्यक्रम एवं शुल्क</a></li>
-          <li><a href="the_Uplift.html#free" data-hi="नि:शुल्क पाठ्यक्रम एवं ई-पुस्तकें" data-en="Free Courses & Ebooks">नि:शुल्क पाठ्यक्रम एवं ई-पुस्तकें</a></li>
-          <li><a href="portal.html" data-hi="विद्यार्थी केंद्र" data-en="Portal">विद्यार्थी केंद्र</a></li>
-          <li><a href="verify.html" data-hi="प्रमाणपत्र सत्यापन" data-en="Verify Certificate">Verify Certificate</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 data-hi="सेवाएँ" data-en="Services">सेवाएँ</h4>
-        <ul>
-          <li><a href="the_Uplift.html" data-hi="विद्यार्थी आवेदन" data-en="Student Apply">विद्यार्थी आवेदन</a></li>
-          <li><a href="verify.html" data-hi="प्रमाणपत्र सत्यापन" data-en="Verify">प्रमाणपत्र सत्यापन</a></li>
-          <li><a href="contact.html" data-hi="संपर्क" data-en="Contact">संपर्क</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 data-hi="संपर्क" data-en="Contact">संपर्क</h4>
-        <ul>
-          <li>📍 <span data-hi="खेरसा, बिधनू, कानपुर नगर — २०९२१४" data-en="Khersa, Bidhnu, Kanpur Nagar — 209214">खेरसा, बिधनू, कानपुर नगर — २०९२१४</span></li>
-          <li>📞 <a href="tel:+919532328276">+91 95323 28276</a></li>
-          <li>✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></li>
-          <li>🌐 <a href="https://www.diprafoundation.com" target="_blank" rel="noopener">www.diprafoundation.com</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span data-hi="© २०२६ दिप्र फ़ाउंडेशन। सर्वाधिकार सुरक्षित।" data-en="© 2026 Dipra Foundation. All rights reserved.">© २०२६ दिप्र फ़ाउंडेशन। सर्वाधिकार सुरक्षित।</span>
-      <span data-hi="पंजीकृत न्यास · पंजीकरण संख्या ३००" data-en="Registered Trust · Reg. No. 300">पंजीकृत न्यास · पंजीकरण संख्या ३००</span>
-    </div>
-  </div>
-</footer>
-
-<!-- TOAST -->
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-<script>
-'use strict';
-const $ = (s, c=document) => c.querySelector(s);
-const $$ = (s, c=document) => [...c.querySelectorAll(s)];
-
-function _lang(){ return document.body.classList.contains('lang-en') ? 'en' : 'hi'; }
-
-function setLang(lang){
-  if(lang !== 'hi' && lang !== 'en') return;
-  document.body.classList.toggle('lang-hi', lang === 'hi');
-  document.body.classList.toggle('lang-en', lang === 'en');
-  document.documentElement.lang = lang;
-
-  $$('.lang-btn').forEach(b => {
-    const isActive = b.dataset.lang === lang;
-    b.classList.toggle('active', isActive);
-    b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-  });
-
-  try { localStorage.setItem('uplift_lang', lang); } catch(e){}
-
-  $$('[data-hi][data-en]').forEach(el => {
-    const t = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-hi');
-    if(t === null) return;
-    if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA'){
-      el.placeholder = t;
-    } else {
-      el.innerHTML = t;
-    }
-  });
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  $$('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const lang = btn.dataset.lang;
-      if(lang === 'hi' || lang === 'en') setLang(lang);
-    });
-  });
-  
-  try {
-    const s = localStorage.getItem('uplift_lang');
-    if(s === 'hi' || s === 'en') setLang(s);
-  } catch(e){}
 });
-
-function switchLoginTab(role){
-  $$('.login-tab').forEach(t => t.classList.remove('active'));
-  $$('.login-panel').forEach(p => p.classList.remove('active'));
-  
-  const activeTab = event.currentTarget;
-  if(activeTab) activeTab.classList.add('active');
-  
-  const panel = document.getElementById('panel-' + role);
-  if(panel) panel.classList.add('active');
+$('forgotBtn').addEventListener('click',()=>{
+ if(selectedRole==='Admin'){message($('loginMsg'),'Admin password reset email OTP से उपलब्ध नहीं है। Admin dashboard का password change उपयोग करें।','error');return;}
+ $('resetBox').classList.toggle('hidden');$('resetEmail').value=$('loginEmail').value;
+});
+$('sendOtpBtn').addEventListener('click',async()=>{
+ try{const r=await api('forgotPassword',{email:$('resetEmail').value.trim()});message($('resetMsg'),r.message||'यदि खाता उपलब्ध है तो OTP भेजा गया।','ok');}
+ catch(err){message($('resetMsg'),err.message,'error');}
+});
+$('resetForm').addEventListener('submit',async e=>{
+ e.preventDefault();try{const r=await api('resetPassword',{email:$('resetEmail').value.trim(),otp:$('resetOtp').value,newPassword:$('newPassword').value});message($('resetMsg'),r.message,'ok');}
+ catch(err){message($('resetMsg'),err.message,'error');}
+});
+async function showDashboard(){
+ $('authView').classList.add('hidden');$('dashboardView').classList.remove('hidden');$('logoutBtn').classList.remove('hidden');
+ $('welcome').textContent='नमस्ते, '+(currentUser.name||names[currentUser.role]);$('roleLine').textContent=names[currentUser.role]+' dashboard · '+currentUser.email;
+ $('adminPanel').classList.toggle('hidden',currentUser.role!=='Admin');$('navAdmin').classList.toggle('hidden',currentUser.role!=='Admin');
+ $('bottom-nav').classList.remove('hidden');setView('dashboard');
 }
-
-function toast(msg){
-  const t = $('#toast');
-  if(!t) return;
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 4000);
+async function loadDashboard(){
+ try{
+  if(currentUser.role==='Admin'){
+   const r=await api('adminOverview',{token:sessionToken}),d=r.data||{};
+   $('metrics').innerHTML=metric('आवेदन',d.applications)+metric('स्वयंसेवक',d.volunteers)+metric('दान रिकॉर्ड',d.donations)+metric('शिकायतें',d.grievances)+metric('प्रमाणपत्र',d.certificates)+metric('चयनित विद्यार्थी',d.selected);
+   $('activityTitle').textContent='Admin कार्य';$('activity').innerHTML='<p>Members, ID approvals और settings नीचे के Admin controls से manage करें।</p>';
+   $('nextSteps').innerHTML='<li>Pending ID card approvals जाँचें</li><li>Portal settings अपडेट करें</li><li>Disabled accounts और role access review करें</li>';return;
+  }
+  const r=await api('getPortalDashboard',{token:sessionToken}),d=r.data||{},p=r.profile||{};
+  if(currentUser.role==='Student'){
+   const v=d||{};$('metrics').innerHTML=metric('आवेदन स्थिति',v.status)+metric('Course',v.course)+metric('Attendance',v.attendance)+metric('Fees paid',v.feePaid)+metric('Fees due',v.feeDue)+metric('Batch',v.batch);
+   $('activityTitle').textContent='मेरी पढ़ाई';$('activity').innerHTML='<p>Application ID: <b>'+escapeHtml(v.id||p.linkedId)+'</b></p>'+(v.certificateUrl?'<a href="'+escapeHtml(v.certificateUrl)+'" target="_blank" rel="noopener">Certificate देखें</a>':'<p class="quiet">Certificate जारी होने पर यहाँ दिखाई देगा।</p>');
+   $('nextSteps').innerHTML='<li>अपनी संपर्क जानकारी अपडेट रखें</li><li>Attendance और fee status देखें</li><li>Admin approval के बाद ID card डाउनलोड करें</li>';
+  }else if(currentUser.role==='Volunteer'){
+   $('metrics').innerHTML=metric('Volunteer ID',d.id||p.linkedId)+metric('कक्षाएँ',d.classes)+metric('विषय',d.subjects)+metric('सेवा घंटे',d.totalHours);
+   $('activityTitle').textContent='मेरी सेवा';$('activity').innerHTML='<p>Assigned classes: '+escapeHtml(d.classes||'अभी नियुक्ति उपलब्ध नहीं')+'</p><p>Subjects: '+escapeHtml(d.subjects||'—')+'</p><form id="hoursForm" class="form-grid"><div class="field"><label>दिनांक</label><input name="date" type="date" required></div><div class="field"><label>सेवा घंटे</label><input name="hours" type="number" min=".25" max="12" step=".25" required></div><div class="field full"><label>कक्षा / विषय</label><input name="className" required></div><div class="field full"><label>नोट</label><input name="notes" maxlength="300"></div><div class="field full"><button class="btn">सेवा घंटे दर्ज करें</button></div></form><div class="msg" id="hoursMsg"></div>';
+   $('hoursForm').addEventListener('submit',async e=>{e.preventDefault();const v=Object.fromEntries(new FormData(e.currentTarget));try{const z=await api('portalLogHours',Object.assign({token:sessionToken},v));message($('hoursMsg'),z.message,'ok');loadDashboard();}catch(err){message($('hoursMsg'),err.message,'error');}});
+   $('nextSteps').innerHTML='<li>Coordinator से schedule की पुष्टि करें</li><li>अपनी profile और संपर्क विवरण अद्यतन रखें</li><li>Admin approval के बाद ID card डाउनलोड करें</li>';
+  }else if(currentUser.role==='Donor'){
+   const list=(d.donations||[]);const total=list.reduce((a,x)=>a+(Number(x.amount)||0),0);
+   $('metrics').innerHTML=metric('कुल दान', '₹'+total.toLocaleString('en-IN'))+metric('दान रिकॉर्ड',list.length)+metric('Account', 'सक्रिय');
+   $('activityTitle').textContent='आपका योगदान';$('activity').innerHTML='<p>आपके सहयोग के लिए धन्यवाद। दान की रसीद और स्थिति नीचे देखें।</p>';
+   $('donationTable').innerHTML=list.length?'<table><thead><tr><th>दिनांक</th><th>Donation ID</th><th>राशि</th><th>उद्देश्य</th><th>रसीद</th></tr></thead><tbody>'+list.map(x=>'<tr><td>'+escapeHtml(x.date)+'</td><td>'+escapeHtml(x.donationId)+'</td><td>₹'+escapeHtml(x.amount)+'</td><td>'+escapeHtml(x.purpose)+'</td><td>'+(x.receiptUrl?'<a href="'+escapeHtml(x.receiptUrl)+'" target="_blank" rel="noopener">देखें</a>':'—')+'</td></tr>').join('')+'</tbody></table>':'<p class="quiet">अभी कोई donation history उपलब्ध नहीं।</p>';
+   $('donationsPanel').classList.remove('hidden');$('nextSteps').innerHTML='<li>अपनी profile जानकारी अपडेट रखें</li><li>Donation receipt डाउनलोड/देखें</li><li>Admin approval के बाद supporter ID card डाउनलोड करें</li>';
+  }else{
+   const assigned=d.assignedStudents||[];$('metrics').innerHTML=metric('भूमिका','कर्मचारी')+metric('Staff ID',p.linkedId)+metric('Assigned विद्यार्थी',d.assignedCount||0);
+   $('activityTitle').textContent='Assigned विद्यार्थी';$('activity').innerHTML=assigned.length?'<div class="table-wrap"><table><thead><tr><th>Application</th><th>विद्यार्थी</th><th>Course</th><th>Batch</th><th>Attendance</th></tr></thead><tbody>'+assigned.map(x=>'<tr><td>'+escapeHtml(x.id)+'</td><td>'+escapeHtml(x.student)+'</td><td>'+escapeHtml(x.course)+'</td><td>'+escapeHtml(x.batch)+'</td><td>'+escapeHtml(x.attendance)+'</td></tr>').join('')+'</tbody></table></div>':'<p>आपका staff account सक्रिय है। Assignment न दिखे तो Admin से batch mapping करवाएँ।</p>';
+   $('nextSteps').innerHTML='<li>अपनी profile और संपर्क जानकारी अपडेट रखें</li><li>Assigned विद्यार्थी और attendance देखें</li><li>Admin approval के बाद ID card डाउनलोड करें</li>';
+  }
+ }catch(err){message($('roleLine'),err.message,'error');}
 }
-
-function handleLogin(e, role){
-  e.preventDefault();
-  const lang = _lang();
-  toast(lang === 'en' ? 'Verifying credentials...' : 'प्रमाणित किया जा रहा है...');
-  setTimeout(() => {
-    toast(lang === 'en' ? '✓ Login successful! Redirecting...' : '✓ लॉगिन सफल! रीडायरेक्ट किया जा रहा है...');
-  }, 1200);
+async function loadProfile(){
+ try{const r=await api('getPortalProfile',{token:sessionToken}),p=r.profile||{};$('profileName').value=p.name||'';$('profileMobile').value=p.mobile||'';$('profileAddress').value=p.address||'';$('photoPreview').src=p.photoDataUrl||'https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500';}
+ catch(e){message($('profileMsg'),e.message,'error');}
 }
+$('profileForm').addEventListener('submit',async e=>{
+ e.preventDefault();try{
+  const file=$('photoFile').files[0];let photoDataUrl='';
+  if(file){if(file.size>1024*1024)throw new Error('फोटो 1 MB से कम होनी चाहिए।');photoDataUrl=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(file);});}
+  const r=await api('updatePortalProfile',{token:sessionToken,name:$('profileName').value,mobile:$('profileMobile').value,address:$('profileAddress').value,photoDataUrl:photoDataUrl});
+  message($('profileMsg'),r.message||'Profile updated.','ok');await loadProfile();
+ }catch(err){message($('profileMsg'),err.message,'error');}
+});
+async function loadIdCard(){
+ $('downloadCard').classList.add('hidden');$('idStatus').textContent='स्थिति जाँची जा रही है…';
+ try{const r=await api('getPortalIdCard',{token:sessionToken});if(r.status==='pending'){$('idStatus').textContent=r.message||'Admin approval pending.';return;}
+  const bytes=Uint8Array.from(atob(r.fileBase64),c=>c.charCodeAt(0));if(cardBlobUrl)URL.revokeObjectURL(cardBlobUrl);
+  cardBlobUrl=URL.createObjectURL(new Blob([bytes],{type:r.mimeType||'application/pdf'}));$('downloadCard').onclick=()=>{const a=document.createElement('a');a.href=cardBlobUrl;a.download=r.fileName||'Dipra-ID.pdf';a.click();};
+  $('idStatus').textContent='आपका ID card स्वीकृत है।';$('downloadCard').classList.remove('hidden');
+ }catch(e){$('idStatus').textContent=e.message;}
+}
+async function loadSettings(){
+ const target=$('adminSubpanel');target.innerHTML='<p>Settings लोड हो रही हैं…</p>';
+ try{const r=await api('adminGetPortalSettings',{token:sessionToken}),s=r.settings||{};
+ target.innerHTML='<h3>Portal Settings</h3><form id="settingsForm" class="form-grid">'+
+ [['FoundationName','संस्था का नाम'],['PortalAddress','पता'],['SupportPhone','सहायता फोन'],['PublicWebsite','Website'],['WelcomeTextHi','स्वागत संदेश (हिन्दी)'],['WelcomeTextEn','Welcome message (English)'],['LogoUrl','Logo URL'],['SessionHours','Session hours'],['OtpExpiryMinutes','OTP expiry (minutes)']].map(x=>'<div class="field"><label>'+escapeHtml(x[1])+'</label><input name="'+x[0]+'" value="'+escapeHtml(s[x[0]])+'"></div>').join('')+
+ '<div class="field full"><button class="btn">Settings सेव करें</button></div></form><div id="settingsMsg" class="msg"></div>';
+ $('settingsForm').addEventListener('submit',async e=>{e.preventDefault();const fd=new FormData(e.currentTarget),settings={};fd.forEach((v,k)=>settings[k]=v);try{const q=await api('adminSavePortalSettings',{token:sessionToken,settings:settings});message($('settingsMsg'),q.message,'ok');}catch(err){message($('settingsMsg'),err.message,'error');}});
+ }catch(e){target.textContent=e.message;}
+}
+async function loadUsers(){
+ const target=$('adminSubpanel');target.innerHTML='<h3>Portal users</h3><p>सदस्य सूची लोड हो रही है…</p>';
+ try{const r=await api('adminGetPortalUsers',{token:sessionToken}),items=r.data||[];
+ target.innerHTML='<h3>Portal users</h3><form id="createUserForm" class="form-grid card"><h3 class="field full">Admin द्वारा account बनाएँ</h3><div class="field"><label>Email</label><input name="email" type="email" required></div><div class="field"><label>Role</label><select name="role"><option>Staff</option><option>Student</option><option>Volunteer</option><option>Donor</option></select></div><div class="field"><label>Linked ID</label><input name="linkedId"></div><div class="field"><label>Name (Staff)</label><input name="name"></div><div class="field full"><button class="btn">Invite account</button></div></form><div id="userMsg" class="msg"></div><div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>स्थिति</th><th>Access</th></tr></thead><tbody>'+items.map(x=>'<tr><td>'+escapeHtml(x.name)+'</td><td>'+escapeHtml(x.email)+'</td><td>'+escapeHtml(x.role)+'</td><td>'+escapeHtml(x.status)+'</td><td><button class="btn '+(String(x.status).toLowerCase()==='active'?'warn':'')+'" data-status="'+escapeHtml(x.email)+'" data-next="'+(String(x.status).toLowerCase()==='active'?'disabled':'active')+'">'+(String(x.status).toLowerCase()==='active'?'Disable':'Enable')+'</button></td></tr>').join('')+'</tbody></table></div>';
+ $('createUserForm').addEventListener('submit',async e=>{e.preventDefault();const d=Object.fromEntries(new FormData(e.currentTarget));try{const z=await api('adminCreatePortalUser',Object.assign({token:sessionToken},d));message($('userMsg'),z.message,'ok');loadUsers();}catch(err){message($('userMsg'),err.message,'error');}});
+ target.querySelectorAll('[data-status]').forEach(b=>b.addEventListener('click',async()=>{if(!confirm('इस account की access स्थिति बदलें?'))return;try{await api('adminSetPortalUserStatus',{token:sessionToken,email:b.dataset.status,status:b.dataset.next});loadUsers();}catch(e){alert(e.message);}}));
+ }catch(e){target.textContent=e.message;}
+}
+async function loadCards(){
+ const target=$('adminSubpanel');target.innerHTML='<h3>ID card approvals</h3><p>लोड हो रहा है…</p>';
+ try{const r=await api('adminGetIdCardRequests',{token:sessionToken}),items=r.data||[];
+ target.innerHTML='<h3>ID card approvals</h3><div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Linked ID</th><th>Status</th><th>Action</th></tr></thead><tbody>'+items.map(x=>'<tr><td>'+escapeHtml(x.name)+'</td><td>'+escapeHtml(x.email)+'</td><td>'+escapeHtml(x.role)+'</td><td>'+escapeHtml(x.linkedId)+'</td><td>'+ (x.approved?'Approved':'Pending')+'</td><td>'+(x.approved?'—':'<button class="btn" data-approve="'+escapeHtml(x.email)+'" data-role="'+escapeHtml(x.role)+'" data-id="'+escapeHtml(x.linkedId)+'">Approve & issue</button>')+'</td></tr>').join('')+'</tbody></table></div><div id="cardsMsg" class="msg"></div>';
+ target.querySelectorAll('[data-approve]').forEach(b=>b.addEventListener('click',async()=>{b.disabled=true;try{const q=await api('adminApproveIdCard',{token:sessionToken,email:b.dataset.approve,role:b.dataset.role,linkedId:b.dataset.id});message($('cardsMsg'),q.message,'ok');loadCards();}catch(e){message($('cardsMsg'),e.message,'error');b.disabled=false;}}));
+ }catch(e){target.textContent=e.message;}
+}
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
+$('logoutBtn').addEventListener('click',logout);
+function logout(){const oldToken=sessionToken;if(oldToken)api('portalLogout',{token:oldToken}).catch(()=>{});sessionStorage.removeItem('dipra_portal_token');sessionStorage.removeItem('dipra_portal_user');sessionToken='';currentUser=null;$('dashboardView').classList.add('hidden');$('authView').classList.remove('hidden');$('logoutBtn').classList.add('hidden');$('bottom-nav').classList.add('hidden');$('donationsPanel').classList.add('hidden');$('adminPanel').classList.add('hidden');}
+try{sessionToken=sessionStorage.getItem('dipra_portal_token')||'';currentUser=JSON.parse(sessionStorage.getItem('dipra_portal_user')||'null');if(sessionToken&&currentUser)showDashboard();}catch(e){}
+const thoughts=['“ज्ञान बाँटने से बढ़ता है।”','“हर सीख एक नई संभावना है।”','“छोटे कदम भी बदलाव शुरू करते हैं।”'];let thoughtIndex=0;setInterval(()=>{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){thoughtIndex=(thoughtIndex+1)%thoughts.length;$('thought').textContent=thoughts[thoughtIndex];}},9000);
+api('getPortalPublicSettings',{}).then(r=>{const s=r.settings||{};if(s.FoundationName)document.querySelector('.brand b').textContent=s.FoundationName;if(s.WelcomeTextHi)document.querySelector('.hero p').textContent=s.WelcomeTextHi;if(s.LogoUrl)document.querySelectorAll('.brand img,.hero-logo img').forEach(i=>i.src=s.LogoUrl);}).catch(()=>{});
+let sound=false;const audioCtx=window.AudioContext?new AudioContext():null;
+$('soundBtn').addEventListener('click',()=>{sound=!sound;$('soundBtn').setAttribute('aria-pressed',String(sound));$('soundBtn').textContent=sound?'🔔 ध्वनि चालू':'🔈 ध्वनि बंद';if(sound&&audioCtx){if(audioCtx.state==='suspended')audioCtx.resume();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.frequency.value=720;g.gain.value=.025;o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+.12);}});
+$('langBtn').addEventListener('click',()=>{document.documentElement.lang=document.documentElement.lang==='hi'?'en':'hi';document.querySelector('.hero h1').textContent=document.documentElement.lang==='en'?'A shared space for learning and service':'सीखने और सेवा का साझा मंच';});
 </script>
-<script src="sound.js" defer></script>
 </body>
 </html>
