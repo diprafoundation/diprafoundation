@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule ^pledge/?$ pledge/index.html [L]
+RewriteRule ^verify-pledge/?$ verify-pledge/index.html [L]
+RewriteRule ^online-course/?$ online-course/index.html [L]
