@@ -1,592 +1,229 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-<meta name="mobile-web-app-capable" content="yes">
-<title>दिप्र फ़ाउंडेशन | Dipra Foundation — शिक्षा, स्वास्थ्य, समाज सेवा</title>
-<meta name="description" content="दिप्र फ़ाउंडेशन — कानपुर नगर स्थित पंजीकृत न्यास। शिक्षा, स्वास्थ्य, कृषि, महिला सशक्तिकरण तथा सामाजिक कल्याण के क्षेत्र में कार्यरत। The Uplift कोचिंग योजना।">
-<meta name="theme-color" content="#0D7A3A">
-<meta property="og:title" content="दिप्र फ़ाउंडेशन | Dipra Foundation">
-<meta property="og:description" content="शिक्षा, स्वास्थ्य, कृषि तथा सामाजिक कल्याण के क्षेत्र में समर्पित पंजीकृत न्यास।">
-<meta property="og:image" content="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
-<link rel="canonical" href="https://www.diprafoundation.com/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
-<link rel="icon" href="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0D7A3A"><meta name="description" content="दिप्र फ़ाउंडेशन सामुदायिक जागरूकता pledge: क्षेत्र चुनें, 10 बिंदु पढ़ें और अपना सम्मानजनक संकल्प प्रमाण-पत्र बनाएँ।">
+<link rel="canonical" href="https://www.diprafoundation.com/pledge">
+<title>सामुदायिक संकल्प | Dipra Foundation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-   CSS RESET & VARIABLES
-   ============================================================ */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --saffron:#FF7A00;--saffron-2:#FFA940;--saffron-3:#E65F00;--saffron-soft:#FFF1E0;
-  --green:#0D7A3A;--green-2:#16A34A;--green-3:#075A2A;--green-soft:#E7F6EC;
-  --gold:#D4A017;--gold-2:#F0BE3E;--maroon:#8B1538;--maroon-2:#B91C48;
-  --cream:#FFFBF5;--cream-2:#FFF6E8;--ink:#2A1810;--ink-2:#5A4030;--muted:#8B7355;
-  --border:#F0DCBC;--border-2:#E6C89C;
-  --radius:10px;--radius-lg:16px;--radius-xl:24px;
-  --shadow:0 4px 16px rgba(255,122,0,.12);
-  --shadow-lg:0 12px 40px rgba(139,21,56,.18);
-}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{
-  font-family:'Inter','Noto Sans Devanagari',system-ui,sans-serif;
-  background:linear-gradient(180deg,#FFFBF5 0%,#FFF6E8 100%);
-  color:var(--ink);line-height:1.7;font-size:17px;
-  -webkit-font-smoothing:antialiased;
-}
-body.modal-open{overflow:hidden}
-img{max-width:100%;display:block}
-a{color:var(--maroon);text-decoration:none;transition:.15s}
-a:hover{color:var(--saffron-3)}
-ul{list-style:none}
-button{font-family:inherit;cursor:pointer;border:none;background:none}
-input,select,textarea{font-family:inherit}
-h1,h2,h3,h4{line-height:1.28;font-weight:800;color:var(--maroon)}
-body.lang-en .t-hi{display:none!important}
-
-/* ============ TOPBAR ============ */
-.topbar{background:linear-gradient(90deg,var(--saffron-soft),#fff,var(--green-soft));padding:10px 0;border-bottom:1px solid var(--border);font-size:.88rem}
-.topbar-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.topbar a{font-weight:600;color:var(--maroon)}
-.topbar-links{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
-
-/* ============ HEADER ============ */
-header{background:#fff;border-bottom:2px solid var(--border);box-shadow:0 2px 14px rgba(139,21,56,.06);position:sticky;top:0;z-index:100}
-.header-inner{max-width:1200px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand{display:flex;align-items:center;gap:14px;text-decoration:none!important}
-.brand-logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--saffron-soft),var(--green-soft));border:2px solid var(--saffron);display:grid;place-items:center;padding:6px;flex:none;box-shadow:0 4px 12px rgba(255,122,0,.2)}
-.brand-logo img{width:100%;height:100%;object-fit:contain;border-radius:6px}
-
-/* 🌟 Hiding the brand text completely 🌟 */
-.brand-text { display: none !important; }
-
-nav ul{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-nav a{padding:9px 14px;border-radius:9px;font-weight:600;font-size:.92rem;color:var(--ink);transition:.15s;display:block}
-nav a:hover,nav a.active{background:var(--saffron-soft);color:var(--saffron-3)}
-.nav-actions{display:flex;align-items:center;gap:10px}
-.lang-switch{display:flex;border:1px solid var(--border-2);border-radius:9px;overflow:hidden;background:#fff}
-.lang-btn{padding:8px 12px;font-size:.82rem;font-weight:700;color:var(--muted);background:#fff;transition:.15s}
-.lang-btn.active{background:linear-gradient(135deg,var(--maroon),var(--maroon-2));color:#fff}
-.burger{display:none;flex-direction:column;gap:5px;padding:10px}
-.burger span{width:24px;height:2.5px;background:var(--maroon);border-radius:2px;transition:.25s}
-.burger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
-.burger.open span:nth-child(2){opacity:0}
-.burger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
-
-/* ============ BUTTONS ============ */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:12px;font-weight:700;font-size:1rem;transition:.2s;border:1px solid transparent;text-decoration:none!important;cursor:pointer;white-space:nowrap;min-height:50px;line-height:1.2;color:#fff}
-.btn-primary{background:linear-gradient(135deg,var(--maroon),var(--maroon-2));box-shadow:0 6px 20px rgba(139,21,56,.28)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(139,21,56,.4)}
-.btn-saffron{background:linear-gradient(135deg,var(--saffron),var(--saffron-3));box-shadow:0 6px 20px rgba(255,122,0,.32)}
-.btn-saffron:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(255,122,0,.45)}
-.btn-green{background:linear-gradient(135deg,var(--green),var(--green-3));box-shadow:0 6px 20px rgba(13,122,58,.28)}
-.btn-green:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(13,122,58,.4)}
-.btn-outline{background:#fff;border:2px solid var(--border-2);color:var(--maroon)}
-.btn-outline:hover{border-color:var(--saffron);background:var(--saffron-soft);color:var(--saffron-3)}
-.btn-sm{padding:10px 18px;font-size:.9rem;min-height:44px}
-
-/* ============ CONTAINER ============ */
-.container{max-width:1200px;margin:0 auto;padding:0 20px}
-.container-narrow{max-width:900px;margin:0 auto;padding:0 20px}
-section{padding:70px 0;position:relative;overflow:hidden}
-
-/* ============ HERO ============ */
-.hero{background:linear-gradient(135deg,#FFF8F0 0%,var(--saffron-soft) 35%,#FFFBF5 60%,var(--green-soft) 100%);padding:80px 0 90px;position:relative}
-.hero::before{content:"";position:absolute;inset:0;opacity:.45;background-image:radial-gradient(circle at 12% 18%,rgba(255,122,0,.18) 0,transparent 42%),radial-gradient(circle at 88% 78%,rgba(13,122,58,.14) 0,transparent 45%);z-index:0}
-.hero-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:52px;align-items:center;position:relative;z-index:2}
-.eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--saffron-3);background:var(--saffron-soft);padding:6px 16px;border-radius:999px;border:1px solid var(--saffron);margin-bottom:16px}
-.hero h1{font-family:'Tiro Devanagari Hindi',serif;font-size:clamp(1.85rem,4.2vw,2.9rem);color:var(--maroon);font-weight:400;margin-bottom:20px;line-height:1.2}
-.hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--saffron),var(--maroon-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:800}
-.hero-sub{font-size:1.05rem;color:var(--ink-2);max-width:600px;margin-bottom:26px;line-height:1.85}
-
-/* Hero Badges (Links) */
-.hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
-.hero-badges a{background:#fff;border:1.5px solid var(--border-2);padding:8px 16px;border-radius:999px;font-size:.88rem;font-weight:600;color:var(--ink);box-shadow:0 2px 8px rgba(139,21,56,.05);transition:.2s;display:inline-flex;align-items:center}
-.hero-badges a:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
-.hero-badges a:nth-child(odd){border-color:var(--saffron-2);color:var(--saffron-3)}
-.hero-badges a:nth-child(even){border-color:var(--green-2);color:var(--green-3)}
-.hero-btns{display:flex;flex-wrap:wrap;gap:12px}
-
-/* ============ STATS CARD ============ */
-.hero-card{background:#fff;border:2px solid var(--border-2);border-radius:var(--radius-xl);padding:28px;box-shadow:var(--shadow-lg);position:relative}
-.hero-card::before{content:"";position:absolute;top:0;left:22px;right:22px;height:4px;background:linear-gradient(90deg,var(--saffron),#fff,var(--green));border-radius:0 0 4px 4px}
-.hero-card h3{color:var(--maroon);font-size:1.02rem;margin-bottom:18px;display:flex;align-items:center;gap:10px;font-family:'Tiro Devanagari Hindi',serif;font-weight:400}
-.hero-card li{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px dashed var(--border);font-size:.92rem;color:var(--ink-2)}
-.hero-card li:last-child{border-bottom:none}
-.hero-card li b{color:var(--maroon);white-space:nowrap;font-family:'Inter',monospace;font-weight:700}
-
-/* ============ SECTION HEAD ============ */
-.section-head{text-align:center;max-width:800px;margin:0 auto 40px}
-.section-head h2{font-size:clamp(1.4rem,3vw,2.1rem);color:var(--maroon);font-family:'Tiro Devanagari Hindi',serif;font-weight:400;margin-bottom:10px;line-height:1.28}
-.section-head p{color:var(--ink-2);margin-top:12px;font-size:1rem;line-height:1.75}
-
-/* ============ GRIDS & CARDS ============ */
-.grid{display:grid;gap:22px}
-.g3{grid-template-columns:repeat(3,1fr)}
-.g4{grid-template-columns:repeat(4,1fr)}
-
-.card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:26px;transition:.25s;position:relative;overflow:hidden;display:flex;flex-direction:column}
-.card::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--saffron),var(--gold-2),var(--green));transform:scaleX(0);transition:.3s;transform-origin:left}
-.card:hover{border-color:var(--saffron-2);box-shadow:var(--shadow-lg);transform:translateY(-4px)}
-.card:hover::before{transform:scaleX(1)}
-.card .ico{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;font-size:1.6rem;margin-bottom:16px;background:linear-gradient(135deg,var(--saffron-soft),#fff);color:var(--saffron-3);border:1.5px solid var(--saffron-2)}
-.card.green .ico{background:linear-gradient(135deg,var(--green-soft),#fff);color:var(--green-3);border-color:var(--green-2)}
-.card h3{margin-bottom:9px;font-size:1.06rem;color:var(--maroon);font-family:'Tiro Devanagari Hindi',serif;font-weight:400}
-.card p{color:var(--ink-2);font-size:.96rem;line-height:1.75;flex:1}
-
-/* ============ INFO CARD ============ */
-.info-card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:24px;border-top:4px solid var(--saffron);transition:.25s}
-.info-card.green{border-top-color:var(--green)}
-.info-card.gold{border-top-color:var(--gold)}
-.info-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
-.info-card h3{font-size:1.02rem;color:var(--maroon);margin-bottom:16px;display:flex;align-items:center;gap:10px;font-family:'Tiro Devanagari Hindi',serif;font-weight:400;padding-bottom:12px;border-bottom:1.5px dashed var(--border-2)}
-.info-card h3 .ic{width:34px;height:34px;border-radius:9px;background:var(--saffron-soft);display:grid;place-items:center;font-size:1rem;flex:none}
-.info-card.green h3 .ic{background:var(--green-soft)}
-.info-card.gold h3 .ic{background:#FFF8E1}
-.info-list li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;font-size:.9rem;color:var(--ink-2);border-bottom:1px dashed var(--border)}
-.info-list li:last-child{border-bottom:none}
-.info-list li strong{color:var(--maroon);font-weight:700;text-align:right}
-.info-list li.address{flex-direction:column;align-items:flex-start;gap:4px}
-.info-list li.address strong{text-align:left;line-height:1.55}
-
-/* ============ ACCORDION (Office Bearers) ============ */
-.accordion-wrapper{max-width:800px;margin:0 auto}
-.accordion-item{background:#fff;border:1.5px solid var(--border-2);border-radius:12px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.03)}
-.accordion-header{width:100%;text-align:left;padding:20px;background:#fff;display:flex;justify-content:space-between;align-items:center;font-weight:700;color:var(--maroon);font-size:1.05rem;cursor:pointer;transition:.2s;font-family:inherit}
-.accordion-header:hover{background:var(--cream-2)}
-.accordion-header.active{background:var(--saffron-soft);border-bottom:1px solid var(--border)}
-.accordion-icon{transition:transform .3s;font-size:1.2rem;color:var(--saffron)}
-.accordion-header.active .accordion-icon{transform:rotate(180deg)}
-.accordion-body{max-height:0;overflow:hidden;transition:max-height .35s ease;background:#fff}
-.accordion-content{padding:20px;display:flex;align-items:center;gap:16px;border-top:1px dashed var(--border)}
-.accordion-content .avatar{width:70px;height:70px;border-radius:50%;background:var(--green-soft);display:grid;place-items:center;font-size:2rem;border:2px solid var(--green-2);flex:none}
-.accordion-content .details h4{color:var(--maroon);font-size:1.1rem;margin-bottom:4px}
-.accordion-content .details p{color:var(--green);font-weight:700;font-size:.95rem}
-.accordion-content .details small{color:var(--muted);font-size:.85rem;display:block;margin-top:4px}
-
-/* ============ TAG CLOUD ============ */
-.tags-box{background:#fff;border:1.5px solid var(--border-2);border-radius:var(--radius-lg);padding:30px;box-shadow:var(--shadow)}
-.tags-box h3{font-size:1.15rem;color:var(--maroon);margin-bottom:10px;font-family:'Tiro Devanagari Hindi',serif;font-weight:400}
-.tags-container{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.tag{background:var(--cream-2);color:var(--ink-2);padding:7px 14px;border-radius:999px;font-size:.82rem;font-weight:600;border:1.5px solid var(--border-2);transition:.2s}
-.tag:hover{border-color:var(--saffron);color:var(--saffron-3);background:var(--saffron-soft);transform:translateY(-2px)}
-.tag.primary{background:var(--saffron-soft);color:var(--saffron-3);border-color:var(--saffron-2)}
-
-/* ============ HIGHLIGHT BOX ============ */
-.highlight{background:linear-gradient(135deg,var(--saffron-soft),#fff);border:2px solid var(--gold-2);border-radius:var(--radius-xl);padding:36px;box-shadow:0 10px 30px rgba(212,160,23,.15);text-align:center;position:relative;overflow:hidden}
-.highlight h3{font-family:'Tiro Devanagari Hindi',serif;font-size:1.4rem;color:var(--maroon);font-weight:400;margin:16px 0 10px}
-.highlight p{color:var(--ink-2);font-size:1rem;line-height:1.8;max-width:720px;margin:0 auto 22px}
-
-/* ============ FOOTER ============ */
-footer{background:linear-gradient(180deg,var(--maroon),#5A0F23);color:#F5D9C8;padding:60px 0 0;font-size:.94rem;position:relative}
-.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:34px;padding-bottom:38px;position:relative;z-index:1}
-footer h4{color:#fff;font-size:1rem;margin-bottom:16px;padding-bottom:10px;font-family:'Tiro Devanagari Hindi',serif;font-weight:400;position:relative}
-footer h4::after{content:"";position:absolute;bottom:0;left:0;width:32px;height:2px;background:var(--gold-2);border-radius:2px}
-footer li{margin-bottom:11px}
-footer a{color:#F5D9C8;text-decoration:none;cursor:pointer;font-size:.94rem}
-footer a:hover{color:var(--gold-2)}
-.foot-brand{display:flex;align-items:center;gap:14px;margin-bottom:16px}
-.foot-brand .brand-logo{background:#fff;padding:6px;border-color:var(--gold-2);width:52px;height:52px}
-.foot-bottom{border-top:1px solid rgba(255,255,255,.14);padding:20px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.86rem;position:relative;z-index:1}
-.disclaimer{background:rgba(255,255,255,.06);border-left:4px solid var(--gold-2);padding:16px 20px;border-radius:8px;font-size:.86rem;line-height:1.75;margin-bottom:30px;color:#F5D9C8;position:relative;z-index:1}
-
-/* ============ RESPONSIVE ============ */
-@media(max-width:1024px){
-  .hero-grid{grid-template-columns:1fr;gap:36px}
-  .g4{grid-template-columns:repeat(2,1fr)}
-  .foot-grid{grid-template-columns:1fr 1fr}
-  .hero-card{max-width:640px}
-}
-@media(max-width:860px){
-  body{font-size:16px}
-  .burger{display:flex}
-  nav{position:fixed;inset:0 0 0 auto;width:min(340px,88vw);background:#fff;z-index:1000;transform:translateX(100%);transition:.3s;padding:80px 20px 30px;overflow-y:auto;box-shadow:-8px 0 40px rgba(139,21,56,.2)}
-  nav.open{transform:translateX(0)}
-  nav ul{flex-direction:column;align-items:stretch;gap:4px}
-  nav a{padding:14px 16px;font-size:1.02rem}
-  .nav-actions .btn{display:none}
-  .g3,.g4{grid-template-columns:1fr}
-  section{padding:52px 0}
-  .hero{padding:60px 0 70px}
-  .hero h1{font-size:1.9rem}
-  .hero-sub{font-size:1rem}
-}
-@media(max-width:520px){
-  .foot-grid{grid-template-columns:1fr}
-  .hero h1{font-size:1.7rem}
-  .section-head h2{font-size:1.35rem}
-  .container{padding:0 16px}
-  .brand-logo{width:48px;height:48px}
-  .header-inner{padding:12px 16px;flex-direction:column;align-items:stretch;gap:10px}
-  nav ul{justify-content:center}
-  .nav-actions{justify-content:center}
-}
+*,*::before,*::after{box-sizing:border-box} :root{--green:#0d7a3a;--green-d:#075a2a;--saffron:#ff7a00;--maroon:#8b1538;--cream:#fffbf5;--ink:#2a1810;--muted:#735f50;--line:#ead8bb}
+html{scroll-behavior:smooth} body{margin:0;color:var(--ink);background:var(--cream);font:16px/1.65 Inter,'Noto Sans Devanagari',sans-serif}
+button,input,select{font:inherit}button,a,select,input{touch-action:manipulation}a{color:var(--maroon)}button{cursor:pointer}
+header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:2px solid var(--line);box-shadow:0 3px 14px #351a100c}
+.bar{max-width:1100px;margin:auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--maroon);font-weight:800}
+.brand img{width:48px;height:48px;object-fit:contain;border-radius:12px}
+.brand small{display:block;color:var(--muted);font-weight:500;font-size:.74rem}
+.nav{display:flex;align-items:center;gap:8px}.nav a,.lang button{border:1px solid var(--line);background:white;border-radius:9px;padding:9px 12px;text-decoration:none;font-weight:700;color:var(--ink);font-size:.88rem}
+.lang{display:flex;gap:4px}.lang button.active{background:var(--maroon);color:white}
+.wrap{max-width:1000px;margin:0 auto;padding:24px 18px 70px}
+.hero{padding:28px clamp(20px,5vw,48px);border-radius:24px;background:linear-gradient(130deg,#fff1e0,#fff 48%,#e7f6ec);border:1px solid var(--line);box-shadow:0 10px 32px #8b153815}
+.eyebrow{color:var(--green);font-weight:800;font-size:.85rem}.hero h1{font-size:clamp(1.75rem,4vw,2.7rem);line-height:1.2;color:var(--maroon);margin:8px 0}.hero p{color:var(--muted);margin:8px 0 0}
+.flow{display:grid;gap:18px;margin-top:22px}.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:clamp(18px,3vw,28px);box-shadow:0 5px 20px #2a18100b}
+.panel h2,.panel h3{margin:0 0 12px;color:var(--maroon);line-height:1.3}
+.sector-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:16px}
+label,.field-title{font-weight:700;display:block;margin:0 0 7px}
+select,input[type=text]{width:100%;min-height:48px;padding:10px 12px;border:1px solid #cdbb9f;border-radius:10px;background:#fff;color:var(--ink)}
+select:focus-visible,input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #d4a017;outline-offset:2px}
+.hint{display:block;color:var(--muted);font-size:.82rem;margin-top:6px}
+.secondary-list{max-height:250px;overflow:auto;border:1px solid var(--line);border-radius:12px;padding:9px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px}
+.secondary-list label{display:flex;gap:8px;align-items:flex-start;font-size:.84rem;font-weight:500;padding:7px;border-radius:8px;margin:0}
+.secondary-list label:hover{background:#f7fbf8}.secondary-list input{margin-top:4px;accent-color:var(--green);flex:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:11px 18px;border:0;border-radius:11px;background:var(--green);color:white;font-weight:800;text-decoration:none}
+.btn.secondary{background:#fff;color:var(--maroon);border:1px solid var(--line)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.guide{scroll-margin-top:90px}.points{list-style:none;counter-reset:pledge;display:grid;gap:9px;padding:0;margin:16px 0}
+.points li{counter-increment:pledge;display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start;background:#fbf8f1;border:1px solid var(--line);padding:12px;border-radius:11px}
+.points li:before{content:counter(pledge);width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:white;font-weight:800}
+.points li:last-child{background:#e7f6ec;border-color:#5eae75}
+.contacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:14px}
+.contact{border:1px solid #cfe4d2;background:#f7fbf8;padding:14px;border-radius:12px}.contact strong{display:block;color:var(--green-d)}.contact p{font-size:.86rem;margin:5px 0}.contact a{font-weight:700}
+.readbox{position:sticky;bottom:10px;background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:0 6px 20px #0002;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.checkline{display:flex;align-items:flex-start;gap:9px;font-weight:700}.checkline input{width:20px;height:20px;accent-color:var(--green);flex:none;margin-top:2px}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.wide{grid-column:1/-1}.radio-row{display:flex;gap:14px;flex-wrap:wrap}.radio-row label{display:flex;align-items:center;gap:6px;font-weight:500;margin:0}.radio-row input{accent-color:var(--green)}
+.notice{font-size:.82rem;color:var(--muted);line-height:1.55;margin:12px 0 0}.legal-note{font-size:.78rem;line-height:1.45;color:#65574b;margin-top:12px;border-left:3px solid #d4a017;padding:8px 11px;background:#fffaf0}
+ .cert{position:relative;isolation:isolate;overflow:hidden;max-width:940px;min-height:520px;margin:20px auto 0;text-align:center;border:2px solid #b98b32;outline:1px solid #e5c878;outline-offset:-9px;background:radial-gradient(ellipse at 50% 0,#fff8e5 0,transparent 52%),linear-gradient(135deg,#fffefa,#fff 52%,#f4fbf5);padding:clamp(26px,5vw,56px);box-shadow:0 18px 45px #4d2b161c}
+ .cert:before,.cert:after{position:absolute;z-index:-1;color:#d7b45c;font:clamp(5rem,12vw,9rem)/1 Georgia,serif;opacity:.18}.cert:before{content:'❧';top:16px;left:22px;transform:rotate(-30deg)}.cert:after{content:'❧';right:22px;bottom:14px;transform:rotate(150deg)}
+ .cert-heading{display:flex;align-items:center;justify-content:center;gap:22px;margin:0 auto 18px;max-width:740px}.cert-logo{width:clamp(120px,16vw,170px);height:clamp(120px,16vw,170px);object-fit:contain;flex:none;filter:drop-shadow(0 5px 8px #48220b20)}.cert-brand{text-align:left}.cert-brand strong{display:block;color:var(--maroon);font:800 clamp(1.15rem,2.5vw,1.8rem)/1.2 Georgia,serif;letter-spacing:.06em}.cert-brand span{display:block;color:var(--green-d);font-size:.88rem;font-weight:700;margin-top:5px}.cert-kicker{color:#9a7127;font-size:.78rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}.cert h2{font:700 clamp(1.8rem,4vw,2.7rem)/1.2 Georgia,'Noto Serif Devanagari',serif;margin:10px 0;color:var(--maroon)}.cert-rule{display:flex;align-items:center;gap:12px;max-width:460px;margin:15px auto;color:#b28a37}.cert-rule:before,.cert-rule:after{content:'';height:1px;flex:1;background:linear-gradient(90deg,transparent,#c7a04b)}.cert-rule:after{transform:rotate(180deg)}.cert-intro{color:var(--muted);margin:8px 0 0}.cert-name{display:block;color:var(--green-d);font:700 clamp(1.7rem,4.4vw,2.6rem) Georgia,'Noto Serif Devanagari',serif;margin:14px 0 10px}.cert-sectors{display:inline-block;max-width:90%;padding:8px 16px;border-radius:999px;background:#edf6ee;color:var(--green-d);font-weight:700}.cert-vow{max-width:700px;margin:16px auto;line-height:1.7}.cert-id{font-weight:800;color:var(--maroon);letter-spacing:.03em}.cert-date{display:block;margin-top:7px;color:var(--muted)}.cert-org-details{display:flex;justify-content:center;flex-wrap:wrap;gap:5px 18px;margin:22px auto 0;padding:13px 12px;border-top:1px solid #dfcfaa;border-bottom:1px solid #dfcfaa;color:#514337;font-size:.78rem}.cert-org-details strong{color:var(--maroon)}.cert-org-details a{color:inherit;text-decoration:none}.cert-legal{max-width:740px;margin:12px auto 0;color:#71665a;font-size:.7rem;line-height:1.4}.cert small{display:block;margin-top:8px;color:var(--muted)}
+ .cert-verify{display:inline-flex;align-items:center;gap:6px;margin:8px auto;padding:7px 12px;border:1px solid #c7a04b;border-radius:999px;background:#fffaf0;color:var(--green-d);font-size:.82rem;font-weight:800;text-decoration:none}
+ footer{background:#5a0f23;color:#f5d9c8;text-align:center;padding:20px;font-size:.86rem}footer a{color:white}
+[hidden]{display:none!important}
+ @media(max-width:700px){.bar{padding:8px 12px}.brand img{width:42px;height:42px}.brand small{font-size:.68rem}.nav{gap:5px}.nav a{display:none}.lang button{padding:8px;font-size:.78rem}.wrap{padding:15px 12px 42px}.hero{border-radius:18px}.sector-grid,.form-grid{grid-template-columns:1fr}.wide{grid-column:auto}.secondary-list{grid-template-columns:1fr;max-height:270px}.readbox{align-items:stretch;flex-direction:column}.readbox .btn{width:100%}.cert{min-height:0;padding:28px 18px 22px;outline-offset:-7px}.cert-heading{gap:12px}.cert-logo{width:108px;height:108px}.cert-brand strong{font-size:1.02rem}.cert-brand span{font-size:.76rem}.cert-org-details{display:grid;gap:4px}.cert-sectors{border-radius:14px;max-width:100%}}
+ @media print{body.print-cert *{visibility:hidden!important}body.print-cert #certificate,body.print-cert #certificate *{visibility:visible!important}body.print-cert #certificate{display:block!important;position:absolute;inset:0;width:100%;max-width:none;min-height:180mm;margin:0;padding:18mm 20mm;box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}body.print-cert .share,body.print-cert #shareStatus{display:none!important}@page{size:A4 landscape;margin:8mm}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
-
-<body class="lang-hi">
-
-<!-- Topbar -->
-<div class="topbar">
-  <div class="topbar-inner">
-    <div class="topbar-links">
-      <span>📞 <a href="tel:+919532328276">+91 95323 28276</a></span>
-      <span>✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></span>
-      <span data-hi="📍 खेरसा, बिधनू, कानपुर नगर — २०९२१४" data-en="📍 Khersa, Bidhnu, Kanpur Nagar — 209214">📍 खेरसा, बिधनू, कानपुर नगर — २०९२१४</span>
-    </div>
-    <div class="topbar-links">
-      <a href="https://www.diprafoundation.com" target="_blank" rel="noopener">www.diprafoundation.com</a>
-    </div>
-  </div>
+<body>
+<header><div class="bar"><a class="brand" href="/index.html"><img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="Dipra Foundation logo"><span>Dipra Foundation<small data-hi="सामुदायिक संकल्प" data-en="Community Pledge">सामुदायिक संकल्प</small></span></a><div class="nav"><a href="/index.html" data-hi="मुख्य पृष्ठ" data-en="Home">मुख्य पृष्ठ</a><a href="/online-course/" data-hi="ऑनलाइन कोर्स" data-en="Online courses">ऑनलाइन कोर्स</a><div class="lang"><button type="button" class="active" data-lang="hi">हिं</button><button type="button" data-lang="en">EN</button></div></div></div></header>
+<main class="wrap">
+<section class="hero"><span class="eyebrow" data-hi="हर विषय पर पढ़ें · समझें · संकल्प लें" data-en="Read · Understand · Pledge">हर विषय पर पढ़ें · समझें · संकल्प लें</span><h1 data-hi="सामुदायिक जागरूकता संकल्प" data-en="Community Awareness Pledge">सामुदायिक जागरूकता संकल्प</h1><p data-hi="अपना कार्यक्षेत्र चुनें, दस जागरूकता बिंदु पढ़ें और फिर अपना सम्मानजनक pledge प्रमाण-पत्र बनाएँ।" data-en="Choose your field, read ten awareness points, then create your respectful pledge certificate.">अपना कार्यक्षेत्र चुनें, दस जागरूकता बिंदु पढ़ें और फिर अपना सम्मानजनक pledge प्रमाण-पत्र बनाएँ।</p></section>
+<div class="flow">
+<section class="panel" aria-labelledby="sectorsTitle"><h2 id="sectorsTitle" data-hi="अपने कार्यक्षेत्र चुनें" data-en="Choose your sectors">अपने कार्यक्षेत्र चुनें</h2>
+<div class="sector-grid"><div><label for="primarySector" data-hi="प्राथमिक क्षेत्र" data-en="Primary Sector">प्राथमिक क्षेत्र</label><select id="primarySector" required></select><span class="hint" data-hi="एक प्राथमिक क्षेत्र चुनना आवश्यक है।" data-en="Choose one primary sector.">एक प्राथमिक क्षेत्र चुनना आवश्यक है।</span></div>
+<div><span class="field-title" data-hi="द्वितीयक क्षेत्र" data-en="Secondary Sectors">द्वितीयक क्षेत्र</span><div id="secondarySectors" class="secondary-list"></div><span class="hint" data-hi="लागू होने पर एक या अधिक चुनें।" data-en="Choose one or more if relevant.">लागू होने पर एक या अधिक चुनें।</span></div></div>
+<div style="margin-top:16px"><button id="openGuide" class="btn" type="button" data-hi="चयनित क्षेत्र के 10 बिंदु पढ़ें" data-en="Read 10 points for my sector">चयनित क्षेत्र के 10 बिंदु पढ़ें</button></div>
+</section>
+<section id="guide" class="panel guide" hidden tabindex="-1" aria-labelledby="guideTitle"><span class="eyebrow" data-hi="दस जागरूकता बिंदु" data-en="Ten awareness points">दस जागरूकता बिंदु</span><h2 id="guideTitle"></h2><p class="notice" data-hi="नीचे के सुझाव सामान्य जागरूकता हेतु हैं; अपने क्षेत्र की विशेषज्ञ सलाह और सरकारी निर्देश भी जाँचें।" data-en="These are general awareness tips; also check qualified advice and official guidance for your field.">नीचे के सुझाव सामान्य जागरूकता हेतु हैं; अपने क्षेत्र की विशेषज्ञ सलाह और सरकारी निर्देश भी जाँचें।</p><ol id="points" class="points"></ol><div id="lastPoint" style="height:1px"></div>
+<div class="contacts"><article class="contact"><strong data-hi="राष्ट्रीय शिकायत पोर्टल" data-en="National grievance portal">राष्ट्रीय शिकायत पोर्टल</strong><p data-hi="केंद्र सरकार के मंत्रालय/विभाग की पात्र शिकायत CPGRAMS पर दर्ज और ट्रैक करें।" data-en="Lodge and track eligible grievances about Union ministries/departments on CPGRAMS.">केंद्र सरकार के मंत्रालय/विभाग की पात्र शिकायत CPGRAMS पर दर्ज और ट्रैक करें।</p><a href="https://pgportal.gov.in/" target="_blank" rel="noopener noreferrer">CPGRAMS</a></article>
+<article class="contact"><strong data-hi="उत्तर प्रदेश शिकायत पोर्टल" data-en="Uttar Pradesh grievance portal">उत्तर प्रदेश शिकायत पोर्टल</strong><p data-hi="जनसुनवाई पर शिकायत दर्ज करें और स्थिति/प्रतिक्रिया देखें। मुख्यमंत्री हेल्पलाइन 1076।" data-en="Register a complaint and check status/response on Jansunwai. CM Helpline 1076.">जनसुनवाई पर शिकायत दर्ज करें और स्थिति/प्रतिक्रिया देखें। मुख्यमंत्री हेल्पलाइन 1076।</p><a href="https://jansunwai.up.nic.in/" target="_blank" rel="noopener noreferrer">Jansunwai</a> · <a href="tel:1076">1076</a></article>
+<article id="specificContact" class="contact" hidden></article>
+<article class="contact"><strong data-hi="तत्काल आपात सहायता" data-en="Immediate emergency">तत्काल आपात सहायता</strong><p data-hi="जान-माल के तत्काल खतरे में 112 पर कॉल करें।" data-en="For immediate danger to life or safety, call 112.">जान-माल के तत्काल खतरे में 112 पर कॉल करें।</p><a href="tel:112">112</a></article></div>
+<p class="hint" data-hi="सरकारी नंबर/सेवाएँ बदल सकती हैं; उपयोग से पहले आधिकारिक पोर्टल पर पुष्टि करें।" data-en="Government numbers and services can change; confirm details on the official portal before use.">सरकारी नंबर/सेवाएँ बदल सकती हैं; उपयोग से पहले आधिकारिक पोर्टल पर पुष्टि करें।</p>
+<div class="readbox"><label class="checkline"><input id="readConfirm" type="checkbox" disabled><span data-hi="मैंने इस चुने हुए क्षेत्र के सभी 10 बिंदु पढ़ लिए हैं।" data-en="I have read all 10 points for this selected sector.">मैंने इस चुने हुए क्षेत्र के सभी 10 बिंदु पढ़ लिए हैं।</span></label><button id="continue" class="btn" type="button" disabled data-hi="संकल्प जारी रखें" data-en="Continue to pledge">संकल्प जारी रखें</button></div>
+</section>
+<section id="pledgeFormPanel" class="panel" hidden><h2 data-hi="अपना संकल्प बनाएँ" data-en="Create your pledge">अपना संकल्प बनाएँ</h2><form id="pledgeForm"><div class="form-grid">
+<div class="wide"><label for="fullName" data-hi="पूरा नाम" data-en="Full name">पूरा नाम</label><input id="fullName" type="text" maxlength="80" autocomplete="name" required></div>
+<div><label for="gender" data-hi="लिंग (सम्मानसूचक संबोधन हेतु)" data-en="Gender (for respectful title)">लिंग (सम्मानसूचक संबोधन हेतु)</label><select id="gender" required><option value="" data-hi="चुनें" data-en="Select">चुनें</option><option value="male" data-hi="पुरुष" data-en="Man">पुरुष</option><option value="female" data-hi="महिला" data-en="Woman">महिला</option><option value="other" data-hi="अन्य / बताना नहीं चाहते" data-en="Other / prefer not to say">अन्य / बताना नहीं चाहते</option></select></div>
+<div id="maritalWrap" hidden><label for="maritalStatus" data-hi="वैवाहिक स्थिति" data-en="Marital status">वैवाहिक स्थिति</label><select id="maritalStatus"><option value="prefer" data-hi="बताना नहीं चाहते" data-en="Prefer not to say">बताना नहीं चाहते</option><option value="unmarried" data-hi="अविवाहित" data-en="Unmarried">अविवाहित</option><option value="married" data-hi="विवाहित" data-en="Married">विवाहित</option></select></div>
+<div class="wide"><label class="checkline"><input id="recordConsent" type="checkbox" required><span data-hi="मैं सहमत हूँ कि मेरा नाम, चुने हुए क्षेत्र और pledge विवरण दिप्र फ़ाउंडेशन के सुरक्षित संगठनात्मक रिकॉर्ड में जमा हों। लिंग और वैवाहिक स्थिति रिकॉर्ड में नहीं रखी जाएगी।" data-en="I agree to save my name, selected sectors and pledge details in Dipra Foundation’s secure organisational record. Gender and marital status will not be stored.">मैं सहमत हूँ कि मेरा नाम, चुने हुए क्षेत्र और pledge विवरण दिप्र फ़ाउंडेशन के सुरक्षित संगठनात्मक रिकॉर्ड में जमा हों। लिंग और वैवाहिक स्थिति रिकॉर्ड में नहीं रखी जाएगी।</span></label></div>
+<div class="wide"><label class="checkline"><input id="publicVerifyConsent" type="checkbox"><span data-hi="(वैकल्पिक) सार्वजनिक सत्यापन पृष्ठ पर मेरा नाम और चुना हुआ क्षेत्र दिखाने की अनुमति देता/देती हूँ।" data-en="(Optional) I allow my name and selected sector to appear on the public verification page.">(वैकल्पिक) सार्वजनिक सत्यापन पृष्ठ पर मेरा नाम और चुना हुआ क्षेत्र दिखाने की अनुमति देता/देती हूँ।</span></label></div>
+<div class="wide"><button id="createPledge" class="btn" type="submit" data-hi="संकल्प बनाएँ" data-en="Create pledge">संकल्प बनाएँ</button><p id="submitStatus" class="status" role="status" aria-live="polite"></p></div>
+</div><label style="position:absolute;left:-10000px" aria-hidden="true">Leave this blank<input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></label></form>
+<p class="legal-note" data-hi="यह pledge आपकी स्वैच्छिक जागरूकता-प्रतिबद्धता है, सरकारी/पेशेवर प्रमाण-पत्र या योजना-पात्रता का प्रमाण नहीं। जागरूकता सामग्री सामान्य जानकारी है।" data-en="This pledge records your voluntary awareness commitment; it is not a government/professional certificate or proof of scheme eligibility. Awareness content is general information.">यह pledge आपकी स्वैच्छिक जागरूकता-प्रतिबद्धता है, सरकारी/पेशेवर प्रमाण-पत्र या योजना-पात्रता का प्रमाण नहीं। जागरूकता सामग्री सामान्य जानकारी है।</p>
+<div id="certificate" class="cert" hidden>
+ <div class="cert-heading"><img class="cert-logo" src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w900" alt="Dipra Foundation logo"><div class="cert-brand"><strong>DIPRA FOUNDATION</strong><span data-hi="शिक्षा · सेवा · सशक्तिकरण" data-en="Education · Service · Empowerment">शिक्षा · सेवा · सशक्तिकरण</span><span class="cert-kicker" data-hi="सामुदायिक जागरूकता पहल" data-en="Community awareness initiative">सामुदायिक जागरूकता पहल</span></div></div>
+ <h2 data-hi="सामुदायिक जागरूकता संकल्प-पत्र" data-en="Community Awareness Pledge">सामुदायिक जागरूकता संकल्प-पत्र</h2><div class="cert-rule" aria-hidden="true">✦</div>
+ <p class="cert-intro" data-hi="यह सम्मान-पत्र प्रस्तुत किया जाता है" data-en="This certificate is respectfully presented to">यह सम्मान-पत्र प्रस्तुत किया जाता है</p><strong id="certName" class="cert-name"></strong><p id="certSectors" class="cert-sectors"></p>
+  <p id="certVow" class="cert-vow"></p><p id="certId" class="cert-id"></p><a id="verifyLink" class="cert-verify" target="_blank" rel="noopener noreferrer" data-hi="✓ ऑनलाइन सत्यापन खोलें" data-en="✓ Open online verification">✓ ऑनलाइन सत्यापन खोलें</a><small id="certDate" class="cert-date"></small>
+ <div class="cert-org-details"><strong data-hi="दिप्र फ़ाउंडेशन" data-en="Dipra Foundation">दिप्र फ़ाउंडेशन</strong><span>Khersa, Bidhnu, Kanpur Nagar, Uttar Pradesh – 209214</span><a href="tel:+919532328276">+91 95323 28276</a><a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a><a href="https://www.diprafoundation.com" target="_blank" rel="noopener noreferrer">www.diprafoundation.com</a></div>
+ <p class="cert-legal" data-hi="पंजीकरण: Reg. No. 300 · Trust Act 1882 · Darpan ID: UP/2024/0459444. यह स्वैच्छिक जागरूकता संकल्प है; सरकारी या पेशेवर प्रमाण-पत्र नहीं।" data-en="Registration: Reg. No. 300 · Trust Act 1882 · Darpan ID: UP/2024/0459444. This records a voluntary awareness pledge; it is not a government or professional certificate.">पंजीकरण: Reg. No. 300 · Trust Act 1882 · Darpan ID: UP/2024/0459444. यह स्वैच्छिक जागरूकता संकल्प है; सरकारी या पेशेवर प्रमाण-पत्र नहीं।</p>
+ <p id="certTags" class="hint"></p><div class="share"><button id="shareBtn" class="btn" type="button" data-hi="📤 साझा करें" data-en="📤 Share">📤 साझा करें</button><button id="copyBtn" class="btn secondary" type="button" data-hi="संदेश कॉपी करें" data-en="Copy message">संदेश कॉपी करें</button><a id="waBtn" class="btn secondary" target="_blank" rel="noopener noreferrer">WhatsApp</a><a id="xBtn" class="btn secondary" target="_blank" rel="noopener noreferrer">X</a><button id="printBtn" class="btn secondary" type="button" data-hi="प्रिंट / PDF" data-en="Print / PDF">प्रिंट / PDF</button></div><p id="shareStatus" class="status" role="status"></p>
 </div>
-
-<!-- Header -->
-<header>
-  <div class="header-inner">
-    
-    <!-- Logo only. Text has been hidden with CSS. -->
-    <a href="index.html" class="brand" aria-label="Dipra Foundation Home">
-      <div class="brand-logo">
-        <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="Dipra Foundation Logo">
-      </div>
-    </a>
-    
-    <nav id="mainNav" aria-label="Main Navigation">
-      <ul>
-        <li><a href="index.html" class="active" data-hi="गृह" data-en="Home">गृह</a></li>
-        <li><a href="the_Uplift.html" data-hi="The Uplift" data-en="The Uplift">The Uplift</a></li>
-        <li><a href="verify.html" data-hi="सत्यापन" data-en="Verify">सत्यापन</a></li>
-        <li><a href="portal.html" data-hi="पोर्टल" data-en="Portal">पोर्टल</a></li>
-        <li><a href="donate.html" data-hi="दान" data-en="Donate">दान</a></li>
-        <li><a href="contact.html" data-hi="संपर्क" data-en="Contact">संपर्क</a></li>
-      </ul>
-    </nav>
-    <div class="nav-actions">
-      <div class="lang-switch">
-        <button class="lang-btn active" data-lang="hi">हिं</button>
-        <button class="lang-btn" data-lang="en">EN</button>
-      </div>
-      <a href="donate.html" class="btn btn-saffron btn-sm" data-hi="🙏 दान करें" data-en="🙏 Donate">🙏 दान करें</a>
-      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
-    </div>
-  </div>
-</header>
-
-<!-- ============ HERO ============ -->
-<section class="hero" id="home">
-  <div class="container">
-    <div class="hero-grid">
-      <div>
-        <span class="eyebrow" data-hi="🪔 पंजीकृत न्यास · स्थापना २०२४" data-en="🪔 Registered Trust · Est. 2024">🪔 पंजीकृत न्यास · स्थापना २०२४</span>
-        <h1 data-hi="समुदायों को सशक्त बनाना, जीवन को बदलना" data-en="Empowering Communities, Transforming Lives">समुदायों को <em>सशक्त</em> बनाना, जीवन को बदलना</h1>
-        <p class="hero-sub" data-hi="दिप्र फ़ाउंडेशन शिक्षा, स्वास्थ्य, कृषि, पशुपालन तथा सामाजिक कल्याण के क्षेत्र में उत्तर प्रदेश के समस्त जनपदों में निरंतर कार्यरत एक पंजीकृत न्यास है।" data-en="Dipra Foundation is a registered trust working relentlessly across all districts of Uttar Pradesh in education, health, agriculture, animal husbandry, and social welfare.">दिप्र फ़ाउंडेशन शिक्षा, स्वास्थ्य, कृषि, पशुपालन तथा सामाजिक कल्याण के क्षेत्र में उत्तर प्रदेश के समस्त जनपदों में निरंतर कार्यरत एक पंजीकृत न्यास है।</p>
-        
-        <!-- Badges as Links -->
-        <div class="hero-badges">
-          <a href="#sectors" data-hi="🎓 शिक्षा एवं साक्षरता" data-en="🎓 Education & Literacy">🎓 शिक्षा एवं साक्षरता</a>
-          <a href="#sectors" data-hi="🏥 स्वास्थ्य एवं परिवार कल्याण" data-en="🏥 Health & Family Welfare">🏥 स्वास्थ्य एवं परिवार कल्याण</a>
-          <a href="#sectors" data-hi="🌾 कृषि एवं पशुपालन" data-en="🌾 Agriculture & Animal Husbandry">🌾 कृषि एवं पशुपालन</a>
-          <a href="#sectors" data-hi="👩 महिला सशक्तिकरण" data-en="👩 Women Empowerment">👩 महिला सशक्तिकरण</a>
-        </div>
-        
-        <div class="hero-btns">
-          <a href="the_Uplift.html" class="btn btn-saffron" data-hi="🎓 The Uplift कोचिंग योजना" data-en="🎓 The Uplift Coaching Scheme">🎓 The Uplift कोचिंग योजना</a>
-          <a href="donate.html" class="btn btn-green" data-hi="🙏 दान करें" data-en="🙏 Donate Now">🙏 दान करें</a>
-          <a href="contact.html" class="btn btn-outline" data-hi="📞 संपर्क करें" data-en="📞 Contact Us">📞 संपर्क करें</a>
-        </div>
-      </div>
-      <div class="hero-card">
-        <h3 data-hi="🪔 पंजीकरण विवरण" data-en="🪔 Registration Details">🪔 पंजीकरण विवरण</h3>
-        <ul>
-          <li><span data-hi="संस्था का नाम" data-en="Organisation">संस्था का नाम</span><b>DIPRA FOUNDATION</b></li>
-          <li><span data-hi="पंजीकरण संख्या" data-en="Registration No.">पंजीकरण संख्या</span><b>३००</b></li>
-          <li><span data-hi="अधिनियम" data-en="Act">अधिनियम</span><b>TRUST ACT 1882</b></li>
-          <li><span data-hi="दर्पण आईडी" data-en="Darpan ID">दर्पण आईडी</span><b>UP/2024/0459444</b></li>
-          <li><span data-hi="उद्यम पंजीकरण" data-en="Udyam Reg.">उद्यम पंजीकरण</span><b>UDYAM-UP-43-0209073</b></li>
-          <li><span data-hi="संचालन क्षेत्र" data-en="Operational Area">संचालन क्षेत्र</span><b data-hi="समस्त उत्तर प्रदेश" data-en="All Uttar Pradesh">समस्त उत्तर प्रदेश</b></li>
-        </ul>
-      </div>
-    </div>
-  </div>
 </section>
-
-<!-- ============ WORKING SECTORS ============ -->
-<section id="sectors" style="background:linear-gradient(180deg,#FFFBF5,#FFF6E8)">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow" data-hi="🎯 हमारे कार्य क्षेत्र" data-en="🎯 Our Working Sectors">🎯 हमारे कार्य क्षेत्र</span>
-      <h2 data-hi="बहुआयामी सामाजिक विकास" data-en="Multi-dimensional Social Development">बहुआयामी सामाजिक विकास</h2>
-      <p data-hi="दिप्र फ़ाउंडेशन जीवन के प्रत्येक महत्वपूर्ण क्षेत्र में सकारात्मक परिवर्तन हेतु समर्पित है।" data-en="Dipra Foundation is dedicated to positive change in every important area of life.">दिप्र फ़ाउंडेशन जीवन के प्रत्येक महत्वपूर्ण क्षेत्र में सकारात्मक परिवर्तन हेतु समर्पित है।</p>
-    </div>
-
-    <div class="grid g3">
-      <div class="card green">
-        <div class="ico">🎓</div>
-        <h3 data-hi="शिक्षा एवं साक्षरता" data-en="Education & Literacy">शिक्षा एवं साक्षरता</h3>
-        <p data-hi="अल्प मूल्य पर गुणवत्तापूर्ण शिक्षण, अनाथ विद्यार्थियों हेतु पूर्ण नि:शुल्क कोचिंग, नि:शुल्क ई-पुस्तकें तथा QR-सत्यापनीय प्रमाणपत्र।" data-en="Quality coaching at low cost, free coaching for orphans, free ebooks, and QR-verifiable certificates.">अल्प मूल्य पर गुणवत्तापूर्ण शिक्षण, अनाथ विद्यार्थियों हेतु पूर्ण नि:शुल्क कोचिंग, नि:शुल्क ई-पुस्तकें तथा QR-सत्यापनीय प्रमाणपत्र।</p>
-      </div>
-      <div class="card">
-        <div class="ico">🏥</div>
-        <h3 data-hi="स्वास्थ्य एवं परिवार कल्याण" data-en="Health & Family Welfare">स्वास्थ्य एवं परिवार कल्याण</h3>
-        <p data-hi="नि:शुल्क स्वास्थ्य शिविर, रक्तदान अभियान, स्वच्छता जागरूकता तथा ग्रामीण क्षेत्रों में चिकित्सा सहायता।" data-en="Free health camps, blood donation drives, hygiene awareness and medical assistance in rural areas.">नि:शुल्क स्वास्थ्य शिविर, रक्तदान अभियान, स्वच्छता जागरूकता तथा ग्रामीण क्षेत्रों में चिकित्सा सहायता।</p>
-      </div>
-      <div class="card green">
-        <div class="ico">🌾</div>
-        <h3 data-hi="कृषि एवं पशुपालन" data-en="Agriculture & Animal Husbandry">कृषि एवं पशुपालन</h3>
-        <p data-hi="किसानों को आधुनिक कृषि तकनीक, जैविक खेती, पशु स्वास्थ्य तथा सरकारी योजनाओं की जानकारी।" data-en="Modern farming techniques, organic farming, animal health and government scheme awareness for farmers.">किसानों को आधुनिक कृषि तकनीक, जैविक खेती, पशु स्वास्थ्य तथा सरकारी योजनाओं की जानकारी।</p>
-      </div>
-      <div class="card">
-        <div class="ico">👩</div>
-        <h3 data-hi="महिला सशक्तिकरण" data-en="Women Empowerment">महिला सशक्तिकरण</h3>
-        <p data-hi="स्वयं सहायता समूह, सिलाई-कढ़ाई प्रशिक्षण, महिला स्वास्थ्य जागरूकता तथा आत्मनिर्भरता कार्यक्रम।" data-en="Self-help groups, sewing-embroidery training, women's health awareness and self-reliance programs.">स्वयं सहायता समूह, सिलाई-कढ़ाई प्रशिक्षण, महिला स्वास्थ्य जागरूकता तथा आत्मनिर्भरता कार्यक्रम।</p>
-      </div>
-      <div class="card green">
-        <div class="ico">🧒</div>
-        <h3 data-hi="बाल कल्याण एवं वृद्धजन" data-en="Children & Elderly Welfare">बाल कल्याण एवं वृद्धजन</h3>
-        <p data-hi="अनाथ बालकों की शिक्षा, वृद्धजनों की देखभाल, पोषण कार्यक्रम तथा बाल अधिकार संरक्षण।" data-en="Education for orphans, elderly care, nutrition programs and child rights protection.">अनाथ बालकों की शिक्षा, वृद्धजनों की देखभाल, पोषण कार्यक्रम तथा बाल अधिकार संरक्षण।</p>
-      </div>
-      <div class="card">
-        <div class="ico">💼</div>
-        <h3 data-hi="कौशल विकास एवं रोज़गार" data-en="Skill Development & Employment">कौशल विकास एवं रोज़गार</h3>
-        <p data-hi="संगणक प्रशिक्षण, सूचना प्रौद्योगिकी, अंकीय साक्षरता तथा युवाओं हेतु रोज़गार योग्य कौशल विकास।" data-en="Computer training, IT, digital literacy and employable skill development for youth.">संगणक प्रशिक्षण, सूचना प्रौद्योगिकी, अंकीय साक्षरता तथा युवाओं हेतु रोज़गार योग्य कौशल विकास।</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ OFFICE BEARERS (ACCORDION) ============ -->
-<section style="background:#fff">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow" data-hi="👥 पदाधिकारी" data-en="👥 Office Bearers">👥 पदाधिकारी</span>
-      <h2 data-hi="हमारे समर्पित पदाधिकारी" data-en="Our Dedicated Office Bearers">हमारे समर्पित पदाधिकारी</h2>
-      <p data-hi="विवरण देखने के लिए क्लिक करें" data-en="Click to view details">विवरण देखने के लिए क्लिक करें</p>
-    </div>
-
-    <!-- 🌟 Added respectful titles like "श्री" and "श्रीमती" 🌟 -->
-    <div class="accordion-wrapper">
-      <!-- Item 1 -->
-      <div class="accordion-item">
-        <button class="accordion-header">
-          <span data-hi="👨‍💼 अध्यक्ष" data-en="👨‍💼 Chairman">👨‍💼 अध्यक्ष</span>
-          <span class="accordion-icon">▼</span>
-        </button>
-        <div class="accordion-body">
-          <div class="accordion-content">
-            <div class="avatar">👨‍💼</div>
-            <div class="details">
-              <h4 data-hi="श्री उत्कर्ष शुक्ला" data-en="Shri Utkarsh Shukla">श्री उत्कर्ष शुक्ला</h4>
-              <p data-hi="अध्यक्ष (Chairman)" data-en="Chairman">अध्यक्ष (Chairman)</p>
-              <small data-hi="दिप्र फ़ाउंडेशन के संस्थापक और मुख्य मार्गदर्शक। संस्था के सभी प्रमुख निर्णयों का नेतृत्व करते हैं।" data-en="Founder and main guide of Dipra Foundation. Leads all major decisions of the organisation.">दिप्र फ़ाउंडेशन के संस्थापक और मुख्य मार्गदर्शक। संस्था के सभी प्रमुख निर्णयों का नेतृत्व करते हैं।</small>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 2 -->
-      <div class="accordion-item">
-        <button class="accordion-header">
-          <span data-hi="👨‍💼 सचिव" data-en="👨‍💼 Secretary">👨‍💼 सचिव</span>
-          <span class="accordion-icon">▼</span>
-        </button>
-        <div class="accordion-body">
-          <div class="accordion-content">
-            <div class="avatar" style="background:var(--saffron-soft);border-color:var(--saffron-2);">👨‍💼</div>
-            <div class="details">
-              <h4 data-hi="श्री श्याम बिहारी" data-en="Shri Shyam Bihari">श्री श्याम बिहारी</h4>
-              <p style="color:var(--saffron-3)" data-hi="सचिव (Secretary)" data-en="Secretary">सचिव (Secretary)</p>
-              <small data-hi="संस्था के दैनिक प्रशासनिक कार्यों और योजनाओं की देखरेख करते हैं।" data-en="Oversees daily administrative tasks and schemes.">संस्था के दैनिक प्रशासनिक कार्यों और योजनाओं की देखरेख करते हैं।</small>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 3 -->
-      <div class="accordion-item">
-        <button class="accordion-header">
-          <span data-hi="👩‍💼 कोषाध्यक्ष" data-en="👩‍💼 Treasurer">👩‍💼 कोषाध्यक्ष</span>
-          <span class="accordion-icon">▼</span>
-        </button>
-        <div class="accordion-body">
-          <div class="accordion-content">
-            <div class="avatar">👩‍💼</div>
-            <div class="details">
-              <h4 data-hi="श्रीमती रेखा देवी" data-en="Smt. Rekha Devi">श्रीमती रेखा देवी</h4>
-              <p data-hi="कोषाध्यक्ष (Treasurer)" data-en="Treasurer">कोषाध्यक्ष (Treasurer)</p>
-              <small data-hi="संस्था की वित्तीय व्यवस्था, दान राशि का सही उपयोग और बहीखातों का प्रबंधन करती हैं।" data-en="Manages the organisation's finances, proper use of donations, and accounts.">संस्था की वित्तीय व्यवस्था, दान राशि का सही उपयोग और बहीखातों का प्रबंधन करती हैं।</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ REGISTRATION INFO ============ -->
-<section style="background:linear-gradient(180deg,#FFFBF5,#FFF6E8)">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow" data-hi="📋 पंजीकरण विवरण" data-en="📋 Registration Details">📋 पंजीकरण विवरण</span>
-      <h2 data-hi="आधिकारिक प्रमाण-पत्र एवं विवरण" data-en="Official Credentials & Details">आधिकारिक प्रमाण-पत्र एवं विवरण</h2>
-      <p data-hi="समस्त विवरण सरकारी पोर्टल (Darpan, Udyam) पर उपलब्ध आधिकारिक सूचना के अनुसार।" data-en="All details as per official information on Govt. portals.">समस्त विवरण सरकारी पोर्टल (Darpan, Udyam) पर उपलब्ध आधिकारिक सूचना के अनुसार।</p>
-    </div>
-
-    <div class="grid g3">
-      <!-- Registration Details -->
-      <div class="info-card">
-        <h3><span class="ic">📄</span> <span data-hi="पंजीकरण विवरण" data-en="Registration Details">पंजीकरण विवरण</span></h3>
-        <ul class="info-list">
-          <li><span data-hi="दर्पण आईडी:" data-en="Darpan ID:">दर्पण आईडी:</span> <strong>UP/2024/0459444</strong></li>
-          <li><span data-hi="उद्यम पंजीकरण:" data-en="Udyam Reg:">उद्यम पंजीकरण:</span> <strong>UDYAM-UP-43-0209073</strong></li>
-          <li><span data-hi="पंजीकरण संख्या:" data-en="Reg. No:">पंजीकरण संख्या:</span> <strong>300</strong></li>
-          <li><span data-hi="अधिनियम:" data-en="Act:">अधिनियम:</span> <strong>TRUST ACT 1882</strong></li>
-          <li><span data-hi="NPO प्रकार:" data-en="NPO Type:">NPO प्रकार:</span> <strong>Trust</strong></li>
-          <li><span data-hi="पंजीकरण तिथि:" data-en="Reg. Date:">पंजीकरण तिथि:</span> <strong>08-10-2024</strong></li>
-        </ul>
-      </div>
-
-      <!-- Enterprise Details (PAN and Bank Removed) -->
-      <div class="info-card green">
-        <h3><span class="ic">🏢</span> <span data-hi="उद्यम विवरण" data-en="Enterprise Details">उद्यम विवरण</span></h3>
-        <ul class="info-list">
-          <li><span data-hi="उद्यम प्रकार:" data-en="Enterprise Type:">उद्यम प्रकार:</span> <strong style="color:var(--green)">Micro</strong></li>
-          <li><span data-hi="प्रमुख गतिविधि:" data-en="Major Activity:">प्रमुख गतिविधि:</span> <strong data-hi="सेवाएं" data-en="Services">सेवाएं</strong></li>
-          <li><span data-hi="संगठन का प्रकार:" data-en="Organisation Type:">संगठन का प्रकार:</span> <strong data-hi="न्यास" data-en="Trust">न्यास</strong></li>
-          <li><span data-hi="जीएसटी (GST):" data-en="GST:">जीएसटी (GST):</span> <strong data-hi="छूट प्राप्त" data-en="Exempted">छूट प्राप्त</strong></li>
-          <li><span data-hi="व्यवसाय प्रारंभ:" data-en="Commencement:">व्यवसाय प्रारंभ:</span> <strong>08/10/2024</strong></li>
-        </ul>
-      </div>
-
-      <!-- Office Address -->
-      <div class="info-card gold">
-        <h3><span class="ic">📍</span> <span data-hi="कार्यालय पता" data-en="Office Address">कार्यालय पता</span></h3>
-        <ul class="info-list">
-          <li class="address">
-            <span data-hi="पता:" data-en="Address:">पता:</span>
-            <strong data-hi="सर्वश्री दिप्र फ़ाउंडेशन,<br>खेरसा, बिधनू,<br>कानपुर - हमीरपुर रोड,<br>कानपुर नगर, उत्तर प्रदेश — २०९२१४" data-en="M/S DIPRA FOUNDATION,<br>Khersa, Bidhnu,<br>Kanpur - Hamirpur Road,<br>Kanpur Nagar, Uttar Pradesh — 209214">सर्वश्री दिप्र फ़ाउंडेशन,<br>खेरसा, बिधनू,<br>कानपुर - हमीरपुर रोड,<br>कानपुर नगर, उत्तर प्रदेश — २०९२१४</strong>
-          </li>
-          <li><span data-hi="विद्युत्पत्र:" data-en="Email:">विद्युत्पत्र:</span> <strong style="font-size:.82rem">diprafoundation@gmail.com</strong></li>
-          <li><span data-hi="चलभाष:" data-en="Mobile:">चलभाष:</span> <strong>+91 95323 28276</strong></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FOOTER ============ -->
-<footer>
-  <div class="container">
-    <div class="disclaimer">
-      <strong data-hi="⚠️ अस्वीकरण:" data-en="⚠️ Disclaimer:">⚠️ अस्वीकरण:</strong>
-      <span data-hi=" दिप्र फ़ाउंडेशन एक पंजीकृत न्यास है (Trust Act 1882, पंजीकरण संख्या ३००, दर्पण: UP/2024/0459444, उद्यम: UDYAM-UP-43-0209073)। The Uplift कोचिंग योजना दिप्र फ़ाउंडेशन का स्वतंत्र शैक्षणिक प्रयास है।" data-en=" Dipra Foundation is a registered trust (Trust Act 1882, Reg. No. 300, Darpan: UP/2024/0459444, Udyam: UDYAM-UP-43-0209073). The Uplift Coaching Scheme is an independent educational initiative."> दिप्र फ़ाउंडेशन एक पंजीकृत न्यास है (Trust Act 1882, पंजीकरण संख्या ३००, दर्पण: UP/2024/0459444, उद्यम: UDYAM-UP-43-0209073)। The Uplift कोचिंग योजना दिप्र फ़ाउंडेशन का स्वतंत्र शैक्षणिक प्रयास है।</span>
-    </div>
-    
-    <div class="foot-grid">
-      <div>
-        <div class="foot-brand">
-          <div class="brand-logo"><img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="Logo"></div>
-        </div>
-        <p style="font-size:.92rem;line-height:1.75;color:#F5D9C8;margin-top:16px" data-hi="पंजीकृत न्यास — शिक्षा, स्वास्थ्य, कृषि तथा सामाजिक कल्याण के क्षेत्र में समर्पित।" data-en="Registered Trust — dedicated to education, health, agriculture and social welfare.">पंजीकृत न्यास — शिक्षा, स्वास्थ्य, कृषि तथा सामाजिक कल्याण के क्षेत्र में समर्पित।</p>
-      </div>
-      <div>
-        <h4 data-hi="मुख्य कड़ियाँ" data-en="Quick Links">मुख्य कड़ियाँ</h4>
-        <ul>
-          <li><a href="the_Uplift.html" data-hi="The Uplift कोचिंग" data-en="The Uplift Coaching">The Uplift कोचिंग</a></li>
-          <li><a href="verify.html" data-hi="प्रमाणपत्र सत्यापन" data-en="Verify Certificate">प्रमाणपत्र सत्यापन</a></li>
-          <li><a href="portal.html" data-hi="विद्यार्थी पोर्टल" data-en="Student Portal">विद्यार्थी पोर्टल</a></li>
-          <li><a href="donate.html" data-hi="दान करें" data-en="Donate">दान करें</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 data-hi="संपर्क" data-en="Contact">संपर्क</h4>
-        <ul>
-          <li>📍 <span data-hi="खेरसा, बिधनू, कानपुर नगर — २०९२१४" data-en="Khersa, Bidhnu, Kanpur Nagar — 209214">खेरसा, बिधनू, कानपुर नगर — २०९२१४</span></li>
-          <li>📞 <a href="tel:+919532328276">+91 95323 28276</a></li>
-          <li>✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></li>
-        </ul>
-      </div>
-    </div>
-    
-    <div class="foot-bottom">
-      <span data-hi="© २०२६ दिप्र फ़ाउंडेशन। सर्वाधिकार सुरक्षित।" data-en="© 2026 Dipra Foundation. All rights reserved.">© २०२६ दिप्र फ़ाउंडेशन। सर्वाधिकार सुरक्षित।</span>
-      <span data-hi="पंजीकृत न्यास · दर्पण: UP/2024/0459444" data-en="Registered Trust · Darpan: UP/2024/0459444">पंजीकृत न्यास · दर्पण: UP/2024/0459444</span>
-    </div>
-  </div>
-</footer>
-
+</div>
+</main><footer>© 2026 Dipra Foundation · <a href="/disclaimer.html" data-hi="अस्वीकरण" data-en="Disclaimer">अस्वीकरण</a></footer>
 <script>
-/* ============================================================
-   INDEX PAGE SCRIPTS
-   ============================================================ */
-const $ = (s, c=document) => c.querySelector(s);
-const $$ = (s, c=document) => [...c.querySelectorAll(s)];
-
-/* ---------- Language Switcher ---------- */
-function setLang(lang){
-  document.body.classList.toggle('lang-hi', lang === 'hi');
-  document.body.classList.toggle('lang-en', lang === 'en');
-  document.documentElement.lang = lang;
-  $$('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-  try { localStorage.setItem('uplift_lang', lang); } catch(e){}
-  
-  // Update all elements with data-hi and data-en attributes
-  $$('[data-hi][data-en]').forEach(el => {
-    const t = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-hi');
-    if(t !== null){
-      if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-        el.placeholder = t;
-      } else {
-        // Check if the element contains HTML tags (like <br>)
-        if (t.includes('<br>')) {
-          el.innerHTML = t;
-        } else {
-          el.textContent = t;
-        }
-      }
-    }
-  });
-}
-$$('.lang-btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
-try { const s = localStorage.getItem('uplift_lang'); if(s) setLang(s); }catch(e){}
-
-/* ---------- Mobile Nav ---------- */
-const burger = $('#burger'), mainNav = $('#mainNav');
-if (burger && mainNav) {
-  burger.addEventListener('click', () => {
-    burger.classList.toggle('open');
-    mainNav.classList.toggle('open');
-    document.body.classList.toggle('modal-open', mainNav.classList.contains('open'));
-  });
-  $$('#mainNav a').forEach(a => a.addEventListener('click', () => {
-    burger.classList.remove('open');
-    mainNav.classList.remove('open');
-    document.body.classList.remove('modal-open');
-  }));
+'use strict';
+const API='https://script.google.com/macros/s/AKfycbynC667snioVb9pnBE8jDRWUJHwKOUi5jTYO31PlfolDG5VjcTrE93zh2k-Ai7zgi0/exec';
+const primary=['Agriculture','Animal Husbandry, Dairying & Fisheries','Biotechnology','Children','Education & Literacy'];
+const secondary=['Art & Culture','Civic Issues','Dalit Upliftment','Differently Abled','Disaster Management','Drinking Water','Aged/Elderly','Environment & Forests','Food Processing','Health & Family Welfare','HIV/AIDS','Housing','Human Rights','Information & Communication Technology','Labour & Employment','Land Resources','Legal Awareness & Aid','Micro Finance (SHGs)','Micro Small & Medium Enterprises','Minority Issues','New & Renewable Energy','Nutrition','Panchayati Raj',"Prisoner's Issues",'Right to Information & Advocacy','Rural Development & Poverty Alleviation','Science & Technology','Scientific & Industrial Research','Sports','Tourism','Tribal Affairs','Urban Development & Poverty Alleviation','Vocational Training','Water Resources',"Women's Development & Empowerment",'Youth Affairs','Skill Development','Animal Welfare','Electoral Funding & Donations'];
+const hiPrimary=['कृषि','पशुपालन, डेयरी एवं मत्स्य पालन','जैव प्रौद्योगिकी','बाल कल्याण','शिक्षा एवं साक्षरता'];
+const hiSecondary=['कला एवं संस्कृति','नागरिक मुद्दे','दलित उत्थान','दिव्यांगजन','आपदा प्रबंधन','पेयजल','वृद्धजन','पर्यावरण एवं वन','खाद्य प्रसंस्करण','स्वास्थ्य एवं परिवार कल्याण','एचआईवी/एड्स','आवास','मानवाधिकार','सूचना एवं संचार प्रौद्योगिकी','श्रम एवं रोजगार','भूमि संसाधन','कानूनी जागरूकता एवं सहायता','सूक्ष्म वित्त (स्वयं सहायता समूह)','सूक्ष्म, लघु एवं मध्यम उद्यम','अल्पसंख्यक मुद्दे','नवीन एवं नवीकरणीय ऊर्जा','पोषण','पंचायती राज','कैदियों से जुड़े मुद्दे','सूचना का अधिकार एवं जन-वकालत','ग्रामीण विकास एवं गरीबी उन्मूलन','विज्ञान एवं प्रौद्योगिकी','वैज्ञानिक एवं औद्योगिक अनुसंधान','खेल','पर्यटन','जनजातीय मामले','शहरी विकास एवं गरीबी उन्मूलन','व्यावसायिक प्रशिक्षण','जल संसाधन','महिला विकास एवं सशक्तिकरण','युवा मामले','कौशल विकास','पशु कल्याण','चुनावी वित्तपोषण एवं दान'];
+const tips={
+ hi:['अपने चुने हुए क्षेत्र में समुदाय की वास्तविक जरूरत पहले समझें।','लाभार्थियों की गरिमा, सहमति और निजता का सम्मान करें।','सिर्फ प्रमाणित सरकारी या विशेषज्ञ स्रोतों से जानकारी साझा करें।','जाति, धर्म, लिंग, उम्र या दिव्यांगता के आधार पर भेदभाव न करें।','बच्चों और जोखिम में लोगों की सुरक्षा को प्राथमिकता दें।','योजना/सेवा की पात्रता और अंतिम तिथि आधिकारिक स्रोत से जाँचें।','संसाधन, दान और सामग्री का पारदर्शी एवं जिम्मेदार उपयोग करें।','समस्या पर तारीख, आवेदन संख्या और सुरक्षित प्रमाण रखें।','उचित विभाग/पोर्टल पर शिकायत करें; आपात स्थिति में 112 पर संपर्क करें।','गलत जानकारी दिखे तो उसे आगे न बढ़ाएँ; सुधार हेतु संबंधित संस्था को बताएँ।'],
+ en:['Understand the community’s real needs in the selected field first.','Respect beneficiaries’ dignity, consent and privacy.','Share information only from verified government or expert sources.','Do not discriminate by caste, religion, gender, age or disability.','Prioritise the safety of children and people at risk.','Check eligibility and deadlines through official sources.','Use funds, donations and materials responsibly and transparently.','Keep dates, application IDs and safely available evidence.','Use the relevant department or portal; call 112 in an emergency.','Do not forward misinformation; report corrections to the responsible organisation.']
+};
+const tipBanks={
+ 'Education & Literacy':{
+  hi:['बच्चे की उम्र के अनुसार नियमित स्कूल और पढ़ाई की प्रगति पर ध्यान दें।','रोज़ पढ़ने, सवाल पूछने और सीखने की आदत को प्रोत्साहित करें।','सीखने में कठिनाई हो तो शिक्षक/अभिभावक से सहयोग माँगें।','हर बच्चे के लिए समान और भेदभाव-मुक्त अवसर का समर्थन करें।','स्कूल में सुरक्षित, सम्मानजनक वातावरण और बाल संरक्षण को प्राथमिकता दें।','बच्चों के रिकॉर्ड और स्कूल दस्तावेज़ सुरक्षित रखें।','ऑनलाइन पढ़ाई में मज़बूत पासवर्ड और निजता का ध्यान रखें।','छात्रवृत्ति/योजना की पात्रता केवल आधिकारिक स्रोत से जाँचें।','हिंसा, बाल श्रम या शिक्षा से वंचित होने की आशंका उचित प्राधिकरण को बताएँ।','बच्चे की पहचान/फोटो साझा करने से पहले उसकी सुरक्षा और सहमति पर विचार करें।'],
+  en:['Support regular, age-appropriate school attendance and learning progress.','Encourage daily reading, questions and curiosity.','Ask teachers or guardians for help when learning is difficult.','Support equal, discrimination-free learning opportunities.','Prioritise a safe, respectful school environment and child protection.','Keep school records and essential documents safe.','Protect privacy and use strong passwords for online learning.','Check scholarship and scheme eligibility only through official sources.','Report suspected violence, child labour or denial of education to the proper authority.','Consider a child’s safety and consent before sharing their identity or photo.']
+ },
+ 'Children':{
+  hi:['बच्चे की बात ध्यान से सुनें और उसे भरोसेमंद वयस्क से मदद माँगने दें।','बच्चों को सुरक्षित और उम्र के अनुरूप वातावरण दें।','हिंसा, शोषण, उपेक्षा और बाल श्रम के संकेतों को गंभीरता से लें।','बच्चे को उसके अधिकार और सुरक्षित व्यवहार सरल भाषा में समझाएँ।','स्कूल और आंगनवाड़ी में उपस्थिति व पोषण पर ध्यान दें।','बच्चे की फोटो, नाम, पता और स्कूल विवरण निजी रखें।','खतरे में बच्चे के लिए 1098 या तत्काल आपात स्थिति में 112 से संपर्क करें।','परिवारों को केवल सरकारी बाल कल्याण योजनाओं की सही जानकारी दें।','शिकायत में तथ्य और तारीखें लिखें; बच्चे की निजता सुरक्षित रखें।','बच्चे की सुरक्षा या अधिकार प्रभावित हों तो बाल संरक्षण प्राधिकरण से सहायता लें।'],
+  en:['Listen carefully to children and help them approach a trusted adult.','Provide safe, age-appropriate environments.','Take signs of violence, abuse, neglect or child labour seriously.','Explain children’s rights and safe behaviour in simple language.','Support school/Anganwadi attendance and child nutrition.','Keep a child’s photo, name, address and school details private.','For a child in distress call 1098; in immediate danger call 112.','Share accurate information about government child-welfare schemes only.','Record facts and dates in a complaint while protecting the child’s privacy.','Contact child-protection authorities when a child’s safety or rights are affected.']
+ },
+ 'Health & Family Welfare':{
+  hi:['साफ पानी और सुरक्षित भोजन अपनाएँ।','खाने से पहले और शौच के बाद साबुन से हाथ धोएँ।','टीकाकरण और नियमित जाँच की जानकारी स्वास्थ्यकर्मी से लें।','दवा योग्य चिकित्सक की सलाह से लें; स्वयं इलाज न करें।','गंभीर लक्षण या आपात स्थिति में तुरंत चिकित्सा सहायता लें।','मानसिक स्वास्थ्य के लिए भरोसेमंद व्यक्ति या योग्य परामर्शदाता से बात करें।','स्वास्थ्य योजनाओं की पात्रता आधिकारिक स्रोत से जाँचें।','स्वास्थ्य संबंधी अफवाह साझा करने से पहले सरकारी/चिकित्सकीय स्रोत जाँचें।','दूसरों की स्वास्थ्य रिपोर्ट या निजी जानकारी अनुमति बिना साझा न करें।','सेवा शिकायत में तारीख/रसीद रखें और स्वास्थ्य विभाग या जनसुनवाई को दें।'],
+  en:['Use safe drinking water and handle food safely.','Wash hands with soap before meals and after using the toilet.','Ask health workers about vaccinations and routine check-ups.','Take medicines on qualified medical advice; avoid self-treatment.','Seek medical help promptly for serious symptoms or emergencies.','For mental health, speak with someone trusted or a qualified counsellor.','Check health-scheme eligibility through official sources.','Verify health claims with official or medical sources before sharing.','Do not share anyone’s health reports or personal information without permission.','Keep dates and receipts for service complaints and report to the health authority or Jansunwai.']
+ },
+ 'Agriculture':{
+  hi:['बुवाई से पहले मिट्टी और स्थानीय मौसम की जानकारी लें।','क्षेत्र और मौसम के अनुकूल बीज चुनें।','पानी का सोच-समझकर उपयोग करें और मिट्टी की सेहत बनाएँ।','खाद/कीटनाशक के लेबल और सुरक्षा निर्देश मानें।','कीट या रोग की पहचान विशेषज्ञ से कराएँ, फिर उपचार चुनें।','फसल विविधता और स्थानीय कृषि सलाह पर विचार करें।','फसल बीमा व सरकारी योजनाओं की शर्तें आधिकारिक पोर्टल पर जाँचें।','बिल, आवेदन संख्या और भुगतान रसीद सुरक्षित रखें।','पशुओं को साफ पानी, संतुलित चारा और छाया दें।','बीमारी/टीकाकरण के लिए पशु चिकित्सक से सलाह लें; विवाद में विभाग/जनसुनवाई को शिकायत दें।'],
+  en:['Check soil and local weather before sowing.','Choose seed suited to the region and season.','Use water carefully and protect soil health.','Follow fertilizer and pesticide labels and safety instructions.','Ask an expert to identify pests or disease before treatment.','Consider crop diversity and local agricultural advice.','Check crop-insurance and scheme terms on official portals.','Keep bills, application IDs and payment receipts.','Provide animals with clean water, balanced feed and shade.','Consult a veterinarian about illness/vaccination; report service issues to the department or Jansunwai.']
+ },
+ 'Animal Husbandry, Dairying & Fisheries':{
+  hi:['पशुओं को रोज़ साफ पानी और संतुलित आहार उपलब्ध कराएँ।','पशु आवास साफ, हवादार और मौसम से सुरक्षित रखें।','टीकाकरण और कृमिनाशक कार्यक्रम पशु चिकित्सक से पूछें।','बीमारी के लक्षण पर योग्य पशु चिकित्सक से समय पर सलाह लें।','दूध और पशु उत्पाद साफ-सुथरे तरीके से संभालें।','मछली पालन में पानी की गुणवत्ता और स्थानीय नियमों की जाँच करें।','पशुओं को अनावश्यक पीड़ा या असुरक्षित परिवहन से बचाएँ।','चारा, दवा और बीज/मछली बीज प्रमाणित स्रोत से खरीदें।','पशुपालन योजनाओं की पात्रता और अनुदान आधिकारिक पोर्टल से जाँचें।','रसीदें और पशु स्वास्थ्य रिकॉर्ड रखें; सेवा समस्या संबंधित विभाग/जनसुनवाई को दें।'],
+  en:['Provide animals with clean water and balanced feed each day.','Keep animal housing clean, ventilated and protected from weather.','Ask a veterinarian about vaccination and deworming schedules.','Seek qualified veterinary advice promptly when illness appears.','Handle milk and animal products hygienically.','Check water quality and local rules for fish farming.','Avoid unnecessary suffering and unsafe transport of animals.','Buy feed, medicines and seed/fingerlings from reliable sources.','Check livestock scheme eligibility and subsidies on official portals.','Keep receipts and health records; report service issues to the department or Jansunwai.']
+ },
+ "Women's Development & Empowerment":{
+  hi:['महिलाओं की गरिमा, सहमति और निजता का सम्मान करें।','शिक्षा, कौशल और रोजगार तक समान अवसर बढ़ाएँ।','घर और समुदाय में निर्णय व नेतृत्व में भागीदारी का समर्थन करें।','वित्तीय साक्षरता और सुरक्षित डिजिटल लेन-देन की जानकारी दें।','उत्पीड़न या हिंसा को सामान्य न मानें; सुरक्षित सहायता खोजें।','सुरक्षित फोन/स्थान से सहायता लें और जोखिम में पहले सुरक्षित जगह जाएँ।','कार्यस्थल शिकायत के लिए Internal Committee या जिला Local Committee से जानकारी लें।','पीड़ित की पहचान, फोटो, संदेश या लोकेशन अनुमति बिना साझा न करें।','योजना के लिए पात्रता सरकारी पोर्टल से जाँचें; OTP/पासवर्ड किसी को न दें।','तत्काल खतरे में 112, महिला सुरक्षा सहायता के लिए 1090 या NCW से संपर्क करें।'],
+  en:['Respect women’s dignity, consent and privacy.','Promote equal access to education, skills and employment.','Support women’s participation in decisions and leadership.','Share financial-literacy and safe digital-payment information.','Do not normalize harassment or violence; seek safe support.','Use a safe phone/place and move to safety first if risk is immediate.','For workplace complaints, ask about the Internal Committee or district Local Committee.','Never share a survivor’s identity, photo, messages or location without consent.','Check scheme eligibility on official portals; never share OTPs or passwords.','For immediate danger call 112; for women’s safety support contact 1090 or NCW.']
+ }
+};
+function tipsForSelectedSector(){
+ const chosen=[$('primarySector').value,...selectedSectors()];
+ const key=chosen.find(x=>tipBanks[x]);
+ return key?tipBanks[key][lang]:tips[lang];
 }
 
-/* ---------- Office Bearers Accordion ---------- */
-const accordionHeaders = $$('.accordion-header');
-accordionHeaders.forEach(header => {
-  header.addEventListener('click', function() {
-    const isActive = this.classList.contains('active');
-    
-    // Close all open items
-    accordionHeaders.forEach(h => {
-      h.classList.remove('active');
-      h.nextElementSibling.style.maxHeight = null;
-    });
-
-    // Open the clicked item if it was closed
-    if (!isActive) {
-      this.classList.add('active');
-      const body = this.nextElementSibling;
-      body.style.maxHeight = body.scrollHeight + "px";
-    }
-  });
+const contactCore={
+ 'Children':['NCPCR child-rights complaint portal','https://ncpcr.gov.in/index_ebaalnidan.php/main/complaint','1098 Child Helpline; immediate danger 112.'],
+ 'Education & Literacy':['NCPCR child-rights complaint portal','https://ncpcr.gov.in/index_ebaalnidan.php/main/complaint','1098 Child Helpline; immediate danger 112.'],
+ 'Health & Family Welfare':['UP Health Department information helpline','https://dgmh.up.gov.in/hi','UP 1800-180-5145; mental-health counselling 14416.'],
+ 'Agriculture':['Kisan Call Centre advice','https://mkisan.gov.in/','1800-180-1551 for farmer information/advice.'],
+ 'Animal Husbandry, Dairying & Fisheries':['UP Agriculture support portal','https://agridarshan.up.gov.in/agri-animal-husbandary-data','UP agriculture help centre: 78398 83134 / 78398 83130.'],
+ "Women's Development & Empowerment":['NCW women’s complaints','https://ncwapps.nic.in/','National violence support 14490; UP WPL 1090; immediate danger 112.']
+};
+const $=id=>document.getElementById(id);let lang='hi', completed=false, lastCertText='';
+function translate(){
+ document.documentElement.lang=lang;
+ document.querySelectorAll('[data-hi][data-en]').forEach(el=>{const value=el.getAttribute('data-'+lang);if(value!==null){if(el.tagName==='INPUT')el.placeholder=value;else el.innerHTML=value;}});
+ document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+ fillOptions();
+ if(!$('guide').hidden&&$('guideTitle'))$('guideTitle').textContent=lang==='hi'?hiPrimary[primary.indexOf($('primarySector').value)]||$('primarySector').value:$('primarySector').value;
+}
+function fillOptions(){
+ const p=$('primarySector'),old=p.value||'';
+ p.innerHTML='<option value="">'+(lang==='hi'?'प्राथमिक क्षेत्र चुनें':'Select a primary sector')+'</option>'+primary.map((v,i)=>'<option value="'+v+'">'+(lang==='hi'?hiPrimary[i]:v)+'</option>').join('');
+ p.value=primary.includes(old)?old:'';
+ const selected=new Set([...document.querySelectorAll('.secondary-check:checked')].map(x=>x.value));
+ $('secondarySectors').innerHTML=secondary.map((v,i)=>'<label><input class="secondary-check" type="checkbox" value="'+v+'" '+(selected.has(v)?'checked':'')+'><span>'+(lang==='hi'?hiSecondary[i]:v)+'</span></label>').join('');
+}
+function selectedSectors(){return [...document.querySelectorAll('.secondary-check:checked')].map(x=>x.value);}
+function selectedLabel(value){let i=primary.indexOf(value);if(i>=0)return lang==='hi'?hiPrimary[i]:value;i=secondary.indexOf(value);return i>=0&&lang==='hi'?hiSecondary[i]:value;}
+function showContacts(){
+ const sec=$('specificContact'),primaryValue=$('primarySector').value,sel=selectedSectors();
+ let c=contactCore[primaryValue]||null;
+ if(!c)c=sel.map(x=>contactCore[x]).find(Boolean)||null;
+ if(c){sec.hidden=false;sec.innerHTML='<strong>'+(lang==='hi'?'विषय-विशेष राष्ट्रीय/राज्य सहायता':'Topic-specific national/state support')+'</strong><p>'+c[0]+' · '+c[2]+'</p><a target="_blank" rel="noopener noreferrer" href="'+c[1]+'">'+(lang==='hi'?'आधिकारिक संपर्क स्रोत खोलें':'Open official contact source')+'</a>';}
+ else sec.hidden=true;
+}
+$('primarySector').addEventListener('change',showContacts);
+$('secondarySectors').addEventListener('change',showContacts);
+document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>{lang=b.dataset.lang;translate();showContacts();if(!$('guide').hidden)$('openGuide').click();}));
+fillOptions();
+$('openGuide').addEventListener('click',()=>{
+ const chosen=$('primarySector').value;if(!chosen){$('primarySector').focus();return;}
+ completed=false;$('readConfirm').checked=false;$('readConfirm').disabled=true;$('continue').disabled=true;$('pledgeFormPanel').hidden=true;$('certificate').hidden=true;
+ const title=selectedLabel(chosen)+(selectedSectors().length?' + '+selectedSectors().map(selectedLabel).join(', '):'');
+ $('guideTitle').textContent=title;$('points').innerHTML=tipsForSelectedSector().map((v,i)=>'<li '+(i===9?'id="lastPledgePoint"':'')+'>'+v+'</li>').join('');
+ showContacts();$('guide').hidden=false;$('guide').focus();$('guide').scrollIntoView({behavior:'smooth',block:'start'});
+ if('IntersectionObserver'in window){const watcher=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){ $('readConfirm').disabled=false;watcher.disconnect();}},{threshold:.6});watcher.observe($('lastPledgePoint'));}else $('readConfirm').disabled=false;
 });
-</script>
-</body>
-</html>
+$('readConfirm').addEventListener('change',()=>{$('continue').disabled=!$('readConfirm').checked;});
+$('continue').addEventListener('click',()=>{if(!$('readConfirm').checked||$('readConfirm').disabled)return;completed=true;$('pledgeFormPanel').hidden=false;$('pledgeFormPanel').scrollIntoView({behavior:'smooth',block:'start'});});
+$('gender').addEventListener('change',()=>{const female=$('gender').value==='female';$('maritalWrap').hidden=!female;$('maritalStatus').required=female;});
+function honorific(){
+ const g=$('gender').value,m=$('maritalStatus').value;
+ if(g==='male')return lang==='hi'?'श्री':'Mr.';
+ if(g==='female'&&m==='married')return lang==='hi'?'श्रीमती':'Mrs.';
+ if(g==='female')return lang==='hi'?'सुश्री':'Ms.';
+ return lang==='hi'?'सम्मानित सदस्य':'Valued Pledge Partner';
+}
+function hashFor(){
+ const all=[$('primarySector').value,...selectedSectors()].join(' ').toLowerCase();
+ let tags=['#CommunityPledge','#DipraFoundation'];
+ if(all.includes('educat')||all.includes('children'))tags.push('#EducationForAll','#Literacy');
+ if(all.includes('health'))tags.push('#HealthForAll','#HealthAwareness');
+ if(all.includes('agri')||all.includes('animal')||all.includes('fisher'))tags.push('#SustainableAgriculture','#AnimalWelfare');
+ if(all.includes('women'))tags.push('#WomenEmpowerment','#GenderEquality');
+ if(tags.length===2)tags.push('#CommunityAwareness','#SocialDevelopment');
+ return [...new Set(tags)].join(' ');
+}
+function shareText(){return (lang==='hi'?'मैंने ':'I have taken a community awareness pledge for ')+(lang==='hi'?selectedLabel($('primarySector').value):$('primarySector').value)+'. '+(lang==='hi'?'जानकारी पढ़ें और जुड़ें: ':'Read and join: ')+(document.querySelector('link[rel=canonical]').href)+' '+hashFor();}
+$('pledgeForm').addEventListener('submit',async e=>{
+ e.preventDefault();if(!completed||!$('readConfirm').checked||$('website').value)return;
+ const submit=$('createPledge');submit.disabled=true;$('submitStatus').textContent=lang==='hi'?'आपका संकल्प बनाया जा रहा है…':'Creating your pledge…';
+ const displayName=honorific()+' '+$('fullName').value.trim();
+ const secondary=selectedSectors();
+  const payload={action:'submitPledge',name:displayName,primarySector:$('primarySector').value,secondarySectors:secondary,language:lang,readConfirmed:true,consent:$('recordConsent').checked,publicVerifyConsent:$('publicVerifyConsent').checked,pledgeText:tipsForSelectedSector().join(' '),website:$('website').value};
+ try{
+  const response=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(payload)});
+   const result=await response.json();if(result.status!=='success'){const saveError=new Error(result.message||'Could not save pledge');saveError.backendResponse=true;saveError.requestId=result.requestId||'';throw saveError;}
+  const id=result.pledgeId||'DF-PLEDGE';
+  $('certName').textContent=displayName;$('certSectors').textContent=(lang==='hi'?'प्राथमिक क्षेत्र: ':'Primary sector: ')+selectedLabel(payload.primarySector)+(secondary.length?' · '+(lang==='hi'?'द्वितीयक: ':'Secondary: ')+secondary.map(selectedLabel).join(', '):'');
+  $('certVow').textContent=lang==='hi'?'मैंने इस क्षेत्र में सुरक्षित, सम्मानजनक और जिम्मेदार जागरूकता को बढ़ावा देने का संकल्प लिया है।':'I pledge to promote safe, respectful and responsible awareness in this field.';
+  $('certId').textContent=(lang==='hi'?'संकल्प क्रमांक: ':'Pledge ID: ')+id;
+  const verifyUrl=location.origin+'/verify-pledge?id='+encodeURIComponent(id);$('verifyLink').href=verifyUrl;
+  $('certDate').textContent=new Intl.DateTimeFormat(lang==='hi'?'hi-IN':'en-IN',{dateStyle:'long'}).format(new Date());
+  $('certTags').textContent=hashFor();lastCertText=shareText()+' '+id+' '+verifyUrl;
+  $('waBtn').href='https://wa.me/?text='+encodeURIComponent(lastCertText);$('xBtn').href='https://x.com/intent/post?text='+encodeURIComponent(lastCertText);
+  $('certificate').hidden=false;$('certificate').scrollIntoView({behavior:'smooth',block:'center'});
+  $('submitStatus').textContent=lang==='hi'?'आपका संकल्प प्रमाण-पत्र तैयार है।':'Your pledge certificate is ready.';
+  }catch(err){console.error('Pledge submission failed:',err);const message=String(err&&err.message||''),unknownAction=/unknown action.*submitPledge/i.test(message);let statusText;if(unknownAction){statusText=lang==='hi'?'संकल्प सेवा अभी सक्रिय नहीं हुई है। Apps Script की नवीनतम deployment जाँचें।':'Pledge service is not active yet. Check the latest Apps Script deployment.';}else if(err&&err.backendResponse){statusText=(lang==='hi'?'रिकॉर्ड सेव नहीं हुआ: ':'Record was not saved: ')+message+(err.requestId?' ('+(lang==='hi'?'सहायता संदर्भ ':'reference ')+err.requestId+')':'');}else if(err instanceof SyntaxError){statusText=lang==='hi'?'सेवा से सही जवाब नहीं मिला। Apps Script deployment और Executions जाँचें।':'The service returned an unreadable response. Check the Apps Script deployment and Executions.';}else if(err instanceof TypeError){statusText=lang==='hi'?'सेवा से कनेक्शन नहीं हो पाया। Apps Script URL, access और browser Console जाँचें।':'Could not connect to the service. Check the Apps Script URL, access, and browser console.';}else{statusText=lang==='hi'?'संकल्प नहीं बन पाया। Browser Console और Apps Script Executions में error देखें।':'Your pledge could not be completed. Check the browser console and Apps Script Executions.';}$('submitStatus').textContent=statusText;submit.disabled=false;}
+});
+$('shareBtn').addEventListener('click',async()=>{if(!lastCertText)return;try{if(navigator.share){await navigator.share({title:'Dipra Foundation pledge',text:lastCertText});return;}}catch(e){if(e.name==='AbortError')return;}try{await navigator.clipboard.writeText(lastCertText);$('shareStatus').textContent=lang==='hi'?'साझा करने का संदेश कॉपी हुआ।':'Share message copied.';}catch(e){$('shareStatus').textContent=lang==='hi'?'नीचे WhatsApp या X चुनें।':'Use WhatsApp or X below.';}});
+$('copyBtn').addEventListener('click',async()=>{if(!lastCertText)return;try{await navigator.clipboard.writeText(lastCertText);$('shareStatus').textContent=lang==='hi'?'संदेश कॉपी हुआ।':'Message copied.';}catch(e){$('shareStatus').textContent=lang==='hi'?'कॉपी नहीं हुआ; WhatsApp या X चुनें।':'Copy failed; use WhatsApp or X.';}});
+$('printBtn').addEventListener('click',()=>{document.body.classList.add('print-cert');window.print();});window.addEventListener('afterprint',()=>document.body.classList.remove('print-cert'));
+</script></body></html>
