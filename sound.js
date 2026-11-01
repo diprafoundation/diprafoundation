@@ -1,7 +1,7 @@
 /* ============================================================
    दिप्र फ़ाउंडेशन — Sound Effects System
    Dipra Foundation — Common Sound Effects
-   Version: 1.2 (no floating toggle button)
+   Version: 1.1 (with subtle slider sound)
    ============================================================
    उपयोग:
    <script src="sound.js" defer></script>
@@ -10,6 +10,7 @@
    Features:
    - Web Audio API (कोई external file नहीं)
    - Auto-attach to buttons, links, cards, tabs, modals, toasts
+   - Floating sound toggle button (bottom-left)
    - Keyboard shortcut: Ctrl+M (mute/unmute)
    - localStorage में preference save
    - Accessibility: prefers-reduced-motion respect करता है
@@ -148,10 +149,12 @@
       SOUND_CONFIG.enabled = true;
       localStorage.setItem('dipra_sound_enabled', 'true');
       this.play('success');
+      updateIndicator();
     },
     disable() {
       SOUND_CONFIG.enabled = false;
       localStorage.setItem('dipra_sound_enabled', 'false');
+      updateIndicator();
     },
     toggle() {
       if (SOUND_CONFIG.enabled) this.disable();
@@ -327,9 +330,78 @@
     }, 400);
   });
 
+  /* ============================================================
+     13. FLOATING SOUND TOGGLE BUTTON
+     ============================================================ */
+  function injectSoundToggle() {
+    if (document.getElementById('soundToggleBtn')) return;
+
+    const btn = document.createElement('button');
+    btn.id = 'soundToggleBtn';
+    btn.setAttribute('aria-label', 'Sound toggle');
+    btn.title = '🔊 Sound on / off';
+    btn.innerHTML = '<span id="soundIcon">🔊</span>';
+    btn.style.cssText = `
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8B1538, #B91C48);
+      color: #fff;
+      border: 2px solid #F0BE3E;
+      box-shadow: 0 6px 18px rgba(139, 21, 56, 0.35);
+      cursor: pointer;
+      z-index: 1400;
+      font-size: 1.3rem;
+      display: grid;
+      place-items: center;
+      transition: all 0.2s ease;
+      padding: 0;
+      line-height: 1;
+      font-family: inherit;
+    `;
+
+    btn.addEventListener('mouseenter', () => {
+      btn.style.transform = 'scale(1.1)';
+      btn.style.boxShadow = '0 10px 26px rgba(139, 21, 56, 0.5)';
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = 'scale(1)';
+      btn.style.boxShadow = '0 6px 18px rgba(139, 21, 56, 0.35)';
+    });
+
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      SoundFX.toggle();
+      btn.style.transform = 'scale(0.9)';
+      setTimeout(() => { btn.style.transform = 'scale(1)'; }, 150);
+    });
+
+    document.body.appendChild(btn);
+    updateIndicator();
+  }
+
+  function updateIndicator() {
+    const icon = document.getElementById('soundIcon');
+    const btn = document.getElementById('soundToggleBtn');
+    if (!icon || !btn) return;
+    if (SOUND_CONFIG.enabled) {
+      icon.textContent = '🔊';
+      btn.style.opacity = '1';
+      btn.title = '🔊 Sound ON — Click to mute (Ctrl+M)';
+    } else {
+      icon.textContent = '🔇';
+      btn.style.opacity = '0.65';
+      btn.title = '🔇 Sound OFF — Click to unmute (Ctrl+M)';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', injectSoundToggle);
 
   /* ============================================================
-     13. KEYBOARD SHORTCUT: Ctrl + M
+     14. KEYBOARD SHORTCUT: Ctrl + M
      ============================================================ */
   document.addEventListener('keydown', function(e) {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'm') {
