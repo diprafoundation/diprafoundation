@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<title>प्रमाणपत्र सत्यापन | दिप्र फ़ाउंडेशन — The Uplift</title>
+<meta name="description" content="दिप्र फ़ाउंडेशन के प्रमाणपत्र तत्क्षण सत्यापित करें — QR स्कैन अथवा प्रमाणपत्र क्रमांक से।">
+<meta name="theme-color" content="#0D7A3A">
+<meta property="og:title" content="प्रमाणपत्र सत्यापन — दिप्र फ़ाउंडेशन">
+<meta property="og:description" content="QR स्कैन अथवा प्रमाणपत्र क्रमांक से प्रामाणिकता सत्यापित करें।">
+<meta property="og:image" content="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
+<link rel="canonical" href="https://www.diprafoundation.com/verify/verify.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Great+Vibes&family=Montserrat:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+<link rel="icon" href="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
+<link rel="stylesheet" href="/style.css">
+<style>
+/* ============================================================
+   PAGE-SPECIFIC: verify.html (Updated Premium Design)
+   ============================================================ */
+
+.page-head {
+  text-align: center;
+  margin-bottom: 32px;
+  padding: 40px 0 20px;
+}
+
+.card {
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: 0 10px 40px rgba(139,21,56,.08);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.field label {
+  display: block;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.field input {
+  width: 100%;
+  padding: 16px 18px;
+  border: 2px solid var(--border-2);
+  border-radius: 12px;
+  background: #fff;
+  font-size: 1.05rem;
+  transition: all .15s;
+  color: var(--ink);
+  min-height: 56px;
+  font-family: monospace;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--saffron);
+  box-shadow: 0 0 0 4px rgba(255,122,0,.15);
+}
+
+.verify-result {
+  margin-top: 24px;
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 1rem;
+  display: none;
+}
+
+.verify-result.show {
+  display: block;
+  animation: fadeIn .3s;
+}
+
+.verify-result.ok {
+  background: var(--green-soft);
+  border: 2px solid var(--green-2);
+  color: var(--green-3);
+}
+
+.verify-result.fail {
+  background: #FEF5F5;
+  border: 2px solid #F0B0B0;
+  color: #8B1E1E;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Certificate wrap */
+.cert-wrap {
+  margin-top: 32px;
+  display: none;
+}
+
+.cert-wrap.show {
+  display: block;
+  animation: fadeIn .4s;
+}
+
+.verified-banner {
+  background: linear-gradient(135deg, var(--green-soft), #fff);
+  border: 2px solid var(--green-2);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.verified-banner .vb-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  flex: none;
+  box-shadow: 0 6px 20px rgba(13,122,58,.3);
+}
+
+.verified-banner .vb-text h4 {
+  color: var(--green-3);
+  font-size: 1.05rem;
+  margin-bottom: 2px;
+}
+
+.verified-banner .vb-text p {
+  color: var(--ink-2);
+  font-size: .9rem;
+}
+
+/* ---------- NEW PREMIUM CERTIFICATE DESIGN ---------- */
+.cert-frame {
+  background: #fff;
+  border: 10px solid #0D7A3A;
+  padding: 6px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  margin: 15px auto;
+  max-width: 900px;
+  overflow: hidden;
+}
+
+.cert-inner {
+  border: 2px solid #FFB703;
+  padding: 30px 40px 25px; /* Adjusted bottom padding for disclaimer */
+  text-align: center;
+  position: relative;
+  background: radial-gradient(circle at center, #ffffff 0%, #fcfcfc 100%);
+}
+
+/* Repeated Logo Watermark */
+.cert-watermark-pattern {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500');
+  background-repeat: repeat;
+  background-size: 100px 100px;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+  filter: grayscale(100%) brightness(50%);
+  transform: rotate(-10deg);
+}
+
+.cert-inner > * { position: relative; z-index: 1; }
+
+.cert-logo img {
+  height: 80px;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+.cert-org {
+  font-family: 'Tiro Devanagari Hindi', serif;
+  font-size: 26px;
+  color: #8B1538;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.cert-subtitle {
+  font-size: 14px;
+  color: #0D7A3A;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.cert-regno {
+  font-size: 11px;
+  color: #777;
+  margin-bottom: 20px;
+  font-family: sans-serif;
+}
+
+.cert-title {
+  font-family: 'Cinzel', serif;
+  font-size: 42px;
+  color: #0D7A3A;
+  font-weight: bold;
+  margin: 10px 0 5px;
+  letter-spacing: 2px;
+}
+
+.cert-title-sub {
+  font-size: 14px;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 25px;
+  font-family: sans-serif;
+}
+
+.cert-pre {
+  font-size: 16px;
+  color: #444;
+  font-style: italic;
+  font-family: Georgia, serif;
+}
+
+.cert-student {
+  font-size: 34px;
+  color: #8B1538;
+  font-weight: bold;
+  margin: 12px 0 5px;
+  border-bottom: 2px dashed #FFB703;
+  display: inline-block;
+  padding: 0 20px 5px;
+  font-family: 'Playfair Display', serif;
+}
+
+.cert-parent {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+  font-family: sans-serif;
+}
+
+.cert-course {
+  font-size: 22px;
+  color: #0D7A3A;
+  font-weight: bold;
+  margin: 12px 0;
+  font-family: 'Tiro Devanagari Hindi', serif;
+}
+
+.cert-meta {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 15px 0;
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cert-meta div { text-align: center; }
+.cert-meta small { display: block; font-size: 10px; color: #777; text-transform: uppercase; margin-bottom: 4px;}
+.cert-meta b { font-size: 15px; color: #333; }
+
+.cert-score {
+  font-size: 16px;
+  color: #444;
+  margin: 12px 0;
+  background: #FFF8F0;
+  padding: 8px 15px;
+  border-radius: 6px;
+  border: 1px solid #FFB703;
+  display: inline-block;
+}
+
+.cert-score b { color: #0D7A3A; }
+
+.cert-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
+}
+
+.cert-sign {
+  text-align: center;
+  width: 180px;
+  font-size: 12px;
+  color: #555;
+  font-family: sans-serif;
+}
+
+.cert-sign .line {
+  border-top: 1px solid #333;
+  margin-bottom: 6px;
+  width: 140px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cert-qr { text-align: center; }
+.cert-qr img {
+  width: 85px;
+  height: 85px;
+  border: 2px solid #eee;
+  padding: 4px;
+  border-radius: 8px;
+}
+
+.cert-qr small {
+  display: block;
+  font-size: 10px;
+  color: #777;
+  margin-top: 4px;
+  font-family: sans-serif;
+}
+
+/* Cert ID Box */
+.cert-id-box {
+  background: #FFF8F0;
+  border: 1px solid #FFB703;
+  border-radius: 6px;
+  padding: 4px 15px;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: bold;
+  color: #8B1538;
+  font-family: monospace;
+  margin-bottom: 5px;
+}
+
+.cert-id-box span { color: #555; font-weight: 600; }
+
+/* NEW: Legal Disclaimer */
+.cert-disclaimer {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px dashed #ccc;
+  font-size: 9px; /* Minimum readable font size */
+  color: #888;
+  line-height: 1.4;
+  text-align: justify;
+  font-family: sans-serif;
+}
+
+/* Share */
+.share-title {
+  text-align: center;
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin: 28px 0 12px;
+}
+
+.share-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.share-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: .9rem;
+  color: #fff;
+  text-decoration: none !important;
+  transition: all .2s;
+  border: none;
+  cursor: pointer;
+  min-height: 44px;
+  font-family: inherit;
+}
+
+.share-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0,0,0,.18);
+  color: #fff;
+}
+
+.share-btn.wa { background: #25D366; }
+.share-btn.fb { background: #1877F2; }
+.share-btn.tw { background: #000; }
+.share-btn.li { background: #0A66C2; }
+.share-btn.tg { background: #0088CC; }
+.share-btn.copy { background: linear-gradient(135deg, var(--maroon), var(--maroon-2)); }
+
+/* Cert language toggle */
+.cert-lang-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: .92rem;
+  transition: all .2s;
+}
+
+/* Loader */
+.loader {
+  display: none;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.loader.show {
+  display: block;
+}
+
+.spinner {
+  width: 56px;
+  height: 56px;
+  border: 5px solid var(--border-2);
+  border-top-color: var(--green);
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loader p {
+  color: var(--ink-2);
+  font-size: 1.05rem;
+}
+
+/* Info box */
+.info-box {
+  background: #fff;
+  border: 1.5px solid var(--border-2);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-top: 24px;
+  font-size: .95rem;
+  line-height: 1.75;
+  color: var(--ink-2);
+}
+
+.info-box h4 {
+  color: var(--maroon);
+  font-size: 1rem;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1.5px dashed var(--border-2);
+}
+
+.info-box ul {
+  list-style: disc;
+  padding-left: 22px;
+}
+
+.info-box li {
+  margin-bottom: 6px;
+}
+
+@media (max-width: 640px) {
+  .card { padding: 22px 18px; border-radius: 14px; }
+  .cert-frame { border-width: 8px; }
+  .cert-inner { padding: 24px 16px; }
+  .cert-meta { grid-template-columns: 1fr 1fr; }
+  .cert-student { font-size: 1.5rem; }
+  .cert-title { font-size: 1.5rem; letter-spacing: .15em; }
+  .cert-bottom { flex-direction: column; align-items: center; }
+  .cert-sign { width: 100%; max-width: 220px; }
+  .share-grid { grid-template-columns: 1fr 1fr; }
+  .verified-banner { flex-direction: column; text-align: center; }
+  .cert-disclaimer { font-size: 8px; } /* Even smaller on mobile */
+}
+
+/* ---------- Print Settings for Certificate (A4 Landscape) ---------- */
+@media print {
+  @page { size: A4 landscape; margin: 0; }
+  body { 
+    background: #fff !important; 
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .no-print { display: none !important; }
+  .modal-head { display: none !important; }
+  .modal-box { box-shadow: none !important; margin: 0 !important; max-width: 100% !important; width: 100% !important; }
+  .modal { position: static !important; background: none !important; padding: 0 !important; overflow: visible !important; }
+  
+  /* Only show certificate */
+  body * { visibility: hidden; }
+  #certPrintArea, #certPrintArea * { visibility: visible; }
+  #certPrintArea {
+    position: absolute;
+    left: 0; top: 0; width: 100%;
+    border: 10px solid #0D7A3A !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    -webkit-print-color-adjust: exact; 
+    print-color-adjust: exact; 
+  }
+  .cert-inner, .cert-watermark-pattern { 
+    -webkit-print-color-adjust: exact; 
+    print-color-adjust: exact; 
+  }
+}
+</style>
+</head>
+
+<body class="lang-hi">
+
+<div class="tricolor" style="height:5px;background:linear-gradient(90deg,var(--saffron) 0%,var(--saffron) 33.33%,#fff 33.33%,#fff 66.66%,var(--green) 66.66%,var(--green) 100%)"></div>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-links">
+      <span>📞 <a href="tel:+919532328276">+91 95323 28276</a></span>
+      <span>✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></span>
+      <span data-hi="📍 खेरसा, बिधनू, कानपुर नगर — २०९२१४" data-en="📍 Khersa, Bidhnu, Kanpur Nagar — 209214">📍 खेरसा, बिधनू, कानपुर नगर — २०९२१४</span>
+    </div>
+    <div class="topbar-links">
+      <a href="https://www.diprafoundation.com" target="_blank" rel="noopener">www.diprafoundation.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header id="mainHeader">
+  <div class="container nav-wrap">
+    <a href="/home/" class="brand">
+      <div class="brand-logo">
+        <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="दिप्र फ़ाउंडेशन">
+      </div>
+      <div class="brand-text">
+        <b data-hi="दिप्र फ़ाउंडेशन" data-en="Dipra Foundation">दिप्र फ़ाउंडेशन</b>
+        <span data-hi="प्रमाणपत्र सत्यापन" data-en="Certificate Verification">प्रमाणपत्र सत्यापन</span>
+      </div>
+    </a>
+    <nav id="mainNav" aria-label="मुख्य">
+      <ul>
+        <li><a href="/home/" data-hi="गृह" data-en="Home">गृह</a></li>
+        <li><a href="/the_Uplift/the_Uplift.html" data-hi="The Uplift" data-en="The Uplift">The Uplift</a></li>
+        <li><a href="/verify/verify.html" class="active" data-hi="सत्यापन" data-en="Verify">सत्यापन</a></li>
+        <li><a href="/contact/contact.html" data-hi="संपर्क" data-en="Contact">संपर्क</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="hi">हिं</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <button class="burger" id="burger" aria-label="सूची"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- Main -->
+<main>
+  <div class="container">
+
+    <div class="page-head no-print">
+      <span class="eyebrow" data-hi="🎖️ प्रामाणिकता सत्यापन" data-en="🎖️ Authenticity Verification">🎖️ प्रामाणिकता सत्यापन</span>
+      <h1 data-hi="प्रमाणपत्र सत्यापन" data-en="Certificate Verification" style="font-family:'Tiro Devanagari Hindi',serif;font-weight:400;color:var(--maroon);font-size:clamp(1.7rem,4vw,2.5rem);margin-bottom:10px;line-height:1.2">प्रमाणपत्र सत्यापन</h1>
+      <p data-hi="दिप्र फ़ाउंडेशन के किसी भी प्रमाणपत्र की प्रामाणिकता तत्क्षण सत्यापित करें — QR स्कैन अथवा प्रमाणपत्र क्रमांक द्वारा।" data-en="Instantly verify authenticity of any Dipra Foundation certificate — via QR scan or Certificate ID." style="color:var(--ink-2);font-size:1.05rem;max-width:620px;margin:0 auto">दिप्र फ़ाउंडेशन के किसी भी प्रमाणपत्र की प्रामाणिकता तत्क्षण सत्यापित करें — QR स्कैन अथवा प्रमाणपत्र क्रमांक द्वारा।</p>
+    </div>
+
+    <!-- Input Card -->
+    <div class="card no-print" id="inputCard">
+      <div class="field">
+        <label data-hi="प्रमाणपत्र क्रमांक" data-en="Certificate ID">प्रमाणपत्र क्रमांक</label>
+        <input type="text" id="certInput" placeholder="DPF-FREE-2026-XXXXX" autocomplete="off" autocapitalize="characters">
+      </div>
+      <button class="btn btn-primary btn-block" id="verifyBtn">
+        🔍 <span data-hi="प्रमाणपत्र सत्यापित करें" data-en="Verify Certificate">प्रमाणपत्र सत्यापित करें</span>
+      </button>
+      <div class="verify-result" id="errorBox"></div>
+
+      <div class="info-box">
+        <h4 data-hi="📌 कैसे सत्यापित करें?" data-en="📌 How to verify?">📌 कैसे सत्यापित करें?</h4>
+        <ul>
+          <li data-hi="QR कोड स्कैन करें — यह पृष्ठ स्वतः खुल जाएगा" data-en="Scan the QR code — this page opens automatically">QR कोड स्कैन करें — यह पृष्ठ स्वतः खुल जाएगा</li>
+          <li data-hi="अथवा प्रमाणपत्र पर अंकित क्रमांक ऊपर लिखें" data-en="Or type the Certificate ID printed on the certificate">अथवा प्रमाणपत्र पर अंकित क्रमांक ऊपर लिखें</li>
+          <li data-hi="'सत्यापित करें' पर क्लिक करें — तत्क्षण परिणाम मिलेगा" data-en="Click 'Verify' — result appears instantly">'सत्यापित करें' पर क्लिक करें — तत्क्षण परिणाम मिलेगा</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Loader -->
+    <div class="loader no-print" id="loader">
+      <div class="spinner"></div>
+      <p data-hi="प्रमाणपत्र सत्यापित किया जा रहा है..." data-en="Verifying certificate...">प्रमाणपत्र सत्यापित किया जा रहा है...</p>
+    </div>
+
+    <!-- Certificate Display -->
+    <div class="cert-wrap" id="certWrap">
+
+      <div class="verified-banner no-print">
+        <div class="vb-icon">✓</div>
+        <div class="vb-text">
+          <h4 data-hi="प्रमाणपत्र प्रामाणिक है" data-en="Certificate is Authentic">प्रमाणपत्र प्रामाणिक है</h4>
+          <p data-hi="यह प्रमाणपत्र दिप्र फ़ाउंडेशन द्वारा जारी किया गया है।" data-en="This certificate has been issued by Dipra Foundation.">यह प्रमाणपत्र दिप्र फ़ाउंडेशन द्वारा जारी किया गया है।</p>
+        </div>
+      </div>
+
+      <!-- ==========================================
+           NEW PREMIUM CERTIFICATE FRAME
+           ========================================== -->
+      <div class="cert-frame" id="certPrintArea">
+        <div class="cert-inner">
+          <!-- Repeated Logo Watermark -->
+          <div class="cert-watermark-pattern"></div>
+
+          <!-- Logo -->
+          <div class="cert-logo">
+            <img id="cLogo" src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="दिप्र फ़ाउंडेशन">
+          </div>
+
+          <!-- Org Header -->
+          <div class="cert-org" id="certOrg">दिप्र फ़ाउंडेशन</div>
+          <div class="cert-subtitle" id="certSubtitle">The Uplift — कोचिंग योजना</div>
+          <div class="cert-regno" id="certRegno">Trust Reg. No. 300 · Darpan ID: UP/2024/0459444 · MSME: UDYAM-UP-43-0209073</div>
+
+          <!-- Title -->
+          <div class="cert-title" id="certTitle">प्रमाणपत्र</div>
+          <div class="cert-title-sub" id="certTitleSub">नि:शुल्क अंकीय पाठ्यक्रम · FREE ONLINE COURSE</div>
+
+          <!-- Content -->
+          <div class="cert-pre" id="certPre">This is to certify that</div>
+          <div class="cert-student" id="cName">—</div>
+          <div class="cert-parent" id="cParentLine">—</div>
+          <div class="cert-pre" id="certCompleted" style="font-style:italic;color:var(--ink-2);margin-bottom:6px">has successfully completed the online course</div>
+          <div class="cert-course" id="cCourse">—</div>
+
+          <!-- Meta -->
+          <div class="cert-meta">
+            <div><small id="metaLabel1">अवधि</small><b id="cDuration">—</b></div>
+            <div><small id="metaLabel2">स्तर</small><b id="cLevel">—</b></div>
+            <div><small id="metaLabel3">कुल प्रश्न</small><b id="cQuestions">—</b></div>
+          </div>
+
+          <!-- Score -->
+          <div class="cert-score" id="certScoreLine">
+            अंक: <b id="cScore">—</b> · प्रतिशत: <b id="cPct">—</b> · श्रेणी: <b id="cGrade">—</b>
+          </div>
+
+          <!-- Info chips (Aadhaar, Mobile, Email) -->
+          <div class="cert-info" style="display:flex;justify-content:center;gap:20px;font-size:11px;color:#555;margin-bottom:10px;font-family:monospace;">
+            <span><b id="chipLabel1">आधार:</b> <span id="cAadhar">—</span></span>
+            <span><b id="chipLabel2">चलभाष:</b> <span id="cMobile">—</span></span>
+            <span><b id="chipLabel3">विद्युत्पत्र:</b> <span id="cEmail">—</span></span>
+          </div>
+
+          <!-- Address -->
+          <div class="cert-address" style="font-size:11px;color:#666;margin-bottom:20px;font-family:sans-serif;">
+            <b id="addrLabel">पता:</b> <span id="cAddress">—</span>
+          </div>
+
+          <!-- Bottom -->
+          <div class="cert-bottom">
+            <div class="cert-sign">
+              <div class="line"></div>
+              <span id="issueLabel">जारी दिनांक</span><br>
+              <b id="cIssued">—</b>
+            </div>
+            
+            <div class="cert-qr">
+              <!-- Certificate ID (Above QR) -->
+              <div class="cert-id-box">
+                <span id="certIdLabel">प्रमाणपत्र क्रमांक:</span> <b id="cCertId">—</b>
+              </div>
+              <img id="cQR" src="" alt="QR">
+              <small id="qrLabel">सत्यापन हेतु स्कैन करें</small>
+            </div>
+            
+            <div class="cert-sign">
+              <div class="line"></div>
+              <span id="signLabel">अधिकृत हस्ताक्षर</span><br>
+              <b>दिप्र फ़ाउंडेशन</b>
+            </div>
+          </div>
+
+          <!-- NEW: Legal Disclaimer -->
+          <div class="cert-disclaimer" id="certDisclaimer">
+            यह प्रमाणपत्र दिप्र फ़ाउंडेशन (पंजीकृत ट्रस्ट) द्वारा जारी है। यह किसी सरकारी विभाग, MSME मंत्रालय या सरकारी निकाय से संबद्ध, समर्थित या प्रमाणित नहीं है। MSME/Udyam संख्या केवल पंजीकरण संदर्भ हेतु है।
+          </div>
+
+        </div>
+      </div>
+
+      <!-- LANGUAGE TOGGLE -->
+      <div class="no-print" style="text-align:center;margin:24px 0;padding:16px;background:#fff;border:2px solid var(--border-2);border-radius:12px">
+        <p style="font-size:.88rem;color:var(--muted);margin-bottom:10px">
+          <span data-hi="प्रमाणपत्र की भाषा बदलें" data-en="Change certificate language">प्रमाणपत्र की भाषा बदलें</span>:
+        </p>
+        <div style="display:inline-flex;gap:6px;padding:6px;background:var(--cream-2);border-radius:10px;border:1.5px solid var(--border-2)">
+          <button id="certLangHi" class="cert-lang-btn" onclick="setCertLang('hi')"
+                  style="background:var(--maroon);color:#fff">हिन्दी</button>
+          <button id="certLangEn" class="cert-lang-btn" onclick="setCertLang('en')"
+                  style="background:#fff;color:var(--muted)">English</button>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="no-print" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:20px">
+        <button class="btn btn-primary" onclick="window.print()" style="flex:1;min-width:150px;max-width:220px">🖨️ <span data-hi="प्रिंट / PDF" data-en="Print / PDF">प्रिंट / PDF</span></button>
+        <button class="btn btn-outline" onclick="copyVerifyLink()" style="flex:1;min-width:150px;max-width:220px">🔗 <span data-hi="लिंक कॉपी" data-en="Copy Link">लिंक कॉपी</span></button>
+        <button class="btn btn-outline" onclick="restartVerify()" style="flex:1;min-width:150px;max-width:220px">🔄 <span data-hi="नया सत्यापन" data-en="New Verify">नया सत्यापन</span></button>
+      </div>
+
+      <!-- SOCIAL SHARE -->
+      <div class="no-print" style="margin-top:30px;padding:24px;background:linear-gradient(135deg,#FFF8F0,#FFFBF5);border:2px solid var(--gold-2);border-radius:16px">
+        <div style="text-align:center;margin-bottom:16px">
+          <h3 style="color:var(--maroon);font-family:'Tiro Devanagari Hindi',serif;font-weight:400;margin-bottom:8px;font-size:1.2rem">
+            🎉 <span data-hi="प्रमाणपत्र साझा करें" data-en="Share Certificate">प्रमाणपत्र साझा करें</span>
+          </h3>
+          <p style="color:var(--ink-2);font-size:.92rem;line-height:1.7;max-width:520px;margin-inline:auto"
+             data-hi="इस उपलब्धि को अपने मित्रों तथा परिवार के साथ साझा करें — इससे दिप्र फ़ाउंडेशन तथा The Uplift योजना का प्रचार भी होगा।"
+             data-en="Share this achievement with friends and family — this also promotes Dipra Foundation and The Uplift scheme.">
+            इस उपलब्धि को अपने मित्रों तथा परिवार के साथ साझा करें — इससे दिप्र फ़ाउंडेशन तथा The Uplift योजना का प्रचार भी होगा।
+          </p>
+        </div>
+
+        <div class="share-grid">
+          <a href="#" id="shareWA" target="_blank" class="share-btn wa" onclick="shareEvent('whatsapp')">
+            <span style="font-size:1.2rem">💬</span>
+            <span>WhatsApp</span>
+          </a>
+          <a href="#" id="shareFB" target="_blank" class="share-btn fb" onclick="shareEvent('facebook')">
+            <span style="font-size:1.2rem">📘</span>
+            <span>Facebook</span>
+          </a>
+          <a href="#" id="shareTW" target="_blank" class="share-btn tw" onclick="shareEvent('twitter')">
+            <span style="font-size:1.2rem">𝕏</span>
+            <span>Twitter / X</span>
+          </a>
+          <a href="#" id="shareLI" target="_blank" class="share-btn li" onclick="shareEvent('linkedin')">
+            <span style="font-size:1.2rem">💼</span>
+            <span>LinkedIn</span>
+          </a>
+          <a href="#" id="shareTG" target="_blank" class="share-btn tg" onclick="shareEvent('telegram')">
+            <span style="font-size:1.2rem">✈️</span>
+            <span>Telegram</span>
+          </a>
+          <button class="share-btn copy" onclick="copyVerifyLink()">
+            <span style="font-size:1.2rem">🔗</span>
+            <span data-hi="लिंक कॉपी" data-en="Copy Link">लिंक कॉपी</span>
+          </button>
+        </div>
+
+        <div style="text-align:center;margin-top:18px;padding-top:16px;border-top:1.5px dashed var(--border-2)">
+          <p style="font-size:.82rem;color:var(--muted);margin-bottom:8px" data-hi="साझा करते समय ये हैशटैग जुड़ेंगे:" data-en="These hashtags will be added:">साझा करते समय ये हैशटैग जुड़ेंगे:</p>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center">
+            <span style="padding:4px 10px;background:#fff;border:1px solid var(--border-2);border-radius:999px;font-size:.78rem;color:var(--saffron-3);font-weight:600">#DipraFoundation</span>
+            <span style="padding:4px 10px;background:#fff;border:1px solid var(--border-2);border-radius:999px;font-size:.78rem;color:var(--saffron-3);font-weight:600">#TheUplift</span>
+            <span style="padding:4px 10px;background:#fff;border:1px solid var(--border-2);border-radius:999px;font-size:.78rem;color:var(--saffron-3);font-weight:600">#FreeEducation</span>
+            <span style="padding:4px 10px;background:#fff;border:1px solid var(--border-2);border-radius:999px;font-size:.78rem;color:var(--saffron-3);font-weight:600">#DigitalLiteracy</span>
+            <span style="padding:4px 10px;background:#fff;border:1px solid var(--border-2);border-radius:999px;font-size:.78rem;color:var(--saffron-3);font-weight:600">#EducationForAll</span>
+            <span style="padding:4px 10px;background:#fff;border:1px solid var(--border-2);border-radius:999px;font-size:.78rem;color:var(--saffron-3);font-weight:600">#KanpurNagar</span>
+            <span style="padding:4px 10px;background:#fff;border:1px solid var(--border-2);border-radius:999px;font-size:.78rem;color:var(--saffron-3);font-weight:600">#NGOIndia</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="no-print">
+  <div class="container">
+    <div class="foot-brand">दिप्र फ़ाउंडेशन</div>
+    <div class="foot-line">📍 खेरसा, बिधनू, कानपुर नगर, उत्तर प्रदेश – २०९२१४</div>
+    <div class="foot-line">📞 <a href="tel:+919532328276">+91 95323 28276</a> · ✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></div>
+    <div class="foot-line">🌐 <a href="https://www.diprafoundation.com">www.diprafoundation.com</a></div>
+    <!-- NEW: Disclaimer Link -->
+    <div class="foot-line" style="margin-top:10px;">
+      <a href="/disclaimer/disclaimer.html" style="color:#ffb703;text-decoration:underline;font-weight:600;font-size:0.9rem;">⚠️ Disclaimer / अस्वीकरण</a>
+    </div>
+    <div style="font-size:.8rem;margin-top:14px;color:#c9a8b9">© २०२६ दिप्र फ़ाउंडेशन · पंजीकृत न्यास · पंजीकरण संख्या ३००</div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   VERIFY PAGE — Robust, Bilingual, Shareable (Updated Design)
+   ============================================================ */
+const ENDPOINT = 'https://script.google.com/macros/s/AKfycbynC667snioVb9pnBE8jDRWUJHwKOUi5jTYO31PlfolDG5VjcTrE93zh2k-Ai7zgi0/exec';
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => [...document.querySelectorAll(s)];
+const NGO_SHARE_HASHTAGS = '#DipraFoundation #TheUplift #FreeEducation #DigitalLiteracy #EducationForAll #KanpurNagar #NGOIndia';
+
+/* ---------- State ---------- */
+let _currentCertData = null;
+let _currentCertLang = 'hi';
+
+/* ---------- Language ---------- */
+function setLang(lang){
+  try {
+    document.body.classList.toggle('lang-hi', lang === 'hi');
+    document.body.classList.toggle('lang-en', lang === 'en');
+    document.documentElement.lang = lang;
+    $$('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    try { localStorage.setItem('verify_lang', lang); } catch(e){}
+    $$('[data-hi][data-en]').forEach(el => {
+      const t = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-hi');
+      if(t !== null){
+        if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = t;
+        else el.textContent = t;
+      }
+    });
+  } catch(e){ console.error('setLang:', e); }
+}
+$$('.lang-btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+try { const s = localStorage.getItem('verify_lang'); if(s) setLang(s); }catch(e){}
+
+/* ---------- Toast ---------- */
+let _toastTimer;
+function toast(msg){
+  const t = $('#toast'); if(!t) return;
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(_toastTimer);
+  _toastTimer = setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+function _lang(){ return document.body.classList.contains('lang-en') ? 'en' : 'hi'; }
+
+/* ---------- Verify Input ---------- */
+$('#verifyBtn').addEventListener('click', () => {
+  const id = $('#certInput').value.trim().toUpperCase();
+  if(!id){ showError(_lang()==='en' ? 'Please enter Certificate ID' : 'कृपया प्रमाणपत्र क्रमांक अंकित करें'); return; }
+  verifyCert(id);
+});
+
+$('#certInput').addEventListener('keydown', e => {
+  if(e.key === 'Enter') $('#verifyBtn').click();
+});
+
+/* ---------- Auto-verify from URL ---------- */
+(function autoVerify(){
+  const params = new URLSearchParams(window.location.search);
+  const cert = params.get('cert') || params.get('certId') || params.get('id');
+  if(cert){
+    $('#certInput').value = cert.toUpperCase();
+    verifyCert(cert.toUpperCase());
+  }
+})();
+
+/* ---------- Main verify ---------- */
+async function verifyCert(certId){
+  $('#errorBox').classList.remove('show');
+  $('#certWrap').classList.remove('show');
+  $('#inputCard').style.display = 'none';
+  $('#loader').classList.add('show');
+
+  try {
+    const res = await fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ action: 'verifyFreeCert', certId })
+    });
+    const data = await res.json();
+    $('#loader').classList.remove('show');
+
+    let cert = null;
+    if(data && data.status === 'success'){
+      cert = data.data || data.certificate || data;
+      if(Array.isArray(cert)) cert = cert[0];
+    } else if(data && !data.status && (data['Certificate ID'] || data.certId || data.Name || data['Student Name'])){
+      cert = data; 
+    }
+
+    if(cert && typeof cert === 'object'){
+      _currentCertData = cert;
+      _currentCertLang = 'hi';
+      renderCertificate(cert);
+      setTimeout(wireShareButtons, 100);
+      if(window.SoundFX) SoundFX.play('success');
+    } else {
+      $('#inputCard').style.display = 'block';
+      showError(data?.message || (_lang()==='en'
+        ? 'Certificate not found. Please check the ID.'
+        : 'प्रमाणपत्र नहीं मिला। कृपया क्रमांक जाँचें।'));
+    }
+  } catch(err){
+    $('#loader').classList.remove('show');
+    $('#inputCard').style.display = 'block';
+    showError(_lang()==='en' ? 'Network error. Try again.' : 'नेटवर्क त्रुटि। पुन: प्रयास करें।');
+    console.error(err);
+  }
+}
+
+/* ---------- Render Certificate ---------- */
+function renderCertificate(d){
+  const get = (...keys) => {
+    for(const k of keys){
+      if(d[k] !== undefined && d[k] !== null && d[k] !== '') return d[k];
+    }
+    return '';
+  };
+
+  const studentName = get('Student Name', 'studentName', 'Name', 'name', 'student_name') || '—';
+  const parentName = get('Parent Name', 'parentName', 'parent_name', 'Guardian', 'guardian') || '—';
+  const gender = get('Gender', 'gender') || '';
+  const courseTitleHi = get('Course Title HI', 'courseTitleHi', 'CourseTitleHi') || get('Course', 'course', 'CourseTitle', 'courseTitle') || '—';
+  const courseTitleEn = get('Course Title EN', 'courseTitleEn', 'CourseTitleEn') || get('Course', 'course', 'CourseTitle', 'courseTitle') || '—';
+  const duration = get('Duration', 'duration') || '—';
+  const level = get('Level', 'level') || 'Beginner';
+  const totalQ = get('Total Questions', 'total', 'totalQuestions', 'TotalQ') || '20';
+  const scoreVal = get('Score', 'score', 'Marks', 'marks') || '—';
+  const pctVal = get('Percent', 'percent', 'Percentage', 'percentage', 'pct') || '—';
+  const grade = get('Grade', 'grade') || 'A';
+  const aadhar = get('Aadhaar', 'aadhar', 'Aadhar', 'aadhaar_number') || '—';
+  const mobile = get('Mobile', 'mobile', 'Phone', 'phone', 'mobile_number') || '—';
+  const email = get('Email', 'email', 'email_address') || '—';
+  const address = get('Address', 'address', 'full_address') || '—';
+  const issuedOn = get('Issued On', 'issuedOn', 'issued_on', 'issuedDate', 'Date') || new Date().toLocaleDateString('en-IN');
+  const certId = get('Certificate ID', 'certId', 'certID', 'certificateId', 'certificate_id', 'CertificateID') || '—';
+
+  _currentCertData = {
+    studentName, parentName, gender,
+    courseTitleHi, courseTitleEn,
+    duration, level, totalQ, scoreVal, pctVal, grade,
+    aadhar, mobile, email, address, issuedOn, certId,
+    raw: d
+  };
+
+  renderCertLang(_currentCertLang);
+
+  const wrap = $('#certWrap');
+  if(wrap) wrap.classList.add('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ---------- Render in specific language ---------- */
+function renderCertLang(lang){
+  if(!_currentCertData) return;
+  _currentCertLang = lang;
+  const D = _currentCertData;
+  const isEn = lang === 'en';
+
+  const T = {
+    org: isEn ? 'DIPRA FOUNDATION' : 'दिप्र फ़ाउंडेशन',
+    subtitle: isEn ? 'The Uplift — Coaching Scheme' : 'The Uplift — कोचिंग योजना',
+    regno: isEn ? 'Trust Reg. No. 300 · Darpan ID: UP/2024/0459444 · MSME: UDYAM-UP-43-0209073' : 'पंजीकरण संख्या ३०० · दर्पण: UP/2024/0459444 · MSME: UDYAM-UP-43-0209073',
+    title: isEn ? 'CERTIFICATE' : 'प्रमाणपत्र',
+    titleSub: isEn ? 'OF COMPLETION' : 'पूर्णता का प्रमाण',
+    pre: isEn ? 'This is to certify that' : 'यह प्रमाणित किया जाता है कि',
+    completed: isEn ? 'has successfully completed the online course' : 'ने ऑनलाइन कोर्स',
+    successfully: isEn ? 'successfully.' : 'सफलतापूर्वक पूर्ण किया है।',
+    son: isEn ? 'Son of' : 'पुत्र',
+    daughter: isEn ? 'Daughter of' : 'पुत्री',
+    other: isEn ? 'Son/Daughter of' : 'पुत्र/पुत्री',
+    duration: isEn ? 'Duration' : 'अवधि',
+    level: isEn ? 'Level' : 'स्तर',
+    questions: isEn ? 'Total Questions' : 'कुल प्रश्न',
+    score: isEn ? 'Score' : 'अंक',
+    percent: isEn ? 'Percent' : 'प्रतिशत',
+    grade: isEn ? 'Grade' : 'श्रेणी',
+    aadhar: isEn ? 'Aadhaar' : 'आधार',
+    mobile: isEn ? 'Mobile' : 'चलभाष',
+    email: isEn ? 'Email' : 'विद्युत्पत्र',
+    address: isEn ? 'Address' : 'पता',
+    issued: isEn ? 'Issue Date' : 'जारी दिनांक',
+    signatory: isEn ? 'Authorised Signatory' : 'अधिकृत हस्ताक्षर',
+    qrScan: isEn ? 'Scan to verify' : 'सत्यापन हेतु स्कैन करें',
+    certId: isEn ? 'Certificate ID:' : 'प्रमाणपत्र क्रमांक:',
+    disclaimer: isEn ? 'This certificate is issued by Dipra Foundation (a registered trust) and is not affiliated with, endorsed by, or certified by any government department, MSME Ministry, or government body. MSME/Udyam number is for registration reference only.' : 'यह प्रमाणपत्र दिप्र फ़ाउंडेशन (पंजीकृत ट्रस्ट) द्वारा जारी है। यह किसी सरकारी विभाग, MSME मंत्रालय या सरकारी निकाय से संबद्ध, समर्थित या प्रमाणित नहीं है। MSME/Udyam संख्या केवल पंजीकरण संदर्भ हेतु है।'
+  };
+
+  const setTxt = (id, txt) => { const el = document.getElementById(id); if(el) el.textContent = txt; };
+  const setHtml = (id, html) => { const el = document.getElementById(id); if(el) el.innerHTML = html; };
+
+  setTxt('certOrg', T.org);
+  setTxt('certSubtitle', T.subtitle);
+  setTxt('certRegno', T.regno);
+  setTxt('certTitle', T.title);
+  setTxt('certTitleSub', T.titleSub);
+  setTxt('certPre', T.pre);
+  setTxt('certCompleted', T.completed + ' ' + T.successfully);
+  setTxt('cName', D.studentName);
+
+  const parentEl = document.getElementById('cParentLine');
+  if(parentEl){
+    let relation = '';
+    const g = String(D.gender || '').trim().toLowerCase();
+    
+    if(g === 'महिला' || g === 'female' || g === 'f' || g === 'स्त्री' || g === 'लड़की'){
+      relation = T.daughter;
+    } else if(g === 'पुरुष' || g === 'male' || g === 'm' || g === 'लड़का'){
+      relation = T.son;
+    } else {
+      relation = T.other;
+    }
+    
+    const rawParent = String(D.parentName || '').trim();
+    const prefixMap = {
+      'श्री':      { hi: 'श्री',      en: 'Mr.' },
+      'श्रीमती':   { hi: 'श्रीमती',   en: 'Mrs.' },
+      'कु०':       { hi: 'कु०',       en: 'Ms.' },
+      'स्वर्गीय':  { hi: 'स्वर्गीय',  en: 'Late' },
+      'डॉ०':       { hi: 'डॉ०',       en: 'Dr.' },
+      'Mr.':      { hi: 'श्री',      en: 'Mr.' },
+      'Mrs.':     { hi: 'श्रीमती',   en: 'Mrs.' },
+      'Ms.':      { hi: 'कु०',       en: 'Ms.' },
+      'Late':     { hi: 'स्वर्गीय',  en: 'Late' },
+      'Dr.':      { hi: 'डॉ०',       en: 'Dr.' }
+    };
+    let detectedPrefix = '';
+    let nameOnly = rawParent;
+    for (const p of Object.keys(prefixMap)) {
+      if (rawParent.startsWith(p + ' ')) {
+        detectedPrefix = p;
+        nameOnly = rawParent.substring(p.length).trim();
+        break;
+      }
+    }
+    if (!detectedPrefix) {
+      detectedPrefix = String(D.raw['Parent Prefix'] || D.raw.parentPrefix || '').trim();
+      nameOnly = rawParent;
+    }
+    
+    const translatedPrefix = prefixMap[detectedPrefix]
+      ? (lang === 'en' ? prefixMap[detectedPrefix].en : prefixMap[detectedPrefix].hi)
+      : detectedPrefix;
+    
+    const finalParent = translatedPrefix ? (translatedPrefix + ' ' + nameOnly) : nameOnly;
+    parentEl.textContent = relation + ' — ' + finalParent;
+  }
+
+  setTxt('cCourse', '"' + (isEn ? D.courseTitleEn : D.courseTitleHi) + '"');
+  setTxt('metaLabel1', T.duration);
+  setTxt('metaLabel2', T.level);
+  setTxt('metaLabel3', T.questions);
+  setTxt('cDuration', D.duration);
+  setTxt('cLevel', D.level);
+  setTxt('cQuestions', D.totalQ);
+
+  const scoreStr = String(D.scoreVal);
+  const sParts = scoreStr.split('/');
+  let scoreDisplay = scoreStr;
+  let pctDisplay = String(D.pctVal).includes('%') ? D.pctVal : D.pctVal + '%';
+
+  if(sParts.length === 2 && !String(D.pctVal).includes('%')){
+    const s = parseInt(sParts[0], 10);
+    const t = parseInt(sParts[1], 10);
+    if(s && t) pctDisplay = Math.round((s / t) * 100) + '%';
+  }
+
+  setHtml('certScoreLine',
+    `${T.score}: <b>${scoreDisplay}</b> · ${T.percent}: <b>${pctDisplay}</b> · ${T.grade}: <b>${D.grade}</b>`);
+
+  const aadharMasked = String(D.aadhar).includes('X') ? D.aadhar : ('XXXX XXXX ' + String(D.aadhar).replace(/\s/g,'').slice(-4));
+  setTxt('chipLabel1', T.aadhar + ':');
+  setTxt('chipLabel2', T.mobile + ':');
+  setTxt('chipLabel3', T.email + ':');
+  setTxt('cAadhar', aadharMasked);
+  setTxt('cMobile', D.mobile);
+  setTxt('cEmail', D.email);
+
+  setTxt('addrLabel', T.address + ':');
+  setTxt('cAddress', D.address);
+  setTxt('issueLabel', T.issued);
+  setTxt('cIssued', D.issuedOn);
+  setTxt('signLabel', T.signatory);
+  setTxt('qrLabel', T.qrScan);
+  setTxt('certIdLabel', T.certId);
+  setTxt('cCertId', D.certId);
+  
+  // Set disclaimer text
+  setTxt('certDisclaimer', T.disclaimer);
+
+  const verifyUrl = window.location.origin + window.location.pathname + '?cert=' + encodeURIComponent(D.certId);
+  const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + encodeURIComponent(verifyUrl);
+  const qrEl = document.getElementById('cQR');
+  if(qrEl) qrEl.src = qrUrl;
+
+  const hiBtn = document.getElementById('certLangHi');
+  const enBtn = document.getElementById('certLangEn');
+  if(hiBtn){
+    hiBtn.style.background = lang === 'hi' ? 'var(--maroon)' : '#fff';
+    hiBtn.style.color = lang === 'hi' ? '#fff' : 'var(--muted)';
+  }
+  if(enBtn){
+    enBtn.style.background = lang === 'en' ? 'var(--maroon)' : '#fff';
+    enBtn.style.color = lang === 'en' ? '#fff' : 'var(--muted)';
+  }
+}
+
+/* ---------- Language toggle for certificate ---------- */
+function setCertLang(lang){
+  if(!_currentCertData) return;
+  renderCertLang(lang);
+  if(window.SoundFX) SoundFX.play('tabSwitch');
+  toast(lang === 'en' ? '✓ Certificate in English' : '✓ प्रमाणपत्र हिन्दी में');
+}
+
+/* ---------- Wire Share Buttons ---------- */
+function wireShareButtons(){
+  if(!_currentCertData) return;
+  const D = _currentCertData;
+  const verifyUrl = window.location.href;
+  const isEn = _currentCertLang === 'en';
+  const courseTitle = isEn ? D.courseTitleEn : D.courseTitleHi;
+
+  const shareText =
+    (isEn
+      ? `🎓 Certificate verified — "${courseTitle}" by ${D.studentName} — Dipra Foundation!\n`
+      : `🎓 प्रमाणपत्र सत्यापित — "${courseTitle}" · ${D.studentName} — दिप्र फ़ाउंडेशन!\n`) +
+    `🎖️ ${isEn ? 'Grade' : 'श्रेणी'}: ${D.grade} · ${isEn ? 'Score' : 'अंक'}: ${D.scoreVal}\n` +
+    (isEn ? `📜 QR-verifiable certificate\n\n` : `📜 QR-सत्यापनीय प्रमाणपत्र\n\n`) +
+    (isEn ? `Free courses — benefit yourself:\n` : `नि:शुल्क पाठ्यक्रम — स्वयं लाभ उठाएँ:\n`) +
+    `https://www.diprafoundation.com/the_Uplift.html\n\n` +
+    NGO_SHARE_HASHTAGS;
+
+  const wa = document.getElementById('shareWA');
+  if(wa) wa.href = 'https://wa.me/?text=' + encodeURIComponent(shareText);
+
+  const fb = document.getElementById('shareFB');
+  if(fb) fb.href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(verifyUrl) + '&quote=' + encodeURIComponent(shareText);
+
+  const tw = document.getElementById('shareTW');
+  if(tw) tw.href = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(shareText);
+
+  const li = document.getElementById('shareLI');
+  if(li) li.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(verifyUrl);
+
+  const tg = document.getElementById('shareTG');
+  if(tg) tg.href = 'https://t.me/share/url?url=' + encodeURIComponent(verifyUrl) + '&text=' + encodeURIComponent(shareText);
+}
+
+function copyVerifyLink(){
+  const url = window.location.href;
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(url)
+      .then(() => toast(_lang()==='en' ? '🔗 Link copied!' : '🔗 लिंक कॉपी हो गया!'))
+      .catch(() => fallbackCopy(url));
+  } else fallbackCopy(url);
+}
+
+function fallbackCopy(text){
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); toast('🔗 लिंक कॉपी हो गया!'); }
+  catch(e){ toast('कॉपी नहीं हो सका'); }
+  ta.remove();
+}
+
+function shareEvent(platform){
+  if(window.SoundFX) SoundFX.play('click');
+  console.log('📤 Shared to:', platform);
+}
+
+function restartVerify(){
+  _currentCertData = null;
+  _currentCertLang = 'hi';
+  $('#certWrap').classList.remove('show');
+  $('#inputCard').style.display = 'block';
+  $('#certInput').value = '';
+  $('#errorBox').classList.remove('show');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showError(msg){
+  const box = $('#errorBox');
+  box.textContent = '❌ ' + msg;
+  box.className = 'verify-result show fail';
+  $('#certWrap').classList.remove('show');
+}
+
+console.log('%c🔍 दिप्र फ़ाउंडेशन — प्रमाणपत्र सत्यापन v2.2 (Premium + Disclaimer) loaded', 'color:#0D7A3A;font-weight:bold;font-size:14px');
+</script>
+<script src="/sound.js" defer></script>
+
+<script src="/app-nav.js" defer></script></body>
+</html>
