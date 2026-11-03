@@ -385,7 +385,7 @@
       <span>✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></span>
     </div>
     <div class="topbar-links">
-      <a href="index.html">← <span data-hi="गृह पृष्ठ" data-en="Home">गृह पृष्ठ</span></a>
+      <a href="https://www.diprafoundation.com/home">← <span data-hi="गृह पृष्ठ" data-en="Home">गृह पृष्ठ</span></a>
     </div>
   </div>
 </div>
@@ -393,7 +393,7 @@
 <!-- Header -->
 <header>
   <div class="header-inner">
-    <a href="index.html" class="brand">
+    <a href="https://www.diprafoundation.com/home" class="brand">
       <div class="brand-logo">
         <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="दिप्र फ़ाउंडेशन">
       </div>
@@ -1104,7 +1104,7 @@ function showFinalCertificate(data, cd){
 
   // Compute verify URL
   const certId = data.certId || '';
-  const verifyUrl = 'https://www.diprafoundation.com/verify.html?cert=' + encodeURIComponent(certId);
+  const verifyUrl = 'https://www.diprafoundation.com/verify?cert=' + encodeURIComponent(certId);
   const aadharMasked = 'XXXX XXXX ' + String(data.aadhar || cd.aadhar || '').slice(-4);
   const qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' + encodeURIComponent(verifyUrl);
 
@@ -1392,7 +1392,7 @@ function wireCertShareButtons(){
   if(!_finalCertData) return;
   const { data, cd } = _finalCertData;
   const certId = data.certId || '';
-  const verifyUrl = 'https://www.diprafoundation.com/verify.html?cert=' + encodeURIComponent(certId);
+  const verifyUrl = 'https://www.diprafoundation.com/verify?cert=' + encodeURIComponent(certId);
 
   // Pick title based on current language
   const courseTitle = _finalCertLang === 'en'
@@ -1431,7 +1431,7 @@ function wireCertShareButtons(){
 
 function copyCertLink(){
   if(!_finalCertData) return;
-  const url = 'https://www.diprafoundation.com/verify.html?cert=' + encodeURIComponent(_finalCertData.data.certId);
+  const url = 'https://www.diprafoundation.com/verify?cert=' + encodeURIComponent(_finalCertData.data.certId);
   if(navigator.clipboard){
     navigator.clipboard.writeText(url)
       .then(() => toast(_lang() === 'en' ? '🔗 Link copied!' : '🔗 लिंक कॉपी हो गया!'))
