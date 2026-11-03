@@ -173,6 +173,10 @@ $('primarySector').addEventListener('change',showContacts);
 $('secondarySectors').addEventListener('change',showContacts);
 document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>{lang=b.dataset.lang;translate();showContacts();if(!$('guide').hidden)$('openGuide').click();}));
 fillOptions();
+const requestedSector=new URLSearchParams(location.search).get('sector');
+if(primary.includes(requestedSector))$('primarySector').value=requestedSector;
+else if(secondary.includes(requestedSector)){const preselected=[...document.querySelectorAll('.secondary-check')].find(input=>input.value===requestedSector);if(preselected)preselected.checked=true;}
+showContacts();
 $('openGuide').addEventListener('click',()=>{
  const chosen=$('primarySector').value;if(!chosen){$('primarySector').focus();return;}
  completed=false;$('readConfirm').checked=false;$('readConfirm').disabled=true;$('continue').disabled=true;$('pledgeFormPanel').hidden=true;$('certificate').hidden=true;
