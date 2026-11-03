@@ -13,7 +13,7 @@
 <meta property="og:title" content="दिप्र फ़ाउंडेशन | The Uplift कोचिंग योजना">
 <meta property="og:description" content="अल्प मूल्य पर गुणवत्तापूर्ण शिक्षण। नि:शुल्क अंकीय पाठ्यक्रम, ई-पुस्तकें एवं QR-सत्यापनीय प्रमाणपत्र।">
 <meta property="og:image" content="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
-<link rel="canonical" href="https://www.diprafoundation.com/the_Uplift.html">
+<link rel="canonical" href="https://www.diprafoundation.com/the_Uplift/">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,9 +21,9 @@
 <link rel="icon" href="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
 
 <!-- COMMON CSS -->
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://www.diprafoundation.com/style.css">
 <!-- MOBILE APP CSS -->
-<link rel="stylesheet" href="mobile-app.css" media="(max-width: 860px)">
+<link rel="stylesheet" href="https://www.diprafoundation.com/mobile-app.css" media="(max-width: 860px)">
 
 <!-- PAGE-SPECIFIC CSS -->
 <style>
@@ -932,15 +932,11 @@ body::before {
   background: #fff !important;
 }
 
-/* Toast अब style.css/mobile-app.css से सही ढंग से छिपता है —
-   यहाँ display:none की ज़रूरत नहीं, वरना संदेश दिखेंगे ही नहीं। */
+/* अगर कोई टोस्ट (Toast) मैसेज लाल रंग में अटका हुआ है, तो उसे छिपाने के लिए */
+.toast {
+  display: none !important;
+}
 </style>
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="logo.png">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="दिप्र">
 </head>
 
 <body class="lang-hi">
@@ -971,7 +967,7 @@ body::before {
      ============================================================ -->
 <header id="mainHeader">
   <div class="header-inner nav-wrap">
-    <a href="index.html" class="brand">
+    <a href="https://www.diprafoundation.com/home/" class="brand">
       <div class="brand-logo">
         <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="दिप्र फ़ाउंडेशन">
       </div>
@@ -990,9 +986,9 @@ body::before {
         <li><a href="#free" data-hi="नि:शुल्क पाठ्यक्रम" data-en="Free Courses">नि:शुल्क पाठ्यक्रम</a></li>
 <li><a href="#tiered-courses" data-hi="संगणक कोर्स" data-en="Computer Courses">संगणक कोर्स</a></li>
         <li><a href="#donate" data-hi="दान" data-en="Donate">दान</a></li>
-        <li><a href="portal.html" data-hi="विद्यार्थी केंद्र" data-en="Portal">विद्यार्थी केंद्र</a></li>
-        <li><a href="verify.html" data-hi="सत्यापन" data-en="Verify">सत्यापन</a></li>
-        <li><a href="contact.html" data-hi="संपर्क" data-en="Contact">संपर्क</a></li>
+        <li><a href="https://www.diprafoundation.com/portal/" data-hi="विद्यार्थी केंद्र" data-en="Portal">विद्यार्थी केंद्र</a></li>
+        <li><a href="https://www.diprafoundation.com/verify/" data-hi="सत्यापन" data-en="Verify">सत्यापन</a></li>
+        <li><a href="https://www.diprafoundation.com/contact/" data-hi="संपर्क" data-en="Contact">संपर्क</a></li>
       </ul>
     </nav>
 
@@ -1044,9 +1040,9 @@ body::before {
         onkeydown="if(event.key==='Enter'){goto('#free')}">📚 नि:शुल्क ई-पुस्तकें</span>
 
   <span class="hero-badge-link" data-hi="🔍 QR द्वारा सत्यापन" data-en="🔍 QR Verification"
-        onclick="goto('verify.html')" role="link" tabindex="0"
+        onclick="goto('verify/)" role="link" tabindex="0"
         aria-label="Verify certificate"
-        onkeydown="if(event.key==='Enter'){goto('verify.html')}">🔍 QR द्वारा सत्यापन</span>
+        onkeydown="if(event.key==='Enter'){goto('verify/')}">🔍 QR द्वारा सत्यापन</span>
 </div>
         <div class="hero-btns">
           <button class="btn btn-saffron" onclick="openApplyModal()" data-hi="📝 विद्यार्थी आवेदन" data-en="📝 Student Apply">📝 विद्यार्थी आवेदन</button>
@@ -1402,7 +1398,7 @@ body::before {
       </div>
 
       <div class="donate-cta">
-        <a href="donate.html" class="btn btn-saffron" data-hi="🙏 दान करें" data-en="🙏 Donate Now">🙏 दान करें</a>
+        <a href="donate/" class="btn btn-saffron" data-hi="🙏 दान करें" data-en="🙏 Donate Now">🙏 दान करें</a>
       </div>
     </div>
   </div>
@@ -1454,8 +1450,8 @@ body::before {
         <ul>
           <li><a href="#courses" data-hi="पाठ्यक्रम एवं शुल्क" data-en="Courses & Fees">पाठ्यक्रम एवं शुल्क</a></li>
           <li><a href="#free" data-hi="नि:शुल्क पाठ्यक्रम एवं ई-पुस्तकें" data-en="Free Courses & Ebooks">नि:शुल्क पाठ्यक्रम एवं ई-पुस्तकें</a></li>
-          <li><a href="portal.html" data-hi="विद्यार्थी केंद्र" data-en="Portal">विद्यार्थी केंद्र</a></li>
-          <li><a href="verify.html" data-hi="प्रमाणपत्र सत्यापन" data-en="Verify Certificate">प्रमाणपत्र सत्यापन</a></li>
+          <li><a href="https://www.diprafoundation.com/portal/" data-hi="विद्यार्थी केंद्र" data-en="Portal">विद्यार्थी केंद्र</a></li>
+          <li><a href="https://www.diprafoundation.com/verify/" data-hi="प्रमाणपत्र सत्यापन" data-en="Verify Certificate">प्रमाणपत्र सत्यापन</a></li>
         </ul>
       </div>
       <div>
@@ -1464,8 +1460,8 @@ body::before {
           <li><a onclick="openApplyModal()" style="cursor:pointer" data-hi="विद्यार्थी आवेदन" data-en="Student Apply">विद्यार्थी आवेदन</a></li>
           <li><a onclick="openVolunteerModal()" style="cursor:pointer" data-hi="स्वयंसेवक आवेदन" data-en="Volunteer Apply">स्वयंसेवक आवेदन</a></li>
           <li><a onclick="openGrievanceModal()" style="cursor:pointer" data-hi="शिकायत निवारण" data-en="Grievance">शिकायत निवारण</a></li>
-          <li><a href="donate.html" data-hi="दान" data-en="Donate">दान</a></li>
-          <li><a href="contact.html" data-hi="संपर्क" data-en="Contact">संपर्क</a></li>
+          <li><a href="https://www.diprafoundation.com/donate/" data-hi="दान" data-en="Donate">दान</a></li>
+          <li><a href="https://www.diprafoundation.com/contact/" data-hi="संपर्क" data-en="Contact">संपर्क</a></li>
         </ul>
       </div>
       <div>
@@ -1505,7 +1501,7 @@ body::before {
     <span class="bn-icon" aria-hidden="true">📖</span>
     <span data-hi="ईबुक" data-en="Ebook">ईबुक</span>
   </a>
-  <a href="portal.html" class="bottom-nav-item">
+  <a href="portal/" class="bottom-nav-item">
     <span class="bn-icon" aria-hidden="true">👤</span>
     <span data-hi="खाता" data-en="Account">खाता</span>
   </a>
@@ -1570,7 +1566,7 @@ body::before {
           </div>
         </div>
         <div class="field" style="margin-top:-8px">
-          <a href="districts.html" target="_blank" rel="noopener" style="font-size:.88rem;color:var(--saffron-3);font-weight:600;display:inline-flex;align-items:center;gap:6px">
+          <a href="districts/" target="_blank" rel="noopener" style="font-size:.88rem;color:var(--saffron-3);font-weight:600;display:inline-flex;align-items:center;gap:6px">
             🗺️ <span data-hi="समस्त राज्य एवं जनपद देखें" data-en="View all states & districts">समस्त राज्य एवं जनपद देखें</span>
           </a>
         </div>
@@ -2724,9 +2720,11 @@ $('#applyForm').addEventListener('submit', async e => {
     const orig = btn.textContent;
     btn.disabled = true;
     btn.textContent = _lang() === 'en' ? '⏳ Submitting...' : '⏳ जमा हो रहा है...';
+    const appId = 'DPF-UPL-26-' + String(Math.floor(10000 + Math.random() * 89999));
     const payload = {
       action:'submit',
       type:'application',
+      AppID: appId,
       Name: name,
       Gender: gender,
       DOB: val('dob'),
@@ -2754,7 +2752,7 @@ $('#applyForm').addEventListener('submit', async e => {
       return;
     }
     f.style.display = 'none';
-    $('#applyAppId').textContent = r.id || '—';
+    $('#applyAppId').textContent = appId;
     $('#applyConfirm').classList.add('show');
     toast(_lang() === 'en' ? '🪔 Application submitted!' : '🪔 आवेदन सफलतापूर्वक जमा!');
     setTimeout(loadLiveSeats, 1500);
@@ -2807,9 +2805,11 @@ $('#volTeacherForm').addEventListener('submit', async e => {
 
   const email = g('vEmail').trim();
   OTP.require(email, async () => {
+    const volId = 'DPF-VOL-T-26-' + String(Math.floor(10000 + Math.random() * 89999));
     const payload = {
       action:'submit',
       type:'volunteer',
+      ID: volId,
       Type:'Teacher',
       Name: g('vName'),
       Mobile: g('vMobile'),
@@ -2827,7 +2827,7 @@ $('#volTeacherForm').addEventListener('submit', async e => {
       return;
     }
     f.style.display = 'none';
-    $('#volIdOut').textContent = r.id || '—';
+    $('#volIdOut').textContent = volId;
     $('#volConfirm').classList.add('show');
     toast(_lang() === 'en' ? '🙏 Application submitted!' : '🙏 आवेदन जमा!');
   });
@@ -2870,9 +2870,11 @@ $('#grievanceForm').addEventListener('submit', async e => {
 
   const email = g('gEmail').trim();
   OTP.require(email, async () => {
+    const cid = 'DPF-GRV-26-' + String(Math.floor(1000 + Math.random() * 8999));
     const r = await apiCall({
       action:'submit',
       type:'grievance',
+      ComplaintID: cid,
       Name: g('gName'),
       AppID: g('gAppId'),
       Mobile: g('gMobile'),
@@ -2885,7 +2887,7 @@ $('#grievanceForm').addEventListener('submit', async e => {
       return;
     }
     f.style.display = 'none';
-    $('#grievanceIdOut').textContent = r.id || '—';
+    $('#grievanceIdOut').textContent = cid;
     $('#grievanceConfirm').classList.add('show');
     toast(_lang() === 'en' ? '🙏 Complaint registered!' : '🙏 शिकायत दर्ज!');
   });
@@ -3690,7 +3692,7 @@ async function verifyCertOtp(){
 window.verifyCertOtp = verifyCertOtp;
 
 function showFreeCert(data, cd){
-  const verifyUrl = 'https://www.diprafoundation.com/verify.html?cert=' + encodeURIComponent(data.certId);
+  const verifyUrl = 'https://www.diprafoundation.com/verify/?cert=' + encodeURIComponent(data.certId);
   const aadharMasked = 'XXXX XXXX ' + String(data.aadhar || cd.aadhar || '').slice(-4);
   const certId = data.certId;
   const courseTitle = _lang() === 'en' ? (data.courseTitleEn || data.courseTitle) : (data.courseTitleHi || data.courseTitle);
@@ -3899,22 +3901,10 @@ window.openApplyModalWithCourse = openApplyModalWithCourse;
   setTimeout(loadLiveSeats, 200);
   setInterval(loadLiveSeats, 60000);
 
-  /* डीप-लिंक: #apply / #volunteer / #grievance अथवा ?open=apply
-     (मैजिक-लिंक तथा नीचे के आवेदन बटन इन्हीं से फ़ॉर्म खोलते हैं) */
-  function openFromHash(){
-    const raw = String(location.hash || (location.search.match(/[?&]open=([\w-]+)/) || [])[1] || '').replace(/^#/, '').toLowerCase();
-    if (raw === 'apply') openApplyModal();
-    else if (raw === 'volunteer') openVolunteerModal();
-    else if (raw === 'grievance') openGrievanceModal();
-  }
-  openFromHash();
-  window.addEventListener('hashchange', openFromHash);
-
   console.log('%c🪔 दिप्र फ़ाउंडेशन — The Uplift कोचिंग योजना v3.0', 'color:#FF7A00;font-weight:bold;font-size:14px');
 })();
 
 </script>
 <script src="sound.js" defer></script>
-<script src="app-nav.js" defer></script>
 </body>
 </html>
