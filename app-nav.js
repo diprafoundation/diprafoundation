@@ -33,6 +33,8 @@
       'background:linear-gradient(135deg,var(--dpn-saffron),#e2670a);color:#fff;font-size:1.45rem;font-weight:700;',
       'border:3px solid #fff;box-shadow:0 6px 18px rgba(255,122,0,.42);}',
       '.dpn a.fab{color:var(--dpn-saffron);}',
+      /* pledge पेज का sticky "पढ़ लिया" बार tab bar के ऊपर बैठे */
+      '.readbox{bottom:calc(10px + var(--dpn-total,0px));z-index:940;}',
       /* portal का अपना bar इन-पेज views संभालता है — वह दिखे तो shared bar छिपा रहे */
       '#bottom-nav:not(.hidden)~.dpn{display:none !important;}',
       /* हर पेज का लुक एक जैसा — पुराने native मेनू/बर्गर मोबाइल पर छिपे रहें */
@@ -86,6 +88,11 @@
       '.dpn-burger.dpn-open span:nth-child(2){opacity:0;}',
       '.dpn-burger.dpn-open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}',
       'body.dpn-lock{overflow:hidden !important;}',
+      /* भाषा बदलने का बटन 3-लाइन मेनू के पीछे न छिपे — थोड़ा बाईं ओर */
+      '.lang-switch,.lang,.langs{margin-right:64px;}',
+      /* जो पेज इसे मोबाइल पर पूरी तरह छिपा देते हैं (nav-links के अंदर) — वही बटन मेनू के बाएँ */
+      '.dpn-lang{position:fixed;top:calc(9px + env(safe-area-inset-top,0px));right:66px;z-index:1010;}',
+      '.dpn-lang>div{margin:0 !important;display:flex !important;}',
     '}',
     '@media print{#' + MENU_ID + ',.dpn-backdrop,.dpn-burger{display:none !important;}}'
   ].join('');
@@ -167,6 +174,18 @@
     }
   }
 
+  /* मोबाइल पर भाषा-बटन हर पेज पर दिखे: इन-फ्लो हो तो burger से दूर, छिपा हो तो ऊपर ले आओ */
+  function placeLang() {
+    var groups = [].slice.call(document.querySelectorAll('.lang-switch,.lang,.langs'))
+      .filter(function (g) { return g.querySelector('button[data-lang]'); });
+    if (!groups.length) return;
+    if (groups.some(function (g) { return g.getBoundingClientRect().width > 0; })) return;
+    var host = document.createElement('div');
+    host.className = 'dpn-lang';
+    host.appendChild(groups[0]);
+    document.body.appendChild(host);
+  }
+
   function buildMenu() {
     if (document.getElementById(MENU_ID)) return;
 
@@ -220,6 +239,7 @@
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
     window.addEventListener('resize', function () { setOpen(false); });
+    try { placeLang(); } catch (e) { /* भाषा-बटन न हटे तो भी पेज चले */ }
   }
 
   function build() {

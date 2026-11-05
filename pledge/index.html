@@ -65,24 +65,19 @@ select:focus-visible,input:focus-visible,button:focus-visible,a:focus-visible{ou
 <body>
 <header><div class="bar"><a class="brand" href="https://www.diprafoundation.com/home"><img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="Dipra Foundation logo"><span>Dipra Foundation<small data-hi="सामुदायिक संकल्प" data-en="Community Pledge">सामुदायिक संकल्प</small></span></a><div class="nav"><a href="https://www.diprafoundation.com/home" data-hi="मुख्य पृष्ठ" data-en="Home">मुख्य पृष्ठ</a><a href="/the_Uplift/" data-hi="ऑनलाइन कोर्स" data-en="Online courses">ऑनलाइन कोर्स</a><div class="lang"><button type="button" class="active" data-lang="hi">हिं</button><button type="button" data-lang="en">EN</button></div></div></div></header>
 <main class="wrap">
-<section class="hero"><span class="eyebrow" data-hi="हर विषय पर पढ़ें · समझें · संकल्प लें" data-en="Read · Understand · Pledge">हर विषय पर पढ़ें · समझें · संकल्प लें</span><h1 data-hi="सामुदायिक जागरूकता संकल्प" data-en="Community Awareness Pledge">सामुदायिक जागरूकता संकल्प</h1><p data-hi="अपना कार्यक्षेत्र चुनें, दस जागरूकता बिंदु पढ़ें और फिर अपना सम्मानजनक pledge प्रमाण-पत्र बनाएँ।" data-en="Choose your field, read ten awareness points, then create your respectful pledge certificate.">अपना कार्यक्षेत्र चुनें, दस जागरूकता बिंदु पढ़ें और फिर अपना सम्मानजनक pledge प्रमाण-पत्र बनाएँ।</p></section>
+<section class="hero"><span class="eyebrow" data-hi="हर विषय पर पढ़ें · समझें · संकल्प लें" data-en="Read · Understand · Pledge">हर विषय पर पढ़ें · समझें · संकल्प लें</span><h1 data-hi="सामुदायिक जागरूकता संकल्प" data-en="Community Awareness Pledge">सामुदायिक जागरूकता संकल्प</h1><p data-hi="दस जागरूकता बिंदु पढ़ें, अपना नाम भरें और तुरंत अपना सम्मानजनक pledge प्रमाण-पत्र पाएँ।" data-en="Read the ten awareness points, add your name, and get your respectful pledge certificate right away.">दस जागरूकता बिंदु पढ़ें, अपना नाम भरें और तुरंत अपना सम्मानजनक pledge प्रमाण-पत्र पाएँ।</p></section>
 <div class="flow">
-<section class="panel" aria-labelledby="sectorsTitle"><h2 id="sectorsTitle" data-hi="अपने कार्यक्षेत्र चुनें" data-en="Choose your sectors">अपने कार्यक्षेत्र चुनें</h2>
-<div class="sector-grid"><div><label for="primarySector" data-hi="प्राथमिक क्षेत्र" data-en="Primary Sector">प्राथमिक क्षेत्र</label><select id="primarySector" required></select><span class="hint" data-hi="एक प्राथमिक क्षेत्र चुनना आवश्यक है।" data-en="Choose one primary sector.">एक प्राथमिक क्षेत्र चुनना आवश्यक है।</span></div>
-<div><span class="field-title" data-hi="द्वितीयक क्षेत्र" data-en="Secondary Sectors">द्वितीयक क्षेत्र</span><div id="secondarySectors" class="secondary-list"></div><span class="hint" data-hi="लागू होने पर एक या अधिक चुनें।" data-en="Choose one or more if relevant.">लागू होने पर एक या अधिक चुनें।</span></div></div>
-<div style="margin-top:16px"><button id="openGuide" class="btn" type="button" data-hi="चयनित क्षेत्र के 10 बिंदु पढ़ें" data-en="Read 10 points for my sector">चयनित क्षेत्र के 10 बिंदु पढ़ें</button></div>
-</section>
-<section id="guide" class="panel guide" hidden tabindex="-1" aria-labelledby="guideTitle"><span class="eyebrow" data-hi="दस जागरूकता बिंदु" data-en="Ten awareness points">दस जागरूकता बिंदु</span><h2 id="guideTitle"></h2><p class="notice" data-hi="नीचे के सुझाव सामान्य जागरूकता हेतु हैं; अपने क्षेत्र की विशेषज्ञ सलाह और सरकारी निर्देश भी जाँचें।" data-en="These are general awareness tips; also check qualified advice and official guidance for your field.">नीचे के सुझाव सामान्य जागरूकता हेतु हैं; अपने क्षेत्र की विशेषज्ञ सलाह और सरकारी निर्देश भी जाँचें।</p><ol id="points" class="points"></ol><div id="lastPoint" style="height:1px"></div>
+<section id="guide" class="panel guide" tabindex="-1" aria-labelledby="guideTitle"><span class="eyebrow" data-hi="दस जागरूकता बिंदु" data-en="Ten awareness points">दस जागरूकता बिंदु</span><h2 id="guideTitle"></h2><p class="notice" data-hi="नीचे के सुझाव सामान्य जागरूकता हेतु हैं; अपने क्षेत्र की विशेषज्ञ सलाह और सरकारी निर्देश भी जाँचें।" data-en="These are general awareness tips; also check qualified advice and official guidance for your field.">नीचे के सुझाव सामान्य जागरूकता हेतु हैं; अपने क्षेत्र की विशेषज्ञ सलाह और सरकारी निर्देश भी जाँचें।</p><ol id="points" class="points"></ol><div id="lastPoint" style="height:1px"></div>
 <div class="contacts"><article class="contact"><strong data-hi="राष्ट्रीय शिकायत पोर्टल" data-en="National grievance portal">राष्ट्रीय शिकायत पोर्टल</strong><p data-hi="केंद्र सरकार के मंत्रालय/विभाग की पात्र शिकायत CPGRAMS पर दर्ज और ट्रैक करें।" data-en="Lodge and track eligible grievances about Union ministries/departments on CPGRAMS.">केंद्र सरकार के मंत्रालय/विभाग की पात्र शिकायत CPGRAMS पर दर्ज और ट्रैक करें।</p><a href="https://pgportal.gov.in/" target="_blank" rel="noopener noreferrer">CPGRAMS</a></article>
 <article class="contact"><strong data-hi="उत्तर प्रदेश शिकायत पोर्टल" data-en="Uttar Pradesh grievance portal">उत्तर प्रदेश शिकायत पोर्टल</strong><p data-hi="जनसुनवाई पर शिकायत दर्ज करें और स्थिति/प्रतिक्रिया देखें। मुख्यमंत्री हेल्पलाइन 1076।" data-en="Register a complaint and check status/response on Jansunwai. CM Helpline 1076.">जनसुनवाई पर शिकायत दर्ज करें और स्थिति/प्रतिक्रिया देखें। मुख्यमंत्री हेल्पलाइन 1076।</p><a href="https://jansunwai.up.nic.in/" target="_blank" rel="noopener noreferrer">Jansunwai</a> · <a href="tel:1076">1076</a></article>
 <article id="specificContact" class="contact" hidden></article>
 <article class="contact"><strong data-hi="तत्काल आपात सहायता" data-en="Immediate emergency">तत्काल आपात सहायता</strong><p data-hi="जान-माल के तत्काल खतरे में 112 पर कॉल करें।" data-en="For immediate danger to life or safety, call 112.">जान-माल के तत्काल खतरे में 112 पर कॉल करें।</p><a href="tel:112">112</a></article></div>
 <p class="hint" data-hi="सरकारी नंबर/सेवाएँ बदल सकती हैं; उपयोग से पहले आधिकारिक पोर्टल पर पुष्टि करें।" data-en="Government numbers and services can change; confirm details on the official portal before use.">सरकारी नंबर/सेवाएँ बदल सकती हैं; उपयोग से पहले आधिकारिक पोर्टल पर पुष्टि करें।</p>
-<div class="readbox"><label class="checkline"><input id="readConfirm" type="checkbox" disabled><span data-hi="मैंने इस चुने हुए क्षेत्र के सभी 10 बिंदु पढ़ लिए हैं।" data-en="I have read all 10 points for this selected sector.">मैंने इस चुने हुए क्षेत्र के सभी 10 बिंदु पढ़ लिए हैं।</span></label><button id="continue" class="btn" type="button" disabled data-hi="संकल्प जारी रखें" data-en="Continue to pledge">संकल्प जारी रखें</button></div>
+<div class="readbox"><label class="checkline"><input id="readConfirm" type="checkbox" disabled><span data-hi="मैंने सभी 10 जागरूकता बिंदु पढ़ लिए हैं।" data-en="I have read all 10 awareness points.">मैंने सभी 10 जागरूकता बिंदु पढ़ लिए हैं।</span></label><button id="continue" class="btn" type="button" disabled data-hi="संकल्प जारी रखें" data-en="Continue to pledge">संकल्प जारी रखें</button></div>
 </section>
 <section id="pledgeFormPanel" class="panel" hidden><h2 data-hi="अपना संकल्प बनाएँ" data-en="Create your pledge">अपना संकल्प बनाएँ</h2><form id="pledgeForm"><div class="form-grid">
 <div class="wide"><label for="fullName" data-hi="पूरा नाम" data-en="Full name">पूरा नाम</label><input id="fullName" type="text" maxlength="80" autocomplete="name" required></div>
-<div><label for="gender" data-hi="लिंग (सम्मानसूचक संबोधन हेतु)" data-en="Gender (for respectful title)">लिंग (सम्मानसूचक संबोधन हेतु)</label><select id="gender" required><option value="" data-hi="चुनें" data-en="Select">चुनें</option><option value="male" data-hi="पुरुष" data-en="Man">पुरुष</option><option value="female" data-hi="महिला" data-en="Woman">महिला</option><option value="other" data-hi="अन्य / बताना नहीं चाहते" data-en="Other / prefer not to say">अन्य / बताना नहीं चाहते</option></select></div>
+<div><label for="gender" data-hi="लिंग (वैकल्पिक — सम्मानसूचक संबोधन हेतु)" data-en="Gender (optional — for a respectful title)">लिंग (वैकल्पिक — सम्मानसूचक संबोधन हेतु)</label><select id="gender"><option value="" data-hi="चुनें" data-en="Select">चुनें</option><option value="male" data-hi="पुरुष" data-en="Man">पुरुष</option><option value="female" data-hi="महिला" data-en="Woman">महिला</option><option value="other" data-hi="अन्य / बताना नहीं चाहते" data-en="Other / prefer not to say">अन्य / बताना नहीं चाहते</option></select></div>
 <div id="maritalWrap" hidden><label for="maritalStatus" data-hi="वैवाहिक स्थिति" data-en="Marital status">वैवाहिक स्थिति</label><select id="maritalStatus"><option value="prefer" data-hi="बताना नहीं चाहते" data-en="Prefer not to say">बताना नहीं चाहते</option><option value="unmarried" data-hi="अविवाहित" data-en="Unmarried">अविवाहित</option><option value="married" data-hi="विवाहित" data-en="Married">विवाहित</option></select></div>
 <div><label for="pledgeMobile" data-hi="मोबाइल नंबर (वैकल्पिक)" data-en="Mobile number (optional)">मोबाइल नंबर (वैकल्पिक)</label><input id="pledgeMobile" type="tel" inputmode="tel" maxlength="16" autocomplete="tel" data-hi="10 अंकों का मोबाइल नंबर" data-en="10-digit mobile number"><span class="hint" data-hi="भरना ज़रूरी नहीं है। दिया गया नंबर केवल संगठनात्मक रिकॉर्ड में रहेगा, सार्वजनिक नहीं होगा।" data-en="You may leave this blank. If provided it stays in the organisation’s record and is never shown publicly.">भरना ज़रूरी नहीं है। दिया गया नंबर केवल संगठनात्मक रिकॉर्ड में रहेगा, सार्वजनिक नहीं होगा।</span></div>
 <div><label for="pledgeEmail" data-hi="ईमेल (वैकल्पिक)" data-en="Email (optional)">ईमेल (वैकल्पिक)</label><input id="pledgeEmail" type="email" maxlength="120" autocomplete="email" data-hi="you@example.com" data-en="you@example.com"><span class="hint" data-hi="भरना ज़रूरी नहीं है। दिया गया ईमेल केवल संगठनात्मक रिकॉर्ड में रहेगा, सार्वजनिक नहीं होगा।" data-en="You may leave this blank. If provided it stays in the organisation’s record and is never shown publicly.">भरना ज़रूरी नहीं है। दिया गया ईमेल केवल संगठनात्मक रिकॉर्ड में रहेगा, सार्वजनिक नहीं होगा।</span></div>
@@ -140,11 +135,7 @@ const tipBanks={
   en:['Respect women’s dignity, consent and privacy.','Promote equal access to education, skills and employment.','Support women’s participation in decisions and leadership.','Share financial-literacy and safe digital-payment information.','Do not normalize harassment or violence; seek safe support.','Use a safe phone/place and move to safety first if risk is immediate.','For workplace complaints, ask about the Internal Committee or district Local Committee.','Never share a survivor’s identity, photo, messages or location without consent.','Check scheme eligibility on official portals; never share OTPs or passwords.','For immediate danger call 112; for women’s safety support contact 1090 or NCW.']
  }
 };
-function tipsForSelectedSector(){
- const chosen=[$('primarySector').value,...selectedSectors()];
- const key=chosen.find(x=>tipBanks[x]);
- return key?tipBanks[key][lang]:tips[lang];
-}
+function tipsForSector(){return tipBanks[guideSector]?tipBanks[guideSector][lang]:tips[lang];}
 
 const contactCore={
  'Children':['NCPCR child-rights complaint portal','https://ncpcr.gov.in/index_ebaalnidan.php/main/complaint','1098 Child Helpline; immediate danger 112.'],
@@ -155,45 +146,31 @@ const contactCore={
  "Women's Development & Empowerment":['NCW women’s complaints','https://ncwapps.nic.in/','National violence support 14490; UP WPL 1090; immediate danger 112.']
 };
 const $=id=>document.getElementById(id);let lang='hi', completed=false, lastCertText='';
+const requestedSector=new URLSearchParams(location.search).get('sector')||'';
+const guideSector=[...primary,...secondary].includes(requestedSector)?requestedSector:'';
 function translate(){
  document.documentElement.lang=lang;
  document.querySelectorAll('[data-hi][data-en]').forEach(el=>{const value=el.getAttribute('data-'+lang);if(value!==null){if(el.tagName==='INPUT')el.placeholder=value;else el.innerHTML=value;}});
  document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
- fillOptions();
- if(!$('guide').hidden&&$('guideTitle'))$('guideTitle').textContent=lang==='hi'?hiPrimary[primary.indexOf($('primarySector').value)]||$('primarySector').value:$('primarySector').value;
+ renderGuide();
+ if(!$('pledgeFormPanel').hidden)$('certSectors').textContent=certSectorLine();
 }
-function fillOptions(){
- const p=$('primarySector'),old=p.value||'';
- p.innerHTML='<option value="">'+(lang==='hi'?'प्राथमिक क्षेत्र चुनें':'Select a primary sector')+'</option>'+primary.map((v,i)=>'<option value="'+v+'">'+(lang==='hi'?hiPrimary[i]:v)+'</option>').join('');
- p.value=primary.includes(old)?old:'';
- const selected=new Set([...document.querySelectorAll('.secondary-check:checked')].map(x=>x.value));
- $('secondarySectors').innerHTML=secondary.map((v,i)=>'<label><input class="secondary-check" type="checkbox" value="'+v+'" '+(selected.has(v)?'checked':'')+'><span>'+(lang==='hi'?hiSecondary[i]:v)+'</span></label>').join('');
-}
-function selectedSectors(){return [...document.querySelectorAll('.secondary-check:checked')].map(x=>x.value);}
 function selectedLabel(value){let i=primary.indexOf(value);if(i>=0)return lang==='hi'?hiPrimary[i]:value;i=secondary.indexOf(value);return i>=0&&lang==='hi'?hiSecondary[i]:value;}
 function showContacts(){
- const sec=$('specificContact'),primaryValue=$('primarySector').value,sel=selectedSectors();
- let c=contactCore[primaryValue]||null;
- if(!c)c=sel.map(x=>contactCore[x]).find(Boolean)||null;
+ const sec=$('specificContact');
+ let c=contactCore[guideSector]||null;
  if(c){sec.hidden=false;sec.innerHTML='<strong>'+(lang==='hi'?'विषय-विशेष राष्ट्रीय/राज्य सहायता':'Topic-specific national/state support')+'</strong><p>'+c[0]+' · '+c[2]+'</p><a target="_blank" rel="noopener noreferrer" href="'+c[1]+'">'+(lang==='hi'?'आधिकारिक संपर्क स्रोत खोलें':'Open official contact source')+'</a>';}
  else sec.hidden=true;
 }
-$('primarySector').addEventListener('change',showContacts);
-$('secondarySectors').addEventListener('change',showContacts);
-document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>{lang=b.dataset.lang;translate();showContacts();if(!$('guide').hidden)$('openGuide').click();}));
-fillOptions();
-const requestedSector=new URLSearchParams(location.search).get('sector');
-if(primary.includes(requestedSector))$('primarySector').value=requestedSector;
-else if(secondary.includes(requestedSector)){const preselected=[...document.querySelectorAll('.secondary-check')].find(input=>input.value===requestedSector);if(preselected)preselected.checked=true;}
-showContacts();
-$('openGuide').addEventListener('click',()=>{
- const chosen=$('primarySector').value;if(!chosen){$('primarySector').focus();return;}
- completed=false;$('readConfirm').checked=false;$('readConfirm').disabled=true;$('continue').disabled=true;$('pledgeFormPanel').hidden=true;$('certificate').hidden=true;
- const title=selectedLabel(chosen)+(selectedSectors().length?' + '+selectedSectors().map(selectedLabel).join(', '):'');
- $('guideTitle').textContent=title;$('points').innerHTML=tipsForSelectedSector().map((v,i)=>'<li '+(i===9?'id="lastPledgePoint"':'')+'>'+v+'</li>').join('');
- showContacts();$('guide').hidden=false;$('guide').focus();$('guide').scrollIntoView({behavior:'smooth',block:'start'});
- if('IntersectionObserver'in window){const watcher=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){ $('readConfirm').disabled=false;watcher.disconnect();}},{threshold:.6});watcher.observe($('lastPledgePoint'));}else $('readConfirm').disabled=false;
-});
+document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>{lang=b.dataset.lang;translate();}));
+function renderGuide(){
+ $('guideTitle').textContent=guideSector?selectedLabel(guideSector):(lang==='hi'?'सामुदायिक जागरूकता के दस बिंदु':'Ten community-awareness points');
+ $('points').innerHTML=tipsForSector().map((v,i)=>'<li '+(i===9?'id="lastPledgePoint"':'')+'>'+v+'</li>').join('');
+ showContacts();
+}
+function certSectorLine(){return guideSector?(lang==='hi'?'क्षेत्र: ':'Field: ')+selectedLabel(guideSector):'';}
+renderGuide();
+if('IntersectionObserver'in window){const watcher=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){$('readConfirm').disabled=false;watcher.disconnect();}},{threshold:.6});watcher.observe($('lastPledgePoint'));}else $('readConfirm').disabled=false;
 $('readConfirm').addEventListener('change',()=>{$('continue').disabled=!$('readConfirm').checked;});
 $('continue').addEventListener('click',()=>{if(!$('readConfirm').checked||$('readConfirm').disabled)return;completed=true;$('pledgeFormPanel').hidden=false;$('pledgeFormPanel').scrollIntoView({behavior:'smooth',block:'start'});});
 $('gender').addEventListener('change',()=>{const female=$('gender').value==='female';$('maritalWrap').hidden=!female;$('maritalStatus').required=female;});
@@ -205,7 +182,7 @@ function honorific(){
  return lang==='hi'?'सम्मानित सदस्य':'Valued Pledge Partner';
 }
 function hashFor(){
- const all=[$('primarySector').value,...selectedSectors()].join(' ').toLowerCase();
+ const all=guideSector.toLowerCase();
  let tags=['#CommunityPledge','#DipraFoundation'];
  if(all.includes('educat')||all.includes('children'))tags.push('#EducationForAll','#Literacy');
  if(all.includes('health'))tags.push('#HealthForAll','#HealthAwareness');
@@ -214,7 +191,7 @@ function hashFor(){
  if(tags.length===2)tags.push('#CommunityAwareness','#SocialDevelopment');
  return [...new Set(tags)].join(' ');
 }
-function shareText(){return (lang==='hi'?'मैंने ':'I have taken a community awareness pledge for ')+(lang==='hi'?selectedLabel($('primarySector').value):$('primarySector').value)+'. '+(lang==='hi'?'जानकारी पढ़ें और जुड़ें: ':'Read and join: ')+(document.querySelector('link[rel=canonical]').href)+' '+hashFor();}
+function shareText(){return (lang==='hi'?'मैंने सामुदायिक जागरूकता का संकल्प लिया है':'I have taken a community awareness pledge')+(guideSector?' — '+selectedLabel(guideSector):'')+'. '+(lang==='hi'?'जानकारी पढ़ें और जुड़ें: ':'Read and join: ')+(document.querySelector('link[rel=canonical]').href)+' '+hashFor();}
 function pledgeContact(){
  const res={mobile:'',email:''};
  const mob=$('pledgeMobile').value.trim();
@@ -229,14 +206,13 @@ $('pledgeForm').addEventListener('submit',async e=>{
  if(contact.error){const mobile=contact.error==='mobile';$('submitStatus').textContent=mobile?(lang==='hi'?'मोबाइल नंबर सही नहीं लग रहा। 10 अंकों का नंबर लिखें या इसे खाली छोड़ दें।':'That mobile number does not look right. Enter a 10-digit number or leave it blank.'):(lang==='hi'?'ईमेल पता सही नहीं लग रहा। सही पता लिखें या इसे खाली छोड़ दें।':'That email address does not look right. Correct it or leave it blank.');$(mobile?'pledgeMobile':'pledgeEmail').focus();return;}
  const submit=$('createPledge');submit.disabled=true;$('submitStatus').textContent=lang==='hi'?'आपका संकल्प बनाया जा रहा है…':'Creating your pledge…';
  const displayName=honorific()+' '+$('fullName').value.trim();
- const secondary=selectedSectors();
-  const payload={action:'submitPledge',name:displayName,primarySector:$('primarySector').value,secondarySectors:secondary,language:lang,readConfirmed:true,consent:$('recordConsent').checked,publicVerifyConsent:$('publicVerifyConsent').checked,mobile:contact.mobile,email:contact.email,pledgeText:tipsForSelectedSector().join(' '),website:$('website').value};
+  const payload={action:'submitPledge',name:displayName,primarySector:guideSector,secondarySectors:[],language:lang,readConfirmed:true,consent:$('recordConsent').checked,publicVerifyConsent:$('publicVerifyConsent').checked,mobile:contact.mobile,email:contact.email,pledgeText:tipsForSector().join(' '),website:$('website').value};
  try{
   const response=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(payload)});
    const result=await response.json();if(result.status!=='success'){const saveError=new Error(result.message||'Could not save pledge');saveError.backendResponse=true;saveError.requestId=result.requestId||'';throw saveError;}
   const id=result.pledgeId||'DF-PLEDGE';
-  $('certName').textContent=displayName;$('certSectors').textContent=(lang==='hi'?'प्राथमिक क्षेत्र: ':'Primary sector: ')+selectedLabel(payload.primarySector)+(secondary.length?' · '+(lang==='hi'?'द्वितीयक: ':'Secondary: ')+secondary.map(selectedLabel).join(', '):'');
-  $('certVow').textContent=lang==='hi'?'मैंने इस क्षेत्र में सुरक्षित, सम्मानजनक और जिम्मेदार जागरूकता को बढ़ावा देने का संकल्प लिया है।':'I pledge to promote safe, respectful and responsible awareness in this field.';
+  $('certName').textContent=displayName;$('certSectors').textContent=certSectorLine();$('certSectors').hidden=!guideSector;
+  $('certVow').textContent=lang==='hi'?'मैंने सुरक्षित, सम्मानजनक और जिम्मेदार सामुदायिक जागरूकता को बढ़ावा देने का संकल्प लिया है।':'I pledge to promote safe, respectful and responsible community awareness.';
   $('certId').textContent=(lang==='hi'?'संकल्प क्रमांक: ':'Pledge ID: ')+id;
   const verifyUrl=location.origin+'/verify-pledge?id='+encodeURIComponent(id);$('verifyLink').href=verifyUrl;
   $('certDate').textContent=new Intl.DateTimeFormat(lang==='hi'?'hi-IN':'en-IN',{dateStyle:'long'}).format(new Date());
