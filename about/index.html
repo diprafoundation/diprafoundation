@@ -2,7 +2,7 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
 <title>हमारे बारे में | दिप्र फ़ाउंडेशन — Dipra Foundation</title>
 <meta name="description" content="दिप्र फ़ाउंडेशन के बारे में जानें — एक पंजीकृत न्यास जो शिक्षा, स्वास्थ्य, कृषि तथा सामाजिक कल्याण के क्षेत्र में समर्पित है।">
 <meta name="theme-color" content="#0D7A3A">
@@ -218,6 +218,12 @@
   .page-hero { padding: 50px 0 60px; }
 }
 </style>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/logo.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="दिप्र">
 </head>
 
 <body class="lang-hi">
@@ -242,7 +248,7 @@
 <!-- Header -->
 <header>
   <div class="header-inner">
-    <a href="home" class="brand">
+    <a href="/home" class="brand">
       <div class="brand-logo">
         <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="दिप्र फ़ाउंडेशन">
       </div>
@@ -268,7 +274,7 @@
         <button class="lang-btn active" data-lang="hi">हिं</button>
         <button class="lang-btn" data-lang="en">EN</button>
       </div>
-      <a href="donate/" class="btn btn-saffron btn-sm" data-hi="🙏 दान करें" data-en="🙏 Donate">🙏 दान करें</a>
+      <a href="/donate/" class="btn btn-saffron btn-sm" data-hi="🙏 दान करें" data-en="🙏 Donate">🙏 दान करें</a>
       <button class="burger" id="burger" aria-label="सूची"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -588,5 +594,6 @@ document.addEventListener('keydown', e => {
 console.log('%c🪔 दिप्र फ़ाउंडेशन — हमारे बारे में', 'color:#8B1538;font-weight:bold;font-size:14px');
 </script>
 <script src="https://www.diprafoundation.com/sound.js" defer></script>
+<script src="/app-nav.js" defer></script>
 </body>
 </html>
