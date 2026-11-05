@@ -2,7 +2,7 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
 <title>नि:शुल्क ई-पुस्तकें एवं परीक्षा | दिप्र फ़ाउंडेशन</title>
 <meta name="description" content="नि:शुल्क अंकीय पाठ्यक्रम — ई-पुस्तक पढ़ें, परीक्षा दें, QR-सत्यापनीय प्रमाणपत्र पाएँ।">
 <meta name="theme-color" content="#0D7A3A">
@@ -371,6 +371,12 @@
   header, footer, .topbar, .tricolor, .step-tabs { display: none !important; }
 }
 </style>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/logo.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="दिप्र">
 </head>
 
 <body class="lang-hi">
@@ -1497,7 +1503,8 @@ if(document.readyState === 'loading'){
 
 console.log('%c📚 दिप्र फ़ाउंडेशन — Ebook Page v2 loaded', 'color:#FF7A00;font-weight:bold;font-size:14px');
 </script>
-<script src="sound.js" defer></script>
+<script src="/sound.js" defer></script>
 
+<script src="/app-nav.js" defer></script>
 </body>
 </html>
