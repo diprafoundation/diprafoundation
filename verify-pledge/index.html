@@ -1,16 +1,23 @@
 <!doctype html>
 <html lang="hi">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow"><title>Pledge Verification | Dipra Foundation</title>
 <style>
 <!-- COMMON CSS -->
 <link rel="stylesheet" href="https://www.diprafoundation.com/style.css">
 <!-- MOBILE APP CSS -->
 <link rel="stylesheet" href="https://www.diprafoundation.com/mobile-app.css" media="(max-width: 860px)">
-</style></head>
+</style><link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/logo.png">
+<link rel="icon" type="image/png" href="/logo.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="दिप्र">
+</head>
 <body><header><div class="bar"><a class="brand" href="/index.html"><img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="Dipra Foundation logo"><span>Dipra Foundation<small>Community pledge verification</small></span></a><div class="langs"><button type="button" data-lang="hi" class="active">हिं</button><button type="button" data-lang="en">EN</button></div></div></header>
-<main class="wrap"><section class="card" aria-live="polite"><div id="mark" class="mark">…</div><h1 id="title">संकल्प सत्यापन</h1><p id="lead" class="lead">रिकॉर्ड जाँचा जा रहा है…</p><div id="badge" class="badge" hidden></div><div id="details" class="details" hidden></div><p id="privateNote" class="private" hidden></p><p id="status" class="status" role="status"></p><div class="actions"><a class="back" href="/pledge" data-hi="नया संकल्प लें" data-en="Take a pledge">नया संकल्प लें</a></div></section></main><footer>© 2026 Dipra Foundation · <a href="/disclaimer.html">Disclaimer</a></footer>
+<main class="wrap"><section class="card" aria-live="polite"><div id="mark" class="mark">…</div><h1 id="title">संकल्प सत्यापन</h1><p id="lead" class="lead">रिकॉर्ड जाँचा जा रहा है…</p><div id="badge" class="badge" hidden></div><div id="details" class="details" hidden></div><p id="privateNote" class="private" hidden></p><p id="status" class="status" role="status"></p><div class="actions"><a class="back" href="/pledge" data-hi="नया संकल्प लें" data-en="Take a pledge">नया संकल्प लें</a></div></section></main><footer>© 2026 Dipra Foundation · <a href="/disclaimer/">Disclaimer</a></footer>
 <script>
 'use strict';
 const API='https://script.google.com/macros/s/AKfycbynC667snioVb9pnBE8jDRWUJHwKOUi5jTYO31PlfolDG5VjcTrE93zh2k-Ai7zgi0/exec';
@@ -21,4 +28,5 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',(
 function showRow(label,value){const row=document.createElement('div');row.className='row';const a=document.createElement('div');a.className='label';a.textContent=label;const b=document.createElement('div');b.className='value';b.textContent=value||'—';row.append(a,b);$('details').appendChild(row);}
 async function verify(){const id=(new URLSearchParams(location.search).get('id')||'').trim().toUpperCase();$('title').textContent=words[language].title;if(!/^DFP-\d{8}-[A-F0-9]{8,16}$/.test(id)){$('mark').textContent='!';$('mark').classList.add('invalid');$('lead').textContent=words[language].invalid;$('status').textContent=words[language].notFound;return;}try{const url=API+'?action=verifyPledge&id='+encodeURIComponent(id);const response=await fetch(url,{method:'GET',headers:{'Accept':'application/json'}});const result=await response.json();if(!result.verified){$('mark').textContent='!';$('mark').classList.add('invalid');$('lead').textContent=words[language].invalid;$('status').textContent=words[language].notFound;return;}$('mark').textContent='✓';$('lead').textContent=words[language].verified;$('badge').textContent=words[language].verified;$('badge').hidden=false;$('details').hidden=false;showRow(words[language].pledgeId,result.pledgeId);if(result.detailsPublic){showRow(words[language].name,result.name);showRow(words[language].primary,result.primarySector);if(result.secondarySectors)showRow(words[language].secondary,result.secondarySectors);}else{$('privateNote').textContent=words[language].private;$('privateNote').hidden=false;}showRow(words[language].date,result.date);}catch(err){console.error('Pledge verification failed:',err);$('mark').textContent='!';$('mark').classList.add('invalid');$('lead').textContent=words[language].invalid;$('status').textContent=words[language].error;}}
 verify();
-</script></body></html>
+</script><script src="/app-nav.js" defer></script>
+</body></html>
