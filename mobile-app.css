@@ -1209,7 +1209,7 @@
      17. TOAST — Above bottom nav
      ============================================================ */
   .toast {
-    bottom: calc(var(--bottom-nav-total) + 16px);
+    bottom: calc(max(var(--bottom-nav-total, 0px), var(--dpn-total, 0px)) + 16px);
     left: 16px;
     right: 16px;
     transform: translateY(140%);
@@ -1220,10 +1220,16 @@
     line-height: 1.5;
     text-align: left;
     box-shadow: 0 8px 32px rgba(139, 21, 56, 0.35);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform .35s ease, opacity .35s ease, visibility .35s ease;
   }
 
   .toast.show {
     transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
   }
 
   /* ============================================================

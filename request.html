@@ -2,7 +2,7 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
 <title>सहायता अनुरोध | दिप्र फ़ाउंडेशन — Request Support</title>
 <meta name="description" content="दिप्र फ़ाउंडेशन से चिकित्सा, शिक्षा अथवा अन्य सहायता हेतु अनुरोध करें।">
 <meta name="theme-color" content="#0D7A3A">
@@ -181,6 +181,12 @@
   margin-top: 8px;
 }
 </style>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/logo.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="दिप्र">
 </head>
 
 <body class="lang-hi">
@@ -219,7 +225,7 @@
         <li><a href="index.html" data-hi="गृह" data-en="Home">गृह</a></li>
         <li><a href="about.html" data-hi="हमारे बारे में" data-en="About">हमारे बारे में</a></li>
         <li><a href="the_Uplift.html" data-hi="The Uplift" data-en="The Uplift">The Uplift</a></li>
-        <li><a href="districts.html" data-hi="जनपद" data-en="Districts">जनपद</a></li>
+        <li><a href="/districts/" data-hi="जनपद" data-en="Districts">जनपद</a></li>
         <li><a href="verify.html" data-hi="सत्यापन" data-en="Verify">सत्यापन</a></li>
         <li><a href="portal.html" data-hi="पोर्टल" data-en="Portal">पोर्टल</a></li>
         <li><a href="request.html" class="active" data-hi="अनुरोध" data-en="Request">अनुरोध</a></li>
@@ -645,7 +651,7 @@ $('#requestForm').addEventListener('submit', async e => {
       return;
     }
 
-    $('#requestIdOut').textContent = requestId;
+    $('#requestIdOut').textContent = data.id || requestId;
     $('#requestForm').style.display = 'none';
     $('#confirmCard').classList.add('show');
     toast('🙏 अनुरोध सफलतापूर्वक जमा!');
@@ -676,5 +682,6 @@ function resetForm(){
 console.log('%c🙏 दिप्र फ़ाउंडेशन — सहायता अनुरोध', 'color:#8B1538;font-weight:bold;font-size:14px');
 </script>
 
+<script src="/app-nav.js" defer></script>
 </body>
 </html>

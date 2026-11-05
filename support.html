@@ -2,7 +2,7 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
 <title>सहयोग करें | दिप्र फ़ाउंडेशन — Support Us</title>
 <meta name="description" content="दिप्र फ़ाउंडेशन को सहयोग करें — दान, स्वयंसेवा, वस्तु-सहायता अथवा कॉर्पोरेट साझेदारी द्वारा।">
 <meta name="theme-color" content="#0D7A3A">
@@ -153,6 +153,12 @@
 .impact-card .dsc { font-size: .84rem; color: var(--muted); margin-top: 8px; line-height: 1.6; }
 .impact-card .emoji { font-size: 1.8rem; margin-bottom: 10px; }
 </style>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/logo.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="दिप्र">
 </head>
 
 <body class="lang-hi">
@@ -191,7 +197,7 @@
         <li><a href="index.html" data-hi="गृह" data-en="Home">गृह</a></li>
         <li><a href="about.html" data-hi="हमारे बारे में" data-en="About">हमारे बारे में</a></li>
         <li><a href="the_Uplift.html" data-hi="The Uplift" data-en="The Uplift">The Uplift</a></li>
-        <li><a href="districts.html" data-hi="जनपद" data-en="Districts">जनपद</a></li>
+        <li><a href="/districts/" data-hi="जनपद" data-en="Districts">जनपद</a></li>
         <li><a href="verify.html" data-hi="सत्यापन" data-en="Verify">सत्यापन</a></li>
         <li><a href="portal.html" data-hi="पोर्टल" data-en="Portal">पोर्टल</a></li>
         <li><a href="support.html" class="active" data-hi="सहयोग" data-en="Support">सहयोग</a></li>
@@ -470,5 +476,6 @@ document.addEventListener('keydown', e => {
 console.log('%c🤝 दिप्र फ़ाउंडेशन — सहयोग करें', 'color:#0D7A3A;font-weight:bold;font-size:14px');
 </script>
 <script src="sound.js" defer></script>
+<script src="/app-nav.js" defer></script>
 </body>
 </html>

@@ -43,6 +43,12 @@
 .bottom-nav-item.active::before,.bottom-nav-item.active::after{content:none!important;display:none!important}
 @media(max-width:560px){.bottom-nav{border-top-color:var(--line)!important}.bottom-nav-item{box-shadow:none!important}}
 </style>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/logo.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="दिप्र">
 </head>
 <body>
 <div class="site-topbar"><div class="site-topbar-inner"><span>📞 <a href="tel:+919532328276">+91 95323 28276</a>　·　✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></span><span>📍 खेरसा, बिधनू, कानपुर नगर　·　<a href="https://www.diprafoundation.com" target="_blank" rel="noopener">diprafoundation.com</a></span></div></div>
@@ -366,7 +372,19 @@ async function loadAdminRecords(entity,q,editKey,offset){
 function renderAdminRecordEditor(entity,record,columns,query,keyName,pageOffset){
  const box=$('recordEditor');if(!box||!record)return;box.classList.remove('hidden');
  const fields=(columns||Object.keys(record.fields)).filter(name=>name!=='Timestamp'&&name!==keyName&&!/passwordhash|passwordsalt|fileid/i.test(name));
- const controls=fields.map(name=>{const value=record.fields[name],text=value==null?'':String(value),long=text.length>90||/address|message|notes|details|remarks|description/i.test(name),numeric=typeof value==='number'||(/^(Amount|Score|Total|Percent|Hours|Attendance|FeePaid|FeeDue|Payable|ResultMarks|ResultTotal)$/i.test(name)&&/^-?\d+(\.\d+)?$/.test(text)),date=/date|on$/i.test(name);let type=date?'date':numeric?'number':'text';const rendered=type==='date'&&/^\d{4}-\d\d-\d\d/.test(text)?text.slice(0,10):text;return'<div class="field '+(long?'full':'')+'"><label for="edit_'+escapeHtml(name)+'">'+escapeHtml(name)+'</label>'+(long?'<textarea id="edit_'+escapeHtml(name)+'" name="'+escapeHtml(name)+'" maxlength="10000">'+escapeHtml(text)+'</textarea>':'<input id="edit_'+escapeHtml(name)+'" name="'+escapeHtml(name)+'" type="'+type+'" value="'+escapeHtml(rendered)+'"'+(numeric?' step="any"':'')+'></div>';}).join('');
+ const controls=fields.map(name=>{
+  const value=record.fields[name], text=value==null?'':String(value);
+  const long=text.length>90||/address|message|notes|details|remarks|description/i.test(name);
+  const numeric=typeof value==='number'||(/^(Amount|Score|Total|Percent|Hours|Attendance|FeePaid|FeeDue|Payable|ResultMarks|ResultTotal)$/i.test(name)&&/^-?\d+(\.\d+)?$/.test(text));
+  const isDate=/date|on$/i.test(name);
+  const type=isDate?'date':numeric?'number':'text';
+  const shown=(type==='date'&&/^\d{4}-\d\d-\d\d/.test(text))?text.slice(0,10):text;
+  const label='<div class="field '+(long?'full':'')+'"><label for="edit_'+escapeHtml(name)+'">'+escapeHtml(name)+'</label>';
+  const control=long
+    ?'<textarea id="edit_'+escapeHtml(name)+'" name="'+escapeHtml(name)+'" maxlength="10000">'+escapeHtml(text)+'</textarea>'
+    :'<input id="edit_'+escapeHtml(name)+'" name="'+escapeHtml(name)+'" type="'+type+'" value="'+escapeHtml(shown)+'"'+(numeric?' step="any"':'')+'>';
+  return label+control+'</div>';
+}).join('');
  const pdfLink=record.fields.CertURL||record.fields.CertificateURL||'';
  const photoEditor=entity==='portalUsers'?'<div class="field full"><label>'+(currentLanguage==='en'?'Profile photo':'प्रोफ़ाइल फोटो')+'</label><div class="inline-actions"><img class="photo-preview" id="adminMemberPhoto" alt="Profile photo"><input id="adminMemberPhotoFile" type="file" accept="image/png,image/jpeg,image/webp"></div></div>':'';
  box.innerHTML='<div class="inline-actions" style="justify-content:space-between"><h3>'+(currentLanguage==='en'?'Edit record':'रिकॉर्ड संपादित करें')+' · '+escapeHtml(record.key)+'</h3><button type="button" class="btn secondary" id="closeRecordEditor">×</button></div><p class="quiet">'+(currentLanguage==='en'?'All editable fields for this record are shown below.':'इस रिकॉर्ड के संपादन योग्य फ़ील्ड नीचे हैं।')+'</p>'+(pdfLink?'<p><a href="'+escapeHtml(pdfLink)+'" target="_blank" rel="noopener">'+(currentLanguage==='en'?'Open current certificate / PDF':'मौजूदा प्रमाणपत्र / PDF खोलें')+'</a></p>':'')+'<form id="recordEditForm" class="form-grid">'+photoEditor+controls+'<div class="field full inline-actions"><button class="btn" type="submit">'+(currentLanguage==='en'?'Save all changes':'सभी बदलाव सेव करें')+'</button>'+(entity==='applications'?'<button class="btn secondary" type="button" id="regenerateStudentCert">'+(currentLanguage==='en'?'Generate / regenerate certificate and email':'प्रमाणपत्र बनाएँ / फिर बनाएँ और ईमेल करें')+'</button>':'')+'</div></form><div id="recordEditMsg" class="msg" role="status"></div>';
@@ -397,5 +415,6 @@ $('soundBtn').addEventListener('click',()=>{sound=!sound;$('soundBtn').setAttrib
 function setLanguage(lang){applyLanguage(lang);}
 $('langHi').addEventListener('click',()=>setLanguage('hi'));$('langEn').addEventListener('click',()=>setLanguage('en'));initLanguage();
 </script>
+<script src="/app-nav.js" defer></script>
 </body>
 </html>

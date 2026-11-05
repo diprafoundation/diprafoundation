@@ -2,7 +2,7 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
 <title>दान करें | दिप्र फ़ाउंडेशन — The Uplift</title>
 <meta name="description" content="ज्ञान के दान से किसी बालक का भविष्य संवारें। दिप्र फ़ाउंडेशन में दान दें — अनाथ विद्यार्थियों की सहायता करें।">
 <meta name="theme-color" content="#D4A017">
@@ -376,14 +376,17 @@ footer a:hover{color:#fff}
 
 /* TOAST */
 .toast{
-  position:fixed;bottom:40px;left:50%;transform:translate(-50%,140%);
+  position:fixed;bottom:calc(max(var(--bottom-nav-total,0px),var(--dpn-total,0px)) + 16px);
+  left:16px;right:16px;transform:translateY(140%);
   background:linear-gradient(135deg,var(--maroon),var(--maroon-2));
   color:#fff;padding:16px 26px;border-radius:12px;
   box-shadow:0 14px 40px rgba(139,21,56,.45);
-  z-index:1500;transition:.35s;font-size:1rem;font-weight:600;
+  z-index:1500;font-size:1rem;font-weight:600;
   max-width:92vw;text-align:center;border:1.5px solid var(--gold-2);line-height:1.5;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:transform .35s ease,opacity .35s ease,visibility .35s ease;
 }
-.toast.show{transform:translate(-50%,0)}
+.toast.show{transform:translateY(0);opacity:1;visibility:visible}
 
 /* RESPONSIVE */
 @media(max-width:900px){
@@ -425,6 +428,12 @@ footer a:hover{color:#fff}
   .amount-presets{grid-template-columns:1fr 1fr}
 }
 </style>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/logo.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="दिप्र">
 </head>
 
 <body>
@@ -668,7 +677,7 @@ footer a:hover{color:#fff}
     <div class="transparency-grid">
       <div class="transp-card">
         <h4><span>📌</span> <span data-hi="पारदर्शिता" data-en="Transparency">पारदर्शिता</span></h4>
-        <p data-hi="दिप्र फ़ाउंडेशन एक पंजीकृत न्यास है (Trust Act 1882, पंजीकरण संख्या ३००, दर्पण: UP/2024/0459444)। प्रत्येक दान का लेखा-जोखा रखा जाता है तथा माँगने पर प्रतिवेदन उपलब्ध कराया जाता है। आपके दान की रसीद तथा कर-छूट प्रमाणपत्र उपलब्ध कराया जा सकता है।" data-en="Dipra Foundation is a registered trust (Trust Act 1882, Reg. No. 300, Darpan: UP/2024/0459444). Every donation is recorded and reports available on request. Receipts and tax-exemption certificates can be provided.">दिप्र फ़ाउंडेशन एक पंजीकृत न्यास है (Trust Act 1882, पंजीकरण संख्या ३००, दर्पण: UP/2024/0459444)। प्रत्येक दान का लेखा-जोखा रखा जाता है तथा माँगने पर प्रतिवेदन उपलब्ध कराया जाता है। आपके दान की रसीद तथा कर-छूट प्रमाणपत्र उपलब्ध कराया जा सकता है।</p>
+        <p data-hi="दिप्र फ़ाउंडेशन एक पंजीकृत न्यास है (Trust Act 1882, पंजीकरण संख्या ३००, दर्पण: UP/2024/0459444)। प्रत्येक दान का लेखा-जोखा रखा जाता है तथा माँगने पर प्रतिवेदन उपलब्ध कराया जाता है। आपको दान की स्वीकृति-पत्र (acknowledgement) दिया जाएगा। ⚠️ संस्था का 12A अथवा 80G पंजीकरण अभी प्राप्त नहीं है, अतः दान पर कोई कर-छूट या कर-लाभ प्राप्त नहीं होता।" data-en="Dipra Foundation is a registered trust (Trust Act 1882, Reg. No. 300, Darpan: UP/2024/0459444). Every donation is recorded and reports available on request. A donation acknowledgement will be provided. The organisation does not yet hold 12A or 80G registration, so donations do not qualify for any tax deduction.">दिप्र फ़ाउंडेशन एक पंजीकृत न्यास है (Trust Act 1882, पंजीकरण संख्या ३००, दर्पण: UP/2024/0459444)। प्रत्येक दान का लेखा-जोखा रखा जाता है तथा माँगने पर प्रतिवेदन उपलब्ध कराया जाता है। आपको दान की स्वीकृति-पत्र (acknowledgement) दिया जाएगा। ⚠️ संस्था का 12A अथवा 80G पंजीकरण अभी प्राप्त नहीं है, अतः दान पर कोई कर-छूट या कर-लाभ प्राप्त नहीं होता।</p>
       </div>
       <div class="transp-card warn">
         <h4><span>⚠️</span> <span data-hi="सुरक्षा सूचना" data-en="Safety Notice">सुरक्षा सूचना</span></h4>
@@ -1072,11 +1081,14 @@ $('#otpSendBtn').addEventListener('click', async () => {
 const r = await apiCall({
   action: 'sendMagicOtp',
   email: email,
-  formType: 'application',  // or 'volunteer', 'grievance', 'donation', 'freecert'
+  formType: 'donation',
   contextData: {
-    Name: name,
-    Mobile: mobile,
-    // ... बाकी data जो prefill करना हो
+    Name: _donationData.name,
+    Mobile: _donationData.mobile,
+    Email: _donationData.email,
+    Amount: _donationData.amount,
+    Purpose: _donationData.purpose,
+    Message: _donationData.message
   }
 });
   btn.disabled = false; btn.innerHTML = orig;
@@ -1153,7 +1165,7 @@ $('#otpVerifyBtn').addEventListener('click', async () => {
   }
 
   closeOtpModal();
-  $('#genDonationId').textContent = donationId;
+  $('#genDonationId').textContent = r.id || donationId;
   $('#donateForm').style.display = 'none';
   $('#confirmCard').classList.add('show');
   toast('🙏 धन्यवाद! दान दर्ज हो गया');

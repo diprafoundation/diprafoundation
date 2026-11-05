@@ -1,0 +1,42 @@
+{
+  "id": "/",
+  "name": "दिप्र फ़ाउंडेशन | Dipra Foundation",
+  "short_name": "दिप्र",
+  "description": "दिप्र फ़ाउंडेशन — शिक्षा, स्वास्थ्य एवं समाज सेवा। The Uplift कोचिंग योजना, दान और प्रमाण-पत्र सत्यापन एक ही जगह।",
+  "lang": "hi",
+  "dir": "ltr",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#0D7A3A",
+  "background_color": "#FFF8F0",
+  "icons": [
+    { "src": "/logo.png", "sizes": "1024x1024", "type": "image/png", "purpose": "any" }
+  ],
+  "shortcuts": [
+    {
+      "name": "The Uplift कोर्स",
+      "short_name": "कोर्स",
+      "url": "/the_Uplift/",
+      "icons": [{ "src": "/logo.png", "sizes": "1024x1024", "type": "image/png" }]
+    },
+    {
+      "name": "आवेदन करें",
+      "short_name": "आवेदन",
+      "url": "/the_Uplift/#apply",
+      "icons": [{ "src": "/logo.png", "sizes": "1024x1024", "type": "image/png" }]
+    },
+    {
+      "name": "दान करें",
+      "short_name": "दान",
+      "url": "/donate/",
+      "icons": [{ "src": "/logo.png", "sizes": "1024x1024", "type": "image/png" }]
+    },
+    {
+      "name": "प्रमाण-पत्र जाँचें",
+      "short_name": "जाँच",
+      "url": "/verify/",
+      "icons": [{ "src": "/logo.png", "sizes": "1024x1024", "type": "image/png" }]
+    }
+  ]
+}
