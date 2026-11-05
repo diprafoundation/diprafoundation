@@ -1434,15 +1434,18 @@ tbody tr:hover { background: var(--saffron-soft); }
   border-radius: 12px;
   box-shadow: 0 14px 40px rgba(13, 122, 58, 0.45);
   z-index: var(--z-toast);
-  transition: transform var(--t-slow);
+  transition: transform var(--t-slow), opacity var(--t-slow), visibility var(--t-slow);
   font-size: 1rem;
   font-weight: 600;
   max-width: 92vw;
   text-align: center;
   border: 1.5px solid var(--gold-2);
   line-height: 1.5;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
-.toast.show { transform: translate(-50%, 0); }
+.toast.show { transform: translate(-50%, 0); opacity: 1; visibility: visible; }
 .toast.toast-error {
   background: linear-gradient(135deg, var(--error), #8B1E1E);
   box-shadow: 0 14px 40px rgba(185, 28, 28, 0.45);
@@ -4528,7 +4531,7 @@ footer a:hover { color: var(--gold-2); }
 
   /* Toast above bottom nav */
   .toast {
-    bottom: calc(var(--bottom-nav-total) + 16px);
+    bottom: calc(max(var(--bottom-nav-total, 0px), var(--dpn-total, 0px)) + 16px);
     left: 16px;
     right: 16px;
     transform: translateY(140%);
@@ -4536,8 +4539,12 @@ footer a:hover { color: var(--gold-2); }
     padding: 14px 20px;
     font-size: 0.92rem;
     border-radius: 14px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform .35s ease, opacity .35s ease, visibility .35s ease;
   }
-  .toast.show { transform: translateY(0); }
+  .toast.show { transform: translateY(0); opacity: 1; visibility: visible; }
 
   /* Buttons */
   .btn {
