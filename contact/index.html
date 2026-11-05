@@ -2,7 +2,7 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
 <title>संपर्क सूत्र | दिप्र फ़ाउंडेशन — द अपलिफ़्ट</title>
 <meta name="description" content="दिप्र फ़ाउंडेशन (द अपलिफ़्ट शिक्षण योजना) से संपर्क करें। कार्यालय का पता, दूरभाष संख्या एवं विद्युत्पत्र विवरण।">
 <meta name="theme-color" content="#0D7A3A">
@@ -101,8 +101,8 @@ footer li{margin-bottom:11px}
 footer a{color:#F5D9C8;text-decoration:none}
 .foot-bottom{border-top:1px solid rgba(255,255,255,.14);padding:20px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.86rem}
 .disclaimer{background:rgba(255,255,255,.06);border-left:4px solid var(--gold-2);padding:16px 20px;border-radius:8px;font-size:.86rem;line-height:1.75;margin-bottom:30px;color:#F5D9C8}
-.toast{position:fixed;bottom:100px;left:50%;transform:translate(-50%,140%);background:linear-gradient(135deg,var(--maroon),var(--maroon-2));color:#fff;padding:16px 26px;border-radius:12px;z-index:1500;transition:.35s;font-size:1rem;font-weight:600;border:1.5px solid var(--gold-2)}
-.toast.show{transform:translate(-50%,0)}
+.toast{position:fixed;bottom:calc(max(var(--bottom-nav-total,0px),var(--dpn-total,0px)) + 16px);left:50%;transform:translate(-50%,140%);background:linear-gradient(135deg,var(--maroon),var(--maroon-2));color:#fff;padding:16px 26px;border-radius:12px;z-index:1500;transition:.35s;font-size:1rem;font-weight:600;border:1.5px solid var(--gold-2)opacity:0;visibility:hidden;pointer-events:none;transition:transform .35s ease,opacity .35s ease,visibility .35s ease;}
+.toast.show{transform:translate(-50%,0)opacity:1;visibility:visible;}
 
 @media(max-width:860px){
   .burger{display:flex}
@@ -113,6 +113,12 @@ footer a{color:#F5D9C8;text-decoration:none}
   .foot-grid{grid-template-columns:1fr}
 }
 </style>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/logo.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="दिप्र">
 </head>
 
 <body class="lang-hi">
@@ -150,7 +156,7 @@ footer a{color:#F5D9C8;text-decoration:none}
       <ul>
         <li><a href="https://www.diprafoundation.com/home" data-hi="गृह" data-en="Home">गृह</a></li>
         <li><a href="https://www.diprafoundation.com/home#courses" data-hi="पाठ्यक्रम" data-en="Courses">पाठ्यक्रम</a></li>
-        <li><a href="https://www.diprafoundation.com/homel#free" data-hi="नि:शुल्क पाठ्यक्रम" data-en="Free Courses">नि:शुल्क पाठ्यक्रम</a></li>
+        <li><a href="https://www.diprafoundation.com/the_Uplift/#free" data-hi="नि:शुल्क पाठ्यक्रम" data-en="Free Courses">नि:शुल्क पाठ्यक्रम</a></li>
         <li><a href="https://www.diprafoundation.com/contact" class="active" data-hi="संपर्क" data-en="Contact">संपर्क</a></li>
       </ul>
     </nav>
@@ -238,7 +244,7 @@ footer a{color:#F5D9C8;text-decoration:none}
         <ul>
           <li><a href="https://www.diprafoundation.com/home" data-hi="गृह पृष्ठ" data-en="Home">गृह पृष्ठ</a></li>
           <li><a href="https://www.diprafoundation.com/home#courses" data-hi="पाठ्यक्रम एवं शुल्क" data-en="Courses & Fees">पाठ्यक्रम एवं शुल्क</a></li>
-          <li><a href="https://www.diprafoundation.com/home.html#free" data-hi="नि:शुल्क पाठ्यक्रम" data-en="Free Courses">नि:शुल्क पाठ्यक्रम</a></li>
+          <li><a href="https://www.diprafoundation.com/the_Uplift/#free" data-hi="नि:शुल्क पाठ्यक्रम" data-en="Free Courses">नि:शुल्क पाठ्यक्रम</a></li>
         </ul>
       </div>
       <div>
@@ -328,5 +334,6 @@ $('#contactForm').addEventListener('submit', e => {
 });
 </script>
 
+<script src="/app-nav.js" defer></script>
 </body>
 </html>
