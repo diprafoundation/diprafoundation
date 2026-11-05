@@ -54,9 +54,16 @@ select:focus-visible,input:focus-visible,button:focus-visible,a:focus-visible{ou
  @media print{body.print-cert *{visibility:hidden!important}body.print-cert #certificate,body.print-cert #certificate *{visibility:visible!important}body.print-cert #certificate{display:block!important;position:absolute;inset:0;width:100%;max-width:none;min-height:180mm;margin:0;padding:18mm 20mm;box-shadow:none;-webkit-print-color-adjust:exact;print-color-adjust:exact}body.print-cert .share,body.print-cert #shareStatus{display:none!important}@page{size:A4 landscape;margin:8mm}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/logo.png">
+<link rel="icon" type="image/png" href="/logo.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="दिप्र">
 </head>
 <body>
-<header><div class="bar"><a class="brand" href="https://www.diprafoundation.com/home"><img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="Dipra Foundation logo"><span>Dipra Foundation<small data-hi="सामुदायिक संकल्प" data-en="Community Pledge">सामुदायिक संकल्प</small></span></a><div class="nav"><a href="https://www.diprafoundation.com/home" data-hi="मुख्य पृष्ठ" data-en="Home">मुख्य पृष्ठ</a><a href="/online-course/" data-hi="ऑनलाइन कोर्स" data-en="Online courses">ऑनलाइन कोर्स</a><div class="lang"><button type="button" class="active" data-lang="hi">हिं</button><button type="button" data-lang="en">EN</button></div></div></div></header>
+<header><div class="bar"><a class="brand" href="https://www.diprafoundation.com/home"><img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="Dipra Foundation logo"><span>Dipra Foundation<small data-hi="सामुदायिक संकल्प" data-en="Community Pledge">सामुदायिक संकल्प</small></span></a><div class="nav"><a href="https://www.diprafoundation.com/home" data-hi="मुख्य पृष्ठ" data-en="Home">मुख्य पृष्ठ</a><a href="/the_Uplift/" data-hi="ऑनलाइन कोर्स" data-en="Online courses">ऑनलाइन कोर्स</a><div class="lang"><button type="button" class="active" data-lang="hi">हिं</button><button type="button" data-lang="en">EN</button></div></div></div></header>
 <main class="wrap">
 <section class="hero"><span class="eyebrow" data-hi="हर विषय पर पढ़ें · समझें · संकल्प लें" data-en="Read · Understand · Pledge">हर विषय पर पढ़ें · समझें · संकल्प लें</span><h1 data-hi="सामुदायिक जागरूकता संकल्प" data-en="Community Awareness Pledge">सामुदायिक जागरूकता संकल्प</h1><p data-hi="अपना कार्यक्षेत्र चुनें, दस जागरूकता बिंदु पढ़ें और फिर अपना सम्मानजनक pledge प्रमाण-पत्र बनाएँ।" data-en="Choose your field, read ten awareness points, then create your respectful pledge certificate.">अपना कार्यक्षेत्र चुनें, दस जागरूकता बिंदु पढ़ें और फिर अपना सम्मानजनक pledge प्रमाण-पत्र बनाएँ।</p></section>
 <div class="flow">
@@ -230,4 +237,5 @@ $('pledgeForm').addEventListener('submit',async e=>{
 $('shareBtn').addEventListener('click',async()=>{if(!lastCertText)return;try{if(navigator.share){await navigator.share({title:'Dipra Foundation pledge',text:lastCertText});return;}}catch(e){if(e.name==='AbortError')return;}try{await navigator.clipboard.writeText(lastCertText);$('shareStatus').textContent=lang==='hi'?'साझा करने का संदेश कॉपी हुआ।':'Share message copied.';}catch(e){$('shareStatus').textContent=lang==='hi'?'नीचे WhatsApp या X चुनें।':'Use WhatsApp or X below.';}});
 $('copyBtn').addEventListener('click',async()=>{if(!lastCertText)return;try{await navigator.clipboard.writeText(lastCertText);$('shareStatus').textContent=lang==='hi'?'संदेश कॉपी हुआ।':'Message copied.';}catch(e){$('shareStatus').textContent=lang==='hi'?'कॉपी नहीं हुआ; WhatsApp या X चुनें।':'Copy failed; use WhatsApp or X.';}});
 $('printBtn').addEventListener('click',()=>{document.body.classList.add('print-cert');window.print();});window.addEventListener('afterprint',()=>document.body.classList.remove('print-cert'));
-</script></body></html>
+</script><script src="/app-nav.js" defer></script>
+</body></html>
