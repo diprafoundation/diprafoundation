@@ -57,6 +57,7 @@ body.lang-hi .t-en{display:none!important}
 /* ============ ACCESSIBILITY ============ */
 .skip-link{position:fixed;left:12px;top:12px;z-index:2000;padding:10px 14px;background:#fff;color:var(--maroon);border:2px solid var(--maroon);border-radius:8px;transform:translateY(-160%);font-weight:700}
 .skip-link:focus{transform:translateY(0)}
+
 /* ============ TOPBAR ============ */
 .topbar{background:linear-gradient(90deg,var(--saffron-soft),#fff,var(--green-soft));padding:10px 0;border-bottom:1px solid var(--border);font-size:.88rem}
 .topbar-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
@@ -69,13 +70,14 @@ header{background:#fff;border-bottom:2px solid var(--border);box-shadow:0 2px 14
 .brand{display:flex;align-items:center;gap:14px;text-decoration:none!important}
 .brand-logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--saffron-soft),var(--green-soft));border:2px solid var(--saffron);display:grid;place-items:center;padding:6px;flex:none;box-shadow:0 4px 12px rgba(255,122,0,.2)}
 .brand-logo img{width:100%;height:100%;object-fit:contain;border-radius:6px}
-
 .brand-text{display:flex;flex-direction:column;gap:2px;min-width:0}
 .brand-text strong{font-size:1rem;color:var(--maroon);line-height:1.2}
 .brand-text small{font-size:.78rem;color:var(--muted);line-height:1.3}
 
+/* nav links — pointer-events defensive */
+nav,nav ul,nav ul li,nav a{pointer-events:auto}
 nav ul{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-nav a{padding:9px 14px;border-radius:9px;font-weight:600;font-size:.92rem;color:var(--ink);transition:.15s;display:block}
+nav a{padding:9px 14px;border-radius:9px;font-weight:600;font-size:.92rem;color:var(--ink);transition:.15s;display:block;position:relative;z-index:1}
 nav a:hover,nav a.active{background:var(--saffron-soft);color:var(--saffron-3)}
 .nav-actions{display:flex;align-items:center;gap:10px}
 .lang-switch{display:flex;border:1px solid var(--border-2);border-radius:9px;overflow:hidden;background:#fff}
@@ -258,7 +260,7 @@ footer a:hover{color:var(--gold-2)}
   .brand-logo{padding:4px}
 }
 
-/* Awareness and pledge */
+/* ============ AWARENESS & PLEDGE ============ */
 .awareness-section{background:linear-gradient(180deg,#fff,#f4fbf6)}
 .awareness-grid{align-items:stretch}
 .awareness-card{background:#fff;border:1px solid var(--border-2);border-radius:18px;padding:22px;box-shadow:var(--shadow);height:100%}
@@ -286,7 +288,6 @@ footer a:hover{color:var(--gold-2)}
 @media(max-width:760px){.pledge-panel{grid-template-columns:1fr}.pledge-certificate{grid-column:auto}}
 @media print{body.print-certificate *{visibility:hidden!important}body.print-certificate #pledgeCertificate,body.print-certificate #pledgeCertificate *{visibility:visible!important}body.print-certificate #pledgeCertificate{display:block!important;position:absolute;inset:0;width:100%;margin:0;padding:0}body.print-certificate .certificate-border{max-width:none;border:8px double #b18a21;min-height:90vh;display:flex;flex-direction:column;justify-content:center}body.print-certificate .print-action{display:none!important}@page{size:A4 landscape;margin:12mm}}
 
-
 .topic-open{margin-top:18px;white-space:normal;width:100%}
 .topic-guide{position:relative;margin:26px 0;padding:clamp(20px,4vw,34px);background:#fff;border:2px solid var(--green-2);border-radius:20px;box-shadow:var(--shadow-lg);scroll-margin-top:110px}
 .topic-guide h3{font-size:clamp(1.3rem,3vw,1.8rem);margin:7px 36px 6px 0}
@@ -298,23 +299,100 @@ footer a:hover{color:var(--gold-2)}
 .topic-points li:last-child{border-color:var(--green-2);background:var(--green-soft)}
 .read-end-marker{height:2px}
 .read-confirm{position:static;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px;background:#fff;border:1px solid var(--border-2);border-radius:14px;box-shadow:0 8px 25px #2a181022}
-.read-confirm label{display:flex;gap:10px;align-items:flex-start;font-weight:700}.read-confirm input{width:20px;height:20px;accent-color:var(--green);flex:none}
+.read-confirm label{display:flex;gap:10px;align-items:flex-start;font-weight:700}
+.read-confirm input{width:20px;height:20px;accent-color:var(--green);flex:none}
 button:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
 .contact-guides{margin-top:25px;padding-top:20px;border-top:1px solid var(--border)}
 .contact-guides h4{margin-bottom:8px}.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px;margin-top:14px}
-.contact-card{padding:16px;background:#f7fbf8;border:1px solid #cce8d4;border-radius:13px}.contact-card strong{display:block;color:var(--green-3)}.contact-card p{font-size:.88rem;color:var(--ink-2);margin:5px 0 10px}.contact-card a{font-weight:700;overflow-wrap:anywhere}
+.contact-card{padding:16px;background:#f7fbf8;border:1px solid #cce8d4;border-radius:13px}
+.contact-card strong{display:block;color:var(--green-3)}
+.contact-card p{font-size:.88rem;color:var(--ink-2);margin:5px 0 10px}
+.contact-card a{font-weight:700;overflow-wrap:anywhere}
 .source-note{font-size:.78rem;color:var(--muted);margin-top:12px}
-.pledge-panel{grid-template-columns:1fr minmax(260px,.7fr)}
 .pledge-panel form[hidden],.pledge-panel [hidden],.topic-guide[hidden]{display:none!important}
-.share-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:22px}.share-actions .btn{white-space:normal}
+.share-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:22px}
+.share-actions .btn{white-space:normal}
 .pledge-hashtags{color:var(--green-3);font-weight:700;overflow-wrap:anywhere}
 .share-status{min-height:1.4em;color:var(--green-3);font-size:.9rem}
-.sector-card{cursor:default}.sector-card .topic-open{margin-top:18px;width:100%;white-space:normal}.topic-guide{background:linear-gradient(145deg,#fff,#f4fbf6)}.program-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:20px 0}.program-choice{min-height:100%;text-align:left;white-space:normal;border:1px solid var(--border-2);background:#fff;color:var(--ink);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:0 3px 12px #381e100b}.program-choice:hover,.program-choice[aria-pressed=true]{border-color:var(--green-2);background:var(--green-soft);transform:translateY(-2px)}.program-choice strong{color:var(--maroon);font-size:.98rem}.program-choice span{font-size:.84rem;color:var(--ink-2);line-height:1.5}.program-detail{margin:20px 0;padding:clamp(16px,3vw,26px);background:#fff;border:1px solid var(--border-2);border-radius:16px}.program-detail h4{font-size:1.1rem;margin:4px 0}.program-points{display:grid;gap:9px;padding:0;margin:15px 0;list-style:none;counter-reset:program}.program-points li{counter-increment:program;display:grid;grid-template-columns:32px 1fr;gap:10px;align-items:start;padding:11px;background:#fbf8f1;border-radius:10px}.program-points li:before{content:counter(program);width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:var(--green);color:white;font-weight:800}.program-end{height:4px}.program-consent{display:flex;align-items:flex-start;gap:9px;margin:14px 0;font-weight:700}.program-consent input{width:20px;height:20px;accent-color:var(--green);flex:none}.awareness-cert{max-width:760px;margin:20px auto;padding:28px;border:5px double var(--gold);background:#fffdf7;text-align:center}.awareness-cert img{width:96px;height:96px;object-fit:contain;margin:0 auto 10px}.awareness-cert h4{font:700 1.6rem Georgia,'Noto Serif Devanagari',serif}.awareness-cert-name{font:700 1.6rem Georgia,serif;color:var(--green-3);margin:10px}.program-contacts{margin-top:20px;padding:18px;border-radius:14px;background:#fff6e8;border:1px solid var(--border-2)}.program-contacts a{font-weight:700;text-decoration:underline}.program-contacts ul{display:grid;gap:8px;margin-top:10px;list-style:disc;padding-left:22px}.program-contacts li{line-height:1.5}.awareness-help{font-size:.82rem;color:var(--muted);margin-top:12px}
+.sector-card{cursor:default}
+.sector-card .topic-open{margin-top:18px;width:100%;white-space:normal}
+.topic-guide{background:linear-gradient(145deg,#fff,#f4fbf6)}
+.program-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:20px 0}
+.program-choice{min-height:100%;text-align:left;white-space:normal;border:1px solid var(--border-2);background:#fff;color:var(--ink);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:0 3px 12px #381e100b}
+.program-choice:hover,.program-choice[aria-pressed=true]{border-color:var(--green-2);background:var(--green-soft);transform:translateY(-2px)}
+.program-choice strong{color:var(--maroon);font-size:.98rem}
+.program-choice span{font-size:.84rem;color:var(--ink-2);line-height:1.5}
+.program-detail{margin:20px 0;padding:clamp(16px,3vw,26px);background:#fff;border:1px solid var(--border-2);border-radius:16px}
+.program-detail h4{font-size:1.1rem;margin:4px 0}
+.program-points{display:grid;gap:9px;padding:0;margin:15px 0;list-style:none;counter-reset:program}
+.program-points li{counter-increment:program;display:grid;grid-template-columns:32px 1fr;gap:10px;align-items:start;padding:11px;background:#fbf8f1;border-radius:10px}
+.program-points li:before{content:counter(program);width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:var(--green);color:white;font-weight:800}
+.program-end{height:4px}
+.program-consent{display:flex;align-items:flex-start;gap:9px;margin:14px 0;font-weight:700}
+.program-consent input{width:20px;height:20px;accent-color:var(--green);flex:none}
+.awareness-cert{max-width:760px;margin:20px auto;padding:28px;border:5px double var(--gold);background:#fffdf7;text-align:center}
+.awareness-cert img{width:96px;height:96px;object-fit:contain;margin:0 auto 10px}
+.awareness-cert h4{font:700 1.6rem Georgia,'Noto Serif Devanagari',serif}
+.awareness-cert-name{font:700 1.6rem Georgia,serif;color:var(--green-3);margin:10px}
+.program-contacts{margin-top:20px;padding:18px;border-radius:14px;background:#fff6e8;border:1px solid var(--border-2)}
+.program-contacts a{font-weight:700;text-decoration:underline}
+.program-contacts ul{display:grid;gap:8px;margin-top:10px;list-style:disc;padding-left:22px}
+.program-contacts li{line-height:1.5}
+.awareness-help{font-size:.82rem;color:var(--muted);margin-top:12px}
 @media(max-width:700px){.read-confirm{align-items:stretch;flex-direction:column}.read-confirm .btn{width:100%}.contact-grid{grid-template-columns:1fr}}
 @media(max-width:700px){.program-grid{grid-template-columns:1fr}.program-choice{padding:14px}.awareness-cert{padding:22px 15px}.topic-guide{scroll-margin-top:82px}}
- .program-detail input[type=text]{width:100%;max-width:440px;min-height:48px;border:1px solid var(--border-2);border-radius:10px;padding:10px 12px;margin:6px 0 12px;background:#fff}
- @media print{body.print-awareness-certificate *{visibility:hidden!important}body.print-awareness-certificate #awarenessCertificate,body.print-awareness-certificate #awarenessCertificate *{visibility:visible!important}body.print-awareness-certificate #awarenessCertificate{display:block!important;position:absolute;inset:0;width:100%;max-width:none;margin:0;padding:25mm 20mm;min-height:180mm;border:8px double #b18a21;background:#fffdf7}body.print-awareness-certificate .print-action,body.print-awareness-certificate #topicPledgeLink{display:none!important}@page{size:A4 landscape;margin:10mm}}
+.program-detail input[type=text]{width:100%;max-width:440px;min-height:48px;border:1px solid var(--border-2);border-radius:10px;padding:10px 12px;margin:6px 0 12px;background:#fff}
+@media print{body.print-awareness-certificate *{visibility:hidden!important}body.print-awareness-certificate #awarenessCertificate,body.print-awareness-certificate #awarenessCertificate *{visibility:visible!important}body.print-awareness-certificate #awarenessCertificate{display:block!important;position:absolute;inset:0;width:100%;max-width:none;margin:0;padding:25mm 20mm;min-height:180mm;border:8px double #b18a21;background:#fffdf7}body.print-awareness-certificate .print-action,body.print-awareness-certificate #topicPledgeLink{display:none!important}@page{size:A4 landscape;margin:10mm}}
 
+/* ============ NEW: full awareness form ============ */
+.awareness-form{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:1rem 0}
+.awareness-form label{display:flex;flex-direction:column;font-size:.82rem;font-weight:700;color:var(--ink-2);gap:.25rem}
+.awareness-form label.full{grid-column:1/-1}
+.awareness-form input,.awareness-form select,.awareness-form textarea{width:100%;min-height:44px;border:1px solid var(--border-2);border-radius:9px;padding:.6rem .8rem;background:#fff;color:var(--ink);font:inherit;font-size:.92rem}
+.awareness-form input:focus,.awareness-form select:focus,.awareness-form textarea:focus{border-color:var(--maroon);outline:none}
+@media (max-width:640px){ .awareness-form{grid-template-columns:1fr} }
+
+/* ============ NEW: notices ============ */
+.notices-wrap{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden;border:1.5px solid var(--border)}
+.notice-item{display:flex;gap:1rem;padding:1.1rem 1.2rem;border-bottom:1px solid var(--border);align-items:flex-start}
+.notice-item:last-child{border-bottom:none}
+.notice-date{flex-shrink:0;background:var(--saffron-soft);color:var(--saffron-3);border-radius:10px;padding:.55rem .75rem;text-align:center;min-width:60px;font-weight:800;font-size:.72rem;line-height:1.3;text-transform:uppercase}
+.notice-body h4{color:var(--maroon);font-size:1rem;font-weight:700;margin-bottom:.2rem}
+.notice-body p{color:var(--ink-2);font-size:.9rem;line-height:1.6}
+.notice-body a{color:var(--maroon);font-weight:700;font-size:.88rem;display:inline-block;margin-top:.3rem}
+.notice-empty{padding:2rem;text-align:center;color:var(--muted);font-size:.95rem}
+
+/* ============ NEW: verify widget ============ */
+.verify-widget{background:#fff;border:1.5px solid var(--border-2);border-radius:var(--radius-xl);padding:2rem;box-shadow:var(--shadow);text-align:center}
+.verify-widget h3{color:var(--maroon);font-size:1.3rem;margin-bottom:.4rem;font-family:'Tiro Devanagari Hindi',serif;font-weight:400}
+.verify-widget p{color:var(--ink-2);font-size:.92rem;margin-bottom:1.2rem}
+.verify-form{display:flex;gap:.6rem;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.verify-form input{flex:1;min-width:180px;padding:.75rem 1rem;border:1.5px solid var(--border-2);border-radius:10px;font-size:.95rem;font-family:inherit;outline:none;transition:border-color .2s}
+.verify-form input:focus{border-color:var(--maroon)}
+.verify-form button{padding:.75rem 1.4rem;border:none;border-radius:10px;background:linear-gradient(135deg,var(--maroon),var(--maroon-2));color:#fff;font-weight:700;font-size:.92rem;cursor:pointer;font-family:inherit}
+.verify-links{margin-top:1rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;font-size:.85rem}
+
+/* ============ NEW: live stats pill ============ */
+.awareness-stats-pill{display:inline-flex;align-items:center;gap:.5rem;background:var(--green-soft);color:var(--green-3);border:1.5px solid var(--green-2);border-radius:999px;padding:.5rem 1rem;font-size:.9rem;font-weight:700;margin-top:.8rem}
+.awareness-stats-pill b{font-size:1.1rem;color:var(--maroon)}
+
+/* ============ NEW: CHATBOT ============ */
+#chatFab{position:fixed;right:20px;bottom:20px;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--maroon),var(--maroon-2));color:#fff;display:grid;place-items:center;font-size:1.5rem;cursor:pointer;border:none;z-index:9998;box-shadow:0 8px 24px rgba(139,21,56,.4);transition:transform .2s,box-shadow .2s}
+#chatFab:hover{transform:scale(1.08);box-shadow:0 10px 30px rgba(139,21,56,.5)}
+#chatPanel{position:fixed;right:20px;bottom:88px;width:min(360px,calc(100vw - 32px));max-height:min(560px,75vh);background:#fff;border-radius:16px;box-shadow:var(--shadow-lg);display:flex;flex-direction:column;z-index:9999;overflow:hidden;border:1px solid var(--border);transform:translateY(20px) scale(.95);opacity:0;pointer-events:none;transition:transform .25s,opacity .25s}
+#chatPanel.open{transform:translateY(0) scale(1);opacity:1;pointer-events:auto}
+#chatPanel header{background:linear-gradient(135deg,var(--maroon),var(--maroon-2));color:#fff;padding:.9rem 1rem;display:flex;justify-content:space-between;align-items:center;font-weight:700}
+#chatPanel header button{background:none;border:none;color:#fff;font-size:1.3rem;cursor:pointer;padding:0 .3rem}
+#chatLog{flex:1;overflow-y:auto;padding:1rem;background:#faf7f9;display:flex;flex-direction:column;gap:.6rem;min-height:200px}
+#chatLog .msg{max-width:85%;padding:.65rem .9rem;border-radius:12px;font-size:.9rem;line-height:1.55;word-wrap:break-word}
+#chatLog .msg.user{align-self:flex-end;background:var(--maroon);color:#fff;border-bottom-right-radius:4px}
+#chatLog .msg.bot{align-self:flex-start;background:#fff;border:1px solid var(--border);color:var(--ink);border-bottom-left-radius:4px}
+#chatLog .msg.bot.typing{font-style:italic;color:var(--muted)}
+#chatPanel form{display:flex;border-top:1px solid var(--border);padding:.6rem;background:#fff}
+#chatInput{flex:1;border:1px solid var(--border);border-radius:10px;padding:.65rem .9rem;font-family:inherit;font-size:.92rem;outline:none}
+#chatInput:focus{border-color:var(--maroon)}
+#chatPanel form button{margin-left:.5rem;background:var(--maroon);color:#fff;border:none;border-radius:10px;padding:0 1rem;font-weight:700;cursor:pointer;font-size:.9rem}
+#chatPanel form button:disabled{opacity:.5;cursor:not-allowed}
 </style>
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="apple-touch-icon" href="/logo.png">
@@ -341,25 +419,24 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
 <!-- Header -->
 <header>
   <div class="header-inner">
-    
-    <a href="/home/" class="brand" aria-label="Dipra Foundation Home">
+    <a href="https://www.diprafoundation.com/home/" class="brand" aria-label="Dipra Foundation Home">
       <div class="brand-logo">
         <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="" width="56" height="56" fetchpriority="high">
       </div>
       <span class="brand-text"><strong>Dipra Foundation</strong><small data-hi="पंजीकृत सामाजिक न्यास" data-en="Registered Public Trust">पंजीकृत सामाजिक न्यास</small></span>
     </a>
-    
     <nav id="mainNav" aria-label="Main Navigation">
       <div class="mobile-nav-head"><strong data-hi="मुख्य मेनू" data-en="Main menu">मुख्य मेनू</strong><button id="navClose" class="mobile-nav-close" type="button" aria-label="Close menu">×</button></div>
       <ul>
-        <li><a href="/home/" class="active" data-hi="गृह" data-en="Home">गृह</a></li>
-        <li><a href="/about/" data-hi="हमारे बारे में" data-en="About us">हमारे बारे में</a></li>
-        <li><a href="/the_Uplift/" data-hi="The Uplift" data-en="The Uplift">The Uplift</a></li>
-<li><a href="/pledge/" data-hi="संकल्प लें" data-en="Take a pledge">संकल्प लें</a></li>
-        <li><a href="/verify/" data-hi="सत्यापन" data-en="Verify">सत्यापन</a></li>
-        <li><a href="/portal/" data-hi="पोर्टल" data-en="Portal">पोर्टल</a></li>
-        <li><a href="/donate/" data-hi="दान" data-en="Donate">दान</a></li>
-        <li><a href="/contact/" data-hi="संपर्क" data-en="Contact">संपर्क</a></li>
+        <li><a href="https://www.diprafoundation.com/home/" class="active" data-hi="गृह" data-en="Home">गृह</a></li>
+        <li><a href="https://www.diprafoundation.com/about/" data-hi="हमारे बारे में" data-en="About us">हमारे बारे में</a></li>
+        <li><a href="https://www.diprafoundation.com/the_Uplift/" data-hi="The Uplift" data-en="The Uplift">The Uplift</a></li>
+        <li><a href="https://www.diprafoundation.com/pledge/" data-hi="संकल्प लें" data-en="Take a pledge">संकल्प लें</a></li>
+        <li><a href="https://www.diprafoundation.com/awareness/" data-hi="जागरूकता" data-en="Awareness">जागरूकता</a></li>
+        <li><a href="https://www.diprafoundation.com/verify/" data-hi="सत्यापन" data-en="Verify">सत्यापन</a></li>
+        <li><a href="https://www.diprafoundation.com/portal/" data-hi="पोर्टल" data-en="Portal">पोर्टल</a></li>
+        <li><a href="https://www.diprafoundation.com/donate/" data-hi="दान" data-en="Donate">दान</a></li>
+        <li><a href="https://www.diprafoundation.com/contact/" data-hi="संपर्क" data-en="Contact">संपर्क</a></li>
       </ul>
     </nav>
     <div class="nav-actions">
@@ -367,7 +444,7 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
         <button class="lang-btn active" data-lang="hi">हिं</button>
         <button class="lang-btn" data-lang="en">EN</button>
       </div>
-      <a href="/donate/" class="btn btn-saffron btn-sm" data-hi="🙏 दान करें" data-en="🙏 Donate">🙏 दान करें</a>
+      <a href="https://www.diprafoundation.com/donate/" class="btn btn-saffron btn-sm" data-hi="🙏 दान करें" data-en="🙏 Donate">🙏 दान करें</a>
       <button class="burger" id="burger" aria-label="मेनू खोलें" aria-controls="mainNav" aria-expanded="false" type="button"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -375,6 +452,7 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
 </header>
 
 <main id="main-content">
+
 <!-- ============ HERO ============ -->
 <section class="hero" id="home">
   <div class="container">
@@ -383,19 +461,16 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
         <span class="eyebrow" data-hi="🪔 पंजीकृत न्यास · स्थापना २०२४" data-en="🪔 Registered Trust · Est. 2024">🪔 पंजीकृत न्यास · स्थापना २०२४</span>
         <h1 data-hi="समुदायों को <em>सशक्त</em> बनाना, जीवन को बदलना" data-en="<em>Empowering</em> Communities, Transforming Lives">समुदायों को <em>सशक्त</em> बनाना, जीवन को बदलना</h1>
         <p class="hero-sub" data-hi="दिप्र फ़ाउंडेशन शिक्षा, स्वास्थ्य, कृषि, पशुपालन तथा सामाजिक कल्याण के क्षेत्र में उत्तर प्रदेश के समस्त जनपदों में निरंतर कार्यरत एक पंजीकृत न्यास है।" data-en="Dipra Foundation is a registered trust working relentlessly across all districts of Uttar Pradesh in education, health, agriculture, animal husbandry, and social welfare.">दिप्र फ़ाउंडेशन शिक्षा, स्वास्थ्य, कृषि, पशुपालन तथा सामाजिक कल्याण के क्षेत्र में उत्तर प्रदेश के समस्त जनपदों में निरंतर कार्यरत एक पंजीकृत न्यास है।</p>
-        
-        <!-- Badges as Links -->
         <div class="hero-badges">
           <a href="#sectors" data-hi="🎓 शिक्षा एवं साक्षरता" data-en="🎓 Education & Literacy">🎓 शिक्षा एवं साक्षरता</a>
           <a href="#sectors" data-hi="🏥 स्वास्थ्य एवं परिवार कल्याण" data-en="🏥 Health & Family Welfare">🏥 स्वास्थ्य एवं परिवार कल्याण</a>
           <a href="#sectors" data-hi="🌾 कृषि एवं पशुपालन" data-en="🌾 Agriculture & Animal Husbandry">🌾 कृषि एवं पशुपालन</a>
           <a href="#sectors" data-hi="👩 महिला सशक्तिकरण" data-en="👩 Women Empowerment">👩 महिला सशक्तिकरण</a>
         </div>
-        
         <div class="hero-btns">
-          <a href="/the_Uplift/" class="btn btn-saffron" data-hi="🎓 The Uplift कोचिंग योजना" data-en="🎓 The Uplift Coaching Scheme">🎓 The Uplift कोचिंग योजना</a>
-          <a href="/donate/" class="btn btn-green" data-hi="🙏 दान करें" data-en="🙏 Donate Now">🙏 दान करें</a>
-          <a href="/contact/" class="btn btn-outline" data-hi="📞 संपर्क करें" data-en="📞 Contact Us">📞 संपर्क करें</a>
+          <a href="https://www.diprafoundation.com/the_Uplift/" class="btn btn-saffron" data-hi="🎓 The Uplift कोचिंग योजना" data-en="🎓 The Uplift Coaching Scheme">🎓 The Uplift कोचिंग योजना</a>
+          <a href="https://www.diprafoundation.com/donate/" class="btn btn-green" data-hi="🙏 दान करें" data-en="🙏 Donate Now">🙏 दान करें</a>
+          <a href="https://www.diprafoundation.com/contact/" class="btn btn-outline" data-hi="📞 संपर्क करें" data-en="📞 Contact Us">📞 संपर्क करें</a>
         </div>
       </div>
       <div class="hero-card">
@@ -409,6 +484,20 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
           <li><span data-hi="संचालन क्षेत्र" data-en="Operational Area">संचालन क्षेत्र</span><b data-hi="समस्त उत्तर प्रदेश" data-en="All Uttar Pradesh">समस्त उत्तर प्रदेश</b></li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NOTICES (NEW) ============ -->
+<section id="notices" style="background:#fff">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-hi="📢 सूचनाएँ" data-en="📢 Notices">📢 सूचनाएँ</span>
+      <h2 data-hi="नवीनतम सूचनाएँ एवं घोषणाएँ" data-en="Latest Notices & Announcements">नवीनतम सूचनाएँ एवं घोषणाएँ</h2>
+      <p data-hi="परीक्षा तिथियाँ, अपडेट और महत्वपूर्ण जानकारी" data-en="Exam dates, updates, and important information">परीक्षा तिथियाँ, अपडेट और महत्वपूर्ण जानकारी</p>
+    </div>
+    <div class="notices-wrap" id="noticesWrap">
+      <div class="notice-empty">⏳ Loading notices…</div>
     </div>
   </div>
 </section>
@@ -460,23 +549,29 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
         <button class="btn btn-outline topic-open" type="button" data-sector="skills" data-hi="5 जागरूकता कार्यक्रम देखें" data-en="Explore 5 awareness programs">5 जागरूकता कार्यक्रम देखें</button>
       </article>
     </div>
+
     <div id="topicGuide" class="topic-guide" hidden aria-live="polite">
       <button id="topicGuideClose" class="guide-close" type="button" aria-label="Close">×</button>
       <span class="eyebrow" data-hi="सीखें · समझें · आगे बढ़ें" data-en="Learn · Understand · Act">सीखें · समझें · आगे बढ़ें</span>
-      <h3 id="topicSectorTitle"></h3><p id="topicSectorIntro" class="guide-intro"></p>
+      <h3 id="topicSectorTitle"></h3>
+      <p id="topicSectorIntro" class="guide-intro"></p>
       <div id="programGrid" class="program-grid"></div>
       <article id="programDetail" class="program-detail" hidden>
-        <h4 id="programTitle"></h4><p id="programDescription" class="guide-intro"></p>
-        <ol id="programPoints" class="program-points"></ol><div id="programEnd" class="program-end"></div>
+        <h4 id="programTitle"></h4>
+        <p id="programDescription" class="guide-intro"></p>
+        <ol id="programPoints" class="program-points"></ol>
+        <div id="programEnd" class="program-end"></div>
         <label class="program-consent"><input id="programRead" type="checkbox" disabled><span data-hi="मैंने इस कार्यक्रम की सभी जानकारी पढ़ी और समझी है।" data-en="I have read and understood all information in this program.">मैंने इस कार्यक्रम की सभी जानकारी पढ़ी और समझी है।</span></label>
-        <label for="awarenessName" data-hi="प्रमाण-पत्र पर नाम" data-en="Name for the certificate">प्रमाण-पत्र पर नाम</label><input id="awarenessName" type="text" maxlength="80" autocomplete="name" placeholder="पूरा नाम" data-hi="पूरा नाम" data-en="Full name">
-        <button id="makeAwarenessCertificate" class="btn btn-green" type="button" disabled data-hi="जागरूकता प्रमाण-पत्र बनाएँ" data-en="Generate awareness certificate">जागरूकता प्रमाण-पत्र बनाएँ</button>
+        <!-- Full awareness form will be injected here -->
         <div id="programContacts" class="program-contacts" hidden></div>
         <div id="awarenessCertificate" class="awareness-cert" hidden>
           <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w700" alt="Dipra Foundation logo">
-          <h4 data-hi="जागरूकता अध्ययन अभिलेख" data-en="Awareness learning record">जागरूकता अध्ययन अभिलेख</h4>
-          <p id="awarenessCertificateIntro"></p><div id="awarenessCertificateName" class="awareness-cert-name"></div><p id="awarenessCertificateProgram"></p><p id="awarenessCertificateDate"></p>
-          <small data-hi="यह स्वयं-अध्ययन पूर्णता का रिकॉर्ड है; यह सरकारी, पेशेवर या मान्यता-प्राप्त प्रशिक्षण प्रमाण-पत्र नहीं है।" data-en="This records self-guided learning; it is not a government, professional, or accredited training certificate.">यह स्वयं-अध्ययन पूर्णता का रिकॉर्ड है; यह सरकारी, पेशेवर या मान्यता-प्राप्त प्रशिक्षण प्रमाण-पत्र नहीं है।</small>
+          <h4 data-hi="जागरूकता प्रमाण-पत्र" data-en="Awareness Certificate">जागरूकता प्रमाण-पत्र</h4>
+          <p id="awarenessCertificateIntro"></p>
+          <div id="awarenessCertificateName" class="awareness-cert-name"></div>
+          <p id="awarenessCertificateProgram"></p>
+          <p id="awarenessCertificateDate"></p>
+          <small data-hi="यह सामुदायिक जागरूकता कार्यक्रम में भागीदारी का रिकॉर्ड है।" data-en="This records participation in the community awareness programme.">यह सामुदायिक जागरूकता कार्यक्रम में भागीदारी का रिकॉर्ड है।</small>
           <div class="share-actions"><button id="printAwarenessCertificate" class="btn btn-outline print-action" type="button" data-hi="प्रिंट / PDF" data-en="Print / PDF">प्रिंट / PDF</button><a id="topicPledgeLink" class="btn btn-primary" href="/pledge/" data-hi="इस क्षेत्र में संकल्प लें" data-en="Take a pledge in this field">इस क्षेत्र में संकल्प लें</a></div>
         </div>
       </article>
@@ -484,8 +579,52 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
   </div>
 </section>
 
+<!-- ============ AWARENESS STATS + VERIFY (NEW) ============ -->
+<section id="live-stats" style="background:#fff;padding:2.5rem 0">
+  <div class="container" style="text-align:center">
+    <div class="awareness-stats-pill">
+      🌟 <b id="awCount">—</b>
+      <span data-hi="लोगों ने जागरूकता कार्यक्रम में भाग लिया" data-en="people joined the awareness programme">लोगों ने जागरूकता कार्यक्रम में भाग लिया</span>
+    </div>
+    <br>
+    <div class="awareness-stats-pill" style="background:var(--saffron-soft);color:var(--saffron-3);border-color:var(--saffron-2);margin-top:.6rem">
+      🎓 <b id="seatsAvailable" style="color:var(--maroon)">—</b>
+      <span data-hi="सीटें उपलब्ध हैं" data-en="seats available across all courses">सीटें उपलब्ध हैं</span>
+    </div>
+  </div>
+</section>
 
-<section id="community-actions" class="awareness-section"><div class="container"><div class="section-head"><span class="eyebrow" data-hi="✨ हमारे साथ जुड़ें" data-en="✨ Get involved">✨ हमारे साथ जुड़ें</span><h2 data-hi="सीख को संकल्प में बदलें" data-en="Turn learning into a pledge">सीख को संकल्प में बदलें</h2><p data-hi="एक छोटा, जिम्मेदार कदम भी परिवार और समुदाय में सकारात्मक बदलाव की शुरुआत बन सकता है।" data-en="One small, responsible step can begin positive change in a family and community.">एक छोटा, जिम्मेदार कदम भी परिवार और समुदाय में सकारात्मक बदलाव की शुरुआत बन सकता है।</p></div><div class="grid g3"><article class="card green"><div class="ico">🤝</div><h3 data-hi="आज अपना सामुदायिक संकल्प लें" data-en="Make your community pledge today">आज अपना सामुदायिक संकल्प लें</h3><p data-hi="अपने क्षेत्र के 10 जागरूकता बिंदु पढ़ें, जिम्मेदार कदम चुनें और नाम सहित pledge प्रमाण-पत्र बनाएँ।" data-en="Read ten awareness points for your sector, choose a responsible action, and create a named pledge certificate.">अपने क्षेत्र के 10 जागरूकता बिंदु पढ़ें, जिम्मेदार कदम चुनें और नाम सहित pledge प्रमाण-पत्र बनाएँ।</p><a class="btn btn-green" href="/pledge/" data-hi="संकल्प शुरू करें" data-en="Start your pledge">संकल्प शुरू करें</a></article><article class="card"><div class="ico">🎓</div><h3 data-hi="The Uplift ऑनलाइन पाठ्यक्रम" data-en="The Uplift online courses">The Uplift ऑनलाइन पाठ्यक्रम</h3><p data-hi="नि:शुल्क डिजिटल पाठ्यक्रम, ई-पुस्तकें और पाठ्यक्रम जानकारी देखें।" data-en="Explore free digital courses, ebooks and course information.">नि:शुल्क डिजिटल पाठ्यक्रम, ई-पुस्तकें और पाठ्यक्रम जानकारी देखें।</p><a class="btn btn-primary" href="/the_Uplift/" data-hi="ऑनलाइन कोर्स खोलें" data-en="Open online courses">ऑनलाइन कोर्स खोलें</a></article></div></div></section>
+<!-- ============ COMMUNITY ACTIONS ============ -->
+<section id="community-actions" class="awareness-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" data-hi="✨ हमारे साथ जुड़ें" data-en="✨ Get involved">✨ हमारे साथ जुड़ें</span>
+      <h2 data-hi="सीख को संकल्प में बदलें" data-en="Turn learning into a pledge">सीख को संकल्प में बदलें</h2>
+      <p data-hi="एक छोटा, जिम्मेदार कदम भी परिवार और समुदाय में सकारात्मक बदलाव की शुरुआत बन सकता है।" data-en="One small, responsible step can begin positive change in a family and community.">एक छोटा, जिम्मेदार कदम भी परिवार और समुदाय में सकारात्मक बदलाव की शुरुआत बन सकता है।</p>
+    </div>
+    <div class="grid g3">
+      <article class="card green">
+        <div class="ico">🤝</div>
+        <h3 data-hi="आज अपना सामुदायिक संकल्प लें" data-en="Make your community pledge today">आज अपना सामुदायिक संकल्प लें</h3>
+        <p data-hi="अपने क्षेत्र के 10 जागरूकता बिंदु पढ़ें, जिम्मेदार कदम चुनें और नाम सहित pledge प्रमाण-पत्र बनाएँ।" data-en="Read ten awareness points for your sector, choose a responsible action, and create a named pledge certificate.">अपने क्षेत्र के 10 जागरूकता बिंदु पढ़ें, जिम्मेदार कदम चुनें और नाम सहित pledge प्रमाण-पत्र बनाएँ।</p>
+        <a class="btn btn-green" href="/pledge/" data-hi="संकल्प शुरू करें" data-en="Start your pledge">संकल्प शुरू करें</a>
+      </article>
+      <article class="card">
+        <div class="ico">🎓</div>
+        <h3 data-hi="The Uplift ऑनलाइन पाठ्यक्रम" data-en="The Uplift online courses">The Uplift ऑनलाइन पाठ्यक्रम</h3>
+        <p data-hi="नि:शुल्क डिजिटल पाठ्यक्रम, ई-पुस्तकें और पाठ्यक्रम जानकारी देखें।" data-en="Explore free digital courses, ebooks and course information.">नि:शुल्क डिजिटल पाठ्यक्रम, ई-पुस्तकें और पाठ्यक्रम जानकारी देखें।</p>
+        <a class="btn btn-primary" href="/the_Uplift/" data-hi="ऑनलाइन कोर्स खोलें" data-en="Open online courses">ऑनलाइन कोर्स खोलें</a>
+      </article>
+      <article class="card">
+        <div class="ico">🌟</div>
+        <h3 data-hi="सामुदायिक जागरूकता कार्यक्रम" data-en="Community Awareness Programme">सामुदायिक जागरूकता कार्यक्रम</h3>
+        <p data-hi="अपने क्षेत्र का चयन करें, जागरूकता कार्यक्रम पढ़ें और तुरंत डिजिटल प्रमाण-पत्र प्राप्त करें।" data-en="Choose your sector, read the awareness programme and get an instant digital certificate.">अपने क्षेत्र का चयन करें, जागरूकता कार्यक्रम पढ़ें और तुरंत डिजिटल प्रमाण-पत्र प्राप्त करें।</p>
+        <a class="btn btn-saffron" href="/awareness/" data-hi="जागरूकता कार्यक्रम खोलें" data-en="Open awareness programme">जागरूकता कार्यक्रम खोलें</a>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ============ OFFICE BEARERS (ACCORDION) ============ -->
 <section style="background:#fff">
   <div class="container">
@@ -494,15 +633,9 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
       <h2 data-hi="हमारे समर्पित पदाधिकारी" data-en="Our Dedicated Office Bearers">हमारे समर्पित पदाधिकारी</h2>
       <p data-hi="विवरण देखने के लिए क्लिक करें" data-en="Click to view details">विवरण देखने के लिए क्लिक करें</p>
     </div>
-
-    <!-- 🌟 Added respectful titles like "श्री" and "श्रीमती" 🌟 -->
     <div class="accordion-wrapper">
-      <!-- Item 1 -->
       <div class="accordion-item">
-        <button class="accordion-header">
-          <span data-hi="👨‍💼 अध्यक्ष" data-en="👨‍💼 Chairman">👨‍💼 अध्यक्ष</span>
-          <span class="accordion-icon">▼</span>
-        </button>
+        <button class="accordion-header"><span data-hi="👨‍💼 अध्यक्ष" data-en="👨‍💼 Chairman">👨‍💼 अध्यक्ष</span><span class="accordion-icon">▼</span></button>
         <div class="accordion-body">
           <div class="accordion-content">
             <div class="avatar">👨‍💼</div>
@@ -514,13 +647,8 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
           </div>
         </div>
       </div>
-
-      <!-- Item 2 -->
       <div class="accordion-item">
-        <button class="accordion-header">
-          <span data-hi="👨‍💼 सचिव" data-en="👨‍💼 Secretary">👨‍💼 सचिव</span>
-          <span class="accordion-icon">▼</span>
-        </button>
+        <button class="accordion-header"><span data-hi="👨‍💼 सचिव" data-en="👨‍💼 Secretary">👨‍💼 सचिव</span><span class="accordion-icon">▼</span></button>
         <div class="accordion-body">
           <div class="accordion-content">
             <div class="avatar" style="background:var(--saffron-soft);border-color:var(--saffron-2);">👨‍💼</div>
@@ -532,13 +660,8 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
           </div>
         </div>
       </div>
-
-      <!-- Item 3 -->
       <div class="accordion-item">
-        <button class="accordion-header">
-          <span data-hi="👩‍💼 कोषाध्यक्ष" data-en="👩‍💼 Treasurer">👩‍💼 कोषाध्यक्ष</span>
-          <span class="accordion-icon">▼</span>
-        </button>
+        <button class="accordion-header"><span data-hi="👩‍💼 कोषाध्यक्ष" data-en="👩‍💼 Treasurer">👩‍💼 कोषाध्यक्ष</span><span class="accordion-icon">▼</span></button>
         <div class="accordion-body">
           <div class="accordion-content">
             <div class="avatar">👩‍💼</div>
@@ -562,9 +685,7 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
       <h2 data-hi="आधिकारिक प्रमाण-पत्र एवं विवरण" data-en="Official Credentials & Details">आधिकारिक प्रमाण-पत्र एवं विवरण</h2>
       <p data-hi="समस्त विवरण सरकारी पोर्टल (Darpan, Udyam) पर उपलब्ध आधिकारिक सूचना के अनुसार।" data-en="All details as per official information on Govt. portals.">समस्त विवरण सरकारी पोर्टल (Darpan, Udyam) पर उपलब्ध आधिकारिक सूचना के अनुसार।</p>
     </div>
-
     <div class="grid g3">
-      <!-- Registration Details -->
       <div class="info-card">
         <h3><span class="ic">📄</span> <span data-hi="पंजीकरण विवरण" data-en="Registration Details">पंजीकरण विवरण</span></h3>
         <ul class="info-list">
@@ -576,8 +697,6 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
           <li><span data-hi="पंजीकरण तिथि:" data-en="Reg. Date:">पंजीकरण तिथि:</span> <strong>08-10-2024</strong></li>
         </ul>
       </div>
-
-      <!-- Enterprise Details (PAN and Bank Removed) -->
       <div class="info-card green">
         <h3><span class="ic">🏢</span> <span data-hi="उद्यम विवरण" data-en="Enterprise Details">उद्यम विवरण</span></h3>
         <ul class="info-list">
@@ -588,8 +707,6 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
           <li><span data-hi="व्यवसाय प्रारंभ:" data-en="Commencement:">व्यवसाय प्रारंभ:</span> <strong>08/10/2024</strong></li>
         </ul>
       </div>
-
-      <!-- Office Address -->
       <div class="info-card gold">
         <h3><span class="ic">📍</span> <span data-hi="कार्यालय पता" data-en="Office Address">कार्यालय पता</span></h3>
         <ul class="info-list">
@@ -605,7 +722,30 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
   </div>
 </section>
 
+<!-- ============ VERIFY CERTIFICATE (NEW) ============ -->
+<section id="verify-section" style="background:linear-gradient(180deg,#FFF6E8,#FFFBF5)">
+  <div class="container-narrow">
+    <div class="section-head" style="margin-bottom:1.5rem">
+      <span class="eyebrow" data-hi="🔍 सत्यापन" data-en="🔍 Verify">🔍 सत्यापन</span>
+      <h2 data-hi="प्रमाण-पत्र सत्यापित करें" data-en="Verify a Certificate">प्रमाण-पत्र सत्यापित करें</h2>
+    </div>
+    <div class="verify-widget">
+      <h3 data-hi="अपना प्रमाण-पत्र ID दर्ज करें" data-en="Enter your certificate ID">अपना प्रमाण-पत्र ID दर्ज करें</h3>
+      <p data-hi="The Uplift · Awareness · Free Course — सभी प्रमाण-पत्र यहाँ सत्यापित करें" data-en="The Uplift · Awareness · Free Course — verify all certificates here">The Uplift · Awareness · Free Course — सभी प्रमाण-पत्र यहाँ सत्यापित करें</p>
+      <form class="verify-form" onsubmit="return handleVerifyForm(event)">
+        <input type="text" id="verifyInput" placeholder="e.g. DFA-26-0001 / UPL-CERT-2026-12345" required>
+        <button type="submit" data-hi="सत्यापित करें" data-en="Verify">सत्यापित करें</button>
+      </form>
+      <div class="verify-links">
+        <a href="https://www.diprafoundation.com/verify/" data-hi="प्रमाण-पत्र सत्यापन →" data-en="Certificate Verify →">प्रमाण-पत्र सत्यापन →</a>
+        <a href="https://www.diprafoundation.com/verify-pledge" data-hi="संकल्प / जागरूकता सत्यापन →" data-en="Pledge / Awareness Verify →">संकल्प / जागरूकता सत्यापन →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
+
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="container">
@@ -613,7 +753,6 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
       <strong data-hi="⚠️ अस्वीकरण:" data-en="⚠️ Disclaimer:">⚠️ अस्वीकरण:</strong>
       <span data-hi=" दिप्र फ़ाउंडेशन एक पंजीकृत न्यास है (Trust Act 1882, पंजीकरण संख्या ३००, दर्पण: UP/2024/0459444, उद्यम: UDYAM-UP-43-0209073)। The Uplift कोचिंग योजना दिप्र फ़ाउंडेशन का स्वतंत्र शैक्षणिक प्रयास है।" data-en=" Dipra Foundation is a registered trust (Trust Act 1882, Reg. No. 300, Darpan: UP/2024/0459444, Udyam: UDYAM-UP-43-0209073). The Uplift Coaching Scheme is an independent educational initiative."> दिप्र फ़ाउंडेशन एक पंजीकृत न्यास है (Trust Act 1882, पंजीकरण संख्या ३००, दर्पण: UP/2024/0459444, उद्यम: UDYAM-UP-43-0209073)। The Uplift कोचिंग योजना दिप्र फ़ाउंडेशन का स्वतंत्र शैक्षणिक प्रयास है।</span>
     </div>
-    
     <div class="foot-grid">
       <div>
         <div class="foot-brand">
@@ -624,12 +763,12 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
       <div>
         <h4 data-hi="मुख्य कड़ियाँ" data-en="Quick Links">मुख्य कड़ियाँ</h4>
         <ul>
-          <li><a href="/about/" data-hi="हमारे बारे में" data-en="About us">हमारे बारे में</a></li>
-          <li><a href="/the_Uplift/" data-hi="The Uplift कोचिंग" data-en="The Uplift Coaching">The Uplift कोचिंग</a></li>
-          <li><a href="/verify/" data-hi="प्रमाणपत्र सत्यापन" data-en="Verify Certificate">प्रमाणपत्र सत्यापन</a></li>
-          <li><a href="/portal/" data-hi="विद्यार्थी पोर्टल" data-en="Student Portal">विद्यार्थी पोर्टल</a></li>
-          <li><a href="/donate/" data-hi="दान करें" data-en="Donate">दान करें</a></li>
-          <li><a href="/disclaimer/" data-hi="अस्वीकरण" data-en="Disclaimer">अस्वीकरण</a></li>
+          <li><a href="https://www.diprafoundation.com/about/" data-hi="हमारे बारे में" data-en="About us">हमारे बारे में</a></li>
+          <li><a href="https://www.diprafoundation.com/the_Uplift/" data-hi="The Uplift कोचिंग" data-en="The Uplift Coaching">The Uplift कोचिंग</a></li>
+          <li><a href="https://www.diprafoundation.com/verify/" data-hi="प्रमाणपत्र सत्यापन" data-en="Verify Certificate">प्रमाणपत्र सत्यापन</a></li>
+          <li><a href="https://www.diprafoundation.com/portal/" data-hi="विद्यार्थी पोर्टल" data-en="Student Portal">विद्यार्थी पोर्टल</a></li>
+          <li><a href="https://www.diprafoundation.com/donate/" data-hi="दान करें" data-en="Donate">दान करें</a></li>
+          <li><a href="https://www.diprafoundation.com/disclaimer/" data-hi="अस्वीकरण" data-en="Disclaimer">अस्वीकरण</a></li>
         </ul>
       </div>
       <div>
@@ -641,7 +780,6 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
         </ul>
       </div>
     </div>
-    
     <div class="foot-bottom">
       <span data-hi="© २०२६ दिप्र फ़ाउंडेशन। सर्वाधिकार सुरक्षित।" data-en="© 2026 Dipra Foundation. All rights reserved.">© २०२६ दिप्र फ़ाउंडेशन। सर्वाधिकार सुरक्षित।</span>
       <span data-hi="पंजीकृत न्यास · दर्पण: UP/2024/0459444" data-en="Registered Trust · Darpan: UP/2024/0459444">पंजीकृत न्यास · दर्पण: UP/2024/0459444</span>
@@ -651,10 +789,13 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
 
 <script>
 /* ============================================================
-   INDEX PAGE SCRIPTS
+   DIPRA FOUNDATION — Homepage script
    ============================================================ */
+const API_URL = 'https://script.google.com/macros/s/AKfycbynC667snioVb9pnBE8jDRWUJHwKOUi5jTYO31PlfolDG5VjcTrE93zh2k-Ai7zgi0/exec';
+
 const $ = (s, c=document) => c.querySelector(s);
 const $$ = (s, c=document) => [...c.querySelectorAll(s)];
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 
 /* ---------- Tap-to-open awareness programs ---------- */
 const topicCatalog={
@@ -668,16 +809,262 @@ const topicCatalog={
 topicCatalog.skills.programs[4].legal=true;
 const commonTopicLinks=[['राष्ट्रीय शिकायत','National grievance portal','https://pgportal.gov.in/','केंद्र सरकार के विभागों से जुड़ी पात्र शिकायतें।','Eligible grievances about Union Government departments.'],['उत्तर प्रदेश जनसुनवाई','Uttar Pradesh Jansunwai','https://jansunwai.up.nic.in/','राज्य विभाग से संबंधित शिकायत और स्थिति जाँच।','Complaints and tracking for Uttar Pradesh departments.'],['आपातकालीन सहायता 112','Emergency help · 112','tel:112','तत्काल सुरक्षा/हिंसा के खतरे में।','For immediate danger or violence.']];
 const recoveryLinks=[['RBI शिकायत प्रबंधन (CMS)','https://cms.rbi.org.in','पहले lender को लिखित शिकायत दें। यदि RBI-विनियमित संस्था 30 दिनों में जवाब न दे या समाधान से संतुष्टि न हो, तो पात्रता जाँचकर RBI CMS उपयोग करें।','Complain to the lender in writing first. If an RBI-regulated entity does not respond within 30 days or the response is unsatisfactory, check eligibility and use RBI CMS.','RBI Complaint Management System (CMS)'],['RBI संपर्क केंद्र · 14448','tel:14448','RBI शिकायत प्रक्रिया/पोर्टल सहायता।','Help with RBI complaint process/portal.','RBI Contact Centre · 14448'],['राष्ट्रीय उपभोक्ता हेल्पलाइन · 1915','https://consumerhelpline.gov.in/','उपभोक्ता शिकायत के लिए पोर्टल; फोन 1915 या 1800-11-4000।','Consumer grievance portal; call 1915 or 1800-11-4000.','National Consumer Helpline · 1915'],['तत्काल धमकी · 112','tel:112','हिंसा या तत्काल खतरे में स्थानीय पुलिस/आपात सेवा से संपर्क करें।','For violence or immediate danger contact police/emergency services.','Emergency threat · 112']];
+
 let activeTopic='';
-function refreshTopicGuide(lang){if(!activeTopic)return;const item=topicCatalog[activeTopic];$('#topicSectorTitle').textContent=lang==='en'?item.en:item.hi;$('#topicSectorIntro').textContent=lang==='en'?'Choose one of five short awareness programs. Read the guidance, then create a self-guided learning record and take a separate pledge.':'पाँच छोटे जागरूकता कार्यक्रमों में से चुनें। जानकारी पढ़कर स्वयं-अध्ययन का रिकॉर्ड बनाएँ और अलग से संकल्प लें।';$$('.program-choice').forEach((button,index)=>{const p=item.programs[index];button.querySelector('strong').textContent=lang==='en'?p[1]:p[0];button.querySelector('span').textContent=lang==='en'?'Open this awareness program':'यह जागरूकता कार्यक्रम खोलें';});if(window.activeProgramIndex!==undefined)renderProgramDetails(window.activeProgramIndex);}
-function renderProgramDetails(index){const item=topicCatalog[activeTopic],program=item.programs[index],lang=document.documentElement.lang==='en'?'en':'hi';window.activeProgramIndex=index;$('#programTitle').textContent=lang==='en'?program[1]:program[0];$('#programDescription').textContent=program.legal?(lang==='en'?'General awareness only. Rules may vary by lender type and loan product; check the current RBI directions and your lender’s grievance policy. This is not legal advice.':'यह सामान्य जागरूकता है। नियम lender और loan product के अनुसार बदल सकते हैं; RBI के मौजूदा निर्देश और lender की शिकायत नीति जाँचें। यह कानूनी सलाह नहीं है।'):(lang==='en'?'Five practical points for this awareness program.':'इस जागरूकता कार्यक्रम के पाँच उपयोगी बिंदु।');const points=$('#programPoints');points.replaceChildren();let rows;if(program.legal){rows=lang==='en'?['For covered RBI-regulated lenders, recovery agents must not intimidate, harass, publicly humiliate, or intrude on family privacy. Calls for overdue-loan recovery should not be made before 8:00 a.m. or after 7:00 p.m. under the applicable RBI instructions.','Ask for the agent’s name, lender, and authorisation; verify them with the lender using the official number. Do not share OTP, PIN, passwords, or pay to a personal UPI/account.','Write to the lender’s grievance officer. Keep the loan statement, dates, call logs, messages, receipts, and complaint reference. Do not ignore genuine notices; dispute incorrect amounts in writing.','If an RBI-regulated entity does not reply within 30 days, or you are dissatisfied with its reply, check the RBI Integrated Ombudsman eligibility and submit through CMS.','For consumer grievance assistance use NCH 1915 / 1800-11-4000. If threatened, the facts may fall under criminal intimidation provisions (BNS section 351); seek appropriate help. For immediate danger, call police/emergency number 112 and preserve evidence safely.']:['RBI-विनियमित और इन निर्देशों के दायरे वाले lender के recovery agents धमकी, उत्पीड़न, सार्वजनिक अपमान या परिवार की निजता में दखल नहीं कर सकते। लागू RBI निर्देशों के अनुसार बकाया ऋण-वसूली के लिए सुबह 8 बजे से पहले या शाम 7 बजे के बाद कॉल नहीं होनी चाहिए।','एजेंट का नाम, lender और authorization पूछें; lender के आधिकारिक नंबर से पुष्टि करें। OTP, PIN, पासवर्ड साझा न करें और निजी UPI/account में भुगतान न करें।','Lender के grievance officer को लिखित शिकायत दें। loan statement, तारीख, call log, संदेश, रसीद और complaint reference रखें। असली notice को अनदेखा न करें; गलत राशि पर लिखित आपत्ति दें।','RBI-विनियमित संस्था 30 दिनों में जवाब न दे या जवाब से संतुष्टि न हो, तो RBI Integrated Ombudsman की पात्रता जाँचकर CMS पर शिकायत करें।','उपभोक्ता शिकायत हेतु NCH 1915 / 1800-11-4000 उपयोग करें। धमकी की स्थिति तथ्यों के अनुसार BNS धारा 351 के अंतर्गत आ सकती है; उचित सहायता लें। तत्काल खतरे में पुलिस/आपात सेवा 112 पर कॉल करें और सुरक्षित रूप से प्रमाण रखें।'];}else{rows=lang==='en'?[program[3],item.base[0][1],item.base[1][1],item.base[2][1],item.base[3][1]]:[program[2],item.base[0][0],item.base[1][0],item.base[2][0],item.base[3][0]];}rows.forEach(text=>{const li=document.createElement('li');li.textContent=text;points.appendChild(li);});$('#programDetail').hidden=false;$('#programRead').checked=false;$('#programRead').disabled=true;$('#makeAwarenessCertificate').disabled=true;$('#awarenessCertificate').hidden=true;const contact=$('#programContacts');contact.replaceChildren();contact.hidden=false;const title=document.createElement('h4');title.textContent=lang==='en'?'Useful official contacts and portals':'जरूरी आधिकारिक संपर्क और पोर्टल';contact.appendChild(title);const list=document.createElement('ul');const links=program.legal?recoveryLinks.map(x=>[lang==='en'?x[4]:x[0],x[1],lang==='en'?x[3]:x[2]]):commonTopicLinks.map(x=>[lang==='en'?x[1]:x[0],x[2],lang==='en'?x[4]:x[3]]);links.forEach(entry=>{const li=document.createElement('li');const a=document.createElement('a');a.href=entry[1];a.textContent=entry[0];if(entry[1].startsWith('http')){a.target='_blank';a.rel='noopener noreferrer';}li.append(a,document.createTextNode(' — '+(entry[2]||'')));list.appendChild(li);});contact.appendChild(list);const sources=document.createElement('p');sources.className='source-note';if(program.legal){const link=document.createElement('a');link.href='https://www.rbi.org.in/Scripts/PublicationReportDetails.aspx?ID=1229&UrlPage=';link.target='_blank';link.rel='noopener noreferrer';link.textContent=lang==='en'?'RBI recovery-agent instructions':'RBI के recovery-agent निर्देश';sources.append(link,document.createTextNode(' · '));const bns=document.createElement('a');bns.href='https://www.indiacode.nic.in/bitstream/123456789/20062/1/a2023-45.pdf';bns.target='_blank';bns.rel='noopener noreferrer';bns.textContent=lang==='en'?'Bharatiya Nyaya Sanhita, 2023':'भारतीय न्याय संहिता, 2023';sources.appendChild(bns);}else{sources.textContent=lang==='en'?'Confirm changing numbers and eligibility on the linked official portals.':'नंबर और पात्रता बदल सकते हैं; जुड़े आधिकारिक पोर्टल पर पुष्टि करें।';}contact.appendChild(sources);$('#topicPledgeLink').href='/pledge/?sector='+encodeURIComponent(item.pledge);if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>{if(entries.some(entry=>entry.isIntersecting)){ $('#programRead').disabled=false;observer.disconnect();}},{threshold:.6});observer.observe($('#programEnd'));}else $('#programRead').disabled=false;}
-function openTopic(key){activeTopic=key;window.activeProgramIndex=undefined;$('#awarenessCertificate').hidden=true;$('#programDetail').hidden=true;$('#topicGuide').hidden=false;const grid=$('#programGrid');grid.replaceChildren();topicCatalog[key].programs.forEach((program,index)=>{const button=document.createElement('button');button.type='button';button.className='program-choice';button.setAttribute('aria-pressed','false');const title=document.createElement('strong');title.textContent=document.documentElement.lang==='en'?program[1]:program[0];const sub=document.createElement('span');sub.textContent=document.documentElement.lang==='en'?'Open this awareness program':'यह जागरूकता कार्यक्रम खोलें';button.append(title,sub);button.addEventListener('click',()=>{$$('.program-choice',grid).forEach(x=>x.setAttribute('aria-pressed','false'));button.setAttribute('aria-pressed','true');renderProgramDetails(index);});grid.appendChild(button);});refreshTopicGuide(document.documentElement.lang);$('#topicGuide').scrollIntoView({behavior:'smooth',block:'start'});}
+
+function refreshTopicGuide(lang){
+  if(!activeTopic)return;
+  const item=topicCatalog[activeTopic];
+  $('#topicSectorTitle').textContent=lang==='en'?item.en:item.hi;
+  $('#topicSectorIntro').textContent=lang==='en'?'Choose one of five short awareness programs. Read the guidance, then fill your details to receive a certificate.':'पाँच छोटे जागरूकता कार्यक्रमों में से चुनें। जानकारी पढ़कर अपना विवरण भरें और प्रमाण-पत्र प्राप्त करें।';
+  $$('.program-choice').forEach((button,index)=>{const p=item.programs[index];button.querySelector('strong').textContent=lang==='en'?p[1]:p[0];button.querySelector('span').textContent=lang==='en'?'Open this awareness program':'यह जागरूकता कार्यक्रम खोलें';});
+  if(window.activeProgramIndex!==undefined)renderProgramDetails(window.activeProgramIndex);
+}
+
+function renderProgramDetails(index){
+  const item=topicCatalog[activeTopic],program=item.programs[index];
+  const lang=document.documentElement.lang==='en'?'en':'hi';
+  window.activeProgramIndex=index;
+  $('#programTitle').textContent=lang==='en'?program[1]:program[0];
+  $('#programDescription').textContent=program.legal
+    ?(lang==='en'?'General awareness only. Rules may vary. This is not legal advice.':'यह सामान्य जागरूकता है। यह कानूनी सलाह नहीं है।')
+    :(lang==='en'?'Five practical points for this awareness program.':'इस जागरूकता कार्यक्रम के पाँच उपयोगी बिंदु।');
+
+  const points=$('#programPoints');
+  points.replaceChildren();
+  let rows;
+  if(program.legal){
+    rows=lang==='en'
+      ?['For covered RBI-regulated lenders, recovery agents must not intimidate, harass, publicly humiliate, or intrude on family privacy.','Ask for the agent’s name, lender, and authorisation; verify them with the lender using the official number.','Write to the lender’s grievance officer. Keep loan statements, dates, call logs, messages, receipts, and complaint reference.','If an RBI-regulated entity does not reply within 30 days, check RBI Integrated Ombudsman eligibility and submit through CMS.','For consumer grievances use NCH 1915/1800-11-4000. If threatened, call police/emergency number 112 and preserve evidence.']
+      :['RBI-विनियमित lender के recovery agents धमकी, उत्पीड़न, सार्वजनिक अपमान या परिवार की निजता में दखल नहीं कर सकते।','एजेंट का नाम, lender और authorization पूछें; lender के आधिकारिक नंबर से पुष्टि करें।','Lender के grievance officer को लिखित शिकायत दें। loan statement, तारीख, call log, संदेश, रसीद रखें।','RBI-विनियमित संस्था 30 दिनों में जवाब न दे तो RBI Integrated Ombudsman की पात्रता जाँचकर CMS पर शिकायत करें।','उपभोक्ता शिकायत हेतु NCH 1915/1800-11-4000। धमकी पर पुलिस/112 पर कॉल करें।'];
+  }else{
+    rows=lang==='en'
+      ?[program[3],item.base[0][1],item.base[1][1],item.base[2][1],item.base[3][1]]
+      :[program[2],item.base[0][0],item.base[1][0],item.base[2][0],item.base[3][0]];
+  }
+  rows.forEach(text=>{const li=document.createElement('li');li.textContent=text;points.appendChild(li);});
+
+  $('#programDetail').hidden=false;
+  $('#programRead').checked=false;
+  $('#programRead').disabled=true;
+  $('#awarenessCertificate').hidden=true;
+
+  const contact=$('#programContacts');
+  contact.replaceChildren();
+  contact.hidden=false;
+  const title=document.createElement('h4');
+  title.textContent=lang==='en'?'Useful official contacts and portals':'जरूरी आधिकारिक संपर्क और पोर्टल';
+  contact.appendChild(title);
+  const list=document.createElement('ul');
+  const links=program.legal
+    ?recoveryLinks.map(x=>[lang==='en'?x[4]:x[0],x[1],lang==='en'?x[3]:x[2]])
+    :commonTopicLinks.map(x=>[lang==='en'?x[1]:x[0],x[2],lang==='en'?x[4]:x[3]]);
+  links.forEach(entry=>{
+    const li=document.createElement('li');
+    const a=document.createElement('a');
+    a.href=entry[1];a.textContent=entry[0];
+    if(entry[1].startsWith('http')){a.target='_blank';a.rel='noopener noreferrer';}
+    li.append(a,document.createTextNode(' — '+(entry[2]||'')));
+    list.appendChild(li);
+  });
+  contact.appendChild(list);
+
+  const sources=document.createElement('p');
+  sources.className='source-note';
+  sources.textContent=lang==='en'?'Confirm changing numbers and eligibility on the linked official portals.':'नंबर और पात्रता बदल सकते हैं; जुड़े आधिकारिक पोर्टल पर पुष्टि करें।';
+  contact.appendChild(sources);
+
+  $('#topicPledgeLink').href='/pledge/?sector='+encodeURIComponent(item.pledge);
+  if('IntersectionObserver'in window){
+    const observer=new IntersectionObserver(entries=>{
+      if(entries.some(entry=>entry.isIntersecting)){$('#programRead').disabled=false;observer.disconnect();}
+    },{threshold:.6});
+    observer.observe($('#programEnd'));
+  }else $('#programRead').disabled=false;
+
+  // Inject the full awareness form
+  injectAwarenessForm(item, program, lang);
+}
+
+function injectAwarenessForm(item, program, lang){
+  const old = document.getElementById('fullAwarenessForm');
+  if (old) old.remove();
+
+  const detail = $('#programDetail');
+  const form = document.createElement('div');
+  form.id = 'fullAwarenessForm';
+  form.style.marginTop = '1.2rem';
+  form.style.padding = '1rem';
+  form.style.background = '#f7fbf8';
+  form.style.border = '1px solid var(--green-2)';
+  form.style.borderRadius = '14px';
+
+  form.innerHTML = `
+    <h4 style="color:var(--green-3);margin-bottom:.8rem;font-size:1rem">
+      ${lang==='en'?'📋 Fill your details for the certificate':'📋 प्रमाण-पत्र हेतु अपना विवरण भरें'}
+    </h4>
+    <div class="awareness-form">
+      <label class="full">${lang==='en'?'Full Name':'पूरा नाम'} *<input id="awName" type="text" maxlength="80" placeholder="${lang==='en'?'e.g. Aarav Sharma':'उदा. आरव शर्मा'}" required></label>
+      <label>${lang==='en'?'Gender':'लिंग'} *
+        <select id="awGender" required>
+          <option value="">${lang==='en'?'— Select —':'— चुनें —'}</option>
+          <option value="Male">${lang==='en'?'Male':'पुरुष'}</option>
+          <option value="Female">${lang==='en'?'Female':'महिला'}</option>
+          <option value="Other">${lang==='en'?'Other':'अन्य'}</option>
+        </select>
+      </label>
+      <label>${lang==='en'?'Mobile (10 digits)':'मोबाइल (10 अंक)'} *<input id="awMobile" type="tel" maxlength="10" pattern="[6-9]\\d{9}" placeholder="9876543210" required></label>
+      <label class="full">${lang==='en'?'Email':'ईमेल'} *<input id="awEmail" type="email" maxlength="120" placeholder="you@example.com" required></label>
+      <label class="full">${lang==='en'?'Address':'पता'} *<textarea id="awAddress" rows="2" minlength="10" maxlength="400" placeholder="${lang==='en'?'House / Street / City / PIN':'मकान / गली / शहर / पिन'}" required></textarea></label>
+    </div>
+    <button id="awSubmitBtn" class="btn btn-green" type="button" disabled>
+      ${lang==='en'?'🎖️ Save Record & Get Certificate':'🎖️ रिकॉर्ड सहेजें और प्रमाण-पत्र पाएँ'}
+    </button>
+    <div id="awStatus" style="margin-top:.7rem;font-size:.88rem;font-weight:600"></div>
+  `;
+
+  const certEl = $('#awarenessCertificate');
+  detail.insertBefore(form, certEl);
+
+  const allFields = ['awName','awGender','awMobile','awEmail','awAddress'];
+  function syncEnabled(){
+    const read = $('#programRead').checked;
+    const filled = allFields.every(id => String(document.getElementById(id).value || '').trim().length > 0);
+    const btn = document.getElementById('awSubmitBtn');
+    if (btn) btn.disabled = !(read && filled);
+  }
+  ['programRead','awName','awGender','awMobile','awEmail','awAddress'].forEach(id=>{
+    const el = document.getElementById(id);
+    if (el) { el.addEventListener('input', syncEnabled); el.addEventListener('change', syncEnabled); }
+  });
+  syncEnabled();
+
+  const mEl = document.getElementById('awMobile');
+  mEl.addEventListener('input', e => { e.target.value = e.target.value.replace(/\D/g,'').slice(0,10); });
+
+  document.getElementById('awSubmitBtn').addEventListener('click', async function(){
+    const btn = this;
+    const status = document.getElementById('awStatus');
+    status.textContent = '';
+    status.style.color = '';
+
+    const payload = {
+      action: 'submitAwareness',
+      name: document.getElementById('awName').value.trim(),
+      gender: document.getElementById('awGender').value,
+      mobile: document.getElementById('awMobile').value.trim(),
+      email: document.getElementById('awEmail').value.trim().toLowerCase(),
+      address: document.getElementById('awAddress').value.trim(),
+      primarySector: item.pledge,
+      secondarySectors: [],
+      language: lang,
+      pledgeText: (lang==='en'?'I completed the awareness reading for ':'मैंने जागरूकता कार्यक्रम पढ़ा: ') + (lang==='en'?program[1]:program[0]),
+      readConfirmed: true,
+      publicVerifyConsent: false,
+      website: ''
+    };
+
+    function setErr(msg){ status.style.color = '#c0392b'; status.textContent = '❌ ' + msg; }
+    function setOk(msg){ status.style.color = '#0d5c2e'; status.textContent = '✅ ' + msg; }
+
+    if (payload.name.length < 3) return setErr(lang==='en'?'Enter your full name.':'पूरा नाम दर्ज करें।');
+    if (!/^(Male|Female|Other)$/.test(payload.gender)) return setErr(lang==='en'?'Choose gender.':'लिंग चुनें।');
+    if (!/^[6-9]\d{9}$/.test(payload.mobile)) return setErr(lang==='en'?'Invalid mobile number.':'मोबाइल नंबर अमान्य।');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) return setErr(lang==='en'?'Invalid email.':'ईमेल अमान्य।');
+    if (payload.address.length < 10) return setErr(lang==='en'?'Address too short.':'पता बहुत छोटा है।');
+
+    btn.disabled = true;
+    btn.textContent = lang==='en'?'⏳ Saving…':'⏳ सहेज रहे हैं…';
+
+    try {
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: {'Content-Type':'text/plain;charset=utf-8'},
+        body: JSON.stringify(payload)
+      });
+      const out = await res.json();
+
+      if (out.status !== 'success') {
+        setErr(out.message || (lang==='en'?'Could not save.':'सहेजा नहीं जा सका।'));
+        btn.disabled = false;
+        btn.textContent = lang==='en'?'🎖️ Save Record & Get Certificate':'🎖️ रिकॉर्ड सहेजें और प्रमाण-पत्र पाएँ';
+        return;
+      }
+
+      setOk(lang==='en'?'Saved! Your certificate has been emailed.':'सहेजा गया! प्रमाण-पत्र आपके ईमेल पर भेज दिया गया है।');
+
+      $('#awarenessCertificateIntro').textContent = lang==='en'
+        ?'This records that the learner completed the self-guided awareness reading:'
+        :'यह स्वयं-अध्ययन जागरूकता कार्यक्रम पढ़ने का रिकॉर्ड है:';
+      $('#awarenessCertificateName').textContent = payload.name;
+      $('#awarenessCertificateProgram').textContent =
+        (lang==='en'?program[1]:program[0]) + ' · ' + (lang==='en'?item.en:item.hi) +
+        ' · ' + (out.awarenessId || '');
+      $('#awarenessCertificateDate').textContent =
+        new Intl.DateTimeFormat(lang==='en'?'en-IN':'hi-IN',{dateStyle:'long'}).format(new Date());
+      $('#awarenessCertificate').hidden = false;
+
+      if (out.certificateUrl) {
+        const shareActions = document.querySelector('#awarenessCertificate .share-actions');
+        if (shareActions) {
+          const dl = document.createElement('a');
+          dl.href = out.certificateUrl;
+          dl.target = '_blank';
+          dl.className = 'btn btn-green';
+          dl.textContent = lang==='en'?'📄 Download PDF Certificate':'📄 PDF प्रमाण-पत्र डाउनलोड करें';
+          shareActions.prepend(dl);
+        }
+      }
+
+      $('#awarenessCertificate').scrollIntoView({behavior:'smooth',block:'center'});
+      btn.disabled = false;
+      btn.textContent = lang==='en'?'🎖️ Saved ✓':'🎖️ सहेजा गया ✓';
+
+      const cnt = document.getElementById('awCount');
+      if (cnt) cnt.textContent = (parseInt(cnt.textContent.replace(/,/g,''),10)||0) + 1;
+    } catch (err) {
+      setErr(lang==='en'?'Network error. Please try again.':'नेटवर्क त्रुटि। पुनः प्रयास करें।');
+      btn.disabled = false;
+      btn.textContent = lang==='en'?'🎖️ Save Record & Get Certificate':'🎖️ रिकॉर्ड सहेजें और प्रमाण-पत्र पाएँ';
+    }
+  });
+}
+
+function openTopic(key){
+  activeTopic=key;
+  window.activeProgramIndex=undefined;
+  $('#awarenessCertificate').hidden=true;
+  $('#programDetail').hidden=true;
+  $('#topicGuide').hidden=false;
+  const grid=$('#programGrid');
+  grid.replaceChildren();
+  topicCatalog[key].programs.forEach((program,index)=>{
+    const button=document.createElement('button');
+    button.type='button';button.className='program-choice';button.setAttribute('aria-pressed','false');
+    const title=document.createElement('strong');
+    title.textContent=document.documentElement.lang==='en'?program[1]:program[0];
+    const sub=document.createElement('span');
+    sub.textContent=document.documentElement.lang==='en'?'Open this awareness program':'यह जागरूकता कार्यक्रम खोलें';
+    button.append(title,sub);
+    button.addEventListener('click',()=>{
+      $$('.program-choice',grid).forEach(x=>x.setAttribute('aria-pressed','false'));
+      button.setAttribute('aria-pressed','true');
+      renderProgramDetails(index);
+    });
+    grid.appendChild(button);
+  });
+  refreshTopicGuide(document.documentElement.lang);
+  $('#topicGuide').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
 $$('.topic-open').forEach(button=>button.addEventListener('click',()=>openTopic(button.dataset.sector)));
 $('#topicGuideClose').addEventListener('click',()=>{$('#topicGuide').hidden=true;activeTopic='';});
-$('#programRead').addEventListener('change',()=>{$('#makeAwarenessCertificate').disabled=!$('#programRead').checked||!$('#awarenessName').value.trim();});
-$('#awarenessName').addEventListener('input',()=>{$('#makeAwarenessCertificate').disabled=!$('#programRead').checked||!$('#awarenessName').value.trim();});
-$('#makeAwarenessCertificate').addEventListener('click',()=>{if(!$('#programRead').checked||!$('#awarenessName').value.trim())return;const item=topicCatalog[activeTopic],program=item.programs[window.activeProgramIndex],lang=document.documentElement.lang==='en'?'en':'hi';$('#awarenessCertificateIntro').textContent=lang==='en'?'This records that the learner completed the self-guided awareness reading:':'यह स्वयं-अध्ययन जागरूकता कार्यक्रम पढ़ने का रिकॉर्ड है:';$('#awarenessCertificateName').textContent=$('#awarenessName').value.trim();$('#awarenessCertificateProgram').textContent=(lang==='en'?program[1]:program[0])+' · '+(lang==='en'?item.en:item.hi);$('#awarenessCertificateDate').textContent=new Intl.DateTimeFormat(lang==='en'?'en-IN':'hi-IN',{dateStyle:'long'}).format(new Date());$('#awarenessCertificate').hidden=false;$('#awarenessCertificate').scrollIntoView({behavior:'smooth',block:'center'});});
-$('#printAwarenessCertificate').addEventListener('click',()=>{document.body.classList.add('print-awareness-certificate');window.print();});window.addEventListener('afterprint',()=>document.body.classList.remove('print-awareness-certificate'));
+
+$('#printAwarenessCertificate').addEventListener('click',()=>{
+  document.body.classList.add('print-awareness-certificate');
+  window.print();
+});
+window.addEventListener('afterprint',()=>document.body.classList.remove('print-awareness-certificate'));
 
 /* ---------- Language Switcher ---------- */
 function setLang(lang){
@@ -686,15 +1073,12 @@ function setLang(lang){
   document.documentElement.lang = lang;
   $$('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
   try { localStorage.setItem('uplift_lang', lang); } catch(e){}
-  
-  // Update all elements with data-hi and data-en attributes
   $$('[data-hi][data-en]').forEach(el => {
     const t = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-hi');
     if(t !== null){
       if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
         el.placeholder = t;
       } else {
-        // Preserve authored inline emphasis and line breaks in translated strings.
         el.innerHTML = t;
       }
     }
@@ -758,14 +1142,10 @@ const accordionHeaders = $$('.accordion-header');
 accordionHeaders.forEach(header => {
   header.addEventListener('click', function() {
     const isActive = this.classList.contains('active');
-    
-    // Close all open items
     accordionHeaders.forEach(h => {
       h.classList.remove('active');
       h.nextElementSibling.style.maxHeight = null;
     });
-
-    // Open the clicked item if it was closed
     if (!isActive) {
       this.classList.add('active');
       const body = this.nextElementSibling;
@@ -774,6 +1154,147 @@ accordionHeaders.forEach(header => {
   });
 });
 
+/* ============================================================
+   NEW: API integration — notices, stats, verify, chatbot
+   ============================================================ */
+
+/* ---------- Notices ---------- */
+async function loadNotices(){
+  const wrap = document.getElementById('noticesWrap');
+  if (!wrap) return;
+  try {
+    const r = await fetch(API_URL + '?action=getNotices');
+    const d = await r.json();
+    if (d.status === 'success' && Array.isArray(d.data) && d.data.length) {
+      wrap.innerHTML = d.data.map(n => `
+        <div class="notice-item">
+          <div class="notice-date">${esc(n.date || '')}</div>
+          <div class="notice-body">
+            <h4>${esc(n.title || '')}</h4>
+            <p>${esc(n.message || '')}</p>
+            ${n.link ? `<a href="${esc(n.link)}" target="_blank" rel="noopener">${esc(n.linkText || 'View')} →</a>` : ''}
+          </div>
+        </div>
+      `).join('');
+    } else {
+      wrap.innerHTML = '<div class="notice-empty">📭 No new notices at the moment.</div>';
+    }
+  } catch (e) {
+    wrap.innerHTML = '<div class="notice-empty">📭 Notices will appear here once published.</div>';
+  }
+}
+loadNotices();
+
+/* ---------- Live stats ---------- */
+async function loadLiveStats(){
+  try {
+    const r = await fetch(API_URL + '?action=getAwarenessStats');
+    const d = await r.json();
+    if (d.status === 'success' && typeof d.total === 'number') {
+      const el = document.getElementById('awCount');
+      if (el) el.textContent = d.total.toLocaleString('en-IN');
+    }
+  } catch (e) {}
+
+  try {
+    const r = await fetch(API_URL + '?action=getSeats');
+    const d = await r.json();
+    if (d.status === 'success' && d.data) {
+      const total = Object.values(d.data).reduce((a,b) => a + (Number(b)||0), 0);
+      const el = document.getElementById('seatsAvailable');
+      if (el) el.textContent = total;
+    }
+  } catch (e) {}
+}
+loadLiveStats();
+
+/* ---------- Verify ---------- */
+function handleVerifyForm(ev){
+  ev.preventDefault();
+  const id = (document.getElementById('verifyInput').value || '').trim();
+  if (!id) return false;
+  let url;
+  if (/^DFA-/i.test(id)) url = 'https://www.diprafoundation.com/verify-pledge?id=' + encodeURIComponent(id);
+  else if (/^UPL-/i.test(id)) url = 'https://www.diprafoundation.com/verify?cert=' + encodeURIComponent(id);
+  else if (/^DPF-FREE-/i.test(id)) url = 'https://www.diprafoundation.com/verify?cert=' + encodeURIComponent(id);
+  else url = 'https://www.diprafoundation.com/verify?cert=' + encodeURIComponent(id);
+  window.location.href = url;
+  return false;
+}
+
+/* ---------- Chatbot ---------- */
+(function initChatbot(){
+  const fab = document.createElement('button');
+  fab.id = 'chatFab';
+  fab.setAttribute('aria-label', 'Open AI assistant');
+  fab.textContent = '💬';
+  document.body.appendChild(fab);
+
+  const panel = document.createElement('div');
+  panel.id = 'chatPanel';
+  panel.setAttribute('role', 'dialog');
+  panel.innerHTML = `
+    <header>
+      <span>💬 Ask DIPRA Assistant</span>
+      <button id="chatClose" aria-label="Close chat">✕</button>
+    </header>
+    <div id="chatLog" role="log" aria-live="polite"></div>
+    <form id="chatForm">
+      <input type="text" id="chatInput" placeholder="Type your question…" autocomplete="off" maxlength="500">
+      <button type="submit" id="chatSend">Send</button>
+    </form>`;
+  document.body.appendChild(panel);
+
+  const log = panel.querySelector('#chatLog');
+  const form = panel.querySelector('#chatForm');
+  const input = panel.querySelector('#chatInput');
+
+  function addMsg(text, role='bot'){
+    const el = document.createElement('div');
+    el.className = 'msg ' + role;
+    el.textContent = text;
+    log.appendChild(el);
+    log.scrollTop = log.scrollHeight;
+    return el;
+  }
+
+  fab.addEventListener('click', () => {
+    panel.classList.add('open');
+    input.focus();
+    if (!log.children.length) {
+      addMsg('Namaste! 🙏 I am the DIPRA Foundation assistant. Ask me about courses, admissions, the awareness programme, or how to donate.');
+    }
+  });
+  panel.querySelector('#chatClose').addEventListener('click', () => panel.classList.remove('open'));
+
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    const msg = input.value.trim();
+    if (!msg) return;
+    input.value = '';
+    addMsg(msg, 'user');
+    const thinking = addMsg('Thinking…', 'bot');
+    thinking.classList.add('typing');
+    try {
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: {'Content-Type':'text/plain;charset=utf-8'},
+        body: JSON.stringify({action:'chatbot', message: msg})
+      });
+      const out = await res.json();
+      thinking.remove();
+      if (out.status === 'success' && out.reply) {
+        addMsg(out.reply);
+      } else {
+        addMsg('Sorry, I could not answer that right now. Please email diprafoundation@gmail.com.');
+      }
+    } catch (e) {
+      thinking.remove();
+      addMsg('Network error. Please try again.');
+    }
+  });
+})();
 </script>
-<script src="/app-nav.js" defer></script></body>
+<script src="/app-nav.js" defer></script>
+</body>
 </html>
