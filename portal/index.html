@@ -2,634 +2,816 @@
 <html lang="hi">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0d7a3a">
-<meta name="description" content="दिप्र फ़ाउंडेशन The Uplift पोर्टल — विद्यार्थी, स्वयंसेवक, कर्मचारी, दाता और प्रशासक प्रवेश।">
-<link rel="canonical" href="https://www.diprafoundation.com/portal">
-<link rel="icon" href="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500">
-<title>Portal | Dipra Foundation — The Uplift</title>
-<style>
-:root{--green:#0d7a3a;--green2:#16a34a;--maroon:#8b1538;--saffron:#ff7a00;--gold:#b8860b;--ink:#2a1810;--muted:#6b5540;--paper:#fffbf5;--line:#ead9c3;--panel:#fff;--safeT:env(safe-area-inset-top,0px);--safeB:env(safe-area-inset-bottom,0px);--shadow:0 12px 34px rgba(42,24,16,.09);font-family:Inter,"Noto Sans Devanagari",system-ui,sans-serif}
-*{box-sizing:border-box}body{margin:0;color:var(--ink);background:linear-gradient(180deg,#fffbf5,#fff6e8);min-height:100vh;min-height:100dvh;overflow-x:hidden}button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:var(--maroon);text-decoration:none}
-.appbar{position:sticky;top:0;z-index:10;padding:calc(8px + var(--safeT)) max(16px,env(safe-area-inset-right)) 8px max(16px,env(safe-area-inset-left));height:calc(68px + var(--safeT));display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,251,245,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:10px;min-width:0}.brand img{width:42px;height:42px;object-fit:contain;border-radius:12px}.brand b{display:block;color:var(--maroon);font-size:1rem}.brand small{display:block;color:var(--muted);font-size:.75rem}
-.bar-actions{display:flex;gap:8px;align-items:center}.chip,.icon-btn{border:1px solid var(--line);border-radius:999px;padding:9px 13px;background:#fff;color:var(--ink);font-weight:700;min-height:42px}
-.shell{width:min(1120px,calc(100% - 32px));margin:0 auto;padding:28px 0 calc(40px + var(--safeB))}
-.hero{position:relative;overflow:hidden;display:grid;grid-template-columns:130px 1fr;gap:24px;align-items:center;padding:24px;border:1px solid var(--line);border-left:5px solid var(--green);border-radius:24px;background:linear-gradient(115deg,#e7f6ec,#fff 58%,#fff1e0);box-shadow:var(--shadow)}
-.hero-logo{width:118px;height:118px;display:grid;place-items:center;border-radius:22px;background:#fff;border:1px solid var(--line);box-shadow:0 6px 20px #0000000d}.hero-logo img{width:96px;height:96px;object-fit:contain}
-.hero h1{margin:5px 0;color:var(--maroon);font:400 clamp(1.5rem,4vw,2.4rem)/1.2 "Noto Sans Devanagari",serif}.hero p{margin:0;color:#4a3320;line-height:1.65}
-.float{position:absolute;width:18px;height:18px;border-radius:50%;background:#ffa94088;right:9%;top:14%;animation:drift 5s ease-in-out infinite}.float.two{width:12px;height:12px;right:5%;top:70%;background:#16a34a88;animation-delay:-2s}@keyframes drift{50%{transform:translateY(-9px)}}
-.mission{margin:14px 0 26px;padding:15px 18px;background:#fff;border:1px solid var(--line);border-radius:16px;display:flex;align-items:center;justify-content:space-between;gap:16px}.mission b{color:var(--green)}.mission p{margin:3px 0 0}.quiet{color:var(--muted);font-size:.85rem}
-.section-title{margin:24px 0 12px;color:var(--maroon);font-size:1.2rem}
-.role-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.role-pick{border:1px solid var(--line);border-top:4px solid var(--saffron);border-radius:16px;background:#fff;padding:16px 10px;text-align:left;box-shadow:0 5px 14px #28180e0a;transition:transform .18s,box-shadow .18s;min-height:112px;color:var(--ink)}.role-pick:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.role-pick[aria-pressed=true]{outline:3px solid #0d7a3a35;border-color:var(--green)}.role-pick[data-role=volunteer]{border-top-color:var(--green)}.role-pick[data-role=staff]{border-top-color:var(--maroon)}.role-pick[data-role=donor]{border-top-color:#1877a8}.role-pick[data-role=admin]{border-top-color:var(--gold)}.role-icon{display:block;font-size:1.55rem;margin-bottom:8px}.role-pick b{display:block;font-size:.88rem}.role-pick small{color:var(--muted);font-size:.72rem}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}.login-card{max-width:560px;margin:18px auto}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{min-width:0}.field.full{grid-column:1/-1}.field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;min-height:48px;padding:12px 13px;border:1px solid #d8c5ac;border-radius:11px;background:#fff;color:var(--ink);font-size:16px}.field textarea{min-height:92px;resize:vertical}.field input:focus,.field textarea:focus{outline:3px solid #ff7a0033;border-color:var(--saffron)}
-.btn{border:0;border-radius:12px;padding:12px 16px;min-height:46px;background:var(--green);color:#fff;font-weight:800}.btn.secondary{background:#fff;color:var(--maroon);border:1px solid var(--line)}.btn.warn{background:var(--maroon)}.btn:disabled{opacity:.55;cursor:wait}.inline-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px}.login-card .btn{width:100%;margin-top:6px}
-.msg{min-height:1.2em;margin:10px 0 0;color:var(--muted);font-size:.9rem}.msg.error{color:#a21d1d}.msg.ok{color:#126634}
-.hidden{display:none!important}.dash-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin:22px 0}.dash-head h2{margin:0;color:var(--maroon)}.dash-head p{margin:5px 0;color:var(--muted)}
-.dashboard-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.metric{padding:18px;border:1px solid var(--line);border-radius:16px;background:#fff;min-width:0}.metric small{display:block;color:var(--muted);font-weight:700}.metric b{display:block;margin-top:7px;font-size:1.4rem;color:var(--green);overflow-wrap:anywhere}
-.panel{margin-top:16px}.panel h3{margin:0 0 14px;color:var(--maroon)}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;min-width:540px;background:#fff}th,td{padding:11px;text-align:left;border-bottom:1px solid var(--line);font-size:.86rem}th{background:#fff6e8;color:var(--maroon)}td{overflow-wrap:anywhere}
-.row-actions{display:flex;gap:8px;flex-wrap:wrap}.row-actions .btn{min-height:38px;padding:8px 10px;font-size:.8rem}
-.photo-preview{width:76px;height:76px;border-radius:50%;object-fit:cover;border:2px solid var(--line);background:var(--paper)}
-.bottom-nav{display:none}
-.site-topbar{padding:8px 20px;background:linear-gradient(90deg,#fff2df,#fff,#e8f6ec);border-bottom:1px solid var(--line);color:var(--muted);font-size:.78rem}.site-topbar-inner{width:min(1200px,100%);margin:auto;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.site-topbar a{color:var(--maroon);font-weight:700}.appbar{position:sticky;top:0}.header-inner{width:min(1200px,100%);margin:auto;padding:9px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{color:inherit;text-decoration:none}.brand-logo{width:44px;height:44px;display:grid;place-items:center;padding:4px;border-radius:12px;background:#fff3e3;border:1.5px solid var(--saffron);flex:none}.brand-logo img{width:100%;height:100%;object-fit:contain}.brand-text{min-width:0}.brand-text b{font-size:1rem}.brand-text span{font-size:.7rem}.desktop-nav{flex:1}.desktop-nav ul{list-style:none;margin:0;padding:0;display:flex;justify-content:center;gap:2px;flex-wrap:wrap}.desktop-nav a{display:block;padding:9px 10px;border-radius:9px;color:var(--ink);font-size:.82rem;font-weight:700}.desktop-nav a:hover,.desktop-nav a[aria-current=page]{background:#fff0dc;color:var(--maroon)}.header-actions{display:flex;align-items:center;gap:8px}.lang-switch{display:flex;padding:2px;border:1px solid var(--line);border-radius:10px;background:#fff}.lang-btn{border:0;background:transparent;border-radius:7px;padding:7px 10px;min-height:34px;font-weight:800;color:var(--muted)}.lang-btn.active{background:var(--maroon);color:#fff}.burger{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:11px;background:#fff;align-items:center;justify-content:center;flex-direction:column;gap:5px}.burger span{width:20px;height:2px;background:var(--maroon);border-radius:3px;transition:transform .2s,opacity .2s}.burger.open span:first-child{transform:translateY(7px) rotate(45deg)}.burger.open span:nth-child(2){opacity:0}.burger.open span:last-child{transform:translateY(-7px) rotate(-45deg)}.drawer-scrim{position:fixed;inset:0;z-index:29;background:#21150f80;opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s}.drawer-scrim.open{opacity:1;visibility:visible}.mobile-drawer{position:fixed;inset:0 0 0 auto;z-index:30;width:min(340px,88vw);padding:calc(24px + var(--safeT)) 18px calc(24px + var(--safeB));background:var(--paper);box-shadow:-12px 0 32px #21150f26;transform:translateX(105%);transition:transform .25s ease;overflow:auto}.mobile-drawer.open{transform:translateX(0)}.drawer-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;color:var(--maroon);font-weight:800}.drawer-close{border:1px solid var(--line);background:#fff;border-radius:10px;width:40px;height:40px;font-size:1.3rem}.mobile-drawer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}.mobile-drawer a{display:flex;align-items:center;gap:12px;padding:14px;border-radius:12px;color:var(--ink);font-weight:700}.mobile-drawer a:hover,.mobile-drawer a[aria-current=page]{background:#fff0dc;color:var(--maroon)}
-@media(max-width:900px){.site-topbar,.desktop-nav{display:none}.header-inner{padding:8px 14px}.burger{display:flex}.role-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.dashboard-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:560px){.shell{width:calc(100% - 24px);padding-top:16px;padding-bottom:calc(84px + var(--safeB))}.appbar{height:calc(62px + var(--safeT));padding:0}.header-inner{height:100%;padding-inline:12px}.brand-logo{width:38px;height:38px}.header-actions{gap:6px}.lang-btn{padding:6px 8px;font-size:.72rem}.hero{grid-template-columns:66px 1fr;gap:14px;padding:16px;border-radius:19px}.hero-logo{width:62px;height:62px;border-radius:14px}.hero-logo img{width:52px;height:52px}.hero p{font-size:.9rem}.mission{align-items:flex-start;padding:13px}.role-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.role-pick{min-height:96px;padding:12px 10px}.role-icon{font-size:1.35rem;margin-bottom:4px}.role-pick small{font-size:.68rem}.card{padding:16px;border-radius:17px}.form-grid,.two-col{grid-template-columns:1fr}.field.full{grid-column:auto}.dashboard-grid{gap:9px}.metric{padding:14px}.metric b{font-size:1.18rem}.dash-head{display:block}.dash-head .inline-actions{margin-top:12px}.bottom-nav{position:fixed;z-index:20;inset:auto 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:2px;padding:5px max(8px,env(safe-area-inset-right)) calc(5px + var(--safeB)) max(8px,env(safe-area-inset-left));background:#fffbf5f2;backdrop-filter:blur(18px);border-top:1px solid #ead9c3;box-shadow:0 -2px 8px #0000000f}.bottom-nav-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:48px;padding:5px 2px;border:0;border-radius:10px;background:transparent;color:var(--muted);font-size:.67rem;font-weight:700}.bottom-nav-item .bn-icon{font-size:1.22rem;line-height:1}.bottom-nav-item.active{color:var(--maroon);background:#fff0dc}.bottom-nav-item[hidden]{display:none}}
-@media(prefers-color-scheme:dark){:root{--ink:#f5e6d3;--muted:#b8a28e;--paper:#1a1410;--panel:#241c16;--line:#4a382c}body{background:linear-gradient(#1a1410,#241c16)}.appbar{background:#241c16ed}.hero{background:linear-gradient(115deg,#14281c,#241c16 58%,#3a2818)}.hero p{color:#d4c0a8}.hero-logo,.role-pick,.mission,.card,.metric,table{background:#241c16;color:var(--ink);border-color:var(--line)}.role-pick small,.quiet{color:var(--muted)}.field input,.field textarea,.field select{background:#1a1410;color:var(--ink);border-color:var(--line)}th{background:#33261c}.bottom-nav{background:#241c16f2;border-color:var(--line)}.bottom-nav button.active{background:#14281c;color:#91d9a9}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.role-pick:hover{transform:none}}
-@media(max-width:560px){.header-inner{padding-inline:10px;gap:6px}.brand{gap:7px;flex:1;min-width:0}.brand-logo{width:36px;height:36px}.brand-text b{font-size:.86rem}.brand-text span{font-size:.6rem}.header-actions{gap:4px}.lang-btn{padding:6px 7px;font-size:.68rem;min-width:34px}.header-actions #soundBtn,.header-actions #logoutBtn:not(.hidden){width:38px;min-width:38px;height:40px;padding:0;font-size:0;display:grid;place-items:center}.header-actions #soundBtn::after{content:'🔈';font-size:16px}.header-actions #soundBtn[aria-pressed=true]::after{content:'🔔'}.header-actions #logoutBtn:not(.hidden)::after{content:'↪';font-size:19px}.burger{width:40px;height:40px}}
-@media(max-width:1080px){.site-topbar,.desktop-nav{display:none}.burger{display:flex}}
-.row-open{cursor:pointer}.row-open:hover td,.row-open:focus td{background:#fff3dd}.chip.active{background:var(--maroon);color:#fff;border-color:var(--maroon)}.pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.78rem;font-weight:800;white-space:nowrap}.pill.ok{background:#e7f6ec;color:#126634}.pill.off{background:#fdecec;color:#a21d1d}.pill.neutral{background:#f3ece1;color:#5a4630}.inline-actions input,.inline-actions select{min-height:44px;padding:10px 12px;border:1px solid #d8c5ac;border-radius:11px;background:#fff;color:var(--ink);font-size:15px}.field small.quiet{display:block;margin-top:4px}
-</style>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b5d3b">
+<title>Pledge Verification | Dipra Foundation</title>
+
+<!-- COMMON CSS -->
+<link rel="stylesheet" href="https://www.diprafoundation.com/style.css">
+<!-- MOBILE APP CSS -->
+<link rel="stylesheet" href="https://www.diprafoundation.com/mobile-app.css" media="(max-width: 860px)">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pledge Verification | Dipra Foundation">
+<meta property="og:description" content="Verify a Dipra Foundation community pledge by ID.">
+<meta property="og:image" content="https://www.diprafoundation.com/logo.png">
+<meta property="og:url" content="https://www.diprafoundation.com/pledge/verify">
+
 <link rel="manifest" href="/manifest.webmanifest">
-<link rel="apple-touch-icon" href="/logo.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/logo-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/logo-192.png">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="दिप्र">
+
+<style>
+  :root {
+    --brand:#0b5d3b; --brand-soft:#e8f5ee; --brand-ink:#074027;
+    --ink:#1c1c1c; --muted:#5a5a5a; --line:rgba(0,0,0,.08);
+    --danger:#b00020; --danger-soft:#fdecef; --ok:#1b7f3b;
+    --radius:14px;
+    --font: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink:#f2f2f2; --muted:#b8b8b8; --line:rgba(255,255,255,.14);
+            --brand-soft:rgba(11,93,59,.25); --danger-soft:rgba(176,0,32,.22); }
+    body { background:#101418; color:var(--ink); }
+    .card, .ngo-card, .scheme-card, .sign-block { background:#171c21; }
+    header { background:#171c21; }
+  }
+  *,*::before,*::after { box-sizing:border-box; }
+  html,body { margin:0; }
+  body { font-family:var(--font); color:var(--ink); background:#f7f8f7; line-height:1.5;
+         padding-left:env(safe-area-inset-left); padding-right:env(safe-area-inset-right); }
+  a { color:var(--brand); }
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline:3px solid #4c9aff; outline-offset:2px; border-radius:6px; }
+  img { max-width:100%; }
+
+  /* ---- Header ---- */
+  header { position:sticky; top:0; z-index:20; background:#fff;
+           border-bottom:1px solid var(--line); padding-top:env(safe-area-inset-top); }
+  header .bar { max-width:960px; margin:0 auto; min-height:64px; padding:.5rem 1rem;
+                display:flex; align-items:center; justify-content:space-between; gap:.75rem; }
+  .brand { display:flex; align-items:center; gap:.6rem; min-width:0;
+           text-decoration:none; color:inherit; }
+  .brand img, .brand .logo {
+    width:40px; height:40px; flex:0 0 40px;
+    object-fit:contain; border-radius:8px; background:#fff;
+    padding:2px; box-shadow:0 1px 3px rgba(0,0,0,.08);
+  }
+  @media (min-width:480px) {
+    .brand img, .brand .logo { width:48px; height:48px; flex-basis:48px; }
+  }
+  .brand span { display:flex; flex-direction:column; min-width:0;
+                font-weight:700; font-size:1rem; line-height:1.15;
+                white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .brand small { font-weight:400; font-size:.75rem; color:var(--muted);
+                 white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .langs { display:flex; gap:.35rem; flex:0 0 auto; }
+  .langs button { min-width:40px; min-height:36px; padding:.35rem .6rem;
+                  border:1px solid var(--line); background:transparent; color:inherit;
+                  border-radius:999px; font:inherit; font-size:.85rem; cursor:pointer; }
+  .langs button.active { background:var(--brand); color:#fff; border-color:var(--brand); }
+
+  /* ---- Layout ---- */
+  .wrap { max-width:760px; margin:0 auto; padding:1.25rem 1rem 2.5rem; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+          padding:1.5rem 1.25rem; box-shadow:0 2px 10px rgba(0,0,0,.04); }
+  @media (max-width:420px) { .card { padding:1.1rem 1rem; border-radius:12px; } }
+
+  /* ---- Mark ---- */
+  .mark { display:inline-flex; align-items:center; justify-content:center;
+          width:56px; height:56px; border-radius:50%; font-size:1.7rem; font-weight:700;
+          background:var(--brand-soft); color:var(--brand); margin-bottom:.5rem; }
+  .mark.valid   { background:var(--brand-soft); color:var(--ok); }
+  .mark.invalid { background:var(--danger-soft); color:var(--danger); }
+  .mark.loading::after { content:""; width:22px; height:22px; border:3px solid var(--brand);
+          border-right-color:transparent; border-radius:50%;
+          animation:spin .8s linear infinite; display:block; }
+  .mark.loading { font-size:0; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+
+  #title { font-size:1.4rem; margin:.25rem 0 .35rem; line-height:1.25; }
+  .lead  { color:var(--muted); margin:0 0 .75rem; }
+
+  .badge { display:inline-block; background:var(--brand-soft); color:var(--ok);
+           border:1px solid rgba(27,127,59,.25); padding:.25rem .7rem;
+           border-radius:999px; font-size:.85rem; font-weight:600; margin-bottom:.5rem; }
+  .badge[hidden] { display:none; }
+
+  /* ---- NGO Card (redesigned) ---- */
+  .ngo-card {
+    background:#fff; border:1px solid var(--line); border-radius:12px;
+    padding:1rem 1.1rem; margin:.75rem 0;
+    position:relative; overflow:hidden;
+  }
+  .ngo-card::before {
+    content:""; position:absolute; inset:0 auto 0 0; width:4px; background:var(--brand);
+  }
+  .ngo-header {
+    display:flex; gap:.85rem; align-items:center;
+    padding-bottom:.75rem; margin-bottom:.75rem;
+    border-bottom:1px solid var(--line);
+  }
+  .ngo-logo {
+    width:56px; height:56px; flex:0 0 56px;
+    object-fit:contain; border-radius:10px;
+    background:#fff; border:1px solid var(--line); padding:4px;
+  }
+  .ngo-headinfo { min-width:0; flex:1; }
+  .ngo-name {
+    font-weight:700; font-size:1.05rem; margin:0;
+    display:flex; align-items:center; gap:.4rem; flex-wrap:wrap;
+  }
+  .ngo-verified {
+    display:inline-flex; align-items:center; gap:.2rem;
+    background:var(--brand-soft); color:var(--ok);
+    font-size:.7rem; font-weight:700; padding:.1rem .45rem;
+    border-radius:999px; border:1px solid rgba(27,127,59,.3);
+  }
+  .ngo-tagline {
+    font-size:.8rem; color:var(--muted); margin:.15rem 0 0;
+  }
+  .ngo-tagline[hidden] { display:none; }
+
+  .ngo-grid {
+    display:grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap:.5rem .9rem;
+  }
+  @media (max-width: 560px) {
+    .ngo-grid { grid-template-columns: 1fr; }
+  }
+  .ngo-item {
+    display:flex; flex-direction:column; gap:.05rem;
+    padding:.35rem 0; min-width:0;
+  }
+  .ngo-item .k {
+    font-size:.7rem; font-weight:600; text-transform:uppercase;
+    letter-spacing:.03em; color:var(--muted);
+  }
+  .ngo-item .v {
+    font-size:.86rem; color:var(--ink); font-weight:500;
+    word-break:break-word; line-height:1.35;
+  }
+  .ngo-item .v a { color:var(--brand); text-decoration:none; }
+  .ngo-item .v a:hover { text-decoration:underline; }
+  .ngo-item.full { grid-column: 1 / -1; }
+
+  /* ---- Scheme Card ---- */
+  .scheme-card {
+    background:#fff; border:1px solid var(--line); border-radius:12px;
+    padding:.9rem 1rem; margin:.75rem 0;
+  }
+  .scheme-head { display:flex; align-items:center; gap:.5rem; margin-bottom:.5rem; }
+  .scheme-icon { width:32px; height:32px; flex:0 0 32px; object-fit:contain;
+                 border-radius:8px; background:var(--brand-soft); padding:4px; }
+  .scheme-title { font-weight:700; font-size:.98rem; margin:0; }
+  .scheme-code { font-size:.72rem; color:var(--muted);
+                 background:var(--brand-soft); padding:.05rem .4rem; border-radius:6px; }
+  .scheme-desc { font-size:.85rem; color:var(--muted); margin:.25rem 0 .5rem; }
+  .scheme-stats { display:flex; justify-content:space-between;
+                  font-size:.78rem; color:var(--muted); margin-bottom:.25rem; }
+  .progress { height:8px; background:var(--brand-soft); border-radius:999px; overflow:hidden; }
+  .progress-bar { height:100%; background:var(--brand); width:0; transition:width .6s ease; }
+  .scheme-status { display:inline-block; font-size:.7rem; font-weight:700;
+                   padding:.1rem .45rem; border-radius:999px; margin-left:.3rem; }
+  .scheme-status.active { background:var(--brand-soft); color:var(--ok); }
+  .scheme-status.closed { background:var(--danger-soft); color:var(--danger); }
+
+  /* ---- Details ---- */
+  .details { margin:.75rem 0; }
+  .details .row { display:flex; gap:.75rem; padding:.5rem 0; border-bottom:1px solid var(--line); }
+  .details .row:last-child { border-bottom:0; }
+  .details .label { font-weight:600; min-width:8.5rem; color:var(--muted); }
+  .details .value { word-break:break-word; display:flex; align-items:center; gap:.4rem; flex-wrap:wrap; }
+  @media (max-width:480px) {
+    .details .row { flex-direction:column; gap:.1rem; padding:.45rem 0; }
+    .details .label { min-width:0; font-size:.8rem; text-transform:uppercase; letter-spacing:.02em; }
+  }
+  .copy-btn { border:1px solid var(--line); background:transparent; color:inherit;
+              border-radius:8px; padding:.15rem .4rem; font-size:.75rem; cursor:pointer; }
+  .copy-btn:hover { background:var(--brand-soft); }
+
+  .private { font-size:.9rem; font-style:italic; color:var(--muted);
+             background:var(--brand-soft); padding:.6rem .75rem;
+             border-radius:10px; margin:.5rem 0; }
+  .status { min-height:1.25em; margin:.5rem 0 0; font-size:.9rem; color:var(--danger); }
+  .status:empty { min-height:0; }
+
+  /* ---- Signature block ---- */
+  .sign-block {
+    margin-top:1rem; padding:.85rem 1rem;
+    border:1px dashed var(--line); border-radius:12px;
+    display:flex; gap:.9rem; align-items:center;
+  }
+  .sign-img { width:96px; height:48px; object-fit:contain; }
+  .sign-info { font-size:.8rem; color:var(--muted); }
+  .sign-info b { display:block; color:var(--ink); font-size:.9rem; }
+
+  /* ---- Buttons / forms ---- */
+  .actions { margin-top:1rem; display:flex; flex-wrap:wrap; gap:.6rem; }
+  .btn { display:inline-flex; align-items:center; gap:.4rem; background:var(--brand);
+         color:#fff; text-decoration:none; padding:.6rem 1rem; border:0;
+         border-radius:10px; font:inherit; font-weight:600; cursor:pointer; }
+  .btn:hover { filter:brightness(1.08); }
+  .btn.ghost { background:transparent; color:var(--brand); border:1px solid var(--brand); }
+  .btn[hidden] { display:none; }
+
+  .retry { margin-top:.75rem; }
+  .retry[hidden] { display:none; }
+
+  .verify-form { margin-top:1.25rem; padding-top:1rem; border-top:1px solid var(--line); }
+  .verify-form label { display:block; font-weight:600; margin-bottom:.35rem; font-size:.9rem; }
+  .verify-form .row { display:flex; gap:.5rem; }
+  .verify-form input { flex:1; min-width:0; padding:.55rem .7rem; border:1px solid var(--line);
+                       border-radius:10px; font:inherit; background:transparent; color:inherit; }
+
+  /* ---- QR (properly centered) ---- */
+  .qr-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 1.25rem auto;
+    width: 100%;
+  }
+  .qr-wrap img {
+    width: 180px;
+    height: 180px;
+    image-rendering: pixelated;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    padding: 6px;
+    background: #fff;
+  }
+
+  footer { text-align:center; color:var(--muted); font-size:.85rem;
+           padding:1rem 1rem calc(1rem + env(safe-area-inset-bottom));
+           border-top:1px solid var(--line); }
+
+  .offline { display:none; background:var(--danger-soft); color:var(--danger);
+             text-align:center; padding:.5rem; font-size:.85rem; }
+  body.is-offline .offline { display:block; }
+
+  /* ---- Print ---- */
+  @media print {
+    header, footer, .langs, .actions, .verify-form, .retry, .offline, .copy-btn { display:none !important; }
+    body { background:#fff; color:#000; }
+    .card, .ngo-card, .scheme-card, .sign-block { box-shadow:none; border:1px solid #000; }
+    a { color:#000; text-decoration:none; }
+    .progress-bar { background:#000; }
+  }
+</style>
 </head>
 <body>
-<div class="site-topbar"><div class="site-topbar-inner"><span>📞 <a href="tel:+919532328276">+91 95323 28276</a>　·　✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></span><span>📍 खेरसा, बिधनू, कानपुर नगर　·　<a href="https://www.diprafoundation.com" target="_blank" rel="noopener">diprafoundation.com</a></span></div></div>
-<header class="appbar" id="mainHeader">
- <div class="header-inner">
-  <a class="brand" href="https://www.diprafoundation.com/home" aria-label="Dipra Foundation home"><span class="brand-logo"><img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="दिप्र फ़ाउंडेशन"></span><span class="brand-text"><b>दिप्र फ़ाउंडेशन</b><span>The Uplift · Member Portal</span></span></a>
-  <nav class="desktop-nav" aria-label="मुख्य नेविगेशन"><ul><li><a href="https://www.diprafoundation.com/home">गृह</a></li><li><a href="https://www.diprafoundation.com/the_Uplift">The Uplift</a></li><li><a href="https://www.diprafoundation.com/verify">प्रमाणपत्र सत्यापन</a></li><li><a href="https://www.diprafoundation.com/contact">संपर्क</a></li><li><a href="https://www.diprafoundation.com/portal" aria-current="page">सदस्य पोर्टल</a></li></ul></nav>
-  <div class="header-actions"><div class="lang-switch" role="group" aria-label="भाषा चुनें"><button class="lang-btn active" id="langHi" type="button" aria-pressed="true">हिन्दी</button><button class="lang-btn" id="langEn" type="button" aria-pressed="false">EN</button></div><button class="chip" id="soundBtn" type="button" aria-label="ध्वनि चालू या बंद करें" aria-pressed="false">🔈 ध्वनि बंद</button><button class="chip hidden" id="logoutBtn" type="button" aria-label="लॉगआउट">लॉगआउट</button><button class="burger" id="menuToggle" type="button" aria-label="मेनू खोलें" aria-expanded="false" aria-controls="mobileDrawer"><span></span><span></span><span></span></button></div>
- </div>
+
+<div class="offline" role="alert">आप ऑफ़लाइन हैं / You are offline</div>
+
+<header>
+  <div class="bar">
+    <a class="brand" href="/index.html" aria-label="Dipra Foundation home">
+      <img src="/logo.png"
+           onerror="this.onerror=null;this.src='https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w200';"
+           alt="Dipra Foundation logo" width="48" height="48"
+           decoding="async" fetchpriority="high">
+      <span>Dipra Foundation<small>Community pledge verification</small></span>
+    </a>
+    <div class="langs" role="group" aria-label="Language">
+      <button type="button" data-lang="hi" class="active" aria-pressed="true">हिं</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
 </header>
-<div class="drawer-scrim" id="drawerScrim"></div><nav class="mobile-drawer" id="mobileDrawer" aria-label="मोबाइल नेविगेशन" aria-hidden="true"><div class="drawer-heading"><span>दिप्र फ़ाउंडेशन</span><button class="drawer-close" id="drawerClose" type="button" aria-label="मेनू बंद करें">×</button></div><ul><li><a href="https://www.diprafoundation.com/home">🏠　गृह</a></li><li><a href="https://www.diprafoundation.com/the_Uplift">📚　The Uplift</a></li><li><a href="https://www.diprafoundation.com/verify">✅　प्रमाणपत्र सत्यापन</a></li><li><a href="https://www.diprafoundation.com/contact">☎️　संपर्क</a></li><li><a href="https://www.diprafoundation.com/portal" aria-current="page">👤　सदस्य पोर्टल</a></li><li><a href="https://www.diprafoundation.com" target="_blank" rel="noopener">🌐　मुख्य वेबसाइट</a></li></ul></nav>
-<main class="shell">
-  <section class="hero"><span class="float"></span><span class="float two"></span><div class="hero-logo"><img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="Foundation logo"></div><div><small class="quiet">LEARN · SERVE · GROW</small><h1>सीखने और सेवा का साझा मंच</h1><p>विद्यार्थी, स्वयंसेवक, कर्मचारी, दाता और प्रशासक—अपनी भूमिका चुनकर सुरक्षित प्रवेश करें।</p></div></section>
-  <aside class="mission"><div><b>आज का विचार</b><p id="thought">“ज्ञान बाँटने से बढ़ता है।”</p></div><span class="quiet">शिक्षा · सहयोग · अवसर</span></aside>
 
-  <section id="authView">
-    <h2 class="section-title">अपनी भूमिका चुनें</h2>
-    <div class="role-grid" role="group" aria-label="Role">
-      <button class="role-pick" data-role="Student" aria-pressed="true"><span class="role-icon">🎓</span><b>विद्यार्थी</b><small>Student</small></button>
-      <button class="role-pick" data-role="Volunteer" aria-pressed="false"><span class="role-icon">🤝</span><b>स्वयंसेवक शिक्षक</b><small>Volunteer</small></button>
-      <button class="role-pick" data-role="Staff" aria-pressed="false"><span class="role-icon">🏫</span><b>कर्मचारी</b><small>Staff</small></button>
-      <button class="role-pick" data-role="Donor" aria-pressed="false"><span class="role-icon">💚</span><b>दाता</b><small>Donor</small></button>
-      <button class="role-pick" data-role="Admin" aria-pressed="false"><span class="role-icon">🛡️</span><b>प्रशासक</b><small>Admin</small></button>
-    </div>
-    <section class="card login-card" id="loginCard">
-      <h2 id="loginTitle">विद्यार्थी लॉगिन</h2>
-      <p class="quiet" id="loginHint">पंजीकृत ईमेल और पासवर्ड का उपयोग करें।</p>
-      <form id="loginForm" class="form-grid">
-        <div class="field full"><label for="loginEmail">ईमेल</label><input id="loginEmail" type="email" autocomplete="username" required></div>
-        <div class="field full"><label for="loginPassword">पासवर्ड</label><input id="loginPassword" type="password" autocomplete="current-password" required></div>
-        <div class="field full inline-actions"><button class="btn" id="loginSubmit" type="submit">लॉगिन</button><button class="btn secondary" id="forgotBtn" type="button">पासवर्ड भूल गए?</button><button class="btn secondary" id="registerToggle" type="button">खाता बनाएँ</button></div>
-      </form>
-      <div id="loginMsg" class="msg" role="status" aria-live="polite"></div>
-      <div id="registerBox" class="hidden">
-        <hr>
-        <h3>पंजीकृत सदस्य का खाता बनाएँ</h3>
-        <p class="quiet" id="registerHelp">पंजीकृत ईमेल और ID दर्ज करें, ईमेल OTP verify करें, फिर खाता बनाएँ। Admin खाते self-register नहीं कर सकते।</p>
-        <form id="registerForm" class="form-grid">
-          <div class="field"><label for="regEmail">पंजीकृत ईमेल</label><input id="regEmail" type="email" required></div>
-          <div class="field"><label for="regId">आवेदन / स्वयंसेवक / दान ID</label><input id="regId" required></div>
-          <div class="field full inline-actions"><button class="btn secondary" id="sendRegOtp" type="button">ईमेल OTP भेजें</button></div>
-          <div class="field"><label for="regOtp">ईमेल OTP</label><input id="regOtp" inputmode="numeric" maxlength="6" autocomplete="one-time-code" required></div>
-          <div class="field inline-actions"><button class="btn secondary" id="verifyRegOtp" type="button">OTP सत्यापित करें</button></div>
-          <div class="field full"><label for="regPass">नया पासवर्ड (कम से कम 10 अक्षर)</label><input id="regPass" type="password" minlength="10" autocomplete="new-password" required disabled></div>
-          <div class="field full"><button class="btn" id="createPortalAccount" type="submit" disabled>खाता बनाएँ</button></div>
-        </form><div id="regMsg" class="msg" role="status"></div>
-      </div>
-      <div id="resetBox" class="hidden">
-        <hr><h3>ईमेल OTP से पासवर्ड बदलें</h3>
-        <form id="resetForm" class="form-grid">
-          <div class="field full"><label for="resetEmail">ईमेल</label><input id="resetEmail" type="email" required></div>
-          <div class="field full"><button class="btn secondary" id="sendOtpBtn" type="button">OTP भेजें</button></div>
-          <div class="field"><label for="resetOtp">6 अंकों का OTP</label><input id="resetOtp" inputmode="numeric" maxlength="6"></div>
-          <div class="field"><label for="newPassword">नया पासवर्ड</label><input id="newPassword" type="password" minlength="10"></div>
-          <div class="field full"><button class="btn" type="submit">पासवर्ड बदलें</button></div>
-        </form><div id="resetMsg" class="msg" role="status"></div>
-      </div>
-      <p class="quiet" id="adminNote">Admin पासवर्ड email OTP से reset नहीं होता; Admin login के बाद बदलें।</p>
-    </section>
-  </section>
+<main class="wrap">
+  <section class="card" aria-labelledby="title">
+    <div id="mark" class="mark loading" aria-live="assertive" aria-atomic="true"></div>
+    <h1 id="title">संकल्प सत्यापन</h1>
+    <p id="lead" class="lead" aria-live="polite">रिकॉर्ड जाँचा जा रहा है…</p>
 
-  <section id="dashboardView" class="hidden">
-    <div class="dash-head"><div><h2 id="welcome">Dashboard</h2><p id="roleLine"></p></div><div class="inline-actions"><button class="btn secondary" data-view="profile">प्रोफ़ाइल</button><button class="btn secondary" data-view="idcard">ID Card</button></div></div>
-    <div class="dashboard-grid" id="metrics"></div>
-    <div class="two-col">
-      <section class="card panel"><h3 id="activityTitle">आपका विवरण</h3><div id="activity"></div></section>
-      <section class="card panel"><h3>अगले कदम</h3><ul id="nextSteps"></ul></section>
+    <div id="badge" class="badge" hidden></div>
+
+    <!-- NGO CARD -->
+    <div id="ngoCard" class="ngo-card" hidden>
+      <div class="ngo-header">
+        <img id="ngoLogo" class="ngo-logo" alt="NGO logo">
+        <div class="ngo-headinfo">
+          <p class="ngo-name">
+            <span id="ngoName"></span>
+            <span class="ngo-verified" id="ngoVerified" hidden>✔ Verified NGO</span>
+          </p>
+          <p class="ngo-tagline" id="ngoTagline"></p>
+        </div>
+      </div>
+      <div class="ngo-grid" id="ngoGrid"></div>
     </div>
-    <section class="card panel hidden" id="donationsPanel"><h3>दान इतिहास</h3><div class="table-wrap" id="donationTable"></div></section>
-    <section class="card panel hidden" id="adminPanel">
-      <h3><span data-raw data-label-hi="प्रशासक डैशबोर्ड" data-label-en="Admin dashboard">प्रशासक डैशबोर्ड</span></h3>
-      <p class="quiet"><span data-raw data-label-hi="आवेदन, स्वयंसेवक, दान, शिकायत, प्रमाणपत्र, संकल्प और पोर्टल प्रोफ़ाइल के रिकॉर्ड यहीं से देखें व संपादित करें। Google Sheet खोलने की ज़रूरत नहीं—नया रिकॉर्ड, स्थिति, नोट, आर्काइव, CSV और नंबर काउंटर सब यहीं से। नया Admin खाता यहाँ से नहीं बन सकता।" data-label-en="Review and edit application, volunteer, donation, grievance, certificate, pledge and portal profile records from here. No Google Sheet needed—new records, status, notes, archive, CSV and number counters all live in this panel. New Admin accounts cannot be created here.">आवेदन, स्वयंसेवक, दान, शिकायत, प्रमाणपत्र, संकल्प और पोर्टल प्रोफ़ाइल के रिकॉर्ड यहीं से देखें व संपादित करें। Google Sheet खोलने की ज़रूरत नहीं—नया रिकॉर्ड, स्थिति, नोट, आर्काइव, CSV और नंबर काउंटर सब यहीं से। नया Admin खाता यहाँ से नहीं बन सकता।</span></p>
-      <div class="inline-actions admin-tools"><button class="btn secondary" data-view="records_applications"><span data-raw data-label-hi="आवेदन" data-label-en="Applications">आवेदन</span></button><button class="btn secondary" data-view="records_certificates"><span data-raw data-label-hi="नि:शुल्क प्रमाणपत्र" data-label-en="Free certificates">नि:शुल्क प्रमाणपत्र</span></button><button class="btn secondary" data-view="records_volunteers"><span data-raw data-label-hi="स्वयंसेवक" data-label-en="Volunteers">स्वयंसेवक</span></button><button class="btn secondary" data-view="records_donations"><span data-raw data-label-hi="दान" data-label-en="Donations">दान</span></button><button class="btn secondary" data-view="records_grievances"><span data-raw data-label-hi="शिकायतें" data-label-en="Grievances">शिकायतें</span></button><button class="btn secondary" data-view="records_pledges"><span data-raw data-label-hi="संकल्प" data-label-en="Pledges">संकल्प</span></button><button class="btn secondary" data-view="records_portalUsers"><span data-raw data-label-hi="पोर्टल प्रोफ़ाइल" data-label-en="Portal profiles">पोर्टल प्रोफ़ाइल</span></button><button class="btn secondary" data-view="records_invites"><span data-raw data-label-hi="स्टाफ़ आमंत्रण" data-label-en="Staff invitations">स्टाफ़ आमंत्रण</span></button><button class="btn" data-view="adminCreate"><span data-raw data-label-hi="+ नया रिकॉर्ड" data-label-en="+ New record">+ नया रिकॉर्ड</span></button><button class="btn secondary" data-view="adminCounters"><span data-raw data-label-hi="नंबर काउंटर" data-label-en="Number counters">नंबर काउंटर</span></button><button class="btn secondary" data-view="adminAudit"><span data-raw data-label-hi="बदलावों का लॉग" data-label-en="Activity log">बदलावों का लॉग</span></button><button class="btn secondary" data-view="adminUsers"><span data-raw data-label-hi="सदस्य और पहुँच" data-label-en="Members &amp; access">सदस्य और पहुँच</span></button><button class="btn secondary" data-view="adminCards"><span data-raw data-label-hi="ID कार्ड स्वीकृतियाँ" data-label-en="ID card approvals">ID कार्ड स्वीकृतियाँ</span></button><button class="btn secondary" data-view="settings"><span data-raw data-label-hi="पोर्टल सेटिंग्स" data-label-en="Portal settings">पोर्टल सेटिंग्स</span></button></div>
-      <div id="adminSummary" class="dashboard-grid panel"></div>
-      <div id="adminSubpanel" class="panel"></div>
-      <form id="adminPasswordForm" class="form-grid panel">
-        <h3 class="field full">Admin पासवर्ड बदलें</h3>
-        <div class="field"><label>वर्तमान पासवर्ड</label><input name="currentPassword" type="password" required></div>
-        <div class="field"><label>नया पासवर्ड (12+ अक्षर)</label><input name="newPassword" type="password" minlength="12" required></div>
-        <div class="field full"><button class="btn" type="submit">पासवर्ड अपडेट करें</button></div>
-      </form><div class="msg" id="adminMsg" role="status"></div>
-    </section>
-    <section class="card panel hidden" id="profilePanel">
-      <h3>मेरी प्रोफ़ाइल</h3><form id="profileForm" class="form-grid">
-        <div class="field full"><img class="photo-preview" id="photoPreview" alt="Profile photo"></div>
-        <div class="field full"><label for="photoFile">प्रोफ़ाइल फोटो</label><input id="photoFile" type="file" accept="image/png,image/jpeg,image/webp"></div>
-        <div class="field"><label for="profileName">नाम</label><input id="profileName" autocomplete="name"></div>
-        <div class="field"><label for="profileMobile">मोबाइल</label><input id="profileMobile" autocomplete="tel" required></div>
-        <div class="field"><label for="profileAddress">पता</label><textarea id="profileAddress" maxlength="500"></textarea></div>
-        <div class="field full inline-actions"><button class="btn" type="submit">प्रोफ़ाइल सेव करें</button><button class="btn secondary" type="button" data-view="dashboard">वापस</button></div>
-      </form><div id="profileMsg" class="msg" role="status"></div>
-    </section>
-    <section class="card panel hidden" id="idcardPanel">
-      <h3>मेरी संस्था ID</h3><p id="idStatus" class="quiet">ID card की स्थिति लोड हो रही है…</p><button class="btn hidden" id="downloadCard">ID card डाउनलोड करें</button>
-    </section>
+
+    <!-- SCHEME CARD -->
+    <div id="schemeCard" class="scheme-card" hidden>
+      <div class="scheme-head">
+        <img id="schemeIcon" class="scheme-icon" alt="">
+        <div>
+          <p class="scheme-title">
+            <span id="schemeName"></span>
+            <span id="schemeStatus" class="scheme-status" hidden></span>
+          </p>
+          <span class="scheme-code" id="schemeCode"></span>
+        </div>
+      </div>
+      <p class="scheme-desc" id="schemeDesc"></p>
+      <div class="scheme-stats">
+        <span id="schemeCompleted"></span>
+        <span id="schemeTarget"></span>
+      </div>
+      <div class="progress"><div class="progress-bar" id="schemeBar"></div></div>
+    </div>
+
+    <!-- PLEDGE DETAILS -->
+    <div id="details" class="details" hidden></div>
+    <p id="privateNote" class="private" hidden></p>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+
+    <!-- SIGNATURE BLOCK -->
+    <div id="signBlock" class="sign-block" hidden>
+      <img id="signImg" class="sign-img" alt="Authorized signature">
+      <div class="sign-info">
+        <b id="signName"></b>
+        <span id="signOrg"></span>
+      </div>
+    </div>
+
+    <div id="retryBox" class="retry" hidden>
+      <button type="button" id="retryBtn" class="btn">फिर प्रयास करें / Retry</button>
+    </div>
+
+    <div class="actions">
+      <a class="btn" href="/pledge" data-hi="नया संकल्प लें" data-en="Take a pledge">नया संकल्प लें</a>
+      <button type="button" id="shareBtn" class="btn ghost" hidden>Share</button>
+      <button type="button" id="printBtn" class="btn ghost" hidden>Print / PDF</button>
+      <a id="certBtn" class="btn ghost" target="_blank" rel="noopener" hidden>Certificate</a>
+    </div>
+
+    <!-- QR (centered) -->
+    <div class="qr-wrap" id="qrWrap" hidden>
+      <img id="qrImg" alt="QR code for this pledge" width="180" height="180">
+    </div>
+
+    <form class="verify-form" id="verifyForm" novalidate>
+      <label for="newId">दूसरा संकल्प ID जाँचें / Verify another ID</label>
+      <div class="row">
+        <input id="newId" name="id" type="text" inputmode="text" autocomplete="off"
+               spellcheck="false" placeholder="DFP-YYYYMMDD-XXXXXXXX" maxlength="32" required>
+        <button type="submit" class="btn">Verify</button>
+      </div>
+    </form>
   </section>
 </main>
-<nav class="bottom-nav hidden" id="bottom-nav" aria-label="Dashboard navigation">
-  <button data-view="dashboard" class="bottom-nav-item active"><span class="bn-icon">🏠</span><span>डैशबोर्ड</span></button><button data-view="profile" class="bottom-nav-item"><span class="bn-icon">👤</span><span>प्रोफ़ाइल</span></button><button data-view="idcard" class="bottom-nav-item"><span class="bn-icon">🪪</span><span>ID Card</span></button><button id="navAdmin" data-view="settings" class="bottom-nav-item hidden"><span class="bn-icon">⚙️</span><span>Admin</span></button>
-</nav>
+
+<footer>© <span id="year"></span> Dipra Foundation · <a href="/disclaimer/">Disclaimer</a></footer>
+
 <script>
 'use strict';
-const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbynC667snioVb9pnBE8jDRWUJHwKOUi5jTYO31PlfolDG5VjcTrE93zh2k-Ai7zgi0/exec';
-let selectedRole='Student', sessionToken='', currentUser=null, cardBlobUrl='',portalPublicSettings={};
-const $=id=>document.getElementById(id);
-const names={Student:'विद्यार्थी',Volunteer:'स्वयंसेवक शिक्षक',Staff:'कर्मचारी',Donor:'दाता',Admin:'प्रशासक'};
-let currentLanguage='hi',languageObserver=null;
-const hiToEn={
- 'दिप्र फ़ाउंडेशन':'Dipra Foundation','मुख्य नेविगेशन':'Main navigation','गृह':'Home','प्रमाणपत्र सत्यापन':'Certificate verification','संपर्क':'Contact','सदस्य पोर्टल':'Member portal','भाषा चुनें':'Choose language','ध्वनि चालू या बंद करें':'Toggle sound','ध्वनि बंद':'Sound off','ध्वनि चालू':'Sound on','लॉगआउट':'Log out','मेनू खोलें':'Open menu','मोबाइल नेविगेशन':'Mobile navigation','मेनू बंद करें':'Close menu','मुख्य वेबसाइट':'Main website','📍 खेरसा, बिधनू, कानपुर नगर　·　':'📍 Khersa, Bidhnu, Kanpur Nagar　·　',
- 'सीखने और सेवा का साझा मंच':'A shared space for learning and service','विद्यार्थी, स्वयंसेवक, कर्मचारी, दाता और प्रशासक—अपनी भूमिका चुनकर सुरक्षित प्रवेश करें।':'Students, volunteers, staff, donors, and administrators can securely sign in by choosing a role.','आज का विचार':'Thought for today','“ज्ञान बाँटने से बढ़ता है।”':'“Knowledge grows when shared.”','शिक्षा · सहयोग · अवसर':'Education · Support · Opportunity','अपनी भूमिका चुनें':'Choose your role','विद्यार्थी':'Student','स्वयंसेवक शिक्षक':'Volunteer teacher','कर्मचारी':'Staff','दाता':'Donor','प्रशासक':'Administrator',
- 'विद्यार्थी लॉगिन':'Student sign in','स्वयंसेवक शिक्षक लॉगिन':'Volunteer teacher sign in','कर्मचारी लॉगिन':'Staff sign in','दाता लॉगिन':'Donor sign in','प्रशासक लॉगिन':'Administrator sign in','पंजीकृत ईमेल और पासवर्ड का उपयोग करें।':'Enter your registered email and password.','Admin के सुरक्षित प्रवेश के लिए अधिकृत ईमेल और पासवर्ड दर्ज करें।':'Enter the authorized email and password for administrator access.','ईमेल':'Email','पासवर्ड':'Password','लॉगिन':'Sign in','पासवर्ड भूल गए?':'Forgot password?','खाता बनाएँ':'Create account','पंजीकृत सदस्य का खाता बनाएँ':'Create a member account','खाता उसी ईमेल और ID से बनता है जो संस्था के रिकॉर्ड में verified है। Admin खाते यहाँ नहीं बनाए जा सकते।':'Create an account with the email and ID verified in the organization records. Administrator accounts cannot be created here.','पंजीकृत ईमेल':'Registered email','आवेदन / स्वयंसेवक / दान ID':'Application / Volunteer / Donation ID','नया पासवर्ड (कम से कम 10 अक्षर)':'New password (at least 10 characters)','ईमेल OTP से पासवर्ड बदलें':'Reset password with an email OTP','OTP भेजें':'Send OTP','6 अंकों का OTP':'6-digit OTP','नया पासवर्ड':'New password','पासवर्ड बदलें':'Reset password','Admin पासवर्ड email OTP से reset नहीं होता; Admin login के बाद बदलें।':'Administrator passwords cannot be reset with email OTP. Sign in as administrator to change it.',
- 'डैशबोर्ड':'Dashboard','प्रोफ़ाइल':'Profile','ID Card':'ID card','ID कार्ड अनुमोदन':'ID card approvals','आपका विवरण':'Your details','अगले कदम':'Next steps','दान इतिहास':'Donation history','सदस्य':'Members','ID approvals':'ID card approvals','Settings':'Settings','Admin पासवर्ड बदलें':'Change administrator password','वर्तमान पासवर्ड':'Current password','नया पासवर्ड (12+ अक्षर)':'New password (12+ characters)','पासवर्ड अपडेट करें':'Update password','मेरी प्रोफ़ाइल':'My profile','प्रोफ़ाइल फोटो':'Profile photo','नाम':'Name','मोबाइल':'Mobile','पता':'Address','प्रोफ़ाइल सेव करें':'Save profile','वापस':'Back','मेरी संस्था ID':'My organization ID','ID card की स्थिति लोड हो रही है…':'Loading ID card status…','ID card डाउनलोड करें':'Download ID card','आवेदन':'Applications','स्वयंसेवक':'Volunteers','दान रिकॉर्ड':'Donation records','शिकायतें':'Grievances','प्रमाणपत्र':'Certificates','चयनित विद्यार्थी':'Selected students','Admin कार्य':'Administrator actions','Members, ID approvals और settings नीचे के Admin controls से manage करें।':'Manage members, ID approvals, and settings using the administrator controls below.','Pending ID card approvals जाँचें':'Review pending ID card approvals','Portal settings अपडेट करें':'Update portal settings','Disabled accounts और role access review करें':'Review disabled accounts and role access',
- 'आवेदन स्थिति':'Application status','मेरी पढ़ाई':'My studies','Certificate देखें':'View certificate','Certificate जारी होने पर यहाँ दिखाई देगा।':'Your certificate will appear here when issued.','अपनी संपर्क जानकारी अपडेट रखें':'Keep your contact information up to date','Attendance और fee status देखें':'Review attendance and fee status','Admin approval के बाद ID card डाउनलोड करें':'Download your ID card after administrator approval','कक्षाएँ':'Classes','विषय':'Subjects','सेवा घंटे':'Service hours','मेरी सेवा':'My service','Assigned classes:':'Assigned classes:','अभी नियुक्ति उपलब्ध नहीं':'No assignment yet','कक्षा / विषय':'Class / subject','दिनांक':'Date','नोट':'Note','सेवा घंटे दर्ज करें':'Log service hours','Coordinator से schedule की पुष्टि करें':'Confirm your schedule with the coordinator','अपनी profile और संपर्क विवरण अद्यतन रखें':'Keep your profile and contact details up to date','कुल दान':'Total donations','आपका योगदान':'Your contribution','आपके सहयोग के लिए धन्यवाद। दान की रसीद और स्थिति नीचे देखें।':'Thank you for your support. Review donation receipts and status below.','Donation ID':'Donation ID','राशि':'Amount','उद्देश्य':'Purpose','रसीद':'Receipt','देखें':'View','अभी कोई donation history उपलब्ध नहीं।':'No donation history is available yet.','Donation receipt डाउनलोड/देखें':'View or download donation receipts','भूमिका':'Role','Assigned विद्यार्थी':'Assigned students','आपका staff account सक्रिय है। Assignment न दिखे तो Admin से batch mapping करवाएँ।':'Your staff account is active. If no assignments appear, ask the administrator to map your batch.','Assigned विद्यार्थी':'Assigned students','Application':'Application','विद्यार्थी':'Student','Course':'Course','Batch':'Batch','Attendance':'Attendance','स्थिति':'Status','अभी नियुक्ति उपलब्ध नहीं':'No assignment available',
- 'प्रोफ़ाइल अपडेट':'Profile update','फोटो 1 MB से कम होनी चाहिए।':'The photo must be smaller than 1 MB.','Profile updated.':'Profile updated.','स्थिति जाँची जा रही है…':'Checking status…','आपका ID card स्वीकृत है।':'Your ID card is approved.','Settings लोड हो रही हैं…':'Loading settings…','संस्था का नाम':'Organization name','पता':'Address','सहायता फोन':'Support phone','स्वागत संदेश (हिन्दी)':'Welcome message (Hindi)','Settings सेव करें':'Save settings','सदस्य सूची लोड हो रही है…':'Loading member list…','Admin द्वारा account बनाएँ':'Create an account as administrator','स्थिति':'Status','Access':'Access','Invite account':'Invite account','इस account की access स्थिति बदलें?':'Change this account’s access status?','ID card approvals':'ID card approvals','लोड हो रहा है…':'Loading…','Approve & issue':'Approve and issue','अभी कोई donation history उपलब्ध नहीं।':'No donation history is available yet.',
- 'पहले portal.html में deployed Apps Script Web App URL सेट करें।':'Set the deployed Apps Script Web App URL in portal.html first.','अनुरोध पूरा नहीं हुआ।':'The request could not be completed.','साइन इन कर रहे हैं…':'Signing in…','Admin email अनुमति प्राप्त नहीं है।':'This administrator email is not authorized.','पासवर्ड गलत है।':'The password is incorrect.','Admin login failed.':'Administrator sign-in failed.','लॉगिन विफल।':'Sign-in failed.','यह खाता ':'This account has the role ',' भूमिका का है।':'.','खाता बना। अब लॉगिन करें।':'Account created. Sign in now.','Admin password reset email OTP से उपलब्ध नहीं है। Admin dashboard का password change उपयोग करें।':'Administrators cannot reset passwords by email OTP. Use the password change in the administrator dashboard.','यदि खाता उपलब्ध है तो OTP भेजा गया।':'If the account can reset its password, an OTP has been sent.','नमस्ते, ':'Hello, ','dashboard · ':'dashboard · ','सक्रिय':'Active','लंबित':'Pending','स्वीकृत':'Approved','अस्वीकृत':'Rejected','बंद':'Disabled','स्वयंसेवक ID':'Volunteer ID','कुल दान':'Total donations','“हर सीख एक नई संभावना है।”':'“Every lesson creates a new possibility.”','“छोटे कदम भी बदलाव शुरू करते हैं।”':'“Small steps can start big changes.”',
+
+const API = 'https://script.google.com/macros/s/AKfycbynC667snioVb9pnBE8jDRWUJHwKOUi5jTYO31PlfolDG5VjcTrE93zh2k-Ai7zgi0/exec';
+const FETCH_TIMEOUT_MS = 15000;
+const ID_REGEX = /^DFP-\d{8}-[A-F0-9]{8,16}$/;
+const $ = id => document.getElementById(id);
+
+let language = 'hi';
+let lastResult = null;
+let lastErrorKey = null;
+
+const words = {
+  hi: {
+    title:'संकल्प सत्यापन', loading:'संकल्प रिकॉर्ड जाँचा जा रहा है…',
+    invalid:'सत्यापन उपलब्ध नहीं',
+    notFound:'इस ID के लिए सत्यापित संकल्प रिकॉर्ड नहीं मिला। ID जाँचें या रिकॉर्ड के admin सत्यापन की प्रतीक्षा करें।',
+    verified:'संकल्प सत्यापित', pledgeId:'संकल्प क्रमांक', name:'नाम',
+    primary:'प्राथमिक क्षेत्र', secondary:'द्वितीयक क्षेत्र', date:'जारी दिनांक',
+    private:'धारक ने नाम और क्षेत्र को सार्वजनिक रूप से साझा करने की अनुमति नहीं दी है। संकल्प ID और स्थिति सत्यापित हैं।',
+    error:'अभी सत्यापन सेवा उपलब्ध नहीं है। कृपया बाद में फिर प्रयास करें।',
+    timeout:'सत्यापन सेवा ने समय पर उत्तर नहीं दिया। कृपया फिर प्रयास करें।',
+    copy:'कॉपी', copied:'कॉपी हो गया', retry:'फिर प्रयास करें', verify:'जाँचें',
+    verifiedOn:'सत्यापित दिनांक',
+    regNo:'पंजीकरण सं.', darpan:'NGO Darpan', act:'अधिनियम',
+    npoType:'NPO प्रकार', udyam:'उद्यम पंजीकरण',
+    enterpriseType:'उद्यम प्रकार', majorActivity:'मुख्य गतिविधि',
+    gst:'GST', cityState:'स्थान',
+    verifiedNGO:'सत्यापित NGO', since:'स्थापना',
+    address:'पता', email:'ईमेल', mobile:'मोबाइल',
+    schemeCode:'योजना कोड', statusActive:'सक्रिय', statusClosed:'बंद',
+    authorizedBy:'प्राधिकृत हस्ताक्षरकर्ता', certificate:'प्रमाणपत्र'
+  },
+  en: {
+    title:'Pledge Verification', loading:'Checking the pledge record…',
+    invalid:'Verification unavailable',
+    notFound:'No verified pledge record was found for this ID. Check the ID or wait for admin verification.',
+    verified:'Pledge verified', pledgeId:'Pledge ID', name:'Name',
+    primary:'Primary sector', secondary:'Secondary sectors', date:'Issue date',
+    private:'The holder has not consented to publish their name and sectors. The pledge ID and status are verified.',
+    error:'Verification is temporarily unavailable. Please try again later.',
+    timeout:'The verification service did not respond in time. Please try again.',
+    copy:'Copy', copied:'Copied', retry:'Retry', verify:'Verify',
+    verifiedOn:'Verified on',
+    regNo:'Reg. No.', darpan:'NGO Darpan', act:'Act',
+    npoType:'NPO Type', udyam:'Udyam Reg.',
+    enterpriseType:'Enterprise type', majorActivity:'Major activity',
+    gst:'GST', cityState:'Location',
+    verifiedNGO:'Verified NGO', since:'Since',
+    address:'Address', email:'Email', mobile:'Mobile',
+    schemeCode:'Scheme code', statusActive:'Active', statusClosed:'Closed',
+    authorizedBy:'Authorized Signatory', certificate:'Certificate'
+  }
 };
-hiToEn['दिप्र फ़ाउंडेशन The Uplift पोर्टल — विद्यार्थी, स्वयंसेवक, कर्मचारी, दाता और प्रशासक प्रवेश।']='Dipra Foundation The Uplift portal — sign in for students, volunteers, staff, donors, and administrators.';
-Object.assign(hiToEn,{'ईमेल OTP भेजें':'Send email verification code','ईमेल OTP':'Email OTP','OTP सत्यापित करें':'Verify OTP','पंजीकृत ईमेल और ID दर्ज करें, ईमेल OTP verify करें, फिर खाता बनाएँ। Admin खाते self-register नहीं कर सकते।':'Enter your registered email and ID, verify the email OTP, then create your account. Admin accounts cannot self-register.','सभी बदलाव सेव करें':'Save all changes','रिकॉर्ड संपादित करें':'Edit record','देखें / संपादित करें':'View / edit','ID कार्ड अनुमोदन':'ID card approvals','सभी application, volunteer, donor, grievance, certificate और portal profile records देखें और संपादित करें। नए Admin accounts यहाँ से नहीं बनाए जा सकते।':'View and edit every application, volunteer, donor, grievance, certificate, and portal profile record. New Admin accounts cannot be created here.','Admin द्वारा Staff account आमंत्रित करें':'Invite a Staff account as Admin','Student, Volunteer और Donor अपने verified record तथा email OTP से account बनाएँ। Admin account कभी यहाँ से नहीं बनाया जा सकता।':'Students, Volunteers, and Donors create accounts using a verified record and email OTP. Admin accounts can never be created here.','Staff invite भेजें':'Send Staff invite'});
-hiToEn['कर्मचारी ID']='Staff ID';
-hiToEn['Admin invitation, registered email, Staff ID और email OTP से Staff account सक्रिय करें।']='Use your Admin invitation, registered email, Staff ID, and email OTP to activate your account.';
-Object.assign(hiToEn,{'सभी application, volunteer, donor, grievance, certificate, pledge और portal profile records देखें और संपादित करें। Google Sheet खोलने की ज़रूरत नहीं—नया रिकॉर्ड, Status, नोट, आर्काइव, CSV और नंबर काउंटर यहीं से। नए Admin accounts यहाँ से नहीं बनाए जा सकते।':'View and edit every application, volunteer, donor, grievance, certificate, pledge and portal profile record. No Google Sheet needed — create records, set status, add notes, archive, export CSV and check number counters right here. New Admin accounts cannot be created here.','+ नया रिकॉर्ड':'+ New record','नंबर काउंटर':'Number counters','बदलावों का लॉग':'Change log'});
-const enToHi=Object.fromEntries(Object.entries(hiToEn).map(([h,e])=>[e,h]));
-enToHi['Dipra Foundation home']='दिप्र फ़ाउंडेशन गृह';
-enToHi['LEARN · SERVE · GROW']='सीखें · सेवा करें · आगे बढ़ें';
-Object.assign(enToHi,{'Use your Admin invitation, registered email, Staff ID, and email OTP to activate your account.':'Admin invitation, registered email, Staff ID और email OTP से Staff account सक्रिय करें।','Student':'विद्यार्थी','Volunteer':'स्वयंसेवक','Staff':'कर्मचारी','Donor':'दाता','Admin':'प्रशासक','Admin Dashboard':'प्रशासक डैशबोर्ड','ID Card':'ID कार्ड','Settings':'सेटिंग','Application':'आवेदन','Donation ID':'दान ID','Email':'ईमेल','Role':'भूमिका','Name':'नाम','Status':'स्थिति','Action':'कार्यवाही','Course':'पाठ्यक्रम','Batch':'बैच','Attendance':'उपस्थिति','Staff ID':'कर्मचारी ID','View and edit every application, volunteer, donor, grievance, certificate, and portal profile record. New Admin accounts cannot be created here.':'हर आवेदन, स्वयंसेवक, दाता, शिकायत, प्रमाणपत्र और पोर्टल प्रोफ़ाइल रिकॉर्ड देखें और संपादित करें। नया Admin खाता यहाँ नहीं बनाया जा सकता।','Invite a Staff account as Admin':'Admin के रूप में Staff खाता आमंत्रित करें','Students, Volunteers, and Donors create accounts using a verified record and email OTP. Admin accounts can never be created here.':'Student, Volunteer और Donor सत्यापित रिकॉर्ड और ईमेल OTP से खाता बनाएँ। Admin खाते यहाँ कभी नहीं बनाए जा सकते।','Send Staff invite':'Staff आमंत्रण भेजें','Invalid email or password.':'अमान्य ईमेल या पासवर्ड।','Sign in again.':'कृपया फिर से लॉगिन करें।','Admin session expired.':'Admin सत्र समाप्त हो गया।','Admin session expired':'Admin सत्र समाप्त हो गया।','Enter a valid mobile number and address.':'सही मोबाइल नंबर और पता दर्ज करें।','Photo must be PNG, JPG, or WebP under 1 MB.':'फोटो PNG, JPG या WebP हो और 1 MB से कम हो।','No verified student, volunteer, or donor record matches these details.':'इन विवरणों से कोई verified विद्यार्थी, स्वयंसेवक या दाता रिकॉर्ड नहीं मिला।','Email, role, and registered ID are required.':'ईमेल, भूमिका और पंजीकृत ID आवश्यक हैं।','An account already exists for this email.':'इस ईमेल के लिए खाता पहले से मौजूद है।','Staff accounts must be created by an administrator.':'Staff खाते Admin द्वारा बनाए जाने चाहिए।','Password must be at least 10 characters.':'पासवर्ड कम से कम 10 अक्षरों का होना चाहिए।','Enter the six-digit code and a password of at least 10 characters.':'छह अंकों का OTP और कम से कम 10 अक्षरों का पासवर्ड दर्ज करें।','Account created.':'खाता बन गया।','Password changed. Sign in again.':'पासवर्ड बदल गया। कृपया फिर से लॉगिन करें।','The code is invalid or expired.':'OTP गलत है या उसकी अवधि समाप्त हो गई है।','Admin password cannot be reset by email OTP.':'Admin पासवर्ड ईमेल OTP से reset नहीं किया जा सकता।','Current password is incorrect.':'वर्तमान पासवर्ड गलत है।','Admin password must be at least 12 characters.':'Admin पासवर्ड कम से कम 12 अक्षरों का होना चाहिए।','Service hours recorded.':'सेवा घंटे दर्ज हो गए।','Enter a valid date, hours (0–12), class, and short note.':'सही तारीख, घंटे (0–12), कक्षा और छोटा नोट दर्ज करें।','Portal user not found.':'Portal उपयोगकर्ता नहीं मिला।','Settings saved.':'सेटिंग सेव हो गई।','Account status updated.':'खाते की स्थिति अपडेट हो गई।','Account created and credentials emailed.':'खाता बन गया और लॉगिन विवरण ईमेल कर दिए गए।','ID card awaits admin approval.':'ID कार्ड Admin की मंज़ूरी की प्रतीक्षा में है।','Your ID card is approved.':'आपका ID कार्ड स्वीकृत है।','Email or password is incorrect.':'ईमेल या पासवर्ड गलत है।','Too many attempts. Try again later.':'कई प्रयास हो चुके हैं। कृपया बाद में कोशिश करें।','Portal users':'Portal उपयोगकर्ता','Name (Staff)':'नाम (Staff)','Linked ID':'संबद्ध ID','Access':'पहुँच','Invite account':'खाता आमंत्रित करें','Enable':'सक्रिय करें','Disable':'निष्क्रिय करें','Approve & issue':'स्वीकृत कर जारी करें','ID card approvals':'ID कार्ड अनुमोदन','Volunteer ID':'स्वयंसेवक ID','Staff ID':'कर्मचारी ID','Account':'खाता','Website':'वेबसाइट','Session hours':'सत्र अवधि','OTP expiry (minutes)':'OTP अवधि (मिनट)','Welcome message (English)':'स्वागत संदेश (अंग्रेज़ी)','Foundation name':'संस्था का नाम','Logo URL':'लोगो URL','Public website':'सार्वजनिक वेबसाइट','Support phone':'सहायता फोन','Open menu':'मेनू खोलें','Close menu':'मेनू बंद करें','Thought for today':'आज का विचार'});
-Object.assign(enToHi,{'Email verification code':'ईमेल सत्यापन OTP','Verify OTP':'OTP सत्यापित करें','Enter your registered email and ID, verify the email OTP, then create your account. Admin accounts cannot self-register.':'पंजीकृत ईमेल और ID दर्ज करें, ईमेल OTP सत्यापित करें, फिर खाता बनाएँ। Admin खाते self-register नहीं कर सकते।','Verification code sent to ':'सत्यापन कोड भेजा गया: ','Verification code sent.':'सत्यापन कोड भेज दिया गया।','Email verified. You can create your account now.':'ईमेल सत्यापित है। अब खाता बनाएँ।','Enter the registered email, linked ID, role, and six-digit code.':'पंजीकृत ईमेल, लिंक ID, भूमिका और छह अंकों का OTP दर्ज करें।','Invalid verification code.':'OTP गलत है।','Code expired. Request another OTP.':'OTP की अवधि समाप्त हो गई है। नया OTP लें।','Too many incorrect codes. Request a new OTP later.':'कई गलत प्रयास हुए हैं। बाद में नया OTP लें।','A valid non-admin role, registered email, and linked ID are required.':'गैर-Admin भूमिका, पंजीकृत ईमेल और लिंक ID आवश्यक हैं।','No matching verified member record was found.':'इससे मेल खाता सत्यापित सदस्य रिकॉर्ड नहीं मिला।','Please wait 60 seconds before requesting another code.':'नया OTP माँगने से पहले 60 सेकंड प्रतीक्षा करें।','Record type, key, and editable fields are required.':'रिकॉर्ड प्रकार, ID और संपादन योग्य फ़ील्ड आवश्यक हैं।','Unsupported record type.':'यह रिकॉर्ड प्रकार समर्थित नहीं है।','Record not found.':'रिकॉर्ड नहीं मिला।','Record saved.':'रिकॉर्ड सेव हो गया।','Record saved and certificate PDF regenerated.':'रिकॉर्ड सेव हुआ और प्रमाणपत्र PDF फिर से बना।','Search records…':'रिकॉर्ड खोजें…','Search':'खोजें','Matches: ':'मिले रिकॉर्ड: ','Admin records':'Admin रिकॉर्ड','Details':'विवरण','View / edit':'देखें / संपादित करें','Edit record':'रिकॉर्ड संपादित करें','All editable fields for this record are shown below.':'इस रिकॉर्ड के सभी संपादन योग्य फ़ील्ड नीचे दिए हैं।','Open current certificate / PDF':'मौजूदा प्रमाणपत्र / PDF खोलें','Save all changes':'सभी बदलाव सेव करें','Generate / regenerate certificate and email':'प्रमाणपत्र बनाएँ / फिर बनाएँ और ईमेल करें','Generate or regenerate certificate and email':'प्रमाणपत्र बनाएँ / फिर बनाएँ और ईमेल करें','Profile update':'प्रोफ़ाइल अपडेट','Portal profiles':'पोर्टल प्रोफ़ाइल'});
-function translateString(value,lang){let out=String(value);const dict=lang==='en'?hiToEn:enToHi;Object.keys(dict).sort((a,b)=>b.length-a.length).forEach(from=>{if(out===from){out=dict[from];return;}if(from.length>2&&out.includes(from))out=out.split(from).join(dict[from]);});return out;}
-function translateNode(node){if(node.nodeType===Node.TEXT_NODE){if(node.parentElement&&(['SCRIPT','STYLE','CODE','PRE'].includes(node.parentElement.tagName)||node.parentElement.closest('[data-raw]')))return;if(node.__portalOriginal===undefined)node.__portalOriginal=node.nodeValue;const next=translateString(node.__portalOriginal,currentLanguage);if(node.nodeValue!==next)node.nodeValue=next;return;}if(node.nodeType!==Node.ELEMENT_NODE||['SCRIPT','STYLE','CODE','PRE'].includes(node.tagName)||(node.hasAttribute&&node.hasAttribute('data-raw')))return;['placeholder','title','aria-label','alt','content'].forEach(attr=>{if(node.hasAttribute(attr)){const key='__portal_'+attr;if(node[key]===undefined)node[key]=node.getAttribute(attr);const val=translateString(node[key],currentLanguage);if(node.getAttribute(attr)!==val)node.setAttribute(attr,val);}});node.childNodes.forEach(translateNode);}
-function applyLanguage(lang){currentLanguage=lang==='en'?'en':'hi';document.documentElement.lang=currentLanguage;document.title=currentLanguage==='en'?'Portal | Dipra Foundation — The Uplift':'पोर्टल | दिप्र फ़ाउंडेशन — The Uplift';$('langHi').classList.toggle('active',currentLanguage==='hi');$('langEn').classList.toggle('active',currentLanguage==='en');$('langHi').setAttribute('aria-pressed',String(currentLanguage==='hi'));$('langEn').setAttribute('aria-pressed',String(currentLanguage==='en'));translateNode(document.head);translateNode(document.body);const desc=document.querySelector('meta[name="description"]');if(desc)desc.content=currentLanguage==='en'?'Dipra Foundation The Uplift portal — sign in for students, volunteers, staff, donors, and administrators.':'दिप्र फ़ाउंडेशन The Uplift पोर्टल — विद्यार्थी, स्वयंसेवक, कर्मचारी, दाता और प्रशासक प्रवेश।';const welcome=currentLanguage==='en'?(portalPublicSettings.WelcomeTextEn||portalPublicSettings.WelcomeTextHi):(portalPublicSettings.WelcomeTextHi||portalPublicSettings.WelcomeTextEn);if(welcome)document.querySelector('.hero p').textContent=welcome;syncAdminTools();rerenderAdminPanel();try{localStorage.setItem('dipra_portal_language',currentLanguage);}catch(e){}}
-function initLanguage(){let saved='hi';try{saved=localStorage.getItem('dipra_portal_language')||'hi';}catch(e){}applyLanguage(saved);languageObserver=new MutationObserver(changes=>changes.forEach(change=>{if(change.type==='characterData')translateNode(change.target);change.addedNodes&&change.addedNodes.forEach(translateNode);}));languageObserver.observe(document.body,{subtree:true,childList:true,characterData:true});}
-function message(el,text,type){el.textContent='';const raw=document.createElement('span');raw.setAttribute('data-raw','');raw.textContent=text;el.appendChild(raw);el.className='msg '+(type||'');}
-const drawer=$('mobileDrawer'),scrim=$('drawerScrim'),menuToggle=$('menuToggle');
-function closeDrawer(){drawer.classList.remove('open');scrim.classList.remove('open');menuToggle.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');drawer.setAttribute('aria-hidden','true');document.body.style.overflow='';}
-function openDrawer(){drawer.classList.add('open');scrim.classList.add('open');menuToggle.classList.add('open');menuToggle.setAttribute('aria-expanded','true');drawer.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';$('drawerClose').focus();}
-menuToggle.addEventListener('click',()=>menuToggle.getAttribute('aria-expanded')==='true'?closeDrawer():openDrawer());$('drawerClose').addEventListener('click',closeDrawer);scrim.addEventListener('click',closeDrawer);drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeDrawer));document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});window.addEventListener('resize',()=>{if(window.innerWidth>900)closeDrawer();});
-async function api(action,data){
-  if(!GAS_WEB_APP_URL||GAS_WEB_APP_URL.indexOf('script.google.com/macros/s/')<0)throw new Error('पहले portal.html में deployed Apps Script Web App URL सेट करें।');
-  const response=await fetch(GAS_WEB_APP_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(Object.assign({action:action},data||{}))});
-  const result=await response.json();
-  if(result.status==='error')throw new Error(result.message||'अनुरोध पूरा नहीं हुआ।');
-  return result;
+
+/* ---- Static NGO data ---- */
+const NGO_STATIC = {
+  name: "DIPRA FOUNDATION",
+  legalName: "M/S DIPRA FOUNDATION",
+  logoUrl: "/logo.png",
+
+  registrationNo: "300",
+  act: "TRUST ACT 1882",
+  npoType: "Trust",
+  regDate: "08-10-2024",
+  ngoDarpanId: "UP/2024/0459444",
+  udyamReg: "UDYAM-UP-43-0209073",
+
+  enterpriseType: "Micro",
+  majorActivity: "Services",
+  orgType: "Trust",
+  gst: "Exempted",
+  commencement: "08/10/2024",
+
+  address: "M/S DIPRA FOUNDATION, Khersa, Bidhnu, Kanpur - Hamirpur Road, Kanpur Nagar, Uttar Pradesh — 209214",
+  city: "Kanpur Nagar",
+  state: "Uttar Pradesh",
+  pincode: "209214",
+  email: "diprafoundation@gmail.com",
+  mobile: "+91 95323 28276",
+
+  foundedYear: 2024,
+  verifiedBadge: true
+};
+
+/* ---- Helpers ---- */
+function formatDate(value, lang) {
+  if (!value) return '—';
+  const d = new Date(value);
+  if (isNaN(d.getTime())) return String(value);
+  try { return d.toLocaleDateString(lang==='hi'?'hi-IN':'en-IN',
+        {year:'numeric',month:'short',day:'2-digit'}); }
+  catch { return d.toLocaleDateString(); }
 }
-let lastView='';
-function syncAdminTools(){document.querySelectorAll('[data-label-hi]').forEach(el=>{const value=currentLanguage==='en'?(el.dataset.labelEn||el.dataset.labelHi):el.dataset.labelHi;if(el.textContent!==value)el.textContent=value;});}
-function setView(view){
-  lastView=String(view||'');
-  document.querySelectorAll('.bottom-nav button').forEach(button=>button.classList.toggle('active',button.dataset.view===view));
-  $('profilePanel').classList.add('hidden');$('idcardPanel').classList.add('hidden');
-  $('adminPanel').classList.add('hidden');$('adminSubpanel').classList.add('hidden');$('donationsPanel').classList.add('hidden');
-  if(view==='dashboard'){$('dashboardView').classList.remove('hidden');loadDashboard();}
-  if(view==='profile'){$('dashboardView').classList.remove('hidden');$('profilePanel').classList.remove('hidden');loadProfile();}
-  if(view==='idcard'){$('dashboardView').classList.remove('hidden');$('idcardPanel').classList.remove('hidden');loadIdCard();}
-  if(view==='settings'||view==='adminUsers'||view==='adminCards'||view==='adminCreate'||view==='adminCounters'||view==='adminAudit'||view.indexOf('records_')===0){
-    if(currentUser.role!=='Admin')return;
-    $('dashboardView').classList.remove('hidden');$('adminPanel').classList.remove('hidden');$('adminSubpanel').classList.remove('hidden');
-    if(view==='settings')loadSettings();if(view==='adminUsers')loadUsers();if(view==='adminCards')loadCards();if(view.indexOf('records_')===0)loadAdminRecords(view.slice(8));
-    if(view==='adminCreate')loadAdminCreate();if(view==='adminCounters')loadAdminCounters();if(view==='adminAudit')loadAdminAudit();
+function formatDateTime(value, lang) {
+  if (!value) return '—';
+  const d = new Date(value);
+  if (isNaN(d.getTime())) return String(value);
+  try { return d.toLocaleString(lang==='hi'?'hi-IN':'en-IN',
+        {year:'numeric',month:'short',day:'2-digit',hour:'2-digit',minute:'2-digit'}); }
+  catch { return d.toLocaleString(); }
+}
+function clearNode(el){ while(el.firstChild) el.removeChild(el.firstChild); }
+function esc(s){ const d=document.createElement('div'); d.textContent = s==null?'':String(s); return d.innerHTML; }
+
+function copyText(text, btn) {
+  const done = () => { if (!btn) return; const o=btn.textContent;
+    btn.textContent = words[language].copied;
+    setTimeout(() => btn.textContent = o, 1200); };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+  } else fallbackCopy(text, done);
+}
+function fallbackCopy(text, done) {
+  const ta=document.createElement('textarea'); ta.value=text;
+  ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); done(); }catch{}
+  document.body.removeChild(ta);
+}
+
+function showRow(label, value, copyable) {
+  const row=document.createElement('div'); row.className='row';
+  const a=document.createElement('div'); a.className='label'; a.textContent=label;
+  const b=document.createElement('div'); b.className='value';
+  b.textContent = value || '—';
+  if (copyable && value) {
+    const btn=document.createElement('button'); btn.type='button';
+    btn.className='copy-btn'; btn.textContent=words[language].copy;
+    btn.setAttribute('aria-label', words[language].copy+': '+value);
+    btn.addEventListener('click', ()=>copyText(value, btn));
+    b.appendChild(btn);
   }
+  row.append(a,b); $('details').appendChild(row);
 }
-function rerenderAdminPanel(){
-  if(!sessionToken||!currentUser||currentUser.role!=='Admin')return;
-  const view=lastView;
-  if(view==='settings')loadSettings();
-  else if(view==='adminUsers')loadUsers();
-  else if(view==='adminCards')loadCards();
-  else if(view==='adminCreate')loadAdminCreate();
-  else if(view==='adminCounters')loadAdminCounters();
-  else if(view==='adminAudit')loadAdminAudit();
-  else if(view.indexOf('records_')===0)loadAdminRecords(view.slice(8));
+
+function buildShareUrl() {
+  return location.origin + location.pathname + '?id=' + encodeURIComponent(
+    (new URLSearchParams(location.search).get('id') || '').toUpperCase());
 }
-function metric(label,value){const shown=typeof value==='number'?new Intl.NumberFormat(currentLanguage==='en'?'en-IN':'hi-IN').format(value):(value==null||value===''?'—':String(value));return '<div class="metric"><small>'+escapeHtml(label)+'</small><b>'+escapeHtml(shown)+'</b></div>';}
-function escapeHtml(v){return String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function formatPortalDate(value){if(!value)return '—';const date=new Date(value);if(Number.isNaN(date.getTime()))return String(value);return new Intl.DateTimeFormat(currentLanguage==='en'?'en-IN':'hi-IN',{day:'2-digit',month:'short',year:'numeric'}).format(date);}
-let registrationVerifiedSignature='';
-function registrationSignature(){return[$('regEmail').value.trim().toLowerCase(),selectedRole,$('regId').value.trim().toUpperCase()].join('|');}
-function resetRegistrationProof(){registrationVerifiedSignature='';$('regPass').disabled=true;$('createPortalAccount').disabled=true;}
-function selectRole(role){
- selectedRole=role;document.querySelectorAll('.role-pick').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.role===role)));
- $('loginTitle').textContent=names[role]+' लॉगिन';
- $('loginHint').textContent=role==='Admin'?'Admin के सुरक्षित प्रवेश के लिए अधिकृत ईमेल और पासवर्ड दर्ज करें।':'पंजीकृत ईमेल और पासवर्ड का उपयोग करें।';
- $('registerToggle').classList.toggle('hidden',role==='Admin');
- $('adminNote').classList.toggle('hidden',role!=='Admin');
- $('registerHelp').textContent=role==='Staff'?(currentLanguage==='en'?'Use your Admin invitation, registered email, Staff ID, and email OTP to activate your account.':'Admin invitation, registered email, Staff ID और email OTP से Staff account सक्रिय करें।'):(currentLanguage==='en'?'Enter your registered email and ID, verify the email OTP, then create your account. Admin accounts cannot self-register.':'पंजीकृत ईमेल और ID दर्ज करें, ईमेल OTP verify करें, फिर खाता बनाएँ। Admin खाते self-register नहीं कर सकते।');$('regId').previousElementSibling.textContent=role==='Staff'?(currentLanguage==='en'?'Staff ID':'कर्मचारी ID'):(currentLanguage==='en'?'Application / Volunteer / Donation ID':'आवेदन / स्वयंसेवक / दान ID');
- resetRegistrationProof();
+function setQR(id) {
+  const wrap=$('qrWrap'), img=$('qrImg');
+  if (!id) { wrap.hidden=true; img.removeAttribute('src'); return; }
+  img.src='https://api.qrserver.com/v1/create-qr-code/?size=320x320&data='+
+    encodeURIComponent(buildShareUrl());
+  wrap.hidden=false;
 }
-document.querySelectorAll('.role-pick').forEach(b=>b.addEventListener('click',()=>selectRole(b.dataset.role)));
-$('loginForm').addEventListener('submit',async e=>{
- e.preventDefault();const btn=$('loginSubmit');btn.disabled=true;message($('loginMsg'),'साइन इन कर रहे हैं…');
- try{
-   const email=$('loginEmail').value.trim().toLowerCase(),password=$('loginPassword').value;
-   if(selectedRole==='Admin'){
-     const check=await api('adminCheckEmail',{email});if(check.allowed!==true)throw new Error(check.message||'Admin email अनुमति प्राप्त नहीं है।');
-     const pass=await api('adminCheckPassword',{email:email,password:password});if(pass.allowed!==true)throw new Error(pass.message||'पासवर्ड गलत है।');
-     const done=await api('adminLoginFinal',{email:email});if(done.status!=='success')throw new Error(done.message||'Admin login failed.');
-     sessionToken=done.token;currentUser={email:email,role:'Admin',name:'Admin'};
-   }else{
-     const result=await api('loginUser',{email:email,password:password});
-     if(result.status!=='success')throw new Error(result.message||'लॉगिन विफल।');
-     if(result.user.role!==selectedRole)throw new Error('यह खाता '+names[result.user.role]+' भूमिका का है।');
-     sessionToken=result.token;currentUser=result.user;
-   }
-   sessionStorage.setItem('dipra_portal_token',sessionToken);sessionStorage.setItem('dipra_portal_user',JSON.stringify(currentUser));
-   await showDashboard();
- }catch(err){message($('loginMsg'),err.message,'error');}
- finally{btn.disabled=false;}
-});
-$('registerToggle').addEventListener('click',()=>$('registerBox').classList.toggle('hidden'));
-$('regEmail').addEventListener('input',resetRegistrationProof);$('regId').addEventListener('input',resetRegistrationProof);
-$('sendRegOtp').addEventListener('click',async()=>{
- const email=$('regEmail').value.trim().toLowerCase(),linkedId=$('regId').value.trim();resetRegistrationProof();
- if(!email||!linkedId||selectedRole==='Admin'){message($('regMsg'),'Choose a non-admin role and enter the registered email and ID.','error');return;}
- const button=$('sendRegOtp');button.disabled=true;
- try{const r=await api('portalSendRegistrationOtp',{email:email,role:selectedRole,linkedId:linkedId});message($('regMsg'),r.message||'Verification code sent.','ok');$('regOtp').focus();}
- catch(err){message($('regMsg'),err.message,'error');}finally{button.disabled=false;}
-});
-$('verifyRegOtp').addEventListener('click',async()=>{
- const email=$('regEmail').value.trim().toLowerCase(),linkedId=$('regId').value.trim(),otp=$('regOtp').value.trim();
- try{const r=await api('portalVerifyRegistrationOtp',{email:email,role:selectedRole,linkedId:linkedId,otp:otp});registrationVerifiedSignature=registrationSignature();$('regPass').disabled=false;$('createPortalAccount').disabled=false;message($('regMsg'),r.message||'Email verified. Create your account.','ok');$('regPass').focus();}
- catch(err){resetRegistrationProof();message($('regMsg'),err.message,'error');}
-});
-$('registerForm').addEventListener('submit',async e=>{
- e.preventDefault();if(registrationVerifiedSignature!==registrationSignature()){message($('regMsg'),'Verify your email OTP before creating an account.','error');return;}const role=selectedRole, data={email:$('regEmail').value.trim(),role:role,linkedId:$('regId').value.trim(),password:$('regPass').value};
- try{const r=await api('registerUser',data);message($('regMsg'),r.message||'खाता बना। अब लॉगिन करें।','ok');$('registerForm').reset();resetRegistrationProof();}
- catch(err){message($('regMsg'),err.message,'error');}
-});
-$('forgotBtn').addEventListener('click',()=>{
- if(selectedRole==='Admin'){message($('loginMsg'),'Admin password reset email OTP से उपलब्ध नहीं है। Admin dashboard का password change उपयोग करें।','error');return;}
- $('resetBox').classList.toggle('hidden');$('resetEmail').value=$('loginEmail').value;
-});
-$('sendOtpBtn').addEventListener('click',async()=>{
- try{const r=await api('forgotPassword',{email:$('resetEmail').value.trim()});message($('resetMsg'),r.message||'यदि खाता उपलब्ध है तो OTP भेजा गया।','ok');}
- catch(err){message($('resetMsg'),err.message,'error');}
-});
-$('resetForm').addEventListener('submit',async e=>{
- e.preventDefault();try{const r=await api('resetPassword',{email:$('resetEmail').value.trim(),otp:$('resetOtp').value,newPassword:$('newPassword').value});message($('resetMsg'),r.message,'ok');}
- catch(err){message($('resetMsg'),err.message,'error');}
-});
-async function showDashboard(){
- $('authView').classList.add('hidden');$('dashboardView').classList.remove('hidden');$('logoutBtn').classList.remove('hidden');
- $('welcome').textContent='नमस्ते, '+(currentUser.name||names[currentUser.role]);$('roleLine').textContent=names[currentUser.role]+' dashboard · '+currentUser.email;
- $('adminPanel').classList.toggle('hidden',currentUser.role!=='Admin');$('navAdmin').classList.toggle('hidden',currentUser.role!=='Admin');
- $('bottom-nav').classList.remove('hidden');setView('dashboard');
-}
-async function loadDashboard(){
- try{
-  if(currentUser.role==='Admin'){
-   const r=await api('adminOverview',{token:sessionToken}),d=r.data||{};
-   $('metrics').innerHTML=metric('आवेदन',d.applications)+metric('स्वयंसेवक',d.volunteers)+metric('दान रिकॉर्ड',d.donations)+metric('शिकायतें',d.grievances)+metric('प्रमाणपत्र',d.certificates)+metric('चयनित विद्यार्थी',d.selected);
-   $('activityTitle').textContent=t('Admin कार्य','Admin work');$('activity').innerHTML='<p>'+t('नीचे के Admin controls से हर काम Google Sheet खोलने के बिना होता है। किसी भी पंक्ति पर टैप करके पूरा रिकॉर्ड खोलें और वहीं संपादित करें।','Every task below works from the Admin controls without opening the Google Sheet. Tapping any row opens its full record for editing in place.')+'</p><div class="inline-actions"><button class="btn secondary" type="button" data-open-view="adminUsers">'+t('सदस्य और पहुँच','Members & access')+'</button><button class="btn secondary" type="button" data-open-view="adminCards">'+t('ID कार्ड स्वीकृतियाँ','ID card approvals')+'</button><button class="btn secondary" type="button" data-open-view="settings">'+t('पोर्टल सेटिंग्स','Portal settings')+'</button><button class="btn secondary" type="button" data-open-view="adminAudit">'+t('बदलावों का लॉग','Activity log')+'</button></div>';wireOpenViews($('activity'));
-   $('nextSteps').innerHTML='<li>'+t('बाक़ी ID कार्ड स्वीकृतियाँ देखें','Review the pending ID card approvals')+'</li><li>'+t('पोर्टल सेटिंग्स अपडेट करें','Update the portal settings')+'</li><li>'+t('बंद खाते और भूमिकाओं की पहुँच जाँचें','Review disabled accounts and role access')+'</li>';return;
+
+/* ---- NGO render (clean grid) ---- */
+function renderNGO(ngo) {
+  const card = $('ngoCard');
+  if (!ngo || !ngo.name) { card.hidden = true; return; }
+
+  $('ngoLogo').src = ngo.logoUrl || '/logo.png';
+  $('ngoLogo').alt = (ngo.name || 'NGO') + ' logo';
+  $('ngoLogo').onerror = function(){ this.onerror=null; this.src='/logo.png'; };
+
+  $('ngoName').textContent = ngo.name;
+  const v = $('ngoVerified');
+  v.hidden = !ngo.verifiedBadge;
+  v.textContent = '✔ ' + words[language].verifiedNGO;
+
+  const tag = ngo.legalName || ngo.majorActivity || '';
+  $('ngoTagline').textContent = tag;
+  $('ngoTagline').hidden = !tag;
+
+  const items = [];
+  const add = (k, val, opts={}) => {
+    if (val == null || val === '') return;
+    items.push({ k, v: val, full: !!opts.full, html: !!opts.html });
+  };
+
+  add(words[language].regNo, ngo.registrationNo);
+  add(words[language].darpan, ngo.ngoDarpanId);
+  add(words[language].act, ngo.act);
+  add(words[language].npoType, ngo.npoType);
+  add(words[language].udyam, ngo.udyamReg);
+  add(words[language].since, ngo.foundedYear);
+  add(words[language].cityState, [ngo.city, ngo.state].filter(Boolean).join(', '));
+  add(words[language].enterpriseType, ngo.enterpriseType);
+  add(words[language].majorActivity, ngo.majorActivity);
+  add(words[language].gst, ngo.gst);
+
+  if (ngo.address) add(words[language].address, ngo.address, { full: true });
+
+  if (ngo.email) {
+    add(words[language].email,
+      '<a href="mailto:' + esc(ngo.email) + '">' + esc(ngo.email) + '</a>',
+      { html: true });
   }
-  const r=await api('getPortalDashboard',{token:sessionToken}),d=r.data||{},p=r.profile||{};
-  if(currentUser.role==='Student'){
-   const v=d||{};$('metrics').innerHTML=metric('आवेदन स्थिति',v.status)+metric('Course',v.course)+metric('Attendance',v.attendance)+metric('Fees paid',v.feePaid)+metric('Fees due',v.feeDue)+metric('Batch',v.batch);
-   $('activityTitle').textContent='मेरी पढ़ाई';$('activity').innerHTML='<p>Application ID: <b>'+escapeHtml(v.id||p.linkedId)+'</b></p>'+(v.certificateUrl?'<a href="'+escapeHtml(v.certificateUrl)+'" target="_blank" rel="noopener">Certificate देखें</a>':'<p class="quiet">Certificate जारी होने पर यहाँ दिखाई देगा।</p>');
-   $('nextSteps').innerHTML='<li>अपनी संपर्क जानकारी अपडेट रखें</li><li>Attendance और fee status देखें</li><li>Admin approval के बाद ID card डाउनलोड करें</li>';
-  }else if(currentUser.role==='Volunteer'){
-   $('metrics').innerHTML=metric('Volunteer ID',d.id||p.linkedId)+metric('कक्षाएँ',d.classes)+metric('विषय',d.subjects)+metric('सेवा घंटे',d.totalHours);
-   $('activityTitle').textContent='मेरी सेवा';$('activity').innerHTML='<p>Assigned classes: '+escapeHtml(d.classes||'अभी नियुक्ति उपलब्ध नहीं')+'</p><p>Subjects: '+escapeHtml(d.subjects||'—')+'</p><form id="hoursForm" class="form-grid"><div class="field"><label>दिनांक</label><input name="date" type="date" required></div><div class="field"><label>सेवा घंटे</label><input name="hours" type="number" min=".25" max="12" step=".25" required></div><div class="field full"><label>कक्षा / विषय</label><input name="className" required></div><div class="field full"><label>नोट</label><input name="notes" maxlength="300"></div><div class="field full"><button class="btn">सेवा घंटे दर्ज करें</button></div></form><div class="msg" id="hoursMsg"></div>';
-   $('hoursForm').addEventListener('submit',async e=>{e.preventDefault();const v=Object.fromEntries(new FormData(e.currentTarget));try{const z=await api('portalLogHours',Object.assign({token:sessionToken},v));message($('hoursMsg'),z.message,'ok');loadDashboard();}catch(err){message($('hoursMsg'),err.message,'error');}});
-   $('nextSteps').innerHTML='<li>Coordinator से schedule की पुष्टि करें</li><li>अपनी profile और संपर्क विवरण अद्यतन रखें</li><li>Admin approval के बाद ID card डाउनलोड करें</li>';
-  }else if(currentUser.role==='Donor'){
-   const list=(d.donations||[]);const total=list.reduce((a,x)=>a+(Number(x.amount)||0),0);
-   $('metrics').innerHTML=metric('कुल दान', '₹'+new Intl.NumberFormat(currentLanguage==='en'?'en-IN':'hi-IN').format(total))+metric('दान रिकॉर्ड',list.length)+metric('Account', 'सक्रिय');
-   $('activityTitle').textContent='आपका योगदान';$('activity').innerHTML='<p>आपके सहयोग के लिए धन्यवाद। दान की रसीद और स्थिति नीचे देखें।</p>';
-   $('donationTable').innerHTML=list.length?'<table><thead><tr><th>दिनांक</th><th>Donation ID</th><th>राशि</th><th>उद्देश्य</th><th>रसीद</th></tr></thead><tbody>'+list.map(x=>'<tr><td>'+escapeHtml(formatPortalDate(x.date))+'</td><td>'+escapeHtml(x.donationId)+'</td><td>₹'+escapeHtml(x.amount)+'</td><td>'+escapeHtml(x.purpose)+'</td><td>'+(x.receiptUrl?'<a href="'+escapeHtml(x.receiptUrl)+'" target="_blank" rel="noopener">देखें</a>':'—')+'</td></tr>').join('')+'</tbody></table>':'<p class="quiet">अभी कोई donation history उपलब्ध नहीं।</p>';
-   $('donationsPanel').classList.remove('hidden');$('nextSteps').innerHTML='<li>अपनी profile जानकारी अपडेट रखें</li><li>Donation receipt डाउनलोड/देखें</li><li>Admin approval के बाद supporter ID card डाउनलोड करें</li>';
-  }else{
-   const assigned=d.assignedStudents||[];$('metrics').innerHTML=metric('भूमिका','कर्मचारी')+metric('Staff ID',p.linkedId)+metric('Assigned विद्यार्थी',d.assignedCount||0);
-   $('activityTitle').textContent='Assigned विद्यार्थी';$('activity').innerHTML=assigned.length?'<div class="table-wrap"><table><thead><tr><th>Application</th><th>विद्यार्थी</th><th>Course</th><th>Batch</th><th>Attendance</th></tr></thead><tbody>'+assigned.map(x=>'<tr><td>'+escapeHtml(x.id)+'</td><td>'+escapeHtml(x.student)+'</td><td>'+escapeHtml(x.course)+'</td><td>'+escapeHtml(x.batch)+'</td><td>'+escapeHtml(x.attendance)+'</td></tr>').join('')+'</tbody></table></div>':'<p>आपका staff account सक्रिय है। Assignment न दिखे तो Admin से batch mapping करवाएँ।</p>';
-   $('nextSteps').innerHTML='<li>अपनी profile और संपर्क जानकारी अपडेट रखें</li><li>Assigned विद्यार्थी और attendance देखें</li><li>Admin approval के बाद ID card डाउनलोड करें</li>';
+  if (ngo.mobile) {
+    const tel = String(ngo.mobile).replace(/[^\d+]/g, '');
+    add(words[language].mobile,
+      '<a href="tel:' + esc(tel) + '">' + esc(ngo.mobile) + '</a>',
+      { html: true });
   }
- }catch(err){message($('roleLine'),err.message,'error');}
-}
-async function loadProfile(){
- try{const r=await api('getPortalProfile',{token:sessionToken}),p=r.profile||{};$('profileName').value=p.name||'';$('profileMobile').value=p.mobile||'';$('profileAddress').value=p.address||'';$('photoPreview').src=p.photoDataUrl||'https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500';}
- catch(e){message($('profileMsg'),e.message,'error');}
-}
-$('profileForm').addEventListener('submit',async e=>{
- e.preventDefault();try{
-  const file=$('photoFile').files[0];let photoDataUrl='';
-  if(file){if(file.size>1024*1024)throw new Error('फोटो 1 MB से कम होनी चाहिए।');photoDataUrl=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(file);});}
-  const r=await api('updatePortalProfile',{token:sessionToken,name:$('profileName').value,mobile:$('profileMobile').value,address:$('profileAddress').value,photoDataUrl:photoDataUrl});
-  message($('profileMsg'),r.message||'Profile updated.','ok');await loadProfile();
- }catch(err){message($('profileMsg'),err.message,'error');}
-});
-async function loadIdCard(){
- $('downloadCard').classList.add('hidden');$('idStatus').textContent='स्थिति जाँची जा रही है…';
- try{const r=await api('getPortalIdCard',{token:sessionToken});if(r.status==='pending'){$('idStatus').textContent=r.message||'Admin approval pending.';return;}
-  const bytes=Uint8Array.from(atob(r.fileBase64),c=>c.charCodeAt(0));if(cardBlobUrl)URL.revokeObjectURL(cardBlobUrl);
-  cardBlobUrl=URL.createObjectURL(new Blob([bytes],{type:r.mimeType||'application/pdf'}));$('downloadCard').onclick=()=>{const a=document.createElement('a');a.href=cardBlobUrl;a.download=r.fileName||'Dipra-ID.pdf';a.click();};
-  $('idStatus').textContent='आपका ID card स्वीकृत है।';$('downloadCard').classList.remove('hidden');
- }catch(e){$('idStatus').textContent=e.message;}
-}
-function panelError(target,retryFn,msg){
- target.innerHTML='<h3>'+t('पैनल लोड नहीं हुआ','Panel could not load')+'</h3><div id="panelErrorMsg" class="msg error" role="status"></div><div class="inline-actions"><button class="btn" type="button" id="panelRetry">'+t('फिर कोशिश करें','Try again')+'</button><button class="btn secondary" type="button" id="panelBack">'+t('डैशबोर्ड पर लौटें','Back to dashboard')+'</button></div>';
- message($('panelErrorMsg'),msg,'error');
- $('panelRetry').addEventListener('click',retryFn);
- $('panelBack').addEventListener('click',()=>setView('dashboard'));
-}
-function wireOpenViews(scope){(scope||document).querySelectorAll('[data-open-view]').forEach(b=>{if(b.dataset.openViewWired)return;b.dataset.openViewWired='1';b.addEventListener('click',()=>setView(b.dataset.openView));});}
-function openRecordDetail(entity,key){$('adminSubpanel').classList.remove('hidden');loadAdminRecords(entity,'',String(key==null?'':key),0);}
-const PORTAL_SETTINGS_LABELS={FoundationName:['संस्था का नाम','Foundation name'],PortalAddress:['पोर्टल का पता','Portal address'],SupportPhone:['सहायता फ़ोन','Support phone'],PublicWebsite:['सार्वजनिक वेबसाइट','Public website'],WelcomeTextHi:['स्वागत संदेश (हिन्दी)','Welcome message (Hindi)'],WelcomeTextEn:['स्वागत संदेश (English)','Welcome message (English)'],LogoUrl:['लोगो URL','Logo URL'],SessionHours:['लॉगिन सत्र (घंटे)','Session hours'],OtpExpiryMinutes:['OTP मियाद (मिनट)','OTP expiry (minutes)'],AdminName:['प्रशासक का नाम (ID कार्ड पर)','Admin name (used on ID cards)'],AdminMobile:['प्रशासक मोबाइल (ID कार्ड पर)','Admin mobile (used on ID cards)'],AdminAddress:['प्रशासक का पता (ID कार्ड पर)','Admin address (used on ID cards)'],AdminPhotoFileId:['प्रशासक फ़ोटो Drive ID','Admin photo Drive ID']};
-function settingsFieldHtml(key,value){
- const label=PORTAL_SETTINGS_LABELS[key]||[key,key],text=value==null?'':String(value);
- const full=/Address|WelcomeText|Website|Logo|Name/.test(key)||text.length>40;
- const numeric=/Hours|Minutes|Expiry/.test(key)&&/^-?\d+(\.\d+)?$/.test(text);
- return '<div class="field '+(full?'full':'')+'"><label for="set_'+escapeHtml(key)+'">'+escapeHtml(currentLanguage==='en'?label[1]:label[0])+'</label><input id="set_'+escapeHtml(key)+'" name="'+escapeHtml(key)+'" type="'+(numeric?'number':'text')+'"'+(numeric?' step="any"':'')+' value="'+escapeHtml(text)+'"><small class="quiet">'+escapeHtml(key)+'</small></div>';
-}
-async function loadSettings(){
- const target=$('adminSubpanel');target.innerHTML='<h3>'+t('पोर्टल सेटिंग्स','Portal settings')+'</h3><p class="quiet">'+t('सेटिंग्स लोड हो रही हैं…','Loading settings…')+'</p>';
- try{
-  const r=await api('adminGetPortalSettings',{token:sessionToken}),s=r.settings||{};
-  const known=Object.keys(PORTAL_SETTINGS_LABELS),extra=Object.keys(s).filter(k=>known.indexOf(k)<0),keys=known.concat(extra);
-  target.innerHTML='<h3>'+t('पोर्टल सेटिंग्स','Portal settings')+'</h3>'
-   +'<p class="quiet">'+t('ये मान पोर्टल, सत्यापन पृष्ठ और ID कार्ड में उपयोग होते हैं। सेव करते ही सर्वर शीट में लिखे जाते हैं।','These values feed the portal, verification pages and ID cards. Saving writes them to the server sheet immediately.')+'</p>'
-   +'<div class="inline-actions"><button class="btn secondary" type="button" data-open-view="adminUsers">'+t('सदस्य और पहुँच','Members & access')+'</button><button class="btn secondary" type="button" data-open-view="adminCards">'+t('ID कार्ड स्वीकृतियाँ','ID card approvals')+'</button><button class="btn secondary" type="button" data-open-view="adminAudit">'+t('बदलावों का लॉग','Activity log')+'</button></div>'
-   +'<form id="settingsForm" class="form-grid card">'+keys.map(k=>settingsFieldHtml(k,s[k])).join('')
-   +'<div class="field full inline-actions"><button class="btn" type="submit">'+t('सेटिंग्स अपडेट करें','Update settings')+'</button><button class="btn secondary" type="button" id="settingsReload">'+t('रीलोड करें','Reload')+'</button></div></form>'
-   +'<p class="quiet">'+t('SessionHours और OtpExpiryMinutes केवल संख्या में भरें। AdminPhotoFileId Google Drive फ़ाइल ID है (खाली छोड़ें यदि ज़रूरत नहीं)।','SessionHours and OtpExpiryMinutes must be numbers. AdminPhotoFileId is a Google Drive file ID — leave it empty if unused.')+'</p>'
-   +'<div id="settingsMsg" class="msg" role="status"></div>';
-  $('settingsForm').addEventListener('submit',async e=>{e.preventDefault();const button=e.currentTarget.querySelector('[type=submit]');button.disabled=true;const settings={};new FormData(e.currentTarget).forEach((v,k)=>settings[k]=v);
-   try{const q=await api('adminSavePortalSettings',{token:sessionToken,settings:settings});message($('settingsMsg'),q.message||t('सेटिंग्स सेव हो गईं।','Settings saved.'),'ok');}
-   catch(err){message($('settingsMsg'),err.message,'error');button.disabled=false;}});
-  $('settingsReload').addEventListener('click',loadSettings);
-  wireOpenViews(target);
- }catch(e){panelError(target,loadSettings,e.message);}
-}
-let adminUsersCache=[];
-function filteredUsers(){
- const q=($('userSearch')?$('userSearch').value:'').trim().toLowerCase(),role=($('userRoleFilter')?$('userRoleFilter').value.toLowerCase():''),status=($('userStatusFilter')?$('userStatusFilter').value.toLowerCase():'');
- return adminUsersCache.filter(x=>{
-  const hay=[x.name,x.email,x.role,x.linkedId,x.status].join(' ').toLowerCase();
-  return(!q||hay.indexOf(q)>=0)&&(!role||String(x.role||'').toLowerCase()===role)&&(!status||String(x.status||'').toLowerCase()===status);});
-}
-function userStatusLabel(status){const s=String(status||'').toLowerCase();return s==='active'?t('सक्रिय','Active'):s==='disabled'?t('बंद','Disabled'):String(status||'—');}
-function userStatusPill(status){const s=String(status||'').toLowerCase();return '<span class="pill '+(s==='active'?'ok':s==='disabled'?'off':'neutral')+'">'+escapeHtml(userStatusLabel(status))+'</span>';}
-function userChipsHtml(){
- const role=($('userRoleFilter')?$('userRoleFilter').value.toLowerCase():''),status=($('userStatusFilter')?$('userStatusFilter').value.toLowerCase():'');
- const tally=(list,key)=>list.reduce((acc,x)=>{const v=String(x[key]||'—');acc[v]=(acc[v]||0)+1;return acc;},{});
- const chip=(kind,val,label,count,active)=>'<button class="chip'+(active?' active':'')+'" type="button" data-user-filter="'+escapeHtml(kind+':'+val)+'">'+escapeHtml(label)+' · '+count+'</button>';
- const roles=tally(adminUsersCache,'role'),statuses=tally(adminUsersCache,'status');
- return chip('','',t('सभी','All'),adminUsersCache.length,!role&&!status)
-  +Object.keys(statuses).map(s=>chip('status',s,userStatusLabel(s)+' '+t('खाते','accounts'),statuses[s],status===s.toLowerCase())).join('')
-  +Object.keys(roles).map(r=>chip('role',r,String(r)+' '+t('खाते','accounts'),roles[r],role===r.toLowerCase())).join('');
-}
-function userRowHtml(x){
- const active=String(x.status).toLowerCase()==='active',adminRow=String(x.role||'').toLowerCase()==='admin';
- return '<tr'+(adminRow?'':' class="row-open" data-user-open="'+escapeHtml(x.email)+'" tabindex="0"')+'><td>'+escapeHtml(x.name||'—')+'</td><td>'+escapeHtml(x.email)+'</td><td>'+escapeHtml(x.role||'—')+'</td><td>'+escapeHtml(x.linkedId||'—')+'</td><td>'+userStatusPill(x.status)+'</td><td>'
-  +(adminRow?'<div class="inline-actions"><span class="quiet">'+t('Admin खाता इस तालिका से नहीं बदलें','Admin accounts are not changed here')+'</span><button class="btn secondary" type="button" data-open-view="settings">'+t('Admin विवरण (सेटिंग्स)','Admin details (Settings)')+'</button></div>':'<div class="inline-actions"><button class="btn secondary" type="button" data-user-edit="'+escapeHtml(x.email)+'">'+t('पूरा रिकॉर्ड देखें / संपादित करें','View / edit full record')+'</button><button class="btn '+(active?'warn':'')+'" type="button" data-user-status="'+escapeHtml(x.email)+'" data-next="'+(active?'disabled':'active')+'">'+(active?t('पहुँच बंद करें','Disable access'):t('पहुँच सक्रिय करें','Enable access'))+'</button></div>')
-  +'</td></tr>';
-}
-function paintUserRows(){
- if(!$('usersTbody'))return;
- const rows=filteredUsers();
- $('usersChips').innerHTML=userChipsHtml();
- $('usersTbody').innerHTML=rows.length?rows.map(userRowHtml).join(''):'<tr><td colspan="6">'+t('कोई सदस्य नहीं मिला। फ़िल्टर हटाकर दोबारा देखें।','No members matched. Clear the filters and look again.')+'</td></tr>';
- $('usersCount').textContent=t('दिखाए जा रहे: ','Showing ')+rows.length+' / '+adminUsersCache.length;
- wireUserRowActions();
-}
-function wireUserRowActions(){
- const target=$('adminSubpanel');
- wireOpenViews($('usersTbody'));
- target.querySelectorAll('[data-user-edit]').forEach(b=>b.addEventListener('click',()=>openRecordDetail('portalUsers',b.dataset.userEdit)));
- target.querySelectorAll('[data-user-open]').forEach(row=>{const open=()=>openRecordDetail('portalUsers',row.dataset.userOpen);row.addEventListener('click',e=>{if(e.target.closest('button'))return;open();});row.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});});
- target.querySelectorAll('[data-user-status]').forEach(b=>b.addEventListener('click',async()=>{
-  const email=b.dataset.userStatus,next=b.dataset.next;
-  if(!confirm(next==='disabled'?t('इस खाते की पहुँच बंद करें? सक्रिय सत्र रद्द हो जाएँगे।','Disable this account? Its active sessions will be revoked.'):t('इस खाते की पहुँच फिर से सक्रिय करें?','Enable access for this account again?')))return;
-  b.disabled=true;try{const r=await api('adminSetPortalUserStatus',{token:sessionToken,email:email,status:next});await loadUsers();message($('userMsg'),r.message||t('स्थिति बदल गई।','Status updated.'),'ok');}
-  catch(e){message($('userMsg'),e.message,'error');b.disabled=false;}
- }));
- target.querySelectorAll('[data-user-filter]').forEach(b=>b.addEventListener('click',()=>{
-  const parts=b.dataset.userFilter.split(':'),kind=parts[0],val=parts.slice(1).join(':');
-  if($('userRoleFilter'))$('userRoleFilter').value=kind==='role'?val:'';
-  if($('userStatusFilter'))$('userStatusFilter').value=kind==='status'?val:'';
-  paintUserRows();
- }));
-}
-async function loadUsers(){
- const target=$('adminSubpanel');target.innerHTML='<h3>'+t('सदस्य और पहुँच','Members & access')+'</h3><p class="quiet">'+t('सदस्य सूची लोड हो रही है…','Loading members…')+'</p>';
- try{const r=await api('adminGetPortalUsers',{token:sessionToken});adminUsersCache=r.data||[];}
- catch(e){panelError(target,loadUsers,e.message);return;}
- const roles=Array.from(new Set(adminUsersCache.map(x=>String(x.role||'')).filter(Boolean))).sort();
- const statusSeen={};const statuses=[];['Active','Disabled'].concat(adminUsersCache.map(x=>String(x.status||'').trim()).filter(Boolean)).forEach(v=>{const k=v.toLowerCase();if(!statusSeen[k]){statusSeen[k]=1;statuses.push(v);}});
- target.innerHTML='<h3>'+t('सदस्य और पहुँच','Members & access')+'</h3>'
-  +'<p class="quiet">'+t('हर पंक्ति पर क्लिक/टैप करने से उस सदस्य का पूरा प्रोफ़ाइल रिकॉर्ड खुलता है और वहीं से संपादित होता है। Admin खाता रिकॉर्ड तालिका में नहीं आता।','Tapping a row opens that member’s full profile record, editable in place. Admin accounts are excluded from the record table.')+'</p>'
-  +'<div id="usersChips" class="inline-actions"></div>'
-  +'<form id="userFilterForm" class="inline-actions"><input id="userSearch" type="search" placeholder="'+t('नाम, ईमेल, भूमिका या ID खोजें…','Search name, email, role or ID…')+'" aria-label="'+t('सदस्य खोजें','Search members')+'"><select id="userRoleFilter" aria-label="'+t('भूमिका','Role')+'"><option value="">'+t('सभी भूमिकाएँ','All roles')+'</option>'+roles.map(x=>'<option value="'+escapeHtml(x)+'">'+escapeHtml(x)+'</option>').join('')+'</select><select id="userStatusFilter" aria-label="'+t('स्थिति','Status')+'"><option value="">'+t('सभी स्थितियाँ','All statuses')+'</option>'+statuses.map(x=>'<option value="'+escapeHtml(x)+'">'+escapeHtml(userStatusLabel(x))+'</option>').join('')+'</select><button class="btn secondary" type="button" id="usersClear">'+t('फ़िल्टर हटाएँ','Clear filters')+'</button><button class="btn secondary" type="button" id="usersRecords">'+t('रिकॉर्ड तालिका','Records table')+'</button><button class="btn" type="button" id="usersInvite">'+t('+ स्टाफ़ आमंत्रण भेजें','+ Send staff invitation')+'</button></form>'
-  +'<div id="usersInviteCard" class="card panel hidden"><h3>'+t('Admin द्वारा Staff खाता आमंत्रित करें','Invite a Staff account as Admin')+'</h3><p class="quiet">'+t('Student, Volunteer और Donor अपने verified record तथा email OTP से खुद खाता बनाते हैं। Staff आमंत्रण भी email OTP verify होने के बाद ही सक्रिय होता है। Admin खाता यहाँ से नहीं बन सकता।','Students, volunteers and donors create their own accounts after email OTP verification. Staff invitations activate only after OTP verification. Admin accounts cannot be created here.')+'</p><form id="createUserForm" class="form-grid"><div class="field"><label for="invEmail">'+t('ईमेल','Email')+'</label><input id="invEmail" name="email" type="email" required></div><div class="field"><label for="invLinkedId">'+t('Staff ID','Staff ID')+'</label><input id="invLinkedId" name="linkedId" required></div><div class="field"><label for="invName">'+t('नाम','Name')+'</label><input id="invName" name="name"></div><div class="field"><label for="invMobile">'+t('मोबाइल','Mobile')+'</label><input id="invMobile" name="mobile" type="tel"></div><div class="field full"><label for="invAddress">'+t('पता','Address')+'</label><textarea id="invAddress" name="address" maxlength="500"></textarea></div><div class="field full inline-actions"><button class="btn" type="submit">'+t('आमंत्रण भेजें','Send invitation')+'</button><button class="btn secondary" type="button" data-open-view="records_invites">'+t('आमंत्रण सूची','Invitations list')+'</button></div></form></div>'
-  +'<p class="quiet" id="usersCount"></p><div class="table-wrap panel"><table><thead><tr><th>'+t('नाम','Name')+'</th><th>'+t('ईमेल','Email')+'</th><th>'+t('भूमिका','Role')+'</th><th>'+t('जुड़ी ID','Linked ID')+'</th><th>'+t('स्थिति','Status')+'</th><th>'+t('कार्रवाई','Action')+'</th></tr></thead><tbody id="usersTbody"></tbody></table></div>'
-  +'<div id="userMsg" class="msg" role="status"></div>';
- paintUserRows();
- $('userFilterForm').addEventListener('submit',e=>{e.preventDefault();paintUserRows();});
- $('userSearch').addEventListener('input',paintUserRows);
- $('userRoleFilter').addEventListener('change',paintUserRows);
- $('userStatusFilter').addEventListener('change',paintUserRows);
- $('usersClear').addEventListener('click',()=>{$('userSearch').value='';$('userRoleFilter').value='';$('userStatusFilter').value='';paintUserRows();});
- $('usersRecords').addEventListener('click',()=>setView('records_portalUsers'));
- $('usersInvite').addEventListener('click',()=>{$('usersInviteCard').classList.toggle('hidden');if(!$('usersInviteCard').classList.contains('hidden'))$('invEmail').focus();});
- $('createUserForm').addEventListener('submit',async e=>{e.preventDefault();const button=e.currentTarget.querySelector('[type=submit]');button.disabled=true;const d=Object.fromEntries(new FormData(e.currentTarget));d.role='Staff';
-  try{const z=await api('adminCreatePortalUser',Object.assign({token:sessionToken},d));$('createUserForm').reset();message($('userMsg'),z.message||t('आमंत्रण भेज दिया गया।','Invitation sent.'),'ok');}
-  catch(err){message($('userMsg'),err.message,'error');}
-  finally{button.disabled=false;}});
- wireOpenViews(target);
-}
-async function loadCards(){
- const target=$('adminSubpanel');target.innerHTML='<h3>'+t('ID कार्ड स्वीकृतियाँ','ID card approvals')+'</h3><p class="quiet">'+t('लोड हो रहा है…','Loading…')+'</p>';
- let items=[];
- try{const r=await api('adminGetIdCardRequests',{token:sessionToken});items=r.data||[];}
- catch(e){panelError(target,loadCards,e.message);return;}
- target.innerHTML='<h3>'+t('ID कार्ड स्वीकृतियाँ','ID card approvals')+'</h3>'
-  +'<div id="cardsChips" class="inline-actions"></div>'
-  +'<p class="quiet">'+t('सर्वर केवल सक्रिय खाते यहाँ दिखाता है; बंद या OTP-बाक़ी खाते “सदस्य और पहुँच” में देखें। पंक्ति पर क्लिक/टैप से पूरा रिकॉर्ड खुलता है और संपादन योग्य होता है।','The server lists active accounts here only — disabled or OTP-pending accounts are under Members & access. Clicking a row opens the full record for editing.')+'</p>'
-  +'<div class="table-wrap panel"><table><thead><tr><th>'+t('नाम','Name')+'</th><th>'+t('ईमेल','Email')+'</th><th>'+t('भूमिका','Role')+'</th><th>'+t('जुड़ी ID','Linked ID')+'</th><th>'+t('कार्ड स्थिति','Card status')+'</th><th>'+t('कार्रवाई','Action')+'</th></tr></thead><tbody id="cardsTbody"></tbody></table></div>'
-  +'<p class="quiet" id="cardsCount"></p><div id="cardsMsg" class="msg" role="status"></div>';
- const rowHtml=(x)=>{
-  const adminRow=String(x.role||'').toLowerCase()==='admin';
-  return '<tr'+(adminRow?'':' class="row-open" data-card-open="'+escapeHtml(x.email)+'" tabindex="0"')+'><td>'+escapeHtml(x.name||'—')+'</td><td>'+escapeHtml(x.email)+'</td><td>'+escapeHtml(x.role||'—')+'</td><td>'+escapeHtml(x.linkedId||'—')+'</td><td>'+(x.approved?'<span class="pill ok">'+t('स्वीकृत','Issued')+'</span>':'<span class="pill neutral">'+t('बाक़ी','Pending')+'</span>')+'</td><td><div class="inline-actions">'
-   +(adminRow?'<span class="quiet">'+t('Admin कार्ड के लिए सेटिंग्स देखें','Admin card details come from Settings')+'</span><button class="btn secondary" type="button" data-open-view="settings">'+t('पोर्टल सेटिंग्स','Portal settings')+'</button>':'<button class="btn secondary" type="button" data-card-edit="'+escapeHtml(x.email)+'">'+t('पूरा रिकॉर्ड देखें / संपादित करें','View / edit full record')+'</button>')
-   +(x.approved?'':'<button class="btn" type="button" data-approve="'+escapeHtml(x.email)+'" data-role="'+escapeHtml(x.role||'')+'" data-id="'+escapeHtml(x.linkedId||'')+'">'+t('स्वीकृत कर कार्ड जारी करें','Approve & issue card')+'</button>')
-   +'</div></td></tr>';
- };
- const paint=(onlyPending)=>{
-  const rows=items.filter(x=>!onlyPending||!x.approved),pending=items.filter(x=>!x.approved).length;
-  $('cardsChips').innerHTML='<button class="chip'+(onlyPending?'':' active')+'" type="button" id="cardsShowAll">'+t('कुल खाते','Accounts')+' · '+items.length+'</button>'
-   +'<button class="chip'+(onlyPending?' active':'')+'" type="button" id="cardsShowPending">'+t('कार्ड बाक़ी','Pending')+' · '+pending+'</button>'
-   +'<span class="chip">'+t('कार्ड स्वीकृत','Issued')+' · '+(items.length-pending)+'</span>'
-   +'<button class="btn secondary" type="button" data-open-view="adminUsers">'+t('सदस्य और पहुँच','Members & access')+'</button>'
-   +'<button class="btn secondary" type="button" data-open-view="records_portalUsers">'+t('पोर्टल प्रोफ़ाइल रिकॉर्ड','Portal profile records')+'</button>';
-  $('cardsTbody').innerHTML=rows.length?rows.map(rowHtml).join(''):'<tr><td colspan="6">'+t('इस श्रेणी में कोई खाता नहीं।','No accounts in this view.')+'</td></tr>';
-  $('cardsCount').textContent=t('दिखाए जा रहे: ','Showing ')+rows.length+' / '+items.length;
-  $('cardsShowAll').addEventListener('click',()=>paint(false));
-  $('cardsShowPending').addEventListener('click',()=>paint(true));
-  wireOpenViews($('cardsChips'));wireOpenViews($('cardsTbody'));
-  $('cardsTbody').querySelectorAll('[data-card-edit]').forEach(b=>b.addEventListener('click',()=>openRecordDetail('portalUsers',b.dataset.cardEdit)));
-  $('cardsTbody').querySelectorAll('[data-card-open]').forEach(row=>{const open=()=>openRecordDetail('portalUsers',row.dataset.cardOpen);row.addEventListener('click',e=>{if(e.target.closest('button'))return;open();});row.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});});
-  $('cardsTbody').querySelectorAll('[data-approve]').forEach(b=>b.addEventListener('click',async()=>{
-   if(!confirm(t('इस खाते का ID कार्ड बनाकर स्वीकृत करें? ईमेल भी भेजा जाएगा।','Create and approve the ID card for this account? An email will be sent too.')))return;
-   b.disabled=true;
-   try{const q=await api('adminApproveIdCard',{token:sessionToken,email:b.dataset.approve,role:b.dataset.role,linkedId:b.dataset.id});const r2=await api('adminGetIdCardRequests',{token:sessionToken});items=r2.data||[];const showPending=$('cardsShowPending').classList.contains('active');paint(showPending);message($('cardsMsg'),q.message||t('कार्ड जारी हो गया।','Card issued.'),'ok');}
-   catch(e){message($('cardsMsg'),e.message,'error');b.disabled=false;}
-  }));
- };
- paint(false);
-}
-function adminEntityLabel(entity){const labels={applications:['आवेदन','Applications'],certificates:['नि:शुल्क प्रमाणपत्र','Free course certificates'],volunteers:['स्वयंसेवक','Volunteers'],donations:['दान रिकॉर्ड','Donations'],grievances:['शिकायतें','Grievances'],pledges:['संकल्प पंजीकरण','Pledge records'],portalUsers:['पोर्टल प्रोफ़ाइल','Portal profiles'],invites:['Staff आमंत्रण','Staff invitations']};return(labels[entity]||[entity,entity])[currentLanguage==='en'?1:0];}
-async function loadAdminRecords(entity,q,editKey,offset){
- const target=$('adminSubpanel'),query=q===undefined?($('recordSearch')?$('recordSearch').value:''):q,pageOffset=Math.max(0,Number(offset)||0);target.innerHTML='<p>'+ (currentLanguage==='en'?'Loading records…':'रिकॉर्ड लोड हो रहे हैं…')+'</p>';
- try{
-  const result=await api('adminListRecords',{token:sessionToken,entity:entity,q:query,limit:200,offset:pageOffset}),records=result.records||[],label=adminEntityLabel(entity),from=result.total?result.offset+1:0,to=result.offset+records.length;
-  target.innerHTML='<h3>'+escapeHtml(label)+' · '+(currentLanguage==='en'?'Admin records':'Admin रिकॉर्ड')+'</h3><form id="recordSearchForm" class="inline-actions"><input id="recordSearch" name="q" type="search" value="'+escapeHtml(query)+'" placeholder="'+(currentLanguage==='en'?'Search records…':'रिकॉर्ड खोजें…')+'"><button class="btn secondary" type="submit">'+(currentLanguage==='en'?'Search':'खोजें')+'</button><span class="quiet">'+(currentLanguage==='en'?'Matches: ':'मिले रिकॉर्ड: ')+(result.total||0)+'</span><button class="btn secondary" type="button" id="recordsCsv">'+(currentLanguage==='en'?'Download CSV':'CSV डाउनलोड करें')+'</button><button class="btn secondary" type="button" id="recordsCreate">'+(currentLanguage==='en'?'+ New record':'+ नया रिकॉर्ड')+'</button></form><div class="table-wrap panel"><table><thead><tr><th>'+escapeHtml(result.key||'ID')+'</th><th>'+(currentLanguage==='en'?'Name':'नाम')+'</th><th>Email</th><th>'+(currentLanguage==='en'?'Status':'स्थिति')+'</th><th>'+(currentLanguage==='en'?'Details':'विवरण')+'</th></tr></thead><tbody>'+records.map((r,i)=>'<tr class="row-open" data-record-index="'+i+'" tabindex="0"><td>'+escapeHtml(r.key)+'</td><td>'+escapeHtml(r.fields.Name||r.fields.StudentName||r.fields.Title||'—')+'</td><td>'+escapeHtml(r.fields.Email||'—')+'</td><td>'+escapeHtml(r.fields.Status||r.fields.EmailVerified||'—')+'</td><td><button class="btn secondary" type="button" data-record-open="'+i+'">'+(currentLanguage==='en'?'View / edit':'देखें / संपादित करें')+'</button>'+(r.fields.CertURL?'<a class="btn secondary" target="_blank" rel="noopener" href="'+escapeHtml(r.fields.CertURL)+'">PDF</a>':'')+(r.fields.CertificateURL?'<a class="btn secondary" target="_blank" rel="noopener" href="'+escapeHtml(r.fields.CertificateURL)+'">PDF</a>':'')+'</td></tr>').join('')+'</tbody></table></div><div class="inline-actions panel"><button id="recordsPrev" class="btn secondary" type="button" '+(pageOffset<=0?'disabled':'')+'>'+(currentLanguage==='en'?'Previous':'पिछला')+'</button><span class="quiet">'+(currentLanguage==='en'?'Showing ':'दिखाए जा रहे हैं ')+from+'–'+to+' / '+(result.total||0)+'</span><button id="recordsNext" class="btn secondary" type="button" '+(pageOffset+records.length>=result.total?'disabled':'')+'>'+(currentLanguage==='en'?'Next':'अगला')+'</button></div><section id="recordEditor" class="card panel hidden"></section><div id="recordsMsg" class="msg" role="status"></div>';
-  $('recordSearchForm').addEventListener('submit',e=>{e.preventDefault();loadAdminRecords(entity,$('recordSearch').value);});
-  $('recordsCreate').addEventListener('click',()=>{$('adminSubpanel').classList.remove('hidden');loadAdminCreate(entity);});
-  $('recordsCsv').addEventListener('click',async e=>{const button=e.currentTarget;button.disabled=true;try{const r=await api('adminExportRecordsCsv',{token:sessionToken,entity:entity,q:query});if(!r.rows){message($('recordsMsg'),currentLanguage==='en'?'No rows matched the search.':'खोज से मेल खाती कोई पंक्ति नहीं।','error');return;}const blob=new Blob([''+r.csv],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=r.fileName||('dipra-'+entity+'.csv');document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),4000);message($('recordsMsg'),(currentLanguage==='en'?'CSV downloaded: ':'CSV डाउनलोड हुआ: ')+r.rows+(currentLanguage==='en'?' rows':' पंक्तियाँ'),'ok');}catch(err){message($('recordsMsg'),err.message+(err.message&&/^Unknown action/i.test(err.message)?(currentLanguage==='en'?' — deploy the new Apps Script actions first.':' — पहले नया Apps Script snippet deploy करें।'):''),'error');}finally{button.disabled=false;}});
-  $('recordsPrev').addEventListener('click',()=>loadAdminRecords(entity,query,undefined,Math.max(0,pageOffset-(result.limit||200))));$('recordsNext').addEventListener('click',()=>loadAdminRecords(entity,query,undefined,pageOffset+(result.limit||200)));
-  const openRecord=index=>renderAdminRecordEditor(entity,records[Number(index)],result.columns||[],query,result.key,pageOffset);
-  target.querySelectorAll('[data-record-open]').forEach(button=>button.addEventListener('click',()=>openRecord(button.dataset.recordOpen)));
-  target.querySelectorAll('tr[data-record-index]').forEach(row=>{row.addEventListener('click',e=>{if(e.target.closest('button'))return;openRecord(row.dataset.recordIndex);});row.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openRecord(row.dataset.recordIndex);}});});
-  if(editKey){const rec=records.find(r=>String(r.key)===String(editKey));if(rec)renderAdminRecordEditor(entity,rec,result.columns||[],query,result.key,pageOffset);}
- }catch(e){target.textContent=translateString(e.message,currentLanguage);}
-}
-function renderAdminRecordEditor(entity,record,columns,query,keyName,pageOffset){
- const box=$('recordEditor');if(!box||!record)return;box.classList.remove('hidden');
- const readOnlyNames=['UpdatedAt','PhotoAvailable'].filter(name=>Object.prototype.hasOwnProperty.call(record.fields,name));
- const readOnlyHtml=readOnlyNames.length?'<p class="quiet">'+readOnlyNames.map(name=>escapeHtml(name)+': '+escapeHtml(String(record.fields[name]))).join(' · ')+'</p>':'';
- const fields=(columns||Object.keys(record.fields)).filter(name=>name!=='Timestamp'&&name!==keyName&&readOnlyNames.indexOf(name)<0&&!/passwordhash|passwordsalt|fileid/i.test(name));
- const controls=fields.map(name=>{
-  const value=record.fields[name], text=value==null?'':String(value);
-  const long=text.length>90||/address|message|notes|details|remarks|description/i.test(name);
-  const numeric=typeof value==='number'||(/^(Amount|Score|Total|Percent|Hours|Attendance|FeePaid|FeeDue|Payable|ResultMarks|ResultTotal)$/i.test(name)&&/^-?\d+(\.\d+)?$/.test(text));
-  const isDate=/date|on$/i.test(name);
-  const type=isDate?'date':numeric?'number':'text';
-  const shown=(type==='date'&&/^\d{4}-\d\d-\d\d/.test(text))?text.slice(0,10):text;
-  const label='<div class="field '+(long?'full':'')+'"><label for="edit_'+escapeHtml(name)+'">'+escapeHtml(name)+'</label>';
-  const control=long
-    ?'<textarea id="edit_'+escapeHtml(name)+'" name="'+escapeHtml(name)+'" maxlength="10000">'+escapeHtml(text)+'</textarea>'
-    :'<input id="edit_'+escapeHtml(name)+'" name="'+escapeHtml(name)+'" type="'+type+'" value="'+escapeHtml(shown)+'"'+(numeric?' step="any"':'')+'>';
-  return label+control+'</div>';
-}).join('');
- const pdfLink=record.fields.CertURL||record.fields.CertificateURL||'';
- const photoEditor=entity==='portalUsers'?'<div class="field full"><label>'+(currentLanguage==='en'?'Profile photo':'प्रोफ़ाइल फोटो')+'</label><div class="inline-actions"><img class="photo-preview" id="adminMemberPhoto" alt="Profile photo"><input id="adminMemberPhotoFile" type="file" accept="image/png,image/jpeg,image/webp"></div></div>':'';
- box.innerHTML='<div class="inline-actions" style="justify-content:space-between"><h3>'+(currentLanguage==='en'?'Edit record':'रिकॉर्ड संपादित करें')+' · '+escapeHtml(record.key)+'</h3><button type="button" class="btn secondary" id="closeRecordEditor">×</button></div><p class="quiet">'+(currentLanguage==='en'?'All editable fields for this record are shown below.':'इस रिकॉर्ड के संपादन योग्य फ़ील्ड नीचे हैं।')+'</p>'+readOnlyHtml+(pdfLink?'<p><a href="'+escapeHtml(pdfLink)+'" target="_blank" rel="noopener">'+(currentLanguage==='en'?'Open current certificate / PDF':'मौजूदा प्रमाणपत्र / PDF खोलें')+'</a></p>':'')+'<form id="recordEditForm" class="form-grid">'+photoEditor+controls+'<div class="field full inline-actions"><button class="btn" type="submit">'+(currentLanguage==='en'?'Save all changes':'सभी बदलाव सेव करें')+'</button>'+(entity==='applications'?'<button class="btn secondary" type="button" id="regenerateStudentCert">'+(currentLanguage==='en'?'Generate / regenerate certificate and email':'प्रमाणपत्र बनाएँ / फिर बनाएँ और ईमेल करें')+'</button>':'')+'</div></form>'+adminQuickActionsHtml(entity,record)+'<div id="recordEditMsg" class="msg" role="status"></div>';
- $('closeRecordEditor').addEventListener('click',()=>box.classList.add('hidden'));
- if(entity==='portalUsers'){api('adminGetPortalUserPhoto',{token:sessionToken,email:record.key}).then(r=>{if(r.photoDataUrl)$('adminMemberPhoto').src=r.photoDataUrl;else $('adminMemberPhoto').src='https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500';}).catch(()=>{});}
- $('recordEditForm').addEventListener('submit',async e=>{e.preventDefault();const fd=new FormData(e.currentTarget),updates={};fd.forEach((v,k)=>updates[k]=v);const imageFile=$('adminMemberPhotoFile')&&$('adminMemberPhotoFile').files[0];if(imageFile){if(imageFile.size>1024*1024){message($('recordEditMsg'),currentLanguage==='en'?'Photo must be smaller than 1 MB.':'फोटो 1 MB से छोटी होनी चाहिए।','error');return;}updates.ProfilePhotoDataUrl=await new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result);reader.onerror=reject;reader.readAsDataURL(imageFile);});}const submit=e.currentTarget.querySelector('[type=submit]');submit.disabled=true;try{const result=await saveAdminRecord(entity,record.key,updates);await loadAdminRecords(entity,query,record.key,pageOffset);message($('recordsMsg'),result.message||'Saved.','ok');}catch(err){message($('recordEditMsg'),err.message,'error');submit.disabled=false;}});
- const reissue=$('regenerateStudentCert');if(reissue)reissue.addEventListener('click',async()=>{if(!confirm(currentLanguage==='en'?'Generate the certificate PDF and email it to the student?':'प्रमाणपत्र PDF बनाकर विद्यार्थी को ईमेल करें?'))return;reissue.disabled=true;try{const result=await api('adminRegenerateStudentCertificate',{token:sessionToken,appId:record.key});await loadAdminRecords(entity,query,record.key,pageOffset);message($('recordsMsg'),result.message,'ok');}catch(err){message($('recordEditMsg'),err.message,'error');reissue.disabled=false;}});
- wireAdminQuickActions(entity,record,query,pageOffset);
- box.scrollIntoView({behavior:'smooth',block:'start'});
-}
-const ADMIN_STATUS_CHOICES={applications:['New','Under Review','Selected','Waitlist','Not Selected','Rejected','Fee Paid','Archived'],volunteers:['Active','On Hold','Completed','Inactive','Archived'],donations:['Intent Received','Payment Received','Receipt Sent','Follow-up','Failed','Refunded','Archived'],grievances:['Open','In Progress','Resolved','Closed','Archived'],certificates:['Issued','Reissued','Revoked','Archived'],pledges:['Verified','Archived'],portalUsers:['active','disabled'],invites:['Invited','Accepted','Expired','Revoked']};
-const t=(hi,en)=>currentLanguage==='en'?en:hi;
-function adminQuickActionsHtml(entity,record){
- const choices=ADMIN_STATUS_CHOICES[entity]||[],current=String(record.fields.Status||'');
- const options=Array.from(new Set((current&&choices.indexOf(current)<0?[current]:[]).concat(choices)));
- const archived=/archiv/i.test(current);
- return '<div class="card panel"><h3>'+t('और कार्य — Sheet खोलने की ज़रूरत नहीं','Quick actions — no Google Sheet needed')+'</h3><div class="inline-actions">'
-  +(options.length?'<select id="quickStatus">'+options.map(o=>'<option value="'+escapeHtml(o)+'"'+(o===current?' selected':'')+'>'+escapeHtml(o)+'</option>').join('')+'</select><button class="btn secondary" type="button" id="quickStatusBtn">'+t('Status बदलें','Set status')+'</button>':'')
-  +(entity==='donations'?'<button class="btn secondary" type="button" id="resendReceipt">'+t('रसीद दोबारा भेजें','Resend receipt')+'</button>':'')
-  +(entity==='pledges'?'<button class="btn secondary" type="button" id="resendPledgeCert" data-url="'+escapeHtml(record.fields.PledgeCertificateURL||'')+'">'+t('प्रमाण-पत्र खोलें','Open certificate')+'</button>':'')
-  +(archived?'<button class="btn secondary" type="button" id="restoreRow">'+t('वापस सक्रिय करें','Restore')+'</button>':'<button class="btn secondary" type="button" id="archiveRow">'+t('आर्काइव करें','Archive')+'</button>')
-  +'<button class="btn secondary" type="button" id="deleteRow">'+t('रो हटाएँ (बैकअप के साथ)','Delete row (with backup)')+'</button></div>'
-  +'<div class="field full"><label for="rowNote">'+t('आंतरिक नोट','Internal note')+'</label><textarea id="rowNote" maxlength="4000" placeholder="'+t('जैसे: 05/11 को फोन पर बताया, अगली बार docs लाना है','e.g. told over phone on 05/11, must bring documents')+'"></textarea><button class="btn secondary" type="button" id="addNoteBtn">'+t('नोट जोड़ें','Add note')+'</button></div>'
-  +'<p class="quiet">'+t('हर बदलाव लॉग शीट में दर्ज होता है। हटाने से पहले पूरी पंक्ति का बैकअप ट्रैश शीट में चला जाता है।','Every action is written to the AdminAudit log. Deleting a row first copies it to the AdminTrash sheet.')+'</p></div>';
-}
-function wireAdminQuickActions(entity,record,query,pageOffset){
- const box=$('recordEditor');if(!box)return;
- const say=(text,type)=>message($('recordEditMsg')||$('recordsMsg'),text,type||'ok');
- const refresh=()=>loadAdminRecords(entity,query,record.key,pageOffset);
- const run=async(button,action,data,okText)=>{button.disabled=true;try{const r=await api(action,Object.assign({token:sessionToken,entity:entity,key:record.key},data||{}));const done=r.message||okText||t('हो गया','Done');await refresh();say(done);}catch(e){say(e.message,'error');button.disabled=false;}};
- const statusBtn=$('quickStatusBtn');if(statusBtn)statusBtn.addEventListener('click',()=>run(statusBtn,'adminSetRecordStatus',{status:$('quickStatus').value}));
- const receipt=$('resendReceipt');if(receipt)receipt.addEventListener('click',()=>{if(!confirm(t('दाता को रसीद/धन्यवाद ईमेल दोबारा भेजें?','Send the donor receipt email again?')))return;run(receipt,'adminResendDonationReceipt',{});});
- const pledgeCert=$('resendPledgeCert');if(pledgeCert)pledgeCert.addEventListener('click',()=>{const url=pledgeCert.dataset.url;if(url)window.open(url,'_blank','noopener');else say(t('इस संकल्प का PDF अभी नहीं बना।','This pledge certificate PDF has not been generated yet.'),'error');});
- const archive=$('archiveRow');if(archive)archive.addEventListener('click',()=>{if(!confirm(t('यह पंक्ति आर्काइव करें? रिकॉर्ड मिटेगा नहीं।','Archive this row? The record is not removed.')))return;run(archive,'adminArchiveRecord',{mode:'archive'});});
- const restore=$('restoreRow');if(restore)restore.addEventListener('click',()=>run(restore,'adminArchiveRecord',{mode:'restore'}));
- const del=$('deleteRow');if(del)del.addEventListener('click',()=>{if(!confirm(t('सच में यह रो हटाएँ? पहले उसकी नकल ट्रैश शीट में चली जाएगी।','Really delete this row? A copy is saved to AdminTrash first.')))return;if(prompt(t('पक्का होने पर DELETE लिखें','Type DELETE to confirm'))!=='DELETE'){say(t('कुछ हटाया नहीं गया।','Nothing was deleted.'),'error');return;}run(del,'adminArchiveRecord',{mode:'delete',confirm:'DELETE'});});
- const note=$('addNoteBtn');if(note)note.addEventListener('click',()=>{const text=$('rowNote').value.trim();if(!text){say(t('पहले नोट लिखें।','Write a note first.'),'error');return;}run(note,'adminAddRecordNote',{note:text},t('नोट जुड़ गया।','Note added.'));});
-}
-async function saveAdminRecord(entity,key,fields){
- try{return await api('adminUpdateRecordLogged',{token:sessionToken,entity:entity,key:key,fields:fields});}
- catch(e){if(/^Unknown action:/i.test(String(e.message||'')))return api('adminUpdateRecord',{token:sessionToken,entity:entity,key:key,fields:fields});throw e;}
-}
-async function loadAdminCreate(prefillEntity){
- const target=$('adminSubpanel'),entities=['applications','volunteers','donations','grievances','certificates','pledges','invites'];
- const chosen=prefillEntity||$('createEntity')?$('createEntity').value:'applications';
- target.innerHTML='<h3>'+t('नया रिकॉर्ड बनाएँ','Create a new record')+'</h3><div class="inline-actions"><select id="createEntity">'+entities.map(e=>'<option value="'+e+'"'+(e===chosen?' selected':'')+'>'+escapeHtml(adminEntityLabel(e))+'</option>').join('')+'</select><button class="btn secondary" type="button" id="createLoad">'+t('फ़ील्ड लोड करें','Load fields')+'</button></div><div id="createFormHost"><p class="quiet">'+t('ऊपर प्रकार चुनें, फिर फ़ील्ड लोड करें। Sheet में जाकर पंक्ति जोड़ने की ज़रूरत नहीं।','Choose a type above, then load its fields. No need to open the Google Sheet.')+'</p></div><div id="createMsg" class="msg" role="status"></div>';
- $('createLoad').addEventListener('click',()=>loadAdminCreateForm($('createEntity').value));
- if(chosen&&chosen!==entities[0])loadAdminCreateForm(chosen);else if(chosen==='applications')loadAdminCreateForm('applications');
-}
-async function loadAdminCreateForm(entity){
- const host=$('createFormHost');host.innerHTML='<p>'+t('लोड हो रहा है…','Loading…')+'</p>';
- try{
-  const result=await api('adminListRecords',{token:sessionToken,entity:entity,limit:1}),keyName=result.key||'ID';
-  const fields=(result.columns||[]).filter(c=>c!=='Timestamp'&&c!==keyName&&!/passwordhash|passwordsalt|fileid/i.test(c));
-  if(!fields.length){host.innerHTML='<p class="quiet">'+t('इस प्रकार में जोड़ने योग्य फ़ील्ड नहीं मिले।','No addable fields were found for this type.')+'</p>';return;}
-  host.innerHTML='<form id="createRecordForm" class="form-grid"><div class="field full"><label>'+t('पंक्ति प्रकार','Record type')+'</label><p><strong>'+escapeHtml(adminEntityLabel(entity))+'</strong> · '+t('ID खाली छोड़ें—सिस्टम अपने-आप अगला क्रम देगा।','Leave the ID blank — the next number is issued automatically.')+'</p></div>'+fields.map(name=>{
-   const long=/address|message|notes|details|remarks|description|instructions/i.test(name);
-   return '<div class="field'+(long?' full':'')+'"><label for="cf_'+escapeHtml(name)+'">'+escapeHtml(name)+'</label>'+(long?'<textarea id="cf_'+escapeHtml(name)+'" data-field="'+escapeHtml(name)+'"></textarea>':'<input id="cf_'+escapeHtml(name)+'" data-field="'+escapeHtml(name)+'" type="'+(/date|on$/i.test(name)?'date':'text')+'">')+'</div>';
-  }).join('')+'<div class="field full inline-actions"><button class="btn" type="submit">'+t('रिकॉर्ड बनाएँ','Create record')+'</button></div></form>';
-  $('createRecordForm').addEventListener('submit',async e=>{
-   e.preventDefault();const fieldsPayload={};
-   host.querySelectorAll('[data-field]').forEach(el=>{const value=String(el.value||'').trim();if(value)fieldsPayload[el.dataset.field]=value;});
-   if(!Object.keys(fieldsPayload).length){message($('createMsg'),t('कम से कम नाम या ID भरें।','Fill at least a name or an ID.'),'error');return;}
-   const button=e.submitter||$('createRecordForm').querySelector('[type=submit]');button.disabled=true;
-   try{const r=await api('adminCreateRecord',{token:sessionToken,entity:entity,fields:fieldsPayload});message($('createMsg'),r.message||t('बन गया।','Created.'),'ok');}
-   catch(err){message($('createMsg'),err.message,'error');button.disabled=false;}
+
+  const grid = $('ngoGrid');
+  clearNode(grid);
+  items.forEach(it => {
+    const div = document.createElement('div');
+    div.className = 'ngo-item' + (it.full ? ' full' : '');
+    const k = document.createElement('span');
+    k.className = 'k'; k.textContent = it.k;
+    const val = document.createElement('span');
+    val.className = 'v';
+    if (it.html) val.innerHTML = it.v;
+    else val.textContent = it.v;
+    div.append(k, val);
+    grid.appendChild(div);
   });
- }catch(e){host.innerHTML='<p class="msg error">'+escapeHtml(e.message)+'</p>';}
+
+  card.hidden = false;
 }
-async function loadAdminCounters(year){
- const target=$('adminSubpanel');target.innerHTML='<h3>'+t('सीरियल नंबर काउंटर','Sequential number counters')+'</h3><p class="quiet">'+t('यह पैनल बताता है कि इस साल कितने नंबर जारी हुए और अगला कौन-सा होगा—बिना Sheet खोले।','This panel shows how many numbers were issued this year and what comes next, without opening the Sheet.')+'</p><div id="counterMsg" class="msg" role="status"></div><div id="counterHost"><p>'+t('लोड हो रहा है…','Loading…')+'</p></div>';
- const chosen=year||String(new Date().getFullYear());
- const years=Array.from({length:5},(_,i)=>String(new Date().getFullYear()-2+i));
- const bar='<div class="inline-actions"><label>'+t('साल','Year')+'</label><select id="counterYear">'+years.map(y=>'<option value="'+y+'"'+(y===chosen?' selected':'')+'>'+y+'</option>').join('')+'</select><button class="btn secondary" type="button" id="counterRefresh">'+t('ताज़ा करें','Refresh')+'</button></div>';
- $('counterRefresh')&&$('counterRefresh').addEventListener('click',()=>loadAdminCounters($('counterYear').value));
- try{
-  const r=await api('adminIdCounters',{token:sessionToken,year:Number(chosen)}),rows=r.counters||[];
-  $('counterHost').innerHTML=bar+'<div class="table-wrap panel"><table><thead><tr><th>'+t('पहचान','Series')+'</th><th>'+t('इस साल जारी','Issued this year')+'</th><th>'+t('अंतिम नंबर','Last issued')+'</th><th>'+t('अगला नंबर','Next number')+'</th><th>'+t('कुल पंक्तियाँ','Sheet rows')+'</th></tr></thead><tbody>'+rows.map(c=>'<tr><td>'+escapeHtml(c.label)+' <span class="quiet">('+escapeHtml(c.column)+')</span></td><td>'+escapeHtml(c.issued||0)+'</td><td>'+escapeHtml(c.lastId||'—')+'</td><td><strong>'+escapeHtml(c.nextId||(c.error||t('अभी कोई क्रमिक नंबर नहीं','no sequential number yet')))+'.</strong></td><td>'+escapeHtml(c.sheetRows||0)+'</td></tr>').join('')+'</tbody></table></div>';
-  $('counterRefresh').addEventListener('click',()=>loadAdminCounters($('counterYear').value));
- }catch(e){$('counterHost').innerHTML=bar+'<p class="msg error">'+escapeHtml(e.message)+'</p>';}
+
+/* ---- Scheme render ---- */
+function renderScheme(s) {
+  const card=$('schemeCard');
+  if (!s || (!s.name && !s.nameEn)) { card.hidden=true; return; }
+  const name = language==='hi' ? (s.name || s.nameEn) : (s.nameEn || s.name);
+  $('schemeName').textContent = name || '—';
+  $('schemeCode').textContent = s.code ? (words[language].schemeCode+': '+s.code) : '';
+
+  const desc = language==='hi' ? (s.description || '') : (s.descriptionEn || s.description || '');
+  $('schemeDesc').textContent = desc;
+  $('schemeDesc').hidden = !desc;
+
+  const icon=$('schemeIcon');
+  if (s.logoUrl) { icon.src = s.logoUrl; icon.hidden=false; }
+  else if (s.category) { icon.src = '/scheme-icon.png'; icon.hidden=false; }
+  else icon.hidden=true;
+
+  const status=$('schemeStatus');
+  if (s.status === 'active' || s.status === 'closed') {
+    status.hidden=false;
+    status.className = 'scheme-status ' + s.status;
+    status.textContent = s.status === 'active'
+      ? words[language].statusActive : words[language].statusClosed;
+  } else status.hidden=true;
+
+  const done = Number(s.completedPledges) || 0;
+  const target = Number(s.targetPledges) || 0;
+  if (target > 0) {
+    const pct = Math.min(100, Math.round(done/target*100));
+    $('schemeCompleted').textContent = done.toLocaleString(language==='hi'?'hi-IN':'en-IN') + ' ✓';
+    $('schemeTarget').textContent = '/ ' + target.toLocaleString(language==='hi'?'hi-IN':'en-IN') + ' (' + pct + '%)';
+    $('schemeBar').style.width = pct + '%';
+    $('schemeBar').parentElement.style.display = '';
+  } else {
+    $('schemeCompleted').textContent = done ? done.toLocaleString() + ' ✓' : '';
+    $('schemeTarget').textContent = '';
+    $('schemeBar').parentElement.style.display = 'none';
+  }
+  card.hidden = false;
 }
-async function loadAdminAudit(query,entity){
- const target=$('adminSubpanel');
- target.innerHTML='<h3>'+t('बदलावों का लॉग (प्रशासक गतिविधि)','Admin activity log')+'</h3><form id="auditForm" class="inline-actions"><input id="auditSearch" type="search" value="'+escapeHtml(query||'')+'" placeholder="'+t('नाम, ID या नोट खोजें…','search name, ID or note…')+'"><select id="auditEntity"><option value="">'+t('सभी प्रकार','all types')+'</option>'+Object.keys(ADMIN_STATUS_CHOICES).map(e2=>'<option value="'+e2+'"'+(e2===entity?' selected':'')+'>'+escapeHtml(adminEntityLabel(e2))+'</option>').join('')+'</select><button class="btn secondary" type="submit">'+t('खोजें','Search')+'</button></form><div id="auditHost"><p>'+t('लोड हो रहा है…','Loading…')+'</p></div>';
- const render=async(q,en)=>{
-  try{
-   const r=await api('adminGetAuditLog',{token:sessionToken,limit:150,q:q,entity:en}),rows=r.rows||[];
-   $('auditHost').innerHTML='<p class="quiet">'+t('कुल दर्ज entries: ','total entries: ')+(r.total||0)+'</p><div class="table-wrap panel"><table><thead><tr><th>'+t('समय','When')+'</th><th>'+t('Admin','Admin')+'</th><th>'+t('कार्य','Action')+'</th><th>'+t('रिकॉर्ड','Record')+'</th><th>'+t('क्या बदला','What changed')+'</th></tr></thead><tbody>'+(rows.length?rows.map(x=>'<tr><td>'+escapeHtml(x.timestamp)+'</td><td>'+escapeHtml(String(x.admin).replace(/[^@]*@/,'***@')||x.admin)+'</td><td>'+escapeHtml(x.action)+'</td><td>'+escapeHtml(x.entity+' · '+x.key)+'</td><td>'+escapeHtml(x.summary)+(x.note?'<br><span class="quiet">'+escapeHtml(x.note)+'</span>':'')+'</td></tr>').join(''):'<tr><td colspan="5">'+t('अभी कोई entry नहीं। नए backend actions जोड़ने के बाद बदलाव यहाँ दिखेंगे।','No entries yet. Changes appear here once the new backend actions are deployed.')+'</td></tr>')+'</tbody></table></div>';
-  }catch(e){$('auditHost').innerHTML='<p class="msg error">'+escapeHtml(e.message)+'</p><p class="quiet">'+t('यह पैनल नए सर्वर action के बिना काम नहीं करेगा—Apps Script में snippet डालकर नई deployment बनाएँ।','This panel needs the new AdminAudit action — paste the snippet into the Apps Script and create a new deployment.')+'</p>';}
- };
- $('auditForm').addEventListener('submit',e=>{e.preventDefault();render($('auditSearch').value,$('auditEntity').value);});
- render(query||'',entity||'');
+
+/* ---- Signature render ---- */
+function renderSignature(r) {
+  const block=$('signBlock');
+  const hasSig = r.signatureUrl || r.signedBy;
+  if (!hasSig) { block.hidden=true; return; }
+  const img=$('signImg');
+  if (r.signatureUrl) { img.src = r.signatureUrl; img.hidden=false; }
+  else img.hidden=true;
+  $('signName').textContent = r.signedBy || words[language].authorizedBy;
+  $('signOrg').textContent  = (r.ngo && r.ngo.name) || 'Dipra Foundation';
+  block.hidden = false;
 }
-document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
-$('logoutBtn').addEventListener('click',logout);
-function logout(){const oldToken=sessionToken;if(oldToken)api('portalLogout',{token:oldToken}).catch(()=>{});sessionStorage.removeItem('dipra_portal_token');sessionStorage.removeItem('dipra_portal_user');sessionToken='';currentUser=null;$('dashboardView').classList.add('hidden');$('authView').classList.remove('hidden');$('logoutBtn').classList.add('hidden');$('bottom-nav').classList.add('hidden');$('donationsPanel').classList.add('hidden');$('adminPanel').classList.add('hidden');}
-try{sessionToken=sessionStorage.getItem('dipra_portal_token')||'';currentUser=JSON.parse(sessionStorage.getItem('dipra_portal_user')||'null');if(sessionToken&&currentUser)showDashboard();}catch(e){}
-const thoughts=['“ज्ञान बाँटने से बढ़ता है।”','“हर सीख एक नई संभावना है।”','“छोटे कदम भी बदलाव शुरू करते हैं।”'];let thoughtIndex=0;setInterval(()=>{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){thoughtIndex=(thoughtIndex+1)%thoughts.length;$('thought').textContent=thoughts[thoughtIndex];}},9000);
-api('getPortalPublicSettings',{}).then(r=>{const s=r.settings||{};portalPublicSettings=s;if(s.FoundationName)document.querySelector('.brand b').textContent=s.FoundationName;const welcome=currentLanguage==='en'?(s.WelcomeTextEn||s.WelcomeTextHi):(s.WelcomeTextHi||s.WelcomeTextEn);if(welcome)document.querySelector('.hero p').textContent=welcome;if(s.LogoUrl)document.querySelectorAll('.brand img,.hero-logo img').forEach(i=>i.src=s.LogoUrl);}).catch(()=>{});
-let sound=false;const audioCtx=window.AudioContext?new AudioContext():null;
-$('soundBtn').addEventListener('click',()=>{sound=!sound;$('soundBtn').setAttribute('aria-pressed',String(sound));$('soundBtn').textContent=sound?'🔔 ध्वनि चालू':'🔈 ध्वनि बंद';if(sound&&audioCtx){if(audioCtx.state==='suspended')audioCtx.resume();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.frequency.value=720;g.gain.value=.025;o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+.12);}});
-function setLanguage(lang){applyLanguage(lang);}
-$('langHi').addEventListener('click',()=>setLanguage('hi'));$('langEn').addEventListener('click',()=>setLanguage('en'));initLanguage();
+
+/* ---- Reset / render ---- */
+function resetUI() {
+  $('mark').className='mark loading'; $('mark').textContent='';
+  $('lead').textContent = words[language].loading;
+  $('badge').hidden=true; $('badge').textContent='';
+  $('details').hidden=true; clearNode($('details'));
+  $('privateNote').hidden=true; $('privateNote').textContent='';
+  $('status').textContent='';
+  $('ngoCard').hidden=true;
+  $('schemeCard').hidden=true;
+  $('signBlock').hidden=true;
+  $('retryBox').hidden=true;
+  $('shareBtn').hidden=true;
+  $('printBtn').hidden=true;
+  $('certBtn').hidden=true;
+  $('qrWrap').hidden=true;
+  $('title').textContent = words[language].title;
+}
+
+function renderResult(r) {
+  lastResult=r; lastErrorKey=null;
+  $('title').textContent = words[language].title;
+  $('mark').className='mark valid'; $('mark').textContent='✓';
+  $('lead').textContent = words[language].verified;
+  $('badge').textContent = words[language].verified; $('badge').hidden=false;
+  $('retryBox').hidden=true;
+
+  renderNGO(r.ngo || NGO_STATIC);
+  renderScheme(r.scheme);
+
+  const d=$('details'); clearNode(d); d.hidden=false;
+  showRow(words[language].pledgeId, r.pledgeId, true);
+  if (r.detailsPublic) {
+    showRow(words[language].name, r.name, false);
+    showRow(words[language].primary, r.primarySector, false);
+    if (r.secondarySectors) showRow(words[language].secondary, r.secondarySectors, false);
+    $('privateNote').hidden=true;
+  } else {
+    $('privateNote').textContent = words[language].private;
+    $('privateNote').hidden=false;
+  }
+  showRow(words[language].date, formatDate(r.date, language), false);
+  showRow(words[language].verifiedOn,
+    formatDateTime(r.verifiedAt || new Date().toISOString(), language), false);
+  $('status').textContent='';
+
+  renderSignature(r);
+
+  $('shareBtn').hidden=false;
+  $('printBtn').hidden=false;
+  if (r.certificateUrl) {
+    const c=$('certBtn'); c.href=r.certificateUrl; c.hidden=false;
+    c.textContent = words[language].certificate;
+  }
+  setQR(r.pledgeId || '');
+}
+
+function renderFailure(key) {
+  lastResult=null; lastErrorKey=key;
+  $('title').textContent = words[language].title;
+  $('mark').className='mark invalid'; $('mark').textContent='!';
+  $('lead').textContent = words[language].invalid;
+  $('badge').hidden=true; $('badge').textContent='';
+  $('details').hidden=true; clearNode($('details'));
+  $('privateNote').hidden=true; $('privateNote').textContent='';
+  $('ngoCard').hidden=true;
+  $('schemeCard').hidden=true;
+  $('signBlock').hidden=true;
+  $('status').textContent = words[language][key] || words[language].error;
+  $('retryBox').hidden=false;
+  $('shareBtn').hidden=true;
+  $('printBtn').hidden=true;
+  $('certBtn').hidden=true;
+  $('qrWrap').hidden=true;
+}
+
+function reRender() {
+  if (lastResult) renderResult(lastResult);
+  else if (lastErrorKey) renderFailure(lastErrorKey);
+  else {
+    $('title').textContent = words[language].title;
+    $('lead').textContent = words[language].loading;
+    $('badge').hidden=true; $('details').hidden=true;
+    $('retryBox').hidden=true;
+  }
+}
+
+/* ---- Language ---- */
+function translate(lang) {
+  if (lang!=='hi' && lang!=='en') return;
+  language=lang;
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-lang]').forEach(b=>{
+    const a=b.dataset.lang===lang;
+    b.classList.toggle('active',a); b.setAttribute('aria-pressed',String(a));
+  });
+  document.querySelectorAll('[data-hi][data-en]').forEach(el=>{
+    el.textContent = el.getAttribute('data-'+lang);
+  });
+  $('retryBtn').textContent = words[lang].retry;
+  $('verifyForm').querySelector('button[type=submit]').textContent = words[lang].verify;
+  reRender();
+}
+document.querySelectorAll('[data-lang]').forEach(b=>
+  b.addEventListener('click', ()=>translate(b.dataset.lang)));
+
+/* ---- Verify ---- */
+function getPledgeIdFromUrl() {
+  return (new URLSearchParams(location.search).get('id') || '').trim().toUpperCase();
+}
+async function fetchWithTimeout(url, options={}, ms=FETCH_TIMEOUT_MS) {
+  const c=new AbortController();
+  const t=setTimeout(()=>c.abort(), ms);
+  try { return await fetch(url, { ...options, signal:c.signal }); }
+  finally { clearTimeout(t); }
+}
+async function verify() {
+  resetUI();
+  const id=getPledgeIdFromUrl();
+  if (!ID_REGEX.test(id)) { renderFailure('notFound'); return; }
+  try {
+    const url = API + '?action=verifyPledge&id=' + encodeURIComponent(id);
+    const r = await fetchWithTimeout(url, {method:'GET',headers:{Accept:'application/json'}});
+    if (!r.ok) { renderFailure('error'); return; }
+    let data; try { data = await r.json(); } catch { renderFailure('error'); return; }
+    if (!data || !data.verified) { renderFailure('notFound'); return; }
+    renderResult(data);
+  } catch (err) {
+    console.error('verify failed', err);
+    renderFailure(err && err.name==='AbortError' ? 'timeout' : 'error');
+  }
+}
+
+/* ---- Actions ---- */
+$('shareBtn').addEventListener('click', async () => {
+  const url=buildShareUrl();
+  const title='Dipra Foundation pledge verification';
+  const text = (lastResult && lastResult.pledgeId)
+    ? 'Verified pledge ' + lastResult.pledgeId + ' — Dipra Foundation'
+    : title;
+  if (navigator.share) { try { await navigator.share({title,text,url}); } catch {} }
+  else copyText(url, $('shareBtn'));
+});
+$('printBtn').addEventListener('click', ()=>window.print());
+$('retryBtn').addEventListener('click', verify);
+
+$('verifyForm').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const v=($('newId').value||'').trim().toUpperCase();
+  if (!v) return;
+  const u=new URL(location.href); u.searchParams.set('id',v);
+  history.pushState({}, '', u.toString());
+  verify();
+});
+
+window.addEventListener('online',  ()=>document.body.classList.remove('is-offline'));
+window.addEventListener('offline', ()=>document.body.classList.add('is-offline'));
+if (!navigator.onLine) document.body.classList.add('is-offline');
+
+/* ---- Boot ---- */
+(function init(){
+  const y=$('year'); if (y) y.textContent=new Date().getFullYear();
+  translate(document.documentElement.lang==='en'?'en':'hi');
+  verify();
+})();
 </script>
+
 <script src="/app-nav.js" defer></script>
 </body>
 </html>
