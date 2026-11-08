@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>सामुदायिक जागरूकता कार्यक्रम · Community Awareness Programme — DIPRA FOUNDATION</title>
+<meta name="description" content="DIPRA FOUNDATION — Community Awareness Programme. Fill the form, choose a sector, take the pledge and download your awareness certificate.">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#8b1538">
+<link rel="icon" href="/logo.png">
+<style>
+/* ==========================================================
+   AWARENESS PROGRAM — standalone styles
+   Palette: deep maroon (#8b1538) + gold (#d4a017) + cream
+   ========================================================== */
+:root{
+  --maroon:#8b1538;
+  --maroon-light:#b2284a;
+  --gold:#d4a017;
+  --cream:#fffaf0;
+  --ink:#1a2533;
+  --muted:#64748b;
+  --line:#d5e0ed;
+  --green:#0d7a3a;
+  --green-light:#16a34a;
+  --danger:#c0392b;
+  --radius:14px;
+  --shadow:0 6px 22px rgba(0,0,0,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Segoe UI',system-ui,Arial,"Noto Sans Devanagari",sans-serif;
+  color:var(--ink);background:#f7f4ef;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--maroon);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ---------- Site header (matches main site style) ---------- */
+.site-header{
+  position:sticky;top:0;z-index:1000;background:#fff;
+  border-bottom:1px solid #eee;padding:.7rem 1rem;
+  display:flex;align-items:center;justify-content:space-between;
+  box-shadow:0 2px 10px rgba(0,0,0,.04);
+}
+.site-header .brand{display:flex;align-items:center;gap:.6rem;font-weight:800;color:var(--maroon)}
+.site-header .brand img{height:38px;width:auto}
+.site-header nav{display:flex;gap:1rem;align-items:center;font-size:.95rem}
+.site-header nav a{color:var(--ink);font-weight:600;padding:.4rem .6rem;border-radius:8px;transition:background .2s}
+.site-header nav a:hover{background:#f2e9e6;text-decoration:none}
+.site-header nav a.active{background:var(--maroon);color:#fff}
+@media (max-width:768px){
+  .site-header nav{display:none}
+  .site-header .brand span{font-size:.9rem}
+}
+
+/* ---------- Hero ---------- */
+.aw-hero{
+  background:linear-gradient(135deg,#8b1538 0%,#5f0f27 100%);
+  color:#fff;padding:3rem 1rem 2.4rem;text-align:center;position:relative;overflow:hidden;
+}
+.aw-hero::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 20% 20%,rgba(212,160,23,.18),transparent 40%),
+             radial-gradient(circle at 80% 80%,rgba(212,160,23,.12),transparent 45%);
+  pointer-events:none;
+}
+.aw-hero .logo{width:76px;height:76px;margin:0 auto 1rem;border-radius:50%;background:#fff;padding:6px;box-shadow:0 4px 20px rgba(0,0,0,.25)}
+.aw-hero h1{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800;letter-spacing:.5px;margin-bottom:.4rem}
+.aw-hero .sub{color:#ffd894;font-size:clamp(.9rem,2.3vw,1.05rem);font-weight:600;margin-bottom:1rem}
+.aw-hero p.lead{max-width:640px;margin:0 auto 1.4rem;color:#f1d8dc;font-size:.95rem;line-height:1.7}
+.aw-stats{
+  display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.25);border-radius:999px;
+  padding:.55rem 1.2rem;backdrop-filter:blur(6px);font-size:.9rem;
+}
+.aw-stats b{font-size:1.25rem;color:#fff;font-weight:800}
+.aw-stats span{color:#ffe1b8}
+
+/* ---------- Form wrapper ---------- */
+.aw-wrap{max-width:800px;margin:-1.4rem auto 3rem;padding:0 1rem;position:relative;z-index:2}
+
+/* Progress indicator */
+.aw-progress{display:flex;justify-content:center;gap:.4rem;margin-bottom:1rem}
+.aw-progress .dot{
+  width:32px;height:6px;border-radius:4px;background:#d5c2c7;transition:background .3s;
+}
+.aw-progress .dot.active{background:var(--gold)}
+
+/* Card */
+.aw-card{
+  background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);
+  overflow:hidden;border:1px solid #f0e6e8;
+}
+
+/* Steps (accordion) */
+.aw-step{border-bottom:1px solid #f2eef0;opacity:0;transform:translateY(8px);animation:rise .45s forwards}
+.aw-step:nth-child(2){animation-delay:.08s}
+.aw-step:nth-child(3){animation-delay:.16s}
+.aw-step:nth-child(4){animation-delay:.24s}
+@keyframes rise{to{opacity:1;transform:translateY(0)}}
+.aw-step:last-child{border-bottom:none}
+
+.aw-step-head{
+  padding:1rem 1.2rem;display:flex;align-items:center;gap:.8rem;
+  font-weight:700;color:var(--ink);cursor:pointer;user-select:none;
+  transition:background .2s;
+}
+.aw-step-head:hover{background:#fdf8f2}
+.aw-step-head .num{
+  width:28px;height:28px;border-radius:50%;background:var(--maroon);color:#fff;
+  display:grid;place-items:center;font-size:.85rem;flex-shrink:0;
+}
+.aw-step-head .chev{margin-left:auto;color:var(--muted);transition:transform .3s}
+.aw-step.open .aw-step-head .chev{transform:rotate(180deg)}
+.aw-step-body{
+  max-height:0;overflow:hidden;padding:0 1.2rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:.9rem;
+  transition:max-height .4s ease,padding .35s ease;
+}
+.aw-step.open .aw-step-body{max-height:1400px;padding:.4rem 1.2rem 1.3rem}
+.aw-step-body label{display:flex;flex-direction:column;font-size:.85rem;color:#42506a;gap:.35rem;font-weight:600}
+.aw-step-body label.full{grid-column:1 / -1}
+.aw-step-body .req{color:var(--danger);margin-left:2px}
+.aw-step-body input,
+.aw-step-body select,
+.aw-step-body textarea{
+  padding:.7rem .85rem;border:1.5px solid var(--line);border-radius:9px;
+  font-size:.95rem;font-family:inherit;background:#fff;color:var(--ink);
+  outline:none;transition:border-color .2s,box-shadow .2s;width:100%;
+}
+.aw-step-body input:focus,
+.aw-step-body select:focus,
+.aw-step-body textarea:focus{
+  border-color:var(--maroon);box-shadow:0 0 0 3px rgba(139,21,56,.12);
+}
+.aw-step-body textarea{resize:vertical;min-height:70px}
+.aw-step-body .check{
+  flex-direction:row;align-items:flex-start;gap:.55rem;font-weight:500;
+  font-size:.9rem;grid-column:1 / -1;cursor:pointer;
+}
+.aw-step-body .check input{width:18px;height:18px;margin-top:.15rem;flex-shrink:0;accent-color:var(--maroon)}
+
+/* Sector chips (multi-select) */
+.aw-sectors{
+  display:flex;flex-wrap:wrap;gap:.45rem;grid-column:1/-1;
+  max-height:210px;overflow-y:auto;padding:.6rem;background:#faf7f4;
+  border:1.5px solid var(--line);border-radius:10px;
+}
+.aw-sectors .chip{
+  display:inline-flex;align-items:center;gap:.35rem;
+  background:#fff;border:1.5px solid var(--line);border-radius:999px;
+  padding:.35rem .8rem;font-size:.78rem;font-weight:600;cursor:pointer;
+  transition:all .15s;user-select:none;color:#42506a;
+}
+.aw-sectors .chip:hover{border-color:var(--maroon)}
+.aw-sectors .chip input{display:none}
+.aw-sectors .chip.checked{background:var(--maroon);color:#fff;border-color:var(--maroon)}
+
+/* Submit */
+.aw-submit-row{padding:1.3rem 1.2rem;background:linear-gradient(180deg,#fffaf7,#fdf1f3)}
+.aw-submit{
+  width:100%;padding:1rem 1.4rem;border:none;border-radius:12px;
+  background:linear-gradient(135deg,var(--maroon),var(--maroon-light));
+  color:#fff;font-size:1.02rem;font-weight:800;letter-spacing:.3px;
+  cursor:pointer;box-shadow:0 6px 18px rgba(139,21,56,.32);
+  transition:transform .15s,box-shadow .2s,opacity .2s;font-family:inherit;
+}
+.aw-submit:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 8px 22px rgba(139,21,56,.42)}
+.aw-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+
+/* Status */
+#awStatus{
+  margin-top:.9rem;text-align:center;font-size:.9rem;font-weight:600;
+  min-height:1.2em;color:#42506a;
+}
+#awStatus.error{color:var(--danger)}
+#awStatus.success{color:var(--green)}
+
+/* Success result card */
+.aw-result{
+  margin-top:1.4rem;padding:1.6rem 1.2rem;border-radius:var(--radius);
+  background:linear-gradient(135deg,#e7f6ec,#f0fdf4);
+  border:1.5px solid #a7dcb8;text-align:center;
+  box-shadow:0 8px 24px rgba(13,122,58,.12);
+  animation:popIn .5s ease;
+}
+@keyframes popIn{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
+.aw-result h3{color:var(--green);font-size:1.15rem;margin-bottom:.5rem}
+.aw-result p{color:#42506a;font-size:.92rem;margin-bottom:.4rem}
+.aw-result .id-pill{
+  display:inline-block;background:#fff;border:1.5px dashed var(--green);
+  border-radius:9px;padding:.5rem 1rem;font-family:monospace;font-size:1rem;
+  font-weight:800;color:#0f2c52;letter-spacing:1px;margin:.6rem 0 1rem;
+}
+.aw-actions{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:.6rem}
+.btn-primary,.btn-outline{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.75rem 1.35rem;border-radius:10px;font-weight:700;font-size:.92rem;
+  text-decoration:none;transition:transform .15s,box-shadow .2s;
+}
+.btn-primary{background:var(--green);color:#fff;box-shadow:0 4px 14px rgba(13,122,58,.3)}
+.btn-primary:hover{transform:translateY(-1px);text-decoration:none;color:#fff}
+.btn-outline{border:2px solid var(--green);color:var(--green);background:#fff}
+.btn-outline:hover{background:#e7f6ec;text-decoration:none}
+
+/* Info footer */
+.aw-info{
+  max-width:800px;margin:0 auto 3rem;padding:0 1rem;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;
+}
+.aw-info .card{
+  background:#fff;border-radius:12px;padding:1.2rem;box-shadow:var(--shadow);
+  border:1px solid #f0e6e8;
+}
+.aw-info .card h4{color:var(--maroon);font-size:.95rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem}
+.aw-info .card p{color:var(--muted);font-size:.85rem;line-height:1.65}
+
+/* Footer */
+.site-footer{
+  background:#1a1114;color:#cbb8bd;text-align:center;
+  padding:1.5rem 1rem;font-size:.82rem;line-height:1.7;
+}
+.site-footer a{color:#ffd894}
+
+/* Mobile */
+@media (max-width:640px){
+  .aw-step-body{grid-template-columns:1fr}
+  .aw-hero{padding:2.2rem 1rem 2rem}
+  .aw-hero .logo{width:60px;height:60px}
+  .aw-submit{font-size:.95rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <a href="/index.html" class="brand">
+    <img src="/logo.png" alt="DIPRA FOUNDATION">
+    <span>DIPRA FOUNDATION</span>
+  </a>
+  <nav>
+    <a href="/index.html">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/donate.html">Donate</a>
+    <a href="/pledge.html">Pledge</a>
+    <a href="/awareness.html" class="active">Awareness</a>
+    <a href="/portal.html">Portal</a>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="aw-hero">
+  <img class="logo" src="/logo.png" alt="Logo">
+  <h1>🌟 सामुदायिक जागरूकता कार्यक्रम</h1>
+  <div class="sub">Community Awareness Programme</div>
+  <p class="lead">
+    अपना विवरण भरें, अपने क्षेत्र का चयन करें और जागरूकता का संकल्प लें —
+    तुरंत डिजिटल <b>प्रमाण-पत्र</b> प्राप्त करें।<br>
+    Fill your details, choose a sector, take the pledge and download your
+    awareness certificate instantly.
+  </p>
+  <div class="aw-stats">
+    <b id="awTotal">—</b>
+    <span>लोगों ने भाग लिया · participants</span>
+  </div>
+</section>
+
+<!-- ================= FORM ================= -->
+<div class="aw-wrap">
+
+  <!-- progress dots -->
+  <div class="aw-progress" aria-hidden="true">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+
+  <form id="awForm" class="aw-card" novalidate>
+
+    <!-- ---------- STEP 1: Personal details ---------- -->
+    <div class="aw-step open">
+      <div class="aw-step-head">
+        <span class="num">1</span>
+        व्यक्तिगत विवरण · Personal Details
+        <span class="chev">▾</span>
+      </div>
+      <div class="aw-step-body">
+        <label class="full">
+          पूरा नाम · Full Name <span class="req">*</span>
+          <input name="name" required minlength="3" maxlength="120" autocomplete="name"
+                 placeholder="e.g. Aarav Sharma / आरव शर्मा">
+        </label>
+
+        <label>
+          लिंग · Gender <span class="req">*</span>
+          <select name="gender" required>
+            <option value="">— चुनें · Select —</option>
+            <option value="Male">पुरुष · Male</option>
+            <option value="Female">महिला · Female</option>
+            <option value="Other">अन्य · Other</option>
+          </select>
+        </label>
+
+        <label>
+          मोबाइल नंबर · Mobile <span class="req">*</span>
+          <input name="mobile" inputmode="numeric" maxlength="10"
+                 pattern="[6-9][0-9]{9}" required autocomplete="tel"
+                 placeholder="10-digit mobile">
+        </label>
+
+        <label class="full">
+          ईमेल · Email <span class="req">*</span>
+          <input name="email" type="email" required maxlength="120"
+                 autocomplete="email" placeholder="you@example.com">
+        </label>
+
+        <label class="full">
+          पता · Address <span class="req">*</span>
+          <textarea name="address" required minlength="10" maxlength="500" rows="2"
+                    autocomplete="street-address"
+                    placeholder="House / Street / Village / City / PIN"></textarea>
+        </label>
+      </div>
+    </div>
+
+    <!-- ---------- STEP 2: Sector ---------- -->
+    <div class="aw-step">
+      <div class="aw-step-head">
+        <span class="num">2</span>
+        क्षेत्र चुनें · Choose Sector
+        <span class="chev">▾</span>
+      </div>
+      <div class="aw-step-body">
+        <label class="full">
+          प्राथमिक क्षेत्र · Primary Sector <span class="req">*</span>
+          <select name="primarySector" required>
+            <option value="">— चुनें · Select —</option>
+            <option>Agriculture</option>
+            <option>Animal Husbandry, Dairying &amp; Fisheries</option>
+            <option>Biotechnology</option>
+            <option>Children</option>
+            <option>Education &amp; Literacy</option>
+          </select>
+        </label>
+
+        <label class="full" style="font-weight:600">
+          अन्य क्षेत्र (वैकल्पिक) · Secondary Sectors (optional)
+        </label>
+        <div class="aw-sectors" id="awSecondary">
+          <!-- Secondary sectors: full list you provided -->
+          <label class="chip"><input type="checkbox" value="Art & Culture"> Art &amp; Culture</label>
+          <label class="chip"><input type="checkbox" value="Civic Issues"> Civic Issues</label>
+          <label class="chip"><input type="checkbox" value="Dalit Upliftment"> Dalit Upliftment</label>
+          <label class="chip"><input type="checkbox" value="Differently Abled"> Differently Abled</label>
+          <label class="chip"><input type="checkbox" value="Disaster Management"> Disaster Management</label>
+          <label class="chip"><input type="checkbox" value="Drinking Water"> Drinking Water</label>
+          <label class="chip"><input type="checkbox" value="Aged/Elderly"> Aged/Elderly</label>
+          <label class="chip"><input type="checkbox" value="Environment & Forests"> Environment &amp; Forests</label>
+          <label class="chip"><input type="checkbox" value="Food Processing"> Food Processing</label>
+          <label class="chip"><input type="checkbox" value="Health & Family Welfare"> Health &amp; Family Welfare</label>
+          <label class="chip"><input type="checkbox" value="HIV/AIDS"> HIV/AIDS</label>
+          <label class="chip"><input type="checkbox" value="Housing"> Housing</label>
+          <label class="chip"><input type="checkbox" value="Human Rights"> Human Rights</label>
+          <label class="chip"><input type="checkbox" value="Information & Communication Technology"> Information &amp; Communication Technology</label>
+          <label class="chip"><input type="checkbox" value="Labour & Employment"> Labour &amp; Employment</label>
+          <label class="chip"><input type="checkbox" value="Land Resources"> Land Resources</label>
+          <label class="chip"><input type="checkbox" value="Legal Awareness & Aid"> Legal Awareness &amp; Aid</label>
+          <label class="chip"><input type="checkbox" value="Micro Finance (SHGs)"> Micro Finance (SHGs)</label>
+          <label class="chip"><input type="checkbox" value="Micro Small & Medium Enterprises"> Micro Small &amp; Medium Enterprises</label>
+          <label class="chip"><input type="checkbox" value="Minority Issues"> Minority Issues</label>
+          <label class="chip"><input type="checkbox" value="New & Renewable Energy"> New &amp; Renewable Energy</label>
+          <label class="chip"><input type="checkbox" value="Nutrition"> Nutrition</label>
+          <label class="chip"><input type="checkbox" value="Panchayati Raj"> Panchayati Raj</label>
+          <label class="chip"><input type="checkbox" value="Prisoner's Issues"> Prisoner's Issues</label>
+          <label class="chip"><input type="checkbox" value="Right to Information & Advocacy"> Right to Information &amp; Advocacy</label>
+          <label class="chip"><input type="checkbox" value="Rural Development & Poverty Alleviation"> Rural Development &amp; Poverty Alleviation</label>
+          <label class="chip"><input type="checkbox" value="Science & Technology"> Science &amp; Technology</label>
+          <label class="chip"><input type="checkbox" value="Scientific & Industrial Research"> Scientific &amp; Industrial Research</label>
+          <label class="chip"><input type="checkbox" value="Sports"> Sports</label>
+          <label class="chip"><input type="checkbox" value="Tourism"> Tourism</label>
+          <label class="chip"><input type="checkbox" value="Tribal Affairs"> Tribal Affairs</label>
+          <label class="chip"><input type="checkbox" value="Urban Development & Poverty Alleviation"> Urban Development &amp; Poverty Alleviation</label>
+          <label class="chip"><input type="checkbox" value="Vocational Training"> Vocational Training</label>
+          <label class="chip"><input type="checkbox" value="Water Resources"> Water Resources</label>
+          <label class="chip"><input type="checkbox" value="Women's Development & Empowerment"> Women's Development &amp; Empowerment</label>
+          <label class="chip"><input type="checkbox" value="Youth Affairs"> Youth Affairs</label>
+          <label class="chip"><input type="checkbox" value="Skill Development"> Skill Development</label>
+          <label class="chip"><input type="checkbox" value="Animal Welfare"> Animal Welfare</label>
+          <label class="chip"><input type="checkbox" value="Electoral Funding & Donations"> Electoral Funding &amp; Donations</label>
+        </div>
+
+        <label class="full">
+          भाषा · Language
+          <select name="language">
+            <option value="hi">हिन्दी</option>
+            <option value="en">English</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <!-- ---------- STEP 3: Pledge ---------- -->
+    <div class="aw-step">
+      <div class="aw-step-head">
+        <span class="num">3</span>
+        संकल्प · Pledge
+        <span class="chev">▾</span>
+      </div>
+      <div class="aw-step-body">
+        <label class="full">
+          संकल्प पाठ · Pledge Text <span class="req">*</span>
+          <textarea name="pledgeText" rows="4" required minlength="20" maxlength="1500"
+                    placeholder="मैं संकल्प लेता/लेती हूँ कि मैं अपने समुदाय में जागरूकता, सुरक्षा और सम्मान को बढ़ावा दूँगा/दूँगी…"></textarea>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" name="readConfirmed" required>
+          <span>मैंने पूरा मार्गदर्शन पढ़ा है और संकल्प लेने के लिए सहमत हूँ।<br>
+          <small style="color:var(--muted)">I have read the full guide and agree to take the pledge.</small></span>
+        </label>
+
+        <label class="check">
+          <input type="checkbox" name="publicVerifyConsent">
+          <span>मैं अपने नाम का सार्वजनिक सत्यापन करने की सहमति देता/देती हूँ (वैकल्पिक)।<br>
+          <small style="color:var(--muted)">I consent to public name verification (optional).</small></span>
+        </label>
+
+        <!-- honeypot -->
+        <input name="website" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="aw-submit-row">
+      <button type="submit" class="aw-submit" id="awSubmitBtn">
+        🎖️ Submit &amp; Get Certificate
+      </button>
+      <div id="awStatus" role="status" aria-live="polite"></div>
+    </div>
+  </form>
+
+  <!-- Success result -->
+  <div id="awResult" class="aw-result" hidden>
+    <h3>✅ बधाई हो! आपका प्रमाण-पत्र तैयार है</h3>
+    <p>Congratulations! Your awareness certificate is ready.</p>
+    <div class="id-pill" id="awId">—</div>
+    <div class="aw-actions">
+      <a id="awCertBtn" class="btn-primary" target="_blank" rel="noopener">📄 Download Certificate</a>
+      <a id="awVerifyBtn" class="btn-outline" target="_blank" rel="noopener">🔍 Verify</a>
+    </div>
+    <p style="margin-top:1.1rem;font-size:.82rem;color:#7a8aa3">
+      प्रमाण-पत्र आपके ईमेल पर भी भेज दिया गया है।<br>
+      A copy has also been emailed to you.
+    </p>
+  </div>
+</div>
+
+<!-- ================= INFO CARDS ================= -->
+<div class="aw-info">
+  <div class="card">
+    <h4>📜 प्रमाण-पत्र · Certificate</h4>
+    <p>संकल्प लेने के तुरंत बाद आपका डिजिटल प्रमाण-पत्र जनरेट होता है और ईमेल पर भेजा जाता है।</p>
+  </div>
+  <div class="card">
+    <h4>🔒 गोपनीयता · Privacy</h4>
+    <p>आपका मोबाइल, ईमेल और पता सुरक्षित रखा जाता है। सार्वजनिक सत्यापन केवल आपकी सहमति से।</p>
+  </div>
+  <div class="card">
+    <h4>💡 सहायता · Help</h4>
+    <p>कोई समस्या हो? <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a> पर संपर्क करें।</p>
+  </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div><b style="color:#ffd894">DIPRA FOUNDATION</b> · The Uplift Coaching Scheme</div>
+  <div>Khersa, Bidhnu, Kanpur Nagar, UP – 209214</div>
+  <div>📞 +91 95323 28276 · ✉️ <a href="mailto:diprafoundation@gmail.com">diprafoundation@gmail.com</a></div>
+  <div style="margin-top:.5rem;font-size:.75rem;opacity:.7">
+    Reg. No. 300 · Trust Act 1882 · Darpan ID: UP/2024/0459444
+    <br>© <span id="year"></span> DIPRA FOUNDATION
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   AWARENESS PROGRAM — frontend logic
+   Endpoint is your existing Apps Script Web App URL.
+   Replace the placeholder with your deployed /exec URL.
+   ============================================================ */
+const API_URL = 'https://script.google.com/macros/s/AKfycbynC667snioVb9pnBE8jDRWUJHwKOUi5jTYO31PlfolDG5VjcTrE93zh2k-Ai7zgi0/exec';
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ---------- Accordion: open only one step at a time ---------- */
+document.querySelectorAll('.aw-step-head').forEach(head => {
+  head.addEventListener('click', () => {
+    const step = head.parentElement;
+    const wasOpen = step.classList.contains('open');
+    document.querySelectorAll('.aw-step').forEach(s => s.classList.remove('open'));
+    if (!wasOpen) step.classList.add('open');
+    // progress dots
+    const steps = [...document.querySelectorAll('.aw-step')];
+    const idx = steps.indexOf(step);
+    document.querySelectorAll('.aw-progress .dot').forEach((d, i) => {
+      d.classList.toggle('active', i <= idx);
+    });
+  });
+});
+
+/* ---------- Chip (secondary sector) toggling ---------- */
+document.querySelectorAll('#awSecondary .chip').forEach(chip => {
+  chip.addEventListener('click', e => {
+    // let the native checkbox toggle happen
+    setTimeout(() => {
+      const cb = chip.querySelector('input');
+      chip.classList.toggle('checked', cb.checked);
+    }, 0);
+  });
+});
+
+/* ---------- Mobile input: digits only ---------- */
+const mobileInput = document.querySelector('input[name="mobile"]');
+mobileInput.addEventListener('input', e => {
+  e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+});
+
+/* ---------- Load live count ---------- */
+(async () => {
+  try {
+    const r = await fetch(API_URL + '?action=getAwarenessStats');
+    const d = await r.json();
+    if (d.status === 'success') {
+      document.getElementById('awTotal').textContent =
+        Number(d.total || 0).toLocaleString('en-IN');
+    }
+  } catch (e) { /* silent */ }
+})();
+
+/* ---------- Submit handler ---------- */
+const form = document.getElementById('awForm');
+const statusEl = document.getElementById('awStatus');
+const submitBtn = document.getElementById('awSubmitBtn');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  statusEl.className = '';
+  statusEl.textContent = '';
+
+  // Browser native validation
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  // Collect secondary sectors from chips
+  const secondarySectors = [...document.querySelectorAll('#awSecondary input:checked')]
+    .map(cb => cb.value);
+
+  const payload = {
+    action: 'submitAwareness',
+    name:            form.name.value.trim(),
+    gender:          form.gender.value,
+    mobile:          form.mobile.value.trim(),
+    email:           form.email.value.trim().toLowerCase(),
+    address:         form.address.value.trim(),
+    primarySector:   form.primarySector.value,
+    secondarySectors,
+    language:        form.language.value,
+    pledgeText:      form.pledgeText.value.trim(),
+    readConfirmed:   form.readConfirmed.checked,
+    publicVerifyConsent: form.publicVerifyConsent.checked,
+    website:         form.website.value   // honeypot
+  };
+
+  // Quick client-side validation (mirrors backend)
+  if (payload.name.length < 3)        return fail('नाम बहुत छोटा है · Name is too short.');
+  if (!/^(Male|Female|Other)$/.test(payload.gender)) return fail('लिंग चुनें · Choose gender.');
+  if (!/^[6-9]\d{9}$/.test(payload.mobile)) return fail('मोबाइल नंबर अमान्य · Invalid mobile.');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) return fail('ईमेल अमान्य · Invalid email.');
+  if (payload.address.length < 10)    return fail('पता बहुत छोटा है · Address is too short.');
+  if (!payload.primarySector)         return fail('प्राथमिक क्षेत्र चुनें · Select a sector.');
+  if (payload.pledgeText.length < 20) return fail('संकल्प पाठ बहुत छोटा है · Pledge text is too short.');
+
+  submitBtn.disabled = true;
+  statusEl.textContent = '⏳ Saving… कृपया प्रतीक्षा करें';
+  statusEl.className = '';
+
+  try {
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      // Apps Script needs text/plain or form-encoded to avoid CORS preflight
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    });
+    const out = await res.json();
+
+    if (out.status !== 'success') {
+      fail(out.message || 'कुछ गलत हो गया · Something went wrong.');
+      return;
+    }
+
+    // Success
+    statusEl.className = 'success';
+    statusEl.textContent = '✅ Saved!';
+
+    form.hidden = true;
+    const result = document.getElementById('awResult');
+    result.hidden = false;
+    document.getElementById('awId').textContent = out.awarenessId || '—';
+
+    const certBtn = document.getElementById('awCertBtn');
+    if (out.certificateUrl) { certBtn.href = out.certificateUrl; }
+    else { certBtn.style.display = 'none'; }
+
+    const verifyBtn = document.getElementById('awVerifyBtn');
+    verifyBtn.href = out.verifyUrl ||
+      ('/verify-pledge?id=' + encodeURIComponent(out.awarenessId || ''));
+
+    // Bump the counter
+    const counter = document.getElementById('awTotal');
+    counter.textContent = (Number(counter.textContent.replace(/,/g, '')) || 0) + 1;
+
+    result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  } catch (err) {
+    fail('Network error · नेटवर्क त्रुटि। कृपया पुनः प्रयास करें।');
+  } finally {
+    submitBtn.disabled = false;
+  }
+});
+
+function fail(msg) {
+  statusEl.className = 'error';
+  statusEl.textContent = '❌ ' + msg;
+  submitBtn.disabled = false;
+}
+</script>
+
+</body>
+</html>
