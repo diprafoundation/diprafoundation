@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0b5d3b">
 <title>Pledge Verification | Dipra Foundation</title>
 
 <!-- COMMON CSS -->
@@ -20,34 +21,263 @@
 <meta name="apple-mobile-web-app-title" content="दिप्र">
 
 <style>
-  /* Safe-area support for notch devices */
-  body { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
-  header { padding-top: env(safe-area-inset-top); }
-  footer { padding-bottom: env(safe-area-inset-bottom); }
+  /* ---------- Design tokens ---------- */
+  :root {
+    --brand: #0b5d3b;
+    --brand-soft: #e8f5ee;
+    --ink: #1c1c1c;
+    --muted: #5a5a5a;
+    --line: rgba(0,0,0,.08);
+    --danger: #b00020;
+    --danger-soft: #fdecef;
+    --ok: #1b7f3b;
+    --radius: 14px;
+    --header-h: 64px;
+    --font: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #f2f2f2;
+      --muted: #b8b8b8;
+      --line: rgba(255,255,255,.14);
+      --brand-soft: rgba(11,93,59,.25);
+      --danger-soft: rgba(176,0,32,.22);
+    }
+    body { background: #101418; color: var(--ink); }
+    .card { background: #171c21; }
+    .details .row { border-bottom-color: var(--line); }
+  }
 
-  /* Loading / invalid mark states */
-  .mark.invalid { color: #b00020; }
-  .mark.valid   { color: #1b7f3b; }
+  /* ---------- Base ---------- */
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    font-family: var(--font);
+    color: var(--ink);
+    background: #f7f8f7;
+    line-height: 1.5;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+  a { color: var(--brand); }
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid #4c9aff;
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  img { max-width: 100%; }
 
-  /* Details rows */
-  .details .row { display: flex; gap: .75rem; padding: .35rem 0; border-bottom: 1px solid rgba(0,0,0,.06); }
+  /* ---------- Header ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+    padding-top: env(safe-area-inset-top);
+  }
+  @media (prefers-color-scheme: dark) { header { background: #171c21; } }
+
+  header .bar {
+    max-width: 960px;
+    margin: 0 auto;
+    min-height: var(--header-h);
+    padding: .5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+  }
+
+  /* ---------- Brand + LOGO FIX ---------- */
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    min-width: 0;              /* allows text truncation */
+    text-decoration: none;
+    color: inherit;
+  }
+  .brand img,
+  .brand .logo {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;            /* NEVER grow/shrink — fixes "logo bahut bada" */
+    object-fit: contain;
+    border-radius: 8px;
+    background: #fff;
+    padding: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  }
+  @media (min-width: 480px) {
+    .brand img, .brand .logo { width: 48px; height: 48px; flex-basis: 48px; }
+  }
+  .brand span {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.15;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .brand small {
+    font-weight: 400;
+    font-size: .75rem;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* ---------- Lang buttons ---------- */
+  .langs { display: flex; gap: .35rem; flex: 0 0 auto; }
+  .langs button {
+    min-width: 40px;
+    min-height: 36px;
+    padding: .35rem .6rem;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: inherit;
+    border-radius: 999px;
+    font: inherit;
+    font-size: .85rem;
+    cursor: pointer;
+  }
+  .langs button.active {
+    background: var(--brand);
+    color: #fff;
+    border-color: var(--brand);
+  }
+
+  /* ---------- Main / Card ---------- */
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1.25rem 1rem 2.5rem;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.5rem 1.25rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,.04);
+  }
+  @media (max-width: 420px) {
+    .card { padding: 1.1rem 1rem; border-radius: 12px; }
+  }
+
+  /* ---------- Mark (✓ / !) ---------- */
+  .mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    font-size: 1.7rem;
+    font-weight: 700;
+    background: var(--brand-soft);
+    color: var(--brand);
+    margin-bottom: .5rem;
+  }
+  .mark.valid   { background: var(--brand-soft); color: var(--ok); }
+  .mark.invalid { background: var(--danger-soft); color: var(--danger); }
+
+  /* ---------- Typography ---------- */
+  #title { font-size: 1.4rem; margin: .25rem 0 .35rem; line-height: 1.25; }
+  .lead  { color: var(--muted); margin: 0 0 .75rem; }
+
+  /* ---------- Badge ---------- */
+  .badge {
+    display: inline-block;
+    background: var(--brand-soft);
+    color: var(--ok);
+    border: 1px solid rgba(27,127,59,.25);
+    padding: .25rem .7rem;
+    border-radius: 999px;
+    font-size: .85rem;
+    font-weight: 600;
+    margin-bottom: .5rem;
+  }
+  .badge[hidden] { display: none; }
+
+  /* ---------- Details ---------- */
+  .details { margin: .75rem 0; }
+  .details .row {
+    display: flex;
+    gap: .75rem;
+    padding: .5rem 0;
+    border-bottom: 1px solid var(--line);
+  }
   .details .row:last-child { border-bottom: 0; }
-  .details .label { font-weight: 600; min-width: 9rem; }
+  .details .label {
+    font-weight: 600;
+    min-width: 8.5rem;
+    color: var(--muted);
+  }
   .details .value { word-break: break-word; }
 
-  .private { font-style: italic; opacity: .85; }
-  .status  { min-height: 1.2em; }
+  /* MOBILE: stack label above value */
+  @media (max-width: 480px) {
+    .details .row { flex-direction: column; gap: .1rem; padding: .45rem 0; }
+    .details .label { min-width: 0; font-size: .8rem; text-transform: uppercase; letter-spacing: .02em; }
+  }
+
+  /* ---------- Notes / Status ---------- */
+  .private {
+    font-size: .9rem;
+    font-style: italic;
+    color: var(--muted);
+    background: var(--brand-soft);
+    padding: .6rem .75rem;
+    border-radius: 10px;
+    margin: .5rem 0;
+  }
+  .status { min-height: 1.25em; margin: .5rem 0 0; font-size: .9rem; color: var(--danger); }
+  .status:empty { min-height: 0; }
+
+  /* ---------- Actions ---------- */
+  .actions { margin-top: 1rem; }
+  .back {
+    display: inline-block;
+    background: var(--brand);
+    color: #fff;
+    text-decoration: none;
+    padding: .6rem 1rem;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+  .back:hover { filter: brightness(1.08); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: .85rem;
+    padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--line);
+  }
 </style>
 </head>
 <body>
 
 <header>
   <div class="bar">
-    <a class="brand" href="/index.html">
-      <img src="https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w500" alt="Dipra Foundation logo">
-      <span>Dipra Foundation<small>Community pledge verification</small></span>
+    <a class="brand" href="/index.html" aria-label="Dipra Foundation home">
+      <!-- LOGO: fixed size + local fallback -->
+      <img src="/logo.png"
+           onerror="this.onerror=null;this.src='https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w200';"
+           alt="Dipra Foundation logo"
+           width="48" height="48" decoding="async" fetchpriority="high">
+      <span>
+        Dipra Foundation
+        <small>Community pledge verification</small>
+      </span>
     </a>
-    <div class="langs">
+    <div class="langs" role="group" aria-label="Language">
       <button type="button" data-lang="hi" class="active" aria-pressed="true">हिं</button>
       <button type="button" data-lang="en" aria-pressed="false">EN</button>
     </div>
@@ -85,8 +315,8 @@ const $ = id => document.getElementById(id);
 
 /* ---------------- i18n ---------------- */
 let language = 'hi';
-let lastResult = null;       // last successful verification result (for re-render on lang switch)
-let lastErrorKey = null;     // 'invalid' | 'notFound' | 'error' | null
+let lastResult = null;
+let lastErrorKey = null;
 
 const words = {
   hi: {
@@ -125,18 +355,14 @@ const words = {
 function formatDate(value, lang) {
   if (!value) return '—';
   const d = new Date(value);
-  if (isNaN(d.getTime())) return String(value); // fallback: raw value
-  const locale = lang === 'hi' ? 'hi-IN' : 'en-IN';
+  if (isNaN(d.getTime())) return String(value);
   try {
-    return d.toLocaleDateString(locale, { year: 'numeric', month: 'short', day: '2-digit' });
-  } catch {
-    return d.toLocaleDateString();
-  }
+    return d.toLocaleDateString(lang === 'hi' ? 'hi-IN' : 'en-IN',
+      { year: 'numeric', month: 'short', day: '2-digit' });
+  } catch { return d.toLocaleDateString(); }
 }
 
-function clearNode(el) {
-  while (el.firstChild) el.removeChild(el.firstChild);
-}
+function clearNode(el) { while (el.firstChild) el.removeChild(el.firstChild); }
 
 function showRow(label, value) {
   const row = document.createElement('div');
@@ -167,9 +393,7 @@ function resetUI() {
 
 /* ---------------- Rendering ---------------- */
 function renderResult(result) {
-  lastResult = result;
-  lastErrorKey = null;
-
+  lastResult = result; lastErrorKey = null;
   $('title').textContent = words[language].title;
   $('mark').textContent = '✓';
   $('mark').classList.remove('invalid');
@@ -184,50 +408,36 @@ function renderResult(result) {
   details.hidden = false;
 
   showRow(words[language].pledgeId, result.pledgeId);
-
   if (result.detailsPublic) {
     showRow(words[language].name, result.name);
     showRow(words[language].primary, result.primarySector);
-    if (result.secondarySectors) {
-      showRow(words[language].secondary, result.secondarySectors);
-    }
+    if (result.secondarySectors) showRow(words[language].secondary, result.secondarySectors);
     $('privateNote').hidden = true;
   } else {
     $('privateNote').textContent = words[language].private;
     $('privateNote').hidden = false;
   }
-
   showRow(words[language].date, formatDate(result.date, language));
   $('status').textContent = '';
 }
 
-function renderFailure(key, messageOverride) {
-  lastResult = null;
-  lastErrorKey = key;
-
+function renderFailure(key) {
+  lastResult = null; lastErrorKey = key;
   $('title').textContent = words[language].title;
   $('mark').textContent = '!';
   $('mark').classList.remove('valid');
   $('mark').classList.add('invalid');
   $('lead').textContent = words[language].invalid;
-
-  $('badge').hidden = true;
-  $('badge').textContent = '';
-  $('details').hidden = true;
-  clearNode($('details'));
-  $('privateNote').hidden = true;
-  $('privateNote').textContent = '';
-
-  $('status').textContent = messageOverride || words[language][key] || words[language].error;
+  $('badge').hidden = true; $('badge').textContent = '';
+  $('details').hidden = true; clearNode($('details'));
+  $('privateNote').hidden = true; $('privateNote').textContent = '';
+  $('status').textContent = words[language][key] || words[language].error;
 }
 
-/* Re-render current state when language changes */
 function reRender() {
-  if (lastResult) {
-    renderResult(lastResult);
-  } else if (lastErrorKey) {
-    renderFailure(lastErrorKey);
-  } else {
+  if (lastResult) renderResult(lastResult);
+  else if (lastErrorKey) renderFailure(lastErrorKey);
+  else {
     $('title').textContent = words[language].title;
     $('lead').textContent = words[language].loading;
     $('badge').hidden = true;
@@ -235,89 +445,58 @@ function reRender() {
   }
 }
 
-/* ---------------- Language switch ---------------- */
+/* ---------------- Language ---------------- */
 function translate(lang) {
   if (lang !== 'hi' && lang !== 'en') return;
   language = lang;
   document.documentElement.lang = lang;
-
   document.querySelectorAll('[data-lang]').forEach(b => {
     const active = b.dataset.lang === lang;
     b.classList.toggle('active', active);
     b.setAttribute('aria-pressed', String(active));
   });
-
   document.querySelectorAll('[data-hi][data-en]').forEach(el => {
     el.textContent = el.getAttribute('data-' + lang);
   });
-
   reRender();
 }
-
 document.querySelectorAll('[data-lang]').forEach(b =>
   b.addEventListener('click', () => translate(b.dataset.lang))
 );
 
 /* ---------------- Verify ---------------- */
 function getPledgeIdFromUrl() {
-  const raw = (new URLSearchParams(location.search).get('id') || '').trim().toUpperCase();
-  return raw;
+  return (new URLSearchParams(location.search).get('id') || '').trim().toUpperCase();
 }
 
 async function fetchWithTimeout(url, options = {}, timeoutMs = FETCH_TIMEOUT_MS) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
-  try {
-    return await fetch(url, { ...options, signal: controller.signal });
-  } finally {
-    clearTimeout(timer);
-  }
+  try { return await fetch(url, { ...options, signal: controller.signal }); }
+  finally { clearTimeout(timer); }
 }
 
 async function verify() {
   resetUI();
-
   const id = getPledgeIdFromUrl();
-
-  if (!ID_REGEX.test(id)) {
-    renderFailure('notFound', words[language].invalid + ' — ' + words[language].notFound);
-    return;
-  }
+  if (!ID_REGEX.test(id)) { renderFailure('notFound'); return; }
 
   try {
     const url = API + '?action=verifyPledge&id=' + encodeURIComponent(id);
     const response = await fetchWithTimeout(url, {
-      method: 'GET',
-      headers: { 'Accept': 'application/json' }
+      method: 'GET', headers: { 'Accept': 'application/json' }
     });
-
-    if (!response.ok) {
-      renderFailure('error');
-      return;
-    }
+    if (!response.ok) { renderFailure('error'); return; }
 
     let result;
-    try {
-      result = await response.json();
-    } catch {
-      renderFailure('error');
-      return;
-    }
+    try { result = await response.json(); }
+    catch { renderFailure('error'); return; }
 
-    if (!result || !result.verified) {
-      renderFailure('notFound');
-      return;
-    }
-
+    if (!result || !result.verified) { renderFailure('notFound'); return; }
     renderResult(result);
-
   } catch (err) {
     console.error('Pledge verification failed:', err);
-    if (err && err.name === 'AbortError') {
-      renderFailure('timeout');
-    } else {
-      renderFailure('error');
-    }
+    renderFailure(err && err.name === 'AbortError' ? 'timeout' : 'error');
   }
 }
 
@@ -325,11 +504,8 @@ async function verify() {
 (function init() {
   const y = $('year');
   if (y) y.textContent = new Date().getFullYear();
-
-  // Set initial language from <html lang> or default 'hi'
   const initial = document.documentElement.lang === 'en' ? 'en' : 'hi';
   translate(initial);
-
   verify();
 })();
 </script>
