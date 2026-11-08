@@ -12,16 +12,23 @@
 <!-- MOBILE APP CSS -->
 <link rel="stylesheet" href="https://www.diprafoundation.com/mobile-app.css" media="(max-width: 860px)">
 
+<!-- Open Graph (WhatsApp preview) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pledge Verification | Dipra Foundation">
+<meta property="og:description" content="Verify a Dipra Foundation community pledge by ID.">
+<meta property="og:image" content="https://www.diprafoundation.com/logo.png">
+<meta property="og:url" content="https://www.diprafoundation.com/pledge/verify">
+
 <link rel="manifest" href="/manifest.webmanifest">
-<link rel="apple-touch-icon" href="/logo.png">
-<link rel="icon" type="image/png" href="/logo.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/logo-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/logo-192.png">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="दिप्र">
 
 <style>
-  /* ---------- Design tokens ---------- */
   :root {
     --brand: #0b5d3b;
     --brand-soft: #e8f5ee;
@@ -32,250 +39,162 @@
     --danger-soft: #fdecef;
     --ok: #1b7f3b;
     --radius: 14px;
-    --header-h: 64px;
     --font: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif;
   }
   @media (prefers-color-scheme: dark) {
-    :root {
-      --ink: #f2f2f2;
-      --muted: #b8b8b8;
-      --line: rgba(255,255,255,.14);
-      --brand-soft: rgba(11,93,59,.25);
-      --danger-soft: rgba(176,0,32,.22);
-    }
-    body { background: #101418; color: var(--ink); }
-    .card { background: #171c21; }
-    .details .row { border-bottom-color: var(--line); }
+    :root { --ink:#f2f2f2; --muted:#b8b8b8; --line:rgba(255,255,255,.14);
+            --brand-soft:rgba(11,93,59,.25); --danger-soft:rgba(176,0,32,.22); }
+    body { background:#101418; color:var(--ink); }
+    .card { background:#171c21; }
+    header { background:#171c21; }
   }
 
-  /* ---------- Base ---------- */
   *, *::before, *::after { box-sizing: border-box; }
-  html, body { margin: 0; }
-  body {
-    font-family: var(--font);
-    color: var(--ink);
-    background: #f7f8f7;
-    line-height: 1.5;
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
-  }
-  a { color: var(--brand); }
-  a:focus-visible, button:focus-visible {
-    outline: 3px solid #4c9aff;
-    outline-offset: 2px;
-    border-radius: 6px;
-  }
-  img { max-width: 100%; }
+  html, body { margin:0; }
+  body { font-family:var(--font); color:var(--ink); background:#f7f8f7; line-height:1.5;
+         padding-left:env(safe-area-inset-left); padding-right:env(safe-area-inset-right); }
+  a { color:var(--brand); }
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline:3px solid #4c9aff; outline-offset:2px; border-radius:6px; }
+  img { max-width:100%; }
 
-  /* ---------- Header ---------- */
-  header {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background: #fff;
-    border-bottom: 1px solid var(--line);
-    padding-top: env(safe-area-inset-top);
-  }
-  @media (prefers-color-scheme: dark) { header { background: #171c21; } }
+  /* ---- Header ---- */
+  header { position:sticky; top:0; z-index:20; background:#fff;
+           border-bottom:1px solid var(--line); padding-top:env(safe-area-inset-top); }
+  header .bar { max-width:960px; margin:0 auto; min-height:64px; padding:.5rem 1rem;
+                display:flex; align-items:center; justify-content:space-between; gap:.75rem; }
 
-  header .bar {
-    max-width: 960px;
-    margin: 0 auto;
-    min-height: var(--header-h);
-    padding: .5rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: .75rem;
+  /* ---- BRAND + LOGO (fixed size) ---- */
+  .brand { display:flex; align-items:center; gap:.6rem; min-width:0;
+           text-decoration:none; color:inherit; }
+  .brand img, .brand .logo {
+    width:40px; height:40px; flex:0 0 40px;
+    object-fit:contain; border-radius:8px; background:#fff;
+    padding:2px; box-shadow:0 1px 3px rgba(0,0,0,.08);
   }
+  @media (min-width:480px) {
+    .brand img, .brand .logo { width:48px; height:48px; flex-basis:48px; }
+  }
+  .brand span { display:flex; flex-direction:column; min-width:0;
+                font-weight:700; font-size:1rem; line-height:1.15;
+                white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .brand small { font-weight:400; font-size:.75rem; color:var(--muted);
+                 white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 
-  /* ---------- Brand + LOGO FIX ---------- */
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: .6rem;
-    min-width: 0;              /* allows text truncation */
-    text-decoration: none;
-    color: inherit;
-  }
-  .brand img,
-  .brand .logo {
-    width: 40px;
-    height: 40px;
-    flex: 0 0 40px;            /* NEVER grow/shrink — fixes "logo bahut bada" */
-    object-fit: contain;
-    border-radius: 8px;
-    background: #fff;
-    padding: 2px;
-    box-shadow: 0 1px 3px rgba(0,0,0,.08);
-  }
-  @media (min-width: 480px) {
-    .brand img, .brand .logo { width: 48px; height: 48px; flex-basis: 48px; }
-  }
-  .brand span {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    font-weight: 700;
-    font-size: 1rem;
-    line-height: 1.15;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .brand small {
-    font-weight: 400;
-    font-size: .75rem;
-    color: var(--muted);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  /* ---- Lang buttons ---- */
+  .langs { display:flex; gap:.35rem; flex:0 0 auto; }
+  .langs button { min-width:40px; min-height:36px; padding:.35rem .6rem;
+                  border:1px solid var(--line); background:transparent; color:inherit;
+                  border-radius:999px; font:inherit; font-size:.85rem; cursor:pointer; }
+  .langs button.active { background:var(--brand); color:#fff; border-color:var(--brand); }
 
-  /* ---------- Lang buttons ---------- */
-  .langs { display: flex; gap: .35rem; flex: 0 0 auto; }
-  .langs button {
-    min-width: 40px;
-    min-height: 36px;
-    padding: .35rem .6rem;
-    border: 1px solid var(--line);
-    background: transparent;
-    color: inherit;
-    border-radius: 999px;
-    font: inherit;
-    font-size: .85rem;
-    cursor: pointer;
-  }
-  .langs button.active {
-    background: var(--brand);
-    color: #fff;
-    border-color: var(--brand);
-  }
+  /* ---- Main / Card ---- */
+  .wrap { max-width:720px; margin:0 auto; padding:1.25rem 1rem 2.5rem; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+          padding:1.5rem 1.25rem; box-shadow:0 2px 10px rgba(0,0,0,.04); }
+  @media (max-width:420px) { .card { padding:1.1rem 1rem; border-radius:12px; } }
 
-  /* ---------- Main / Card ---------- */
-  .wrap {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 1.25rem 1rem 2.5rem;
+  /* ---- Mark (✓ / ! / spinner) ---- */
+  .mark { display:inline-flex; align-items:center; justify-content:center;
+          width:56px; height:56px; border-radius:50%; font-size:1.7rem; font-weight:700;
+          background:var(--brand-soft); color:var(--brand); margin-bottom:.5rem; }
+  .mark.valid   { background:var(--brand-soft); color:var(--ok); }
+  .mark.invalid { background:var(--danger-soft); color:var(--danger); }
+  .mark.loading::after {
+    content:""; width:22px; height:22px; border:3px solid var(--brand);
+    border-right-color:transparent; border-radius:50%;
+    animation:spin .8s linear infinite; display:block;
   }
-  .card {
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 1.5rem 1.25rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,.04);
-  }
-  @media (max-width: 420px) {
-    .card { padding: 1.1rem 1rem; border-radius: 12px; }
-  }
+  .mark.loading { font-size:0; }
+  @keyframes spin { to { transform:rotate(360deg); } }
 
-  /* ---------- Mark (✓ / !) ---------- */
-  .mark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    font-size: 1.7rem;
-    font-weight: 700;
-    background: var(--brand-soft);
-    color: var(--brand);
-    margin-bottom: .5rem;
-  }
-  .mark.valid   { background: var(--brand-soft); color: var(--ok); }
-  .mark.invalid { background: var(--danger-soft); color: var(--danger); }
+  /* ---- Typography ---- */
+  #title { font-size:1.4rem; margin:.25rem 0 .35rem; line-height:1.25; }
+  .lead  { color:var(--muted); margin:0 0 .75rem; }
 
-  /* ---------- Typography ---------- */
-  #title { font-size: 1.4rem; margin: .25rem 0 .35rem; line-height: 1.25; }
-  .lead  { color: var(--muted); margin: 0 0 .75rem; }
+  /* ---- Badge ---- */
+  .badge { display:inline-block; background:var(--brand-soft); color:var(--ok);
+           border:1px solid rgba(27,127,59,.25); padding:.25rem .7rem;
+           border-radius:999px; font-size:.85rem; font-weight:600; margin-bottom:.5rem; }
+  .badge[hidden] { display:none; }
 
-  /* ---------- Badge ---------- */
-  .badge {
-    display: inline-block;
-    background: var(--brand-soft);
-    color: var(--ok);
-    border: 1px solid rgba(27,127,59,.25);
-    padding: .25rem .7rem;
-    border-radius: 999px;
-    font-size: .85rem;
-    font-weight: 600;
-    margin-bottom: .5rem;
+  /* ---- Details ---- */
+  .details { margin:.75rem 0; }
+  .details .row { display:flex; gap:.75rem; padding:.5rem 0; border-bottom:1px solid var(--line); }
+  .details .row:last-child { border-bottom:0; }
+  .details .label { font-weight:600; min-width:8.5rem; color:var(--muted); }
+  .details .value { word-break:break-word; display:flex; align-items:center; gap:.4rem; flex-wrap:wrap; }
+  @media (max-width:480px) {
+    .details .row { flex-direction:column; gap:.1rem; padding:.45rem 0; }
+    .details .label { min-width:0; font-size:.8rem; text-transform:uppercase; letter-spacing:.02em; }
   }
-  .badge[hidden] { display: none; }
+  .copy-btn { border:1px solid var(--line); background:transparent; color:inherit;
+              border-radius:8px; padding:.15rem .4rem; font-size:.75rem; cursor:pointer; }
+  .copy-btn:hover { background:var(--brand-soft); }
 
-  /* ---------- Details ---------- */
-  .details { margin: .75rem 0; }
-  .details .row {
-    display: flex;
-    gap: .75rem;
-    padding: .5rem 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .details .row:last-child { border-bottom: 0; }
-  .details .label {
-    font-weight: 600;
-    min-width: 8.5rem;
-    color: var(--muted);
-  }
-  .details .value { word-break: break-word; }
+  /* ---- Notes / Status ---- */
+  .private { font-size:.9rem; font-style:italic; color:var(--muted);
+             background:var(--brand-soft); padding:.6rem .75rem;
+             border-radius:10px; margin:.5rem 0; }
+  .status { min-height:1.25em; margin:.5rem 0 0; font-size:.9rem; color:var(--danger); }
+  .status:empty { min-height:0; }
 
-  /* MOBILE: stack label above value */
-  @media (max-width: 480px) {
-    .details .row { flex-direction: column; gap: .1rem; padding: .45rem 0; }
-    .details .label { min-width: 0; font-size: .8rem; text-transform: uppercase; letter-spacing: .02em; }
-  }
+  /* ---- Buttons ---- */
+  .actions { margin-top:1rem; display:flex; flex-wrap:wrap; gap:.6rem; }
+  .btn { display:inline-flex; align-items:center; gap:.4rem; background:var(--brand);
+         color:#fff; text-decoration:none; padding:.6rem 1rem; border:0;
+         border-radius:10px; font:inherit; font-weight:600; cursor:pointer; }
+  .btn:hover { filter:brightness(1.08); }
+  .btn.ghost { background:transparent; color:var(--brand); border:1px solid var(--brand); }
+  .btn[hidden] { display:none; }
 
-  /* ---------- Notes / Status ---------- */
-  .private {
-    font-size: .9rem;
-    font-style: italic;
-    color: var(--muted);
-    background: var(--brand-soft);
-    padding: .6rem .75rem;
-    border-radius: 10px;
-    margin: .5rem 0;
-  }
-  .status { min-height: 1.25em; margin: .5rem 0 0; font-size: .9rem; color: var(--danger); }
-  .status:empty { min-height: 0; }
+  /* ---- Retry box ---- */
+  .retry { margin-top:.75rem; }
+  .retry[hidden] { display:none; }
 
-  /* ---------- Actions ---------- */
-  .actions { margin-top: 1rem; }
-  .back {
-    display: inline-block;
-    background: var(--brand);
-    color: #fff;
-    text-decoration: none;
-    padding: .6rem 1rem;
-    border-radius: 10px;
-    font-weight: 600;
-  }
-  .back:hover { filter: brightness(1.08); }
+  /* ---- Verify another form ---- */
+  .verify-form { margin-top:1.25rem; padding-top:1rem; border-top:1px solid var(--line); }
+  .verify-form label { display:block; font-weight:600; margin-bottom:.35rem; font-size:.9rem; }
+  .verify-form .row { display:flex; gap:.5rem; }
+  .verify-form input { flex:1; min-width:0; padding:.55rem .7rem; border:1px solid var(--line);
+                       border-radius:10px; font:inherit; background:transparent; color:inherit; }
 
-  /* ---------- Footer ---------- */
-  footer {
-    text-align: center;
-    color: var(--muted);
-    font-size: .85rem;
-    padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom));
-    border-top: 1px solid var(--line);
+  /* ---- QR ---- */
+  .qr-wrap { text-align:center; margin:1rem 0 .5rem; }
+  .qr-wrap img { width:160px; height:160px; image-rendering:pixelated; }
+
+  /* ---- Footer ---- */
+  footer { text-align:center; color:var(--muted); font-size:.85rem;
+           padding:1rem 1rem calc(1rem + env(safe-area-inset-bottom));
+           border-top:1px solid var(--line); }
+
+  /* ---- Offline banner ---- */
+  .offline { display:none; background:var(--danger-soft); color:var(--danger);
+             text-align:center; padding:.5rem; font-size:.85rem; }
+  body.is-offline .offline { display:block; }
+
+  /* ---- Print ---- */
+  @media print {
+    header, footer, .langs, .actions, .verify-form, .retry, .offline { display:none !important; }
+    body { background:#fff; color:#000; }
+    .card { box-shadow:none; border:1px solid #000; }
+    a { color:#000; text-decoration:none; }
   }
 </style>
 </head>
 <body>
 
+<div class="offline" role="alert">आप ऑफ़लाइन हैं / You are offline</div>
+
 <header>
   <div class="bar">
     <a class="brand" href="/index.html" aria-label="Dipra Foundation home">
-      <!-- LOGO: fixed size + local fallback -->
+      <!-- LOGO: local first, Google Drive fallback -->
       <img src="/logo.png"
            onerror="this.onerror=null;this.src='https://lh3.googleusercontent.com/d/1uub_RlSpZ0mSPqde7lJvsv_qXMkL6M-G=w200';"
-           alt="Dipra Foundation logo"
-           width="48" height="48" decoding="async" fetchpriority="high">
-      <span>
-        Dipra Foundation
-        <small>Community pledge verification</small>
-      </span>
+           alt="Dipra Foundation logo" width="48" height="48"
+           decoding="async" fetchpriority="high">
+      <span>Dipra Foundation<small>Community pledge verification</small></span>
     </a>
     <div class="langs" role="group" aria-label="Language">
       <button type="button" data-lang="hi" class="active" aria-pressed="true">हिं</button>
@@ -286,7 +205,7 @@
 
 <main class="wrap">
   <section class="card" aria-labelledby="title">
-    <div id="mark" class="mark" aria-live="assertive" aria-atomic="true">…</div>
+    <div id="mark" class="mark loading" aria-live="assertive" aria-atomic="true"></div>
     <h1 id="title">संकल्प सत्यापन</h1>
     <p id="lead" class="lead" aria-live="polite">रिकॉर्ड जाँचा जा रहा है…</p>
 
@@ -295,9 +214,28 @@
     <p id="privateNote" class="private" hidden></p>
     <p id="status" class="status" role="status" aria-live="polite"></p>
 
-    <div class="actions">
-      <a class="back" href="/pledge" data-hi="नया संकल्प लें" data-en="Take a pledge">नया संकल्प लें</a>
+    <div id="retryBox" class="retry" hidden>
+      <button type="button" id="retryBtn" class="btn">फिर प्रयास करें / Retry</button>
     </div>
+
+    <div class="actions">
+      <a class="btn" href="/pledge" data-hi="नया संकल्प लें" data-en="Take a pledge">नया संकल्प लें</a>
+      <button type="button" id="shareBtn" class="btn ghost" hidden>Share</button>
+      <button type="button" id="printBtn" class="btn ghost" hidden>Print / PDF</button>
+    </div>
+
+    <div class="qr-wrap" id="qrWrap" hidden>
+      <img id="qrImg" alt="QR code for this pledge" width="160" height="160">
+    </div>
+
+    <form class="verify-form" id="verifyForm" novalidate>
+      <label for="newId">दूसरा संकल्प ID जाँचें / Verify another ID</label>
+      <div class="row">
+        <input id="newId" name="id" type="text" inputmode="text" autocomplete="off"
+               spellcheck="false" placeholder="DFP-YYYYMMDD-XXXXXXXX" maxlength="32" required>
+        <button type="submit" class="btn">Verify</button>
+      </div>
+    </form>
   </section>
 </main>
 
@@ -306,132 +244,170 @@
 <script>
 'use strict';
 
-/* ---------------- Config ---------------- */
 const API = 'https://script.google.com/macros/s/AKfycbynC667snioVb9pnBE8jDRWUJHwKOUi5jTYO31PlfolDG5VjcTrE93zh2k-Ai7zgi0/exec';
 const FETCH_TIMEOUT_MS = 15000;
 const ID_REGEX = /^DFP-\d{8}-[A-F0-9]{8,16}$/;
-
 const $ = id => document.getElementById(id);
 
-/* ---------------- i18n ---------------- */
 let language = 'hi';
 let lastResult = null;
 let lastErrorKey = null;
 
 const words = {
   hi: {
-    title: 'संकल्प सत्यापन',
-    loading: 'संकल्प रिकॉर्ड जाँचा जा रहा है…',
-    invalid: 'सत्यापन उपलब्ध नहीं',
-    notFound: 'इस ID के लिए सत्यापित संकल्प रिकॉर्ड नहीं मिला। ID जाँचें या रिकॉर्ड के admin सत्यापन की प्रतीक्षा करें।',
-    verified: 'संकल्प सत्यापित',
-    pledgeId: 'संकल्प क्रमांक',
-    name: 'नाम',
-    primary: 'प्राथमिक क्षेत्र',
-    secondary: 'द्वितीयक क्षेत्र',
-    date: 'जारी दिनांक',
-    private: 'धारक ने नाम और क्षेत्र को सार्वजनिक रूप से साझा करने की अनुमति नहीं दी है। संकल्प ID और स्थिति सत्यापित हैं।',
-    error: 'अभी सत्यापन सेवा उपलब्ध नहीं है। कृपया बाद में फिर प्रयास करें।',
-    timeout: 'सत्यापन सेवा ने समय पर उत्तर नहीं दिया। कृपया फिर प्रयास करें।'
+    title:'संकल्प सत्यापन', loading:'संकल्प रिकॉर्ड जाँचा जा रहा है…',
+    invalid:'सत्यापन उपलब्ध नहीं',
+    notFound:'इस ID के लिए सत्यापित संकल्प रिकॉर्ड नहीं मिला। ID जाँचें या रिकॉर्ड के admin सत्यापन की प्रतीक्षा करें।',
+    verified:'संकल्प सत्यापित', pledgeId:'संकल्प क्रमांक', name:'नाम',
+    primary:'प्राथमिक क्षेत्र', secondary:'द्वितीयक क्षेत्र', date:'जारी दिनांक',
+    private:'धारक ने नाम और क्षेत्र को सार्वजनिक रूप से साझा करने की अनुमति नहीं दी है। संकल्प ID और स्थिति सत्यापित हैं।',
+    error:'अभी सत्यापन सेवा उपलब्ध नहीं है। कृपया बाद में फिर प्रयास करें।',
+    timeout:'सत्यापन सेवा ने समय पर उत्तर नहीं दिया। कृपया फिर प्रयास करें।',
+    copy:'कॉपी', copied:'कॉपी हो गया', share:'Share', print:'Print', retry:'फिर प्रयास करें',
+    verify:'जाँचें', verifiedOn:'सत्यापित दिनांक'
   },
   en: {
-    title: 'Pledge Verification',
-    loading: 'Checking the pledge record…',
-    invalid: 'Verification unavailable',
-    notFound: 'No verified pledge record was found for this ID. Check the ID or wait for admin verification.',
-    verified: 'Pledge verified',
-    pledgeId: 'Pledge ID',
-    name: 'Name',
-    primary: 'Primary sector',
-    secondary: 'Secondary sectors',
-    date: 'Issue date',
-    private: 'The holder has not consented to publish their name and sectors. The pledge ID and status are verified.',
-    error: 'Verification is temporarily unavailable. Please try again later.',
-    timeout: 'The verification service did not respond in time. Please try again.'
+    title:'Pledge Verification', loading:'Checking the pledge record…',
+    invalid:'Verification unavailable',
+    notFound:'No verified pledge record was found for this ID. Check the ID or wait for admin verification.',
+    verified:'Pledge verified', pledgeId:'Pledge ID', name:'Name',
+    primary:'Primary sector', secondary:'Secondary sectors', date:'Issue date',
+    private:'The holder has not consented to publish their name and sectors. The pledge ID and status are verified.',
+    error:'Verification is temporarily unavailable. Please try again later.',
+    timeout:'The verification service did not respond in time. Please try again.',
+    copy:'Copy', copied:'Copied', share:'Share', print:'Print', retry:'Retry',
+    verify:'Verify', verifiedOn:'Verified on'
   }
 };
 
-/* ---------------- Helpers ---------------- */
+/* ---- Helpers ---- */
 function formatDate(value, lang) {
   if (!value) return '—';
   const d = new Date(value);
   if (isNaN(d.getTime())) return String(value);
-  try {
-    return d.toLocaleDateString(lang === 'hi' ? 'hi-IN' : 'en-IN',
-      { year: 'numeric', month: 'short', day: '2-digit' });
-  } catch { return d.toLocaleDateString(); }
+  try { return d.toLocaleDateString(lang==='hi'?'hi-IN':'en-IN',
+        {year:'numeric',month:'short',day:'2-digit'}); }
+  catch { return d.toLocaleDateString(); }
+}
+function clearNode(el){ while(el.firstChild) el.removeChild(el.firstChild); }
+
+function copyText(text, btn) {
+  const done = () => {
+    if (!btn) return;
+    const old = btn.textContent;
+    btn.textContent = words[language].copied;
+    setTimeout(() => btn.textContent = old, 1200);
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+  } else fallbackCopy(text, done);
+}
+function fallbackCopy(text, done) {
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); done(); } catch {}
+  document.body.removeChild(ta);
 }
 
-function clearNode(el) { while (el.firstChild) el.removeChild(el.firstChild); }
-
-function showRow(label, value) {
+function showRow(label, value, copyable) {
   const row = document.createElement('div');
   row.className = 'row';
   const a = document.createElement('div');
-  a.className = 'label';
-  a.textContent = label;
+  a.className = 'label'; a.textContent = label;
   const b = document.createElement('div');
   b.className = 'value';
   b.textContent = value || '—';
-  row.append(a, b);
+  if (copyable && value) {
+    const btn = document.createElement('button');
+    btn.type='button'; btn.className='copy-btn';
+    btn.textContent = words[language].copy;
+    btn.setAttribute('aria-label', words[language].copy + ': ' + value);
+    btn.addEventListener('click', () => copyText(value, btn));
+    b.appendChild(btn);
+  }
+  row.append(a,b);
   $('details').appendChild(row);
 }
 
+function buildShareUrl() {
+  return location.origin + location.pathname + '?id=' + encodeURIComponent(
+    (new URLSearchParams(location.search).get('id') || '').toUpperCase()
+  );
+}
+
+function setQR(id) {
+  const wrap = $('qrWrap'); const img = $('qrImg');
+  if (!id) { wrap.hidden = true; img.removeAttribute('src'); return; }
+  // Lightweight QR via public API (replace with local generator if preferred)
+  img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=320x320&data=' +
+            encodeURIComponent(buildShareUrl());
+  wrap.hidden = false;
+}
+
 function resetUI() {
-  $('mark').textContent = '…';
-  $('mark').classList.remove('invalid', 'valid');
+  $('mark').className = 'mark loading';
+  $('mark').textContent = '';
   $('lead').textContent = words[language].loading;
-  $('badge').hidden = true;
-  $('badge').textContent = '';
-  $('details').hidden = true;
-  clearNode($('details'));
-  $('privateNote').hidden = true;
-  $('privateNote').textContent = '';
+  $('badge').hidden = true; $('badge').textContent = '';
+  $('details').hidden = true; clearNode($('details'));
+  $('privateNote').hidden = true; $('privateNote').textContent = '';
   $('status').textContent = '';
+  $('retryBox').hidden = true;
+  $('shareBtn').hidden = true;
+  $('printBtn').hidden = true;
+  $('qrWrap').hidden = true;
   $('title').textContent = words[language].title;
 }
 
-/* ---------------- Rendering ---------------- */
 function renderResult(result) {
   lastResult = result; lastErrorKey = null;
   $('title').textContent = words[language].title;
+  $('mark').className = 'mark valid';
   $('mark').textContent = '✓';
-  $('mark').classList.remove('invalid');
-  $('mark').classList.add('valid');
   $('lead').textContent = words[language].verified;
-
   $('badge').textContent = words[language].verified;
   $('badge').hidden = false;
+  $('retryBox').hidden = true;
 
   const details = $('details');
   clearNode(details);
   details.hidden = false;
 
-  showRow(words[language].pledgeId, result.pledgeId);
+  showRow(words[language].pledgeId, result.pledgeId, true);
   if (result.detailsPublic) {
-    showRow(words[language].name, result.name);
-    showRow(words[language].primary, result.primarySector);
-    if (result.secondarySectors) showRow(words[language].secondary, result.secondarySectors);
+    showRow(words[language].name, result.name, false);
+    showRow(words[language].primary, result.primarySector, false);
+    if (result.secondarySectors) showRow(words[language].secondary, result.secondarySectors, false);
     $('privateNote').hidden = true;
   } else {
     $('privateNote').textContent = words[language].private;
     $('privateNote').hidden = false;
   }
-  showRow(words[language].date, formatDate(result.date, language));
+  showRow(words[language].date, formatDate(result.date, language), false);
+  showRow(words[language].verifiedOn, formatDate(new Date().toISOString(), language), false);
   $('status').textContent = '';
+
+  // Actions
+  $('shareBtn').hidden = false;
+  $('printBtn').hidden = false;
+  setQR(result.pledgeId || '');
 }
 
 function renderFailure(key) {
   lastResult = null; lastErrorKey = key;
   $('title').textContent = words[language].title;
+  $('mark').className = 'mark invalid';
   $('mark').textContent = '!';
-  $('mark').classList.remove('valid');
-  $('mark').classList.add('invalid');
   $('lead').textContent = words[language].invalid;
   $('badge').hidden = true; $('badge').textContent = '';
   $('details').hidden = true; clearNode($('details'));
   $('privateNote').hidden = true; $('privateNote').textContent = '';
   $('status').textContent = words[language][key] || words[language].error;
+  $('retryBox').hidden = false;
+  $('shareBtn').hidden = true;
+  $('printBtn').hidden = true;
+  $('qrWrap').hidden = true;
 }
 
 function reRender() {
@@ -440,72 +416,92 @@ function reRender() {
   else {
     $('title').textContent = words[language].title;
     $('lead').textContent = words[language].loading;
-    $('badge').hidden = true;
-    $('details').hidden = true;
+    $('badge').hidden = true; $('details').hidden = true;
+    $('retryBox').hidden = true;
   }
 }
 
-/* ---------------- Language ---------------- */
+/* ---- Language ---- */
 function translate(lang) {
   if (lang !== 'hi' && lang !== 'en') return;
   language = lang;
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-lang]').forEach(b => {
-    const active = b.dataset.lang === lang;
-    b.classList.toggle('active', active);
-    b.setAttribute('aria-pressed', String(active));
+    const a = b.dataset.lang === lang;
+    b.classList.toggle('active', a);
+    b.setAttribute('aria-pressed', String(a));
   });
   document.querySelectorAll('[data-hi][data-en]').forEach(el => {
     el.textContent = el.getAttribute('data-' + lang);
   });
+  $('retryBtn').textContent = words[lang].retry;
+  $('verifyForm').querySelector('button[type=submit]').textContent = words[lang].verify;
   reRender();
 }
 document.querySelectorAll('[data-lang]').forEach(b =>
-  b.addEventListener('click', () => translate(b.dataset.lang))
-);
+  b.addEventListener('click', () => translate(b.dataset.lang)));
 
-/* ---------------- Verify ---------------- */
+/* ---- Verify ---- */
 function getPledgeIdFromUrl() {
   return (new URLSearchParams(location.search).get('id') || '').trim().toUpperCase();
 }
-
-async function fetchWithTimeout(url, options = {}, timeoutMs = FETCH_TIMEOUT_MS) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
-  try { return await fetch(url, { ...options, signal: controller.signal }); }
-  finally { clearTimeout(timer); }
+async function fetchWithTimeout(url, options={}, ms=FETCH_TIMEOUT_MS) {
+  const c = new AbortController();
+  const t = setTimeout(() => c.abort(), ms);
+  try { return await fetch(url, { ...options, signal:c.signal }); }
+  finally { clearTimeout(t); }
 }
-
 async function verify() {
   resetUI();
   const id = getPledgeIdFromUrl();
   if (!ID_REGEX.test(id)) { renderFailure('notFound'); return; }
-
   try {
     const url = API + '?action=verifyPledge&id=' + encodeURIComponent(id);
-    const response = await fetchWithTimeout(url, {
-      method: 'GET', headers: { 'Accept': 'application/json' }
-    });
-    if (!response.ok) { renderFailure('error'); return; }
-
-    let result;
-    try { result = await response.json(); }
-    catch { renderFailure('error'); return; }
-
-    if (!result || !result.verified) { renderFailure('notFound'); return; }
-    renderResult(result);
+    const r = await fetchWithTimeout(url, { method:'GET', headers:{Accept:'application/json'} });
+    if (!r.ok) { renderFailure('error'); return; }
+    let data; try { data = await r.json(); } catch { renderFailure('error'); return; }
+    if (!data || !data.verified) { renderFailure('notFound'); return; }
+    renderResult(data);
   } catch (err) {
-    console.error('Pledge verification failed:', err);
+    console.error('verify failed', err);
     renderFailure(err && err.name === 'AbortError' ? 'timeout' : 'error');
   }
 }
 
-/* ---------------- Boot ---------------- */
+/* ---- Share / Print / Retry / New ID form ---- */
+$('shareBtn').addEventListener('click', async () => {
+  const url = buildShareUrl();
+  const title = 'Dipra Foundation pledge verification';
+  const text = (lastResult && lastResult.pledgeId)
+    ? 'Verified pledge ' + lastResult.pledgeId + ' — Dipra Foundation'
+    : title;
+  if (navigator.share) {
+    try { await navigator.share({ title, text, url }); } catch {}
+  } else {
+    copyText(url, $('shareBtn'));
+  }
+});
+$('printBtn').addEventListener('click', () => window.print());
+$('retryBtn').addEventListener('click', verify);
+
+$('verifyForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const v = ($('newId').value || '').trim().toUpperCase();
+  if (!v) return;
+  const u = new URL(location.href);
+  u.searchParams.set('id', v);
+  history.pushState({}, '', u.toString());
+  verify();
+});
+
+window.addEventListener('online',  () => document.body.classList.remove('is-offline'));
+window.addEventListener('offline', () => document.body.classList.add('is-offline'));
+if (!navigator.onLine) document.body.classList.add('is-offline');
+
+/* ---- Boot ---- */
 (function init() {
-  const y = $('year');
-  if (y) y.textContent = new Date().getFullYear();
-  const initial = document.documentElement.lang === 'en' ? 'en' : 'hi';
-  translate(initial);
+  const y = $('year'); if (y) y.textContent = new Date().getFullYear();
+  translate(document.documentElement.lang === 'en' ? 'en' : 'hi');
   verify();
 })();
 </script>
